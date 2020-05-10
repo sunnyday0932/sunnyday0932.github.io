@@ -44,7 +44,7 @@ git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git 
 5、回到存放blog的資料夾內，連結git上存放blog的Repository。
 git remote add origin https://github.com/sunnyday0932/hugo_blog.git 6、commit and push 到github上。
 7、接下來只要輸入https://&amp;lsquo;你的帳號&amp;rsquo;.github.io/即可預覽網站。
-五、參考連結 https://carrie-lai.github.io/post/createhugoblog/ https://raychiutw.</description>
+五、參考連結 https://carrie-lai.github.io/post/createhugoblog/</description>
     </item>
     
   </channel>
