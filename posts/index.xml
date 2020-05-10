@@ -39,10 +39,10 @@
  這裡要注意的是因為我們將hugo放在C:\，因此要啟用server時要將路徑給上。   2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。
  四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為&amp;rsquo;你的帳號&amp;rsquo;.github.io。
 2、在hugo存放自己blog的資料夾下建立public，並連結GitHub上自己的Repository。
-git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public 3、在資料夾使用CMD輸入C:\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。
+git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public3、在資料夾使用CMD輸入C:\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。
 4、將public 內檔案 commit and push 到&amp;rsquo;你的帳號&amp;rsquo;.github.io。
 5、回到存放blog的資料夾內，連結git上存放blog的Repository。
-git remote add origin https://github.com/sunnyday0932/hugo_blog.git 6、commit and push 到github上。
+git remote add origin https://github.com/sunnyday0932/hugo_blog.git6、commit and push 到github上。
 7、接下來只要輸入https://&amp;lsquo;你的帳號&amp;rsquo;.github.io/即可預覽網站。
 五、參考連結 https://carrie-lai.github.io/post/createhugoblog/</description>
     </item>
