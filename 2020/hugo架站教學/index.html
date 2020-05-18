@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Hugo架站教學",
     "headline" : "Hugo架站教學",
-    "description" : "Hugo架站教學 前言 受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。\n這次在架站花了過多時間在調畫面，最後還是沒到自己滿意狀態；但花的時間過久，決定先生出第一篇文章之後再來調剩下的東西。\n希望不會就此停留在現在模板😂\n本文 這次選擇Hugo主要是因為朋友推薦、中文資源夠多，再加上主題豐富，於是自己花時間摸索一下也覺得不難就決定選用Hugo。\n一、環境變數設定 1、首先到Hugo官方提供下載點將相對應個別系統的安裝包下載下來。\n2、將下載下來安裝包解壓縮後會得到以下檔案。\n3、將hugo.exe檔案複製或剪下至C:\\\n4、設定系統環境變數，路徑:控制台\x26gt;系統及安全性\x26gt;系統\x26gt;進階系統設定。\n5、選擇系統環境設定。\n6、系統變數Path點選編輯。\n7、新增系統變數，這邊因為我將hugo.exe放在C巢跟目錄底下因此設定為C:\\。\n8、接下來回到C:\\使用CMD測試hugo，輸入hugo version，只要出現以下畫面就代表環境設定完成。\n 二、架設方式 1、使用CMD輸入hugo new site \x26ldquo;你要放資料夾的位子\x26rdquo;。\n2、hugo會自動建立預設資料夾。\n然後就可以套用自己想要的主題到themes這個資料架內，主題可以到以下連結選擇。\n3、套用主題，在themes資料夾使用CMD輸入git clone \x26ldquo;你想要的主題\x26rdquo;。\n4、順利下載就會出現許多新資料夾。\n5、接下來就是修改內容改成自己想要的樣子就算完成了。\n 三、預覽方式 1、在資料夾使用CMD輸入hugo server -v。\n 這裡要注意的是因為我們將hugo放在C:\\，因此要啟用server時要將路徑給上。   2、接下來只要用瀏覽器輸入http:\/\/localhost:1313\/就可以看到自己的網站了。\n 四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為\x26rsquo;你的帳號\x26rsquo;.github.io。\n2、在hugo存放自己blog的資料夾下建立public，並連結GitHub上自己的Repository。\ngit submodule add -f https:\/\/github.com\/sunnyday0932\/sunnyday0932.github.io.git public\r3、在資料夾使用CMD輸入C:\\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。\n4、將public 內檔案 commit and push 到\x26rsquo;你的帳號\x26rsquo;.github.io。\n5、回到存放blog的資料夾內，連結git上存放blog的Repository。\ngit remote add origin https:\/\/github.com\/sunnyday0932\/hugo_blog.git\r6、commit and push 到github上。\n7、接下來只要輸入https:\/\/\x26lsquo;你的帳號\x26rsquo;.github.io\/即可預覽網站。\n五、參考連結 https:\/\/carrie-lai.github.io\/post\/createhugoblog\/",
+    "description" : "前言 受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。\n這次在架站花了過多時間在調畫面，最後還是沒到自己滿意狀態；但花的時間過久，決定先生出第一篇文章之後再來調剩下的東西。\n希望不會就此停留在現在模板😂\n本文 這次選擇Hugo主要是因為朋友推薦、中文資源夠多，再加上主題豐富，於是自己花時間摸索一下也覺得不難就決定選用Hugo。\n一、環境變數設定 1、首先到Hugo官方提供下載點將相對應個別系統的安裝包下載下來。\n2、將下載下來安裝包解壓縮後會得到以下檔案。\n3、將hugo.exe檔案複製或剪下至C:\\\n4、設定系統環境變數，路徑:控制台\x26gt;系統及安全性\x26gt;系統\x26gt;進階系統設定。\n5、選擇系統環境設定。\n6、系統變數Path點選編輯。\n7、新增系統變數，這邊因為我將hugo.exe放在C巢跟目錄底下因此設定為C:\\。\n8、接下來回到C:\\使用CMD測試hugo，輸入hugo version，只要出現以下畫面就代表環境設定完成。\n 二、架設方式 1、使用CMD輸入hugo new site \x26ldquo;你要放資料夾的位子\x26rdquo;。\n2、hugo會自動建立預設資料夾。\n然後就可以套用自己想要的主題到themes這個資料架內，主題可以到以下連結選擇。\n3、套用主題，在themes資料夾使用CMD輸入git clone \x26ldquo;你想要的主題\x26rdquo;。\n4、順利下載就會出現許多新資料夾。\n5、接下來就是修改內容改成自己想要的樣子就算完成了。\n 三、預覽方式 1、在資料夾使用CMD輸入hugo server -v。\n 這裡要注意的是因為我們將hugo放在C:\\，因此要啟用server時要將路徑給上。   2、接下來只要用瀏覽器輸入http:\/\/localhost:1313\/就可以看到自己的網站了。\n 四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為\x26rsquo;你的帳號\x26rsquo;.github.io。\n2、在hugo存放自己blog的資料夾下建立public，並連結GitHub上自己的Repository。\ngit submodule add -f https:\/\/github.com\/sunnyday0932\/sunnyday0932.github.io.git public\r3、在資料夾使用CMD輸入C:\\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。\n4、將public 內檔案 commit and push 到\x26rsquo;你的帳號\x26rsquo;.github.io。\n5、回到存放blog的資料夾內，連結git上存放blog的Repository。\ngit remote add origin https:\/\/github.com\/sunnyday0932\/hugo_blog.git\r6、commit and push 到github上。\n7、接下來只要輸入https:\/\/\x26lsquo;你的帳號\x26rsquo;.github.io\/即可預覽網站。\n五、參考連結 https:\/\/carrie-lai.github.io\/post\/createhugoblog\/\nhttps:\/\/raychiutw.github.io\/2019\/Hugo-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8\/",
     "inLanguage" : "en-us",
     "author" : "Sian",
     "creator" : "Sian",
@@ -57,7 +57,7 @@
     "datePublished": "2020-05-10 00:00:00 \x2b0000 UTC",
     "dateModified" : "2020-05-10 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8\/",
-    "wordCount" : "71",
+    "wordCount" : "70",
     "keywords" : [ "Hugo","github", "Sian"]
 }
 </script>
@@ -148,8 +148,7 @@
           
           
 
-          <h1 id="hugo架站教學">Hugo架站教學</h1>
-<h3 id="前言">前言</h3>
+          <h3 id="前言">前言</h3>
 <p>受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。</p>
 <p>這次在架站花了過多時間在調畫面，<del>最後還是沒到自己滿意狀態</del>；但花的時間過久，決定先生出第一篇文章之後再來調剩下的東西。</p>
 <p>希望不會就此停留在現在模板😂</p>
@@ -214,7 +213,7 @@
 <p><a href="https://jimmylin212.github.io/post/0001_create_hugo_and_deploy_on-github_page/">https://jimmylin212.github.io/post/0001_create_hugo_and_deploy_on-github_page/</a></p>
 <p> </p>
 <h3 id="後記">後記</h3>
-<p>一開始看朋友網站覺得覺得應該滿好上手，沒想到自己下來還是花了少時間，再加上平常根本沒在使用CMD操作完全不熟悉，完全就是被windows寵壞的工程師&hellip;</p>
+<p>一開始看朋友網站覺得覺得應該滿好上手，沒想到自己下來還是花了不少時間，再加上平常根本沒在使用CMD操作不熟悉，完全就是被windows寵壞的工程師&hellip;</p>
 <p>藉此機會也碰了一點自己不太熟的前端，光是調個畫面就花了我好多時間啊，前端工程師真心Respect。</p>
 
     </div>

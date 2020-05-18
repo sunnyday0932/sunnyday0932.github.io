@@ -17,7 +17,7 @@
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/</guid>
-      <description>Hugo架站教學 前言 受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。
+      <description>前言 受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。
 這次在架站花了過多時間在調畫面，最後還是沒到自己滿意狀態；但花的時間過久，決定先生出第一篇文章之後再來調剩下的東西。
 希望不會就此停留在現在模板😂
 本文 這次選擇Hugo主要是因為朋友推薦、中文資源夠多，再加上主題豐富，於是自己花時間摸索一下也覺得不難就決定選用Hugo。
@@ -44,7 +44,8 @@ git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git 
 5、回到存放blog的資料夾內，連結git上存放blog的Repository。
 git remote add origin https://github.com/sunnyday0932/hugo_blog.git6、commit and push 到github上。
 7、接下來只要輸入https://&amp;lsquo;你的帳號&amp;rsquo;.github.io/即可預覽網站。
-五、參考連結 https://carrie-lai.github.io/post/createhugoblog/</description>
+五、參考連結 https://carrie-lai.github.io/post/createhugoblog/
+https://raychiutw.github.io/2019/Hugo-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/</description>
     </item>
     
   </channel>
