@@ -20,6 +20,8 @@
       <description>前言 前陣子工作上需求，需要做匯出報表功能，要將不同欄位資料合併再一起後匯出，順手記錄一下。
 本文 示範資料表如下
 我們需要把相同Level的欄位匯總再一起，做成一個統計用報表。
+首先每個區域後面先加、
+select District+&#39;、&#39; from DistrictData 接下來使用
 select level, ( select District+&#39;、&#39; from DistrictData as B where A.Level = B.Level FOR XML PATH(&#39;&#39;) )AS District FROM DistrictData AS A GROUP BY level 即可得到想要的成果。
 其中FOR XML PATH(&#39;&#39;)功能是因為如果沒有加的話會出現以下錯誤訊息。
 接下來會發現顯示格式不太對，要加上、的部分最後一筆應該要排除。

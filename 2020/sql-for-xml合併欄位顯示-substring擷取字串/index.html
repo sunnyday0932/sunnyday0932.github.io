@@ -70,7 +70,7 @@
     "datePublished": "2020-05-29 00:00:00 \x2b0000 UTC",
     "dateModified" : "2020-05-29 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/sql-for-xml%E5%90%88%E4%BD%B5%E6%AC%84%E4%BD%8D%E9%A1%AF%E7%A4%BA-substring%E6%93%B7%E5%8F%96%E5%AD%97%E4%B8%B2\/",
-    "wordCount" : "50",
+    "wordCount" : "56",
     "keywords" : [ "SQL", "Sian"]
 }
 </script>
@@ -175,6 +175,10 @@
 <p>示範資料表如下<br>
 <img src="https://i.imgur.com/njffq46.jpg" alt=""></p>
 <p>我們需要把相同Level的欄位匯總再一起，做成一個統計用報表。</p>
+<p>首先每個區域後面先加、</p>
+<pre><code>select District+'、' from DistrictData
+</code></pre><p><img src="https://i.imgur.com/juFYK26.jpg" alt=""></p>
+<p>接下來使用</p>
 <pre><code>select level,
 (
 	select District+'、' from DistrictData as B
