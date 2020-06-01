@@ -6,10 +6,31 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>閱讀心得:Soft Skills 軟實力｜軟體開發人員的生存手冊</title>
+      <link>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_soft-skills-%E8%BB%9F%E5%AF%A6%E5%8A%9B%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E4%BA%BA%E5%93%A1%E7%9A%84%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8A/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_soft-skills-%E8%BB%9F%E5%AF%A6%E5%8A%9B%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E4%BA%BA%E5%93%A1%E7%9A%84%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8A/</guid>
+      <description>前言 這是踏入職場後第一本挑選的書，起因是公司教育訓練文件最後前輩列了一系列書單，其中名字最特別、歸類又不是技術類，看了試閱的第一頁就決定買了。
+本文  目錄
+ 序:這是一本你從未見過的軟體開發書 Section 1 職涯 Section 2 自我行銷 Section 3 學習 Section 4 生產力 Section 5 理財 Section 6 健身 Section 7 心靈
+目錄應該很明顯，這真的是從未見過專門寫給軟體開發人員的密技；玩遊戲都會都看密技了，職涯看一下應該也很合理。
+這本書就是把踏入這行會發生的全部過程拆解，細分後再加以分析利弊整理出一些可供參考的方式。
+拿第一章職涯作為舉例，當談到如何設立職涯目標的時候作者會先敘述自己的經驗並給出一些建議，再來教你如何設定出真正可以執行的目標(不會好高騖遠)，最後會給出練習的方式。
+照著每一小節的練習，確實可以有助於自己思考與規劃。
+最特別的大概是最後三章:理財、健身、心靈。
+這部分作者就跳脫出職業生活的部分，提醒的是儘管開發人員有多熱愛自己的工作，下了班你還是會回歸日常。
+而這部分就是針對日常生活給出的建議。
+其中健身這章可以拉出來特別提一下，因為本身也開始健身兩年了，這本書對於健身觀念真的非常正確，不管是計算卡路里方式、制定健身課表、飲食全方位講解都很透徹。
+作者也提到，因為職涯長時間坐著對開發人員真的是一大傷害；運動不僅能帶給職涯很多正面的幫助，要想達成目標，擁有健康的身體亦是必要條件，這也是我開始健身的初衷之一。   後記  這本書大概是一月入手，當時因為教育訓練落後狀態低迷，沒有想太多就是想趕快進步，看完也五個月過去了，這中間斷斷續續的閱讀、但堅持每個小節的即知即行都要自己做一遍，真的對我幫助不小；包含了現在決定開始經營部落格，有一部分原因也是因為看了這本書。
+強烈建議軟體開發人員有機會都可以看看這本書，真的會對你職涯規劃有所幫助，但當然作者與我們生活環境落差，有些經驗並不適用於每個人，不能照單全收，這也是需要自行判斷，最後就像書中所述step by step有一天一定能達到自己目標的。</description>
+    </item>
     
     <item>
       <title>SQL FOR XML合併欄位顯示 SUBSTRING擷取字串</title>
