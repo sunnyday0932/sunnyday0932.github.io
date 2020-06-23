@@ -6,10 +6,22 @@
     <description>Recent content in OOP on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/oop/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Object Oriented物件導向-2:建構式(Constructor)、多載(Overloading)與覆寫(Overriding)</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</link>
+      <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</guid>
+      <description>本文 1、建構式(Constructor)
+ 實體化類別的動作，也就是New這個步驟。 建構式與類別同名，無return值。  Public class 特斯拉() { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 車子 = new 特斯拉(); //這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池 2、多載(Overloading)
+ 相同function名稱，可以有不同參數或不同的型別。  //首先建立一個特斯拉的類別，可以接收不同型號。 Public class 特斯拉(string 型號) { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 Model3 = new 特斯拉(Model3); 特斯拉 ModelS = new 特斯拉(ModelS); 特斯拉 ModelX = new 特斯拉(ModelX); //同一個特斯拉的類別，我們可以接收不同的型號創造出實體。 3、覆寫(Overriding)
+ 與父類別相同function名稱，參數個數與return型別相同。覆寫其繼承自父類別的功能內容，使其滿足子類別的需求。  //首先建立一個特斯拉的類別，可以接收不同型號。 Public class 特斯拉(string 型號) { public 輪子(){} public 方向盤(){} public 電池(){} public virtual void 車門() //要加上virtual才可以覆寫!</description>
+    </item>
     
     <item>
       <title>Object Oriented物件導向-1:類別(Class)與實體(Object)</title>
