@@ -50,7 +50,7 @@
  
 
 <script type="application/ld+json">
-{
+{ 
     "@context" : "http://schema.org",
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
@@ -71,7 +71,7 @@
     "datePublished": "2020-06-23 00:00:00 \x2b0000 UTC",
     "dateModified" : "2020-06-23 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding\/",
-    "wordCount" : "130",
+    "wordCount" : "148",
     "keywords" : [ "OOP","程式設計", "Sian"]
 }
 </script>
@@ -173,6 +173,7 @@
 <ul>
 <li>實體化類別的動作，也就是New這個步驟。</li>
 <li>建構式與類別同名，無return值。</li>
+<li>大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要void，在New時調用。</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>()
 {
@@ -186,20 +187,35 @@
 <p>2、多載(Overloading)</p>
 <ul>
 <li>相同function名稱，可以有不同參數或不同的型別。</li>
+<li>大話設計模式：多載提供了建立同名的多個方法的能力，但這些方法須使用不同的參數類型。<br>
+<!-- raw HTML omitted -->
+2020/06/30 修改範例</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//首先建立一個特斯拉的類別，可以接收不同型號。
-</span><span style="color:#75715e"></span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">型號</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//首先建立一個特斯拉的類別。
+</span><span style="color:#75715e"></span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
 {
-	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
-	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
-	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">配件</span>() <span style="color:#75715e">//預設基本配件有輪子、方向盤、電池。
+</span><span style="color:#75715e"></span>	{
+		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
+		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
+		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
+	}  
+
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">配件</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">加購價</span> ) <span style="color:#75715e">//加購價的配件會有更高級的配備。
+</span><span style="color:#75715e"></span>	{
+		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">跑車輪子</span>(){}
+		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">跑車方向盤</span>(){}
+		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">高電量電池</span>(){}
+	}
 }
 
-<span style="color:#960050;background-color:#1e0010">特斯拉</span> Model3 = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(Model3);
-<span style="color:#960050;background-color:#1e0010">特斯拉</span> ModelS = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(ModelS);
-<span style="color:#960050;background-color:#1e0010">特斯拉</span> ModelX = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(ModelX);
-<span style="color:#75715e">//同一個特斯拉的類別，我們可以接收不同的型號創造出實體。
-</span></code></pre></div><!-- raw HTML omitted -->
+<span style="color:#960050;background-color:#1e0010">特斯拉</span> ModelX = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+ModelX.<span style="color:#960050;background-color:#1e0010">配件</span>(); <span style="color:#75715e">//基本配件的ModelX
+</span><span style="color:#75715e"></span>ModelX.<span style="color:#960050;background-color:#1e0010">配件</span>(<span style="color:#ae81ff">10000</span>); <span style="color:#75715e">//透過加價一萬塊獲得更高級配件的ModelX
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//同一個ModelX都是使用配件這個方法，但我們透過傳入&#34;空&#34;或是&#34;10000&#34;來得到不同的配件。
+</span></code></pre></div><p>這裡特別感謝同事幫忙指證，有興趣也歡迎去他的Blog晃晃<a href="https://igouist.github.io/">伊果的沒人看筆記本</a></p>
+<!-- raw HTML omitted -->
 <p>3、覆寫(Overriding)</p>
 <ul>
 <li>與父類別相同function名稱，參數個數與return型別相同。覆寫其繼承自父類別的功能內容，使其滿足子類別的需求。</li>
