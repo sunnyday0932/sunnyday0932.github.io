@@ -6,10 +6,26 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Json格式轉換，序列化(Serialize)與反序列化(Deserialize)</title>
+      <link>https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/</link>
+      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/</guid>
+      <description>前言 今天在工作上剛好碰到了要將字串轉換成Json格式傳遞給別人，遇到了有趣的事情特別記錄一下。
+本文 一開始很好奇我擷取的字串出來序列化的Json格式，會多出空行的符號\r\n。
+&amp;#34;{\&amp;#34;A\&amp;#34;:\&amp;#34;ss\r\nss\&amp;#34;,\&amp;#34;B\&amp;#34;:\&amp;#34;ss\nss\&amp;#34;}&amp;#34; 於是就跟同事討論起這件事，我一開始想法是這是不是會影響別人收到後處理結果呢?
+同事做了簡單範例解釋。
+class Program { static void Main(string[] args) { var objTest = new Test { A = &amp;#34;ss\r\nss&amp;#34;, B = &amp;#34;ss\nss&amp;#34; }; var jsonObj = JsonConvert.SerializeObject(objTest); Console.WriteLine(jsonObj); var obj2 = JsonConvert.DeserializeObject&amp;lt;Test&amp;gt;(&amp;#34;{\&amp;#34;A\&amp;#34;:\&amp;#34;ss\r\nss\&amp;#34;,\&amp;#34;B\&amp;#34;:\&amp;#34;ss\nss\&amp;#34;}&amp;#34;); Console.WriteLine(obj2.A); Console.WriteLine(obj2.B); } public class Test { public string A { get; set; } public string B { get; set; } } } 輸出結果
+Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會將字串轉換成我們看到的正常樣貌。
+所以結論就是，通通丟給對方處理就對了🤟
+參考連結  1、Json官方文件 2、瞭解Json格式  </description>
+    </item>
     
     <item>
       <title>Object Oriented物件導向-2:建構式(Constructor)、多載(Overloading)與覆寫(Overriding)</title>

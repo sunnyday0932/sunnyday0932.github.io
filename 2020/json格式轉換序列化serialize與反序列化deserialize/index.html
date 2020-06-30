@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">
   <meta name="keywords" content="Sian">
   
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/" />
   
-  <link rel="next" href="https://sunnyday0932.github.io/2020/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8/" />
-  <link rel="canonical" href="https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/" />
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
@@ -35,10 +35,10 @@
   <title>
        
        
-           Hugo架站教學 | Sian
+           Json格式轉換，序列化(Serialize)與反序列化(Deserialize) | Sian
        
   </title>
-  <meta name="title" content="Hugo架站教學 | Sian">
+  <meta name="title" content="Json格式轉換，序列化(Serialize)與反序列化(Deserialize) | Sian">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Hugo架站教學",
-    "headline" : "Hugo架站教學",
-    "description" : "Hugo架站教學",
+    "name" : "Json格式轉換，序列化(Serialize)與反序列化(Deserialize)",
+    "headline" : "Json格式轉換，序列化(Serialize)與反序列化(Deserialize)",
+    "description" : "Json格式轉換，序列化(Serialize)與反序列化(Deserialize)",
     "inLanguage" : "en-us",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,11 +68,11 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2020",
-    "datePublished": "2020-05-10 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2020-05-10 00:00:00 \x2b0000 UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2020\/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8\/",
-    "wordCount" : "70",
-    "keywords" : [ "Hugo","github", "Sian"]
+    "datePublished": "2020-06-30 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-06-30 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize\/",
+    "wordCount" : "66",
+    "keywords" : [ "C#","Json", "Sian"]
 }
 </script>
 
@@ -135,11 +135,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Hugo架站教學</h1>
+        <h1 class="post-title" itemprop="name headline">Json格式轉換，序列化(Serialize)與反序列化(Deserialize)</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2020-05-10 itemprop="datePublished">May 10, 2020</time>
+                on <time datetime=2020-06-30 itemprop="datePublished">June 30, 2020</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -171,72 +171,52 @@
           
 
           <h3 id="前言">前言</h3>
-<p>受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。</p>
-<p>這次在架站花了過多時間在調畫面，<del>最後還是沒到自己滿意狀態</del>；但花的時間過久，決定先生出第一篇文章之後再來調剩下的東西。</p>
-<p>希望不會就此停留在現在模板😂</p>
+<p>今天在工作上剛好碰到了要將字串轉換成Json格式傳遞給別人，遇到了有趣的事情特別記錄一下。<br>
+<!-- raw HTML omitted --></p>
 <h3 id="本文">本文</h3>
-<p>這次選擇Hugo主要是因為朋友推薦、中文資源夠多，再加上主題豐富，於是自己花時間摸索一下也覺得不難就決定選用Hugo。</p>
-<h4 id="一環境變數設定">一、環境變數設定</h4>
-<p>1、首先到Hugo官方提供<a href="https://github.com/gohugoio/hugo/releases">下載點</a>將相對應個別系統的安裝包下載下來。</p>
-<p>2、將下載下來安裝包解壓縮後會得到以下檔案。</p>
-<p><img src="https://i.imgur.com/SGfEqXz.jpg" alt=""></p>
-<p>3、將hugo.exe檔案複製或剪下至C:\</p>
-<p><img src="https://i.imgur.com/N7LGorc.jpg" alt=""></p>
-<p>4、設定系統環境變數，路徑:<strong>控制台&gt;系統及安全性&gt;系統&gt;進階系統設定。</strong></p>
-<p><img src="https://i.imgur.com/G5HSYnF.png" alt=""></p>
-<p>5、選擇系統環境設定。</p>
-<p><img src="https://i.imgur.com/XIyaPCM.png" alt=""></p>
-<p>6、系統變數Path點選編輯。</p>
-<p><img src="https://i.imgur.com/T5x3oYT.jpg" alt=""></p>
-<p>7、新增系統變數，這邊因為我將hugo.exe放在C巢跟目錄底下因此設定為C:\。</p>
-<p><img src="https://i.imgur.com/pTOrps9.jpg" alt=""></p>
-<p>8、接下來回到C:\使用CMD測試hugo，<strong>輸入hugo version</strong>，只要出現以下畫面就代表環境設定完成。</p>
-<p><img src="https://i.imgur.com/4mErKbs.jpg" alt=""></p>
-<p> </p>
-<h4 id="二架設方式">二、架設方式</h4>
-<p>1、使用CMD輸入hugo new site &ldquo;你要放資料夾的位子&rdquo;。</p>
-<p><img src="https://i.imgur.com/XHpavtF.jpg" alt=""></p>
-<p>2、hugo會自動建立預設資料夾。</p>
-<p><img src="https://i.imgur.com/5S92zN9.jpg" alt=""></p>
-<p><strong>然後就可以套用自己想要的主題到themes這個資料架內，<a href="https://themes.gohugo.io/">主題可以到以下連結選擇</a>。</strong></p>
-<p>3、套用主題，在themes資料夾使用CMD輸入git clone &ldquo;你想要的主題&rdquo;。</p>
-<p><img src="https://i.imgur.com/jzY4EEK.jpg" alt=""></p>
-<p>4、順利下載就會出現許多新資料夾。</p>
-<p><img src="https://i.imgur.com/AxgiWZn.jpg" alt=""></p>
-<p>5、接下來就是修改內容改成自己想要的樣子就算完成了。</p>
-<p> </p>
-<h4 id="三預覽方式">三、預覽方式</h4>
-<p>1、在資料夾使用CMD輸入hugo server -v。</p>
+<p>一開始很好奇我擷取的字串出來序列化的Json格式，會多出空行的符號\r\n。<br>
+<!-- raw HTML omitted --></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;{\&#34;A\&#34;:\&#34;ss\r\nss\&#34;,\&#34;B\&#34;:\&#34;ss\nss\&#34;}&#34;</span>
+</code></pre></div><p>於是就跟同事討論起這件事，我一開始想法是這是不是會影響別人收到後處理結果呢?<br>
+同事做了簡單範例解釋。<br>
+<!-- raw HTML omitted --></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+    {
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+			<span style="color:#66d9ef">var</span> objTest = <span style="color:#66d9ef">new</span> Test
+			{
+				A = <span style="color:#e6db74">&#34;ss\r\nss&#34;</span>,
+				B = <span style="color:#e6db74">&#34;ss\nss&#34;</span>
+			};
+
+			<span style="color:#66d9ef">var</span> jsonObj = JsonConvert.SerializeObject(objTest);
+
+			Console.WriteLine(jsonObj);
+
+			<span style="color:#66d9ef">var</span> obj2 = JsonConvert.DeserializeObject&lt;Test&gt;(<span style="color:#e6db74">&#34;{\&#34;A\&#34;:\&#34;ss\r\nss\&#34;,\&#34;B\&#34;:\&#34;ss\nss\&#34;}&#34;</span>);
+
+			Console.WriteLine(obj2.A);
+			Console.WriteLine(obj2.B);
+		}
+
+		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>
+		{
+			<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> A { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+			<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> B { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+		}
+	}
+</code></pre></div><!-- raw HTML omitted -->
+<p>輸出結果</p>
+<p><img src="https://i.imgur.com/l0QRZYc.jpg" alt="輸出結果"><br>
+<!-- raw HTML omitted -->
+Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會將字串轉換成我們看到的正常樣貌。<br>
+所以結論就是，通通丟給對方處理就對了🤟</p>
+<h3 id="參考連結">參考連結</h3>
 <ul>
-<li>這裡要注意的是因為我們將hugo放在C:\，因此要啟用server時要將路徑給上。
-<img src="https://i.imgur.com/pC20aAw.jpg" alt=""></li>
+<li>1、<a href="https://www.json.org/json-en.html">Json官方文件</a></li>
+<li>2、<a href="https://j796160836.pixnet.net/blog/post/30530326-%E7%9E%AD%E8%A7%A3json%E6%A0%BC%E5%BC%8F">瞭解Json格式</a></li>
 </ul>
-<p>2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。</p>
-<p><img src="https://i.imgur.com/gc7fqIH.jpg" alt=""></p>
-<p> </p>
-<h4 id="四部屬方式">四、部屬方式</h4>
-<p>1、首先到Github建立兩個Repository，一個隨便、另一個要為&rsquo;你的帳號&rsquo;.github.io。</p>
-<p><img src="https://i.imgur.com/bFLR3FY.jpg" alt=""></p>
-<p>2、在hugo存放自己blog的資料夾下建立public，並連結GitHub上自己的Repository。</p>
-<pre><code>git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public
-</code></pre><p>3、在資料夾使用CMD輸入C:\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。</p>
-<p><img src="https://i.imgur.com/DGg7r9T.jpg" alt=""></p>
-<p>4、將public 內檔案 commit and push 到&rsquo;你的帳號&rsquo;.github.io。</p>
-<p>5、回到存放blog的資料夾內，連結git上存放blog的Repository。</p>
-<pre><code>git remote add origin https://github.com/sunnyday0932/hugo_blog.git
-</code></pre><p>6、commit and push 到github上。</p>
-<p>7、接下來只要輸入https://&lsquo;你的帳號&rsquo;.github.io/即可預覽網站。</p>
-<p><img src="https://i.imgur.com/hu7CskC.jpg" alt=""></p>
-<h4 id="五參考連結">五、參考連結</h4>
-<p><a href="https://carrie-lai.github.io/post/createhugoblog/">https://carrie-lai.github.io/post/createhugoblog/</a></p>
-<p><a href="https://raychiutw.github.io/2019/Hugo-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/">https://raychiutw.github.io/2019/Hugo-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/</a></p>
-<p><a href="https://www.minwt.com/webdesign-dev/html/21467.html">https://www.minwt.com/webdesign-dev/html/21467.html</a></p>
-<p><a href="https://www.gohugo.org/doc/overview/quickstart/">https://www.gohugo.org/doc/overview/quickstart/</a></p>
-<p><a href="https://jimmylin212.github.io/post/0001_create_hugo_and_deploy_on-github_page/">https://jimmylin212.github.io/post/0001_create_hugo_and_deploy_on-github_page/</a></p>
-<p> </p>
-<h3 id="後記">後記</h3>
-<p>一開始看朋友網站覺得覺得應該滿好上手，沒想到自己下來還是花了不少時間，再加上平常根本沒在使用CMD操作不熟悉，完全就是被windows寵壞的工程師&hellip;</p>
-<p>藉此機會也碰了一點自己不太熟的前端，光是調個畫面就花了我好多時間啊，前端工程師真心Respect。</p>
 
     </div>
 
@@ -251,7 +231,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/>https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/</span>
+                    <a href=https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/>https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/</span>
             </p>
             
              
@@ -267,11 +247,11 @@
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/hugo/">
-                    #Hugo</a></span>
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/c/">
+                    #C#</a></span>
             
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/github/">
-                    #github</a></span>
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/json/">
+                    #Json</a></span>
             
             </section>
         
@@ -282,9 +262,9 @@
     </div>
 
     <div class="post-nav">
-         
         
-        <a href="https://sunnyday0932.github.io/2020/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8/" class="next" rel="next" title="Hugo加入留言、觀看人數">Hugo加入留言、觀看人數&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/" class="prev" rel="prev" title="Object Oriented物件導向-2:建構式(Constructor)、多載(Overloading)與覆寫(Overriding)"><i class="iconfont icon-left"></i>&nbsp;Object Oriented物件導向-2:建構式(Constructor)、多載(Overloading)與覆寫(Overriding)</a>
+         
         
     </div>
 
