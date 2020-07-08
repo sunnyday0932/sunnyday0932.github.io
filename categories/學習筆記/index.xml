@@ -6,10 +6,24 @@
     <description>Recent content in 學習筆記 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</guid>
+      <description>本文 1、封裝(Encapsulation)  大話設計模式：每個物件都包含它進行操作所需要的所有資訊，這個特性稱為封裝，因此物件不必依賴其他物件來完成自己的操作。 封裝的優點 一、良好的封裝能夠減少耦合。 二、類別內部的實現可以自由地修改，並不會影響使用者。 三、類別具有清晰的對外界面。  這麼說封裝好像有點抽象，拿現實生活中的舉例就是：
+當我們按下鍵盤A的時候，螢幕上會顯示A，但我們不必知道電腦背後是怎麼運作，就可以使用它。
+程式的舉例： 個人寫程式到目前以來最常使用的C#判斷式，用來檢查字串是否為空。
+var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNullOrEmpty(test); //檢查字串是否為Null或是空 //我們不必知道IsNullOrEmpty這個方法是如何實作的， //但我們知道它會幫我們判斷字串是否為Null或是空，並回傳true or false。 2、繼承(Inheritance) 以下取自大話設計模式：
+ 物件的繼承代表了一種&amp;quot;is-a&amp;quot;的關係，如果兩個物件A和B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。 繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。 繼承定義了類別如何相互關聯共用特性。 子類別不但繼承父類別所有特性，還可以定義新的特性。   如果子類別繼承於父類別：
+ 一、子類別擁有父類別非private的屬性和功能。 二、子類別具有自己的屬性和功能 =&amp;gt; 子類別可以擴展父類別的所有特性。 三、子類別還可以用自己的方式實現父類別 =&amp;gt; 方法重寫。  //產生一個汽車的類別，有一個方向盤、四個輪子。 public class 汽車 { protected int 輪子 = 4; protected int 方向盤 = 1; } //產生一個特斯拉類別繼承汽車 public class 特斯拉 : 汽車 { public string 特斯拉輪子() { return &amp;#34;特斯拉有&amp;#34; + 輪子 + &amp;#34;個輪子&amp;#34;; } public string 特斯拉方向盤() { return &amp;#34;特斯拉有&amp;#34; + 方向盤 + &amp;#34;個方向盤&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
+    </item>
     
     <item>
       <title>Json格式轉換，序列化(Serialize)與反序列化(Deserialize)</title>

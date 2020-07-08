@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_grit%E6%81%86%E6%AF%85%E5%8A%9B/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism) | Sian
+       
+  </title>
+  <meta name="title" content="Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism) | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)",
+    "headline" : "Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)",
+    "description" : "Object Oriented物件導向:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-07-08 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-07-08 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism\/",
+    "wordCount" : "226",
+    "keywords" : [ "OOP","程式設計", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-07-08 itemprop="datePublished">July 8, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="本文">本文</h3>
+<h3 id="1封裝encapsulation">1、封裝(Encapsulation)</h3>
+<ul>
+<li>大話設計模式：每個物件都包含它進行操作所需要的所有資訊，這個特性稱為封裝，因此物件不必依賴其他物件來完成自己的操作。
+<!-- raw HTML omitted -->
+封裝的優點</li>
+<li>一、良好的封裝能夠減少耦合。</li>
+<li>二、類別內部的實現可以自由地修改，並不會影響使用者。</li>
+<li>三、類別具有清晰的對外界面。</li>
+</ul>
+<p>這麼說封裝好像有點抽象，拿現實生活中的舉例就是：<br>
+<code>當我們按下鍵盤A的時候，螢幕上會顯示A，但我們不必知道電腦背後是怎麼運作，就可以使用它。</code></p>
+<p>程式的舉例：
+個人寫程式到目前以來最常使用的C#判斷式，用來檢查字串是否為空。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> test= <span style="color:#e6db74">&#34;This is string&#34;</span>; <span style="color:#75715e">//一個測試用字串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">string</span>.IsNullOrEmpty(test); <span style="color:#75715e">//檢查字串是否為Null或是空
+</span><span style="color:#75715e">//我們不必知道IsNullOrEmpty這個方法是如何實作的，
+</span><span style="color:#75715e">//但我們知道它會幫我們判斷字串是否為Null或是空，並回傳true or false。
+</span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="2繼承inheritance">2、繼承(Inheritance)</h3>
+<p>以下取自大話設計模式：</p>
+<ul>
+<li>物件的繼承代表了一種&quot;is-a&quot;的關係，如果兩個物件A和B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。</li>
+<li>繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。</li>
+<li>繼承定義了類別如何相互關聯共用特性。</li>
+<li>子類別不但繼承父類別所有特性，還可以定義新的特性。
+<!-- raw HTML omitted --></li>
+</ul>
+<p>如果子類別繼承於父類別：</p>
+<ul>
+<li>一、子類別擁有父類別非private的屬性和功能。</li>
+<li>二、子類別具有自己的屬性和功能 =&gt; 子類別可以擴展父類別的所有特性。</li>
+<li>三、子類別還可以用自己的方式實現父類別 =&gt; 方法重寫。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//產生一個汽車的類別，有一個方向盤、四個輪子。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
+{
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">輪子</span> = <span style="color:#ae81ff">4</span>;
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
+}
+
+<span style="color:#75715e">//產生一個特斯拉類別繼承汽車
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">汽車</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">特斯拉輪子</span>()
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉有&#34;</span> + <span style="color:#960050;background-color:#1e0010">輪子</span> + <span style="color:#e6db74">&#34;個輪子&#34;</span>;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">特斯拉方向盤</span>()
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉有&#34;</span> + <span style="color:#960050;background-color:#1e0010">方向盤</span> + <span style="color:#e6db74">&#34;個方向盤&#34;</span>;
+    }
+}
+
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+{
+    <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+    Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">特斯拉輪子</span>());
+    Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">特斯拉方向盤</span>());
+}
+</code></pre></div><p><img src="https://i.imgur.com/2ynHflY.jpg" alt=""></p>
+<p>繼承的優點：</p>
+<ul>
+<li>繼承可以將子類別共用的部分都放在父類別，這可以讓程式得到了共用，避免重複。</li>
+<li>可以使得修改或擴展繼承而來的實現都較為容易。</li>
+</ul>
+<p>繼承的缺點：</p>
+<ul>
+<li>父類別一旦有變動，子類別就必須跟著改變。</li>
+<li>繼承會破壞封裝、父類別實現的細節暴露給子類別。</li>
+<li>繼承是一種類別與類別『強耦合』的關係。</li>
+</ul>
+<p>所以繼承請『不要用』或『謹慎使用』。
+<!-- raw HTML omitted --></p>
+<h3 id="3多型polymorphism">3、多型(polymorphism)</h3>
+<ul>
+<li>大話設計模式：多型表示不同的物件可以執行相同的動作，但要透過他們自己的實現程式碼來執行。</li>
+</ul>
+<p>注意事項：</p>
+<ul>
+<li>一、子類別以父類別的身分出現。</li>
+<li>二、子類別在工作時以自己的方式來實現。</li>
+<li>三、子類別以父類別的身分出現時，子類別特有的屬性和方法不能使用。</li>
+</ul>
+<p>使用方法：</p>
+<ul>
+<li>為了使子類別的實體完全接替來自父類別的類別成員，父雷別必須將該成員宣告為虛擬(virtual)。</li>
+<li>子類別可以透過override將父類別的實現替換為他自己的實現，這就是方法重寫Override。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//產生一個汽車的類別，有基本啟動方式、跟時速。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
+{
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動方式</span>()
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油&#34;</span>;
+    }
+	
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">時速</span>()
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;100&#34;</span>;
+    }
+}
+
+<span style="color:#75715e">//產生一個特斯拉類別繼承汽車並且重寫啟動方式跟時速方法。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">汽車</span>
+{
+	
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動方式</span>()
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;電能&#34;</span>;
+    }
+	
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">時速</span>()
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;300&#34;</span>;
+    }
+}
+
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+{
+    <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+    Console.WriteLine(<span style="color:#e6db74">&#34;汽車啟動方式:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">啟動方式</span>());
+    Console.WriteLine(<span style="color:#e6db74">&#34;汽車時速:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">時速</span>());
+
+    <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+    Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉啟動方式:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">啟動方式</span>());
+    Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉時速:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">時速</span>());
+}
+</code></pre></div><p><img src="https://i.imgur.com/8FTmdj8.jpg" alt=""></p>
+<p>多型注意事項：</p>
+<ul>
+<li>多型的原理是當方法被調用時，無論物件是否被轉換為其父類別，都只有位於物件繼承鍊的最末端的方法實現會被調用。</li>
+<li>換句話說，虛擬方法是按照其執行時的類型，而非編譯時類型進行動態細節調用。</li>
+</ul>
+<h3 id="參考連結">參考連結</h3>
+<p><a href="https://www.tenlong.com.tw/products/9789866761799">大話設計模式</a></p>
+<p>封裝</p>
+<ul>
+<li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/15/object-oriented/">91之ASP.NET由淺入深 不負責講座 Day14 – Object Oriented (1)</a></li>
+<li>2、<a href="https://www.ithome.com.tw/node/45903">思考物件導向(1)物件導向與封裝</a></li>
+<li>3、<a href="https://dotblogs.com.tw/initials/2016/06/10/171117"> c# 物件導向程式 - 2.封裝、繼承、多型的三大特性</a></li>
+<li>4、<a href="https://ithelp.ithome.com.tw/articles/10214741">[ASP.NET] [C#] 物件導向 - 封裝</a></li>
+</ul>
+<p>繼承</p>
+<ul>
+<li>1、<a href="https://dotblogs.com.tw/chichiBlog/2017/08/20/Inheritance">C# 繼承(Inheritance)</a></li>
+<li>2、<a href="https://ithelp.ithome.com.tw/articles/10226509">C#的繼承</a></li>
+<li>3、<a href="https://medium.com/@ad57475747/c-%E9%9B%9C%E8%A8%98-%E4%BB%8B%E9%9D%A2-interface-%E6%8A%BD%E8%B1%A1-abstract-%E8%99%9B%E6%93%AC-virtual-%E4%B9%8B%E6%88%91%E8%A6%8B-dc3c5878bb80">C#雜記 — 介面(interface)、抽象( abstract)、虛擬(virtual)之我見</a></li>
+</ul>
+<p>多型</p>
+<ul>
+<li>1、<a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/programming-guide/classes-and-structs/polymorphism">MSDN多型</a></li>
+<li>2、<a href="https://dotblogs.com.tw/lapland/2015/10/22/153650">[C#]多型(Polymorphism)一個簡單的範例</a></li>
+<li>3、<a href="https://dotblogs.com.tw/chichiBlog/2017/09/19/103805">C# 多型 (polymorphism)</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/oop/">
+                    #OOP</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/">
+                    #程式設計</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_grit%E6%81%86%E6%AF%85%E5%8A%9B/" class="prev" rel="prev" title="閱讀心得:Grit恆毅力"><i class="iconfont icon-left"></i>&nbsp;閱讀心得:Grit恆毅力</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
