@@ -6,10 +6,25 @@
     <description>Recent content in OOP on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/oop/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/</link>
+      <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/</guid>
+      <description>本文 1、內聚(Cohesion)  把功能所需要的資料與程式都塞在某一個模組(fuction、class、package)中，使得該模組成為一個單獨的可執行個體。  大意上就是把程式跟所需要的資料全部都包在一起。
+舉例：(不要懷疑我們最熟悉的特斯拉又來了)
+今天我想要讓特斯拉具備螢幕、音響這些娛樂設施可以看電影，有了電影當然需要食物啊，那就需要有在特斯拉上吃爆米花的功能。
+//產生一個特斯拉類別有螢幕、音響、吃爆米花  public class 特斯拉 { public string 螢幕() { return &amp;#34;播放電影&amp;#34;; } public string 音響() { return &amp;#34;杜比環繞音效&amp;#34;; } public string 吃爆米花() { return &amp;#34;爆米花好吃&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.WriteLine(&amp;#34;特斯拉 :&amp;#34; + Tesla.螢幕()); Console.WriteLine(&amp;#34;特斯拉開啟 :&amp;#34; + Tesla.音響()); Console.WriteLine(Tesla.吃爆米花()); } 這時候要提到程式設計常聽到的。
+高內聚  高內聚力的好處就是提高了模組的『獨立性』，也就是說這個模組可以被單獨使用，也可以被單獨修改。  那應該怎麼做呢？
+ 思考模組的關聯性。  以我們剛剛舉的例子特斯拉具備螢幕、音響這些娛樂設備是合理的，但吃爆米花的動作是不是在這個Class中顯得有點怪異了呢？
+ 特斯拉本身並不需要知道怎麼吃爆米花，需要知道怎麼吃爆米花的是人。  我們修改一下範例</description>
+    </item>
     
     <item>
       <title>Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)</title>
