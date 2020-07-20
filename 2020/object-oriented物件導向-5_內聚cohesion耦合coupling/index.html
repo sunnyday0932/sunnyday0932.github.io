@@ -50,7 +50,7 @@
  
 
 <script type="application/ld+json">
-{
+{ 
     "@context" : "http://schema.org",
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
@@ -71,7 +71,7 @@
     "datePublished": "2020-07-16 00:00:00 \x2b0000 UTC",
     "dateModified" : "2020-07-16 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling\/",
-    "wordCount" : "273",
+    "wordCount" : "294",
     "keywords" : [ "OOP","程式設計", "Sian"]
 }
 </script>
@@ -259,81 +259,93 @@
 <li>Coupling（耦合）：如果某個模組跟『其他人（另一個模組）』有關係（例如，使用 global variables 或是接受其他模組傳入的參數）那麼這兩個模組就彼此耦合。</li>
 </ul>
 <p>簡單來說就是程式之間的關聯性。<br>
-舉例：今天特斯拉的司機走投無路了(咦?，所以他必須要上路載客去問有沒有人需要搭車，但他算過一趟必須要坐滿四個人他才划算。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個特斯拉類別有載客功能
+2020/07/20 修改範例，跟同事聊完後，發現舉例不夠藕(?</p>
+<p>舉例：今天特斯拉必須要有駕駛才能上路。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#75715e">//產生一個特斯拉類別有上路的功能
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
         {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">載客</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">乘客數量</span>)
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>(<span style="color:#960050;background-color:#1e0010">駕駛</span> driver)
             {
-                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">乘客數量</span> &lt; <span style="color:#ae81ff">4</span>)
-                {
-                    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;虧錢&#34;</span>;
-                }
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;薛爆了&#34;</span>;
+                <span style="color:#66d9ef">return</span> driver.<span style="color:#960050;background-color:#1e0010">司機</span>();
             }
         }
 
-        <span style="color:#75715e">//產生一個司機類別負責找乘客
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">司機</span>
+        <span style="color:#75715e">//產生一個駕駛類別有一位司機
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
         {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">找乘客</span>()
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">司機</span>()
             {
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">4</span>;
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;一位司機&#34;</span>;
             }
         }
 		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+	 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
         {
-            <span style="color:#960050;background-color:#1e0010">司機</span> driver = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">司機</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;司機找到了{driver.找乘客().ToString()}個人&#34;</span>);
-
+            <span style="color:#960050;background-color:#1e0010">駕駛</span> driver = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
             <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉載了{driver.找乘客().ToString()}個人司機覺得{Tesla.載客(driver.找乘客())}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路(driver)}&#34;</span>);
         }
-</code></pre></div><p><img src="https://i.imgur.com/MSpaytz.jpg" alt=""></p>
-<p>上述例子司機每次都需要找到乘客才能上路，而且要至少有四位才會賺錢，所以關聯性就在於司機每次都需要先找到乘客，才能知道判斷這趟是否會賺錢。<br>
+</code></pre></div><p><img src="https://i.imgur.com/WlJwANa.jpg" alt=""></p>
+<p>上述例子特斯拉就跟駕駛這個類別產生高度藕和的關係，當我想要將駕駛這個類別加入新東西時，特斯拉就會受到影響。<br>
 這時候又可以提到另一個觀念。</p>
 <h4 id="低耦合">低耦合</h4>
 <p>要怎麼降低這個範例程式的耦合度呢？<br>
-聰明的司機馬上就想到了，他可以使用UBER，UBER每次都可以告訴他會載幾位乘客、並算出這趟他會不會賺錢。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個特斯拉類別有載客功能
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
+我們可以將駕駛這個類別改成介面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛介面
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> Idriver
         {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">載客</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;出發&#34;</span>;
-            }
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
         }
 
-        <span style="color:#75715e">//產生一個Uber類別負責找乘客、並算出此趟會不會賺錢。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Uber</span>
+        <span style="color:#75715e">//產生一個特斯拉類別有上路的功能並繼承駕駛介面
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : Idriver
         {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">找乘客</span>()
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>()
             {
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">4</span>;
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">駕駛</span>();
             }
 
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">算錢</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">乘客數量</span>)
+            <span style="color:#75715e">//實作駕駛這個類別
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>()
             {
-                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">乘客數量</span> &lt; <span style="color:#ae81ff">4</span>)
-                {
-                    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;虧錢&#34;</span>;
-                }
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;薛爆了&#34;</span>;
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;人類司機&#34;</span>;
             }
         }
 		
 	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
         {
-            Uber uber = <span style="color:#66d9ef">new</span> Uber();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Uber找到了{uber.找乘客().ToString()}個人&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;計算出此趟：{uber.算錢(uber.找乘客())}&#34;</span>);
-
             <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉{Tesla.載客()}載客&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路()}&#34;</span>);
         }
-</code></pre></div><p><img src="https://i.imgur.com/6UCkl4f.jpg" alt=""></p>
-<p>如此一來就降低了耦合度，今天特斯拉司機如果覺得Uber叫車不好用了、一樣可以改成Lyft或是其他平台。</p>
+</code></pre></div><p><img src="https://i.imgur.com/v4uJSiy.jpg" alt=""></p>
+<p>如此一來特斯拉不直接依賴於駕駛，改成依賴於介面就降低了耦合度，今天特斯拉技術成長快速，真的能實際自動駕駛上路時我們也可以將駕駛抽換成自動駕駛如下&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛介面
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> Idriver
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+        }
+		
+	<span style="color:#75715e">//產生一個特斯拉類別有上路的功能並繼承駕駛介面
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : Idriver
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">駕駛</span>();
+            }
+
+            <span style="color:#75715e">//實作駕駛這個類別
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;自動駕駛&#34;</span>;
+            }
+        }
+		
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路()}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/MuDGfiY.jpg" alt=""></p>
 <h4 id="高內聚低耦合最終目的">高內聚、低耦合最終目的</h4>
 <ul>
 <li>需求異動容易抽換、修改與增加功能，而不會對太多既存功能造成影響。</li>
