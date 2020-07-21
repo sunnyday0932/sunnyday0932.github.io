@@ -6,10 +6,24 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</link>
+      <pubDate>Tue, 21 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
+      <description>本文 OOP原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
+這時候了解設計原則SOLID就很重要了&amp;hellip;
+1、Single Responsibility Principle(SRP) 單一職責  大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。  什麼意思呢？概念上就是，一個類別就只專注於完成一件事。
+為甚麼要只專注於做一件事呢?
+我們來看看範例，當今天特斯拉的駕駛走投無路需要賺外快的時候，他需要上路招攬客人&amp;hellip;
+//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。  public class 駕駛 { public string 開車() { return &amp;#34;開車上路&amp;#34;; } public string 招攬客人() { return &amp;#34;有沒有人需要搭車&amp;#34;; } public int 計算車資(int 搭車人數) { var 今天電價 = 30; var 每位乘客搭乘價格 = this.關注電價(今天電價); return 搭車人數 * 每位乘客搭乘價格; } public int 關注電價(int 每度時價) { if (每度時價 &amp;gt; 50) { return 20; } return 10; } } private static void Main(string[] args) { 駕駛 特斯拉駕駛 = new 駕駛(); Console.</description>
+    </item>
     
     <item>
       <title>Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)</title>

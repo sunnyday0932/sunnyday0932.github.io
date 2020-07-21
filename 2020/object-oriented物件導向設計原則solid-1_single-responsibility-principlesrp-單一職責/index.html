@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責 | Sian
+       
+  </title>
+  <meta name="title" content="Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責",
+    "headline" : "Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責",
+    "description" : "Object Oriented物件導向設計原則SOLID-1:Single responsibility principle(SRP) 單一職責",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-07-21 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-07-21 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC\/",
+    "wordCount" : "291",
+    "keywords" : [ "OOP","程式設計","SOLID", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-07-21 itemprop="datePublished">July 21, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="本文">本文</h2>
+<p>OOP原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？</p>
+<p>這時候了解設計原則SOLID就很重要了&hellip;</p>
+<h3 id="1single-responsibility-principlesrp-單一職責">1、Single Responsibility Principle(SRP) 單一職責</h3>
+<ul>
+<li>大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。</li>
+</ul>
+<p>什麼意思呢？概念上就是，一個類別就只專注於完成一件事。<br>
+為甚麼要只專注於做一件事呢?<br>
+我們來看看範例，當今天特斯拉的駕駛走投無路需要賺外快的時候，他需要上路招攬客人&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;有沒有人需要搭車&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
+            {
+                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">30</span>;
+
+                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客搭乘價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">關注電價</span>(<span style="color:#960050;background-color:#1e0010">今天電價</span>);
+
+                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span> * <span style="color:#960050;background-color:#1e0010">每位乘客搭乘價格</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">關注電價</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">每度時價</span>)
+            {
+                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">每度時價</span> &gt; <span style="color:#ae81ff">50</span>)
+                {
+                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">20</span>;
+                }
+                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span>;
+            }
+        }
+		
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">特斯拉駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛{特斯拉駕駛.開車()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛大喊{特斯拉駕駛.招攬客人()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，特斯拉駕駛計算車資一共：{特斯拉駕駛.計算車資(4)}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/iGwcFAh.jpg" alt=""></p>
+<p>現在駕駛這個類別一共要完成四件事:開車、招攬客人、計算車資、關注電價。<br>
+當今天駕駛真的還不出錢了他決定賣掉特斯拉改開油車，那我們就需要去更改計算車資跟關注電價這兩個地方。</p>
+<ul>
+<li>如果一個類別承擔的職責過多，就等於把這些職責耦合在一起，一個職責的變化可能會削弱或者抑制這個類別完成其他職責的能力。</li>
+<li>這種偶合會導致脆弱的設計，當變化發生時，設計會遭受到意想步道的破壞。</li>
+</ul>
+<p>仔細思考，駕駛要開車招攬客人需要做到這麼多事嗎？</p>
+<ul>
+<li>關鍵：如果你能夠想到多於一個的動機去改變一個類別，那麼這個類別就具有多於一個的職責。</li>
+</ul>
+<p>上一篇『高內聚』有提到『思考模組的關聯性。』駕駛其實只需要專注於開車這一件事就可以了，其他事我們可以交由UBER這個類別來幫忙完成。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#75715e">//產生一個駕駛類別要有開車的功能。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
+            }
+        }
+
+        <span style="color:#75715e">//產生Uber類別有招攬客人、計算車資、關注耗能時價的功能。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Uber</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;尋找要搭車的人&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
+            {
+                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#e6db74">&#34;電&#34;</span>);
+                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> * <span style="color:#960050;background-color:#1e0010">搭車人數</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">耗能</span>)
+            {
+                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">50</span>;
+
+                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">20</span> : <span style="color:#ae81ff">10</span>;
+            }
+			
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">特斯拉駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛{特斯拉駕駛.開車()}&#34;</span>);
+
+            Uber uber = <span style="color:#66d9ef">new</span> Uber();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;Uber{uber.招攬客人()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，特斯拉駕駛計算車資一共{uber.計算車資(4)}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/C3q9DJR.jpg" alt=""></p>
+<p>而當今天駕駛駕駛真的還不出錢了他決定賣掉特斯拉改開油車，那我們只需要修改Uber這個類別，計算耗能這個方法並把計算車資的地方改成用油如下&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛類別要有開車的功能。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
+            }
+        }
+
+        <span style="color:#75715e">//產生Uber類別有招攬客人、計算車資、關注耗能時價的功能。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Uber</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;尋找要搭車的人&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
+            {
+                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#e6db74">&#34;油&#34;</span>);
+                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> * <span style="color:#960050;background-color:#1e0010">搭車人數</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">耗能</span>)
+            {
+                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天油價</span> = <span style="color:#ae81ff">30</span>;
+                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">50</span>;
+                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">耗能</span> == <span style="color:#e6db74">&#34;電&#34;</span>)
+                {
+                    <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">20</span> : <span style="color:#ae81ff">10</span>;
+                }
+                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天油價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">15</span> : <span style="color:#ae81ff">10</span>;
+            }
+        }
+		
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">福特駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;福特駕駛{福特駕駛.開車()}&#34;</span>);
+
+            Uber uber = <span style="color:#66d9ef">new</span> Uber();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;Uber{uber.招攬客人()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，福特駕駛計算車資一共{uber.計算車資(4)}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/YmGR1g7.jpg" alt=""></p>
+<p>單一職責的優點：</p>
+<ul>
+<li>類別複雜性能夠降低，因為實現職責都有很清楚的定義。</li>
+<li>可讀性能夠提高。</li>
+<li>維護性也能提高。</li>
+<li>如果需要變更類別內容，引起的漣漪效應風險降低，擴展性很高。</li>
+</ul>
+<h4 id="單一職責就是實作高內聚的方式">單一職責，就是實作『高內聚』的方式。</h4>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/16/single-responsibility-principle">91之ASP.NET由淺入深 不負責講座 Day17 – 單一職責原則</a></li>
+<li>2、<a href="https://www.jyt0532.com/2020/03/18/srp/">深入淺出單一職責原則 Single Responsibility Principle</a></li>
+<li>3、<a href="https://ithelp.ithome.com.tw/articles/10191955">SOLID 之 單一職責原則（Single responsibility principle）</a></li>
+<li>4、<a href="https://ithelp.ithome.com.tw/articles/10191553">09. 物件導向設計原則—SOLID</a></li>
+<li>5、<a href="https://skyyen999.gitbooks.io/-study-design-pattern-in-java/content/oodPrinciple.html">物件導向程式設計基本原則 - SOLID</a></li>
+<li>6、<a href="https://wadehuanglearning.blogspot.com/2019/10/solid-why-solid.html">再談 SOLID 原則，Why SOLID?</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/oop/">
+                    #OOP</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/">
+                    #程式設計</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/solid/">
+                    #SOLID</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/" class="prev" rel="prev" title="Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)"><i class="iconfont icon-left"></i>&nbsp;Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
