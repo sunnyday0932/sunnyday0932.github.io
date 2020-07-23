@@ -6,10 +6,33 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>網頁截圖轉成pdf檔(純屬好玩)</title>
+      <link>https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/</guid>
+      <description>前言 昨天接到一個新需求，需要用Url連結到其他網頁將該頁面截圖後，轉換成pdf檔供使用者下載。
+今天研究了一下覺得好玩紀錄一下。
+本文 接到需求後一開始是用 .NET Webpage to pdf當關鍵字搜尋，無奈找了幾個套件不是要收費就是已經年代久遠，最後用中文搜尋到了黑大去年寫的一篇文章。
+C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp
+此篇是用Puppeteer Sharp這個套件將網頁截圖後儲存，套件資訊可以自行參閱。
+Puppeteer Sharp是使用Chromium幫你截圖網站頁面，所以其實後背後運作 .NET還是有幫你開啟網頁的。
+無奈今天嘗試後遇到 Failed to launch chrome 錯誤。
+Google後發現很多人都有遇到類似問題，有很多人發issue給作者。
+最後決定回頭繼續搜尋其他方式，這時候發現黑大今天又寫了另一篇文章。
+C# 網頁轉圖檔 WebAPI - 青春版
+這方法使用的是原生System.Web.Forms.WebBrowser方式擷取網頁圖片，一樣的 .NET有幫你開啟網頁進行截圖的動作，只是這個原生的方式就是使用IE。
+測試的此方式可行後我就開始尋找第二步動作，該怎麼把圖檔轉換成pdf，於是找到了另一個套件iTextSharp。
+可以套過套件將圖檔直接轉換成pdf的強大方法。
+將黑大的方法結合iTextSharp就能得到想到的結果如下&amp;hellip;
+private static void Main(string[] args) { string url = null; var png = WebSnapTool.Snapshot(url ?? &amp;#34;https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/&amp;#34;, delaySecs: 0); using (var stream = File.Create(@&amp;#34;D:\test\test.pdf&amp;#34;)) using (var doc = new Document()) using (var pdfWriter = PdfWriter.</description>
+    </item>
     
     <item>
       <title>Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責</title>
