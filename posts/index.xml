@@ -6,10 +6,24 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Object Oriented物件導向設計原則SOLID-2:Open-Close Principle(OCP) 開放封閉原則</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</link>
+      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</guid>
+      <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
+ 軟體設計原則，應該對擴展開放，對修改封閉。
+ 甚麼意思呢？
+ 1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。  那為甚麼要使用OCP？
+ 1、程式碼可維護性提高。 2、程式碼可擴展性提高。 3、程式碼可複用、靈活性高。 4、程式碼可測試性提高。  我們來看一段例子，傳統汽車對於軟體硬體整合，還不夠靈活的時候，需要更改東西就需要把整台汽車拆開某些部分增加功能。
+//擴充功能  public class 擴充功能 { public string 加入影音撥放器() { var 步驟 = new string[] { &amp;#34;拆開汽車&amp;#34;, &amp;#34;放入影音撥放器&amp;#34; }; if (步驟[0] == &amp;#34;拆開汽車&amp;#34;) { if (步驟[1] == &amp;#34;放入影音撥放器&amp;#34;) { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } return &amp;#34;安裝失敗&amp;#34;; } public string 加入自動導航裝置() { var 步驟 = new string[] { &amp;#34;拆開汽車&amp;#34;, &amp;#34;放入自動導航裝置&amp;#34; }; if (步驟[0] == &amp;#34;拆開汽車&amp;#34;) { if (步驟[1] == &amp;#34;放入自動導航裝置&amp;#34;) { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } return &amp;#34;安裝失敗&amp;#34;; } private static void Main(string[] args) { 擴充功能 汽車 = new 擴充功能(); Console.</description>
+    </item>
     
     <item>
       <title>網頁截圖轉成pdf檔(純屬好玩)</title>
@@ -25,7 +39,7 @@ C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp
 Puppeteer Sharp是使用Chromium幫你截圖網站頁面，所以其實後背後運作 .NET還是有幫你開啟網頁的。
 無奈今天嘗試後遇到 Failed to launch chrome 錯誤。
 Google後發現很多人都有遇到類似問題，有很多人發issue給作者。
-最後決定回頭繼續搜尋其他方式，這時候發現黑大今天又寫了另一篇文章。
+最後決定回頭繼續搜尋其他方式，這時候發現黑大今年又寫了另一篇文章。
 C# 網頁轉圖檔 WebAPI - 青春版
 這方法使用的是原生System.Web.Forms.WebBrowser方式擷取網頁圖片，一樣的 .NET有幫你開啟網頁進行截圖的動作，只是這個原生的方式就是使用IE。
 測試的此方式可行後我就開始尋找第二步動作，該怎麼把圖檔轉換成pdf，於是找到了另一個套件iTextSharp。
