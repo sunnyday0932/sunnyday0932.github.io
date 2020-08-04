@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Puppeteer Sharp網頁截圖轉成pdf | Sian
+       
+  </title>
+  <meta name="title" content="Puppeteer Sharp網頁截圖轉成pdf | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Puppeteer Sharp網頁截圖轉成pdf",
+    "headline" : "Puppeteer Sharp網頁截圖轉成pdf",
+    "description" : "Puppeteer Sharp網頁截圖轉成pdf",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-08-04 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-08-04 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf\/",
+    "wordCount" : "232",
+    "keywords" : [ ".NET","csharp", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Puppeteer Sharp網頁截圖轉成pdf</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-08-04 itemprop="datePublished">August 4, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>你聽過隕石開發法嗎？<br>
+沒聽過？那你可以看看<a href="https://ithelp.ithome.com.tw/articles/10198394">轉載好文:隕石開發法</a><br>
+甚麼？你問隕石開發法跟這篇文有甚麼關係？</p>
+<h3 id="因為神有了需求">因為神有了需求</h3>
+<h2 id="本文">本文</h2>
+<p>上次有提到<a href="https://github.com/puppeteer/puppeteer">Puppeteer Sharp</a>這個套件、以及黑大這篇文<a href="https://blog.darkthread.net/blog/puppeteer-sharp/">C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp</a>，但因為我的chromium版本一直無法運行就此作罷；直到主管突然提起同單位有人成功使用這個套件實作出功能。</p>
+<ul>
+<li>這時候別人用了同工具可以，沒道理我不行的心就蠢蠢欲動了。</li>
+</ul>
+<p>把問題倒回碰到的起始點，是chromium無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下chromuim的版本，<a href="https://www.chromium.org/getting-involved/download-chromium">官方文件在此</a>，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此<a href="https://download-chromium.appspot.com/">網址</a>下載了官方提供版本更換套件內抓取的chromium測試。</p>
+<p>1、 先到專案資料夾底下bin &gt; Debugger &gt; .local-chromium 內。
+<img src="https://i.imgur.com/6v5MO0k.jpg" alt=""></p>
+<p>2、將下載版本複製貼上並取代此資料夾內檔案。
+<img src="https://i.imgur.com/GpdllEB.jpg" alt=""></p>
+<p>3、進行測試。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+		Test().Wait();
+	}
+
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Test()
+        {
+            <span style="color:#66d9ef">try</span>
+            {
+                <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+                <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> browser = <span style="color:#66d9ef">await</span> Puppeteer.LaunchAsync(<span style="color:#66d9ef">new</span> LaunchOptions()
+                {
+                    Headless = <span style="color:#66d9ef">true</span> <span style="color:#75715e">//偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)
+</span><span style="color:#75715e"></span>                }))
+                {
+                    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> page = <span style="color:#66d9ef">await</span> browser.NewPageAsync())
+                    {
+                        <span style="color:#66d9ef">await</span> page.GoToAsync(<span style="color:#e6db74">&#34;https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/&#34;</span>);
+                        Thread.Sleep(<span style="color:#ae81ff">1000</span>);  
+                        <span style="color:#66d9ef">await</span> page.ScreenshotAsync(<span style="color:#e6db74">$&#34;D:\\test\\Snapshot.png&#34;</span>);
+                    }
+                }
+            }
+            <span style="color:#66d9ef">catch</span> (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                <span style="color:#66d9ef">throw</span>;
+            }
+        }
+</code></pre></div><p><img src="https://i.imgur.com/Is0ylfV.jpg" alt=""></p>
+<h3 id="實際結果">實際結果</h3>
+<p><img src="https://i.imgur.com/NyXx0rU.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>測試成功後我們回到需求本身，是需要將兩個不同的網頁合成為一個pdf檔案，研究了一下套件用法，我選擇結合itextSharp達成目的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+			Test().Wait();
+        }
+
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Test()
+        {
+            <span style="color:#66d9ef">try</span>
+            {
+				
+		<span style="color:#66d9ef">var</span> firstUrl = <span style="color:#e6db74">$&#34;https://github.com/explore&#34;</span>;
+		<span style="color:#66d9ef">var</span> secondUrl = <span style="color:#e6db74">$&#34;https://leetcode.com/&#34;</span>;
+
+		<span style="color:#66d9ef">byte</span>[] mergePage = <span style="color:#66d9ef">null</span>;
+		<span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+		<span style="color:#66d9ef">var</span> pdfUrl = <span style="color:#66d9ef">new</span>[] { firstUrl, secondUrl };
+
+		<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> browser = <span style="color:#66d9ef">await</span> Puppeteer.LaunchAsync(<span style="color:#66d9ef">new</span> LaunchOptions()
+		{
+			Headless = <span style="color:#66d9ef">true</span> <span style="color:#75715e">//偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)
+</span><span style="color:#75715e"></span>		}))
+		{
+			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> stream = File.Create(<span style="color:#e6db74">@&#34;D:\test\test.pdf&#34;</span>))
+			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> doc = <span style="color:#66d9ef">new</span> Document(PageSize.A4))
+			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> pdfWriter = PdfWriter.GetInstance(doc, stream))
+			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> page = <span style="color:#66d9ef">await</span> browser.NewPageAsync())
+			{
+				doc.Open();
+				<span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> pdfUrl)
+				{
+					<span style="color:#66d9ef">await</span> page.GoToAsync(item, <span style="color:#66d9ef">new</span> NavigationOptions
+					{
+						<span style="color:#75715e">//此方法可以偵測JS連線都完成了
+</span><span style="color:#75715e"></span>						WaitUntil = <span style="color:#66d9ef">new</span> WaitUntilNavigation[<span style="color:#ae81ff">2</span>]
+					});
+					<span style="color:#75715e">//但用上述waitUntil方式我的目標網站渲染方式不同，所以最後還是加上了等待。
+</span><span style="color:#75715e"></span>					Thread.Sleep(<span style="color:#ae81ff">1000</span>);		
+					mergePage = <span style="color:#66d9ef">await</span> page.ScreenshotDataAsync(<span style="color:#66d9ef">new</span> ScreenshotOptions
+					{
+						OmitBackground = <span style="color:#66d9ef">true</span>,		<span style="color:#75715e">//是否顯示背景圖式
+</span><span style="color:#75715e"></span>						FullPage = <span style="color:#66d9ef">true</span>,		<span style="color:#75715e">//是否整頁
+</span><span style="color:#75715e"></span>						Type = ScreenshotType.Jpeg,     <span style="color:#75715e">//可以設定檔案格式
+</span><span style="color:#75715e"></span>						Quality = <span style="color:#ae81ff">100</span>			<span style="color:#75715e">//可以設定照片品質
+</span><span style="color:#75715e"></span>					});
+
+					<span style="color:#75715e">//檔案都取回後再透過itextSharp進行處理
+</span><span style="color:#75715e"></span>					<span style="color:#66d9ef">var</span> image = iTextSharp.text.Image.GetInstance(mergePage);
+					<span style="color:#75715e">//這邊可以調整圖片大小
+</span><span style="color:#75715e"></span>					image.ScalePercent(<span style="color:#ae81ff">60</span>);
+					doc.Add(image);
+					}
+				doc.Close();
+				doc.Dispose();
+				}
+			}
+		} 
+            <span style="color:#66d9ef">catch</span> (Exception ex)
+            {
+			Console.WriteLine(ex.ToString());
+			<span style="color:#66d9ef">throw</span>;
+	    }
+        }
+</code></pre></div><p><img src="https://i.imgur.com/rEKu3Ci.jpg" alt=""></p>
+<h3 id="實際結果-1">實際結果</h3>
+<ul>
+<li>第一頁</li>
+</ul>
+<p><img src="https://i.imgur.com/2OvzLCa.jpg" alt=""></p>
+<ul>
+<li>第二頁</li>
+</ul>
+<p><img src="https://i.imgur.com/II20I2M.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>原本以為只是說著玩的，突然就&hellip;</p>
+<p>網頁截圖還有許多奧妙啊&hellip;譬如實際抓取網路渲染時間其實也是會有誤差，所以此方法目前是研究出來可行性最高的方式了，但一次運行還是要跑個十秒，所以不知道實際上線功能狀況會如何；以及圖片大小還需針對各網站進行最適調教，如果有人有更適合方式歡迎互相交流。</p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://blog.darkthread.net/blog/puppeteer-sharp/">https://blog.darkthread.net/blog/puppeteer-sharp/</a></li>
+<li>2、<a href="https://github.com/puppeteer/puppeteer">puppeteer</a></li>
+<li>3、<a href="https://www.puppeteersharp.com/api/index.html">puppeteer官方API文件</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/>https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/.net/">
+                    #.NET</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/" class="prev" rel="prev" title="Object Oriented物件導向設計原則SOLID-2:Open-Close Principle(OCP) 開放封閉原則"><i class="iconfont icon-left"></i>&nbsp;Object Oriented物件導向設計原則SOLID-2:Open-Close Principle(OCP) 開放封閉原則</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

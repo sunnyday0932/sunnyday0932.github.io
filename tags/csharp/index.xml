@@ -6,10 +6,25 @@
     <description>Recent content in Csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Puppeteer Sharp網頁截圖轉成pdf</title>
+      <link>https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/</link>
+      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/</guid>
+      <description>前言 你聽過隕石開發法嗎？
+沒聽過？那你可以看看轉載好文:隕石開發法
+甚麼？你問隕石開發法跟這篇文有甚麼關係？
+因為神有了需求 本文 上次有提到Puppeteer Sharp這個套件、以及黑大這篇文C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp，但因為我的chromium版本一直無法運行就此作罷；直到主管突然提起同單位有人成功使用這個套件實作出功能。
+ 這時候別人用了同工具可以，沒道理我不行的心就蠢蠢欲動了。  把問題倒回碰到的起始點，是chromium無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下chromuim的版本，官方文件在此，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此網址下載了官方提供版本更換套件內抓取的chromium測試。
+1、 先到專案資料夾底下bin &amp;gt; Debugger &amp;gt; .local-chromium 內。 2、將下載版本複製貼上並取代此資料夾內檔案。 3、進行測試。
+static void Main(string[] args) { Test().Wait(); } static async Task Test() { try { await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision); using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions() { Headless = true //偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)  })) { using (var page = await browser.NewPageAsync()) { await page.GoToAsync(&amp;#34;https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/&amp;#34;); Thread.Sleep(1000); await page.</description>
+    </item>
     
     <item>
       <title>網頁截圖轉成pdf檔(純屬好玩)</title>
