@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/" />
+  <link rel="next" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/" />
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則 | Sian
+       
+  </title>
+  <meta name="title" content="Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則",
+    "headline" : "Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則",
+    "description" : "Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-08-24 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-08-24 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87\/",
+    "wordCount" : "254",
+    "keywords" : [ "OOP","程式設計","SOLID", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-08-24 itemprop="datePublished">August 24, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。</p>
+<ul>
+<li>1、<a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-4_%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5abstract%E8%88%87%E4%BB%8B%E9%9D%A2interface/">Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)</a></li>
+<li>2、<a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/">Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)</a></li>
+</ul>
+<h2 id="本文">本文</h2>
+<h3 id="介面隔離原則-interface-segregation-principleisp">介面隔離原則 Interface Segregation Principle(ISP)</h3>
+<p>最重要的精神：</p>
+<blockquote>
+<p>不應該強迫用戶去依賴他們未使用的方法。<br>
+意及應該要最小化類別與類別之間的介面。</p>
+</blockquote>
+<p>基本原則：</p>
+<ul>
+<li>1、interface功能盡量少：達到一個介面只服務一個子模組/商業邏輯。
+但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。</li>
+<li>2、不應該強迫實作沒用到的方法。</li>
+</ul>
+<p>舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及Gogoro。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>();
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>();
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>();
+        }
+		
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;3秒內時速100公里的引擎&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開敞篷車門&#34;</span>;
+            }
+        }
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gogoro</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;5秒內時速100公里的引擎&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;痾沒有車門&#34;</span>;
+            }
+        }
+		
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.後照鏡()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.車門()}&#34;</span>);
+
+            Console.WriteLine(<span style="color:#e6db74">&#34;=====================&#34;</span>);
+
+            <span style="color:#66d9ef">var</span> gogoro = <span style="color:#66d9ef">new</span> Gogoro();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.後照鏡()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.車門()}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/HgfrcKl.jpg" alt=""></p>
+<p>這時候會發現我們設計稿並不適用於Gogoro，思考一下特斯拉與Gogoro的種類，一種為電動車、一種為電動機車，兩者的配件也不同不可互用；所以我們應該拆分兩種不同的設計稿，程式修改如下。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">電動車</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車引擎</span>();
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車後照鏡</span>();
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車門</span>();
+        }
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">電動機車</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車引擎</span>();
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車後照鏡</span>();
+        }
+		
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">電動車</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車引擎</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;3秒內時速100公里的引擎&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車後照鏡</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車門</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開敞篷車門&#34;</span>;
+            }
+        }
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gogoro</span> : <span style="color:#960050;background-color:#1e0010">電動機車</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車引擎</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;5秒內時速100公里的引擎&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車後照鏡</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡&#34;</span>;
+            }
+        }
+		
+		<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車後照鏡()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車門()}&#34;</span>);
+
+            Console.WriteLine(<span style="color:#e6db74">&#34;=====================&#34;</span>);
+
+            <span style="color:#66d9ef">var</span> gogoro = <span style="color:#66d9ef">new</span> Gogoro();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.電動機車引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.電動機車後照鏡()}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/ZxkyZpB.jpg" alt=""></p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/17/interface-segregation-principle">91之ASP.NET由淺入深 不負責講座 Day20 – ISP 介面隔離原則</a></li>
+<li>2、<a href="https://medium.com/@f40507777/%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87-interface-segregation-principle-isp-6854c5b3b42c">介面隔離原則 Interface Segregation Principle (ISP)</a></li>
+<li>3、<a href="http://glj8989332.blogspot.com/2018/04/design-pattern-interface-segregation.html">介面隔離原則 (Interface Segregation Principle)</a></li>
+<li>4、<a href="https://dotblogs.com.tw/BenHuang/2020/02/06/151822">介面隔離原則 Interface Segregation Principle (ISP)</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/oop/">
+                    #OOP</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/">
+                    #程式設計</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/solid/">
+                    #SOLID</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/" class="prev" rel="prev" title="Puppeteer Sharp網頁截圖轉成pdf"><i class="iconfont icon-left"></i>&nbsp;Puppeteer Sharp網頁截圖轉成pdf</a>
+         
+        
+        <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/" class="next" rel="next" title="Object Oriented物件導向設計原則SOLID-3:Law of Demeter(LoD) 狄米特法則">Object Oriented物件導向設計原則SOLID-3:Law of Demeter(LoD) 狄米特法則&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

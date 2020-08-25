@@ -22,7 +22,7 @@
   <meta name="description" content="想成為PM的PG">
   <meta name="keywords" content="Sian">
   
-  <link rel="prev" href="https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/" />
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/" />
   
   <link rel="canonical" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -71,7 +71,7 @@
     "datePublished": "2020-08-24 00:00:00 \x2b0000 UTC",
     "dateModified" : "2020-08-24 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87\/",
-    "wordCount" : "111",
+    "wordCount" : "102",
     "keywords" : [ "OOP","程式設計","SOLID", "Sian"]
 }
 </script>
@@ -184,9 +184,11 @@
 <li>2、當耦合度降低的時候，類別的重用性就會提高。
 <!-- raw HTML omitted --></li>
 </ul>
-<p>舉例：前面例子我們知道特斯拉都是透過軟體的更新來讓車子增加新功能的，今天我們需要特斯拉有招喚模式，讓特斯拉能夠自己開到我們所在的位子。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>
+<p>2020/08/25 更新範例<br>
+舉例：前面例子我們知道特斯拉都是透過軟體的更新來讓車子增加新功能的，今天我們需要特斯拉有招喚模式，讓特斯拉能夠自己開到我們所在的位子；所以我們建造一個特斯拉類別裡面有更新系統的動作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
         {
+
             <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動更新系統</span>()
             {
                 <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;系統更新啟動&#34;</span>;
@@ -206,8 +208,8 @@
 		
 	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
         {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>();
-            
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+
             Console.WriteLine(<span style="color:#960050;background-color:#1e0010">特斯拉</span>.<span style="color:#960050;background-color:#1e0010">啟動更新系統</span>());
             Console.WriteLine(<span style="color:#960050;background-color:#1e0010">特斯拉</span>.<span style="color:#960050;background-color:#1e0010">加入特斯拉招喚模式</span>());
             Console.WriteLine(<span style="color:#960050;background-color:#1e0010">特斯拉</span>.<span style="color:#960050;background-color:#1e0010">系統更新結果</span>());
@@ -216,26 +218,21 @@
 <!-- raw HTML omitted -->
 對使用者來說他並不需要知道特斯拉是如何更新系統的，他應該只需要知道進行更新系統的動作，特斯拉會新增招喚模式；所以程式就能改寫如下。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
         {
-            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">string</span> _更新開始;
-            <span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>(<span style="color:#66d9ef">string</span> _更新開始)
-            {
-                <span style="color:#66d9ef">this</span>._更新開始 = _更新開始;
-            }
             <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">更新</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">更新項目</span>)
             {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">$&#34;{this._更新開始} : 新增{更新項目}完畢&#34;</span>;
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">$&#34;更新開始 : 新增{更新項目}完畢&#34;</span>;
             }
         }
 		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+	 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
         {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>(<span style="color:#e6db74">&#34;按下按鈕&#34;</span>);
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
             Console.WriteLine(<span style="color:#960050;background-color:#1e0010">特斯拉</span>.<span style="color:#960050;background-color:#1e0010">更新</span>(<span style="color:#e6db74">&#34;招喚模式&#34;</span>));
         }
-</code></pre></div><p><img src="https://i.imgur.com/XJTQC8h.jpg" alt="">
-<!-- raw HTML omitted --></p>
+</code></pre></div><p><img src="https://i.imgur.com/kcOkS2r.jpg" alt=""></p>
+<!-- raw HTML omitted -->
 <p>如此一來使用者只須要知道按下更新按鈕，就可以將選擇要更新的項目安裝完畢；而更新軟體這個Class也可以套用在未來增加其他功能時使用。</p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
@@ -293,7 +290,7 @@
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/" class="prev" rel="prev" title="Puppeteer Sharp網頁截圖轉成pdf"><i class="iconfont icon-left"></i>&nbsp;Puppeteer Sharp網頁截圖轉成pdf</a>
+        <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/" class="prev" rel="prev" title="Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則"><i class="iconfont icon-left"></i>&nbsp;Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</a>
          
         
     </div>
