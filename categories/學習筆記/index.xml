@@ -6,10 +6,39 @@
     <description>Recent content in 學習筆記 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</guid>
+      <description>前言 此篇觀念也會延續之前幾篇，可以一同搭配觀看。
+ 1、Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism) 2、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)  本文 里氏替換原則 Liskov Substitution Principle(LSP) 精神：
+ 使用父類的地方，必須可以使用子類別代替，而不需要任何改變。
+ 基本原則：
+ 1、子類別必須完全實現父類別的方法，如果子類不擁有父類的全部屬性或者行為，不能強行繼承，要斷掉繼承。 2、子類別可以擁有自己不同的屬性與方法。  來段範例：今天我們有個傳統車廠發現電動車似乎才是未來，也想透過自己以前的經驗來設計電動車，老闆說不就都是車嘛？
+public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public string 引擎() { return &amp;#34;汽油引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡&amp;#34;; } } //直接繼承車子  public class 電動車 : 車子 { } private static void Main(string[] args) { var 汽車 = new 車子(); Console.</description>
+    </item>
+    
+    <item>
+      <title>Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</link>
+      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</guid>
+      <description>前言 這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。
+ 1、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 2、Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)  本文 介面隔離原則 Interface Segregation Principle(ISP) 最重要的精神：
+ 不應該強迫用戶去依賴他們未使用的方法。
+意及應該要最小化類別與類別之間的介面。
+ 基本原則：
+ 1、interface功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及Gogoro。
+public interface 車子 { public string 引擎(); public string 後照鏡(); public string 車門(); } public class 特斯拉 : 車子 { public string 引擎() { return &amp;#34;3秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&amp;#34;; } public string 車門() { return &amp;#34;側開敞篷車門&amp;#34;; } } public class Gogoro : 車子 { public string 引擎() { return &amp;#34;5秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡&amp;#34;; } public string 車門() { return &amp;#34;痾沒有車門&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
+    </item>
     
     <item>
       <title>Object Oriented物件導向設計原則SOLID-3:Law of Demeter(LoD) 狄米特法則</title>
@@ -25,21 +54,6 @@
 舉例：前面例子我們知道特斯拉都是透過軟體的更新來讓車子增加新功能的，今天我們需要特斯拉有招喚模式，讓特斯拉能夠自己開到我們所在的位子；所以我們建造一個特斯拉類別裡面有更新系統的動作。
 public class 特斯拉 { public string 啟動更新系統() { return &amp;#34;系統更新啟動&amp;#34;; } public string 加入特斯拉招喚模式() { return &amp;#34;新增招喚模式中&amp;#34;; } public string 系統更新結果() { return &amp;#34;系統更新成功&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.WriteLine(特斯拉.啟動更新系統()); Console.WriteLine(特斯拉.加入特斯拉招喚模式()); Console.WriteLine(特斯拉.系統更新結果()); } 對使用者來說他並不需要知道特斯拉是如何更新系統的，他應該只需要知道進行更新系統的動作，特斯拉會新增招喚模式；所以程式就能改寫如下。
 public class 特斯拉 { public string 更新(string 更新項目) { return $&amp;#34;更新開始 : 新增{更新項目}完畢&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
-    </item>
-    
-    <item>
-      <title>Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</title>
-      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</guid>
-      <description>前言 這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。
- 1、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 2、Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)  本文 介面隔離原則 Interface Segregation Principle(ISP) 最重要的精神：
- 不應該強迫用戶去依賴他們未使用的方法。
-意及應該要最小化類別與類別之間的介面。
- 基本原則：
- 1、interface功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及Gogoro。
-public interface 車子 { public string 引擎(); public string 後照鏡(); public string 車門(); } public class 特斯拉 : 車子 { public string 引擎() { return &amp;#34;3秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&amp;#34;; } public string 車門() { return &amp;#34;側開敞篷車門&amp;#34;; } } public class Gogoro : 車子 { public string 引擎() { return &amp;#34;5秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡&amp;#34;; } public string 車門() { return &amp;#34;痾沒有車門&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
     </item>
     
     <item>

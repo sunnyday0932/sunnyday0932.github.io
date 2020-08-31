@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則 | Sian
+       
+  </title>
+  <meta name="title" content="Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則",
+    "headline" : "Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則",
+    "description" : "Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-08-31 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-08-31 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87\/",
+    "wordCount" : "215",
+    "keywords" : [ "OOP","程式設計","SOLID", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-08-31 itemprop="datePublished">August 31, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>此篇觀念也會延續之前幾篇，可以一同搭配觀看。</p>
+<ul>
+<li>1、<a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/">Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)</a></li>
+<li>2、<a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-4_%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5abstract%E8%88%87%E4%BB%8B%E9%9D%A2interface/">Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)</a></li>
+</ul>
+<h2 id="本文">本文</h2>
+<h3 id="里氏替換原則-liskov-substitution-principlelsp">里氏替換原則 Liskov Substitution Principle(LSP)</h3>
+<p>精神：</p>
+<blockquote>
+<p>使用父類的地方，必須可以使用子類別代替，而不需要任何改變。</p>
+</blockquote>
+<p>基本原則：</p>
+<ul>
+<li>1、子類別必須完全實現父類別的方法，如果子類不擁有父類的全部屬性或者行為，不能強行繼承，要斷掉繼承。</li>
+<li>2、子類別可以擁有自己不同的屬性與方法。</li>
+</ul>
+<p>來段範例：今天我們有個傳統車廠發現電動車似乎才是未來，也想透過自己以前的經驗來設計電動車，老闆說不就都是車嘛？</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"> 	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">車輪</span> = <span style="color:#ae81ff">4</span>;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油引擎&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡&#34;</span>;
+            }
+        }
+		
+	<span style="color:#75715e">//直接繼承車子
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">電動車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+        { 
+            
+        }
+		
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">車子</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.車輪}個車輪&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.方向盤}個方向盤&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有:{汽車.後照鏡()}&#34;</span>);
+
+            Console.WriteLine(<span style="color:#e6db74">&#34;============================&#34;</span>);
+
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">電動車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">電動車</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.車輪}個車輪&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.方向盤}個方向盤&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有:{電動車.後照鏡()}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/sSvdUgB.jpg" alt="">
+<!-- raw HTML omitted --></p>
+<p>這時候認真一看馬上就發現 <code>代誌不是憨人想的這麼簡單</code> ，首先思考一下電動車應該與汽車不同本質的東西有哪些？能夠延用的舊有經驗有哪些？</p>
+<ul>
+<li>1、不同：引擎運作方式、後照鏡有電腦感應。</li>
+<li>2、延用：方向盤、車輪。</li>
+</ul>
+<p>改寫程式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//將車子做成一個設計初稿
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">車輪</span> = <span style="color:#ae81ff">4</span>;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
+            <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>();
+            <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>(); 
+        }
+		
+	<span style="color:#75715e">//汽車繼承車子實作時再決定自己需要哪些東西
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油引擎&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡&#34;</span>;
+            }
+        }
+		
+	<span style="color:#75715e">//同理電動車也是
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">電動車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;電動引擎&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+360度電腦感應&#34;</span>;
+            }
+        }
+		
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+        {
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.車輪}個車輪&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.方向盤}個方向盤&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有:{汽車.後照鏡()}&#34;</span>);
+
+            Console.WriteLine(<span style="color:#e6db74">&#34;============================&#34;</span>);
+
+            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">電動車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">電動車</span>();
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.車輪}個車輪&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.方向盤}個方向盤&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.引擎()}&#34;</span>);
+            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有:{電動車.後照鏡()}&#34;</span>);
+        }
+</code></pre></div><p><img src="https://i.imgur.com/xJdTSB1.jpg" alt=""></p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/18/liskov-substitution-principle">91之ASP.NET由淺入深 不負責講座 Day21 - LSP 里氏替換原則</a></li>
+<li>2、<a href="https://github.com/thangchung/clean-code-dotnet#solid">Clean Code concepts adapted for .NET/.NET Core</a></li>
+<li>3、<a href="https://ithelp.ithome.com.tw/articles/10192317">SOLID 之 里氏替換原則（Liskov substitution principle）</a></li>
+<li>4、<a href="https://www.itread01.com/ixhkc.html">C#設計模式：六大原則（上）</a></li>
+<li>5、<a href="https://dotblogs.com.tw/initials/2016/07/02/125534">c# 物件導向程式 - 5.LSP 里氏替換原則</a></li>
+<li>6、<a href="https://medium.com/@f40507777/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87-liskov-substitution-principle-adc1650ada53">里氏替換原則 Liskov Substitution Principle (LSP)</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/oop/">
+                    #OOP</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/">
+                    #程式設計</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/solid/">
+                    #SOLID</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/" class="prev" rel="prev" title="Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則"><i class="iconfont icon-left"></i>&nbsp;Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
