@@ -6,10 +6,24 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Object Oriented物件導向設計原則SOLID-6:Dependency Inversion Principle(DIP) 依賴反轉原則</title>
+      <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</guid>
+      <description>本文 依賴反轉原則 Dependency Inversion Principle(DIP) 定義：
+  1、高階模組不應該依賴於低階模組，兩者都該依賴抽象。
+  2、抽象不應該依賴於具體實作方式，具體實作方式應該依賴抽象。 目標：解除物件與物間之間直接依賴的關係。
+  舉例：傳統汽車在車子故障、或是想要更換零件時，需要選擇維修廠進行這個動作。
+public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class A汽車保養廠 { public int 電瓶價格() { return 50000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了  if (汽車.更換電瓶() == true) { var 汽車保養廠 = new A汽車保養廠(); Console.WriteLine($&amp;#34;電瓶價格:{汽車保養廠.電瓶價格()}&amp;#34;); } } 車主一看價格驚覺事情不太對勁，決定要更換一間汽車保養廠，此時程式就必須要跟著改變內容。
+public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class B汽車保養廠 { public int 電瓶價格() { return 5000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了  if (汽車.</description>
+    </item>
     
     <item>
       <title>Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則</title>
