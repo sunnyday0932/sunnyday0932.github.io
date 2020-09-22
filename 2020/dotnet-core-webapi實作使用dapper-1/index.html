@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%80%E5%B9%B4%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           dotnet Core WebApi實作(使用Dapper)-1 | Sian
+       
+  </title>
+  <meta name="title" content="dotnet Core WebApi實作(使用Dapper)-1 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "dotnet Core WebApi實作(使用Dapper)-1",
+    "headline" : "dotnet Core WebApi實作(使用Dapper)-1",
+    "description" : "dotnet Core WebApi實作(使用Dapper)",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-09-22 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-09-22 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1\/",
+    "wordCount" : "296",
+    "keywords" : [ "csharp","Core","dotnet", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">dotnet Core WebApi實作(使用Dapper)-1</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-09-22 itemprop="datePublished">September 22, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>終於進入WebApi部分，也是目前工作最常做的一部分。<br>
+這邊會從原始MVC作為開頭介紹，內容會帶入Dapper、Restful介紹，以及一些好用小工具分享。</p>
+<h2 id="本文">本文</h2>
+<h3 id="一事前準備">一、事前準備</h3>
+<p>1、首先我們先建立一個core專案。
+<img src="https://i.imgur.com/YQV6FRf.jpg" alt="">
+<!-- raw HTML omitted -->
+選擇API建立
+<img src="https://i.imgur.com/nbqCupc.jpg" alt=""></p>
+<p>2、資料庫準備。</p>
+<p>先到<a href="https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs">此連結下載北風資料庫</a></p>
+<p><img src="https://i.imgur.com/T71U4eZ.jpg" alt=""><br>
+<!-- raw HTML omitted --></p>
+<p>點選instnwnd.sql，選擇Download。
+<img src="https://i.imgur.com/BO3kLUE.jpg" alt=""></p>
+<p>會看到瀏覽器顯示一長串SQL語法，把這邊全部複製起來。
+<img src="https://i.imgur.com/JV8IZ3a.jpg" alt=""></p>
+<p>到SSMS點選新增查詢，把語法貼上後執行。
+<img src="https://i.imgur.com/TKGzh6r.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/uQly5jU.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>看到資料庫出現Northwind代表成功。
+<img src="https://i.imgur.com/x3W3Jhv.jpg" alt=""></p>
+<h3 id="二api開發">二、API開發</h3>
+<p>1、首先我們建立一個Models資料夾。
+<img src="https://i.imgur.com/phw3NCX.jpg" alt="">
+<!-- raw HTML omitted --></p>
+<p>建立一個ProductModel類別，對應北風資料庫的Products。
+<img src="https://i.imgur.com/H5t24pr.jpg" alt=""></p>
+<p>建立 ProductModel</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProductModel</span>
+    {
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 商品流水號
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> ProductID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 商品名稱
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> ProductName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 供應商ID
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> SupplierID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 種類ID
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> CategoryID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位數量
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> QuantityPerUnit { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位價格
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">decimal</span> UnitPrice { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位稅額
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> Int16 UnitsInStock { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位訂購價
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> Int16 UnitsOnOrder { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 重新訂購等級
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> Int16 ReorderLevel { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 是否已停產
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Discontinued { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+    }
+</code></pre></div><p>這邊各欄位的型態可以先看DB內資料類型</p>
+<p><img src="https://i.imgur.com/eyJ6tMT.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/0vpK64B.jpg" alt=""></p>
+<p>再到<a href="https://docs.microsoft.com/zh-tw/dotnet/framework/data/adonet/sql-server-data-type-mappings">以下網址對照型態</a></p>
+<p>2、安裝Dapper</p>
+<p>到專案Nuget套件管理員，點選管理方案的Nuget套件。
+<img src="https://i.imgur.com/V9SkmF7.jpg" alt=""></p>
+<p>搜尋Dapper，並且安裝。
+<img src="https://i.imgur.com/kuLTAy0.jpg" alt=""></p>
+<p>3、建立一個Repositories資料夾。</p>
+<p>這邊Repositories資料夾統整跟資料庫相關檔案。<br>
+<img src="https://i.imgur.com/n3KHsPP.jpg" alt=""></p>
+<p>建立ConnectionHelper</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConnectionHelper</span>
+    {
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 連線字串
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> _connectionStr = <span style="color:#e6db74">@&#34;Server=localhost;Database=Northwind;Trusted_Connection=True;&#34;</span>;
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 資料庫連線
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> ConnectionStr { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _connectionStr; } }
+    }
+</code></pre></div><p>備註：這邊一般資料庫連線字串正常都會有使用者帳號、密碼，為了方便示範，就用此方法連線。</p>
+<p>建立ProductRepository</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 取得產品列表
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> IEnumerable&lt;ProductModel&gt; GetProductList()
+        {
+		<span style="color:#75715e">//sql select products這張資料表
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> sql = <span style="color:#e6db74">@&#34;SELECT productid,
+</span><span style="color:#e6db74">                               productname,
+</span><span style="color:#e6db74">                               supplierid,
+</span><span style="color:#e6db74">                               categoryid,
+</span><span style="color:#e6db74">                               quantityperunit,
+</span><span style="color:#e6db74">                               unitprice,
+</span><span style="color:#e6db74">                               unitsinstock,
+</span><span style="color:#e6db74">                               unitsonorder,
+</span><span style="color:#e6db74">                               reorderlevel,
+</span><span style="color:#e6db74">                               discontinued
+</span><span style="color:#e6db74">                        FROM   products &#34;</span>;
+
+		<span style="color:#75715e">//先與資料庫進行連線
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> connection = <span style="color:#66d9ef">new</span> SqlConnection(ConnectionHelper.ConnectionStr);
+
+               <span style="color:#75715e">//透過Dapper與資料庫連線後取回資料
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> result = connection.Query&lt;ProductModel&gt;(sql);
+
+            <span style="color:#66d9ef">return</span> result;
+        }
+</code></pre></div><p>備註：</p>
+<p>SELECT 欄位的時候避免使用 ＊ ，未來若欄位擴增不必要多浪費效能SELECT沒用到的欄位。</p>
+<p>這邊SqlConnection一開始應該會出現提示紅字，要記得透過Nuget安裝SqlClient。
+<img src="https://i.imgur.com/tLsR6DL.jpg" alt=""></p>
+<p>4、建立PoructController</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    [Route(&quot;Product&quot;)]
+    public class ProductContorller : ControllerBase
+    {
+        [Route(&quot;List&quot;)]
+        [HttpGet]
+        public IEnumerable&lt;ProductModel&gt; GetProductList()
+        {
+            var repository = new ProductRepository();
+            var result = repository.GetProductList();
+
+            return result;
+        }
+    }
+</code></pre><p>5、運行專案進行測試。</p>
+<p>Router：localhost:44395/Product/List  &laquo; 這邊前面localhost數字有可能會不同，要自己更改成專案運行起來的設置。<br>
+成功後會看到一串密密麻麻的JSON字串。</p>
+<p><img src="https://i.imgur.com/4VML0J3.jpg" alt=""></p>
+<p>因為這樣不容易閱讀，使用Chrome的話可以安裝<a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=zh-TW">jsonViewer</a>這個擴充功能。</p>
+<p>安裝完後啟用再到剛剛網址重新整理，就可以看到工整的JSON字串了。
+<img src="https://i.imgur.com/EoCMCyV.jpg" alt=""></p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://github.com/raychiutw/repository-pattern">Repository Pattern 範例碼</a></li>
+<li>2、<a href="https://medium.com/@WilliamWhetstone/net-core-project-%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E8%B3%87%E6%96%99%E5%BA%AB%E5%AD%98%E5%8F%96%E5%88%A9%E5%99%A8dapper-a29a6c1390bb">.Net Core Project 從零開始 — 資料庫存取利器Dapper</a></li>
+<li>3、<a href="https://docs.microsoft.com/zh-tw/dotnet/framework/data/adonet/sql-server-data-type-mappings">SQL Server 資料類型對應</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%80%E5%B9%B4%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/" class="prev" rel="prev" title="軟體工程師資歷一年心得分享"><i class="iconfont icon-left"></i>&nbsp;軟體工程師資歷一年心得分享</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
