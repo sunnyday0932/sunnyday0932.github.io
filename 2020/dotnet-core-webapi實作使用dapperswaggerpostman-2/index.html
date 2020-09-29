@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2 | Sian
+       
+  </title>
+  <meta name="title" content="dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2",
+    "headline" : "dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2",
+    "description" : "dotnet Core WebApi實作(使用Dapper)",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-09-29 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-09-29 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2\/",
+    "wordCount" : "268",
+    "keywords" : [ "csharp","Core","dotnet", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-09-29 itemprop="datePublished">September 29, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>我們接續著上次的介紹，會把CRUD功能補齊。<br>
+CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。</p>
+<h2 id="本文">本文</h2>
+<h3 id="新增">新增</h3>
+<p>1、首先我們先建立一個用來回傳的Model。</p>
+<p>建立 ResultModel</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultModel</span>
+    {
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 結果
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Result { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 提示訊息
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Message { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+    }
+</code></pre></div><p>2、把新增商品的Repository完成。</p>
+<p>新增商品Repository</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 新增一筆商品
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;productModel&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool CreateProduct(ProductModel productModel)
+        {
+            var sql = @&quot;INSERT INTO products
+                                (productname,
+                                 supplierid,
+                                 categoryid,
+                                 quantityperunit,
+                                 unitprice,
+                                 unitsinstock,
+                                 unitsonorder,
+                                 reorderlevel,
+                                 discontinued)
+                         VALUES (@ProductName,
+                                 @SupplierID,
+                                 @CategoryID,
+                                 @QuantityPerUnit,
+                                 @UnitPrice,
+                                 @UnitsInStock,
+                                 @UnitsOnOrder,
+                                 @ReorderLevel,
+                                 @Discontinued) &quot;;
+
+            var parameters = new DynamicParameters();
+            parameters.Add(&quot;@ProductName&quot;, productModel.ProductName);
+            parameters.Add(&quot;@SupplierID&quot;, productModel.SupplierID);
+            parameters.Add(&quot;@CategoryID&quot;, productModel.CategoryID);
+            parameters.Add(&quot;@QuantityPerUnit&quot;, productModel.QuantityPerUnit);
+            parameters.Add(&quot;@UnitPrice&quot;, productModel.UnitPrice);
+            parameters.Add(&quot;@UnitsInStock&quot;, productModel.UnitsInStock);
+            parameters.Add(&quot;@UnitsOnOrder&quot;, productModel.UnitsOnOrder);
+            parameters.Add(&quot;@ReorderLevel&quot;, productModel.ReorderLevel);
+            parameters.Add(&quot;@Discontinued&quot;, productModel.Discontinued);
+
+            var connection = new SqlConnection(ConnectionHelper.ConnectionStr);
+
+            var result = connection.Execute(sql, parameters);
+
+            return result &gt; 0;
+        }
+</code></pre><p>3、增加一個Controller接口來接收新增商品。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">        [HttpPost]</span>
+        <span style="color:#66d9ef">public</span> ResultModel CreateProduct([FromBody] ProductModel productModel)
+        {
+            <span style="color:#66d9ef">var</span> result = <span style="color:#66d9ef">new</span> ResultModel();
+            <span style="color:#66d9ef">var</span> repository = <span style="color:#66d9ef">new</span> ProductRepository();
+
+            <span style="color:#66d9ef">var</span> data = repository.UpdateProduct(productModel);
+
+            <span style="color:#66d9ef">if</span> (data == <span style="color:#66d9ef">true</span>)
+            {
+                result.Result = data;
+                result.Message = <span style="color:#e6db74">&#34;新增商品成功&#34;</span>;
+            }
+            <span style="color:#66d9ef">else</span>
+            {
+                result.Result = data;
+                result.Message = <span style="color:#e6db74">&#34;新增商品失敗，請重試&#34;</span>;
+            }
+
+            <span style="color:#66d9ef">return</span> result;
+</code></pre></div><p>4、測試方法</p>
+<p>因為這個方法使用的是Post，所以需要透過模擬瀏覽器送資料的方式。<br>
+這邊介紹兩種我常用的方法。</p>
+<p>方法一：<a href="https://www.postman.com/">PostMan</a>
+<img src="https://i.imgur.com/OMOygNy.jpg" alt=""></p>
+<p>到網站下載後進行安裝。<br>
+打開PostMan進行登入後我們會看到以下畫面。</p>
+<p><img src="https://i.imgur.com/zwpZgGE.jpg" alt=""></p>
+<p>首先我們先建立一個測試方法，點選 +。<br>
+<img src="https://i.imgur.com/77bTgdA.jpg" alt=""></p>
+<p>選擇方法Post，並選擇Body &gt; raw &gt; json的方式，把資料填滿。<br>
+<img src="https://i.imgur.com/bKG8w9D.jpg" alt=""></p>
+<pre><code class="language-json=" data-lang="json=">{
+    &quot;ProductName&quot;: &quot;testProduct&quot;,
+    &quot;SupplierID&quot;: 1,
+    &quot;CategoryID&quot;: 1,
+    &quot;QuantityPerUnit&quot;: &quot;1k pkg.&quot;,
+    &quot;UnitPrice&quot;: 10.5,
+    &quot;UnitsInStock&quot;: 2,
+    &quot;UnitsOnOrder&quot;: 50,
+    &quot;ReorderLevel&quot;: 10,
+    &quot;Discontinued&quot;: false
+}
+</code></pre><p>settings將兩個選項改為ON。<br>
+<img src="https://i.imgur.com/LJDqdjY.jpg" alt=""></p>
+<p>點選Send。<br>
+<img src="https://i.imgur.com/RPH4XvL.jpg" alt=""></p>
+<p>新增完後可以透過上次的Get方法確認資料。<br>
+<img src="https://i.imgur.com/9gIu68Z.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>方法二：<a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore">Swagger</a></p>
+<p>首先先到Nuget安裝頁面搜尋Swashbuckle，選擇Swashbuckle.AspNetCore安裝。
+<img src="https://i.imgur.com/2Yo25uH.jpg" alt=""></p>
+<p>安裝完成後到startup.cs。<br>
+在ConfigureServices 註冊swagger。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">services.AddSwaggerGen(options =&gt;
+            {
+                options.SwaggerDoc(&quot;v1&quot;, new OpenApiInfo { Title = &quot;WebApiPhase1&quot;, Version = &quot;v1&quot; });
+                // 取得xml文件名稱
+                var xmlFile = $&quot;{Assembly.GetExecutingAssembly().GetName().Name}.xml&quot;;
+                // 取得xml path
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                // 顯示controller註解
+                options.IncludeXmlComments(xmlPath, true);
+            });
+</code></pre><p><img src="https://i.imgur.com/yOQ4GWo.jpg" alt=""></p>
+<p>在Configure中啟用swagger，並指定存放的JSON位置。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">            app.UseSwagger();
+            app.UseSwaggerUI(c =&gt;
+            {
+                c.SwaggerEndpoint(<span style="color:#e6db74">&#34;/swagger/v1/swagger.json&#34;</span>, <span style="color:#e6db74">&#34;WebApiPhase1&#34;</span>);
+            });
+</code></pre></div><p><img src="https://i.imgur.com/aUQDknB.jpg" alt=""></p>
+<p>接下來要到專案屬性設定產生xml檔案，首先點選webapplication1右鍵選擇屬性。<br>
+<img src="https://i.imgur.com/nlhu9Xp.jpg" alt=""></p>
+<p>選擇建置，在輸出的地方把XML文件檔案打勾，並儲存。<br>
+<img src="https://i.imgur.com/kd2sj7v.jpg" alt=""></p>
+<p>接下來我們回到contorller補上註解。<br>
+<img src="https://i.imgur.com/dyxuncJ.jpg" alt=""></p>
+<p>運行專案，在port之後輸入swagger，即可看到頁面。<br>
+<img src="https://i.imgur.com/DpGADLP.jpg" alt=""></p>
+<p>點選try it，點選excute即可進行測試。<br>
+<img src="https://i.imgur.com/6Jvt8JO.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/HluFXUk.jpg" alt=""></p>
+<p>而post的方式也可以直接透過網頁輸入參數。<br>
+<img src="https://i.imgur.com/jQUsovP.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/oUNKBcv.jpg" alt=""></p>
+<p>一樣可以透過GET確認新增資料。
+<img src="https://i.imgur.com/mfBjrXv.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>目前工作上如果是要透過網頁測試api正不正常我就會使用api；但大多時間都是使用POSTMAN，因為可以儲存參數、ROUTER、整理成資料夾等方式，都大大便利許多，在此提供兩種方式以供大家參考。</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li>1、<a href="https://docs.microsoft.com/zh-tw/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&amp;tabs=visual-studio">Swashbuckle 與 ASP.NET Core 使用者入門</a></li>
+<li>2、<a href="https://www.cnblogs.com/dotnet261010/p/12425572.html">ASP.NET Core 3.1使用Swagger</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/" class="prev" rel="prev" title="dotnet Core WebApi實作(使用Dapper)-1"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi實作(使用Dapper)-1</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

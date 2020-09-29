@@ -6,10 +6,25 @@
     <description>Recent content in Core on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</link>
+      <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</guid>
+      <description>前言 我們接續著上次的介紹，會把CRUD功能補齊。
+CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。
+本文 新增 1、首先我們先建立一個用來回傳的Model。
+建立 ResultModel
+public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;/summary&amp;gt;  public bool Result { get; set; } /// &amp;lt;summary&amp;gt;  /// 提示訊息  /// &amp;lt;/summary&amp;gt;  public string Message { get; set; } } 2、把新增商品的Repository完成。
+新增商品Repository
+/// &amp;lt;summary&amp;gt; /// 新增一筆商品 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;productModel&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool CreateProduct(ProductModel productModel) { var sql = @&amp;quot;INSERT INTO products (productname, supplierid, categoryid, quantityperunit, unitprice, unitsinstock, unitsonorder, reorderlevel, discontinued) VALUES (@ProductName, @SupplierID, @CategoryID, @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued) &amp;quot;; var parameters = new DynamicParameters(); parameters.</description>
+    </item>
     
     <item>
       <title>dotnet Core WebApi實作(使用Dapper)-1</title>
@@ -19,8 +34,7 @@
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</guid>
       <description>前言 終於進入WebApi部分，也是目前工作最常做的一部分。
 這邊會從原始MVC作為開頭介紹，內容會帶入Dapper、Restful介紹，以及一些好用小工具分享。
-本文 一、事前準備 1、首先我們先建立一個core專案。 選擇API建立 2、資料庫準備。
-先到此連結下載北風資料庫
+本文 一、事前準備 1、首先我們先建立一個core專案。 選擇API建立 2、資料庫準備。 先到此連結下載北風資料庫
 點選instnwnd.sql，選擇Download。 會看到瀏覽器顯示一長串SQL語法，把這邊全部複製起來。 到SSMS點選新增查詢，把語法貼上後執行。 看到資料庫出現Northwind代表成功。 二、API開發 1、首先我們建立一個Models資料夾。 建立一個ProductModel類別，對應北風資料庫的Products。 建立 ProductModel
 public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  /// &amp;lt;/summary&amp;gt;  public int ProductID { get; set; } /// &amp;lt;summary&amp;gt;  /// 商品名稱  /// &amp;lt;/summary&amp;gt;  public string ProductName { get; set; } /// &amp;lt;summary&amp;gt;  /// 供應商ID  /// &amp;lt;/summary&amp;gt;  public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt;  /// 種類ID  /// &amp;lt;/summary&amp;gt;  public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位數量  /// &amp;lt;/summary&amp;gt;  public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位價格  /// &amp;lt;/summary&amp;gt;  public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位稅額  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位訂購價  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt;  /// 重新訂購等級  /// &amp;lt;/summary&amp;gt;  public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt;  /// 是否已停產  /// &amp;lt;/summary&amp;gt;  public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看DB內資料類型</description>
     </item>
