@@ -6,10 +6,20 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-3</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</guid>
+      <description>本文 修改 1、修改指定商品 Repository
+/// &amp;lt;summary&amp;gt;  /// 修改商品內容  /// &amp;lt;/summary&amp;gt;  /// &amp;lt;param name=&amp;#34;productModel&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;  /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;  public bool UpdateProduct(ProductModel productModel) { var sql = @&amp;#34;UPDATE products SET productname = @ProductName, supplierid = @SupplierID, categoryid = @CategoryID, quantityperunit = @QuantityPerUnit, unitprice = @UnitPrice, unitsinstock = @UnitsInStock, unitsonorder = @UnitsOnOrder, reorderlevel = @ReorderLevel, discontinued = @Discontinued WHERE productid = @ProductID &amp;#34;; var parameters = new DynamicParameters(); parameters.Add(&amp;#34;@ProductName&amp;#34;, productModel.ProductName); parameters.</description>
+    </item>
     
     <item>
       <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2</title>
