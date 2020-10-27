@@ -151,6 +151,7 @@
                     觀看次數:<span id="busuanzi_value_page_pv"></span>
                 </span>
         </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
     </header>
     <div class="post-content">
         
@@ -288,7 +289,7 @@
         /// &lt;/summary&gt;
         /// &lt;param name=&quot;productId&quot;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
-        [Route(&quot;Product&quot;)]
+        [Route(&quot;Product/{productId}&quot;)]
         [HttpDelete]
         public ResultModel RemoveProduct(int productId)
         {
@@ -311,11 +312,11 @@
             return result;
         }
 </code></pre><p>3、測試</p>
-<p>選擇刪除productId=85這筆資料。</p>
-<p><img src="https://i.imgur.com/33lnQfL.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/Q0aOy22.jpg" alt=""></p>
+<p>選擇刪除productId=84這筆資料。</p>
+<p><img src="https://i.imgur.com/Nd0g4zC.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/ecv42ti.jpg" alt=""></p>
 <p>資料庫列表
-<img src="https://i.imgur.com/K6P3Wvu.jpg" alt=""></p>
+<img src="https://i.imgur.com/7RkZeHz.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
 <p>到此算是簡單的CRUD示範，接下來會開始分析及解說一下這個範例使用的方式。<br>
 示範程式碼會一併放到github需要觀看的可以到<a href="https://github.com/sunnyday0932/WebApiPhase1">以下連結</a>。</p>
