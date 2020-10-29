@@ -6,10 +6,24 @@
     <description>Recent content in Core on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dotnet Core WebApi實作-4 RESTful API介紹</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</guid>
+      <description>本文 REST是Representational State Transfer的縮寫，是一種設計模式，RESTful API就是遵循這種設計模式所創造的API。
+那RESTful是怎樣的一個設計模式呢? 首先組成RESTful API三大要素有:
+   組成要素 說明     1、Nouns (名詞) 一組獨一無二的URL用來定義網址。   2、Verbs (動詞) 用來描述對URL所執行的動作，也就是HTTP Method。   3、Content Types(資源呈現方式) API資源呈現的方式 EX:JSON、XML。    以前幾篇的API為範例:
+   Method router 說明     GET api/Product 取得商品列表   POST api/Product 新增商品   PATCH api/Product 修改商品資訊   DELETE api/Product/85 商除指定商品    固定的Router，但使用Method來區分要進行的動作，好處是不會有五花八門的router出現，一旦用了此種模式，大家就能輕易區分API會做些甚麼，我該取用哪隻API。
+常見的Method有以下幾種:
+   Method 說明     GET 讀取資料   POST 新增資料，亦可作為其他動詞使用。   PUT 更新   PATCH 部分更新資料   DELETE 刪除資料    備註: POST被視作萬用動詞，可以作為其他動作。</description>
+    </item>
     
     <item>
       <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-3</title>
