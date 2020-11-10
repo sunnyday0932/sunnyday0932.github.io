@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">
   <meta name="keywords" content="Sian">
   
-  <link rel="prev" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/" />
-  <link rel="next" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/" />
-  <link rel="canonical" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/" />
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
@@ -35,10 +35,10 @@
   <title>
        
        
-           dotnet Core WebApi實作-4 RESTful API介紹 | Sian
+           dotnet Core WebApi實作-5 小結分析 | Sian
        
   </title>
-  <meta name="title" content="dotnet Core WebApi實作-4 RESTful API介紹 | Sian">
+  <meta name="title" content="dotnet Core WebApi實作-5 小結分析 | Sian">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "dotnet Core WebApi實作-4 RESTful API介紹",
-    "headline" : "dotnet Core WebApi實作-4 RESTful API介紹",
-    "description" : "dotnet Core WebApi實作-4 RESTful API",
+    "name" : "dotnet Core WebApi實作-5 小結分析",
+    "headline" : "dotnet Core WebApi實作-5 小結分析",
+    "description" : "dotnet Core WebApi實作-5 小結分析",
     "inLanguage" : "en-us",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,10 +68,10 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2020",
-    "datePublished": "2020-10-29 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2020-10-29 00:00:00 \x2b0000 UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "120",
+    "datePublished": "2020-11-10 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-11-10 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90\/",
+    "wordCount" : "31",
     "keywords" : [ "csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -135,11 +135,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">dotnet Core WebApi實作-4 RESTful API介紹</h1>
+        <h1 class="post-title" itemprop="name headline">dotnet Core WebApi實作-5 小結分析</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2020-10-29 itemprop="datePublished">October 29, 2020</time>
+                on <time datetime=2020-11-10 itemprop="datePublished">November 10, 2020</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -170,141 +170,28 @@
           
 
           <h2 id="本文">本文</h2>
-<p>REST是Representational State Transfer的縮寫，是一種設計模式，RESTful API就是遵循這種設計模式所創造的API。</p>
-<h3 id="那restful是怎樣的一個設計模式呢">那RESTful是怎樣的一個設計模式呢?</h3>
-<p>首先組成RESTful API三大要素有:</p>
-<table>
-<thead>
-<tr>
-<th>組成要素</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1、Nouns (名詞)</td>
-<td>一組獨一無二的URL用來定義網址。</td>
-</tr>
-<tr>
-<td>2、Verbs (動詞)</td>
-<td>用來描述對URL所執行的動作，也就是HTTP Method。</td>
-</tr>
-<tr>
-<td>3、Content Types(資源呈現方式)</td>
-<td>API資源呈現的方式 EX:JSON、XML。</td>
-</tr>
-</tbody>
-</table>
-<!-- raw HTML omitted -->
-<p>以前幾篇的API為範例:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>router</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td>api/Product</td>
-<td>取得商品列表</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>api/Product</td>
-<td>新增商品</td>
-</tr>
-<tr>
-<td>PATCH</td>
-<td>api/Product</td>
-<td>修改商品資訊</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>api/Product/85</td>
-<td>商除指定商品</td>
-</tr>
-</tbody>
-</table>
-<p>固定的Router，但使用Method來區分要進行的動作，好處是不會有五花八門的router出現，一旦用了此種模式，大家就能輕易區分API會做些甚麼，我該取用哪隻API。</p>
-<p>常見的Method有以下幾種:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td>讀取資料</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>新增資料，亦可作為其他動詞使用。</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>更新</td>
-</tr>
-<tr>
-<td>PATCH</td>
-<td>部分更新資料</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>刪除資料</td>
-</tr>
-</tbody>
-</table>
-<p>備註:
-POST被視作萬用動詞，可以作為其他動作。<br>
-例如:當需要取得商品資訊時需要多傳幾個參數給API就可以使用POST。<br>
-<!-- raw HTML omitted --></p>
-<h3 id="restful-的特點">RESTful 的特點</h3>
+<p>先前完成了API，接下來聊聊目前這樣做法可能會碰到的問題。</p>
+<h3 id="1程式碼四散">1、程式碼四散。</h3>
+<p>現在做法是從Controller決定執行動作後，到Repository撈取DB資料後回傳json；那麼今天假如有要處理的關鍵商業邏輯，是該寫在Controller或是Repository呢？<br>
+又如果今天多人合作的情況下，甲覺得應該放在Repository、而乙覺得應該放在Controller，這樣就會造成程式碼四散，對後續要維護的人造成很大的困擾。</p>
+<h3 id="2容易有重工">2、容易有重工。</h3>
+<p>現行做法如果多人合作的時候，可以用Repository名稱來定義是從哪個DB撈取資料；Controller也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的Model不同因此再合作的時候建了一堆不同的Model出來，卻其實是撈同一個Table的資料，應該想辦法避免做重複的事情。</p>
+<h3 id="3耦合過高">3、耦合過高。</h3>
+<p>現行做法很容易再單一的class做了太多事，還記得前幾篇提到的SOLID原則嗎？若所有事情都包在同一個class中完成，藕合度就會過高這種情況應該要想辦法解決。</p>
+<h3 id="那有甚麼好方法呢">那有甚麼好方法呢？</h3>
+<p>像傳統的MVC就是把程式分成Model-View-Controller。</p>
 <ul>
-<li>1、統一介面(Uniform Interface)
-&ndash; 統一的 API 接口，EX: api/Product。</li>
-<li>2、無狀態。(Stateless)
-&ndash; 伺服器不能儲存客戶端的資訊, 每一次從客戶端傳送的請求中, 要包含所有的必須的狀態資訊。</li>
-<li>3、快取（Cacheability）
-&ndash; 在server端可以透過快取機制加快回應速度，EX:GET過的資料如果沒有被改變過，就可以透過快取機制在下一次，有相同API較用服務時更快的回應。</li>
-<li>4、分層系統架構 (Layered System)
-&ndash; Client並不會知道在API怎麼通過Server跟資料庫拿到資料的，就可以在這些Server做負載平衡、共享快取等提高擴充性，也便於做安全性作業。</li>
-<li>5、客戶端與伺服器分離（Client-Server）
-&ndash; 將Client與Server分開是為了將使用者介面所關注的邏輯和資料儲存所關注的邏輯分離開來，有助於提高使用者介面的跨平台的可移植性；通過簡化伺服器模組也有助於伺服器模組的可延伸性。</li>
+<li>1、Model：處理商業邏輯、資料傳輸的Model、與資料庫進行溝通。</li>
+<li>2、Controller：負責當接口、控制程式的流程。</li>
+<li>3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。</li>
 </ul>
-<h2 id="後記">後記</h2>
-<p>RESTful目前對我來說最大的特點就是大家都能快速依照規範好的結構開發，例如我們現在前後端的合作模式就是一開始先訂好API規格，
-EX:</p>
-<pre><code class="language-json=" data-lang="json=">Method:DELETE
-Router:/api/Product
-
-API輸入:
-/api/Product/{ProductId}
-
-ProductId:int //商品編號
-
-API輸出:
-{
-    &quot;result&quot;: true,
-    &quot;message&quot;: &quot;刪除商品成功&quot;
-}
-
-result:bool    //是否成功
-message:string //提示訊息
-</code></pre><p>接下來前後端就可以分別開發，互相不會干擾對方進行，之後再進行串測即可；這種合作模式我覺得滿有效率的，推薦給大家。</p>
+<p>透過將程式分開讓藕合性降低、也讓後續維護者好維護。</p>
+<p>其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將API實作。</p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
-<li>1、<a href="https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%8E%B0%E5%B1%82%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2">表現層狀態轉換</a>。</li>
-<li>2、<a href="https://medium.com/itsems-frontend/api-%E6%98%AF%E4%BB%80%E9%BA%BC-restful-api-%E5%8F%88%E6%98%AF%E4%BB%80%E9%BA%BC-a001a85ab638">API 是什麼? RESTful API 又是什麼?</a></li>
-<li>3、<a href="https://progressbar.tw/posts/53">休息(REST)式架構? 寧靜式(RESTful)的Web API是現在的潮流？</a></li>
-<li>4、<a href="https://tw.alphacamp.co/blog/rest-restful-api">什麼是REST? 認識 RESTful API 路由語義化設計風格</a>。</li>
-<li>5、<a href="https://ithelp.ithome.com.tw/articles/10157674">RESTful 的優點與要求</a>。</li>
-<li>6、<a href="https://www.webguide.nat.gov.tw/News_Content.aspx?n=531&amp;s=2918">RESTful API 設計準則與實務經驗</a></li>
+<li>1、<a href="https://zh.wikipedia.org/wiki/MVC">維基百科MVC</a>。</li>
+<li>2、<a href="https://dotblogs.com.tw/dog0416/2016/05/20/131644">MVC 架構與說明 ( 以Asp .Net MVC C# 為例 )</a></li>
+<li>3、<a href="https://medium.com/@steph.c/%E4%B8%89%E5%B1%A4%E6%9E%B6%E6%A7%8B%E6%98%AF%E4%BB%80%E9%BA%BC-%E6%88%91%E5%8F%AA%E7%9F%A5%E9%81%93%E4%B8%89%E5%B1%A4%E8%82%89-efe542c38aaf">MVC 三層架構 是什麼? 我只知道三層肉</a></li>
 </ul>
 
     </div>
@@ -320,7 +207,7 @@ message:string //提示訊息
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</span>
+                    <a href=https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</span>
             </p>
             
              
@@ -355,10 +242,8 @@ message:string //提示訊息
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/" class="prev" rel="prev" title="dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-3"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-3</a>
+        <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/" class="prev" rel="prev" title="dotnet Core WebApi實作-4 RESTful API介紹"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi實作-4 RESTful API介紹</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/" class="next" rel="next" title="dotnet Core WebApi實作-5 小結分析">dotnet Core WebApi實作-5 小結分析&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

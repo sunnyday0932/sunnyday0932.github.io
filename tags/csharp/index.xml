@@ -6,10 +6,27 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dotnet Core WebApi實作-5 小結分析</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</link>
+      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</guid>
+      <description>本文 先前完成了API，接下來聊聊目前這樣做法可能會碰到的問題。
+1、程式碼四散。 現在做法是從Controller決定執行動作後，到Repository撈取DB資料後回傳json；那麼今天假如有要處理的關鍵商業邏輯，是該寫在Controller或是Repository呢？
+又如果今天多人合作的情況下，甲覺得應該放在Repository、而乙覺得應該放在Controller，這樣就會造成程式碼四散，對後續要維護的人造成很大的困擾。
+2、容易有重工。 現行做法如果多人合作的時候，可以用Repository名稱來定義是從哪個DB撈取資料；Controller也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的Model不同因此再合作的時候建了一堆不同的Model出來，卻其實是撈同一個Table的資料，應該想辦法避免做重複的事情。
+3、耦合過高。 現行做法很容易再單一的class做了太多事，還記得前幾篇提到的SOLID原則嗎？若所有事情都包在同一個class中完成，藕合度就會過高這種情況應該要想辦法解決。
+那有甚麼好方法呢？ 像傳統的MVC就是把程式分成Model-View-Controller。
+ 1、Model：處理商業邏輯、資料傳輸的Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。  透過將程式分開讓藕合性降低、也讓後續維護者好維護。
+其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將API實作。
+參考連結  1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼? 我只知道三層肉  </description>
+    </item>
     
     <item>
       <title>dotnet Core WebApi實作-4 RESTful API介紹</title>
