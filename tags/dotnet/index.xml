@@ -6,10 +6,29 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>三層式架構</title>
+      <link>https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/</guid>
+      <description>前言 接下來開始講解三層式架構，這是工作以來第一個學會的架構，也使用了一段時間，就以這段時間自己的體悟來敘述。
+本文 為甚麼要分層呢？ 前一篇我們提到，如果程式全部一條龍寫到底，後續會產生很多問題，難以維護、難以閱讀、更甚至是萬一人家要接手你的程式碼，這時候改Ａ壞Ｂ，偶合度過高的情況下； ~你只能祈禱接手的人不知道你住哪~。
+這種情況下只有自己寫可能還好，那如果需要跟人合作呢？
+大家可能容易出現重複的Code，也難以說明誰該負責寫哪部分。
+這時候有一個好的架構，就很重要了。
+優缺點    優點     1、較好形成一個規範，可做為標準化流程。   2、提高重用性，透過分層將相同類型的程式碼放在一塊。   3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。   4、具有好的開放性、可擴充性優點。   5、降低程式碼之間的依賴，每層溝通是透過介面。   6、提高系統安全性，因為使用者需要透過Service層才有機會與下一層Repository撈取資料。       缺點     1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。   2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。   3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。    簡介 三層式架構顧名思義，主要分為了三層：
+ 1、Controller：控制層，作為接口。 2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。 3、Repository：倉儲層，作為資料存儲的一層。 4、Common：共用層，作為存放各層會用到的相同東西。  他們之間的關係如下圖:
+Service 從最重要的Service層開始講解起。
+在我們程式中『最重要』的就屬於商業邏輯了，這一層是會特別關注的一層；這邊大家可能會問，那商業邏輯是指哪些呢？
+我自己認為最簡單分辨的方式，舉凡任何需要對資料特別處理的地方都會是放在這一層，如常見的：登入驗證、加減法運算、確認是否驗證成功等。
+Controller 在我們WebAPI中，Controller就屬於接口，負責處理Router，如常見的：Get、Post、Patch等，都會是在這層負責接應相對應的路由。</description>
+    </item>
     
     <item>
       <title>dotnet Core WebApi實作-5 小結分析</title>

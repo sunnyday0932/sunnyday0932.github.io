@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           三層式架構 | Sian
+       
+  </title>
+  <meta name="title" content="三層式架構 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "三層式架構",
+    "headline" : "三層式架構",
+    "description" : "三層式架構",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-11-15 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-11-15 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B\/",
+    "wordCount" : "111",
+    "keywords" : [ "csharp","Core","dotnet", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">三層式架構</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-11-15 itemprop="datePublished">November 15, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>接下來開始講解三層式架構，這是工作以來第一個學會的架構，也使用了一段時間，就以這段時間自己的體悟來敘述。</p>
+<h2 id="本文">本文</h2>
+<h3 id="為甚麼要分層呢">為甚麼要分層呢？</h3>
+<p>前一篇我們提到，如果程式全部一條龍寫到底，後續會產生很多問題，難以維護、難以閱讀、更甚至是萬一人家要接手你的程式碼，這時候改Ａ壞Ｂ，偶合度過高的情況下； ~你只能祈禱接手的人不知道你住哪~。</p>
+<p>這種情況下只有自己寫可能還好，那如果需要跟人合作呢？<br>
+大家可能容易出現重複的Code，也難以說明誰該負責寫哪部分。</p>
+<p>這時候有一個好的架構，就很重要了。</p>
+<h3 id="優缺點">優缺點</h3>
+<table>
+<thead>
+<tr>
+<th>優點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1、較好形成一個規範，可做為標準化流程。</td>
+</tr>
+<tr>
+<td>2、提高重用性，透過分層將相同類型的程式碼放在一塊。</td>
+</tr>
+<tr>
+<td>3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。</td>
+</tr>
+<tr>
+<td>4、具有好的開放性、可擴充性優點。</td>
+</tr>
+<tr>
+<td>5、降低程式碼之間的依賴，每層溝通是透過介面。</td>
+</tr>
+<tr>
+<td>6、提高系統安全性，因為使用者需要透過Service層才有機會與下一層Repository撈取資料。</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th>缺點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。</td>
+</tr>
+<tr>
+<td>2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。</td>
+</tr>
+<tr>
+<td>3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="簡介">簡介</h3>
+<p>三層式架構顧名思義，主要分為了三層：</p>
+<ul>
+<li>1、Controller：控制層，作為接口。</li>
+<li>2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。</li>
+<li>3、Repository：倉儲層，作為資料存儲的一層。</li>
+<li>4、Common：共用層，作為存放各層會用到的相同東西。</li>
+</ul>
+<p>他們之間的關係如下圖:</p>
+<p><img src="https://i.imgur.com/ArbL705.png" alt=""></p>
+<h3 id="service">Service</h3>
+<p>從最重要的Service層開始講解起。</p>
+<p>在我們程式中『最重要』的就屬於商業邏輯了，這一層是會特別關注的一層；這邊大家可能會問，那商業邏輯是指哪些呢？</p>
+<p>我自己認為最簡單分辨的方式，舉凡任何需要對資料特別處理的地方都會是放在這一層，如常見的：登入驗證、加減法運算、確認是否驗證成功等。</p>
+<h3 id="controller">Controller</h3>
+<p>在我們WebAPI中，Controller就屬於接口，負責處理Router，如常見的：Get、Post、Patch等，都會是在這層負責接應相對應的路由。</p>
+<h3 id="repository">Repository</h3>
+<p>資料倉儲層，這層主要處理『有關資料串接』的部分，如：資料庫連接、下SQL取Table資料等，都會是在Repository處理。</p>
+<p>這邊有個特別的地方，如果我們程式需要透過別人的API取的資料回來做處理呢？</p>
+<p>那與對方API串接的地方就會是Repository，所以Repository是處理『有關資料串接』的地方，而這資料當然並不只限於從DB撈取的資料。</p>
+<h3 id="common">Common</h3>
+<p>共用層相對單純，存放各層間會用到的共同東西，最常見的例如：Enum，就會放在這一層。</p>
+<h3 id="各層相互傳遞的參數">各層相互傳遞的參數</h3>
+<p>各層間會有自己的Model，就是透過這些Model來溝通，如下圖：</p>
+<p><img src="https://i.imgur.com/5MELEDo.png" alt=""></p>
+<ul>
+<li>Controller：接收的是Parameter，輸出的是ViewModel。</li>
+<li>Service：接收的是InfoModel，輸出的是Dto。</li>
+<li>Repository：接收的是Condition，輸出的是DataModel。</li>
+</ul>
+<h3 id="使用三層式架構常見的問題">使用三層式架構常見的問題</h3>
+<h4 id="1三層式架構與傳統mvc有甚麼不同呢">1、三層式架構與傳統MVC有甚麼不同呢？</h4>
+<p>傳統MVC分成，View(展示層)-Model(資料層)-Controller(控制層)，這邊與三層式架構最大的區別在於傳統MVC並沒有特別把『商業邏輯』抽出來；常會看到傳統MVC可能會把商業邏輯附加在Controller，所以MVC與三層式架構是不同的。</p>
+<h4 id="2各層間溝通一定要透過model嗎">2、各層間溝通一定要透過Model嗎？</h4>
+<p>這個答案就我個人使用的理解是，『不一定要透過Model』，如果只是要回傳簡單的bool、或是一兩個參數，直接傳就可以了；那做成Model的用意呢？當然也是為了提高重用性，例如我們前幾篇所用的ResultModel。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultModel</span>
+    {
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 結果
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Result { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 提示訊息
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Message { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+    }
+</code></pre></div><p>雖然只有兩個變數，但還是把它包成了Model，因為有很多個地方會需要用到，當然就可以包起來給大家共同使用。</p>
+<h4 id="3service層可以呼叫其他service層的程式嗎">3、Service層可以呼叫其他Service層的程式嗎？</h4>
+<p>可以，三層式架構的優點就是要提供重用性，當然如果相同的事情在其他地方已經有做過了，直接拿來使用，就不用做重複的事情。</p>
+<h4 id="4model的名稱分了這麼多不能直接一個通到底嗎">4、Model的名稱分了這麼多？不能直接一個通到底嗎？</h4>
+<p>這問題也是我一開始不太能夠理解的部分，如果是一個人寫程式的時候都會為了方便，就一個Model通到底吧；這時候肯定會有人問就算多人合作也可以啊？</p>
+<p>真的可以嗎？<br>
+各層間的職責都不同，從Reoisitory取出來的資料丟給Service做處理，有可能不需要全部完整的資料回傳給Controller，為了避免這種情況當然是分開會比較妥當，自己使用自己的Model；多人合作的時候只需要定義說好相互要傳遞的參數就可以分層開發了，也不會因為一個Model而影響對方。</p>
+<h2 id="後記">後記</h2>
+<p>剛開始學會三層式架構，就只知道這樣用就對了，其實沒有多大的體悟；但當開始熟練工作後被分配到維護舊系統，就會知道三層的好，老舊系統一條龍寫到底，對後續接手的人真的是極度不友善，為了找一個問題，商業邏輯四散各地，這時候真的是頭很痛，一不小心就會開始看Git紀錄找是誰寫的了(?</p>
+<p>因此提供三層式架構給大家參考，當然其他還有很多不同的架構，有興趣的話也可以研究看看。</p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://raychiutw.github.io/2019/%E9%9A%A8%E6%89%8B-Design-Pattern-2-%E8%BB%9F%E9%AB%94%E5%88%86%E5%B1%A4%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F-Software-Layered-Architecture-Pattern/">隨手 Design Pattern (2) - 軟體分層設計模式 (Software Layered Architecture Pattern)</a>。</li>
+<li>2、<a href="https://kevintsengtw.blogspot.com/2013/07/aspnet-mvc.html">ASP.NET MVC 專案分層架構 - 建議與補充說明</a>。</li>
+<li>3、<a href="https://shunnien.github.io/2017/07/29/3-tier-and-mvc-introduction/">三層結構與 Asp.Net MVC 的簡介</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/>https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/" class="prev" rel="prev" title="dotnet Core WebApi實作-5 小結分析"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi實作-5 小結分析</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
