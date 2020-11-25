@@ -6,10 +6,23 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Automapper 類別轉換好用工具</title>
+      <link>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</guid>
+      <description>前言 上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的Model，那要怎麼將各個Model轉換呢？
+難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具Automapper了。
+本文 基本用法 首先到Nuget安裝Automapper。 安裝好後我們建立兩個測試用的Model
+private class Model1 { public string Name { get; set; } public int Id { get; set; } } private class Model2 { public string Name { get; set; } public int Id { get; set; } } 使用Automapper對應Model1到Model2。
+var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.CreateMap&amp;lt;Model1, Model2&amp;gt;()); //從左邊Model對應到右邊 var mapper = config.</description>
+    </item>
     
     <item>
       <title>三層式架構</title>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Automapper 類別轉換好用工具 | Sian
+       
+  </title>
+  <meta name="title" content="Automapper 類別轉換好用工具 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Automapper 類別轉換好用工具",
+    "headline" : "Automapper 類別轉換好用工具",
+    "description" : "Automapper",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-11-25 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-11-25 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7\/",
+    "wordCount" : "385",
+    "keywords" : [ "csharp","Core","dotnet", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Automapper 類別轉換好用工具</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-11-25 itemprop="datePublished">November 25, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的Model，那要怎麼將各個Model轉換呢？</p>
+<p>難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具<a href="https://github.com/AutoMapper/AutoMapper">Automapper</a>了。</p>
+<h2 id="本文">本文</h2>
+<h3 id="基本用法">基本用法</h3>
+<p>首先到Nuget安裝Automapper。
+<img src="https://i.imgur.com/ORrVgoE.jpg" alt=""></p>
+<p>安裝好後我們建立兩個測試用的Model</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        private class Model1
+        {
+            public string Name { get; set; }
+            public int Id { get; set; }
+        }
+
+        private class Model2
+        {
+            public string Name { get; set; }
+            public int Id { get; set; }
+        }
+</code></pre><p>使用Automapper對應Model1到Model2。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">           var testModel = new Model1
+            {
+                Name = &quot;ALLEN&quot;,
+                Id = 1
+            };
+
+            var config = new MapperConfiguration(cfg =&gt; cfg.CreateMap&lt;Model1, Model2&gt;());
+                                                                 //從左邊Model對應到右邊
+            var mapper = config.CreateMapper();
+            var model2 = mapper.Map&lt;Model2&gt;(testModel);
+
+            Console.WriteLine($&quot;Model2 Id:{model2.Id}&quot;);
+            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
+</code></pre><p>結果：</p>
+<p><img src="https://i.imgur.com/BTyS80I.jpg" alt=""></p>
+<p>如此一來就可以很輕鬆的對應Model了。<br>
+<!-- raw HTML omitted --></p>
+<p>偷懶小技巧：如果一時分不清是哪個Model要對應到哪個Model，那可以加上ReverseMap反轉雙向對應。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">var config = new MapperConfiguration(cfg =&gt; 
+cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
+</code></pre><h3 id="客製化對應">客製化對應</h3>
+<p>我們上一篇講到的三層式架構，有提到每一層分工的時候會建立自己的Model有的時候可能各層間Model命名方式不同、或是需要對Model進行特殊處理，那就可以用以下方法來處理對應。</p>
+<p>一樣先建立兩個測試用Model</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        private class Model1
+        {
+            public string Name { get; set; }
+            public int Id { get; set; }
+        }
+
+        private class Model2
+        {
+            public string Name { get; set; }
+            public int UserId { get; set; }
+        }
+</code></pre><p>建立對應：</p>
+<pre><code class="language-csharp=" data-lang="csharp=">          var testModel = new Model1
+            {
+                Name = &quot;ALLEN&quot;,
+                Id = 1
+            };
+
+            var config = new MapperConfiguration(cfg =&gt; 
+            cfg.CreateMap&lt;Model1, Model2&gt;()
+            .ForMember(x =&gt; x.UserId, y =&gt; y.MapFrom(z =&gt; z.Id)));
+            
+            var mapper = config.CreateMapper();
+            var model2 = mapper.Map&lt;Model2&gt;(testModel);
+
+            Console.WriteLine($&quot;Model2 Id:{model2.UserId}&quot;);
+            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
+</code></pre><p>結果：
+<img src="https://i.imgur.com/eBWj4Kx.jpg" alt=""></p>
+<h3 id="進行特殊處理方式">進行特殊處理方式</h3>
+<p>首先在Model2多加一個string</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        private class Model2
+        {
+            public string Name { get; set; }
+            public int UserId { get; set; }
+            public string User { get; set; }
+        }
+</code></pre><pre><code class="language-csharp=" data-lang="csharp=">           var testModel = new Model1
+            {
+                Name = &quot;ALLEN&quot;,
+                Id = 1
+            };
+
+            var config = new MapperConfiguration(cfg =&gt;
+            cfg.CreateMap&lt;Model1, Model2&gt;()
+            .ForMember(x =&gt; x.UserId, y =&gt; y.MapFrom(z =&gt; z.Id))
+            .ForMember(x =&gt; x.User, y =&gt; y.MapFrom(z =&gt; $&quot;{z.Id}、{z.Name}&quot;)));
+            
+            var mapper = config.CreateMapper();
+            var model2 = mapper.Map&lt;Model2&gt;(testModel);
+
+            Console.WriteLine($&quot;Model2 UserId:{model2.UserId}&quot;);
+            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
+            Console.WriteLine($&quot;Model2 User:{model2.User}&quot;);
+</code></pre><p>結果：
+<img src="https://i.imgur.com/4I5tkzL.jpg" alt=""></p>
+<p>這邊做點小提醒，因為可以透過此種方式很方便的對Model對應出來的資料動手腳，那麼下一個人接手的時候就有機會找不到資料是在哪邊被動過了，所以使用ForMember做特殊對應的話建議還是要特別註明。</p>
+<h3 id="忽略對應">忽略對應</h3>
+<p>除了可以做到小處理Automapper也支援忽略對應，可以用此種方式達到。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">       private static void Main(string[] args)
+        {
+            var testModel = new Model1
+            {
+                Name = &quot;ALLEN&quot;,
+                Id = 1
+            };
+
+            var config = new MapperConfiguration(cfg =&gt;
+            cfg.CreateMap&lt;Model1, Model2&gt;()
+            .ForMember(x =&gt; x.UserId, y =&gt; y.Ignore())   //忽略此項
+            .ForMember(x =&gt; x.User, y =&gt; y.MapFrom(z =&gt; $&quot;{z.Id}、{z.Name}&quot;)));
+            
+            var mapper = config.CreateMapper();
+            var model2 = mapper.Map&lt;Model2&gt;(testModel);
+
+            Console.WriteLine($&quot;Model2 UserId:{model2.UserId}&quot;);
+            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
+            Console.WriteLine($&quot;Model2 User:{model2.User}&quot;);
+        }
+</code></pre><p>結果：
+<img src="https://i.imgur.com/88Ul2GT.jpg" alt=""></p>
+<h3 id="集中管理">集中管理</h3>
+<p>上面示範用法都是在個別區塊中使用，這樣不方便管理，我們可以建立一個profile檔案繼承Automapper的profile來集中管理這些mapping。</p>
+<p>首先dotnet core要先安裝AutoMapper.Extensions.Microsoft.DependencyInjection。
+<img src="https://i.imgur.com/lwK5NZ0.jpg" alt=""></p>
+<p>接下來建立一個profile檔案繼承Profile。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class ControllerProfile : Profile
+    {
+        public ControllerProfile()
+        {
+            CreateMap&lt;Model1, Model2&gt;();
+            //CreateMap&lt;&gt;();  接著建立其他mapping
+        }
+    }
+</code></pre><p>再到startup內ConfigureServices註冊Automapper。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">services.AddAutoMapper(typeof(ControllerProfile));
+            //將剛剛建好的ControllerProfile加入註冊
+</code></pre><p>接下來我們可以透過注入的方式使用mapping。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        private IMapper _mapper;
+
+        public WeatherForecastController(
+            IMapper mapper)
+        {
+            this._mapper = mapper;
+        }
+</code></pre><p>測試一下</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public Model2 Get()
+        {
+            var testModel = new Model1
+            {
+                Name = &quot;ALLEN&quot;,
+                Id = 1
+            };
+
+            var model2 = this._mapper.Map&lt;Model2&gt;(testModel);
+
+            return model2;
+        }
+</code></pre><p><img src="https://i.imgur.com/hEYvMN9.jpg" alt="">
+<!-- raw HTML omitted --></p>
+<p>如此一來就可以透過簡單的方式轉換各個Model，提供這方便的套件供大家參考使用。</p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://igouist.github.io/post/2020/07/automapper/">AutoMapper —— 類別轉換超省力</a>。</li>
+<li>2、<a href="https://kevintsengtw.blogspot.com/2013/04/automapper.html">使用 AutoMapper 處理類別之間的對映轉換</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/" class="prev" rel="prev" title="三層式架構"><i class="iconfont icon-left"></i>&nbsp;三層式架構</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
