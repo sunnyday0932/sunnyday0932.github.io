@@ -6,10 +6,34 @@
     <description>Recent content in 學習筆記 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SQL 模糊搜尋Like替代方式</title>
+      <link>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</guid>
+      <description>本文 今天在查找SQL效能Like會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。
+在處理模糊搜尋的條件常常會使用LIKE&amp;rsquo;%關鍵字%&amp;lsquo;這種做法，但SQL的索引在LIKE&amp;rsquo;%關鍵字&amp;rsquo;的情況會失效，更不用說使用LIKE&amp;rsquo;%關鍵字%&amp;lsquo;當資料一大效能真的是非常差。
+這裡介紹一個替代使用語法 CHARINDEX。
+首先我們先看一下MSDN介紹用法。
+這裡可以知道charindex其實是可以用來計算兩個字元間有多少相同的地方。
+現在來測試一下
+SELECT CHARINDEX(&#39;a&#39;,&#39; apple is apple&#39;) 結果：
+或是可以用來判斷相同的字元出現的位子。
+SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,5) 結果： 這邊第三個參數5是從第五個字元開始往後搜尋。
+所以如果改成0結果就會是
+SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,0) 結果： 替代LIKE的方式 好了說了這麼多到底要怎麼替代LIKE呢？
+可以使用這種方式替代
+CHARINDEX(&#39;模糊搜尋關鍵字&#39;, 要搜尋的資料行) &amp;gt; 0 實際測試，使用NorthWind Product Table
+SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductName) &amp;gt; 0 使用CHARINDEX結果： SELECT * FROM [Northwind].[dbo].[Products] where ProductName LIKE &#39;%a%&#39; 使用LIKE結果： 哪種方式比較好？ 因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下CHARINDEX會比LIKE還要快，但如果有吃到索引LIKE的速度還是優於CHARINDEX的。
+所以如果在非得需要進行LIKE&amp;rsquo;%關鍵字%&amp;lsquo;搜尋資料時，沒辦法吃到索引，就可以使用CHARINDEX來替代LIKE，大家可以自行測試看看。
+參考資料  1、CHARINDEX。 2、SqlServer之like、charindex、patindex區別及性能分析。  </description>
+    </item>
     
     <item>
       <title>Automapper 類別轉換好用工具</title>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Sian">
+  <meta name="description" content="想成為PM的PG">
+  <meta name="keywords" content="Sian">
+  
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/" />
+  
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SQL 模糊搜尋Like替代方式 | Sian
+       
+  </title>
+  <meta name="title" content="SQL 模糊搜尋Like替代方式 | Sian">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+{ 
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "SQL 模糊搜尋Like替代方式",
+    "headline" : "SQL 模糊搜尋Like替代方式",
+    "description" : "SQL 模糊搜尋Like替代方式",
+    "inLanguage" : "en-us",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-11-27 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2020-11-27 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F\/",
+    "wordCount" : "57",
+    "keywords" : [ "SQL", "Sian"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">SQL 模糊搜尋Like替代方式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-11-27 itemprop="datePublished">November 27, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="本文">本文</h2>
+<p>今天在查找SQL效能Like會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。</p>
+<p>在處理模糊搜尋的條件常常會使用LIKE&rsquo;%關鍵字%&lsquo;這種做法，但SQL的索引在LIKE&rsquo;%關鍵字&rsquo;的情況會失效，更不用說使用LIKE&rsquo;%關鍵字%&lsquo;當資料一大效能真的是非常差。</p>
+<p>這裡介紹一個替代使用語法 <code>CHARINDEX</code>。<br>
+首先我們先看一下<a href="https://docs.microsoft.com/zh-tw/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver15">MSDN介紹</a>用法。</p>
+<p><img src="https://i.imgur.com/0hSmLxA.jpg" alt=""></p>
+<p>這裡可以知道charindex其實是可以用來計算兩個字元間有多少相同的地方。<br>
+現在來測試一下</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT CHARINDEX('a',' apple is apple')
+</code></pre><p>結果：</p>
+<p><img src="https://i.imgur.com/mukN7o5.jpg" alt=""></p>
+<p>或是可以用來判斷相同的字元出現的位子。</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT CHARINDEX('a','appleisapple',5)
+</code></pre><p>結果：
+<img src="https://i.imgur.com/soBsXym.jpg" alt=""></p>
+<p>這邊第三個參數5是從第五個字元開始往後搜尋。<br>
+所以如果改成0結果就會是</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT CHARINDEX('a','appleisapple',0)
+</code></pre><p>結果：
+<img src="https://i.imgur.com/s3f58Ld.jpg" alt=""></p>
+<h3 id="替代like的方式">替代LIKE的方式</h3>
+<p>好了說了這麼多到底要怎麼替代LIKE呢？<br>
+可以使用這種方式替代</p>
+<pre><code class="language-sql=" data-lang="sql=">CHARINDEX('模糊搜尋關鍵字', 要搜尋的資料行) &gt; 0
+</code></pre><p>實際測試，使用NorthWind Product Table</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+  FROM [Northwind].[dbo].[Products]
+  where CHARINDEX('a',ProductName) &gt; 0
+</code></pre><p>使用CHARINDEX結果：
+<img src="https://i.imgur.com/XULNazY.jpg" alt="">
+<img src="https://i.imgur.com/KdllsgG.jpg" alt=""></p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+  FROM [Northwind].[dbo].[Products]
+  where ProductName LIKE '%a%'
+</code></pre><p>使用LIKE結果：
+<img src="https://i.imgur.com/ifZez8O.jpg" alt="">
+<img src="https://i.imgur.com/99RE8FO.jpg" alt=""></p>
+<h3 id="哪種方式比較好">哪種方式比較好？</h3>
+<p>因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下CHARINDEX會比LIKE還要快，但如果有吃到索引LIKE的速度還是優於CHARINDEX的。</p>
+<p>所以如果在非得需要進行LIKE&rsquo;%關鍵字%&lsquo;搜尋資料時，沒辦法吃到索引，就可以使用CHARINDEX來替代LIKE，大家可以自行測試看看。</p>
+<h3 id="參考資料">參考資料</h3>
+<ul>
+<li>1、<a href="https://docs.microsoft.com/zh-tw/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver15">CHARINDEX</a>。</li>
+<li>2、<a href="https://blog.csdn.net/qq736150416/article/details/78225966">SqlServer之like、charindex、patindex區別及性能分析</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/sql/">
+                    #SQL</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/" class="prev" rel="prev" title="Automapper 類別轉換好用工具"><i class="iconfont icon-left"></i>&nbsp;Automapper 類別轉換好用工具</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
