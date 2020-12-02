@@ -6,10 +6,40 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>依賴注入 DI(Dependency Injection)</title>
+      <link>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</link>
+      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</guid>
+      <description>前言 終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。
+本文 講解DI前會有兩個先行觀念需要了解，分別是：
+ 1、DIP(Dependency Inversion Principle) 依賴反轉。 2、IOC(Inversion of Control) 控制反轉。  1、DIP 依賴反轉。 複習一下前面講解到的依賴反轉概念：
+我們了解到DIP最重要的目標是要解除物件與物間之間直接依賴的關係。
+不熟的同學起點這複習。
+2、IOC 控制反轉。 那甚麼又是控制反轉呢？
+控制反轉最重要的概念是：
+把對於某個物件的控制權移轉給第三方容器。 甚麼意思呢？
+回憶一下，還記得前面實作的第一版API嗎？
+我們的Controller在跟Repository要資料的時候是怎麼做的呢？ 看到關鍵字了嗎？
+沒有？那這樣呢？
+就是那個NEW代表著我們的Controller其實是直接依賴Repository的。
+他們之間的關係如下圖。
+所以理想中IOC概念我們的關係圖應該長這樣： 我們的Controller應該把對於Repository的控制權移交給IOC。
+3、DI 依賴注入。 講了這麼多那所以甚麼是DI呢？
+聰明的同學應該發現了上述的DIP、IOC都只是一種精神、概念；而DI就是實現上述兩種精神的方法。
+講解DI的精神最經典的就是：  好萊塢原則 (Hollywood Principle)
+don‘t call us, we‘ll call you
+在好萊塢演員要應徵的時候僅需要把履歷上繳，之後剩下的就只能等待演藝公司通知。
+這就是一種被動接受的方式。  所以呢有了DI的概念我們理想中的關係圖應該要變成： 4、注入的方式。 注入的方式有以下三種：
+ a、建構式注入 (Constructor Injection) b、設值方法注入 (Setter Injection) c、介面注入 (Interface Injection)  以我們先前的Controller進行示範
+public class ProductContorller : ControllerBase { //a、建構式注入 private readonly IProductRepository _productRepository; public ProductContorller( IProductRepository productRepository) { this.</description>
+    </item>
     
     <item>
       <title>Automapper 類別轉換好用工具</title>
