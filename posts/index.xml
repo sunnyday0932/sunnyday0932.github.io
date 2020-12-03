@@ -6,10 +6,25 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dotnet Core WebApi(Phase2) - 0</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</guid>
+      <description>前言 前面介紹了三層式架構、DI，接下來就是要來時做啦。
+這次的實作會自己設計一張Table，並設計API情境，當練習寫SPEC；所以這篇是前置動作準備。
+本文 1、資料庫準備。 首先這次打算做一個使用者管理功能，所以先來建造Table，就直接放在先前的Norwind底下就可以了。
+CREATE TABLE Users ( Idx INT IDENTITY, Account varchar(30) PRIMARY KEY NOT NULL, Password varchar(50) NOT NULL, Phone varchar(20) NOT NULL, Email varchar(50) NOT NULL, CreateDate DATETIME NOT NULL, ModifyDate DATETIME NOT NULL, ModifyUser varchar(30) NOT NULL ); 建立完後重新整理即可在Northwind底下看到新Table。
+新增一筆資料測試。
+Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,[CreateDate] ,[ModifyDate] ,[ModifyUser]) values(&#39;ss123456&#39;,&#39;esetttt&#39;,&#39;0917444&#39;,&#39;ew@gmail.com&#39;,GETDATE(),GETDATE(),&#39;system&#39;) 2、API SPEC。 首先我們會需要的功能有：
+   功能     1、新增使用者。   2、取得所有使用者。   3、取得個別使用者。   4、刪除使用者。   5、使用者更新基本資料。   6、忘記密碼。    功能細項規格：</description>
+    </item>
     
     <item>
       <title>依賴注入 DI(Dependency Injection)</title>
