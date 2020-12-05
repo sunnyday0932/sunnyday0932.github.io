@@ -17,7 +17,7 @@
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</guid>
-      <description>前言 前面介紹了三層式架構、DI，接下來就是要來時做啦。
+      <description>前言 前面介紹了三層式架構、DI，接下來就是要來實做啦。
 這次的實作會自己設計一張Table，並設計API情境，當練習寫SPEC；所以這篇是前置動作準備。
 本文 1、資料庫準備。 首先這次打算做一個使用者管理功能，所以先來建造Table，就直接放在先前的Norwind底下就可以了。
 CREATE TABLE Users ( Idx INT IDENTITY, Account varchar(30) PRIMARY KEY NOT NULL, Password varchar(50) NOT NULL, Phone varchar(20) NOT NULL, Email varchar(50) NOT NULL, CreateDate DATETIME NOT NULL, ModifyDate DATETIME NOT NULL, ModifyUser varchar(30) NOT NULL ); 建立完後重新整理即可在Northwind底下看到新Table。
