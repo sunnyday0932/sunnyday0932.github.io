@@ -5,16 +5,27 @@
     <link>https://sunnyday0932.github.io/posts/</link>
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 06 Dec 2020 12:01:15 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo主題Leaveit錯誤修改</title>
+      <link>https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/</link>
+      <pubDate>Sun, 06 Dec 2020 12:01:15 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/</guid>
+      <description>本文 之前Google Console不斷提醒網頁結構有問題。
+就是這個&amp;hellip;
+之前都直接手動修改，昨天心血來潮決定把源頭找出來到底出在哪裡
+經過同事幫忙，發現在主題資料夾下有一個seo_schema.html檔案。
+詳細路徑在themes\LeaveIt\layouts\partials\seo_schema.html
+裡面長這樣： 一開始裡面就少了一個括號，只要把這邊補上就正常啦。
+{ &amp;quot;@context&amp;quot; : &amp;quot;http://schema.org&amp;quot;, &amp;quot;@type&amp;quot; : &amp;quot;BlogPosting&amp;quot;, &amp;quot;mainEntityOfPage&amp;quot;: { &amp;quot;@type&amp;quot;: &amp;quot;WebPage&amp;quot;, &amp;quot;@id&amp;quot;: &amp;quot;{{ .Site.BaseURL }}&amp;quot; }, &amp;quot;articleSection&amp;quot; : &amp;quot;{{ .Section }}&amp;quot;, &amp;quot;name&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;headline&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;description&amp;quot; : &amp;quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;quot;, &amp;quot;inLanguage&amp;quot; : &amp;quot;{{ .Site.LanguageCode }}&amp;quot;, &amp;quot;author&amp;quot; : &amp;quot;{{ if isset .Params &amp;quot;author&amp;quot; }}{{ .</description>
+    </item>
     
     <item>
       <title>dotnet Core WebApi(Phase2) - 0</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 03 Dec 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</guid>
       <description>前言 前面介紹了三層式架構、DI，接下來就是要來實做啦。
@@ -29,7 +40,7 @@ Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,
     <item>
       <title>依賴注入 DI(Dependency Injection)</title>
       <link>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Dec 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</guid>
       <description>前言 終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。
@@ -59,11 +70,11 @@ public class ProductContorller : ControllerBase { //a、建構式注入 private 
     <item>
       <title>SQL 模糊搜尋Like替代方式</title>
       <link>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</link>
-      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 27 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</guid>
       <description>本文 今天在查找SQL效能Like會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。
-在處理模糊搜尋的條件常常會使用LIKE&amp;rsquo;%關鍵字%&amp;lsquo;這種做法，但SQL的索引在LIKE&amp;rsquo;%關鍵字&amp;rsquo;的情況會失效，更不用說使用LIKE&amp;rsquo;%關鍵字%&amp;lsquo;當資料一大效能真的是非常差。
+在處理模糊搜尋的條件常常會使用LIKE&#39;%關鍵字%&amp;lsquo;這種做法，但SQL的索引在LIKE&amp;rsquo;%關鍵字&amp;rsquo;的情況會失效，更不用說使用LIKE&#39;%關鍵字%&amp;lsquo;當資料一大效能真的是非常差。
 這裡介紹一個替代使用語法 CHARINDEX。
 首先我們先看一下MSDN介紹用法。
 這裡可以知道charindex其實是可以用來計算兩個字元間有多少相同的地方。
@@ -83,7 +94,7 @@ SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductNa
     <item>
       <title>Automapper 類別轉換好用工具</title>
       <link>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 25 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</guid>
       <description>前言 上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的Model，那要怎麼將各個Model轉換呢？
@@ -96,7 +107,7 @@ var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var con
     <item>
       <title>三層式架構</title>
       <link>https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/</link>
-      <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/</guid>
       <description>前言 接下來開始講解三層式架構，這是工作以來第一個學會的架構，也使用了一段時間，就以這段時間自己的體悟來敘述。
@@ -116,7 +127,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作-5 小結分析</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</link>
-      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</guid>
       <description>本文 先前完成了API，接下來聊聊目前這樣做法可能會碰到的問題。
@@ -133,7 +144,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作-4 RESTful API介紹</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</link>
-      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 29 Oct 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</guid>
       <description>本文 REST是Representational State Transfer的縮寫，是一種設計模式，RESTful API就是遵循這種設計模式所創造的API。
@@ -147,7 +158,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-3</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</link>
-      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Oct 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</guid>
       <description>本文 修改 1、修改指定商品 Repository
@@ -157,7 +168,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</link>
-      <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</guid>
       <description>前言 我們接續著上次的介紹，會把CRUD功能補齊。
@@ -172,7 +183,7 @@ public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;
     <item>
       <title>dotnet Core WebApi實作(使用Dapper)-1</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</link>
-      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 22 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</guid>
       <description>前言 終於進入WebApi部分，也是目前工作最常做的一部分。
@@ -185,7 +196,7 @@ public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  //
     <item>
       <title>軟體工程師資歷一年心得分享</title>
       <link>https://sunnyday0932.github.io/2020/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%80%E5%B9%B4%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</link>
-      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 04 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%80%E5%B9%B4%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</guid>
       <description>前言 有鑑於真的被問了不少次，所以就以分享的角度來回覆一些相關問題，盡量不會帶太多個人情緒在內，以供參考；個人資歷勉強算是一年而已，所以漏看了甚麼、或是回覆有些誤解還請各位多擔待。
@@ -212,7 +223,7 @@ public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  //
     <item>
       <title>Object Oriented物件導向設計原則SOLID-6:Dependency Inversion Principle(DIP)依賴反轉原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 依賴反轉原則 Dependency Inversion Principle(DIP) 定義：
@@ -226,7 +237,7 @@ public class 汽車狀況 { public bool 更換電瓶() { return true; } } public
     <item>
       <title>Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 31 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</guid>
       <description>前言 此篇觀念也會延續之前幾篇，可以一同搭配觀看。
@@ -240,7 +251,7 @@ public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public st
     <item>
       <title>Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 25 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</guid>
       <description>前言 這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。
@@ -255,7 +266,7 @@ public interface 車子 { public string 引擎(); public string 後照鏡(); pub
     <item>
       <title>Object Oriented物件導向設計原則SOLID-3:Law of Demeter(LoD) 狄米特法則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</link>
-      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</guid>
       <description>本文 狄米特法則 Law of Demeter(LoD) 又稱為 最少知識原則 Least Knowledge Principle(LKP)
@@ -271,7 +282,7 @@ public class 特斯拉 { public string 更新(string 更新項目) { return $&am
     <item>
       <title>Puppeteer Sharp網頁截圖轉成pdf</title>
       <link>https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/</link>
-      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 04 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf/</guid>
       <description>前言 你聽過隕石開發法嗎？
@@ -286,7 +297,7 @@ static void Main(string[] args) { Test().Wait(); } static async Task Test() { tr
     <item>
       <title>Object Oriented物件導向設計原則SOLID-2:Open-Close Principle(OCP) 開放封閉原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
@@ -304,7 +315,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
     <item>
       <title>網頁截圖轉成pdf檔(純屬好玩)</title>
       <link>https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/</link>
-      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 23 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/</guid>
       <description>前言 昨天接到一個新需求，需要用Url連結到其他網頁將該頁面截圖後，轉換成pdf檔供使用者下載。
@@ -327,7 +338,7 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
     <item>
       <title>Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</link>
-      <pubDate>Tue, 21 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 21 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
       <description>本文 OOP原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
@@ -341,7 +352,7 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
     <item>
       <title>Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/</link>
-      <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 16 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/</guid>
       <description>本文 1、內聚(Cohesion)  把功能所需要的資料與程式都塞在某一個模組(fuction、class、package)中，使得該模組成為一個單獨的可執行個體。  大意上就是把程式跟所需要的資料全部都包在一起。
@@ -356,7 +367,7 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
     <item>
       <title>Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-4_%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5abstract%E8%88%87%E4%BB%8B%E9%9D%A2interface/</link>
-      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-4_%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5abstract%E8%88%87%E4%BB%8B%E9%9D%A2interface/</guid>
       <description>本文 1、抽象類別(Abstract)  1、抽象類別不能實體化。 2、抽象方法是用來給子類別重寫的方法，如果不重寫的話，抽象方法就沒有存在的意義。 3、如果類別中包含抽象方法，那麼整個類別就必須定義為抽象類別，不論是否還包含其他一般方法。  那麼甚麼時候該用到抽象類別呢？
@@ -368,7 +379,7 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
     <item>
       <title>Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</link>
-      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</guid>
       <description>本文 1、封裝(Encapsulation)  大話設計模式：每個物件都包含它進行操作所需要的所有資訊，這個特性稱為封裝，因此物件不必依賴其他物件來完成自己的操作。 封裝的優點 一、良好的封裝能夠減少耦合。 二、類別內部的實現可以自由地修改，並不會影響使用者。 三、類別具有清晰的對外界面。  這麼說封裝好像有點抽象，拿現實生活中的舉例就是：
@@ -382,7 +393,7 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
     <item>
       <title>閱讀心得:Grit恆毅力</title>
       <link>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_grit%E6%81%86%E6%AF%85%E5%8A%9B/</link>
-      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_grit%E6%81%86%E6%AF%85%E5%8A%9B/</guid>
       <description>前言 恆毅力這本書是大約一年前，在無意間晃到作者TED演講影片發現的(有興趣可以到此連結觀看)。 影片內容提到恆毅力，作者的敘述是．．．
@@ -403,7 +414,7 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
     <item>
       <title>Json格式轉換，序列化(Serialize)與反序列化(Deserialize)</title>
       <link>https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/</link>
-      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 30 Jun 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/</guid>
       <description>前言 今天在工作上剛好碰到了要將字串轉換成Json格式傳遞給別人，遇到了有趣的事情特別記錄一下。
@@ -419,7 +430,7 @@ Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會�
     <item>
       <title>Object Oriented物件導向-2:建構式(Constructor)、多載(Overloading)與覆寫(Overriding)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</link>
-      <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 23 Jun 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</guid>
       <description>本文 1、建構式(Constructor)
@@ -431,7 +442,7 @@ Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會�
     <item>
       <title>Object Oriented物件導向-1:類別(Class)與實體(Object)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-1_%E9%A1%9E%E5%88%A5class%E8%88%87%E5%AF%A6%E9%AB%94object/</link>
-      <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 22 Jun 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-1_%E9%A1%9E%E5%88%A5class%E8%88%87%E5%AF%A6%E9%AB%94object/</guid>
       <description>前言 這系列文會整理進目前公司以來所學，目標是釐清自己觀念、脫離只知其一不知其二的狀態，故文章將會不停更新。
@@ -450,7 +461,7 @@ Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會�
     <item>
       <title>閱讀心得:Soft Skills 軟實力｜軟體開發人員的生存手冊</title>
       <link>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_soft-skills-%E8%BB%9F%E5%AF%A6%E5%8A%9B%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E4%BA%BA%E5%93%A1%E7%9A%84%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8A/</link>
-      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_soft-skills-%E8%BB%9F%E5%AF%A6%E5%8A%9B%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E4%BA%BA%E5%93%A1%E7%9A%84%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8A/</guid>
       <description>前言 這是踏入職場後第一本挑選的書，起因是公司教育訓練文件最後前輩列了一系列書單，其中名字最特別、歸類又不是技術類，看了試閱的第一頁就決定買了。
@@ -471,7 +482,7 @@ Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會�
     <item>
       <title>SQL FOR XML合併欄位顯示 SUBSTRING擷取字串</title>
       <link>https://sunnyday0932.github.io/2020/sql-for-xml%E5%90%88%E4%BD%B5%E6%AC%84%E4%BD%8D%E9%A1%AF%E7%A4%BA-substring%E6%93%B7%E5%8F%96%E5%AD%97%E4%B8%B2/</link>
-      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 29 May 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/sql-for-xml%E5%90%88%E4%BD%B5%E6%AC%84%E4%BD%8D%E9%A1%AF%E7%A4%BA-substring%E6%93%B7%E5%8F%96%E5%AD%97%E4%B8%B2/</guid>
       <description>前言 前陣子工作上需求，需要做匯出報表功能，要將不同欄位資料合併再一起後匯出，順手記錄一下。
@@ -495,7 +506,7 @@ https://dotblogs.com.tw/supershowwei/2016/01/26/145353</description>
     <item>
       <title>Hugo加入留言、觀看人數</title>
       <link>https://sunnyday0932.github.io/2020/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 24 May 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8/</guid>
       <description>前言 開始使用Hugo後，對於目前使用的主題Leaveit不盡滿意，於是開始研究修改，改完又想在現在版型加上其他功能EX:觀看人數、留言功能，Google搜尋後有很多種方法，選了自己順眼的就開始動工，內容如下。
@@ -517,7 +528,7 @@ disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot;
     <item>
       <title>Hugo架站教學</title>
       <link>https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/</link>
-      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 10 May 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/</guid>
       <description>前言 受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。
@@ -540,10 +551,10 @@ disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot;
 5、接下來就是修改內容改成自己想要的樣子就算完成了。
  三、預覽方式 1、在資料夾使用CMD輸入hugo server -v。
  這裡要注意的是因為我們將hugo放在C:\，因此要啟用server時要將路徑給上。   2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。
- 四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為&amp;rsquo;你的帳號&amp;rsquo;.github.io。
+ 四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為&amp;rsquo;你的帳號&#39;.github.io。
 2、在hugo存放自己blog的資料夾下建立public，並連結GitHub上自己的Repository。
 git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public3、在資料夾使用CMD輸入C:\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。
-4、將public 內檔案 commit and push 到&amp;rsquo;你的帳號&amp;rsquo;.github.io。
+4、將public 內檔案 commit and push 到&amp;rsquo;你的帳號&#39;.github.io。
 5、回到存放blog的資料夾內，連結git上存放blog的Repository。
 git remote add origin https://github.com/sunnyday0932/hugo_blog.git6、commit and push 到github上。
 7、接下來只要輸入https://&amp;lsquo;你的帳號&amp;rsquo;.github.io/即可預覽網站。

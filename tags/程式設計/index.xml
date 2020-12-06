@@ -5,16 +5,12 @@
     <link>https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</link>
     <description>Recent content in 程式設計 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 04 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 04 Sep 2020 22:19:33 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>軟體工程師資歷一年心得分享</title>
       <link>https://sunnyday0932.github.io/2020/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%80%E5%B9%B4%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</link>
-      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 04 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%80%E5%B9%B4%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</guid>
       <description>前言 有鑑於真的被問了不少次，所以就以分享的角度來回覆一些相關問題，盡量不會帶太多個人情緒在內，以供參考；個人資歷勉強算是一年而已，所以漏看了甚麼、或是回覆有些誤解還請各位多擔待。
@@ -41,7 +37,7 @@
     <item>
       <title>Object Oriented物件導向設計原則SOLID-6:Dependency Inversion Principle(DIP)依賴反轉原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 依賴反轉原則 Dependency Inversion Principle(DIP) 定義：
@@ -55,7 +51,7 @@ public class 汽車狀況 { public bool 更換電瓶() { return true; } } public
     <item>
       <title>Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 31 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</guid>
       <description>前言 此篇觀念也會延續之前幾篇，可以一同搭配觀看。
@@ -69,7 +65,7 @@ public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public st
     <item>
       <title>Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 25 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</guid>
       <description>前言 這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。
@@ -84,7 +80,7 @@ public interface 車子 { public string 引擎(); public string 後照鏡(); pub
     <item>
       <title>Object Oriented物件導向設計原則SOLID-3:Law of Demeter(LoD) 狄米特法則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</link>
-      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</guid>
       <description>本文 狄米特法則 Law of Demeter(LoD) 又稱為 最少知識原則 Least Knowledge Principle(LKP)
@@ -100,7 +96,7 @@ public class 特斯拉 { public string 更新(string 更新項目) { return $&am
     <item>
       <title>Object Oriented物件導向設計原則SOLID-2:Open-Close Principle(OCP) 開放封閉原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
@@ -118,7 +114,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
     <item>
       <title>Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</link>
-      <pubDate>Tue, 21 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 21 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
       <description>本文 OOP原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
@@ -132,7 +128,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
     <item>
       <title>Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/</link>
-      <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 16 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/</guid>
       <description>本文 1、內聚(Cohesion)  把功能所需要的資料與程式都塞在某一個模組(fuction、class、package)中，使得該模組成為一個單獨的可執行個體。  大意上就是把程式跟所需要的資料全部都包在一起。
@@ -147,7 +143,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
     <item>
       <title>Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-4_%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5abstract%E8%88%87%E4%BB%8B%E9%9D%A2interface/</link>
-      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-4_%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5abstract%E8%88%87%E4%BB%8B%E9%9D%A2interface/</guid>
       <description>本文 1、抽象類別(Abstract)  1、抽象類別不能實體化。 2、抽象方法是用來給子類別重寫的方法，如果不重寫的話，抽象方法就沒有存在的意義。 3、如果類別中包含抽象方法，那麼整個類別就必須定義為抽象類別，不論是否還包含其他一般方法。  那麼甚麼時候該用到抽象類別呢？
@@ -159,7 +155,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
     <item>
       <title>Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</link>
-      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</guid>
       <description>本文 1、封裝(Encapsulation)  大話設計模式：每個物件都包含它進行操作所需要的所有資訊，這個特性稱為封裝，因此物件不必依賴其他物件來完成自己的操作。 封裝的優點 一、良好的封裝能夠減少耦合。 二、類別內部的實現可以自由地修改，並不會影響使用者。 三、類別具有清晰的對外界面。  這麼說封裝好像有點抽象，拿現實生活中的舉例就是：
@@ -173,7 +169,7 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
     <item>
       <title>Object Oriented物件導向-2:建構式(Constructor)、多載(Overloading)與覆寫(Overriding)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</link>
-      <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 23 Jun 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</guid>
       <description>本文 1、建構式(Constructor)
@@ -185,7 +181,7 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
     <item>
       <title>Object Oriented物件導向-1:類別(Class)與實體(Object)</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-1_%E9%A1%9E%E5%88%A5class%E8%88%87%E5%AF%A6%E9%AB%94object/</link>
-      <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 22 Jun 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-1_%E9%A1%9E%E5%88%A5class%E8%88%87%E5%AF%A6%E9%AB%94object/</guid>
       <description>前言 這系列文會整理進目前公司以來所學，目標是釐清自己觀念、脫離只知其一不知其二的狀態，故文章將會不停更新。

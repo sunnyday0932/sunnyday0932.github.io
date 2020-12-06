@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">	
   <meta name="keywords" content="Sian">	
   	
-  <link rel="prev" href="https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/" />	
-  <link rel="next" href="https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/" />	
-  <link rel="canonical" href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/" />	
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/" />	
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           dotnet Core WebApi(Phase2) - 0 | Sian	
+           Hugo主題Leaveit錯誤修改 | Sian	
        	
   </title>	
-  <meta name="title" content="dotnet Core WebApi(Phase2) - 0 | Sian">	
+  <meta name="title" content="Hugo主題Leaveit錯誤修改 | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "dotnet Core WebApi(Phase2) - 0",
-    "headline" : "dotnet Core WebApi(Phase2) - 0",
-    "description" : "ddotnet Core WebApi",
+    "name" : "Hugo主題Leaveit錯誤修改",
+    "headline" : "Hugo主題Leaveit錯誤修改",
+    "description" : "Hugo主題Leaveit錯誤修改",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,11 +68,11 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2020",
-    "datePublished": "2020-12-03 22:19:33 +0800 CST",
-    "dateModified" : "2020-12-03 22:19:33 +0800 CST",
-    "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapiphase2-0\/",
-    "wordCount" : "92",
-    "keywords" : ["csharp","Core","dotnet", "Sian"]
+    "datePublished": "2020-12-06 12:01:15 +0800 CST",
+    "dateModified" : "2020-12-06 12:01:15 +0800 CST",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9\/",
+    "wordCount" : "205",
+    "keywords" : ["Hugo","github", "Sian"]
 }
 </script>
 	
@@ -134,11 +134,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">dotnet Core WebApi(Phase2) - 0</h1>
+        <h1 class="post-title" itemprop="name headline">Hugo主題Leaveit錯誤修改</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2020-12-03 itemprop="datePublished">December 3, 2020</time>
+                on <time datetime=2020-12-06 itemprop="datePublished">December 6, 2020</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -170,104 +170,52 @@
           
           
 
-          <h2 id="前言">前言</h2>
-<p>前面介紹了三層式架構、DI，接下來就是要來實做啦。<br>
-這次的實作會自己設計一張Table，並設計API情境，當練習寫SPEC；所以這篇是前置動作準備。</p>
-<h2 id="本文">本文</h2>
-<h3 id="1資料庫準備">1、資料庫準備。</h3>
-<p>首先這次打算做一個使用者管理功能，所以先來建造Table，就直接放在先前的Norwind底下就可以了。</p>
-<pre><code class="language-sql=" data-lang="sql=">CREATE TABLE Users (
-  Idx INT IDENTITY,
-  Account varchar(30) PRIMARY KEY NOT NULL,
-  Password varchar(50) NOT NULL,
-  Phone varchar(20) NOT NULL,
-  Email varchar(50) NOT NULL,
-  CreateDate DATETIME NOT NULL,
-  ModifyDate DATETIME NOT NULL,
-  ModifyUser varchar(30) NOT NULL
-);
-</code></pre><p>建立完後重新整理即可在Northwind底下看到新Table。<br>
-<img src="https://i.imgur.com/LfWMxiB.jpg" alt=""></p>
-<p>新增一筆資料測試。</p>
-<pre><code class="language-sql=" data-lang="sql=">Insert into [Northwind].[dbo].[Users]
-		([Account]
-      ,[Password]
-      ,[Phone]
-      ,[Email]
-      ,[CreateDate]
-      ,[ModifyDate]
-      ,[ModifyUser])
-  values('ss123456','esetttt','0917444','ew@gmail.com',GETDATE(),GETDATE(),'system')
-</code></pre><p><img src="https://i.imgur.com/VsYIf1E.jpg" alt=""></p>
-<h3 id="2api-spec">2、API SPEC。</h3>
-<p>首先我們會需要的功能有：</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1、新增使用者。</td>
-</tr>
-<tr>
-<td>2、取得所有使用者。</td>
-</tr>
-<tr>
-<td>3、取得個別使用者。</td>
-</tr>
-<tr>
-<td>4、刪除使用者。</td>
-</tr>
-<tr>
-<td>5、使用者更新基本資料。</td>
-</tr>
-<tr>
-<td>6、忘記密碼。</td>
-</tr>
-</tbody>
-</table>
-<p>功能細項規格：</p>
-<p>1、新增使用者。</p>
-<ul>
-<li>a、所有欄位皆須輸入。</li>
-<li>b、使用者帳號不可重複。</li>
-<li>c、密碼長度不可低於6碼。</li>
-<li>d、密碼需透過加密處理存入資料庫。</li>
-<li>e、檢查信箱是否合法。</li>
-</ul>
-<p>2、取得所有使用者。</p>
-<ul>
-<li>a、僅可取得帳號、電話、信箱、建立日期、異動日期、異動人員。</li>
-<li>b、個資規定使用者電話後四碼必須以*字號取代。</li>
-</ul>
-<p>3、取得個別使用者。</p>
-<ul>
-<li>a、僅可取得帳號、電話、信箱、建立日期、異動日期、異動人員。</li>
-<li>b、個資規定使用者電話後四碼必須以＊字號取代。</li>
-</ul>
-<p>4、刪除使用者。</p>
-<ul>
-<li>a、驗證註冊時輸入之帳號、信箱、手機，都正確即可刪除。</li>
-</ul>
-<p>5、使用者更新基本資料。</p>
-<ul>
-<li>a、驗證帳號、密碼，都正確即可更新。</li>
-</ul>
-<p>6、忘記密碼。</p>
-<ul>
-<li>a、驗證註冊時輸入之帳號、信箱、手機，都正確即可更新密碼。</li>
-</ul>
-<!-- raw HTML omitted -->
-<p>API需要使用：</p>
-<ul>
-<li>1、三層式架構。</li>
-<li>2、DI注入。</li>
-<li>3、Dapper。</li>
-<li>4、AutoMapper。</li>
-</ul>
-<p>以上就是這次準備練習的規格，有興趣的朋友可以先自行嘗試看看囉。</p>
+          <h2 id="本文">本文</h2>
+<p>之前Google Console不斷提醒網頁結構有問題。<br>
+就是這個&hellip;<br>
+<img src="https://i.imgur.com/hA2sV9h.jpg" alt=""></p>
+<p>之前都直接手動修改，昨天心血來潮決定把源頭找出來到底出在哪裡<br>
+經過同事幫忙，發現在主題資料夾下有一個seo_schema.html檔案。<br>
+詳細路徑在themes\LeaveIt\layouts\partials\seo_schema.html<br>
+裡面長這樣：
+<img src="https://i.imgur.com/xUstLXz.jpg" alt=""></p>
+<p>一開始裡面就少了一個括號，只要把這邊補上就正常啦。</p>
+<pre><code class="language-json=" data-lang="json=">{
+    &quot;@context&quot; : &quot;http://schema.org&quot;,
+    &quot;@type&quot; : &quot;BlogPosting&quot;,
+    &quot;mainEntityOfPage&quot;: {
+         &quot;@type&quot;: &quot;WebPage&quot;,
+         &quot;@id&quot;: &quot;{{ .Site.BaseURL }}&quot;
+    },
+    &quot;articleSection&quot; : &quot;{{ .Section }}&quot;,
+    &quot;name&quot; : &quot;{{ .Title }}&quot;,
+    &quot;headline&quot; : &quot;{{ .Title }}&quot;,
+    &quot;description&quot; : &quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&quot;,
+    &quot;inLanguage&quot; : &quot;{{ .Site.LanguageCode }}&quot;,
+    &quot;author&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
+    &quot;creator&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
+    &quot;publisher&quot;: &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
+    &quot;accountablePerson&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
+    &quot;copyrightHolder&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
+    &quot;copyrightYear&quot; : &quot;{{ .Date.Format &quot;2006&quot; }}&quot;,
+    &quot;datePublished&quot;: &quot;{{ .Date }}&quot;,
+    &quot;dateModified&quot; : &quot;{{ .Date }}&quot;,
+    &quot;url&quot; : &quot;{{ .Permalink }}&quot;,
+    &quot;wordCount&quot; : &quot;{{ .WordCount }}&quot;,
+    &quot;keywords&quot; : [{{ if isset .Params &quot;tags&quot; }}{{ range .Params.tags }}&quot;{{ . }}&quot;,{{ end }}{{ end }} {{with .Site.Title}}&quot;{{ .}}&quot;{{ end }}]
+}
+</code></pre><p>目前還有另一個已知問題，字串中的逸出序列無效。<br>
+<img src="https://i.imgur.com/4xDYJQO.jpg" alt=""></p>
+<p>目前已知情況應該是時間格式不對查找其他相關Hugo發現原版日期格式應該是 <code>yyyy-MM-dd’T’HH:mm:ss.SSSZ</code> ，所以產生出來日期格式應該要是 <code>2020-11-25 22:19:33 +0800 CST</code>
+，但從這邊可以發現＋號變成了\x2b。</p>
+<p>目前試過了幾個方法還找不到正常解法，以下提供偏方給大家參考。<br>
+打開VS CODE，以資料夾方式打開hugo資料夾。<br>
+<img src="https://i.imgur.com/vzwzbMW.jpg" alt=""></p>
+<p>按下Cirl＋Shift＋F，將\x2b全部取代為＋。<br>
+<img src="https://i.imgur.com/BLfNLBe.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>畢竟是開源的主題，作者似乎也沒再更新了。  
+這次找問題發現自己對前端真的是了解甚少，最後還是只能求助同事協助，之後如果有找到更好的解法再來更新這篇；或是直接換主題(？</p>
 
     </div>
 
@@ -282,7 +230,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</span>
+                    <a href=https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/>https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/</span>
             </p>
             
              
@@ -298,14 +246,11 @@
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
-                    #csharp</a></span>
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/hugo/">
+                    #Hugo</a></span>
             
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
-                    #Core</a></span>
-            
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
-                    #dotnet</a></span>
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/github/">
+                    #github</a></span>
             
             </section>
         
@@ -317,10 +262,8 @@
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/" class="prev" rel="prev" title="依賴注入 DI(Dependency Injection)"><i class="iconfont icon-left"></i>&nbsp;依賴注入 DI(Dependency Injection)</a>
+        <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/" class="prev" rel="prev" title="dotnet Core WebApi(Phase2) - 0"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi(Phase2) - 0</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/" class="next" rel="next" title="Hugo主題Leaveit錯誤修改">Hugo主題Leaveit錯誤修改&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

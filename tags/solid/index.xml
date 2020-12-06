@@ -5,16 +5,12 @@
     <link>https://sunnyday0932.github.io/tags/solid/</link>
     <description>Recent content in SOLID on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://sunnyday0932.github.io/tags/solid/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 01 Sep 2020 22:19:33 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/solid/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Object Oriented物件導向設計原則SOLID-6:Dependency Inversion Principle(DIP)依賴反轉原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 依賴反轉原則 Dependency Inversion Principle(DIP) 定義：
@@ -28,7 +24,7 @@ public class 汽車狀況 { public bool 更換電瓶() { return true; } } public
     <item>
       <title>Object Oriented物件導向設計原則SOLID-5:Liskov Substitution Principle(LSP) 里氏替換原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 31 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</guid>
       <description>前言 此篇觀念也會延續之前幾篇，可以一同搭配觀看。
@@ -42,7 +38,7 @@ public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public st
     <item>
       <title>Object Oriented物件導向設計原則SOLID-4:Interface Segregation Principle(ISP) 介面隔離原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 25 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</guid>
       <description>前言 這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。
@@ -57,7 +53,7 @@ public interface 車子 { public string 引擎(); public string 後照鏡(); pub
     <item>
       <title>Object Oriented物件導向設計原則SOLID-3:Law of Demeter(LoD) 狄米特法則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</link>
-      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Aug 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</guid>
       <description>本文 狄米特法則 Law of Demeter(LoD) 又稱為 最少知識原則 Least Knowledge Principle(LKP)
@@ -73,7 +69,7 @@ public class 特斯拉 { public string 更新(string 更新項目) { return $&am
     <item>
       <title>Object Oriented物件導向設計原則SOLID-2:Open-Close Principle(OCP) 開放封閉原則</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</link>
-      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
@@ -91,7 +87,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
     <item>
       <title>Object Oriented物件導向設計原則SOLID-1:Single Responsibility Principle(SRP) 單一職責</title>
       <link>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</link>
-      <pubDate>Tue, 21 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 21 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
       <description>本文 OOP原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？

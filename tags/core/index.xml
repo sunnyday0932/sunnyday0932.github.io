@@ -5,16 +5,12 @@
     <link>https://sunnyday0932.github.io/tags/core/</link>
     <description>Recent content in Core on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 03 Dec 2020 22:19:33 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>dotnet Core WebApi(Phase2) - 0</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 03 Dec 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</guid>
       <description>前言 前面介紹了三層式架構、DI，接下來就是要來實做啦。
@@ -29,7 +25,7 @@ Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,
     <item>
       <title>依賴注入 DI(Dependency Injection)</title>
       <link>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Dec 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</guid>
       <description>前言 終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。
@@ -59,7 +55,7 @@ public class ProductContorller : ControllerBase { //a、建構式注入 private 
     <item>
       <title>Automapper 類別轉換好用工具</title>
       <link>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 25 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</guid>
       <description>前言 上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的Model，那要怎麼將各個Model轉換呢？
@@ -72,7 +68,7 @@ var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var con
     <item>
       <title>三層式架構</title>
       <link>https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/</link>
-      <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/</guid>
       <description>前言 接下來開始講解三層式架構，這是工作以來第一個學會的架構，也使用了一段時間，就以這段時間自己的體悟來敘述。
@@ -92,7 +88,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作-5 小結分析</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</link>
-      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</guid>
       <description>本文 先前完成了API，接下來聊聊目前這樣做法可能會碰到的問題。
@@ -109,7 +105,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作-4 RESTful API介紹</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</link>
-      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 29 Oct 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</guid>
       <description>本文 REST是Representational State Transfer的縮寫，是一種設計模式，RESTful API就是遵循這種設計模式所創造的API。
@@ -123,7 +119,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-3</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</link>
-      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Oct 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</guid>
       <description>本文 修改 1、修改指定商品 Repository
@@ -133,7 +129,7 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
     <item>
       <title>dotnet Core WebApi實作(使用Dapper、Swagger、Postman)-2</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</link>
-      <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</guid>
       <description>前言 我們接續著上次的介紹，會把CRUD功能補齊。
@@ -148,7 +144,7 @@ public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;
     <item>
       <title>dotnet Core WebApi實作(使用Dapper)-1</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</link>
-      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 22 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</guid>
       <description>前言 終於進入WebApi部分，也是目前工作最常做的一部分。

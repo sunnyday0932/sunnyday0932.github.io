@@ -5,16 +5,27 @@
     <link>https://sunnyday0932.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 24 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://sunnyday0932.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 06 Dec 2020 12:01:15 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo主題Leaveit錯誤修改</title>
+      <link>https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/</link>
+      <pubDate>Sun, 06 Dec 2020 12:01:15 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/</guid>
+      <description>本文 之前Google Console不斷提醒網頁結構有問題。
+就是這個&amp;hellip;
+之前都直接手動修改，昨天心血來潮決定把源頭找出來到底出在哪裡
+經過同事幫忙，發現在主題資料夾下有一個seo_schema.html檔案。
+詳細路徑在themes\LeaveIt\layouts\partials\seo_schema.html
+裡面長這樣： 一開始裡面就少了一個括號，只要把這邊補上就正常啦。
+{ &amp;quot;@context&amp;quot; : &amp;quot;http://schema.org&amp;quot;, &amp;quot;@type&amp;quot; : &amp;quot;BlogPosting&amp;quot;, &amp;quot;mainEntityOfPage&amp;quot;: { &amp;quot;@type&amp;quot;: &amp;quot;WebPage&amp;quot;, &amp;quot;@id&amp;quot;: &amp;quot;{{ .Site.BaseURL }}&amp;quot; }, &amp;quot;articleSection&amp;quot; : &amp;quot;{{ .Section }}&amp;quot;, &amp;quot;name&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;headline&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;description&amp;quot; : &amp;quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;quot;, &amp;quot;inLanguage&amp;quot; : &amp;quot;{{ .Site.LanguageCode }}&amp;quot;, &amp;quot;author&amp;quot; : &amp;quot;{{ if isset .Params &amp;quot;author&amp;quot; }}{{ .</description>
+    </item>
     
     <item>
       <title>Hugo加入留言、觀看人數</title>
       <link>https://sunnyday0932.github.io/2020/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 24 May 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8/</guid>
       <description>前言 開始使用Hugo後，對於目前使用的主題Leaveit不盡滿意，於是開始研究修改，改完又想在現在版型加上其他功能EX:觀看人數、留言功能，Google搜尋後有很多種方法，選了自己順眼的就開始動工，內容如下。
@@ -36,7 +47,7 @@ disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot;
     <item>
       <title>Hugo架站教學</title>
       <link>https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/</link>
-      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 10 May 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/</guid>
       <description>前言 受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。
@@ -59,10 +70,10 @@ disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot;
 5、接下來就是修改內容改成自己想要的樣子就算完成了。
  三、預覽方式 1、在資料夾使用CMD輸入hugo server -v。
  這裡要注意的是因為我們將hugo放在C:\，因此要啟用server時要將路徑給上。   2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。
- 四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為&amp;rsquo;你的帳號&amp;rsquo;.github.io。
+ 四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為&amp;rsquo;你的帳號&#39;.github.io。
 2、在hugo存放自己blog的資料夾下建立public，並連結GitHub上自己的Repository。
 git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public3、在資料夾使用CMD輸入C:\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。
-4、將public 內檔案 commit and push 到&amp;rsquo;你的帳號&amp;rsquo;.github.io。
+4、將public 內檔案 commit and push 到&amp;rsquo;你的帳號&#39;.github.io。
 5、回到存放blog的資料夾內，連結git上存放blog的Repository。
 git remote add origin https://github.com/sunnyday0932/hugo_blog.git6、commit and push 到github上。
 7、接下來只要輸入https://&amp;lsquo;你的帳號&amp;rsquo;.github.io/即可預覽網站。

@@ -5,97 +5,12 @@
     <link>https://sunnyday0932.github.io/tags/</link>
     <description>Recent content in Tags on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://sunnyday0932.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Core</title>
-      <link>https://sunnyday0932.github.io/tags/core/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/core/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>csharp</title>
-      <link>https://sunnyday0932.github.io/tags/csharp/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/csharp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dotnet</title>
-      <link>https://sunnyday0932.github.io/tags/dotnet/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/dotnet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SQL</title>
-      <link>https://sunnyday0932.github.io/tags/sql/</link>
-      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>程式設計</title>
-      <link>https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</link>
-      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>職涯</title>
-      <link>https://sunnyday0932.github.io/tags/%E8%81%B7%E6%B6%AF/</link>
-      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/%E8%81%B7%E6%B6%AF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>OOP</title>
-      <link>https://sunnyday0932.github.io/tags/oop/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/oop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SOLID</title>
-      <link>https://sunnyday0932.github.io/tags/solid/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/solid/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Json</title>
-      <link>https://sunnyday0932.github.io/tags/json/</link>
-      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/json/</guid>
-      <description></description>
-    </item>
-    
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 06 Dec 2020 12:01:15 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>github</title>
       <link>https://sunnyday0932.github.io/tags/github/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 06 Dec 2020 12:01:15 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/tags/github/</guid>
       <description></description>
@@ -104,9 +19,90 @@
     <item>
       <title>Hugo</title>
       <link>https://sunnyday0932.github.io/tags/hugo/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 06 Dec 2020 12:01:15 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Core</title>
+      <link>https://sunnyday0932.github.io/tags/core/</link>
+      <pubDate>Thu, 03 Dec 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/core/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>csharp</title>
+      <link>https://sunnyday0932.github.io/tags/csharp/</link>
+      <pubDate>Thu, 03 Dec 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/csharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dotnet</title>
+      <link>https://sunnyday0932.github.io/tags/dotnet/</link>
+      <pubDate>Thu, 03 Dec 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/dotnet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>https://sunnyday0932.github.io/tags/sql/</link>
+      <pubDate>Fri, 27 Nov 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>程式設計</title>
+      <link>https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</link>
+      <pubDate>Fri, 04 Sep 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>職涯</title>
+      <link>https://sunnyday0932.github.io/tags/%E8%81%B7%E6%B6%AF/</link>
+      <pubDate>Fri, 04 Sep 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/%E8%81%B7%E6%B6%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OOP</title>
+      <link>https://sunnyday0932.github.io/tags/oop/</link>
+      <pubDate>Tue, 01 Sep 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/oop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SOLID</title>
+      <link>https://sunnyday0932.github.io/tags/solid/</link>
+      <pubDate>Tue, 01 Sep 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/solid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Json</title>
+      <link>https://sunnyday0932.github.io/tags/json/</link>
+      <pubDate>Tue, 30 Jun 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/json/</guid>
       <description></description>
     </item>
     
