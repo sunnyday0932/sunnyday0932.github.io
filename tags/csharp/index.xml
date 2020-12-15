@@ -6,7 +6,17 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 03 Dec 2020 22:19:33 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Dec 2020 22:19:33 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core WebApi(Phase2) - 1</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/</link>
+      <pubDate>Tue, 15 Dec 2020 22:19:33 +0800</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/</guid>
+      <description>本文 進度欄。 這邊附上同事提供的建一個新專案需要完成的步驟，我加以改成自己習慣的方式。 再次幫推廣他的部落格
+ 1. 建立 Service 2. 建立 Repository 3. 建立 FirstController 要傳接的Model(Parameter、ViewModel) 4. 建立空的 FirstController (First = 主要功能) 5. 建立 FirstService 要傳接的Model(InfoModel、Dto) 6. 建立 FirstService 介面 和一個空的 GetXXX 方法（XXX = 查詢之類的） 7. 建立 FirstRepository 要傳接的Model(Condition、DataModel) 8. 建立 FirstRepository 介面 和一個空的 GetXXX 方法 9. 將 Service 注入到 Controller, 將 Repository 注入到 Service 10. 安裝 AutoMapper 11. 將 AutoMapper 注入到 Controller, Service 12. Controller Get 方法和 Service Get 方法對接 13.</description>
+    </item>
+    
     <item>
       <title>dotnet Core WebApi(Phase2) - 0</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</link>
