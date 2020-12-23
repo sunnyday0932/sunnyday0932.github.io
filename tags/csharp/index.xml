@@ -6,7 +6,36 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 15 Dec 2020 22:19:33 +0800</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Dec 2020 20:00:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core WebApi(Phase2) - 3</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-3/</link>
+      <pubDate>Tue, 22 Dec 2020 20:00:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-3/</guid>
+      <description>本文 繼續接著進行後續步驟。
+刪除使用者 1、建立 空的Controller。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;parameter&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpDelete] public ResultViewModel RemoveAccount([FromBody]AccountParameter parameter) { } 2、建立 Service介面。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info); 3、建立 空的Service實作。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info) { throw new NotImplementedException(); } 4、建立 Repository介面。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool RemoveAccount(string account); 5、實作 Repository。</description>
+    </item>
+    
+    <item>
+      <title>dotnet Core WebApi(Phase2) - 2</title>
+      <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-2/</link>
+      <pubDate>Mon, 21 Dec 2020 21:50:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-2/</guid>
+      <description>本文 先來看進度表。
+ 1、新增使用者。 2、取得所有使用者。 3、取得個別使用者。 4、刪除使用者。 5、使用者更新基本資料。 6、忘記密碼。  既然已經完成取得個別使用者，那我們就從取得帳號列表接續進行。
+取得帳號列表 1、先建立一個空的Controller方法，這邊因為取得List，所以會是一個Array使用IEnumerable來包Model。
+/// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpGet] public IEnumerable&amp;lt;AccountViewModel&amp;gt; GetAccountList() { } 2、建立 取得帳號列表Service介面。
+/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList(); 3、實作 取得帳號列表空的Service。
+/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList() { throw new NotImplementedException(); } 4、建立 取得帳號列表Repository介面。
+/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDataModel&amp;gt; GetAccountList(); 5、實作 取得帳號列表Repository方法。</description>
+    </item>
+    
     <item>
       <title>dotnet Core WebApi(Phase2) - 1</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/</link>
