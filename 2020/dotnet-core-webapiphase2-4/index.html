@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-3/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           dotnet Core WebApi(Phase2) - 4 | Sian	
+       	
+  </title>	
+  <meta name="title" content="dotnet Core WebApi(Phase2) - 4 | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "dotnet Core WebApi(Phase2) - 4",
+    "headline" : "dotnet Core WebApi(Phase2) - 4",
+    "description" : "dotnet Core WebApi",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-12-26 19:40:45  UTC",
+    "dateModified" : "2020-12-26 19:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapiphase2-4\/",
+    "wordCount" : "64",
+    "keywords" : ["csharp","Core","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">dotnet Core WebApi(Phase2) - 4</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2020-12-26 itemprop="datePublished">December 26, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>API第二階段告一段了，此篇整理一下這次所做API會需要注意的事項。</p>
+<h2 id="本文">本文</h2>
+<h3 id="1api驗證欄位">1、API驗證欄位。</h3>
+<p>在這次API會看到在新增、更新、刪除資料時，第一件事都會檢查欄位是否有缺少，這邊也是我剛開始寫API常會遺忘的事情，之前也常被前輩叮嚀；現在完成的API架構屬於前、後端分離，首先我們不能預設前端會是哪些Ex:網頁、Android、Ios等，當然也不能預設串接API那一方一定會依照我們所開的規格輸入。</p>
+<ul>
+<li>簡單來說：『製作API時，你永遠不能相信你的前端。』</li>
+</ul>
+<p>(希望我的前端不會看到這一篇&hellip;)<br>
+回歸重點，這裡不是要大家去前、後端對立(請不要劃錯重點XD)，而是要有預備心態，當今天API路徑被其他人知道、或是前端頁面因為某些原因漏傳了幾個參數，此時可能會造成資料庫形成髒資料、或是被刪除了某些必要資料。</p>
+<ul>
+<li>在製作API時前輩也叮嚀過，自己做出來的API就是死命用不同的方式打掛他測試就對了。</li>
+</ul>
+<p>或是可以跟別人交換測試API，自己測有盲點別人幫你測很快就會找到問題。<br>
+當然最好的方式是使用單元測試、或是有QA團隊幫忙監控產品品質，但畢竟大家所處環境不同，不是哪裡都有QA團隊、或是時間趕根本沒時間給你寫單元測試(我沒有在暗指&hellip;)，在此當作提醒分享給大家。</p>
+<h3 id="2錯誤訊息處理">2、錯誤訊息處理。</h3>
+<p>這次我的作法當欄位有缺少時是直接throw new exception，大家都有不同的做法，個人傾向當欄位缺少這種比較顯而易見的就是直接讓他報錯；那如果是ㄧ些沒被發現的錯誤、或是要記Log這種，我們公司目前的做法是使用Nlog搭配Exceptionless做紀錄。</p>
+<h3 id="3dapper寫法">3、Dapper寫法。</h3>
+<p>這次Repository使用Dapper時會看到有以下這種寫法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">            var parameters = new DynamicParameters();
+            parameters.Add(&quot;@Password&quot;, condition.Password, DbType.String);
+            parameters.Add(&quot;@Account&quot;, condition.Account,DbType.String);
+</code></pre><p>在加入變數給Dapper時預先給了DbType，這是之前在看前輩的Code時發現他會這樣寫，細問之下才知道原來Dapper在未指定欄位的型態時，它會用猜的來決定變數型態，因此會大大影響執行效能，所以後來使用Dapper都會順手加上欄位對應的型態。</p>
+<p>若想詳細知道內容可參考這篇：
+<a href="https://dotblogs.com.tw/supershowwei/2019/08/12/232213"> Dapper 用起來很友善，但是預設的參數型別對執行計劃不太友善。</a></p>
+<h3 id="4正則表達式">4、正則表達式。</h3>
+<p>這次檢查信箱是否合法寫法是&hellip;</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        private bool CheckMailFormate(string email)
+        {
+            try
+            {
+                var mail = new MailAddress(email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+</code></pre><p>這是剛好看到原來.NET有提供這種檢查方式，平常我們的做法可能是會使用正則表達式，它能夠更細部的規範到底可以輸入哪些字元。</p>
+<p>有興趣的可以參考以下：
+<a href="https://docs.microsoft.com/zh-tw/dotnet/standard/base-types/regular-expressions">.NET 規則運算式</a></p>
+<h3 id="總結">總結</h3>
+<p>剛開始寫程式很容易進入一種走火入魔階段，一開始就想要寫得很好，思考半天卻甚麼都沒寫出來、或是參考別人程式後複製貼上，根本也不知道為甚麼別人這樣寫。</p>
+<p>這邊一開始也是受到滿多前輩的幫助，大致上可以概括成：</p>
+<ul>
+<li>先求有，再求好。</li>
+</ul>
+<p>例如：看到別人寫了一串很潮的Lambda語法一行就解決了，但根本也不知道他在做甚麼；其實就可以退回到最原始的寫法，先使用For迴圈或是Foreach，完成後再來思考怎麼改進自己的程式、或是詢問別人為甚麼這樣寫。</p>
+<p>以上分享，希望對大家能有所幫助。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-3/" class="prev" rel="prev" title="dotnet Core WebApi(Phase2) - 3"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi(Phase2) - 3</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
