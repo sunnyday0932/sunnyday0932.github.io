@@ -6,7 +6,23 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 26 Dec 2020 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Jan 2021 05:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>閱讀心得:無瑕的程式碼 專業程式設計師的生存之道</title>
+      <link>https://sunnyday0932.github.io/2021/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_%E7%84%A1%E7%91%95%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC-%E5%B0%88%E6%A5%AD%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/</link>
+      <pubDate>Sat, 09 Jan 2021 05:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_%E7%84%A1%E7%91%95%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC-%E5%B0%88%E6%A5%AD%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/</guid>
+      <description>前言 這本書是同事不久前主動拿給我的，起因是2020年底專案產生的一連串災難，於是他在某天就主動拿了這本書借我；一開始是跳著看，書內有些情境真的跟我們當時身陷處境很像，純粹也就是為了尋求認同，當時對解決方式不以為意，最近幾天有時間重頭開始看起又多體悟了不少。
+本文 這本書是聲量滿高無瑕的程式碼番外篇，大多從業人員都有聽過正本，但這邊我自己是還沒看過正本，經過這次閱讀完，確實是提高我不少興趣去看無瑕的程式碼。
+跟先前分享過的Soft Skills 軟實力大致的方向一樣，都是幫助職涯發展的，但相較於軟實力本書較著重在於探究Programmer在一整個專案中會遇到的情境，頁數不多總共也才216頁(包含序、目錄)，內容也滿貼近實際會遇到的狀況，要推薦的話我會覺得大概工作一段時間來看這本書會感同身受。
+目錄  Chapter 1 專業主義（Professionalism） Chapter 2 說「不」（Saying No） Chapter 3 說「是」（Saying Yes） Chapter 4 寫程式（Coding） Chapter 5 測試驅動開發（Test Driven Development） Chapter 6 練習（Practicing） Chapter 7 驗收測試（Acceptance Testing） Chapter 8 測試策略（Testing Strategies） Chapter 9 時間管理（Time Management） Chapter 10 預估（Estimation） Chapter 11 壓力（Pressure） Chapter 12 協作（Collaboration） Chapter 13 團隊與專案（Teams and Projects） Chapter 14 輔導、學徒期與工藝典範（Mentoring, Apprenticeship, and Craftsmanship）  從目錄來看應該很明顯，全部著重在一個專案每個階段會需要面對的事情。
+雖然章節切了14章，但其實內文都有相關聯。
+例如：第一章的專業主義有提到Programmer要對自己的專案有責任感，這包含了時程、品質等，這邊就會連結到第二章、第三章在時程壓力下要如何協調專案確切內容有哪些是應該據理力爭拒絕的、而有哪些是該為自己負起責任的，連結到第九章、第十章時間管理、預估。
+重點整理 以下就列出自己看完後覺得特別有感觸的地方。
+ Chapter 2 說「不」（Saying No）  這章節重點在於：「時程壓力下，對於自己絕對不可能完成的工作，應該勇敢說不。」</description>
+    </item>
+    
     <item>
       <title>dotnet Core WebApi(Phase2) - 4</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/</link>
