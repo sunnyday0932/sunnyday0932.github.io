@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_%E7%84%A1%E7%91%95%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC-%E5%B0%88%E6%A5%AD%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           dotnet Core WebApi - EFCore | Sian	
+       	
+  </title>	
+  <meta name="title" content="dotnet Core WebApi - EFCore | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "dotnet Core WebApi - EFCore",
+    "headline" : "dotnet Core WebApi - EFCore",
+    "description" : "dotnet Core WebApi - EFCore",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-01-22 19:40:45 \u002b0000 UTC",
+    "dateModified" : "2021-01-22 19:40:45 \u002b0000 UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-efcore\/",
+    "wordCount" : "497",
+    "keywords" : ["csharp","Core","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">dotnet Core WebApi - EFCore</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-01-22 itemprop="datePublished">January 22, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>前面我們已經練習過使用Dapper，剛好前輩提起EF也是需要練習熟悉的，就做了一個EF Core的版本，基本上內容與先前<a href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/">API 第二版本</a>大致相同，這邊就只會列出差異部分與碰到的問題。</p>
+<h2 id="本文">本文</h2>
+<h3 id="一首先我們會需要先安裝三個ef需要使用到的nuget-套件">一、首先我們會需要先安裝三個EF需要使用到的Nuget 套件。</h3>
+<p>分別是：</p>
+<table>
+<thead>
+<tr>
+<th>Nuget名稱</th>
+<th>安裝地點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EntityFrameworkCore</td>
+<td>Repository</td>
+</tr>
+<tr>
+<td>EntityFrameworkCore.SqlServer</td>
+<td>Repository</td>
+</tr>
+<tr>
+<td>EntityFrameworkCore.Tools</td>
+<td>Controller</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://i.imgur.com/W16C61U.jpg" alt="">
+<img src="https://i.imgur.com/K4DIyTw.jpg" alt="">
+<img src="https://i.imgur.com/XC7QsCe.jpg" alt=""></p>
+<h3 id="二接下來需要輸入指令建立efcore所使用的dbcontext">二、接下來需要輸入指令建立EFCore所使用的DBContext。</h3>
+<p>完整指令如下：</p>
+<pre><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext 'Data Source=localhost;Database=Northwind;Trusted_Connection=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force
+</code></pre><p>這邊提一下指令由前到後介紹：</p>
+<pre><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext 'Data Source=localhost;Database=Northwind;Trusted_Connection=True;' Microsoft.EntityFrameworkCore.SqlServer
+</code></pre><p>這段是我們與DB連線字串，然後指定所使用的DB是SQL server。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">-OutputDir Conditions
+</code></pre><p>這邊是生成檔案放置地點。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">-Tables Users
+</code></pre><p>指定的Table名稱。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">-context AccountContext
+</code></pre><p>這是會生成的DBContext檔案名稱，這邊我取名為AccountContext。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">-Project WebApiEFCoreRepository -force
+</code></pre><p>指定生成在Repository專案，最後的force其實第一次生成DBContext時不用加，但後續要再加Table的時候可能會用上；至於我為甚麼留著呢？那當然是因為 <del>懶惰</del></p>
+<h3 id="三建完之後步驟">三、建完之後步驟。</h3>
+<p>指令建出來的context檔案其中有一段DB連線的地方這邊可以先拿掉，之後我們會使用注入的方式拿取連線字串。</p>
+<p><img src="https://i.imgur.com/c3wy5hF.jpg" alt=""></p>
+<p>接下來建立IAccountRepository</p>
+<pre><code class="language-csharp=" data-lang="csharp=">public interface IAccountRepository
+    {
+        /// &lt;summary&gt;
+        /// 取得單筆帳號資訊
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public AccountCondition GetAccount(string account);
+
+        /// &lt;summary&gt;
+        /// 取得帳號列表
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public IEnumerable&lt;AccountCondition&gt; GetAccountList();
+
+        /// &lt;summary&gt;
+        /// 新增帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool AddAccount(AccountCondition condition);
+
+        /// &lt;summary&gt;
+        /// 刪除帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool RemoveAccount(string account);
+
+        /// &lt;summary&gt;
+        /// 更新帳號資訊
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool UpdateAccount(AccountCondition condition);
+
+        /// &lt;summary&gt;
+        /// 忘記密碼
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool ForgetPassword(AccountCondition condition);
+    }
+</code></pre><p>實作AccountRepository</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class AccountRepository : IAccountRepository
+    {
+        private readonly AccountContext _accountContext;
+
+        /// &lt;summary&gt;
+        /// 
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;accountContext&quot;&gt;&lt;/param&gt;
+        public AccountRepository(AccountContext accountContext)
+        {
+            this._accountContext = accountContext;
+        }
+
+        /// &lt;summary&gt;
+        /// 新增帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool AddAccount(AccountCondition condition)
+        {
+            this._accountContext.Add(condition);
+            var result = this._accountContext.SaveChanges();
+
+            return result &gt; 0;
+        }
+
+        /// &lt;summary&gt;
+        /// 忘記密碼
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool ForgetPassword(AccountCondition condition)
+        {
+            var data = this._accountContext.Users.Find(condition.Account);
+            this._accountContext.Entry(data).CurrentValues.SetValues(condition);
+            var result = this._accountContext.SaveChanges();
+
+            return result &gt; 0;
+        }
+
+        /// &lt;summary&gt;
+        /// 取得單筆帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public AccountCondition GetAccount(string account)
+        {
+            var result = this._accountContext.Users.Find(account);
+
+            return result;
+        }
+
+        /// &lt;summary&gt;
+        /// 取得帳號列表
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public IEnumerable&lt;AccountCondition&gt; GetAccountList()
+        {
+            var result = this._accountContext.Users.ToList();
+
+            return result;
+        }
+
+        /// &lt;summary&gt;
+        /// 刪除帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool RemoveAccount(string account)
+        {
+            var data = this._accountContext.Users.Find(account);
+            this._accountContext.Remove(data);
+            var result = this._accountContext.SaveChanges();
+
+            return result &gt; 0;
+        }
+
+        /// &lt;summary&gt;
+        /// 更新帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool UpdateAccount(AccountCondition condition)
+        {
+            var data = this._accountContext.Users.Find(condition.Account);
+            data.Email = condition.Email;
+            data.ModifyDate = condition.ModifyDate;
+            data.ModifyUser = condition.ModifyUser;
+            data.Phone = condition.Phone;
+
+            var result = this._accountContext.SaveChanges();
+            return result &gt; 0;
+        }
+    }
+</code></pre><p>接下來Service部分列出稍微不同的地方</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 更新帳號資訊
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;info&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public ResultDto UpdateAccount(AccountInfoModel info)
+        {
+            if (string.IsNullOrWhiteSpace(info.Account) ||
+                string.IsNullOrWhiteSpace(info.Password))
+            {
+                throw new Exception(&quot;請檢查輸入欄位，缺一不可！&quot;);
+            }
+
+            var accountInfo = this._accountRepository.GetAccount(info.Account);
+
+            if (string.IsNullOrWhiteSpace(accountInfo.Password))
+            {
+                return new ResultDto
+                {
+                    Success = false,
+                    Message = &quot;請確認要更新的帳號！&quot;
+                };
+            }
+
+            var convertPassword = ConverPassword(info.Account, info.Password);
+
+            if (accountInfo.Password != convertPassword)
+            {
+                return new ResultDto
+                {
+                    Success = false,
+                    Message = &quot;請確認輸入的密碼是否與註冊時一致！&quot;
+                };
+            }
+
+            var condition = this._mapper.Map&lt;AccountCondition&gt;(info);
+            condition.ModifyDate = DateTime.Now;
+            condition.ModifyUser = info.Account;
+
+            var result = this._accountRepository.UpdateAccount(condition);
+
+            return new ResultDto
+            {
+                Success = result,
+                Message = result ? &quot;更新成功&quot; : &quot;更新失敗&quot;
+            };
+        }
+</code></pre><p>StartUp部分</p>
+<pre><code class="language-csharp=" data-lang="csharp=">public void ConfigureServices(IServiceCollection services)
+        {
+            //注入註冊
+            services.AddScoped&lt;IAccountService, AccountService&gt;();
+            services.AddScoped&lt;IAccountRepository, AccountRepository&gt;();
+            services.AddDbContext&lt;AccountContext&gt;(
+                options =&gt; options.UseSqlServer(@&quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&quot;));
+
+            //AutoMapper
+            services.AddAutoMapper(
+                typeof(ControllerProfile),
+                typeof(ServiceProfile));
+
+            services.AddControllers();
+        }
+</code></pre><p>後續步驟有問題的請參考前幾篇。</p>
+<p>同樣的我也會把程式碼同步放上<a href="https://github.com/sunnyday0932/WebApiEFCore">GitHub歡迎取用參考</a>。</p>
+<h3 id="四重點筆記">四、重點筆記。</h3>
+<p>1、部分更新問題。<br>
+這邊遇到第一個大問題是原來EF並不希望你使用部分更新，因此一開始直接使用update馬上就報錯給我看，查了好幾種解決方式，我現在也不確定目前使用這種做法是否合適，若有更好的方法歡迎交流。<br>
+附上查詢到的StackOverflow連結：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/12871892/entity-framework-validation-with-partial-updates">Entity Framework validation with partial updates</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<p>2、Repository Pattern Unit of Work。<br>
+這邊也看到EF使用Repository時會在隔離一個Unit of Work出來，研究了大約一周，還沒多大感受(其實是我偏愛Dapper)，所以這邊就使用最簡單作法。<br>
+如有興趣研究的也附上連結：</p>
+<ul>
+<li><a href="https://raychiutw.github.io/2019/%E9%9A%A8%E6%89%8B-Design-Pattern-4-Repository-%E6%A8%A1%E5%BC%8F-Repository-Pattern/">大師部落格 Design Pattern (4) - Repository 模式</a>。</li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10157700">加上 Unit of Work，抽離Entity Framework的依賴就完美了</a></li>
+</ul>
+<h2 id="後記">後記</h2>
+<p>這次自己從頭到尾做一次EF版本的API有一種自斷手腳的感覺，平常用Dapper簡單CRUD不用三兩下就完成的，換了一個工具還真的體會轉換陣痛期。</p>
+<p>但EF是.NET自家指定用法身為微軟全家餐的受害者(？，免不了還是要學習一下，在此提供弱弱筆記供大家參考。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/>https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_%E7%84%A1%E7%91%95%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC-%E5%B0%88%E6%A5%AD%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/" class="prev" rel="prev" title="閱讀心得:無瑕的程式碼 專業程式設計師的生存之道"><i class="iconfont icon-left"></i>&nbsp;閱讀心得:無瑕的程式碼 專業程式設計師的生存之道</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

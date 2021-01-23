@@ -6,7 +6,27 @@
     <description>Recent content in Core on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 26 Dec 2020 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jan 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core WebApi - EFCore</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/</link>
+      <pubDate>Fri, 22 Jan 2021 19:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/</guid>
+      <description>前言 前面我們已經練習過使用Dapper，剛好前輩提起EF也是需要練習熟悉的，就做了一個EF Core的版本，基本上內容與先前API 第二版本大致相同，這邊就只會列出差異部分與碰到的問題。
+本文 一、首先我們會需要先安裝三個EF需要使用到的Nuget 套件。 分別是：
+   Nuget名稱 安裝地點     EntityFrameworkCore Repository   EntityFrameworkCore.SqlServer Repository   EntityFrameworkCore.Tools Controller    二、接下來需要輸入指令建立EFCore所使用的DBContext。 完整指令如下：
+Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force 這邊提一下指令由前到後介紹：
+Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與DB連線字串，然後指定所使用的DB是SQL server。
+-OutputDir Conditions 這邊是生成檔案放置地點。
+-Tables Users 指定的Table名稱。
+-context AccountContext 這是會生成的DBContext檔案名稱，這邊我取名為AccountContext。
+-Project WebApiEFCoreRepository -force 指定生成在Repository專案，最後的force其實第一次生成DBContext時不用加，但後續要再加Table的時候可能會用上；至於我為甚麼留著呢？那當然是因為 懶惰
+三、建完之後步驟。 指令建出來的context檔案其中有一段DB連線的地方這邊可以先拿掉，之後我們會使用注入的方式拿取連線字串。
+接下來建立IAccountRepository
+public interface IAccountRepository { /// &amp;lt;summary&amp;gt; /// 取得單筆帳號資訊 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public AccountCondition GetAccount(string account); /// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountCondition&amp;gt; GetAccountList(); /// &amp;lt;summary&amp;gt; /// 新增帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool AddAccount(AccountCondition condition); /// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool RemoveAccount(string account); /// &amp;lt;summary&amp;gt; /// 更新帳號資訊 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool UpdateAccount(AccountCondition condition); /// &amp;lt;summary&amp;gt; /// 忘記密碼 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool ForgetPassword(AccountCondition condition); } 實作AccountRepository</description>
+    </item>
+    
     <item>
       <title>dotnet Core WebApi(Phase2) - 4</title>
       <link>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/</link>
