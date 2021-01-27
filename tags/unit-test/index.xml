@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unit-Test on Sian</title>
+    <link>https://sunnyday0932.github.io/tags/unit-test/</link>
+    <description>Recent content in Unit-Test on Sian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 27 Jan 2021 13:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 1</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/</link>
+      <pubDate>Wed, 27 Jan 2021 13:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/</guid>
+      <description>前言 API講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以單元測試的藝術以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。
+內文 單元測試 單元測試的藝術對一個優秀單元測試的定義為：
+一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元， 之後對這個單元的單一最終結果的某些假設或期望進行驗證。 單元測試幾乎都是使用單元測試框架進行撰寫的。 撰寫單元測試很容易，執行起來快速。 單元測試可靠、易讀、並且很容易維護。 只要產品程式碼不發生變化，單元測試的執行結果是穩定一致的。 該具備的特性有：
+   特性 定義     1、Fast(快速) 每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。   2、Independent(獨立性) 不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。   3、Repeatable(可重複) 單元測試要是可以重複執行的，其結果不會因為執行次數而改變。   4、Self-Validating(可反應驗證結果) 單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。   5、Timely(及時) 單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。    單元測試的3A原則:    原則     1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。   2、Act : 呼叫目標物件的方法。   3、Assert : 驗證是否符合預期。    整合測試 接下來介紹一下可能會混淆的整合測試。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           單元測試 - 1 | Sian	
+       	
+  </title>	
+  <meta name="title" content="單元測試 - 1 | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "單元測試 - 1",
+    "headline" : "單元測試 - 1",
+    "description" : "單元測試 - 1",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-01-27 13:40:45  UTC",
+    "dateModified" : "2021-01-27 13:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1\/",
+    "wordCount" : "172",
+    "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">單元測試 - 1</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-01-27 itemprop="datePublished">January 27, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>API講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以<a href="https://www.books.com.tw/products/0010765689">單元測試的藝術</a>以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。</p>
+<h2 id="內文">內文</h2>
+<h3 id="單元測試">單元測試</h3>
+<p>單元測試的藝術對一個優秀單元測試的定義為：</p>
+<pre><code class="language-css=" data-lang="css=">一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元，
+之後對這個單元的單一最終結果的某些假設或期望進行驗證。
+單元測試幾乎都是使用單元測試框架進行撰寫的。
+撰寫單元測試很容易，執行起來快速。
+單元測試可靠、易讀、並且很容易維護。
+只要產品程式碼不發生變化，單元測試的執行結果是穩定一致的。
+</code></pre><p>該具備的特性有：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1、Fast(快速)</td>
+<td>每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。</td>
+</tr>
+<tr>
+<td>2、Independent(獨立性)</td>
+<td>不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。</td>
+</tr>
+<tr>
+<td>3、Repeatable(可重複)</td>
+<td>單元測試要是可以重複執行的，其結果不會因為執行次數而改變。</td>
+</tr>
+<tr>
+<td>4、Self-Validating(可反應驗證結果)</td>
+<td>單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。</td>
+</tr>
+<tr>
+<td>5、Timely(及時)</td>
+<td>單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>單元測試的3A原則: </p>
+<table>
+<thead>
+<tr>
+<th>原則</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。</td>
+</tr>
+<tr>
+<td>2、Act : 呼叫目標物件的方法。</td>
+</tr>
+<tr>
+<td>3、Assert : 驗證是否符合預期。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="整合測試">整合測試</h3>
+<p>接下來介紹一下可能會混淆的整合測試。</p>
+<p>單元測試的藝術對整合測試的定義為：</p>
+<pre><code class="language-css=" data-lang="css=">整合測試是對一個工作單元進行測試，而這個測試對被測試的單元並沒有完全的控制，
+而是使用該單元一個或多個真實依賴的相依物件，例如時間、網路、資料庫等。
+</code></pre><p>所以如果一個測試情境直接進入DB撈取資料，那他其實是整合測試，並不屬於單元測試。</p>
+<h3 id="測試驅動開發teat-driven-developmenttdd">測試驅動開發(Teat-Driven Development,TDD)</h3>
+<p>TDD是一種開發的模式，詳細的步驟可以參考下圖1-4(取自單元測試的藝術)。<br>
+<img src="https://i.imgur.com/m2PNA4L.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>可以看到TDD的步驟如下：</p>
+<ol>
+<li>撰寫一個測試Function。</li>
+<li>執行測試，因為還沒實作要測試的目標，所以得到失敗結果。</li>
+<li>撰寫剛好能通過測試的產品程式碼。</li>
+<li>執行測試，成功撰寫下一個測試；失敗修正程式。</li>
+</ol>
+<p>以此步驟作為循環不斷的重複。</p>
+<p>優點是可以快速透過下面這些情境驗證程式：</p>
+<ul>
+<li>如果一個測試失敗了，沒有經過修改她就再次運行成功了，你其實是在測試這個單元測試本身。</li>
+<li>如果你預期一個測試應該失敗，但她卻成功了，那這個測試本身可能有缺陷，或是測試的物件不對。</li>
+<li>如果一個測試之前失敗了，擬調整之後預期他會執行成功，但她依然是失敗的，那這個測試可能有缺陷，或是測試的期望結果不正確。</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>碎碎念分隔線：<br>
+當然這是理想情況下能夠進行TDD，而真實自身經驗情況都是圖1-3，除了重要商業邏輯程式外，真的是有空再回來補測試，而且有的時候商業邏輯被翻盤了，舊的測試邏輯也不符合情境，一切都是浮雲。</p>
+<h3 id="練習">練習</h3>
+<p>接下來我們就來練習寫一個簡單的單元測試。</p>
+<p>首先建立一個單元測試的專案：<br>
+<img src="https://i.imgur.com/bxyVJW0.jpg" alt=""></p>
+<p>建完後我們會看到一個空的單元測試方法。<br>
+<img src="https://i.imgur.com/ziOiLYT.jpg" alt=""></p>
+<p>接下來我們需要建立一個簡單的程式範例讓我們做單元測試的練習。<br>
+我們建立一個類別庫專案。<br>
+<img src="https://i.imgur.com/52oR2fk.jpg" alt=""></p>
+<p>現在我們的專案結構如下：<br>
+<img src="https://i.imgur.com/DQdAmhI.jpg" alt=""></p>
+<p>接著在Class1.cs內建立一個簡單的Function</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public string GetUserName(string name)
+        { 
+            if(string.IsNullOrWhiteSpace(name))
+            {
+                return &quot;請輸入使用者姓名!&quot;;
+            }
+
+            return $&quot;Hi!{name}，歡迎使用&quot;;
+        }
+</code></pre><p>接著對Class點選右鍵建立單元測試。<br>
+<img src="https://i.imgur.com/Bh9mQxX.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/oyYmvUC.jpg" alt=""></p>
+<p>開始寫我們的第一個單元測試</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        //可以直接使用中文清楚表示要測試的規則
+        public void 當UserName為空值_應回傳提示訊息() 
+        {
+            //arrange
+            var target = new Class1();
+            var name = string.Empty;
+
+            //act
+            var actual = target.GetUserName(name);
+
+            //assert
+            Assert.AreEqual(&quot;請輸入使用者姓名!&quot;,actual);
+        }
+</code></pre><p>提醒：要記得打開測試總管!!<br>
+<img src="https://i.imgur.com/aaMoV6W.jpg" alt=""></p>
+<p>點選執行。<br>
+<img src="https://i.imgur.com/xapiPMx.jpg" alt=""></p>
+<p>確認結果。<br>
+<img src="https://i.imgur.com/f0oTfl1.jpg" alt=""></p>
+<p>接下來補完我們的測試程式。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        public void 當UserName為Null_應回傳提示訊息()
+        {
+            //arrange
+            var target = new Class1();
+            string name = null;
+
+            //act
+            var actual = target.GetUserName(name);
+
+            //assert
+            Assert.AreEqual(&quot;請輸入使用者姓名!&quot;, actual);
+        }
+
+        [TestMethod()]
+        public void 當UserName不為空_應回傳正確訊息()
+        {
+            //arrange
+            var target = new Class1();
+            string name = &quot;Sian&quot;;
+
+            //act
+            var actual = target.GetUserName(name);
+
+            //assert
+            Assert.AreEqual($&quot;Hi!{ name}，歡迎使用&quot;, actual);
+        }
+</code></pre><p>確認結果。<br>
+<img src="https://i.imgur.com/HugoH2e.jpg" alt=""></p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://dotblogs.com.tw/hatelove/2012/11/07/learning-tdd-in-30-days-day3-how-to-write-a-unit-test-code">(30天快速上手TDD)(Day 3)動手寫 Unit Test</a>。</li>
+<li>2、<a href="https://ithelp.ithome.com.tw/articles/10192184">Day2. 什麼叫單元測試? 再給我說一次，什麼叫他__的單元測試?</a></li>
+<li>3、<a href="https://tw.alphacamp.co/blog/tdd-test-driven-development-example">TDD 開發五步驟，帶你實戰 Test-Driven Development 範例</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/unit-test/">
+                    #Unit-Test</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/" class="prev" rel="prev" title="dotnet Core WebApi - EFCore"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi - EFCore</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
