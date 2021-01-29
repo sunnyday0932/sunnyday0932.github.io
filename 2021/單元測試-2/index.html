@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">	
   <meta name="keywords" content="Sian">	
   	
-  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/" />	
-  <link rel="next" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/" />	
-  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/" />	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/" />	
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           單元測試 - 1 | Sian	
+           單元測試 - 2 | Sian	
        	
   </title>	
-  <meta name="title" content="單元測試 - 1 | Sian">	
+  <meta name="title" content="單元測試 - 2 | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "單元測試 - 1",
-    "headline" : "單元測試 - 1",
-    "description" : "單元測試 - 1",
+    "name" : "單元測試 - 2",
+    "headline" : "單元測試 - 2",
+    "description" : "單元測試 - 2",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,10 +68,10 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2021",
-    "datePublished": "2021-01-27 13:40:45  UTC",
-    "dateModified" : "2021-01-27 13:40:45  UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1\/",
-    "wordCount" : "172",
+    "datePublished": "2021-01-29 13:40:45  UTC",
+    "dateModified" : "2021-01-29 13:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2\/",
+    "wordCount" : "221",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -134,11 +134,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">單元測試 - 1</h1>
+        <h1 class="post-title" itemprop="name headline">單元測試 - 2</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2021-01-27 itemprop="datePublished">January 27, 2021</time>
+                on <time datetime=2021-01-29 itemprop="datePublished">January 29, 2021</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -170,123 +170,78 @@
           
           
 
-          <h2 id="前言">前言</h2>
-<p>API講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以<a href="https://www.books.com.tw/products/0010765689">單元測試的藝術</a>以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。</p>
-<h2 id="內文">內文</h2>
-<h3 id="單元測試">單元測試</h3>
-<p>單元測試的藝術對一個優秀單元測試的定義為：</p>
-<pre><code class="language-css=" data-lang="css=">一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元，
-之後對這個單元的單一最終結果的某些假設或期望進行驗證。
-單元測試幾乎都是使用單元測試框架進行撰寫的。
-撰寫單元測試很容易，執行起來快速。
-單元測試可靠、易讀、並且很容易維護。
-只要產品程式碼不發生變化，單元測試的執行結果是穩定一致的。
-</code></pre><p>該具備的特性有：</p>
+          <h2 id="本文">本文</h2>
+<h3 id="單元測試方法命名">單元測試方法命名</h3>
+<p>單元測試的藝術內簡單得規範出一種一目了然的命名方式。</p>
+<p>分為三個部分：</p>
 <table>
 <thead>
 <tr>
-<th>特性</th>
-<th>定義</th>
+<th>名稱</th>
+<th>解釋</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1、Fast(快速)</td>
-<td>每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。</td>
+<td>1、UunitOfWorkName(單元測試名稱)</td>
+<td>被測試的方法、一組方法或一組類別。</td>
 </tr>
 <tr>
-<td>2、Independent(獨立性)</td>
-<td>不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。</td>
+<td>2、Scenario(情境)</td>
+<td>要測試的情境，例如:傳入NULL、傳入字串。</td>
 </tr>
 <tr>
-<td>3、Repeatable(可重複)</td>
-<td>單元測試要是可以重複執行的，其結果不會因為執行次數而改變。</td>
-</tr>
-<tr>
-<td>4、Self-Validating(可反應驗證結果)</td>
-<td>單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。</td>
-</tr>
-<tr>
-<td>5、Timely(及時)</td>
-<td>單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。</td>
+<td>3、ExpectedBehavior(預期的行為)</td>
+<td>在測試情境指定的條件下，我們對測試結果的預期</td>
 </tr>
 </tbody>
 </table>
+<p>單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。</p>
 <!-- raw HTML omitted -->
-<p>單元測試的3A原則: </p>
+<p>接著我們就可以修改一下前次練習的測試方法名稱。<br>
+<img src="https://i.imgur.com/gM7juN6.jpg" alt=""></p>
+<h3 id="常用到的attribute">常用到的Attribute</h3>
+<p>接下來介紹幾個比較常用到的Attribute：</p>
 <table>
 <thead>
 <tr>
-<th>原則</th>
+<th>Attribute</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。</td>
+<td>[TestMethod]</td>
+<td>表示這是一個測試方法。</td>
 </tr>
 <tr>
-<td>2、Act : 呼叫目標物件的方法。</td>
+<td>[OwnerName]</td>
+<td>此測試方法的建立者。</td>
 </tr>
 <tr>
-<td>3、Assert : 驗證是否符合預期。</td>
+<td>[TestCategory]</td>
+<td>測試的方法在哪個類別。</td>
+</tr>
+<tr>
+<td>[TestProperty]</td>
+<td>表示該方法是在哪個類別內的測試方法。</td>
+</tr>
+<tr>
+<td>[Ignore]</td>
+<td>驗證測試時會忽略該方法。</td>
+</tr>
+<tr>
+<td>[ExpectedException]</td>
+<td>驗證例外處理的Attribute。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="整合測試">整合測試</h3>
-<p>接下來介紹一下可能會混淆的整合測試。</p>
-<p>單元測試的藝術對整合測試的定義為：</p>
-<pre><code class="language-css=" data-lang="css=">整合測試是對一個工作單元進行測試，而這個測試對被測試的單元並沒有完全的控制，
-而是使用該單元一個或多個真實依賴的相依物件，例如時間、網路、資料庫等。
-</code></pre><p>所以如果一個測試情境直接進入DB撈取資料，那他其實是整合測試，並不屬於單元測試。</p>
-<h3 id="測試驅動開發teat-driven-developmenttdd">測試驅動開發(Teat-Driven Development,TDD)</h3>
-<p>TDD是一種開發的模式，詳細的步驟可以參考下圖1-4(取自單元測試的藝術)。<br>
-<img src="https://i.imgur.com/m2PNA4L.jpg" alt=""></p>
-<!-- raw HTML omitted -->
-<p>可以看到TDD的步驟如下：</p>
-<ol>
-<li>撰寫一個測試Function。</li>
-<li>執行測試，因為還沒實作要測試的目標，所以得到失敗結果。</li>
-<li>撰寫剛好能通過測試的產品程式碼。</li>
-<li>執行測試，成功撰寫下一個測試；失敗修正程式。</li>
-</ol>
-<p>以此步驟作為循環不斷的重複。</p>
-<p>優點是可以快速透過下面這些情境驗證程式：</p>
-<ul>
-<li>如果一個測試失敗了，沒有經過修改她就再次運行成功了，你其實是在測試這個單元測試本身。</li>
-<li>如果你預期一個測試應該失敗，但她卻成功了，那這個測試本身可能有缺陷，或是測試的物件不對。</li>
-<li>如果一個測試之前失敗了，擬調整之後預期他會執行成功，但她依然是失敗的，那這個測試可能有缺陷，或是測試的期望結果不正確。</li>
-</ul>
-<!-- raw HTML omitted -->
-<p>碎碎念分隔線：<br>
-當然這是理想情況下能夠進行TDD，而真實自身經驗情況都是圖1-3，除了重要商業邏輯程式外，真的是有空再回來補測試，而且有的時候商業邏輯被翻盤了，舊的測試邏輯也不符合情境，一切都是浮雲。</p>
-<h3 id="練習">練習</h3>
-<p>接下來我們就來練習寫一個簡單的單元測試。</p>
-<p>首先建立一個單元測試的專案：<br>
-<img src="https://i.imgur.com/bxyVJW0.jpg" alt=""></p>
-<p>建完後我們會看到一個空的單元測試方法。<br>
-<img src="https://i.imgur.com/ziOiLYT.jpg" alt=""></p>
-<p>接下來我們需要建立一個簡單的程式範例讓我們做單元測試的練習。<br>
-我們建立一個類別庫專案。<br>
-<img src="https://i.imgur.com/52oR2fk.jpg" alt=""></p>
-<p>現在我們的專案結構如下：<br>
-<img src="https://i.imgur.com/DQdAmhI.jpg" alt=""></p>
-<p>接著在Class1.cs內建立一個簡單的Function</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public string GetUserName(string name)
-        { 
-            if(string.IsNullOrWhiteSpace(name))
-            {
-                return &quot;請輸入使用者姓名!&quot;;
-            }
-
-            return $&quot;Hi!{name}，歡迎使用&quot;;
-        }
-</code></pre><p>接著對Class點選右鍵建立單元測試。<br>
-<img src="https://i.imgur.com/Bh9mQxX.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/oyYmvUC.jpg" alt=""></p>
-<p>開始寫我們的第一個單元測試</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        //可以直接使用中文清楚表示要測試的規則
-        public void 當UserName為空值_應回傳提示訊息() 
+<p>用法示範：</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]                          //這是一個測試方法
+        [Owner(&quot;Sian&quot;)]                         //此方法由Sian建立
+        [TestCategory(&quot;Class1&quot;)]                //此測試方法在Class1這個類別
+        [TestProperty(&quot;Class1&quot;, &quot;GetUserName&quot;)] //此測試方法是Class1類別內的GetUserName
+        public void GetUserName_輸入的UserName為空值_應回傳提示訊息()
         {
             //arrange
             var target = new Class1();
@@ -298,47 +253,113 @@
             //assert
             Assert.AreEqual(&quot;請輸入使用者姓名!&quot;,actual);
         }
-</code></pre><p>提醒：要記得打開測試總管!!<br>
-<img src="https://i.imgur.com/aaMoV6W.jpg" alt=""></p>
-<p>點選執行。<br>
-<img src="https://i.imgur.com/xapiPMx.jpg" alt=""></p>
-<p>確認結果。<br>
-<img src="https://i.imgur.com/f0oTfl1.jpg" alt=""></p>
-<p>接下來補完我們的測試程式。</p>
+</code></pre><p><img src="https://i.imgur.com/qQiX9Wl.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/K8Y46ku.jpg" alt=""></p>
+<p>建立一個會有例外狀況的Class。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public string ExceptionTest(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException();
+            }
+
+            return $&quot;Hi!{name}，歡迎使用&quot;;
+        }
+</code></pre><p>撰寫測試方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        public void 當UserName為Null_應回傳提示訊息()
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;Class1&quot;)]
+        [TestProperty(&quot;Class1&quot;, &quot;ExceptionTest&quot;)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ExceptionTest_輸入的UserName為空_應回傳ArgumentNullException()
+        {
+            //arrange
+            var target = new Class1();
+            string name = string.Empty;
+
+            //act
+            var actual = target.ExceptionTest(name);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/qRly0sQ.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<h3 id="常見assert類別">常見Assert類別</h3>
+<p><img src="https://i.imgur.com/Q9euIUB.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p><img src="https://i.imgur.com/5zKgAKJ.jpg" alt=""></p>
+<p>因為要介紹更好用的工具，這邊就跳過不介紹啦~~~~~<br>
+有興趣的同學請上MSDN參考。<br>
+<a href="https://docs.microsoft.com/zh-tw/dotnet/api/microsoft.visualstudio.testtools.unittesting.assert?view=mstest-net-1.3.2">Assert連結</a><br>
+<a href="https://docs.microsoft.com/zh-tw/dotnet/api/microsoft.visualstudio.testtools.unittesting.stringassert.contains?view=mstest-net-1.3.2">StringAssert連結</a></p>
+<h3 id="fluentassertions">FluentAssertions</h3>
+<p>到了此篇的重頭戲，FluentAssertions是一個超級好用的工具，可以讓程式碼變得更口語化，當然也可以讓測試方法可讀性更佳。</p>
+<p><a href="https://fluentassertions.com/introduction">首先附上官方連結</a>。</p>
+<p><img src="https://i.imgur.com/reAdt2n.jpg" alt=""></p>
+<p>看到介紹心不心動啊，寫測試就是可以這麼簡單。</p>
+<!-- raw HTML omitted -->
+<p>接下來就實際用在我們的測試練習。</p>
+<p>先到Nuget安裝FluentAssertions至我們的測試專案。<br>
+<img src="https://i.imgur.com/U0whCkr.jpg" alt=""></p>
+<p>接著就可以動手改寫我們的測試程式。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;Class1&quot;)]
+        [TestProperty(&quot;Class1&quot;, &quot;GetUserName&quot;)]
+        public void GetUserName_輸入的UserName為空值_應回傳提示訊息()
+        {
+            //arrange
+            var target = new Class1();
+            var name = string.Empty;
+            var expected = &quot;請輸入使用者姓名!&quot;;
+
+            //act
+            var actual = target.GetUserName(name);
+
+            //assert
+            actual.Should().Be(expected);
+        }
+
+        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;Class1&quot;)]
+        [TestProperty(&quot;Class1&quot;, &quot;GetUserName&quot;)]
+        public void GetUserName_輸入的UserName為Null_應回傳提示訊息()
         {
             //arrange
             var target = new Class1();
             string name = null;
+            var expected = &quot;請輸入使用者姓名!&quot;;
 
             //act
             var actual = target.GetUserName(name);
 
             //assert
-            Assert.AreEqual(&quot;請輸入使用者姓名!&quot;, actual);
+            actual.Should().Be(expected);
         }
 
         [TestMethod()]
-        public void 當UserName不為空_應回傳正確訊息()
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;Class1&quot;)]
+        [TestProperty(&quot;Class1&quot;, &quot;GetUserName&quot;)]
+        public void GetUserName_輸入的UserName不為空_應回傳正確訊息()
         {
             //arrange
             var target = new Class1();
             string name = &quot;Sian&quot;;
+            var expected = $&quot;Hi!{name}，歡迎使用&quot;;
 
             //act
             var actual = target.GetUserName(name);
 
             //assert
-            Assert.AreEqual($&quot;Hi!{ name}，歡迎使用&quot;, actual);
+            actual.Should().Be(expected);
         }
-</code></pre><p>確認結果。<br>
-<img src="https://i.imgur.com/HugoH2e.jpg" alt=""></p>
+</code></pre><p>查看測試結果。<br>
+<img src="https://i.imgur.com/T3tTMcb.jpg" alt=""></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
-<li>1、<a href="https://dotblogs.com.tw/hatelove/2012/11/07/learning-tdd-in-30-days-day3-how-to-write-a-unit-test-code">(30天快速上手TDD)(Day 3)動手寫 Unit Test</a>。</li>
-<li>2、<a href="https://ithelp.ithome.com.tw/articles/10192184">Day2. 什麼叫單元測試? 再給我說一次，什麼叫他__的單元測試?</a></li>
-<li>3、<a href="https://tw.alphacamp.co/blog/tdd-test-driven-development-example">TDD 開發五步驟，帶你實戰 Test-Driven Development 範例</a></li>
+<li>1、<a href="https://dotblogs.com.tw/hatelove/2013/05/22/unit-test-assert-exception-with-expectedexception-attribute">Assert Exception with MSTest</a>。</li>
+<li>2、<a href="https://marcus116.blogspot.com/2019/04/unittest-fluent-assertions.html">使用 Fluent Assertions 增加單元測試碼可讀性</a>。</li>
 </ul>
 
     </div>
@@ -354,7 +375,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/</span>
             </p>
             
              
@@ -389,10 +410,8 @@
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/" class="prev" rel="prev" title="dotnet Core WebApi - EFCore"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi - EFCore</a>
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/" class="prev" rel="prev" title="單元測試 - 1"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 1</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/" class="next" rel="next" title="單元測試 - 2">單元測試 - 2&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
