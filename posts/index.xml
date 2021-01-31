@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 29 Jan 2021 13:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Jan 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 3</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/</link>
+      <pubDate>Sat, 30 Jan 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/</guid>
+      <description>本文 比對兩個物件方式 首先我們建立一個測試用Model。
+public class TestModel { public string UserName { get; set; } public string Account { get; set; } } 建立一個測試方法驗證兩個物件是否相同。
+[TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; secondObject.Should().Be(fistObject); } 結果 有點奇怪，我們換回內建的方法測試看看。
+[TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; //secondObject.</description>
+    </item>
+    
     <item>
       <title>單元測試 - 2</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/</link>
