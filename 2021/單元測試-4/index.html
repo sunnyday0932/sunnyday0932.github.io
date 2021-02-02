@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           單元測試 - 4 | Sian	
+       	
+  </title>	
+  <meta name="title" content="單元測試 - 4 | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "單元測試 - 4",
+    "headline" : "單元測試 - 4",
+    "description" : "單元測試 - 4",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-02-01 18:40:45  UTC",
+    "dateModified" : "2021-02-01 18:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4\/",
+    "wordCount" : "338",
+    "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">單元測試 - 4</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-02-01 itemprop="datePublished">February 1, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="本文">本文</h2>
+<h3 id="初始化與清除使用的attribute">初始化與清除使用的Attribute</h3>
+<p>上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個Attribute可以派上用場。</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>用法</th>
+<th>頻率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TestInitialize()</td>
+<td>在執行每一項測試之前，會先執行TestInitialize的程式碼。</td>
+<td>每執行一個TestMethod會觸發一次。</td>
+</tr>
+<tr>
+<td>TestCleanup()</td>
+<td>在執行每一項測試之後，會執行TestCleanup的程式碼。</td>
+<td>每執行一個TestMethod會觸發一次。</td>
+</tr>
+<tr>
+<td>ClassInitialize()</td>
+<td>在執行該類別的測試之前，會先執行ClassInitialize的程式碼。</td>
+<td>以測試類別為單位執行一次。</td>
+</tr>
+<tr>
+<td>ClassCleanup()</td>
+<td>在執行該類別的測試之後，會執行ClassCleanup的程式碼。</td>
+<td>以測試類別為單位執行一次。</td>
+</tr>
+<tr>
+<td>AssemblyInitialize()</td>
+<td>在執行所有類別的測試之前，會先執行AssemblyInitialize的程式碼。</td>
+<td>以測試專案為單位執行一次。</td>
+</tr>
+<tr>
+<td>AssemblyCleanup()</td>
+<td>在執行該類別的測試之後，會執行AssemblyCleanup的程式碼。</td>
+<td>以測試專案為單位執行一次。</td>
+</tr>
+</tbody>
+</table>
+<p>練習:<br>
+如題為了避免我們改變時間進而影響到其他單元測試，我們在執行每一個測試前後都會初始化一次時間。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestInitialize]
+        public void TestInitial()
+        {
+            SystemTime.SetToday = () =&gt; DateTime.Today;
+        }
+
+        [TestCleanup]
+        public void TestClean()
+        {
+            SystemTime.SetToday = () =&gt; DateTime.Today;
+        }
+</code></pre><p><img src="https://i.imgur.com/B5zEhbN.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<h3 id="隔離物件">隔離物件</h3>
+<p>測試的時候我們會需要隔離要測試的物件，如果直接相依物件會產生一些不必要的問題導致測試結果可能有誤。</p>
+<table>
+<thead>
+<tr>
+<th>相依物件</th>
+<th>可能發生情況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資料庫</td>
+<td>直接相依資料庫的情況下，如果有異動到資料，每一次都要還原資料。</td>
+</tr>
+<tr>
+<td>外部服務</td>
+<td>會因為網路連線狀態而直接影響測試執行的速度。</td>
+</tr>
+<tr>
+<td>特殊商業邏輯</td>
+<td>無法進行測試，例如:亂數資料、加密資料等。</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>所以為了解決這個問題，就可以很簡單的利用先前教學所使用的依賴注入方式，透過介面注入抽換實體，那麼我在在測試的地方，就能直接做一個測試用的實體出來進行模擬測試。</p>
+<p>我們先建立一個示範用的Common專案裡面只放了一個共用的Model。</p>
+<p><img src="https://i.imgur.com/tEE7pxQ.jpg" alt=""></p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class AccountModel
+    {
+        public string UserName { get; set; }
+
+        public string Account { get; set; }
+    }
+</code></pre><p>接下來建立一個示範用的Repository專案，並建立一個假的取資料方法。</p>
+<p><img src="https://i.imgur.com/oVFQXSa.jpg" alt=""></p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface IRepository
+    {
+        /// &lt;summary&gt;
+        /// 取得帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        AccountModel GetAccount(string account);
+    }
+    
+    public class Repository : IRepository
+    {
+        public AccountModel GetAccount(string account)
+        {
+            //這邊應該是要跟DB拿取資料，現在先假裝一下請大家不要這麼認真。
+            var data = new List&lt;AccountModel&gt;
+            {
+                new AccountModel
+                {
+                    Account = &quot;123&quot;,
+                    UserName = &quot;Sian&quot;
+                },
+                new AccountModel
+                {
+                    Account = &quot;456&quot;,
+                    UserName = &quot;Tom&quot;
+                }
+            };
+
+            return data.Where(x =&gt; x.Account == account).FirstOrDefault();
+        }
+    }
+</code></pre><p>接著建立Service的介面並實作，透過注入的方式跟Repository拿取資料。
+<img src="https://i.imgur.com/sD1z5b3.jpg" alt=""></p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface IService
+    {
+        /// &lt;summary&gt;
+        /// 取得帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        AccountModel GetAccount(string account);
+    }
+    
+    public class Service : IService
+    {
+        private readonly IRepository _repository;
+
+        public Service(
+            IRepository repository)
+        {
+            this._repository = repository;
+        }
+
+        public AccountModel GetAccount(string account)
+        {
+            if (string.IsNullOrWhiteSpace(account))
+            {
+                throw new ArgumentNullException();
+            }
+
+            var data = this._repository.GetAccount(account);
+
+            return data;
+        }
+    }
+</code></pre><p>接下來我們在測試的地方，就能使用繼承介面的方式抽換實體物件，製造一個假的物件供我們測試使用。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    [TestClass()]
+    public class ServiceTests
+    {
+        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;ServiceTest&quot;)]
+        [TestProperty(&quot;ServiceTests&quot;, &quot;GetAccount&quot;)]
+        public void GetAccount_傳入存在的帳號_應回傳正確帳號資訊()
+        {
+            //arrange
+            var account = &quot;123&quot;;
+            var expect = new AccountModel
+            {
+                Account = &quot;123&quot;,
+                UserName = &quot;test&quot;
+            };
+            var service = new AccountService();
+
+            //act
+            var actual = service.GetAccount(account);
+            //assert
+
+            actual.Should().BeEquivalentTo(expect);
+        }
+    }
+
+    public class AccountService : IService
+    {
+        public AccountModel GetAccount(string account)
+        {
+            return new AccountModel
+            {
+                Account = &quot;123&quot;,
+                UserName = &quot;test&quot;
+            };
+        }
+    }
+</code></pre><p>結果
+<img src="https://i.imgur.com/kqDxjPu.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>現在我們知道了如何隔離物件，但如果每一次都要我們手動寫一個假實體來進行驗證程式是否正確，那還沒寫完測試已經累死了，這時候就要介紹一個好用的工具了。</p>
+<h3 id="nsubstitute">NSubstitute</h3>
+<p>首先我們先到Nuget安裝套件。<br>
+<img src="https://i.imgur.com/g2DTGYH.jpg" alt=""></p>
+<p>接著修改我們的單元測試使用NSubstitute建立假實體。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;ServiceTest&quot;)]
+        [TestProperty(&quot;ServiceTests&quot;, &quot;GetAccount&quot;)]
+        public void GetAccount_傳入存在的帳號_應回傳正確帳號資訊()
+        {
+            //arrange
+            var account = &quot;123&quot;;
+            var expect = new AccountModel
+            {
+                Account = &quot;123&quot;,
+                UserName = &quot;test&quot;
+            };
+            var service = Substitute.For&lt;IService&gt;();
+            service.GetAccount(account).Returns(expect);
+
+            //act
+            var actual = service.GetAccount(account);
+
+            //assert
+            actual.Should().NotBeNull();
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:
+<img src="https://i.imgur.com/reKxbiS.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>後續我們會在實作API中使用更多種方式，若對NSubstitute操作想先認識更多的可參考:</p>
+<ul>
+<li><a href="https://nsubstitute.github.io/">NSubstitute官方文件</a>。</li>
+<li><a href="https://www.cnblogs.com/gaochundong/archive/2013/05/21/nsubstitute_get_started.html">NSubstitute完全手册</a>。</li>
+</ul>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://blog.yowko.com/unit-test-initialize-cleanup/">Unit Test 中各個 Test Framework 的初始化及清除用法</a>。</li>
+<li>2、<a href="https://dotblogs.com.tw/codefarm/2017/06/13/214005">TDD 筆記(0)</a>。</li>
+<li>3、<a href="https://nsubstitute.github.io/">NSubstitute官方文件</a>。</li>
+<li>4、<a href="https://www.cnblogs.com/gaochundong/archive/2013/05/21/nsubstitute_get_started.html">NSubstitute完全手册</a>。</li>
+<li>5、<a href="https://dotblogs.com.tw/initials/Tags?qq=NSubstitute">聊聊程式-NSub說明書</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/unit-test/">
+                    #Unit-Test</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/" class="prev" rel="prev" title="單元測試 - 3"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 3</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

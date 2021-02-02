@@ -6,7 +6,19 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 30 Jan 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Feb 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 4</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</link>
+      <pubDate>Mon, 01 Feb 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</guid>
+      <description>本文 初始化與清除使用的Attribute 上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個Attribute可以派上用場。
+   Attribute 用法 頻率     TestInitialize() 在執行每一項測試之前，會先執行TestInitialize的程式碼。 每執行一個TestMethod會觸發一次。   TestCleanup() 在執行每一項測試之後，會執行TestCleanup的程式碼。 每執行一個TestMethod會觸發一次。   ClassInitialize() 在執行該類別的測試之前，會先執行ClassInitialize的程式碼。 以測試類別為單位執行一次。   ClassCleanup() 在執行該類別的測試之後，會執行ClassCleanup的程式碼。 以測試類別為單位執行一次。   AssemblyInitialize() 在執行所有類別的測試之前，會先執行AssemblyInitialize的程式碼。 以測試專案為單位執行一次。   AssemblyCleanup() 在執行該類別的測試之後，會執行AssemblyCleanup的程式碼。 以測試專案為單位執行一次。    練習:
+如題為了避免我們改變時間進而影響到其他單元測試，我們在執行每一個測試前後都會初始化一次時間。
+[TestInitialize] public void TestInitial() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } [TestCleanup] public void TestClean() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } 隔離物件 測試的時候我們會需要隔離要測試的物件，如果直接相依物件會產生一些不必要的問題導致測試結果可能有誤。</description>
+    </item>
+    
     <item>
       <title>單元測試 - 3</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/</link>
