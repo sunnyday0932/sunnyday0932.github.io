@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           單元測試 - 5(NSubstitute介紹) | Sian	
+       	
+  </title>	
+  <meta name="title" content="單元測試 - 5(NSubstitute介紹) | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "單元測試 - 5(NSubstitute介紹)",
+    "headline" : "單元測試 - 5(NSubstitute介紹)",
+    "description" : "單元測試 - 5(NSubstitute介紹)",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-02-05 20:40:45  UTC",
+    "dateModified" : "2021-02-05 20:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9\/",
+    "wordCount" : "415",
+    "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">單元測試 - 5(NSubstitute介紹)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-02-05 itemprop="datePublished">February 5, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>上一篇提到了NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(<del>絕對不是我原本想要跳過不介紹被抓到才補上這篇</del>)。</p>
+<h2 id="本文">本文</h2>
+<h3 id="驗證互動是否符合預期方法">驗證互動是否符合預期方法</h3>
+<p>接續上次使用範例。</p>
+<p>情境:<br>
+我們現在有一個Check的方法，若出現錯誤則會紀錄一筆log。</p>
+<p>首先先把log方法準備好。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface ILog
+    {
+        void SaveLog(string message);
+    }
+    
+    public class Log : ILog
+    {
+        public void SaveLog(string message)
+        {
+            Console.WriteLine(message);
+        }
+    }
+</code></pre><p>Check 方法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        bool Check(string text);
+        
+        public bool Check(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                this._log.SaveLog(&quot;text 不可為空!&quot;);
+                return false;
+            }
+            return true;
+        }
+</code></pre><p>接下來我們先調整一下我們的測試方法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        private ILog _log;
+        private IRepository _repository;
+
+        [TestInitialize]
+        public void TestInitialize()
+        { 
+            this._log = Substitute.For&lt;ILog&gt;();
+            this._repository = Substitute.For&lt;IRepository&gt;();
+        }
+        private Service GetSystemUnderTest()
+        {
+            var sut = new Service(this._repository,this._log);
+
+            return sut;
+        }
+</code></pre><p>那我們測試方法就可以這麼做。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;ServiceTest&quot;)]
+        [TestProperty(&quot;ServiceTests&quot;, &quot;Check&quot;)]
+        public void log_是否有被呼叫()
+        {
+            //arrange
+            var sut = GetSystemUnderTest();
+
+            //act
+            var actual = sut.Check(string.Empty);
+
+            //assert
+            actual.Should().BeFalse();
+            this._log.Received(1);
+        }
+</code></pre><p><img src="https://i.imgur.com/Tv0Eq5I.jpg" alt=""></p>
+<p>也可以驗證log記下的內容。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;ServiceTest&quot;)]
+        [TestProperty(&quot;ServiceTests&quot;, &quot;Check&quot;)]
+        public void log_有被呼叫_應記下正確內容()
+        {
+            //arrange
+            var sut = GetSystemUnderTest();
+            //act
+            var actual = sut.Check(string.Empty);
+
+            //assert
+            actual.Should().BeFalse();
+            this._log.Received(1).SaveLog(Arg.Is&lt;string&gt;(x =&gt; x.Contains(&quot;text&quot;)));
+        }
+</code></pre><p><img src="https://i.imgur.com/Wk5OYUP.jpg" alt=""></p>
+<p>若不應該收到訊息可以這麼測試。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;ServiceTest&quot;)]
+        [TestProperty(&quot;ServiceTests&quot;, &quot;Check&quot;)]
+        public void log_沒有被呼叫()
+        {
+            //arrange
+            var sut = GetSystemUnderTest();
+            //act
+            var actual = sut.Check(&quot;123&quot;);
+
+            //assert
+            actual.Should().BeTrue();
+            this._log.DidNotReceive();
+        }
+</code></pre><p><img src="https://i.imgur.com/oExnpv4.jpg" alt=""></p>
+<h3 id="傳遞的參數">傳遞的參數</h3>
+<p>情境:<br>
+Insert一筆資料到DB若成功回傳True，失敗則False。</p>
+<p>Repository準備</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 新增帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;model&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        bool InsertAccount(AccountModel model);
+        
+        public bool InsertAccount(AccountModel model)
+        {
+            //你知道的這只是一種假設沒有要真的實作。
+            return true;
+        }
+</code></pre><p>Service的部分。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;model&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        bool InserAccount(AccountModel model);
+        
+        public bool InserAccount(AccountModel model)
+        {
+            var result = this._repository.InsertAccount(model);
+
+            return result;
+        }
+</code></pre><p>那我們的測試就可以這麼做。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;ServiceTest&quot;)]
+        [TestProperty(&quot;ServiceTests&quot;, &quot;InsertAccount&quot;)]
+        public void InsertAccount_成功_應回傳true()
+        {
+            //arrange
+            var data = new AccountModel
+            {
+                Account = &quot;123&quot;,
+                UserName = &quot;Sian&quot;
+            };
+            var sut = GetSystemUnderTest();
+            this._repository.InsertAccount(Arg.Any&lt;AccountModel&gt;()).Returns(true);
+
+            //act
+            var actual = sut.InserAccount(data);
+
+            //assert
+            actual.Should().BeTrue();
+        }
+</code></pre><p><img src="https://i.imgur.com/wJ3fChm.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>可以看到傳遞給Repository的參數我們直接使用了Args.Any<!-- raw HTML omitted -->這個方式，並直接指定了回傳的內容，<del>又被你學到一個偷懶的方式</del> 。</p>
+<!-- raw HTML omitted -->
+<p>同樣的驗證False也可以這麼做。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;ServiceTest&quot;)]
+        [TestProperty(&quot;ServiceTests&quot;, &quot;InsertAccount&quot;)]
+        public void InsertAccount_失敗_應回傳False()
+        {
+            //arrange
+            var data = new AccountModel
+            {
+                Account = &quot;123&quot;,
+                UserName = &quot;Sian&quot;
+            };
+            var sut = GetSystemUnderTest();
+            this._repository.InsertAccount(Arg.Any&lt;AccountModel&gt;()).Returns(false);
+
+            //actr
+            var actual = sut.InserAccount(data);
+
+            //assert
+            actual.Should().BeFalse();
+        }
+</code></pre><p><img src="https://i.imgur.com/WluuPKp.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<h3 id="驗證執行的次數">驗證執行的次數</h3>
+<p>情境:<br>
+有一個內有迴圈的方法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface ICommand
+    {
+        void Execute();
+    }
+    
+    public class Command
+    {
+        ICommand _command;
+        int _numberOfTimesToCall;
+        public Command(
+            ICommand command, 
+            int numberOfTimesToCall)
+        {
+            this._command = command;
+            this._numberOfTimesToCall = numberOfTimesToCall;
+        }
+
+        public void Execute()
+        {
+            for (var i = 0; i &lt; this._numberOfTimesToCall; i++)
+            {
+                this._command.Execute();
+            }
+        }
+    }
+</code></pre><p>那我們測試就可以這麼做</p>
+<pre><code class="language-csharp=" data-lang="csharp=">         private ICommand _command;
+        private int _numberOfTimesToCall;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            this._command = Substitute.For&lt;ICommand&gt;();
+        }
+        private Command GetSystemUnderTest()
+        {
+            var sut = new Command(this._command, this._numberOfTimesToCall);
+
+            return sut;
+        }
+
+        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;CommandTests&quot;)]
+        [TestProperty(&quot;CommandTests&quot;, &quot;Execute&quot;)]
+        public void Execute_被執行了3次_正確計算應為3()
+        {
+            //arrange
+            this._numberOfTimesToCall = 3;
+            var sut = GetSystemUnderTest();
+
+            //Act
+            sut.Execute();
+
+            //Assert
+            this._command.Received(3).Execute();
+        }
+
+</code></pre><p><img src="https://i.imgur.com/IHIn24f.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>不為3則會報錯。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;CommandTests&quot;)]
+        [TestProperty(&quot;CommandTests&quot;, &quot;Execute&quot;)]
+        public void Execute_被執行了3次_正確計算應為3()
+        {
+            //arrange
+            this._numberOfTimesToCall = 4;
+            var sut = GetSystemUnderTest();
+
+            //Act
+            sut.Execute();
+
+            //Assert
+            this._command.Received(3).Execute();
+        }
+</code></pre><p><img src="https://i.imgur.com/lyUmCiN.jpg" alt=""></p>
+<h3 id="範例連結">範例連結</h3>
+<p>這幾次示範範例連結會放在以下網址，歡迎取用。</p>
+<ul>
+<li><a href="https://github.com/sunnyday0932/UnitTestProject">UnitTestProject</a></li>
+</ul>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://nsubstitute.github.io/help.html">NSubstitute官方文件</a>。</li>
+<li>2、<a href="https://www.cnblogs.com/gaochundong/archive/2013/05/21/nsubstitute_get_started.html">NSubstitute完全手册</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/unit-test/">
+                    #Unit-Test</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/" class="prev" rel="prev" title="單元測試 - 4"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 4</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

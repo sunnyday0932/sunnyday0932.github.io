@@ -6,7 +6,23 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 01 Feb 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Feb 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 5(NSubstitute介紹)</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Fri, 05 Feb 2021 20:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</guid>
+      <description>前言 上一篇提到了NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(絕對不是我原本想要跳過不介紹被抓到才補上這篇)。
+本文 驗證互動是否符合預期方法 接續上次使用範例。
+情境:
+我們現在有一個Check的方法，若出現錯誤則會紀錄一筆log。
+首先先把log方法準備好。
+public interface ILog { void SaveLog(string message); } public class Log : ILog { public void SaveLog(string message) { Console.WriteLine(message); } } Check 方法。
+bool Check(string text); public bool Check(string text) { if (string.IsNullOrWhiteSpace(text)) { this._log.SaveLog(&amp;quot;text 不可為空!&amp;quot;); return false; } return true; } 接下來我們先調整一下我們的測試方法。
+private ILog _log; private IRepository _repository; [TestInitialize] public void TestInitialize() { this._log = Substitute.For&amp;lt;ILog&amp;gt;(); this._repository = Substitute.For&amp;lt;IRepository&amp;gt;(); } private Service GetSystemUnderTest() { var sut = new Service(this.</description>
+    </item>
+    
     <item>
       <title>單元測試 - 4</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</link>
