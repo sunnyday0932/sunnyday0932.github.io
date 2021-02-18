@@ -6,7 +6,24 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 05 Feb 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Feb 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 6</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/</link>
+      <pubDate>Wed, 17 Feb 2021 20:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/</guid>
+      <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的API當作練習，補上該有的測試。
+本文 首先我們建立一個放置測試專案的資料夾。
+接著建立完測試專案。
+現在我們要先進行的是Service層的測試，為了跟Repository做切分可以再用資料夾的方式方便我們歸納。
+因為是要對Service層進行測試，記得要加入專案參考。
+接下來先把基礎測試專案需要用到的東西準備好。
+[TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在AutoMapper的地方，我們並不需要製作一個假的AutoMapper，所以可以直接使用原本方法。
+接下來就可以開始寫單元測試了。
+AddAccount(新增帳號) 1、有四個必填欄位需要確認。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public void AddAccount_Account為空_應回傳Exception() { //assert var sut = this.</description>
+    </item>
+    
     <item>
       <title>單元測試 - 5(NSubstitute介紹)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</link>

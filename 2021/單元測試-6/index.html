@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           單元測試 - 6 | Sian	
+       	
+  </title>	
+  <meta name="title" content="單元測試 - 6 | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "單元測試 - 6",
+    "headline" : "單元測試 - 6",
+    "description" : "單元測試 - 6",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-02-17 20:40:45  UTC",
+    "dateModified" : "2021-02-17 20:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6\/",
+    "wordCount" : "697",
+    "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">單元測試 - 6</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-02-17 itemprop="datePublished">February 17, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的API當作練習，補上該有的測試。</p>
+<h2 id="本文">本文</h2>
+<p>首先我們建立一個放置測試專案的資料夾。</p>
+<p><img src="https://i.imgur.com/Zuvt13R.jpg" alt=""></p>
+<p>接著建立完測試專案。<br>
+現在我們要先進行的是Service層的測試，為了跟Repository做切分可以再用資料夾的方式方便我們歸納。<br>
+<img src="https://i.imgur.com/tAo2cys.jpg" alt=""></p>
+<p>因為是要對Service層進行測試，記得要加入專案參考。<br>
+<img src="https://i.imgur.com/IRx0F2t.jpg" alt=""></p>
+<p>接下來先把基礎測試專案需要用到的東西準備好。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestClass]
+    public class AccountServiceTest
+    {
+        private IAccountRepository _accountRepository;
+        private IMapper _mapper
+        {
+            get
+            {
+                var config = new MapperConfiguration(options =&gt; { options.AddProfile&lt;ServiceProfile&gt;(); });
+                return config.CreateMapper();
+            }
+        }
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            this._accountRepository = Substitute.For&lt;IAccountRepository&gt;();
+        }
+
+        private AccountService GetSystemUnderTest()
+        {
+            var sut = new AccountService(this._accountRepository,this._mapper);
+            return sut;
+        }
+
+        [TestMethod]
+        public void TestMethod1()
+        {
+        }
+    }
+</code></pre><p>這邊需要特別注意的地方在AutoMapper的地方，我們並不需要製作一個假的AutoMapper，所以可以直接使用原本方法。</p>
+<p>接下來就可以開始寫單元測試了。</p>
+<h3 id="addaccount新增帳號">AddAccount(新增帳號)</h3>
+<h4 id="1有四個必填欄位需要確認">1、有四個必填欄位需要確認。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_Account為空_應回傳Exception()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = string.Empty,
+                Email = &quot;test@gmail.com&quot;,
+                Password = &quot;123456&quot;,
+                Phone = &quot;0917888444&quot;
+            };
+            //act
+            Action actual = () =&gt; sut.AddAccount(info);
+
+            //arrange
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_Email為空_應回傳Exception()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = string.Empty,
+                Password = &quot;123456&quot;,
+                Phone = &quot;0917888444&quot;
+            };
+            //act
+            Action actual = () =&gt; sut.AddAccount(info);
+
+            //arrange
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_Password為空_應回傳Exception()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test@gmail.com&quot;,
+                Password = string.Empty,
+                Phone = &quot;0917888444&quot;
+            };
+            //act
+            Action actual = () =&gt; sut.AddAccount(info);
+
+            //arrange
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_Phone為空_應回傳Exception()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test@gmail.com&quot;,
+                Password = &quot;123456&quot;,
+                Phone = string.Empty
+            };
+            //act
+            Action actual = () =&gt; sut.AddAccount(info);
+
+            //arrange
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/1dQ5v5b.jpg" alt=""></p>
+<h4 id="2使用者的帳號不可以重複">2、使用者的帳號不可以重複。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_使用者帳號重複_應回傳錯誤訊息()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test@gmail.com&quot;,
+                Password = &quot;123456&quot;,
+                Phone = &quot;0917888111&quot;
+            };
+
+            var data = new AccountDataModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test@gmail.com&quot;,
+                Phone = &quot;0917888111&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;該使用者帳號已存在，請確認！&quot;
+            };
+
+            this._accountRepository.GetAccount(Arg.Any&lt;string&gt;()).Returns(data);
+
+            //act
+            var actual = sut.AddAccount(info);
+
+            //arrange
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/1YwFcd6.jpg" alt=""></p>
+<h4 id="3密碼長度不可低於6碼">3、密碼長度不可低於6碼。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_密碼長度低於6碼_應回傳錯誤訊息()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test@gmail.com&quot;,
+                Password = &quot;1234&quot;,
+                Phone = &quot;0917888111&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;使用者密碼長度不可低於6碼！&quot;
+            };
+
+            //act
+            var actual = sut.AddAccount(info);
+
+            //arrange
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/U8PWSHv.jpg" alt=""></p>
+<h3 id="4密碼需透過加密處理存入資料庫">4、密碼需透過加密處理存入資料庫。</h3>
+<p>這邊比較特別的是ConverPassword這個Function是Private，一般來說我們並不會特別針對Private Function做測試，理由是一個Private Function一定會在某個Public Function被執行。</p>
+<p>當然要對Private Function 進行測試也不是不行的，可以使用以下方式。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConverPassword&quot;)]
+        public void ConverPassword_輸入密碼_應回傳加密結果()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var method = sut.GetType().GetMethod(&quot;ConverPassword&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+            var expect = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;;
+
+            //act
+            var actual = method.Invoke(sut, new[] { &quot;test2&quot;, &quot;12371324&quot; });
+
+            //arrange
+            actual.Should().Be(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/D7hDhPL.jpg" alt=""></p>
+<p>這邊特別提醒一下，.NET Core似乎已經沒有<a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2013/ms245564(v=vs.120)?redirectedfrom=MSDN">Private Object</a>這個Class了，所以另尋出入找了這個方法。</p>
+<p><a href="https://stackoverflow.com/questions/59678504/how-to-unit-test-private-method-in-net-core-application-which-does-not-support">可以參考這邊的資料</a>。</p>
+<h3 id="檢查信箱是否合法">檢查信箱是否合法。</h3>
+<p>同上一樣可以透過以下方式確認這個Function是否正確。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;CheckMailFormate&quot;)]
+        public void CheckMailFormate_輸入錯誤格式Mail_應回傳False()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var method = sut.GetType().GetMethod(&quot;CheckMailFormate&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+
+            //act
+            var actual = method.Invoke(sut, new[] { &quot;fff#gmail.com&quot;});
+
+            //arrange
+            actual.Should().Be(false);
+        }
+        
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;CheckMailFormate&quot;)]
+        public void CheckMailFormate_輸入正確格式Mail_應回傳True()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var method = sut.GetType().GetMethod(&quot;CheckMailFormate&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+
+            //act
+            var actual = method.Invoke(sut, new[] { &quot;fff@gmail.com&quot; });
+
+            //arrange
+            actual.Should().Be(true);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/Ih4PdPM.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/2gCgrDq.jpg" alt=""></p>
+<p>接下來別忘了要回去測試我們檢查信箱後回傳的訊息。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_輸入信箱格式部正確_應回傳錯誤訊息()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test#gmail.com&quot;,
+                Password = &quot;1234567&quot;,
+                Phone = &quot;0917888111&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;請確認信箱格式！&quot;
+            };
+
+            //act
+            var actual = sut.AddAccount(info);
+
+            //arrange
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/KGtgYcT.jpg" alt=""></p>
+<h3 id="新增結果">新增結果。</h3>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_新增成功_應回傳正確訊息()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test@gmail.com&quot;,
+                Password = &quot;1234567&quot;,
+                Phone = &quot;0917888111&quot;
+            };
+
+            this._accountRepository.AddAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(true);
+
+            var expect = new ResultDto
+            {
+                Success = true,
+                Message = &quot;新增成功&quot;
+            };
+
+            //act
+            var actual = sut.AddAccount(info);
+
+            //arrange
+            actual.Should().BeEquivalentTo(expect);
+        }
+        
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_新增失敗_應回傳錯誤訊息()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = &quot;test&quot;,
+                Email = &quot;test@gmail.com&quot;,
+                Password = &quot;1234567&quot;,
+                Phone = &quot;0917888111&quot;
+            };
+
+            this._accountRepository.AddAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(false);
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;新增失敗&quot;
+            };
+
+            //act
+            var actual = sut.AddAccount(info);
+
+            //arrange
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/WcxQBZK.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/YvHSuYa.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>這樣我們第一個功能新增帳號的Service部分就完成了，接下來後續示範就會加緊腳步，比較特殊地方才會拿出來講解。</p>
+<p><a href="https://github.com/sunnyday0932/WebApiPhase2">以上示範一樣會同步放在GitHub有需要觀看歡迎取用。</a></p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li>1、<a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2013/ms245564(v=vs.120)?redirectedfrom=MSDN">PrivateObject Class</a>。</li>
+<li>2、<a href="https://blog.yowko.com/unit-test-private-method/">Unit Test 想驗證 private method 該怎麼做</a>。</li>
+<li>3、<a href="https://stackoverflow.com/questions/59678504/how-to-unit-test-private-method-in-net-core-application-which-does-not-support">How to unit test private method in .Net Core application which does not support “PrivateObject”</a>。</li>
+<li>4、<a href="https://stackoverflow.com/questions/41462468/net-core-library-how-to-test-private-methods-using-xunit?rq=1">.Net core library: How to test private methods using xUnit</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/unit-test/">
+                    #Unit-Test</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/" class="prev" rel="prev" title="單元測試 - 5(NSubstitute介紹)"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 5(NSubstitute介紹)</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
