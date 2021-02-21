@@ -71,7 +71,7 @@
     "datePublished": "2021-02-17 20:40:45  UTC",
     "dateModified" : "2021-02-17 20:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6\/",
-    "wordCount" : "697",
+    "wordCount" : "745",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -175,9 +175,13 @@
 <h2 id="本文">本文</h2>
 <p>首先我們建立一個放置測試專案的資料夾。</p>
 <p><img src="https://i.imgur.com/Zuvt13R.jpg" alt=""></p>
-<p>接著建立完測試專案。<br>
-現在我們要先進行的是Service層的測試，為了跟Repository做切分可以再用資料夾的方式方便我們歸納。<br>
-<img src="https://i.imgur.com/tAo2cys.jpg" alt=""></p>
+<p>接著建立完測試專案。</p>
+<blockquote>
+<p>2021/02/21更新
+原本是只想開一個測試專案把Repository跟Service的測試都放在一起後來想想不太對。
+更新後的專案結構如下。</p>
+</blockquote>
+<p><img src="https://i.imgur.com/iknT9o0.jpg" alt=""></p>
 <p>因為是要對Service層進行測試，記得要加入專案參考。<br>
 <img src="https://i.imgur.com/IRx0F2t.jpg" alt=""></p>
 <p>接下來先把基礎測試專案需要用到的東西準備好。</p>
@@ -403,6 +407,46 @@
 <img src="https://i.imgur.com/D7hDhPL.jpg" alt=""></p>
 <p>這邊特別提醒一下，.NET Core似乎已經沒有<a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2013/ms245564(v=vs.120)?redirectedfrom=MSDN">Private Object</a>這個Class了，所以另尋出入找了這個方法。</p>
 <p><a href="https://stackoverflow.com/questions/59678504/how-to-unit-test-private-method-in-net-core-application-which-does-not-support">可以參考這邊的資料</a>。</p>
+<blockquote>
+<p>021/02/21更新
+發現公司大神提供了另一個方法，還不趕快更新一下。</p>
+</blockquote>
+<p>因為Private只能透過上面那種方式測試，但如果是Internal那就有不同做法了。<br>
+首先我們試著把ConverPassword這個function改成Internal。<br>
+<img src="https://i.imgur.com/zZnIJks.jpg" alt=""></p>
+<p>接著需要安裝Meziantou.MSBuild.InternalsVisibleTo這個Nuget套件。<br>
+<img src="https://i.imgur.com/RWf4suw.jpg" alt=""></p>
+<p>請注意這邊安裝的是目標專案，並不是測試專案喔!!!<br>
+<a href="https://github.com/meziantou/Meziantou.MSBuild.InternalsVisibleTo">此套件的使用方法可以參照這個地方。  </a></p>
+<p>安裝完後要到Service的csproj檔新增以下設定。</p>
+<p><img src="https://i.imgur.com/Fm7sPHV.jpg" alt=""></p>
+<p>對專案左鍵點擊兩下即可進入csproj。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">&lt;ItemGroup&gt;
+  &lt;InternalsVisibleTo Include=&quot;$(AssemblyName)Tests&quot;/&gt; 
+  //專案名稱有Tests結尾的都可以看到Internal
+&lt;/ItemGroup&gt;
+</code></pre><p><img src="https://i.imgur.com/Fq3lUga.jpg" alt=""></p>
+<p>接下來到我們的測試專案原本測試Private function的地方。<br>
+<img src="https://i.imgur.com/p1c1PfZ.jpg" alt=""></p>
+<p>修改一下寫法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConverPassword&quot;)]
+        public void ConverPassword_輸入密碼_應回傳加密結果()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var expect = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;;
+
+            //act
+            var actual = sut.ConverPassword(&quot;test2&quot;, &quot;12371324&quot; );
+
+            //arrange
+            actual.Should().Be(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/LUBH685.jpg" alt=""></p>
 <h3 id="檢查信箱是否合法">檢查信箱是否合法。</h3>
 <p>同上一樣可以透過以下方式確認這個Function是否正確。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]

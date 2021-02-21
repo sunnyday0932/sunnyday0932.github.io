@@ -16,8 +16,8 @@
       <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的API當作練習，補上該有的測試。
 本文 首先我們建立一個放置測試專案的資料夾。
 接著建立完測試專案。
-現在我們要先進行的是Service層的測試，為了跟Repository做切分可以再用資料夾的方式方便我們歸納。
-因為是要對Service層進行測試，記得要加入專案參考。
+ 2021/02/21更新 原本是只想開一個測試專案把Repository跟Service的測試都放在一起後來想想不太對。 更新後的專案結構如下。
+ 因為是要對Service層進行測試，記得要加入專案參考。
 接下來先把基礎測試專案需要用到的東西準備好。
 [TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在AutoMapper的地方，我們並不需要製作一個假的AutoMapper，所以可以直接使用原本方法。
 接下來就可以開始寫單元測試了。
