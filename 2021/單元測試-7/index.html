@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           單元測試 - 7 | Sian	
+       	
+  </title>	
+  <meta name="title" content="單元測試 - 7 | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "單元測試 - 7",
+    "headline" : "單元測試 - 7",
+    "description" : "單元測試 - 7",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-02-22 20:40:45  UTC",
+    "dateModified" : "2021-02-22 20:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7\/",
+    "wordCount" : "1959",
+    "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">單元測試 - 7</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-02-22 itemprop="datePublished">February 22, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>接續完成我們API的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。</p>
+<h2 id="本文">本文</h2>
+<h3 id="getaccount取得單筆帳號資訊">GetAccount(取得單筆帳號資訊)</h3>
+<h4 id="1輸入的account不可為空">1、輸入的Account不可為空。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+        public void GetAccount_Account為空_應回傳Exception()
+        {
+            //arrange
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.GetAccount(&quot;&quot;);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;Account 不可為空 !&quot;);
+        }
+</code></pre><h4 id="2若查詢的account有資料應回傳正確資訊">2、若查詢的Account有資料應回傳正確資訊。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+        public void GetAccount_Account有資料_應回傳正確資訊()
+        {
+            //arrange
+            var data = new AccountDataModel()
+            { 
+                Account = &quot;test123&quot;,
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                Email = &quot;test123@gmail.com&quot;,
+                ModifyUser = &quot;sys&quot;,
+                Phone = &quot;0918777888&quot;
+            };
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test123&quot;).Returns(data);
+
+            var expect = new AccountDto()
+            {
+                Account = &quot;test123&quot;,
+                CreateDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
+                ModifyDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
+                Email = &quot;test123@gmail.com&quot;,
+                ModifyUser = &quot;sys&quot;,
+                Phone = &quot;091877****&quot;
+            };
+            //act
+            var actual = sut.GetAccount(&quot;test123&quot;);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h4 id="3若查詢的account無資料應回傳空值">3、若查詢的Account無資料應回傳空值。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+        public void GetAccount_Account無資料_應回傳空值()
+        {
+            //arrange
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test123&quot;).ReturnsForAnyArgs(x =&gt; null);
+
+            //act
+            var actual = sut.GetAccount(&quot;test123&quot;);
+
+            //assert
+            actual.Should().BeNull();
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/jBb7vw9.jpg" alt=""></p>
+<p>這就抓到了一個錯誤，應該為Null的地方沒有正確轉型，我們就可以回頭檢查一下程式。</p>
+<p>在AccountDataModel的地方，我們使用了DateTime型別。<br>
+<img src="https://i.imgur.com/LXm5Beo.jpg" alt=""></p>
+<p>因為有可能會是Null的情況所以我們改變一下做法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class AccountDataModel
+    {
+        /// &lt;summary&gt;
+        /// 帳號
+        /// &lt;/summary&gt;
+        public string Account { get; set; }
+
+        /// &lt;summary&gt;
+        /// 電話
+        /// &lt;/summary&gt;
+        public string Phone { get; set; }
+
+        /// &lt;summary&gt;
+        /// 信箱
+        /// &lt;/summary&gt;
+        public string Email { get; set; }
+
+        /// &lt;summary&gt;
+        /// 建立日期
+        /// &lt;/summary&gt;
+        public DateTime? CreateDate { get; set; }
+
+        /// &lt;summary&gt;
+        /// 異動日期
+        /// &lt;/summary&gt;
+        public DateTime? ModifyDate { get; set; }
+
+        /// &lt;summary&gt;
+        /// 異動人員
+        /// &lt;/summary&gt;
+        public string ModifyUser { get; set; }
+    }
+</code></pre><p>接著看錯誤清單，我們會需要修改使用到的地方。<br>
+第一個是Service Mapping的地方，改成這樣。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public ServiceProfile()
+        {
+            this.CreateMap&lt;AccountDataModel, AccountDto&gt;()
+                .ForMember(x =&gt; x.CreateDate, y =&gt; y.MapFrom(z =&gt; z.CreateDate.HasValue ? z.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null))
+                .ForMember(x =&gt; x.ModifyDate, y =&gt; y.MapFrom(z =&gt; z.ModifyDate.HasValue ? z.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null));
+
+            this.CreateMap&lt;AccountInfoModel, AccountCondition&gt;();
+        }
+</code></pre><p>第二個是GetAccountList這個方法使用的地方，改成這樣。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public IEnumerable&lt;AccountDto&gt; GetAccountList()
+        {
+            var data = this._accountRepository.GetAccountList();
+            var result = data.Select(x =&gt; new AccountDto
+            {
+                Phone = ConvertPhoneNumber(x.Phone),
+                Account = x.Account,
+                CreateDate = x.CreateDate.HasValue ? x.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                Email = x.Email,
+                ModifyDate = x.ModifyDate.HasValue ? x.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                ModifyUser = x.ModifyUser
+            });
+
+            return result;
+        }
+</code></pre><p>接著回頭執行我們剛剛的測試。</p>
+<p><img src="https://i.imgur.com/vE5nXXI.jpg" alt=""></p>
+<p>回頭檢查Service 方法，少了一個驗證，改成。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 取得單筆帳號資訊
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public AccountDto GetAccount(string account)
+        {
+            if (string.IsNullOrWhiteSpace(account))
+            {
+                throw new Exception(&quot;Account 不可為空 !&quot;);
+            }
+
+            var data = this._accountRepository.GetAccount(account);
+            var result = this._mapper.Map&lt;AccountDto&gt;(data);
+            if (result != null)
+            {
+                result.Phone = ConvertPhoneNumber(result.Phone);
+            }
+            return result;
+        }
+</code></pre><p>重新執行測試。<br>
+<img src="https://i.imgur.com/NYkpXtn.jpg" alt=""></p>
+<p>成功，有沒有開始體會單元測試的好處了啊？</p>
+<h3 id="convertphonenumber轉換電話號碼">ConvertPhoneNumber(轉換電話號碼)</h3>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConvertPhoneNumber&quot;)]
+        public void ConvertPhoneNumber_輸入空字串_應直接回傳空字串()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var method = sut.GetType().GetMethod(&quot;ConvertPhoneNumber&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+
+            //act
+            var actual = method.Invoke(sut, new[] { string.Empty });
+
+            //arrange
+            actual.Should().Be(string.Empty);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConvertPhoneNumber&quot;)]
+        public void ConvertPhoneNumber_輸入電話號碼_應回傳轉換後結果()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var method = sut.GetType().GetMethod(&quot;ConvertPhoneNumber&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+            var expect = &quot;091877****&quot;;
+
+            //act
+            var actual = method.Invoke(sut, new[] { &quot;0918777888&quot; });
+
+            //arrange
+            actual.Should().Be(expect);
+        }
+</code></pre><h3 id="getaccountlist取得帳號列表">GetAccountList(取得帳號列表)</h3>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccountList&quot;)]
+        public void GetAccountList_無資料_應回傳空值()
+        {
+            //arrange
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccountList().ReturnsForAnyArgs(x =&gt; null);
+
+            //act
+            var actual = sut.GetAccountList();
+
+            //assert
+            actual.Should().BeNull();
+        }
+</code></pre><p><img src="https://i.imgur.com/YApPeK8.jpg" alt=""></p>
+<p>修改Service方法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">         /// &lt;summary&gt;
+        /// 取得帳號列表
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public IEnumerable&lt;AccountDto&gt; GetAccountList()
+        {
+            IEnumerable&lt;AccountDto&gt; result;
+            var data = this._accountRepository.GetAccountList();
+            if (data != null &amp;&amp; 
+                data.Any())
+            {
+                result = data.Select(x =&gt; new AccountDto
+                {
+                    Phone = ConvertPhoneNumber(x?.Phone),
+                    Account = x?.Account,
+                    CreateDate = x.CreateDate.HasValue ? x.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                    Email = x?.Email,
+                    ModifyDate = x.ModifyDate.HasValue ? x.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                    ModifyUser = x?.ModifyUser
+                });
+            }
+            else
+            {
+                result = null;
+            }
+            
+            return result;
+        }
+</code></pre><p>回頭執行測試。<br>
+<img src="https://i.imgur.com/D1QgOTt.jpg" alt=""></p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccountList&quot;)]
+        public void GetAccountList_有資料_應回傳正確結果()
+        {
+            //arrange
+            var data = new List&lt;AccountDataModel&gt;
+            { 
+                new AccountDataModel
+                {
+                    Account = &quot;test123&quot;,
+                    CreateDate = DateTime.Now,
+                    ModifyDate = DateTime.Now,
+                    Email = &quot;test123@gmail.com&quot;,
+                    ModifyUser = &quot;sys&quot;,
+                    Phone = &quot;0918777888&quot;
+                }
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccountList().Returns(data);
+
+            var expect = new List&lt;AccountDto&gt;
+            { 
+                new AccountDto
+                {
+                    Account = &quot;test123&quot;,
+                    CreateDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
+                    ModifyDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
+                    Email = &quot;test123@gmail.com&quot;,
+                    ModifyUser = &quot;sys&quot;,
+                    Phone = &quot;091877****&quot;
+                }
+            };
+            //act
+            var actual = sut.GetAccountList();
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h3 id="removeaccount刪除帳號">RemoveAccount(刪除帳號)</h3>
+<h4 id="1有三個必填欄位需要確認">1、有三個必填欄位需要確認。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_傳入的Account為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            { 
+                Account = &quot;&quot;,
+                Email = &quot;test22@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_傳入的Email為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_傳入的Phone為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test22@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+</code></pre><h4 id="2查無帳號應回傳錯誤訊息">2、查無帳號應回傳錯誤訊息。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_查無帳號_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test111122&quot;,
+                Email = &quot;test22@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;請確認要刪除的帳號！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test111122&quot;).ReturnsForAnyArgs(x =&gt; null);
+
+            //act
+            var actual = sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h4 id="3確認資料是否一致">3、確認資料是否一致。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_輸入Email與資料不一致_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test111122&quot;,
+                Email = &quot;test22@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var checkInfo = new AccountDataModel
+            {
+                Account = &quot;test111122&quot;,
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                Email = &quot;test123@gmail.com&quot;,
+                ModifyUser = &quot;sys&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;請確認輸入的EMail是否與註冊時一致！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
+
+            //act
+            var actual = sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+        
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_輸入電話與資料不一致_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test111122&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123412&quot;
+            };
+
+            var checkInfo = new AccountDataModel
+            {
+                Account = &quot;test111122&quot;,
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                Email = &quot;test123@gmail.com&quot;,
+                ModifyUser = &quot;sys&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;請確認輸入的電話是否與註冊時一致！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
+
+            //act
+            var actual = sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h4 id="4刪除結果">4、刪除結果。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_刪除失敗_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test111122&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var checkInfo = new AccountDataModel
+            {
+                Account = &quot;test111122&quot;,
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                Email = &quot;test123@gmail.com&quot;,
+                ModifyUser = &quot;sys&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;刪除失敗&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
+            this._accountRepository.RemoveAccount(&quot;test111122&quot;).Returns(false);
+
+            //act
+            var actual = sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        public void RemoveAccount_刪除成功_應回傳正確訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test111122&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var checkInfo = new AccountDataModel
+            {
+                Account = &quot;test111122&quot;,
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                Email = &quot;test123@gmail.com&quot;,
+                ModifyUser = &quot;sys&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto
+            {
+                Success = true,
+                Message = &quot;刪除成功&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
+            this._accountRepository.RemoveAccount(&quot;test111122&quot;).Returns(true);
+
+            //act
+            var actual = sut.RemoveAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h3 id="updateaccount更新帳號資訊">UpdateAccount(更新帳號資訊)</h3>
+<h4 id="1有兩個必填欄位需要確認">1、有兩個必填欄位需要確認。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        public void UpdateAccount_輸入帳號為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.UpdateAccount(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        public void UpdateAccount_輸入密碼為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.UpdateAccount(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+</code></pre><h4 id="2找無輸入帳號之密碼資訊">2、找無輸入帳號之密碼資訊。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        public void UpdateAccount_找無輸入帳號之密碼資訊_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = false,
+                Message = &quot;請確認要更新的帳號！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;&quot;);
+
+            //act
+            var actual = sut.UpdateAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h4 id="3輸入帳號之密碼與註冊時不一致">3、輸入帳號之密碼與註冊時不一致。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        public void UpdateAccount_輸入之密碼與註冊時不一致_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = false,
+                Message = &quot;請確認輸入的密碼是否與註冊時一致！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWP&quot;);
+
+            //act
+            var actual = sut.UpdateAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h4 id="4更新結果">4、更新結果。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        public void UpdateAccount_更新失敗_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = false,
+                Message = &quot;更新失敗&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;);
+            this._accountRepository.UpdateAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(false);
+
+            //act
+            var actual = sut.UpdateAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+        
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        public void UpdateAccount_更新成功_應回傳正確訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = true,
+                Message = &quot;更新成功&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;);
+            this._accountRepository.UpdateAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(true);
+
+            //act
+            var actual = sut.UpdateAccount(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h3 id="forgetpassword忘記密碼">ForgetPassword(忘記密碼)</h3>
+<h4 id="1有四個必填欄位需要確認">1、有四個必填欄位需要確認。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_輸入之帳號為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_輸入之Email為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_輸入之密碼為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test2@gmail.com&quot;,
+                Password = &quot;&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_輸入之電話為空_應回傳Exception()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test2@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+
+            //act
+            Action actual = () =&gt; sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+</code></pre><h4 id="2找無輸入之帳號資訊">2、找無輸入之帳號資訊。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_找無輸入之帳號資訊_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = false,
+                Message = &quot;請確認輸入之帳號！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test2&quot;).ReturnsForAnyArgs(x =&gt; null);
+
+            //act
+            var actual = sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h4 id="3確認資料是否一致-1">3、確認資料是否一致。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_輸入之Email與註冊不一致_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var returnData = new AccountDataModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test12345@gmail.com&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = false,
+                Message = &quot;請確認輸入的Email，是否與註冊時一致！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+
+            //act
+            var actual = sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_輸入之電話與註冊不一致_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var returnData = new AccountDataModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Phone = &quot;0988123777&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = false,
+                Message = &quot;請確認輸入的電話，是否與註冊時一致！&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+
+            //act
+            var actual = sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h4 id="4更新結果-1">4、更新結果。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_更新失敗_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var returnData = new AccountDataModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = false,
+                Message = &quot;更新密碼失敗&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            this._accountRepository.ForgetPassword(Arg.Any&lt;AccountCondition&gt;()).Returns(false);
+
+            //act
+            var actual = sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+
+        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        public void ForgetPassword_更新成功_應回傳錯誤訊息()
+        {
+            //arrange
+            var data = new AccountInfoModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Password = &quot;12371324&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var returnData = new AccountDataModel()
+            {
+                Account = &quot;test2&quot;,
+                Email = &quot;test123@gmail.com&quot;,
+                Phone = &quot;0988123456&quot;
+            };
+
+            var expect = new ResultDto()
+            {
+                Success = true,
+                Message = &quot;更新密碼成功&quot;
+            };
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            this._accountRepository.ForgetPassword(Arg.Any&lt;AccountCondition&gt;()).Returns(true);
+
+            //act
+            var actual = sut.ForgetPassword(data);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h3 id="測試結果">測試結果</h3>
+<p><img src="https://i.imgur.com/91BYPCA.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>這樣就補完我們API的單元測試了，這次示範也是找了自己先前應該注意到的回傳值錯誤，是不是馬上體現單元測試的重要性，可以及早發現問題，當然因為這是採用事後補上測試的做法，如果是TDD的模式，在開發的當下就能發現錯，盡早解決問題。</p>
+<p><a href="https://github.com/sunnyday0932/WebApiPhase2">一樣會把程式放在Github有需要的歡迎取用。</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/unit-test/">
+                    #Unit-Test</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/" class="prev" rel="prev" title="單元測試 - 6"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 6</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

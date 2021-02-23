@@ -6,7 +6,17 @@
     <description>Recent content in 學習筆記 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 17 Feb 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Feb 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 7</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</link>
+      <pubDate>Mon, 22 Feb 2021 20:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</guid>
+      <description>前言 接續完成我們API的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。
+本文 GetAccount(取得單筆帳號資訊) 1、輸入的Account不可為空。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;quot;&amp;quot;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;quot;Account 不可為空 !&amp;quot;); } 2、若查詢的Account有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;quot;test123&amp;quot;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;quot;test123@gmail.com&amp;quot;, ModifyUser = &amp;quot;sys&amp;quot;, Phone = &amp;quot;0918777888&amp;quot; }; var sut = this.</description>
+    </item>
+    
     <item>
       <title>單元測試 - 6</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/</link>
