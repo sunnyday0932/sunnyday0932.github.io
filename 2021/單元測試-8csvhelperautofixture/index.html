@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/" />	
+  <link rel="next" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/" />	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           單元測試 - 8(CsvHelper、AutoFixture) | Sian	
+       	
+  </title>	
+  <meta name="title" content="單元測試 - 8(CsvHelper、AutoFixture) | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "單元測試 - 8(CsvHelper、AutoFixture)",
+    "headline" : "單元測試 - 8(CsvHelper、AutoFixture)",
+    "description" : "單元測試 - 8",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-02-22 20:40:45  UTC",
+    "dateModified" : "2021-02-22 20:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture\/",
+    "wordCount" : "421",
+    "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">單元測試 - 8(CsvHelper、AutoFixture)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-02-22 itemprop="datePublished">February 22, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>本篇會介紹測試Service層好用工具，可以加快撰寫測試。</p>
+<h2 id="本文">本文</h2>
+<h3 id="csvhelper">CsvHelper</h3>
+<p>先前我們在測試方法時，遇到要取用資料都只能自己手刻。<br>
+<img src="https://i.imgur.com/S8TKjSH.jpg" alt=""></p>
+<p>這時候就可以使用一個好用的工具CsvHelper。<br>
+這邊主要是將資料庫的DATA匯出CSV檔，透過CsvHelper讀取資料，模擬Repository回傳資料給Service進行測試。</p>
+<h4 id="1先將db資料匯成csv檔">1、先將DB資料匯成CSV檔。</h4>
+<p>將我們要匯出的資料使用MSSQL SELECT出來。<br>
+<img src="https://i.imgur.com/fB21W8J.jpg" alt=""></p>
+<p>對左上方空白的地方點選滑鼠右鍵，選擇儲存結果。<br>
+<img src="https://i.imgur.com/RJ7YulM.jpg" alt=""></p>
+<p>將檔案儲存到我們測試專案地方，建立一個TestData資料夾存放。<br>
+<img src="https://i.imgur.com/mqwJKwF.jpg" alt=""></p>
+<p>記得要到專案內，將要測試的CSV檔案屬性改成永遠複製。<br>
+<img src="https://i.imgur.com/nnvtRSh.jpg" alt=""></p>
+<h4 id="2安裝nuget-套件">2、安裝Nuget 套件。</h4>
+<p><img src="https://i.imgur.com/tvMWXV0.jpg" alt=""></p>
+<h4 id="3修改測試方法">3、修改測試方法。</h4>
+<p>首先在測試Class加上一個Attribute。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">[DeploymentItem(@&quot;TestData\AccountData.csv&quot;)]
+</code></pre><p><img src="https://i.imgur.com/x5H8TtG.jpg" alt=""></p>
+<p>接著我們就可以在要使用的地方這麼做。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+        public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試()
+        {
+            //arrange
+            var sourceData = new List&lt;AccountDataModel&gt;();
+            using (var sr = new StreamReader(@&quot;AccountData.csv&quot;))
+            using (var reader = new CsvReader(sr, CultureInfo.InvariantCulture))
+            {
+                 var records = reader.GetRecords&lt;AccountDataModel&gt;();
+                 sourceData.AddRange(records);
+            }
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(sourceData.FirstOrDefault(x =&gt; x.Account == &quot;test2&quot;));
+            var expect = this._mapper.Map&lt;AccountDto&gt;(sourceData.FirstOrDefault(x =&gt; x.Account == &quot;test2&quot;));
+            expect.Phone = &quot;098812****&quot;;
+
+            //act
+            var actual = sut.GetAccount(&quot;test2&quot;);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:
+<img src="https://i.imgur.com/z0PHvNw.jpg" alt=""></p>
+<!-- raw HTML omitted -->
+<p>我們也可以做成一個私有方法，讓該類別的測試共同使用減少重複的程式碼。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 取得AccountData
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        private IEnumerable&lt;AccountDataModel&gt; GetAccountData()
+        {
+            var sourceData = new List&lt;AccountDataModel&gt;();
+            using (var sr = new StreamReader(@&quot;AccountData.csv&quot;))
+            using (var reader = new CsvReader(sr, CultureInfo.InvariantCulture))
+            {
+                var records = reader.GetRecords&lt;AccountDataModel&gt;();
+                sourceData.AddRange(records);
+            }
+
+            return sourceData;
+        }
+</code></pre><p>修改使用的地方。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+        public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試()
+        {
+            //arrange
+            var sourceData = this.GetAccountData();
+            var returnData = sourceData.FirstOrDefault(x =&gt; x.Account == &quot;test2&quot;);
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            var expect = this._mapper.Map&lt;AccountDto&gt;(returnData);
+            expect.Phone = &quot;098812****&quot;;
+
+            //act
+            var actual = sut.GetAccount(&quot;test2&quot;);
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><h3 id="autofixture">AutoFixture</h3>
+<p>接下來介紹，AutoFixture，也是在測試時需要手捏Model的好用工具。</p>
+<p>先到Nuget安裝AutoFixture。<br>
+<img src="https://i.imgur.com/9a9BnJ0.jpg" alt=""></p>
+<p>接下來到我們單元測試的地方修改一下測試方法。<br>
+我們拿AddAccount_Account為空_應回傳Exception作為示範。<br>
+原本的做法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_Account為空_應回傳Exception()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var info = new AccountInfoModel
+            {
+                Account = string.Empty,
+                Email = &quot;test@gmail.com&quot;,
+                Password = &quot;123456&quot;,
+                Phone = &quot;0917888444&quot;
+            };
+            //act
+            Action actual = () =&gt; sut.AddAccount(info);
+
+            //arrange
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+</code></pre><p>使用AutoFixture製造傳遞Model的作法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_Account為空使用AutoFixture_應回傳Exception()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var fixture = new Fixture();
+            var info = fixture.Build&lt;AccountInfoModel&gt;()
+                .Without(x =&gt; x.Account)
+                .Create();
+
+            //act
+            Action actual = () =&gt; sut.AddAccount(info);
+
+            //arrange
+            actual.Should().Throw&lt;Exception&gt;()
+                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/yDpCtRI.jpg" alt=""></p>
+<p>原本手刻傳遞參數的麻煩過程現在一下子就完成了，<del>又被你學了一招偷懶方法</del>。</p>
+<h4 id="遇到需要驗證特殊參數時也可以這麼做">遇到需要驗證特殊參數時也可以這麼做。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        public void AddAccount_密碼長度低於6碼使用AutoFixture_應回傳錯誤訊息()
+        {
+            //assert
+            var sut = this.GetSystemUnderTest();
+            var fixture = new Fixture();
+            var info = fixture.Build&lt;AccountInfoModel&gt;()
+                .With(x =&gt; x.Password,&quot;1234&quot;)
+                .Create();
+
+            var expect = new ResultDto
+            {
+                Success = false,
+                Message = &quot;使用者密碼長度不可低於6碼！&quot;
+            };
+
+            //act
+            var actual = sut.AddAccount(info);
+
+            //arrange
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/bi2tG5S.jpg" alt=""></p>
+<h4 id="遇到list資料時可以這麼做">遇到List資料時可以這麼做。</h4>
+<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&quot;Sian&quot;)]
+        [TestCategory(&quot;AccountServiceTest&quot;)]
+        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccountList&quot;)]
+        public void GetAccountList_有資料使用AutoFixture_應回傳正確結果()
+        {
+            //arrange
+            var fixture = new Fixture();
+            var data = fixture.Build&lt;AccountDataModel&gt;()
+                .With(x =&gt; x.ModifyDate , DateTime.Now)
+                .With(x =&gt; x.CreateDate , DateTime.Now)
+                .With(x =&gt; x.Phone , &quot;0918777777&quot;)
+                .CreateMany();
+
+            var sut = this.GetSystemUnderTest();
+            this._accountRepository.GetAccountList().Returns(data);
+
+            var expect = this._mapper.Map&lt;IEnumerable&lt;AccountDto&gt;&gt;(data);
+            expect.ToList().ForEach(x =&gt; x.Phone = &quot;091877****&quot;);
+
+            //act
+            var actual = sut.GetAccountList();
+
+            //assert
+            actual.Should().BeEquivalentTo(expect);
+        }
+</code></pre><p>結果:<br>
+<img src="https://i.imgur.com/IWLMHBy.jpg" alt=""></p>
+<p>還有一些進階使用方法，可以參考大神示範，這邊就不獻醜了XD<br>
+<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值</a><br>
+<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture_28.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - 設定屬性名稱與範圍</a><br>
+<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture-customize-icustomization.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - Customize, ICustomization</a></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/sunnyday0932/WebApiPhase2">這邊一樣會把示範範例放在GitHub歡迎取用。</a></p>
+<h2 id="參考連結">參考連結</h2>
+<p>CsvHelper</p>
+<ul>
+<li>1、<a href="https://kevintsengtw.blogspot.com/2015/04/csvhelper-part2.html">MRKT 使用 CsvHelper - Part.2 資料讀取</a>。</li>
+<li>2、<a href="https://kevintsengtw.blogspot.com/2015/04/csvhelper-part3.html">MRKT 使用 CsvHelper - Part.3 其他操作說明</a>。</li>
+<li>3、<a href="https://joshclose.github.io/CsvHelper/api/CsvHelper">CsvHelper官方</a>。</li>
+</ul>
+<p>AutoFixture</p>
+<ul>
+<li>1、<a href="https://github.com/AutoFixture/AutoFixture/">AutoFixture 官方</a>。</li>
+<li>2、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值</a>。</li>
+<li>3、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture_28.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - 設定屬性名稱與範圍</a>。</li>
+<li>4、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture-customize-icustomization.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - Customize, ICustomization</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/unit-test/">
+                    #Unit-Test</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/" class="prev" rel="prev" title="單元測試 - 6"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 6</a>
+         
+        
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/" class="next" rel="next" title="單元測試 - 7">單元測試 - 7&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

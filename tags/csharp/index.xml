@@ -18,6 +18,25 @@
     </item>
     
     <item>
+      <title>單元測試 - 8(CsvHelper、AutoFixture)</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/</link>
+      <pubDate>Mon, 22 Feb 2021 20:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/</guid>
+      <description>前言 本篇會介紹測試Service層好用工具，可以加快撰寫測試。
+本文 CsvHelper 先前我們在測試方法時，遇到要取用資料都只能自己手刻。
+這時候就可以使用一個好用的工具CsvHelper。
+這邊主要是將資料庫的DATA匯出CSV檔，透過CsvHelper讀取資料，模擬Repository回傳資料給Service進行測試。
+1、先將DB資料匯成CSV檔。 將我們要匯出的資料使用MSSQL SELECT出來。
+對左上方空白的地方點選滑鼠右鍵，選擇儲存結果。
+將檔案儲存到我們測試專案地方，建立一個TestData資料夾存放。
+記得要到專案內，將要測試的CSV檔案屬性改成永遠複製。
+2、安裝Nuget 套件。 3、修改測試方法。 首先在測試Class加上一個Attribute。
+[DeploymentItem(@&amp;quot;TestData\AccountData.csv&amp;quot;)] 接著我們就可以在要使用的地方這麼做。
+[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;quot;AccountData.csv&amp;quot;)) using (var reader = new CsvReader(sr, CultureInfo.InvariantCulture)) { var records = reader.GetRecords&amp;lt;AccountDataModel&amp;gt;(); sourceData.AddRange(records); } var sut = this.GetSystemUnderTest(); this._accountRepository.GetAccount(&amp;quot;test2&amp;quot;).Returns(sourceData.FirstOrDefault(x =&amp;gt; x.Account == &amp;quot;test2&amp;quot;)); var expect = this._mapper.Map&amp;lt;AccountDto&amp;gt;(sourceData.FirstOrDefault(x =&amp;gt; x.Account == &amp;quot;test2&amp;quot;)); expect.</description>
+    </item>
+    
+    <item>
       <title>單元測試 - 6</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/</link>
       <pubDate>Wed, 17 Feb 2021 20:40:45 +0000</pubDate>
