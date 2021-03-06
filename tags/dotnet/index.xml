@@ -6,7 +6,25 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 22 Feb 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Mar 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 9(Repository測試)</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</link>
+      <pubDate>Mon, 01 Mar 2021 20:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</guid>
+      <description>前言 前面介紹完Service層的測試方法，接續介紹Repository的測試。
+本文 這邊先講解一下要如何進行Repository的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過Container例如:docker、或是使用localDB進行整合測試，這邊主要是以localDB進行示範。
+一樣先建立一個Repository的測試專案。
+記得測試專案要加入原本Repository的參考。
+使用SSMS取得建立Table的SQL語法。 將SQL檔案存放到測試專案內。
+記得也要調整檔案屬性，為永遠複製。
+使用SSMS取得INSERT DATA的SQL語法。 接下來就是一直下一步完成。
+產出的檔案：
+安裝Dapper到Repository測試專案。 因為測試SQL Command時會利用Dapper去執行SQL，所以需要安裝。
+準備Repository測試使用到之方法。 1、DatabaseName。 public class DatabaseName { public const string Default = &amp;quot;master&amp;quot;; public const string SampleDB = &amp;quot;Northwind&amp;quot;; } 2、DatabaseCommands。 public class DatabaseCommands { /// &amp;lt;summary&amp;gt; /// 建立DB /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;connectionString&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;database&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public static void CreateDatabase( string connectionString, string database) { var IsExists = DatabaseExists(connectionString, database); if (IsExists) { return; } using var conn = new SqlConnection(connectionString); conn.</description>
+    </item>
+    
     <item>
       <title>單元測試 - 7</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</link>
