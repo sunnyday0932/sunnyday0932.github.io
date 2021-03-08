@@ -6,7 +6,42 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 01 Mar 2021 20:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 16:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>單元測試 - 10工具介紹(查看涵蓋率、複雜度)</title>
+      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</link>
+      <pubDate>Sun, 07 Mar 2021 16:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</guid>
+      <description>前言 前幾篇已經介紹完單元測試基本方法了，那這篇主要是介紹一些好用的工具，能夠透過工具檢視程式碼目前單元測試的涵蓋率、以及查看複雜度；透過這些數據來檢視自己的程式碼是否還能夠在更優化。
+本文 1、Find Code Coverage。 原本是要介紹另一個測試方法，是使用Axocover；但在完成這幾篇的當下，馬上看到公司大神推薦了這個，現成的就拿來用啦XD，若有興趣的會把Axocover連結附在此。
+Axocover For Visual Studio 2019。 
+進入正題。
+Find Code Coverage
+首先我們先打開Visual Stdio Extension進行安裝。
+下載完後安裝視窗跳出時記得先把VS關掉，不然會無法完成安裝。
+接下來打開VS到檢視 &amp;gt; 其他視窗 &amp;gt; 點選Find Code Coverage打開視窗。
+首次打開視窗會是空的，要先執行一次測試才會有東西。
+再次打開就可以看到結果。
+通常我們都會要求涵蓋率在95%以上，但當然各家公司實踐上有自己的標準，就可以依此來查看數據當作依據。
+ 小提醒 因為 Find Code Coverage 會在每一次測試時幫你去計算覆蓋率，等於一個測試會跑兩次，若不想每次重跑一遍可以到設定的地方關掉，再要看覆蓋率時再打開即可。
+ 設定方式：
+打開 工具 &amp;gt; 選項。
+找到 Find Code Coverage，把Run的選項Enable改成False即可。
+2、CodeMaintainibility。 CodeMaintainibility
+一樣要到Extension的地方搜尋安裝。
+安裝完重新打開VS後會發現每一個方法都會出現一個旗子。
+點選後會顯示一些指標，可以供看這段程式碼的複雜度等，以此作為依據方法是否需要拆分、優化等。
+3、CodeMaid。 CodeMaid
+一樣是到Extension搜尋後安裝。
+安裝完後打開VS，要到延伸模組 &amp;gt; CodeMaid &amp;gt; Spade地方將儀表板打開。
+打開後就可以看到現在該方法的程式碼複雜度。
+滑鼠移過去就會顯示每一個Function。
+後記 單元測試基本介紹就到這邊告一個尾聲，若有興趣可以自行研究TDD、BDD等實踐方式，以此相互搭配。
+這些工具提供出來是想讓各位做為依據，通常在一段程式碼需要重構的時候都會先透過工具來觀察程式碼複雜度，接下來會先進行單元測試，讓單元測試作為一個防線，保證重構的過程不會把核心邏輯給改壞。
+那麼單元測試就到此告一個段落。</description>
+    </item>
+    
     <item>
       <title>單元測試 - 9(Repository測試)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</link>
