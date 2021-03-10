@@ -6,7 +6,28 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 07 Mar 2021 16:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Mar 2021 16:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>非同步程式設計基礎介紹</title>
+      <link>https://sunnyday0932.github.io/2021/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Tue, 09 Mar 2021 16:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9/</guid>
+      <description>前言 先前我們介紹了API的基本用法，現在我們來介紹非同步的方法。
+本文 首先還是要先提醒一下，對於非同步程式設計有很多眉眉角角，這邊只能簡單說明，所以若想更深入了解還是推薦大家尋求專業知識來源。
+首推：
+ MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。  一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
+其實你已經寫過了。
+拿之前寫過的UpdataAccount Service來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。
+(圖片取自.NET 本事－非同步程式設計) 而這種同步程式設計有很明顯的問題。
+ a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。  當上述這些情況發生時當電腦只有一顆CPU可以執行Process，那就會很明顯的被Lock住。
+而為了解決CPU無法分頭進行處理就有了新的執行續(Thread)概念。
+2、Thread(執行續)。 這時候就可以把當年準備考試的筆記拿出來用一下了。
+當年上課老師也比喻Thread就像是一台車裡面有幾個引擎的概念。
+Thread 與 Process的差別。
+   Process Thread     OS 分配資源的對象單位 OS分配CPU時間的對象單位   Process之間無共享的資源及記憶體(除了Shared memory溝通外) 同一個Process內的threads彼此共享此Process的記憶體與OS資源   Process的Ceation、Context Switching較慢，管理成本高。 Thread的較快、管理成本低。   Process內的Single-thread若Blocked，則整個Process也一起Blocked Process內只要有Thread還可以執行，則Process不會被Blocked   Multiprocessor架構之效益發揮較差。 較佳。   不需提供互斥存取機制(除了Shared memory溝通外) 必須對Threads共享的資源及Data，提供互斥存取，控制防止資料不正確等問題。   適用時機：一個時間只有一個Task執行時EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個Task同時執行EX:Clent-Server架構的Server。    所以透過多個執行續的概念我們希望程式能夠達到這樣。</description>
+    </item>
+    
     <item>
       <title>單元測試 - 10工具介紹(查看涵蓋率、複雜度)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</link>
