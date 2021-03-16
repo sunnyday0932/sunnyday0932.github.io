@@ -6,7 +6,21 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 09 Mar 2021 16:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Mar 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core WebApi - 1(非同步、FluentValidation驗證)</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89/</link>
+      <pubDate>Mon, 15 Mar 2021 19:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89/</guid>
+      <description>前言 介紹完非同步程式設計接下來就可以開始實作了，基本上大同小異，這次也只會著重在特別的地方說明，剩下的會把Code放在Github上，有需要的歡迎取用。
+本文 1、appsettings。 之前介紹Core都沒有特別提到appsettings，其實它就是dotnet framework的config設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。
+這次我們把DB的連線字串放在appsettings內，透過startup的時候拿取所需的DB連接字串。
+{ &amp;quot;Logging&amp;quot;: { &amp;quot;LogLevel&amp;quot;: { &amp;quot;Default&amp;quot;: &amp;quot;Information&amp;quot;, &amp;quot;Microsoft&amp;quot;: &amp;quot;Warning&amp;quot;, &amp;quot;Microsoft.Hosting.Lifetime&amp;quot;: &amp;quot;Information&amp;quot; } }, &amp;quot;ConnectionString&amp;quot;: { &amp;quot;Northwind&amp;quot;: &amp;quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&amp;quot; } } 在StartUp拿取connetcion。
+/// &amp;lt;summary&amp;gt; /// 取得DB連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; private string GetConnection(string databaseName) { var connection = this._configuration.GetValue&amp;lt;string&amp;gt;($&amp;quot;ConnectionString:{databaseName}&amp;quot;); return connection; } 完整StartUp。
+public class Startup { /// &amp;lt;summary&amp;gt; /// Startup /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;configuration&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public Startup(IConfiguration configuration) { this._configuration = configuration; } /// &amp;lt;summary&amp;gt; /// Configuration /// &amp;lt;/summary&amp;gt; public IConfiguration _configuration { get; set; } // This method gets called by the runtime.</description>
+    </item>
+    
     <item>
       <title>非同步程式設計基礎介紹</title>
       <link>https://sunnyday0932.github.io/2021/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9/</link>
