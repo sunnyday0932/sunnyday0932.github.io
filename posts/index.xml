@@ -6,7 +6,21 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 15 Mar 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core WebApi - 2(第二層驗證、Paging)</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging/</link>
+      <pubDate>Tue, 16 Mar 2021 19:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging/</guid>
+      <description>本文 1、第二層驗證(Service、Repository)。 上一篇我們介紹了Controller的驗證，接下來介紹Service、Repository層的驗證方式，大概會有疑惑為甚麼Controller驗證過了接下來兩層還需要驗證呢？
+先前介紹過三層式架構的開發，其中也有提到其實三層是可以分開進行的，所以當然是也需要驗證。
+驗證的方式會給Service與Repository使用，所以我們做成一個共用方法放在Common層，Service跟Repository再對Common加入參考使用。
+Common層需要加入System.ComponentModel.Annotations Nuget套件。
+驗證Model使用方法。
+public class ModelValidator { /// &amp;lt;summary&amp;gt; /// Validates the specified model. /// &amp;lt;/summary&amp;gt; /// &amp;lt;typeparam name=&amp;quot;T&amp;quot;&amp;gt;&amp;lt;/typeparam&amp;gt; /// &amp;lt;param name=&amp;quot;model&amp;quot;&amp;gt;The model.&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;parameterName&amp;quot;&amp;gt;Name of the parameter.&amp;lt;/param&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentNullException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; public static void Validate&amp;lt;T&amp;gt;(T model, string parameterName) where T : class { if (model is null) { if (string.IsNullOrWhiteSpace(parameterName)) { parameterName = nameof(model); } throw new ArgumentNullException(paramName: parameterName, message: $&amp;quot;{parameterName}不可為空&amp;quot;); } var errors = new List&amp;lt;ValidationResult&amp;gt;(); var validation = Validator.</description>
+    </item>
+    
     <item>
       <title>dotnet Core WebApi - 1(非同步、FluentValidation驗證)</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89/</link>
