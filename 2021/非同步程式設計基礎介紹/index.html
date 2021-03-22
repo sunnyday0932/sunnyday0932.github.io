@@ -71,7 +71,7 @@
     "datePublished": "2021-03-09 16:40:45  UTC",
     "dateModified" : "2021-03-09 16:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "218",
+    "wordCount" : "342",
     "keywords" : ["csharp","dotnet","async", "Sian"]
 }
 </script>
@@ -265,67 +265,91 @@ d、非同步處理(Asunchronous processing)：<br>
 <li>b、提升應用程式整體產能，多執行續的應用程式更能善用CPU的運算能力。</li>
 </ul>
 <h3 id="二如何使用非同步">二、如何使用非同步。</h3>
+<blockquote>
+<p>2021/03/22
+今天發現對Task理解好像有點問題，回來補上作法。</p>
+</blockquote>
 <p>在.NET裡面會使用到一個Task工作。<br>
 而Task會使用到async、await來互相搭配(通常一個async至少會搭配一個await)。<br>
 拿個簡單的範例來看一下：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static async Task Main(string[] args)
         {
-            Console.WriteLine(DateTime.Now.ToString());
+            Console.WriteLine($&quot;開始時間：{DateTime.Now.Second}&quot;);
             var milk = await GetMilkAsync();
 
             Console.WriteLine(milk);
-            Console.WriteLine($&quot;拿到牛奶的時間:{DateTime.Now}&quot;);
+            Console.WriteLine($&quot;拿到牛奶的時間:{DateTime.Now.Second}&quot;);
 
             var toast = await GetToastAsync();
             Console.WriteLine(toast);
-            Console.WriteLine($&quot;拿到吐司的時間:{DateTime.Now}&quot;);
-            Console.ReadLine();
+            Console.WriteLine($&quot;拿到吐司的時間:{DateTime.Now.Second}&quot;);
+
+            var egg = await GetEggAsync();
+            Console.WriteLine(egg);
+            Console.WriteLine($&quot;拿到雞蛋的時間:{DateTime.Now.Second}&quot;);
+            Console.WriteLine($&quot;結束時間：{DateTime.Now.Second}&quot;);
         }
 
         static async Task&lt;string&gt; GetMilkAsync()
         {
-            Thread.Sleep(1000);
+            await Task.Delay(1000);
             return await Task.FromResult(&quot;Milk&quot;);
         }
 
         static async Task&lt;string&gt; GetToastAsync()
         {
-            Thread.Sleep(1000);
+            await Task.Delay(2000);
             return await Task.FromResult(&quot;Toast&quot;);
         }
-</code></pre><p>結果：<br>
-<img src="https://i.imgur.com/3nub3FB.jpg" alt=""></p>
+
+        static async Task&lt;string&gt; GetEggAsync()
+        {
+            await Task.Delay(2000);
+            return await Task.FromResult(&quot;Egg&quot;);
+        }
+</code></pre><p>結果總花費5秒：<br>
+<img src="https://i.imgur.com/r0rH6xh.jpg" alt=""></p>
 <p>如果是同步方法要取用非同步方法，請善用三件套。<br>
 ConfigureAwait(false).GetAwaiter().GetResult()</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
-            Console.WriteLine($&quot;同步包非同步{DateTime.Now}&quot;);
-            Console.WriteLine($&quot;開始拿牛奶的時間:{DateTime.Now}&quot;);
+            Console.WriteLine($&quot;開始時間：{DateTime.Now.Second}&quot;);
             var milk = GetMilkAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            Console.WriteLine(milk);
-            Console.WriteLine($&quot;拿到牛奶的時間:{DateTime.Now}&quot;);
 
-            Console.WriteLine($&quot;開始拿吐司的時間:{DateTime.Now}&quot;);
+            Console.WriteLine(milk);
+            Console.WriteLine($&quot;拿到牛奶的時間:{DateTime.Now.Second}&quot;);
+
             var toast = GetToastAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             Console.WriteLine(toast);
-            Console.WriteLine($&quot;拿到吐司的時間:{DateTime.Now}&quot;);
-            Console.ReadLine();
+            Console.WriteLine($&quot;拿到吐司的時間:{DateTime.Now.Second}&quot;);
+
+            var egg = GetEggAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            Console.WriteLine(egg);
+            Console.WriteLine($&quot;拿到雞蛋的時間:{DateTime.Now.Second}&quot;);
+            Console.WriteLine($&quot;結束時間：{DateTime.Now.Second}&quot;);
         }
 
         static async Task&lt;string&gt; GetMilkAsync()
         {
-            Thread.Sleep(1000);
+            await Task.Delay(1000);
             return await Task.FromResult(&quot;Milk&quot;);
         }
 
         static async Task&lt;string&gt; GetToastAsync()
         {
-            Thread.Sleep(1000);
+            await Task.Delay(2000);
             return await Task.FromResult(&quot;Toast&quot;);
         }
-</code></pre><p>結果：<br>
-<img src="https://i.imgur.com/bjX5WkM.jpg" alt=""></p>
-<p>Task.WhenAll()，可以等待同質性的工作一起回來，使用場景EX:當對方的API只提供一次撈取一個資料時，就可以使用WhenAll的方式等我們需要的資料全部撈完後再繼續動作。</p>
+
+        static async Task&lt;string&gt; GetEggAsync()
+        {
+            await Task.Delay(2000);
+            return await Task.FromResult(&quot;Egg&quot;);
+        }
+</code></pre><p>結果總花費5秒：<br>
+<img src="https://i.imgur.com/tr6rQph.jpg" alt=""></p>
+<p>Task.WhenAll()</p>
+<p>用法1、可以等待同質性的工作一起回來，使用場景EX:當對方的API只提供一次撈取一個資料時，就可以使用WhenAll的方式等我們需要的資料全部撈完後再繼續動作。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static async Task Main(string[] args)
         {
             Task&lt;int&gt; task1 = Task.FromResult(1);
@@ -338,6 +362,49 @@ ConfigureAwait(false).GetAwaiter().GetResult()</p>
         }
 </code></pre><p>結果：<br>
 <img src="https://i.imgur.com/GefbUuC.jpg" alt=""></p>
+<p>用法2、或是可以一起等待不同Task回來。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        private static async Task Main(string[] args)
+        {
+            Console.WriteLine($&quot;開始時間：{DateTime.Now.Second}&quot;);
+            var milkTask = GetMilkAsync();
+            var toastTask = GetToastAsync();
+            var eggTask = GetEggAsync();
+
+            await Task.WhenAll(milkTask, toastTask, eggTask);
+
+            var milkResult = await milkTask;
+            var toastResult = await toastTask;
+            var eggResult = await eggTask;
+            Console.WriteLine(milkResult);
+            Console.WriteLine($&quot;拿到牛奶的時間：{DateTime.Now.Second}&quot;);
+            Console.WriteLine(toastResult);
+            Console.WriteLine($&quot;拿到吐司的時間：{DateTime.Now.Second}&quot;);
+            Console.WriteLine(eggResult);
+            Console.WriteLine($&quot;拿到雞蛋的時間：{DateTime.Now.Second}&quot;);
+            Console.WriteLine($&quot;結束時間：{DateTime.Now.Second}&quot;);
+        }
+
+        static async Task&lt;string&gt; GetMilkAsync()
+        {
+            await Task.Delay(1000);
+            return await Task.FromResult(&quot;Milk&quot;);
+        }
+
+        static async Task&lt;string&gt; GetToastAsync()
+        {
+            await Task.Delay(2000);
+            return await Task.FromResult(&quot;Toast&quot;);
+        }
+
+        static async Task&lt;string&gt; GetEggAsync()
+        {
+            await Task.Delay(3000);
+            return await Task.FromResult(&quot;Egg&quot;);
+        }
+</code></pre><p>結果總花費3秒:
+<img src="https://i.imgur.com/k3TRYEr.jpg" alt=""></p>
+<p>明顯看出與先前一個步驟一個步驟await等結果回來不同，因為任務是一起出去執行的，可以減少等待執行的時間。<br>
+提醒：這種使用方法就必須注意程式執行的先後順序，若使用到的地方在還沒回來前就被叫用，就有可能出錯。</p>
 <h2 id="後記">後記</h2>
 <p>這邊僅列出三種比較常看到的用法，最後還是得強調，非同步的水很深，需要謹慎使用。<br>
 接下來我們會進行修改先前API把它改成非同步的模式。<br>
