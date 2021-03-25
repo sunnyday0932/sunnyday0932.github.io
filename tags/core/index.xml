@@ -6,7 +6,20 @@
     <description>Recent content in Core on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 16 Mar 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Mar 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core WebApi - 3(Unit-test)</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</link>
+      <pubDate>Sat, 20 Mar 2021 19:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</guid>
+      <description>前言 接續上一篇，這篇主要是講解非同步的單元測試，同樣也只會列出不同的地方。
+本文 1、Service Test。 傳入Model為空。
+[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_傳入Model為空_應回傳ArgumentNullException() { //assert var sut = this.GetSystemUnderTest(); //act var exception = await Assert.ThrowsExceptionAsync&amp;lt;ArgumentNullException&amp;gt;( async () =&amp;gt; await sut.AddAccount(null)); //arrange exception.Message.Contains(&amp;quot;不可為空&amp;quot;); } 結果：
+某一個欄位為空。
+[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_Account為空_應回傳ArgumentException() { //assert var sut = this.GetSystemUnderTest(); var fixture = new Fixture(); var info = fixture.Build&amp;lt;AccountInfoModel&amp;gt;() .Without(x =&amp;gt; x.Account) .Create(); //act var exception = await Assert.</description>
+    </item>
+    
     <item>
       <title>dotnet Core WebApi - 2(第二層驗證、Paging)</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging/</link>
