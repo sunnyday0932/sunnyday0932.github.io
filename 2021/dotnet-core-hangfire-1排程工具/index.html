@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           dotnet Core HangFire - 1(排程工具) | Sian	
+       	
+  </title>	
+  <meta name="title" content="dotnet Core HangFire - 1(排程工具) | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "dotnet Core HangFire - 1(排程工具)",
+    "headline" : "dotnet Core HangFire - 1(排程工具)",
+    "description" : "dotnet Core HangFire - 1(排程工具)",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-03-28 18:40:45  UTC",
+    "dateModified" : "2021-03-28 18:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7\/",
+    "wordCount" : "97",
+    "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - 1(排程工具)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-03-28 itemprop="datePublished">March 28, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>這次主題要來介紹排程，一般原生作法排程會直接寫一個Windows排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供.NET製作排程，如：<a href="https://www.quartz-scheduler.net/">Quartz.Net</a>、<a href="https://docs.coravel.net/">Coravel</a>。</p>
+<p>而這次主要會介紹HangFire。</p>
+<h2 id="本文">本文</h2>
+<h3 id="一相關資源">一、相關資源。</h3>
+<p>1、<a href="https://docs.hangfire.io/en/latest/">官方文件</a>。<br>
+2、<a href="https://www.bookstack.cn/read/Hangfire-zh-official/README.md">中文文件</a>。</p>
+<h3 id="二基本介紹">二、基本介紹。</h3>
+<h4 id="a特別注意的特性">A、特別注意的特性：</h4>
+<p>HangFire在建構起來後就等同於一個網站，所以它也有著一般IIS會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。<br>
+像我們公司解法就是透過硬體，A10機器會定期訪問HangFire站台，確保站台是有在運行的。</p>
+<h4 id="bhangfire優點">B、HangFire優點：</h4>
+<ul>
+<li>Simple - 開發簡單、安裝簡易、部屬到站台也很方便。</li>
+<li>Reliable - HangFire提供了排程失敗的自動重試機制。</li>
+<li>Distributed - 可透過分散式處理消化大量工作。</li>
+<li>Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis等)地方，不必擔心站台被回收後排程任務消失。</li>
+<li>Transparent - 透明化的作業流程，HangFire提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。</li>
+</ul>
+<h4 id="c三大核心元件">C、三大核心元件。</h4>
+<p><img src="https://i.imgur.com/9ZgOKjS.jpg" alt=""></p>
+<ul>
+<li>HangFire Client - 主要建立後端排程任務(Ex:前面說的一個網站)。</li>
+<li>Job Storage - 主要儲存排程任務(Ex:DB)。</li>
+<li>HangFire Server - 主要處理排程任務的地方。</li>
+</ul>
+<p>排程工作的完整流程：</p>
+<ul>
+<li>1、Client 建立一個排程任務。</li>
+<li>2、排程任務儲存到Storage後，回傳一個JobId給Client。</li>
+<li>3、Server端存Storage拿取要處理的排程任務。</li>
+<li>4、Server端處理排程任務。</li>
+</ul>
+<h4 id="d排程任務的類型">D、排程任務的類型。</h4>
+<p>1、Fire-and-forget Jobs - 這類型的Job進到排程佇列後會馬上執行且只會執行一次。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">var jobId = BackgroundJob.Enqueue(
+    () =&gt; Console.WriteLine(&quot;Fire-and-forget!&quot;));
+</code></pre><p>2、Delayed jobs - 這類型的排程可以延遲執行。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">var jobId = BackgroundJob.Schedule(
+    () =&gt; Console.WriteLine(&quot;Delayed!&quot;),
+    TimeSpan.FromDays(7));
+</code></pre><p>3、Recurring jobs - 這就是最常見的排程任務類型，定期執行的任務。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">RecurringJob.AddOrUpdate(
+    () =&gt; Console.WriteLine(&quot;Recurring!&quot;),
+    Cron.Daily);
+</code></pre><p>4、Continuations - 延續型的排程任務，例如：某個排程任務執行完後會觸發接續執行的排程。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">BackgroundJob.ContinueJobWith(
+    jobId,
+    () =&gt; Console.WriteLine(&quot;Continuation!&quot;));
+</code></pre><h2 id="參考資料">參考資料</h2>
+<ul>
+<li>1、<a href="https://dotblogs.com.tw/yc421206/2020/02/27/hangfire_dashboard_management">ASP.NET Core Hangfire 排程管理 - Hangfire.Dashboard.Management</a>。</li>
+<li>2、<a href="https://codingnote.cc/zh-tw/p/4528/">.NET之Hangfire快速入門和使用</a>。</li>
+<li>3、<a href="https://as880074.medium.com/mvc-hangfire-%E6%8E%92%E7%A8%8B%E5%A5%97%E4%BB%B6%E5%AE%89%E8%A3%9D-867c19adf115">Hangfire 排程套件安裝</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/hangfire/">
+                    #HangFire</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/" class="prev" rel="prev" title="dotnet Core WebApi - 3(Unit-test)"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi - 3(Unit-test)</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -6,7 +6,25 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 20 Mar 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Mar 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core HangFire - 1(排程工具)</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sun, 28 Mar 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</guid>
+      <description>前言 這次主題要來介紹排程，一般原生作法排程會直接寫一個Windows排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供.NET製作排程，如：Quartz.Net、Coravel。
+而這次主要會介紹HangFire。
+本文 一、相關資源。 1、官方文件。
+2、中文文件。
+二、基本介紹。 A、特別注意的特性： HangFire在建構起來後就等同於一個網站，所以它也有著一般IIS會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。
+像我們公司解法就是透過硬體，A10機器會定期訪問HangFire站台，確保站台是有在運行的。
+B、HangFire優點：  Simple - 開發簡單、安裝簡易、部屬到站台也很方便。 Reliable - HangFire提供了排程失敗的自動重試機制。 Distributed - 可透過分散式處理消化大量工作。 Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis等)地方，不必擔心站台被回收後排程任務消失。 Transparent - 透明化的作業流程，HangFire提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。  C、三大核心元件。  HangFire Client - 主要建立後端排程任務(Ex:前面說的一個網站)。 Job Storage - 主要儲存排程任務(Ex:DB)。 HangFire Server - 主要處理排程任務的地方。  排程工作的完整流程：
+ 1、Client 建立一個排程任務。 2、排程任務儲存到Storage後，回傳一個JobId給Client。 3、Server端存Storage拿取要處理的排程任務。 4、Server端處理排程任務。  D、排程任務的類型。 1、Fire-and-forget Jobs - 這類型的Job進到排程佇列後會馬上執行且只會執行一次。
+var jobId = BackgroundJob.Enqueue( () =&amp;gt; Console.WriteLine(&amp;quot;Fire-and-forget!&amp;quot;)); 2、Delayed jobs - 這類型的排程可以延遲執行。
+var jobId = BackgroundJob.</description>
+    </item>
+    
     <item>
       <title>dotnet Core WebApi - 3(Unit-test)</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</link>
