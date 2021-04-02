@@ -6,7 +6,23 @@
     <description>Recent content in HangFire on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 28 Mar 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/hangfire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/hangfire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core HangFire - 2</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/</link>
+      <pubDate>Thu, 01 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/</guid>
+      <description>前言 接下來試做HangFire。
+本文 1、前置步驟。 一樣選擇Web應用程式。
+接下來要選擇MVC的架構。
+安裝以下三個Nuget套件。
+ Hangfire Hangfire.AspNetCore Newtonsoft.Json  在SSMS中localhost新建一個Hangfire DB。
+2、設定。 把DB連線放在appsettings中加入connection string。
+&amp;quot;ConnectionStrings&amp;quot;: { &amp;quot;HangFire&amp;quot;: &amp;quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&amp;quot; } StartUp加入設定。
+public void ConfigureServices(IServiceCollection services) { services.AddControllersWithViews(); //Hangfire var hangfireConnection = this.Configuration.GetConnectionString(name:&amp;quot;Hangfire&amp;quot;); services.AddHangfire(config =&amp;gt; { config.UseSqlServerStorage( nameOrConnectionString: hangfireConnection, options: new SqlServerStorageOptions { SchemaName = &amp;quot;HangfireSample&amp;quot;, JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60) }); }); services.AddHangfireServer(); } public void Configure(IApplicationBuilder app, IWebHostEnvironment env) { if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); } else { app.UseExceptionHandler(&amp;quot;/Home/Error&amp;quot;); // The default HSTS value is 30 days.</description>
+    </item>
+    
     <item>
       <title>dotnet Core HangFire - 1(排程工具)</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</link>

@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">	
   <meta name="keywords" content="Sian">	
   	
-  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/" />	
-  <link rel="next" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/" />	
-  <link rel="canonical" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/" />	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/" />	
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           dotnet Core HangFire - 1(排程工具) | Sian	
+           dotnet Core HangFire - 2 | Sian	
        	
   </title>	
-  <meta name="title" content="dotnet Core HangFire - 1(排程工具) | Sian">	
+  <meta name="title" content="dotnet Core HangFire - 2 | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "dotnet Core HangFire - 1(排程工具)",
-    "headline" : "dotnet Core HangFire - 1(排程工具)",
-    "description" : "dotnet Core HangFire - 1(排程工具)",
+    "name" : "dotnet Core HangFire - 2",
+    "headline" : "dotnet Core HangFire - 2",
+    "description" : "dotnet Core HangFire - 2",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,10 +68,10 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2021",
-    "datePublished": "2021-03-28 18:40:45  UTC",
-    "dateModified" : "2021-03-28 18:40:45  UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7\/",
-    "wordCount" : "97",
+    "datePublished": "2021-04-01 18:40:45  UTC",
+    "dateModified" : "2021-04-01 18:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-2\/",
+    "wordCount" : "212",
     "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
 }
 </script>
@@ -134,11 +134,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - 1(排程工具)</h1>
+        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - 2</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2021-03-28 itemprop="datePublished">March 28, 2021</time>
+                on <time datetime=2021-04-01 itemprop="datePublished">April 1, 2021</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -171,60 +171,154 @@
           
 
           <h2 id="前言">前言</h2>
-<p>這次主題要來介紹排程，一般原生作法排程會直接寫一個Windows排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供.NET製作排程，如：<a href="https://www.quartz-scheduler.net/">Quartz.Net</a>、<a href="https://docs.coravel.net/">Coravel</a>。</p>
-<p>而這次主要會介紹HangFire。</p>
+<p>接下來試做HangFire。</p>
 <h2 id="本文">本文</h2>
-<h3 id="一相關資源">一、相關資源。</h3>
-<p>1、<a href="https://docs.hangfire.io/en/latest/">官方文件</a>。<br>
-2、<a href="https://www.bookstack.cn/read/Hangfire-zh-official/README.md">中文文件</a>。</p>
-<h3 id="二基本介紹">二、基本介紹。</h3>
-<h4 id="a特別注意的特性">A、特別注意的特性：</h4>
-<p>HangFire在建構起來後就等同於一個網站，所以它也有著一般IIS會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。<br>
-像我們公司解法就是透過硬體，A10機器會定期訪問HangFire站台，確保站台是有在運行的。</p>
-<h4 id="bhangfire優點">B、HangFire優點：</h4>
+<h3 id="1前置步驟">1、前置步驟。</h3>
+<p>一樣選擇Web應用程式。<br>
+<img src="https://i.imgur.com/Nm5Qztn.jpg" alt=""></p>
+<p>接下來要選擇MVC的架構。<br>
+<img src="https://i.imgur.com/bvZudKs.jpg" alt=""></p>
+<p>安裝以下三個Nuget套件。</p>
 <ul>
-<li>Simple - 開發簡單、安裝簡易、部屬到站台也很方便。</li>
-<li>Reliable - HangFire提供了排程失敗的自動重試機制。</li>
-<li>Distributed - 可透過分散式處理消化大量工作。</li>
-<li>Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis等)地方，不必擔心站台被回收後排程任務消失。</li>
-<li>Transparent - 透明化的作業流程，HangFire提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。</li>
+<li>Hangfire</li>
+<li>Hangfire.AspNetCore</li>
+<li>Newtonsoft.Json</li>
 </ul>
-<h4 id="c三大核心元件">C、三大核心元件。</h4>
-<p><img src="https://i.imgur.com/9ZgOKjS.jpg" alt=""></p>
-<ul>
-<li>HangFire Client - 主要建立後端排程任務(Ex:前面說的一個網站)。</li>
-<li>Job Storage - 主要儲存排程任務(Ex:DB)。</li>
-<li>HangFire Server - 主要處理排程任務的地方。</li>
-</ul>
-<p>排程工作的完整流程：</p>
-<ul>
-<li>1、Client 建立一個排程任務。</li>
-<li>2、排程任務儲存到Storage後，回傳一個JobId給Client。</li>
-<li>3、Server端存Storage拿取要處理的排程任務。</li>
-<li>4、Server端處理排程任務。</li>
-</ul>
-<h4 id="d排程任務的類型">D、排程任務的類型。</h4>
-<p>1、Fire-and-forget Jobs - 這類型的Job進到排程佇列後會馬上執行且只會執行一次。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">var jobId = BackgroundJob.Enqueue(
-    () =&gt; Console.WriteLine(&quot;Fire-and-forget!&quot;));
-</code></pre><p>2、Delayed jobs - 這類型的排程可以延遲執行。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">var jobId = BackgroundJob.Schedule(
-    () =&gt; Console.WriteLine(&quot;Delayed!&quot;),
-    TimeSpan.FromDays(7));
-</code></pre><p>3、Recurring jobs - 這就是最常見的排程任務類型，定期執行的任務。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">RecurringJob.AddOrUpdate(
-    () =&gt; Console.WriteLine(&quot;Recurring!&quot;),
-    Cron.Daily);
-</code></pre><p>4、Continuations - 延續型的排程任務，例如：某個排程任務執行完後會觸發接續執行的排程。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">BackgroundJob.ContinueJobWith(
-    jobId,
-    () =&gt; Console.WriteLine(&quot;Continuation!&quot;));
-</code></pre><h2 id="參考資料">參考資料</h2>
-<ul>
-<li>1、<a href="https://dotblogs.com.tw/yc421206/2020/02/27/hangfire_dashboard_management">ASP.NET Core Hangfire 排程管理 - Hangfire.Dashboard.Management</a>。</li>
-<li>2、<a href="https://codingnote.cc/zh-tw/p/4528/">.NET之Hangfire快速入門和使用</a>。</li>
-<li>3、<a href="https://as880074.medium.com/mvc-hangfire-%E6%8E%92%E7%A8%8B%E5%A5%97%E4%BB%B6%E5%AE%89%E8%A3%9D-867c19adf115">Hangfire 排程套件安裝</a>。</li>
-</ul>
+<p><img src="https://i.imgur.com/KGrdyfC.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/mvSKKFJ.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/Vbxkxdz.jpg" alt=""></p>
+<p>在SSMS中localhost新建一個Hangfire DB。<br>
+<img src="https://i.imgur.com/UDn0xro.jpg" alt=""></p>
+<h2 id="2設定">2、設定。</h2>
+<p>把DB連線放在appsettings中加入connection string。</p>
+<pre><code class="language-json=" data-lang="json=">&quot;ConnectionStrings&quot;: {
+    &quot;HangFire&quot;: &quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&quot;
+  }
+</code></pre><p><img src="https://i.imgur.com/UDCUZDd.jpg" alt=""></p>
+<p>StartUp加入設定。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllersWithViews();
+
+            //Hangfire
+            var hangfireConnection = this.Configuration.GetConnectionString(name:&quot;Hangfire&quot;);
+
+            services.AddHangfire(config =&gt;
+            {
+                config.UseSqlServerStorage(
+                    nameOrConnectionString: hangfireConnection,
+                    options: new SqlServerStorageOptions
+                    { 
+                        SchemaName = &quot;HangfireSample&quot;,
+                        JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60)
+                    });
+            });
+
+            services.AddHangfireServer();
+        }
+        
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler(&quot;/Home/Error&quot;);
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =&gt;
+            {
+                endpoints.MapControllerRoute(
+                    name: &quot;default&quot;,
+                    pattern: &quot;{controller=Home}/{action=Index}/{id?}&quot;);
+            });
+
+            //Hangfire
+            app.UseHangfireDashboard(
+                pathMatch: &quot;/hangfire&quot;,
+                options: new DashboardOptions
+                {
+                    Authorization = new List&lt;IDashboardAuthorizationFilter&gt;(),
+                    IgnoreAntiforgeryToken = true
+                });
+        }
+</code></pre><p>接下來就可以啟動專案。<br>
+連線到Hangfire儀錶板，預設路徑會是<code>https://{localhost啟動的port}/hangfire</code>。<br>
+<img src="https://i.imgur.com/m0OTprA.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/QwH0RIA.jpg" alt=""></p>
+<p>查看DB Hangfire的地方會發現已經生成了預設的Table。<br>
+<img src="https://i.imgur.com/O6whzQp.jpg" alt=""></p>
+<p>這邊的TableName不可以隨意更換，如果要生成新的可以透過StatUp SchemaName修改。<br>
+<img src="https://i.imgur.com/NGni3wM.jpg" alt=""></p>
+<h2 id="3測試">3、測試。</h2>
+<p>在Controller加入排程。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public IActionResult Index()
+        {
+            BackgroundJob.Enqueue(() =&gt; Console.WriteLine(&quot;Index頁面觸發：Fire and Foreget Schedule!&quot;));
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            BackgroundJob.Schedule(
+                () =&gt; Console.WriteLine(&quot;Privacy頁面觸發：Delay Schedule!&quot;),
+                TimeSpan.FromMinutes(1));
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            var firstJob = BackgroundJob.Enqueue(
+                () =&gt; Console.WriteLine(&quot;Contact頁面觸發：Continuations Job 1!)&quot;));
+
+            BackgroundJob.ContinueJobWith(
+                firstJob,
+                () =&gt; Console.WriteLine(&quot;Contact頁面觸發：Continuations Job 2!)&quot;),
+                JobContinuationOptions.OnlyOnSucceededState
+                );
+            return View();
+        }
+</code></pre><p>在StartUp加入Recurring job。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">            //Recurring job
+            RecurringJob.AddOrUpdate
+                (
+                    () =&gt; Console.WriteLine($&quot;Recurring job觸發時間：{DateTime.Now}&quot;),
+                    cronExpression:&quot;*/1 * * * *&quot;,
+                    TimeZoneInfo.Local
+                );
+</code></pre><p><img src="https://i.imgur.com/W1H3I3w.jpg" alt=""></p>
+<p>這個cronExpression可以透過以下網頁測試：<br>
+<a href="https://crontab.guru/#*/1_*_*_*_*">crontab guru</a></p>
+<!-- raw HTML omitted -->
+<p>Fire and Foreget Schedule：<br>
+<img src="https://i.imgur.com/VXC5RaZ.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/px9EyeV.jpg" alt=""></p>
+<p>Delay Schedule：<br>
+<img src="https://i.imgur.com/Cg3DLpF.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/puWwRL6.jpg" alt=""></p>
+<p>Continuations Job：<br>
+<img src="https://i.imgur.com/BXWuR45.jpg" alt=""></p>
+<p>第一個Job:<br>
+<img src="https://i.imgur.com/Hm1REuW.jpg" alt=""></p>
+<p>第二個Job：<br>
+<img src="https://i.imgur.com/b8buPhg.jpg" alt=""></p>
+<p>Recurring job：<br>
+<img src="https://i.imgur.com/3nARuHP.jpg" alt=""></p>
+<p>也可以直接透過儀錶板直接觸發定期排程。<br>
+<img src="https://i.imgur.com/NLk8YAK.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/S8os4NF.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p><a href="https://github.com/sunnyday0932/HangFireSample">程式一樣會放在GitHub有需要的歡迎取用。</a></p>
 
     </div>
 
@@ -239,7 +333,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</span>
+                    <a href=https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/</span>
             </p>
             
              
@@ -277,10 +371,8 @@
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/" class="prev" rel="prev" title="dotnet Core WebApi - 3(Unit-test)"><i class="iconfont icon-left"></i>&nbsp;dotnet Core WebApi - 3(Unit-test)</a>
+        <a href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/" class="prev" rel="prev" title="dotnet Core HangFire - 1(排程工具)"><i class="iconfont icon-left"></i>&nbsp;dotnet Core HangFire - 1(排程工具)</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/" class="next" rel="next" title="dotnet Core HangFire - 2">dotnet Core HangFire - 2&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
