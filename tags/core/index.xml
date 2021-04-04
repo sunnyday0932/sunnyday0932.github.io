@@ -6,7 +6,21 @@
     <description>Recent content in Core on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 01 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core HangFire - 3(使用技巧與設定上篇)</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/</link>
+      <pubDate>Sat, 03 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/</guid>
+      <description>前言 本篇會介紹一些特殊使用技巧，跟一些可以調整的設定。
+本文 1、API觸發排程。 首先建立一個API Controller。
+[Route(&amp;quot;api/[controller]&amp;quot;)] [ApiController] public class HangfireApiController : ControllerBase { [Route(&amp;quot;enquee&amp;quot;)] [HttpGet] public string TestHangfire() { BackgroundJob.Enqueue( () =&amp;gt; Console.WriteLine(&amp;quot;API觸發：Fire and Foreget Schedule!&amp;quot;)); return &amp;quot;排程觸發&amp;quot;; } } 測試：
+2、設定排程Priority。 先在StartUp中ConfigureService設定Priority。
+services.AddHangfireServer(options =&amp;gt; { //priority options.Queues = new[] { &amp;quot;alpha&amp;quot;, &amp;quot;beta&amp;quot;, &amp;quot;default&amp;quot; }; }); 將Recurring Job 改成：
+//Recurring job RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;Recurring job&amp;quot;, () =&amp;gt; Console.WriteLine($&amp;quot;Recurring job觸發時間：{DateTime.Now}&amp;quot;), cronExpression:&amp;quot;*/1 * * * *&amp;quot;, TimeZoneInfo.Local ); RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;alpha job&amp;quot;, () =&amp;gt; Console.</description>
+    </item>
+    
     <item>
       <title>dotnet Core HangFire - 2</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/</link>
