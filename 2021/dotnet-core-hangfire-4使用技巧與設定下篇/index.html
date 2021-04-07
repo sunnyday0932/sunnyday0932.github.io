@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">	
   <meta name="keywords" content="Sian">	
   	
-  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/" />	
-  <link rel="next" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/" />	
-  <link rel="canonical" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/" />	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/" />	
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           dotnet Core HangFire - 3(使用技巧與設定上篇) | Sian	
+           dotnet Core HangFire - 4(使用技巧與設定下篇) | Sian	
        	
   </title>	
-  <meta name="title" content="dotnet Core HangFire - 3(使用技巧與設定上篇) | Sian">	
+  <meta name="title" content="dotnet Core HangFire - 4(使用技巧與設定下篇) | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "dotnet Core HangFire - 3(使用技巧與設定上篇)",
-    "headline" : "dotnet Core HangFire - 3(使用技巧與設定上篇)",
-    "description" : "dotnet Core HangFire - 3",
+    "name" : "dotnet Core HangFire - 4(使用技巧與設定下篇)",
+    "headline" : "dotnet Core HangFire - 4(使用技巧與設定下篇)",
+    "description" : "dotnet Core HangFire - 4(使用技巧與設定下篇)",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,10 +68,10 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2021",
-    "datePublished": "2021-04-03 18:40:45  UTC",
-    "dateModified" : "2021-04-03 18:40:45  UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87\/",
-    "wordCount" : "240",
+    "datePublished": "2021-04-05 18:40:45  UTC",
+    "dateModified" : "2021-04-05 18:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87\/",
+    "wordCount" : "313",
     "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
 }
 </script>
@@ -134,11 +134,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - 3(使用技巧與設定上篇)</h1>
+        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - 4(使用技巧與設定下篇)</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2021-04-03 itemprop="datePublished">April 3, 2021</time>
+                on <time datetime=2021-04-05 itemprop="datePublished">April 5, 2021</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -170,44 +170,82 @@
           
           
 
-          <h2 id="前言">前言</h2>
-<p>本篇會介紹一些特殊使用技巧，跟一些可以調整的設定。</p>
-<h2 id="本文">本文</h2>
-<h3 id="1api觸發排程">1、API觸發排程。</h3>
-<p>首先建立一個API Controller。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">
-    [Route(&quot;api/[controller]&quot;)]
-    [ApiController]
-    public class HangfireApiController : ControllerBase
+          <h2 id="本文">本文</h2>
+<h3 id="1trigger觸發程序">1、Trigger(觸發程序)。</h3>
+<p>看到這裡，我一開始以為所謂的Trigger就只有類似於在SQL Server當觸動某張Table時，會觸發某種事件這樣，但其實並不只是只有此種才稱之為Trigger，所以一開始看到大神介紹此種方法的時候還一頭霧水。</p>
+<p>我們可以將排程做成Trigger的方式，由程式啟動的時候觸發部屬排程工作。<br>
+順便會帶一點將排程執行的邏輯拆程類似之前分層架構的模式。</p>
+<p>首先我們建立一個ITimeService介面、與實作就是取得當下時間。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface ITimeService
     {
-        [Route(&quot;enquee&quot;)]
-        [HttpGet]
-        public string TestHangfire()
+        public DateTime GetCurrentTime();
+    }
+    
+    public class TimeService : ITimeService
+    {
+        public DateTime GetCurrentTime()
         {
-            BackgroundJob.Enqueue(
-                () =&gt; Console.WriteLine(&quot;API觸發：Fire and Foreget Schedule!&quot;));
-
-            return &quot;排程觸發&quot;;
+            var currentTime = DateTime.Now;
+            return currentTime;
         }
     }
+</code></pre><p><img src="https://i.imgur.com/x1E9LMM.jpg" alt=""></p>
+<p>接下來建立一個HangfireJob的介面與類別，這邊實體就會使用到剛剛所建立的TimeService。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface IHangfireJob
+    {
+        void GetCurrentTime();
+    }
+    
+    public class HangfireJob : IHangfireJob
+    {
+        private readonly ITimeService _timeService;
 
-</code></pre><p>測試：<br>
-<img src="https://i.imgur.com/Xa3JiYG.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/OFNjAxd.jpg" alt=""></p>
-<h3 id="2設定排程priority">2、設定排程Priority。</h3>
-<p>先在StartUp中ConfigureService設定Priority。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">services.AddHangfireServer(options =&gt;
+        public HangfireJob(
+            ITimeService timeService)
+        {
+            this._timeService = timeService;
+        }
+
+        public void GetCurrentTime()
+        {
+            var startTime = this._timeService.GetCurrentTime();
+            Console.WriteLine($&quot;起始時間：{startTime.ToLocalTime():yyyy/MM/dd HH:mm:ss}&quot;);
+
+            Thread.Sleep(1000);
+
+            var endTime = this._timeService.GetCurrentTime();
+            Console.WriteLine($&quot;結束時間:{endTime.ToLocalTime():yyyy/MM/dd HH:mm:ss}&quot;);
+        }
+    }
+</code></pre><p>接著建立HangfireJobTrigger，這邊程式一啟動會先把現有的job清除，然後將預設的Recurring job 加入排程。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface IHangfireJobTrigger
+    {
+        void OnStart();
+    }
+    
+    public void OnStart()
+        {
+            //清除所有的排程
+            using var conn = JobStorage.Current.GetConnection();
+            conn.GetRecurringJobs().ForEach(row =&gt;
             {
-                //priority
-                options.Queues = new[] { &quot;alpha&quot;, &quot;beta&quot;, &quot;default&quot; };
+                RecurringJob.RemoveIfExists(row.Id);
             });
-</code></pre><p>將Recurring Job 改成：</p>
-<pre><code class="language-csharp=" data-lang="csharp=">            //Recurring job
+
+            //Recurring job
+            RecurringJob.AddOrUpdate&lt;IHangfireJob&gt;
+                (
+                    methodCall: x =&gt; x.GetCurrentTime(),
+                    cronExpression: &quot;0/5 * * * *&quot;,
+                    timeZone: TimeZoneInfo.Local
+                );
+            
+            //把原本在StartUp的Job也一併搬到這邊
             RecurringJob.AddOrUpdate
                 (
                     recurringJobId: &quot;Recurring job&quot;,
                     () =&gt; Console.WriteLine($&quot;Recurring job觸發時間：{DateTime.Now}&quot;),
-                    cronExpression:&quot;*/1 * * * *&quot;,
+                    cronExpression: &quot;*/1 * * * *&quot;,
                     TimeZoneInfo.Local
                 );
 
@@ -228,100 +266,94 @@
                     TimeZoneInfo.Local,
                     queue: &quot;beta&quot;
                 );
-</code></pre><p>執行測試：<br>
-<img src="https://i.imgur.com/mY4PcQU.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/BwocEbq.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/mDrbXJm.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/RFzdOTN.jpg" alt=""></p>
-<p>執行順序：<br>
-alpha &gt; beta &gt; default</p>
-<h3 id="3hangfire-server設定">3、Hangfire Server設定。</h3>
-<h4 id="a設定serve-name用以識別個別機器">a、設定Serve Name：用以識別個別機器。</h4>
-<p>一樣是在StartUp的ConfigureServices加入設定</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    //Server Name
-    options.ServerName = $&quot;{Environment.MachineName}:NetCore&quot;;
-</code></pre><p><img src="https://i.imgur.com/kodmnLJ.jpg" alt=""></p>
-<p>接下來打開Hangfire儀表板Server的地方就會看到出現機器名稱。</p>
-<p><img src="https://i.imgur.com/xOvSvsA.jpg" alt=""></p>
-<h4 id="b設定worker數量hangfire-server可以同時處理工作的數量">b、設定Worker數量：Hangfire Server可以同時處理工作的數量。</h4>
-<p>這邊若一開始沒有特別給予特別的設定，預設值會是20。<br>
-而Hangfire官方建議配置數量為Hangfire Server的CPU數量乘以5。<br>
-Ex: 目前架設的Hangfire Server CPU數量為4核心，那就可以配置 4 * 5 = 20的Worker數量。</p>
-<p>提醒：</p>
-<blockquote>
-<p>Woker的設置數量並不是越多越好，必須考量目前架設Hangfire Server的CPU等級、數量，以及在同一台Server上的其他Hangfire服務。</p>
-</blockquote>
-<p>設置地點同樣在StartUp的ConfigureServices。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">//Worker
-options.WorkerCount = 20;
-</code></pre><p><img src="https://i.imgur.com/Div88AB.jpg" alt=""></p>
-<p>也可以在儀錶板看到相關數量。<br>
-<img src="https://i.imgur.com/cjmcNkn.jpg" alt=""></p>
-<h4 id="c設定儀錶板路徑">c、設定儀錶板路徑。</h4>
-<p>儀錶板設定的地方在StartUp的Configure。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">            //Hangfire
-            app.UseHangfireDashboard(
-                 //dashboard path
-                pathMatch: &quot;/hangfire&quot;,
-                options: new DashboardOptions
-                {
-                    Authorization = new List&lt;IDashboardAuthorizationFilter&gt;(),
-                    IgnoreAntiforgeryToken = true
-                });
-</code></pre><h4 id="d設定首頁顯示的資訊">d、設定首頁顯示的資訊。</h4>
-<p>一樣是在StartUp的ConfigureServices加入設定。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        services.AddHangfire(config =&gt;
-            {
-                config.UseSqlServerStorage(
-                    nameOrConnectionString: hangfireConnection,
-                    options: new SqlServerStorageOptions
-                    { 
-                        SchemaName = &quot;HangfireSample&quot;,
-                        JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60)
-                    })
-                //使用中的連線
-                .UseDashboardMetric(SqlServerStorage.ActiveConnections)
-                //連線數量
-                .UseDashboardMetric(SqlServerStorage.TotalConnections)
-                //Hangfire Server數量
-                .UseDashboardMetric(DashboardMetrics.ServerCount)
-                //Recurring Job數量
-                .UseDashboardMetric(DashboardMetrics.RecurringJobCount)
-                //排程數量
-                .UseDashboardMetric(DashboardMetrics.ScheduledCount)
-                //目前在Queue中的排程數量
-                .UseDashboardMetric(DashboardMetrics.EnqueuedAndQueueCount)
-                //處理中的排程數量
-                .UseDashboardMetric(DashboardMetrics.ProcessingCount)
-                //正在等待處理中的排程數量
-                .UseDashboardMetric(DashboardMetrics.AwaitingCount)
-                //已被刪除的排程數量
-                .UseDashboardMetric(DashboardMetrics.DeletedCount)
-                //執行失敗的排程數量
-                .UseDashboardMetric(DashboardMetrics.FailedCount)
-                //成功執行的排程數量
-                .UseDashboardMetric(DashboardMetrics.SucceededCount);
-            });
-</code></pre><p><img src="https://i.imgur.com/7O7l1Ip.jpg" alt=""></p>
-<h4 id="ejob資料的保存期限設定">e、Job資料的保存期限設定。</h4>
-<ul>
-<li>預設的SqlServerStorageOptions相關資料保存時間為一天。</li>
-<li>Hangfire Server會每30分鐘去檢查是否有超過保存時間的資料如果超過保存時間就會予以刪除。</li>
-</ul>
-<p>提醒：</p>
-<blockquote>
-<p>太過頻繁檢查會使得Sql Server與 Hangfire Server附載過重。</p>
-</blockquote>
-<p>可在StartUp的ConfigureServices加入設定。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">            config.UseSqlServerStorage(
-                    nameOrConnectionString: hangfireConnection,
-                    options: new SqlServerStorageOptions
-                    { 
-                        SchemaName = &quot;HangfireSample&quot;,
-                        //Job資料的保存期限
-                        JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60)
-                    })
-</code></pre><h2 id="後記">後記</h2>
+        }
+</code></pre><p>現在程式的架構。<br>
+<img src="https://i.imgur.com/5HxWu92.jpg" alt=""></p>
+<p>接著我們把注入的Job注入的地方統一整理在一起。<br>
+建立一個DependencyInjectionExtension。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public static class DependencyInjectionExtension
+    {
+        public static IServiceCollection AddDependencyInjection(this IServiceCollection services)
+        {
+            //Service
+            services.AddScoped&lt;ITimeService, TimeService&gt;();
+
+            //Jobs
+            services.AddScoped&lt;IHangfireJobTrigger, HangfireJobTrigger&gt;();
+            services.AddScoped&lt;IHangfireJob, HangfireJob&gt;();
+
+            return services;
+        }
+    }
+</code></pre><p>目前程式的架構。<br>
+<img src="https://i.imgur.com/lQmxznZ.jpg" alt=""></p>
+<p>最後一步我們回到StartUp改變一下Hangfire的注入。<br>
+第一在ConfigureServices要把剛剛DI Extension注入。<br>
+<img src="https://i.imgur.com/BSb35YQ.jpg" alt=""></p>
+<p>第二在Configure的地方需要做點改變。</p>
+<pre><code class="language-csharp=" data-lang="csharp="> public void Configure(
+ IApplicationBuilder app, 
+ IWebHostEnvironment env, 
+ IServiceProvider serviceProvider
+ //多使用serviceProvider)
+ {
+     //觸發Job
+    var hangfireTrigger = serviceProvider.GetService&lt;IHangfireJobTrigger&gt;();
+    hangfireTrigger.OnStart();
+ 
+ }
+
+</code></pre><p><img src="https://i.imgur.com/rr4vhUq.jpg" alt=""></p>
+<p>測試：<br>
+<img src="https://i.imgur.com/rWTapFe.jpg" alt=""></p>
+<h3 id="2hangfireconsole在儀錶板觀看排程的log">2、Hangfire.Console：在儀錶板觀看排程的log。</h3>
+<p>可以使用這種方式來記錄排程執行階段是否有遇到狀況。</p>
+<p>首先需要安裝Hangfire.Console。<br>
+<img src="https://i.imgur.com/PbbzFgI.jpg" alt=""></p>
+<p>接著到StartUp的ConfigureService加入設定。<br>
+<img src="https://i.imgur.com/pOE7lSa.jpg" alt=""></p>
+<p>修改一下HangfireJob的方法。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public interface IHangfireJob
+    {
+        void GetCurrentTime(PerformContext context);
+    }
+    
+    public class HangfireJob : IHangfireJob
+    {
+        private readonly ITimeService _timeService;
+
+        public HangfireJob(
+            ITimeService timeService)
+        {
+            this._timeService = timeService;
+        }
+
+        public void GetCurrentTime(PerformContext context)
+        {
+            var startTime = this._timeService.GetCurrentTime();
+            var startMessage = $&quot;起始時間：{startTime.ToLocalTime():yyyy/MM/dd HH:mm:ss}&quot;;
+            context.WriteLine(startMessage);
+
+            Thread.Sleep(1000);
+
+            var endTime = this._timeService.GetCurrentTime();
+            var endMessage = $&quot;結束時間:{endTime.ToLocalTime():yyyy/MM/dd HH:mm:ss}&quot;;
+            context.WriteLine(endMessage);
+        }
+    }
+</code></pre><p>Trigger的地方也要修改。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">            //Recurring job
+            RecurringJob.AddOrUpdate&lt;IHangfireJob&gt;
+                (
+                    methodCall: x =&gt; x.GetCurrentTime(null),
+                    cronExpression: &quot;0/5 * * * *&quot;,
+                    timeZone: TimeZoneInfo.Local
+                );
+</code></pre><p><img src="https://i.imgur.com/83ie5Tj.jpg" alt=""></p>
+<p>測試：<br>
+<img src="https://i.imgur.com/fOTTULN.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>Hangfire大致上會介紹到這邊，接下來我們會練習使用Hangfire排程來製作小專題。</p>
 <p><a href="https://github.com/sunnyday0932/HangFireSample">程式一樣會放在GitHub有需要的歡迎取用。</a></p>
 
     </div>
@@ -337,7 +369,7 @@ options.WorkerCount = 20;
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/</span>
+                    <a href=https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/</span>
             </p>
             
              
@@ -375,10 +407,8 @@ options.WorkerCount = 20;
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/" class="prev" rel="prev" title="dotnet Core HangFire - 2"><i class="iconfont icon-left"></i>&nbsp;dotnet Core HangFire - 2</a>
+        <a href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/" class="prev" rel="prev" title="dotnet Core HangFire - 3(使用技巧與設定上篇)"><i class="iconfont icon-left"></i>&nbsp;dotnet Core HangFire - 3(使用技巧與設定上篇)</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/" class="next" rel="next" title="dotnet Core HangFire - 4(使用技巧與設定下篇)">dotnet Core HangFire - 4(使用技巧與設定下篇)&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

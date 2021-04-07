@@ -6,7 +6,21 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 03 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core HangFire - 4(使用技巧與設定下篇)</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/</link>
+      <pubDate>Mon, 05 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/</guid>
+      <description>本文 1、Trigger(觸發程序)。 看到這裡，我一開始以為所謂的Trigger就只有類似於在SQL Server當觸動某張Table時，會觸發某種事件這樣，但其實並不只是只有此種才稱之為Trigger，所以一開始看到大神介紹此種方法的時候還一頭霧水。
+我們可以將排程做成Trigger的方式，由程式啟動的時候觸發部屬排程工作。
+順便會帶一點將排程執行的邏輯拆程類似之前分層架構的模式。
+首先我們建立一個ITimeService介面、與實作就是取得當下時間。
+public interface ITimeService { public DateTime GetCurrentTime(); } public class TimeService : ITimeService { public DateTime GetCurrentTime() { var currentTime = DateTime.Now; return currentTime; } } 接下來建立一個HangfireJob的介面與類別，這邊實體就會使用到剛剛所建立的TimeService。
+public interface IHangfireJob { void GetCurrentTime(); } public class HangfireJob : IHangfireJob { private readonly ITimeService _timeService; public HangfireJob( ITimeService timeService) { this._timeService = timeService; } public void GetCurrentTime() { var startTime = this._timeService.GetCurrentTime(); Console.WriteLine($&amp;quot;起始時間：{startTime.ToLocalTime():yyyy/MM/dd HH:mm:ss}&amp;quot;); Thread.</description>
+    </item>
+    
     <item>
       <title>dotnet Core HangFire - 3(使用技巧與設定上篇)</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/</link>
