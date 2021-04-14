@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           dotnet Core HangFire - Youbike練習題 | Sian	
+       	
+  </title>	
+  <meta name="title" content="dotnet Core HangFire - Youbike練習題 | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "dotnet Core HangFire - Youbike練習題",
+    "headline" : "dotnet Core HangFire - Youbike練習題",
+    "description" : "dotnet Core HangFire - Youbike練習題",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-04-12 18:40:45  UTC",
+    "dateModified" : "2021-04-12 18:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C\/",
+    "wordCount" : "970",
+    "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - Youbike練習題</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-04-12 itemprop="datePublished">April 12, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>前面介紹完Hangfire後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。</p>
+<h2 id="內文">內文</h2>
+<h3 id="1目標">1、目標。</h3>
+<ul>
+<li>使用Youbike2.0政府開放資料。</li>
+<li>每分鐘去抓取資料後寫回DB。</li>
+</ul>
+<h3 id="2實作">2、實作。</h3>
+<p>使用API網址為：<a href="https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json">Youbike2.0政府開放資料。</a>。</p>
+<p>使用說明：<br>
+<img src="https://i.imgur.com/yPdzSzN.jpg" alt=""></p>
+<p>觀察一下API格式。<br>
+<img src="https://i.imgur.com/nRuGowE.jpg" alt=""></p>
+<p>建立Model存放。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class YoubikeDataModel
+    {
+        /// &lt;summary&gt;
+        /// 站點代號
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;sno&quot;)]
+        public string StationNo { get; set; }
+
+        /// &lt;summary&gt;
+        /// 場站中文名稱
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;sna&quot;)]
+        public string StationName { get; set; }
+
+        /// &lt;summary&gt;
+        /// 場站總停車格
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;tot&quot;)]
+        public int Total { get; set; }
+
+        /// &lt;summary&gt;
+        /// 場站目前車輛數量
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;sbi&quot;)]
+        public int BikeAmount { get; set; }
+
+        /// &lt;summary&gt;
+        /// 場站區域
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;sarea&quot;)]
+        public string StaionArea { get; set; }
+
+        /// &lt;summary&gt;
+        /// 資料更新時間
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;mday&quot;)]
+        public DateTime ModifyDate { get; set; }
+
+        /// &lt;summary&gt;
+        /// 緯度
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;lat&quot;)]
+        public double Latitude { get; set; }
+
+        /// &lt;summary&gt;
+        /// 經度
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;lng&quot;)]
+        public double Longitude { get; set; }
+
+        /// &lt;summary&gt;
+        /// 地點
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;ar&quot;)]
+        public string Address { get; set; }
+
+        /// &lt;summary&gt;
+        /// 場站區域英文
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;sareaen&quot;)]
+        public string StationAreaEnglish { get; set; }
+
+        /// &lt;summary&gt;
+        /// 場站名稱英文
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;snaen&quot;)]
+        public string StationNameEnglish { get; set; }
+
+        /// &lt;summary&gt;
+        /// 地址英文
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;aren&quot;)]
+        public string AddressEnglish { get; set; }
+
+        /// &lt;summary&gt;
+        /// 空位數量
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;bemp&quot;)]
+        public int Available { get; set; }
+
+        /// &lt;summary&gt;
+        /// 全站禁用狀態
+        /// &lt;/summary&gt;
+        [JsonProperty(&quot;act&quot;)]
+        public string Active { get; set; }
+
+        /// &lt;summary&gt;
+        /// source update time.
+        /// &lt;/summary&gt;
+        public DateTime SrcUpdateTime { get; set; }
+
+        /// &lt;summary&gt;
+        /// update time.
+        /// &lt;/summary&gt;
+        public DateTime UpdateTime { get; set; }
+
+        /// &lt;summary&gt;
+        /// InfoTime
+        /// &lt;/summary&gt;
+        public DateTime InfoTime { get; set; }
+
+        /// &lt;summary&gt;
+        /// InfoDate
+        /// &lt;/summary&gt;
+        public DateTime InfoDate { get; set; }
+    }
+</code></pre><p>YoubikeRepository實作地方，使用JsonConvert.DeserializeObject反序列化拿回資料。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 取得Youbike資料
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        /// &lt;exception cref=&quot;HttpRequestException&quot;&gt;取得Youbike 資訊失敗!&lt;/exception&gt;
+        public async Task&lt;IEnumerable&lt;YoubikeDataModel&gt;&gt; GetSationAsync()
+        {
+
+            var response = await this._httpClient.GetAsync(this._youbikeUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject&lt;IEnumerable&lt;YoubikeDataModel&gt;&gt;(content);
+                return result;
+            }
+
+            throw new HttpRequestException(&quot;取得Youbike 資訊失敗!&quot;);
+        }
+</code></pre><p>串建存放YouBike資訊的Table。</p>
+<pre><code class="language-sql=" data-lang="sql=">CREATE TABLE [dbo].[YoubikeStation](
+	[StationNo] [nvarchar](10) NOT NULL,
+	[StationName] [nvarchar](50) NOT NULL,
+	[Total] [int] NOT NULL,
+	[BikeAmount] [int] NOT NULL,
+	[StationArea] [nvarchar](10) NOT NULL,
+	[ModifyDate] [datetime] NOT NULL,
+	[Latitude] [float] NOT NULL,
+	[Longitude] [float] NOT NULL,
+	[Address] [nvarchar](200) NOT NULL,
+	[StationAreaEnglish] [nvarchar](50) NOT NULL,
+	[StationNameEnglish] [nvarchar](100) NOT NULL,
+	[AddressEnglish] [nvarchar](500) NOT NULL,
+	[Available] [int] NOT NULL,
+	[Active] [bit] NOT NULL,
+	[SrcUpdateTime] [datetime] NOT NULL,
+	[UpdateTime] [datetime] NOT NULL,
+	[InfoTime] [datetime] NOT NULL,
+	[InfoDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_YoubikeStation] PRIMARY KEY CLUSTERED 
+(
+	[StationNo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)
+</code></pre><p>StationRepository實作。<br>
+因為每次都會重新抓取資料後放回，這邊使用簡單又暴力方法，直接TRUNCATE整張Table。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 刪除Station
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;conditions&quot;&gt;The conditions.&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public async Task DeleteStationAsync()
+        {
+            var sql = @&quot; TRUNCATE TABLE [Northwind].[dbo].[YoubikeStation] &quot;;
+
+            using (var conn = this._databaseHelper.GetConnection(this._connectionString))
+            {
+                await conn.ExecuteAsync(sql);
+            }
+        }
+</code></pre><p>新增資料，使用Dapper一次大量INSERT。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 新增Station
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;conditions&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public async Task&lt;bool&gt; InsertStationAsync(IEnumerable&lt;StationCondition&gt; conditions)
+        {
+            var sql = @&quot;INSERT INTO YoubikeStation
+                        (
+	                        StationNo,
+	                        StationName,
+	                        Total,
+	                        BikeAmount,
+	                        StationArea,
+	                        ModifyDate,
+	                        Latitude,
+	                        Longitude,
+	                        Address,
+	                        StationAreaEnglish,
+	                        StationNameEnglish,
+	                        AddressEnglish,
+	                        Available,
+	                        Active,
+	                        SrcUpdateTime,
+	                        UpdateTime,
+	                        InfoTime,
+	                        InfoDate
+                        )
+                        values
+                        (
+	                        @StationNo,
+	                        @StationName,
+	                        @Total,
+	                        @BikeAmount,
+	                        @StationArea,
+	                        @ModifyDate,
+	                        @Latitude,
+	                        @Longitude,
+	                        @Address,
+	                        @StationAreaEnglish,
+	                        @StationNameEnglish,
+	                        @AddressEnglish,
+	                        @Available,
+	                        @Active,
+	                        @SrcUpdateTime,
+	                        @UpdateTime,
+	                        @InfoTime,
+	                        @InfoDate
+                        )&quot;;
+            var parameterList = new List&lt;DynamicParameters&gt;();
+            conditions.ToList().ForEach(rows =&gt;
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add(&quot;@StationNo&quot;, rows.StationNo, DbType.String);
+                    parameters.Add(&quot;@StationName&quot;, rows.StationName, DbType.String);
+                    parameters.Add(&quot;@Total&quot;, rows.Total, DbType.Int32);
+                    parameters.Add(&quot;@BikeAmount&quot;, rows.BikeAmount, DbType.Int32);
+                    parameters.Add(&quot;@StationArea&quot;, rows.StaionArea, DbType.String);
+                    parameters.Add(&quot;@ModifyDate&quot;, rows.ModifyDate, DbType.DateTime);
+                    parameters.Add(&quot;@Latitude&quot;, rows.Latitude, DbType.Double);
+                    parameters.Add(&quot;@Longitude&quot;, rows.Longitude, DbType.Double);
+                    parameters.Add(&quot;@Address&quot;, rows.Address, DbType.String);
+                    parameters.Add(&quot;@StationAreaEnglish&quot;, rows.StationAreaEnglish, DbType.String);
+                    parameters.Add(&quot;@StationNameEnglish&quot;, rows.StationNameEnglish, DbType.String);
+                    parameters.Add(&quot;@AddressEnglish&quot;, rows.AddressEnglish, DbType.String);
+                    parameters.Add(&quot;@Available&quot;, rows.Available, DbType.Int32);
+                    parameters.Add(&quot;@Active&quot;, rows.Active, DbType.Int32);
+                    parameters.Add(&quot;@SrcUpdateTime&quot;, rows.SrcUpdateTime, DbType.DateTime);
+                    parameters.Add(&quot;@UpdateTime&quot;, rows.UpdateTime, DbType.DateTime);
+                    parameters.Add(&quot;@InfoTime&quot;, rows.InfoTime, DbType.DateTime);
+                    parameters.Add(&quot;@InfoDate&quot;, rows.InfoDate, DbType.DateTime);
+
+                    parameterList.Add(parameters);
+                });
+
+            using (var conn = this._databaseHelper.GetConnection(this._connectionString))
+            {
+                var result = await conn.ExecuteAsync(
+                    sql,
+                    parameterList
+                    );
+
+                return result &gt; 0;
+            }
+        }
+</code></pre><p>StationService的地方有使用TransactionScope，主要用來避免執行一半錯誤發生資料不一致問題。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 更新YouBike站
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;stationInfo&quot;&gt;The station information.&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public async Task&lt;ResultDto&gt; UpdateStationAsync(IEnumerable&lt;StationInfoModel&gt; stationInfo)
+        {
+            if (stationInfo is null ||
+                stationInfo.Any().Equals(false))
+            {
+                return new ResultDto
+                {
+                    Sucess = false,
+                    Message = &quot;傳入資料為空&quot;
+                };
+            }
+
+            var condition = this._mapper.Map&lt;IEnumerable&lt;StationCondition&gt;&gt;(stationInfo);
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                await this._stationRepository.DeleteStationAsync();
+
+                var insertResult = await this._stationRepository.InsertStationAsync(condition);
+
+                if (insertResult.Equals(false))
+                {
+                    return new ResultDto
+                    {
+                        Sucess = false,
+                        Message = &quot;資料新增失敗&quot;
+                    };
+                }
+                scope.Complete();
+                return new ResultDto
+                {
+                    Sucess = insertResult,
+                    Message = &quot;資料更新成功&quot;
+                };
+
+            }
+
+        }
+</code></pre><p>Hangfire相關設定。<br>
+Youbike job會印出目前執行狀態以及步驟。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 更新Youbike站資訊
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;context&quot;&gt;The context.&lt;/param&gt;
+        public async Task UpdateStation(PerformContext context)
+        {
+            var startMessage = $&quot;排程起始時間：{DateTime.Now.ToLocalTime():yyyy/MM/dd HH:mm:ss}&quot;;
+            context.WriteLine(startMessage);
+            var stationInfo = await this._youbikeService.GetSationAsync();
+            context.WriteLine($&quot;抓取YouBike 2.0資料共 {stationInfo.Count()} 筆&quot;);
+
+            context.WriteLine($&quot;開始更新資料庫&quot;);
+            var stationInfoModel = this._mapper.Map&lt;IEnumerable&lt;StationInfoModel&gt;&gt;(stationInfo);
+            await this._stationService.UpdateStationAsync(stationInfoModel);
+            context.WriteLine($&quot;更新資料庫完成&quot;);
+
+            var endMessage = $&quot;排程結束時間：{DateTime.Now.ToLocalTime():yyyy/MM/dd HH:mm:ss}&quot;;
+            context.WriteLine(endMessage);
+        }
+</code></pre><p>Hangfire Trigger，一樣起始先把Job清空，配合原始API更新時間，一分鐘抓取資料更新即可。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public void OnStart()
+        {
+            //清除所有的排程
+            using var conn = JobStorage.Current.GetConnection();
+            conn.GetRecurringJobs().ForEach(row =&gt;
+            {
+                RecurringJob.RemoveIfExists(row.Id);
+            });
+
+            //YouBike 2.0 排程 每分鐘執行一次
+            RecurringJob.AddOrUpdate&lt;IYouBikeJob&gt;
+                (
+                    methodCall: x =&gt; x.UpdateStation(null),
+                    cronExpression: &quot;*/1 * * * *&quot;,
+                    timeZone: TimeZoneInfo.Local
+                );
+        }
+</code></pre><p>ConnectionString以及Url都放在appsettings內，透過StartUp注入時拿取。</p>
+<pre><code class="language-json=" data-lang="json=">{
+  &quot;Logging&quot;: {
+    &quot;LogLevel&quot;: {
+      &quot;Default&quot;: &quot;Information&quot;,
+      &quot;Microsoft&quot;: &quot;Warning&quot;,
+      &quot;Microsoft.Hosting.Lifetime&quot;: &quot;Information&quot;
+    }
+  },
+  &quot;AllowedHosts&quot;: &quot;*&quot;,
+  &quot;Url&quot;: {
+    &quot;Youbike&quot;: &quot;https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json&quot;
+  },
+  &quot;ConnectionStrings&quot;: {
+    &quot;Northwind&quot;: &quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&quot;,
+    &quot;HangFire&quot;: &quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&quot;
+  }
+}
+</code></pre><p>StartUp，特別的地方是為了避免sockets exhaustion問題將HttpClient註冊為Singleton共用。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 取得DB連線
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        private string GetConnection(string databaseName)
+        {
+            var connection = this.Configuration.GetValue&lt;string&gt;($&quot;ConnectionString:{databaseName}&quot;);
+
+            return connection;
+        }
+
+        /// &lt;summary&gt;
+        /// 取得Url
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        private string GetUrl(string urlName)
+        {
+            var url = this.Configuration.GetValue&lt;string&gt;($&quot;Url:{urlName}&quot;);
+
+            return url;
+        }
+        
+         public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllersWithViews();
+
+            //DI Extensions
+            services.AddDependencyInjection();
+
+            //HttpClient
+            services.AddSingleton&lt;HttpClient&gt;(new HttpClient());
+
+            //Url
+            var youbikeUrl = this.GetUrl(&quot;Youbike&quot;);
+
+            //Connection
+            var hangfireConnection = this.Configuration.GetConnectionString(name: &quot;Hangfire&quot;);
+            var northWindConnection = this.Configuration.GetConnectionString(name: &quot;Northwind&quot;);
+
+            //Repository
+            services.AddSingleton&lt;IDatabaseHelper, DatabaseHelper&gt;();
+            services.AddScoped&lt;IYoubikeRepository&gt;(sp =&gt;
+            {
+                return new YoubikeRepository(
+                    youbikeUrl,
+                    sp.GetRequiredService&lt;HttpClient&gt;());
+            });
+
+            services.AddScoped&lt;IStationRepository&gt;(sp =&gt;
+            {
+                return new StationRepository(
+                    northWindConnection,
+                    sp.GetRequiredService&lt;IDatabaseHelper&gt;());
+            });
+
+            //AutoMapper
+            services.AddAutoMapper(
+                typeof(ControllerProfile),
+                typeof(ServiceProfile));
+
+            //Hangfire
+            services.AddHangfire(config =&gt;
+            {
+                config.UseSqlServerStorage(
+                    nameOrConnectionString: hangfireConnection,
+                    options: new SqlServerStorageOptions
+                    {
+                        SchemaName = &quot;YouBikeScheduler&quot;,
+                        //Job資料的保存期限
+                        JobExpirationCheckInterval = TimeSpan.FromMinutes(value: 60)
+                    })
+                //顯示log
+                .UseConsole()
+                //使用中的連線
+                .UseDashboardMetric(SqlServerStorage.ActiveConnections)
+                //連線數量
+                .UseDashboardMetric(SqlServerStorage.TotalConnections)
+                //Hangfire Server數量
+                .UseDashboardMetric(DashboardMetrics.ServerCount)
+                //Recurring Job數量
+                .UseDashboardMetric(DashboardMetrics.RecurringJobCount)
+                //排程數量
+                .UseDashboardMetric(DashboardMetrics.ScheduledCount)
+                //目前在Queue中的排程數量
+                .UseDashboardMetric(DashboardMetrics.EnqueuedAndQueueCount)
+                //處理中的排程數量
+                .UseDashboardMetric(DashboardMetrics.ProcessingCount)
+                //正在等待處理中的排程數量
+                .UseDashboardMetric(DashboardMetrics.AwaitingCount)
+                //已被刪除的排程數量
+                .UseDashboardMetric(DashboardMetrics.DeletedCount)
+                //執行失敗的排程數量
+                .UseDashboardMetric(DashboardMetrics.FailedCount)
+                //成功執行的排程數量
+                .UseDashboardMetric(DashboardMetrics.SucceededCount);
+            });
+
+            services.AddHangfireServer(options =&gt;
+            {
+                //Server Name
+                options.ServerName = $&quot;{Environment.MachineName}:NetCore&quot;;
+            });
+        }   
+</code></pre><p>執行測試：<br>
+<img src="https://i.imgur.com/Vur38of.jpg" alt=""></p>
+<p>DB狀態：<br>
+<img src="https://i.imgur.com/6yza2GF.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p><a href="https://github.com/sunnyday0932/YouBikeScheduler">程式一樣會放在Github上，有需要歡迎取用。</a></p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://kevintsengtw.blogspot.com/2018/01/aspnet-core-webapi-youbike.html">mrkt ASP.NET Core WebAPI - 台北市 YouBike 公開資料</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/hangfire/">
+                    #HangFire</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/" class="prev" rel="prev" title="dotnet Core HangFire - 4(使用技巧與設定下篇)"><i class="iconfont icon-left"></i>&nbsp;dotnet Core HangFire - 4(使用技巧與設定下篇)</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

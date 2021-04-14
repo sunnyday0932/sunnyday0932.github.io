@@ -6,7 +6,21 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 05 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet Core HangFire - Youbike練習題</title>
+      <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</link>
+      <pubDate>Mon, 12 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</guid>
+      <description>前言 前面介紹完Hangfire後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。
+內文 1、目標。  使用Youbike2.0政府開放資料。 每分鐘去抓取資料後寫回DB。  2、實作。 使用API網址為：Youbike2.0政府開放資料。。
+使用說明：
+觀察一下API格式。
+建立Model存放。
+public class YoubikeDataModel { /// &amp;lt;summary&amp;gt; /// 站點代號 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sno&amp;quot;)] public string StationNo { get; set; } /// &amp;lt;summary&amp;gt; /// 場站中文名稱 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sna&amp;quot;)] public string StationName { get; set; } /// &amp;lt;summary&amp;gt; /// 場站總停車格 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;tot&amp;quot;)] public int Total { get; set; } /// &amp;lt;summary&amp;gt; /// 場站目前車輛數量 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sbi&amp;quot;)] public int BikeAmount { get; set; } /// &amp;lt;summary&amp;gt; /// 場站區域 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sarea&amp;quot;)] public string StaionArea { get; set; } /// &amp;lt;summary&amp;gt; /// 資料更新時間 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;mday&amp;quot;)] public DateTime ModifyDate { get; set; } /// &amp;lt;summary&amp;gt; /// 緯度 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;lat&amp;quot;)] public double Latitude { get; set; } /// &amp;lt;summary&amp;gt; /// 經度 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;lng&amp;quot;)] public double Longitude { get; set; } /// &amp;lt;summary&amp;gt; /// 地點 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;ar&amp;quot;)] public string Address { get; set; } /// &amp;lt;summary&amp;gt; /// 場站區域英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sareaen&amp;quot;)] public string StationAreaEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 場站名稱英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;snaen&amp;quot;)] public string StationNameEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 地址英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;aren&amp;quot;)] public string AddressEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 空位數量 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;bemp&amp;quot;)] public int Available { get; set; } /// &amp;lt;summary&amp;gt; /// 全站禁用狀態 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;act&amp;quot;)] public string Active { get; set; } /// &amp;lt;summary&amp;gt; /// source update time.</description>
+    </item>
+    
     <item>
       <title>dotnet Core HangFire - 4(使用技巧與設定下篇)</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/</link>
