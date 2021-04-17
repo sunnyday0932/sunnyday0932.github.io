@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%95%86%E6%A5%AD%E8%88%87%E6%8A%80%E8%A1%93%E7%9A%84%E5%B9%B3%E8%A1%A1-%E5%BF%83%E5%BE%97/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           技術管理者論壇(商業與技術的平衡) - 心得 | Sian	
+       	
+  </title>	
+  <meta name="title" content="技術管理者論壇(商業與技術的平衡) - 心得 | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "技術管理者論壇(商業與技術的平衡) - 心得",
+    "headline" : "技術管理者論壇(商業與技術的平衡) - 心得",
+    "description" : "技術管理者論壇(商業與技術的平衡) - 心得",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-04-17 06:40:45  UTC",
+    "dateModified" : "2021-04-17 06:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%95%86%E6%A5%AD%E8%88%87%E6%8A%80%E8%A1%93%E7%9A%84%E5%B9%B3%E8%A1%A1-%E5%BF%83%E5%BE%97\/",
+    "wordCount" : "94",
+    "keywords" : ["職涯", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">技術管理者論壇(商業與技術的平衡) - 心得</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-04-17 itemprop="datePublished">April 17, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p><img src="https://i.imgur.com/JqDovLH.jpg" alt=""></p>
+<p>作為未來有興趣往PM發展的工程師，閱讀到這段馬上就選擇報名了。</p>
+<h2 id="本文">本文</h2>
+<h3 id="上半場">上半場</h3>
+<p>開場由91APP的Ruddy老師導引了一些敏捷團隊該努力的方向。<br>
+自己聽到的重點有：</p>
+<ul>
+<li>敏捷團隊不該出現很忙的情況，代表有問題沒有釐清，反思敏捷精神。
+<ul>
+<li>小增量</li>
+<li>多迭代</li>
+<li>求回饋</li>
+</ul>
+</li>
+<li>尋求議題清晰，目標清楚。</li>
+<li>使用OKR。</li>
+</ul>
+<p>詳細內容可參考Ruddy老師寫的這篇文章：<br>
+<a href="https://ruddyblog.wordpress.com/2021/04/09/%e4%b8%bb%e7%ae%a1%ef%bc%9b%e4%bd%a0%e5%be%88%e5%bf%99%e5%97%8e/">主管；你很忙嗎?</a></p>
+<p>這邊個人理解成，真正有照著敏捷跑的團隊因為目標夠明確，能夠切分，所以應該都要能夠在一個時程內完成。</p>
+<p>上半場的感想，確實比較面相對已經是管理階級的工程師開的論壇，但整個大主題圍繞在 傳承 這些經驗、或是帶著大家找尋最佳解，就代表也需要有新血流入，況且主題是管理結合技術本來就是我比較感興趣得題目，可以再多關注社群公布的消息。</p>
+<h3 id="下半場">下半場</h3>
+<p>下半場開場由商業思維學院院長gipi分享之前在業界的經驗。</p>
+<p>首先提到了為何台灣的技術思維還停留在原始代工的階段，而期望達到的境界為：<br>
+<img src="https://i.imgur.com/Yq6IgJn.jpg" alt=""></p>
+<p>從他的自身經驗分享提到公司團隊合作方式。</p>
+<h4 id="第一階段未開化時期">第一階段：未開化時期。</h4>
+<p>所有需求單位都可以直接對工程師提需求，而造就了這種情況。</p>
+<p><img src="https://i.imgur.com/7He88Dc.jpg" alt=""></p>
+<p>這張圖出現的時候，馬上就引起不少共鳴XD</p>
+<h4 id="第二階段逐漸敏捷">第二階段：逐漸敏捷。</h4>
+<p>公司開始有一個產品經理的職位出現，但因為以前都能直接對工程師提需求，所以需求單位並不習慣這種方式，於是就需要有數據佐證，透過產品經理的職位來達到雙向溝通；提升了多少等數據。<br>
+<img src="https://i.imgur.com/FQB0Tcx.jpg" alt=""></p>
+<p>這邊有提到目前大多數的公司敏捷團隊都只停留在技術團隊，有沒有可能跨出技術團隊，讓整個組織都敏捷呢？</p>
+<h4 id="第三階段敏捷完整體">第三階段：敏捷完整體。</h4>
+<p><img src="https://i.imgur.com/rgHbSi0.jpg" alt=""></p>
+<p>讓敏捷的精神跨出技術團隊，帶入整個公司，gipi提到，他們當初是透過接收需求端後，找出目標實驗客群，透過目標推送客製化內容，每兩周讓客服與客戶對焦回饋心得，以此方式迭帶收集需求，最後找到一個最佳解再進行工程團隊開發。</p>
+<p>第二個主題分享是目前很多企業推廣敏捷、OKR、轉型的原因。</p>
+<h4 id="敏捷">敏捷</h4>
+<p>世界為何變得VUKA？<br>
+VUKA是「波動、不確定、複雜和模糊的縮寫」（volatile, uncertain, complex and ambiguous）。</p>
+<p>1、全球化。<br>
+=&gt; 競爭對手已經不適原本所想的那些人。</p>
+<p>這邊自己所想到的例子是：Amazon。<br>
+從最早的網路書店，轉型成電商平台，現在又跨足了雲端、食品、影視等產業。<br>
+因為基礎建設完善，跨足產業容易，因為這些產業而形成了亞馬遜生態系。</p>
+<p>2、尋求變化速度改變。<br>
+網路更快、消費意識抬頭、全球化競爭 =&gt; 應變速度要更快。<br>
+Ex:過去鄉下地方買電器可能找鄰近的電器行，而電器行會透過合作廠商推廣電器，消費者選擇少；現今使用網路選擇多樣化的情況下，廠商競爭者變多了。</p>
+<p>3、商業合作面。<br>
+過去產業鏈單純、現在跨界企業出現。<br>
+講者是以Tesla顛覆汽車業做舉例。<br>
+這邊我也是想到Amazion，顛覆原產業、連結整個Amazon生態系。</p>
+<p>4、科技。<br>
+科技進步速度加快。<br>
+Ex:摩爾定律。</p>
+<p>這邊有提到如何用舊思維理解新技術？<br>
+高層可能會遇到難以理解新技術的情況。</p>
+<p>這邊個人想到的是當初教授有提到，新技術根本還是回到Computer Science本身，DS、OS、演算法這些本同源，永遠不會過時，所以個人對這點也比較難以理解。<br>
+後來分組討論的Konrad老師，本身也在台積電待了很多年現已退休，最後也是告訴我們有些東西不會過時，而那些根本才是技術人的精隨。</p>
+<h4 id="okr">OKR</h4>
+<p>台灣晚了20年導入。</p>
+<p>一開始的導入原因，需求難以對焦，從高層傳達下來的時間過長、甚至意思不夠明確。<br>
+<img src="https://i.imgur.com/5pEmmp3.jpg" alt=""></p>
+<p>關鍵問題在於：<br>
+外部變化速度快於公司內部同步速度。</p>
+<p><img src="https://i.imgur.com/vedzXCS.jpg" alt=""></p>
+<p>最後就會演變成上層沒意識到溝通速度太慢，而導致OKR本質偏移，根本問題還是沒處理。</p>
+<h4 id="數位轉型">數位轉型</h4>
+<p>上面兩種都嘗試過後，就會開始談數位轉型。</p>
+<p>而談到數位轉型的根本，為甚麼要轉型？<br>
+錢賺不夠多了，但問題是怎麼轉？</p>
+<p>這邊就提到了過去引領企業走上正軌，因此升遷到一定位子的主管，可能因為時間的推移，他們的經驗已經不符合當代的技術，甚至給不出甚麼好建議。</p>
+<p><img src="https://i.imgur.com/flSX7UK.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/lpwTuvs.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/VKNVrMH.jpg" alt=""></p>
+<p>提到了不能全怪老闆&hellip;</p>
+<p>若老闆真的下放權力給你決定，你真的有把握做出正確的決策嗎？<br>
+所以為了提高做出正確決策的機率，技術人也應該要去了解商業層面的東西。</p>
+<p>現實情況就是位階高的人具備高的商業掌握度，但卻少了科技的掌握度。<br>
+<img src="https://i.imgur.com/5o9pU5d.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/JJ8LKYY.jpg" alt=""></p>
+<p>這邊就提到了，分工應該要重新定義，工程需要了解業務面的需求，PM也該了解技術面的解決方式，彼此互相Cover協作。</p>
+<p>因此有了幾種職涯的路線圖。<br>
+第一種雙專精職路線圖，也是目前較多公司熟知的方式：<br>
+<img src="https://i.imgur.com/rQLDvTY.jpg" alt=""></p>
+<p>第二種讓有技術背景的人培養商業思維：<br>
+(個人認為這邊就是資管的優勢)<br>
+<img src="https://i.imgur.com/xScVTz3.jpg" alt=""></p>
+<p>第三種類似於現今扁平化組織，推行敏捷的架構：<br>
+<img src="https://i.imgur.com/ZTXUQSg.jpg" alt=""></p>
+<p>第四種最終型態：<br>
+<img src="https://i.imgur.com/wyt0rEx.jpg" alt=""></p>
+<p>在第四種型態的組織架構下，商業已不在只是老闆該負責的事了，是每個人的事。<br>
+(若你對環境是有責任，就需要跨出自己工作的守備範圍。)</p>
+<p><img src="https://i.imgur.com/HTizbzP.jpg" alt=""></p>
+<p>這邊提到了思維上的轉換：<br>
+一般情況下抱怨決策不當，扯上自己要幫忙解決的時候可能會覺得超出自己工作範圍，覺得煩躁。<br>
+換個方式，你去幫助一個甚麼都不懂得人，可以獲得更多成就感，甚至能夠對某些決策靈敏度提升。</p>
+<p>最後總結提到了技術管理應具備的三大元素：<br>
+<img src="https://i.imgur.com/ssgCLfK.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>印象深刻現場因為不少工程師，在gipi提問到認為PM是否該懂技術的時候，大概超過八成的人舉手。<br>
+也從企業顧問的角度了解到，的確在多數企業中管理職人員與技術職人員溝通上的差距還是很大，所以他們也想找出一個能夠傳承的方式，才會有了技術管理者論壇這些活動。</p>
+<p>除了分享內容豐富，留下的討論階段也是獲益良多，能夠跟不同公司的人交流、互相分享情況，最後再透過每個組別的一位導師統整問題後給予一些建議，最後討論到大家都不想走了。<br>
+另外在討論的時候才發現原來在場的工程師、或是PM、相關管理職人員都有一定年資，自己還沒滿兩年資歷的真的是少見啊XD</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%95%86%E6%A5%AD%E8%88%87%E6%8A%80%E8%A1%93%E7%9A%84%E5%B9%B3%E8%A1%A1-%E5%BF%83%E5%BE%97/>https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%95%86%E6%A5%AD%E8%88%87%E6%8A%80%E8%A1%93%E7%9A%84%E5%B9%B3%E8%A1%A1-%E5%BF%83%E5%BE%97/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/%E8%81%B7%E6%B6%AF/">
+                    #職涯</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/" class="prev" rel="prev" title="dotnet Core HangFire - Youbike練習題"><i class="iconfont icon-left"></i>&nbsp;dotnet Core HangFire - Youbike練習題</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
