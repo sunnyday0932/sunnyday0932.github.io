@@ -71,7 +71,7 @@
     "datePublished": "2021-03-15 19:40:45  UTC",
     "dateModified" : "2021-03-15 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89\/",
-    "wordCount" : "779",
+    "wordCount" : "784",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -176,6 +176,10 @@
 <h3 id="1appsettings">1、appsettings。</h3>
 <p>之前介紹Core都沒有特別提到appsettings，其實它就是dotnet framework的config設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。</p>
 <p>這次我們把DB的連線字串放在appsettings內，透過startup的時候拿取所需的DB連接字串。</p>
+<p>2021/04/19更新<br>
+感謝同事協助指正，appsettings並不完全等同於dotnet framework的Webconfig，而是core將原本全部擠在Webconfig的地方拆分歸類在不同地方，例如：Nuget套件就歸在csproj、appsettings區塊就是Core的appsettings。<br>
+那Core難道就完全不需要Webconfig了嗎？</p>
+<p>倒也不是，像是我們公司的Core專案還是會加上Webconfig檔案，內容就主要做為設定CI建置的調整、或是對IIS的一些細部設定，還是可以透過Webconfig來做，可供大家使用上做參考。</p>
 <pre><code class="language-json=" data-lang="json=">{
   &quot;Logging&quot;: {
     &quot;LogLevel&quot;: {

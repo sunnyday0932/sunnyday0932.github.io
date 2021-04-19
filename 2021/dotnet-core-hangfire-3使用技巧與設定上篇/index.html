@@ -71,7 +71,7 @@
     "datePublished": "2021-04-03 18:40:45  UTC",
     "dateModified" : "2021-04-03 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87\/",
-    "wordCount" : "240",
+    "wordCount" : "252",
     "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
 }
 </script>
@@ -235,6 +235,22 @@
 <p><img src="https://i.imgur.com/RFzdOTN.jpg" alt=""></p>
 <p>執行順序：<br>
 alpha &gt; beta &gt; default</p>
+<p>2021/04/19更新<br>
+感謝同事協助指正，這邊我們測試過後發現，Hangfire提供的Priority似乎沒有真正的作用，是我上方實驗方式有誤。<br>
+這邊我們先將Worker數量改成1，然後讓原本印出起始以及結束時間的JOB改成sleep 20秒。</p>
+<p><img src="https://i.imgur.com/W5GKT03.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/jncTNkW.jpg" alt=""></p>
+<p>接下來把原本固定執行的JOB都改為1小時，避免影響測試。<br>
+<img src="https://i.imgur.com/sl1MTdo.jpg" alt=""></p>
+<p>運行Hangfire後，我們的操作方式會是先執行印出起始以及結束時間的JOB，當他在執行的時候把2個beta job排入佇列，1個alpha job排入佇列，觀察執行結果。<br>
+<img src="https://i.imgur.com/YmqpKih.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/idJHZYx.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/ilYwbkP.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/D1mrDGv.jpg" alt=""></p>
+<p>會發現實驗結果還是按照先後順序執行，並沒有真的依照優先度做排序，<a href="https://discuss.hangfire.io/t/multiple-queue-priority-order-is-not-working/784">這邊也有看到相關討論</a>，並不確定是否我的用法有誤，歡迎指正。</p>
+<!-- raw HTML omitted -->
+<p>回歸正題，那到底該如何確保Hangfire的Job能夠有優先權先後的執行順序呢？<br>
+我們公司作法是透過RabbitMQ來實作Job Priority，由RabbitMQ的佇列來決定工作的執行先後順序，提供給大家做參考。</p>
 <h3 id="3hangfire-server設定">3、Hangfire Server設定。</h3>
 <h4 id="a設定serve-name用以識別個別機器">a、設定Serve Name：用以識別個別機器。</h4>
 <p>一樣是在StartUp的ConfigureServices加入設定</p>

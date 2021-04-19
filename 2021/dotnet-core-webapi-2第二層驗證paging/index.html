@@ -71,7 +71,7 @@
     "datePublished": "2021-03-16 19:40:45  UTC",
     "dateModified" : "2021-03-16 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging\/",
-    "wordCount" : "1013",
+    "wordCount" : "1005",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -376,7 +376,7 @@
 <ul>
 <li>1、<a href="https://b96016.gitlab.io/post/how-to-pagination/">How to do Pagination?</a>。</li>
 <li>2、<a href="https://chunchuanlin.medium.com/pagination-vs-infinite-scroll-e1c3a3d682d9">Pagination VS. Infinite Scroll</a>。</li>
-<li>3、<a href="https://jiepeng.me/2019/12/06/learning-how-to-implement-graphql-pagination">深入淺出 GraphQL Pagination 實作</a>。</li>
+<li>3、<a href="https://jiepeng.me/2019/12/06/learning-how-to-implement-graphql-pagination%E3%80%82">深入淺出 GraphQL Pagination 實作</a></li>
 </ul>
 <!-- raw HTML omitted -->
 <p>我們先在Common建立一個Paging使用的Model。</p>
@@ -540,14 +540,14 @@
             if (data != null &amp;&amp;
                 data.Any())
             {
-                result = data.Select(x =&gt; new AccountDto
+                result = data.Select(rows =&gt; new AccountDto
                 {
-                    Phone = ConvertPhoneNumber(x?.Phone),
-                    Account = x?.Account,
-                    CreateDate = x.CreateDate.HasValue ? x.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
-                    Email = x?.Email,
-                    ModifyDate = x.ModifyDate.HasValue ? x.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
-                    ModifyUser = x?.ModifyUser
+                    Phone = ConvertPhoneNumber(rows.Phone),
+                    Account = rows.Account,
+                    CreateDate = rows?.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;),
+                    Email = rows.Email,
+                    ModifyDate = rows?.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;),
+                    ModifyUser = rows.ModifyUser
                 });
 
                 if (string.IsNullOrWhiteSpace(paging.OrderColumName))

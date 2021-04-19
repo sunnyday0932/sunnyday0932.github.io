@@ -71,7 +71,7 @@
     "datePublished": "2021-01-22 19:40:45  UTC",
     "dateModified" : "2021-01-22 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-efcore\/",
-    "wordCount" : "497",
+    "wordCount" : "595",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -420,15 +420,55 @@
 
             services.AddControllers();
         }
-</code></pre><p>後續步驟有問題的請參考前幾篇。</p>
-<p>同樣的我也會把程式碼同步放上<a href="https://github.com/sunnyday0932/WebApiEFCore">GitHub歡迎取用參考</a>。</p>
+</code></pre><p>後續步驟有問題的請參考前幾篇。
+同樣的我也會把程式碼同步放上<a href="https://github.com/sunnyday0932/WebApiEFCore">GitHub歡迎取用參考</a>。</p>
 <h3 id="四重點筆記">四、重點筆記。</h3>
 <p>1、部分更新問題。<br>
 這邊遇到第一個大問題是原來EF並不希望你使用部分更新，因此一開始直接使用update馬上就報錯給我看，查了好幾種解決方式，我現在也不確定目前使用這種做法是否合適，若有更好的方法歡迎交流。<br>
-附上查詢到的StackOverflow連結：</p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/12871892/entity-framework-validation-with-partial-updates">Entity Framework validation with partial updates</a></li>
-</ul>
+附上查詢到的StackOverflow連結：
+<a href="https://stackoverflow.com/questions/12871892/entity-framework-validation-with-partial-updates">Entity Framework validation with partial updates</a></p>
+<p>2021/04/19更新<br>
+感謝同事指正，提供了新的部分更新做法。<br>
+原本寫法</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 更新帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool UpdateAccount(AccountCondition condition)
+        {
+            var data = this._accountContext.Users.Find(condition.Account);
+            data.Email = condition.Email;
+            data.ModifyDate = condition.ModifyDate;
+            data.ModifyUser = condition.ModifyUser;
+            data.Phone = condition.Phone;
+
+            var result = this._accountContext.SaveChanges();
+            return result &gt; 0;
+        }
+</code></pre><p>更新後寫法</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+        /// 更新帳號
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool UpdateAccount(AccountCondition condition)
+        {
+            var data = this._accountContext.Users.FirstOrDefault(
+                rows =&gt; rows.Account == condition.Account);
+
+            data.Email = condition.Email;
+            data.ModifyDate = condition.ModifyDate;
+            data.ModifyUser = condition.ModifyUser;
+            data.Phone = condition.Phone;
+            this._accountContext.Update(data)
+                .Property(rows =&gt; rows.Idx).IsModified = false;
+
+            var result = this._accountContext.SaveChanges();
+            return result &gt; 0;
+        }
+</code></pre><p>測試:<br>
+<img src="https://i.imgur.com/hO9Znrg.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>2、Repository Pattern Unit of Work。<br>
 這邊也看到EF使用Repository時會在隔離一個Unit of Work出來，研究了大約一周，還沒多大感受(其實是我偏愛Dapper)，所以這邊就使用最簡單作法。<br>
