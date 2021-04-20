@@ -544,9 +544,9 @@
                 {
                     Phone = ConvertPhoneNumber(rows.Phone),
                     Account = rows.Account,
-                    CreateDate = rows?.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;),
+                    CreateDate = rows.CreateDate?.ToString(&quot;yyyy/MM/dd&quot;),
                     Email = rows.Email,
-                    ModifyDate = rows?.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;),
+                    ModifyDate = rows.ModifyDate?.ToString(&quot;yyyy/MM/dd&quot;),
                     ModifyUser = rows.ModifyUser
                 });
 
