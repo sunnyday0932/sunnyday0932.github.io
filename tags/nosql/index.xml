@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on Sian</title>
-    <link>https://sunnyday0932.github.io/tags/docker/</link>
-    <description>Recent content in docker on Sian</description>
+    <title>NoSql on Sian</title>
+    <link>https://sunnyday0932.github.io/tags/nosql/</link>
+    <description>Recent content in NoSql on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 20 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Redis - 1 基本介紹</title>
       <link>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</link>
@@ -37,41 +37,6 @@ docker run --name redis-test -p 6379:6379 -d redis 可以使用docker ps觀看�
 第一步我們要指定使用Redis的container。 55d5是縮上面containerId的縮寫。
 docker exec -it 55d5 bash 接下來輸入以下指令，就可以看到我們已經連入Redis可以開始下指令了。
 redis-cli Redis提供一些簡單的指令供我們測試。</description>
-    </item>
-    
-    <item>
-      <title>docker 基本操作</title>
-      <link>https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Sat, 17 Apr 2021 18:40:45 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
-      <description>前言 本篇會先示範docker基本操作，因為接下來會開始進行一些練習，會需要使用到docker，就一併記錄下來。
-本文 開始前須要先確認windows版本為專業版。
-接下來需要到控制台 &amp;gt; 程式和功能的地方打開Hyper-V。
-重新啟動後就可以開始安裝docker了。
-docker下載連結
-接下來需要有輸入指令的軟體，可以使用Powershell。
-個人是使用大神所推薦的Cmder。
-工具齊全後我們來練習抓取MSSQL Image並且執行。
-docker pull microsoft/mssql-server-linux
-建立前要看一下說明，需要調整一下docker 設定。 這邊設定是可以直接透過GUI介面的，但不知道為啥我的doker desktop打開發現找不到advanced，Goole發現也有人有同樣問題，於是我就直接使用指令啦。
-問題連結一併附上。
-執行指令：
-docker run -e &amp;ldquo;ACCEPT_EULA=Y&amp;rdquo; -e &amp;ldquo;SA_PASSWORD=1qaz@2wsx&amp;rdquo; &amp;ndash;memory 4096m &amp;ndash;cpus 2 -p 1433:1433 -d microsoft/mssql-server-linux
-觀看Contanier運行結果。
-使用SSMS連線進行測試。
-帳號:sa 密碼是剛剛設定的:1qaz@2wsx
-確認資料庫版本。
-關閉執行中的Container。
-docker stop (這邊輸入Container的名字)
-不知道的話可以透過 docker ps -a 查詢目前有哪些container
-觀看Container狀態
-接下來刪除Container。
-docker rm (這邊輸入container名稱)
-觀看Container狀態
-要移除Contanier image的話可以輸入
-docker rmi (這邊輸入image名稱)
-觀看目前的Image就會發現已經移除了。</description>
     </item>
     
   </channel>

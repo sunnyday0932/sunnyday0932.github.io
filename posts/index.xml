@@ -6,7 +6,39 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 17 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis - 1 基本介紹</title>
+      <link>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Tue, 20 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</guid>
+      <description>前言 接下來會開始研究一些Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。
+本文 Redis基本介紹 特點：
+ 儲存資料是由Key-Value所組成。 資料儲存在記憶體內。 Single Thread I/O Multiplex。  1、儲存資料是由Key-Value所組成。 一般我們使用的SQL資料庫如：MSSQL、MySQL等，是屬於表格的方式儲存，傳統稱之為結構化數據。
+而Redis這類的NoSQL儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。
+簡單來說，在Redis內一組Key對應一組Value。
+2、資料儲存在記憶體內。 資料都是儲存在記憶體內，所以比起傳統DB可以達到更快速存取的機制。
+但也不是全部都只能放在記憶體，Redis也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。
+注意要點：
+因為資料是存放在記憶體內，並不適合什麼東西都直接往Redis塞，稍一不甚使用就會悲劇。
+string類型控制在10KB以內，hash、list、set、zset元素個數不要超過5000。
+3、Single Thread I/O Multiplex。 Single Thread意味著不管裝載Redis的Server上有幾顆Cpu核心，一個Redis DB就只會使用到一個核心。
+(新版的Redis似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)
+一次只能使用一個Cpu的核心也就意味著一次只能接收一個Request，所以當有某一個Request佔用了太長的時間就會導致Redis無法應付其他的Request，這也跟上面第二點資料的存放大小有關。
+使用情景：
+傳統的程式如果要做快取通常第一選項都會直接使用本機的memory cache，但在分散式的架構下，當大家需要共用cache時，通常都會選擇使用Redis來當作快取資料庫。
+安裝說明 這邊我們會使用docker來進行安裝Redis。
+首先要下載Redis，這邊不指定版本預設就是下載最新版。
+docker pull redis 下載完後就可以執行Image。
+設定執行 container 的名字為 redis-test，port 為 6379，並設定背景執行。
+docker run --name redis-test -p 6379:6379 -d redis 可以使用docker ps觀看目前運行的container。
+測試 首先要先進到Redis-cli。
+第一步我們要指定使用Redis的container。 55d5是縮上面containerId的縮寫。
+docker exec -it 55d5 bash 接下來輸入以下指令，就可以看到我們已經連入Redis可以開始下指令了。
+redis-cli Redis提供一些簡單的指令供我們測試。</description>
+    </item>
+    
     <item>
       <title>docker 基本操作</title>
       <link>https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
