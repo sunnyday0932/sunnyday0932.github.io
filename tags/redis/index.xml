@@ -6,7 +6,20 @@
     <description>Recent content in Redis on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 20 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis - 2 (Csharp操作示範)</title>
+      <link>https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/</link>
+      <pubDate>Wed, 21 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/</guid>
+      <description>前言 本篇我們會示範使用C#來對Redis進行儲存。
+本文 我們會使用StackExchange.Redis這個Nuget套件進行示範。
+接下來我們建立一個簡易的Model。
+public class Employee { public string Id { get; set; } public string Name { get; set; } public int Age { get; set; } public Employee(string employeeId, string name, int age) { Id = employeeId; Name = name; Age = age; } } 給予一個初始值後我們將他轉成JSON的格式存入Redis。
+static void Main(string[] args) { //先取得連線 var connection = ConnectionMultiplexer.Connect(&amp;quot;127.0.0.1:6379&amp;quot;); var db = connection.GetDatabase(); var emp = new Employee(&amp;quot;1&amp;quot;,&amp;quot;Sian&amp;quot;,27); Console.WriteLine(&amp;quot;資料存入Redis成功 : &amp;quot; + db.</description>
+    </item>
+    
     <item>
       <title>Redis - 1 基本介紹</title>
       <link>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</link>

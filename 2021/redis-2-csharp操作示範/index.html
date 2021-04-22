@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">	
   <meta name="keywords" content="Sian">	
   	
-  <link rel="prev" href="https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" />	
-  <link rel="next" href="https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/" />	
-  <link rel="canonical" href="https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/" />	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/" />	
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           Redis - 1 基本介紹 | Sian	
+           Redis - 2 (Csharp操作示範) | Sian	
        	
   </title>	
-  <meta name="title" content="Redis - 1 基本介紹 | Sian">	
+  <meta name="title" content="Redis - 2 (Csharp操作示範) | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Redis - 1 基本介紹",
-    "headline" : "Redis - 1 基本介紹",
-    "description" : "Redis - 1 基本介紹",
+    "name" : "Redis - 2 (Csharp操作示範)",
+    "headline" : "Redis - 2 (Csharp操作示範)",
+    "description" : "Redis - 2(Csharp操作示範)",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,10 +68,10 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2021",
-    "datePublished": "2021-04-20 18:40:45  UTC",
-    "dateModified" : "2021-04-20 18:40:45  UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2021\/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "119",
+    "datePublished": "2021-04-21 18:40:45  UTC",
+    "dateModified" : "2021-04-21 18:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84\/",
+    "wordCount" : "217",
     "keywords" : ["docker","Redis","NoSql", "Sian"]
 }
 </script>
@@ -134,11 +134,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Redis - 1 基本介紹</h1>
+        <h1 class="post-title" itemprop="name headline">Redis - 2 (Csharp操作示範)</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2021-04-20 itemprop="datePublished">April 20, 2021</time>
+                on <time datetime=2021-04-21 itemprop="datePublished">April 21, 2021</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -171,85 +171,103 @@
           
 
           <h2 id="前言">前言</h2>
-<p>接下來會開始研究一些Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。</p>
+<p>本篇我們會示範使用C#來對Redis進行儲存。</p>
 <h2 id="本文">本文</h2>
-<h3 id="redis基本介紹">Redis基本介紹</h3>
-<p>特點：</p>
+<p>我們會使用<a href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>這個Nuget套件進行示範。</p>
+<p><img src="https://i.imgur.com/JFZhEA9.jpg" alt=""></p>
+<p>接下來我們建立一個簡易的Model。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class Employee
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+
+        public Employee(string employeeId, string name, int age)
+        {
+            Id = employeeId;
+            Name = name;
+            Age = age;
+        }
+    }
+</code></pre><p>給予一個初始值後我們將他轉成JSON的格式存入Redis。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            //先取得連線
+            var connection = ConnectionMultiplexer.Connect(&quot;127.0.0.1:6379&quot;);
+            var db = connection.GetDatabase();
+
+            var emp = new Employee(&quot;1&quot;,&quot;Sian&quot;,27);
+            Console.WriteLine(&quot;資料存入Redis成功 : &quot; +
+            db.StringSet(&quot;Emp1&quot;, JsonConvert.SerializeObject(emp)));
+        }
+</code></pre><p><img src="https://i.imgur.com/XQtGa7a.jpg" alt=""></p>
+<p>使用Another Redis Desktop Manager可以看到資料存入的詳細資訊，格式為Json大小為33B。<br>
+<img src="https://i.imgur.com/19CFnR1.jpg" alt=""></p>
+<p>取出資料。</p>
+<pre><code class="language-csharp=" data-lang="csharp="> var data = JsonConvert.DeserializeObject(db.StringGet(&quot;Emp1&quot;));
+ Console.WriteLine(&quot;取出資料為：&quot; + data);
+</code></pre><p><img src="https://i.imgur.com/Qf6FEsY.jpg" alt=""></p>
+<p>為了節省儲存資料的大小，通常都會將資料進行壓縮；而這邊比較常見的方式為壓縮成byte array的方式。</p>
+<p>我們可以透過<a href="https://github.com/neuecc/MessagePack-CSharp">MessagePack-CSharp</a>來簡易的達成這件事。</p>
+<p><img src="https://i.imgur.com/YLOtOFq.jpg" alt=""></p>
+<p>使用的方式很簡單。<br>
+首先在我們的Model地方加上幾個Attribute。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    [MessagePackObject]
+    public class Employee
+    {
+        [Key(0)]
+        public string Id { get; set; }
+
+        [Key(1)]
+        public string Name { get; set; }
+
+        [Key(2)]
+        public int Age { get; set; }
+
+        public Employee(string employeeId, string name, int age)
+        {
+            Id = employeeId;
+            Name = name;
+            Age = age;
+        }
+    }
+</code></pre><p>接下來在程式內就可以直接使用序列化方式壓縮成byte[]。</p>
+<pre><code class="language-css=" data-lang="css=">static void Main(string[] args)
+        {
+            var connection = ConnectionMultiplexer.Connect(&quot;127.0.0.1:6379&quot;);
+            var db = connection.GetDatabase();
+
+            var emp = new Employee(&quot;1&quot;,&quot;Sian&quot;,27);
+            var data = MessagePackSerializer.Serialize(emp);
+            Console.WriteLine(data);
+            Console.WriteLine(&quot;資料存入Redis成功 : &quot; +
+            db.StringSet(&quot;Emp2&quot;, data));
+        }
+</code></pre><p><img src="https://i.imgur.com/J4izRr2.jpg" alt=""></p>
+<p>在管理介面就可以看到此筆資料格式已經不同了，且大小只剩下原本的三分之一。<br>
+<img src="https://i.imgur.com/w6EcO1I.jpg" alt=""></p>
+<p>透過管理介面也可以看到詳細內容，資料呈現選擇Msgpack即可。<br>
+<img src="https://i.imgur.com/pUqG4nH.jpg" alt=""></p>
+<p>取回資料。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+        {
+            var connection = ConnectionMultiplexer.Connect(&quot;127.0.0.1:6379&quot;);
+            var db = connection.GetDatabase();
+
+            var emp = new Employee(&quot;1&quot;,&quot;Sian&quot;,27);
+
+            var data = MessagePackSerializer.ConvertToJson(db.StringGet(&quot;Emp2&quot;));
+            Console.WriteLine(&quot;取出資料為：&quot; + data);
+        }
+</code></pre><p><img src="https://i.imgur.com/ucMQ1A6.jpg" alt=""></p>
+<p>MessagePack還支援了很多型別，可以自行嘗試看看。<br>
+<img src="https://i.imgur.com/x4sIrvH.jpg" alt=""></p>
+<h2 id="參考連結">參考連結</h2>
 <ul>
-<li>儲存資料是由Key-Value所組成。</li>
-<li>資料儲存在記憶體內。</li>
-<li>Single Thread I/O Multiplex。</li>
-</ul>
-<h4 id="1儲存資料是由key-value所組成">1、儲存資料是由Key-Value所組成。</h4>
-<p>一般我們使用的SQL資料庫如：MSSQL、MySQL等，是屬於表格的方式儲存，傳統稱之為結構化數據。<br>
-而Redis這類的NoSQL儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。</p>
-<p>簡單來說，在Redis內一組Key對應一組Value。</p>
-<h4 id="2資料儲存在記憶體內">2、資料儲存在記憶體內。</h4>
-<p>資料都是儲存在記憶體內，所以比起傳統DB可以達到更快速存取的機制。<br>
-但也不是全部都只能放在記憶體，Redis也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。</p>
-<p>注意要點：<br>
-因為資料是存放在記憶體內，並不適合什麼東西都直接往Redis塞，稍一不甚使用就會悲劇。<br>
-string類型控制在10KB以內，hash、list、set、zset元素個數不要超過5000。</p>
-<h4 id="3single-thread-io-multiplex">3、Single Thread I/O Multiplex。</h4>
-<p>Single Thread意味著不管裝載Redis的Server上有幾顆Cpu核心，一個Redis DB就只會使用到一個核心。<br>
-(新版的Redis似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)</p>
-<p>一次只能使用一個Cpu的核心也就意味著一次只能接收一個Request，所以當有某一個Request佔用了太長的時間就會導致Redis無法應付其他的Request，這也跟上面第二點資料的存放大小有關。</p>
-<p>使用情景：<br>
-傳統的程式如果要做快取通常第一選項都會直接使用本機的memory cache，但在分散式的架構下，當大家需要共用cache時，通常都會選擇使用Redis來當作快取資料庫。</p>
-<h3 id="安裝說明">安裝說明</h3>
-<p>這邊我們會使用docker來進行安裝Redis。</p>
-<p>首先要下載Redis，這邊不指定版本預設就是下載最新版。</p>
-<pre><code class="language-shell=" data-lang="shell=">docker pull redis
-</code></pre><p><img src="https://i.imgur.com/m2HEXQ6.jpg" alt=""></p>
-<p>下載完後就可以執行Image。<br>
-設定執行 container 的名字為 redis-test，port 為 6379，並設定背景執行。</p>
-<pre><code class="language-shell=" data-lang="shell=">docker run --name redis-test -p 6379:6379 -d redis
-</code></pre><p><img src="https://i.imgur.com/tQpJyVO.jpg" alt=""></p>
-<p>可以使用docker ps觀看目前運行的container。<br>
-<img src="https://i.imgur.com/c7pNfXq.jpg" alt=""></p>
-<h3 id="測試">測試</h3>
-<p>首先要先進到Redis-cli。</p>
-<p>第一步我們要指定使用Redis的container。
-55d5是縮上面containerId的縮寫。</p>
-<pre><code class="language-shell=" data-lang="shell=">docker exec -it 55d5 bash
-</code></pre><p><img src="https://i.imgur.com/7SGgj0t.jpg" alt=""></p>
-<p>接下來輸入以下指令，就可以看到我們已經連入Redis可以開始下指令了。</p>
-<pre><code class="language-shell=" data-lang="shell=">redis-cli
-</code></pre><p><img src="https://i.imgur.com/DBeaFtt.jpg" alt=""></p>
-<p>Redis提供一些簡單的指令供我們測試。<br>
-輸入：</p>
-<pre><code class="language-shell=" data-lang="shell=">Ping
-</code></pre><p>Redis回應Pong。<br>
-<img src="https://i.imgur.com/r14TE1v.jpg" alt=""></p>
-<p>測試簡單資料儲存。<br>
-輸入：</p>
-<pre><code class="language-shell=" data-lang="shell=">set test &quot;This is my first Redis Data&quot;
-</code></pre><p><img src="https://i.imgur.com/XBahGj4.jpg" alt=""></p>
-<p>取得資料</p>
-<pre><code class="language-shell=" data-lang="shell=">get test
-</code></pre><p><img src="https://i.imgur.com/9N79VfS.jpg" alt=""></p>
-<h3 id="管理工具">管理工具</h3>
-<p>喜歡GUI的朋友有福了，這邊也有提供了GUI介面的管理方式。<br>
-<a href="https://github.com/qishibo/AnotherRedisDesktopManager">Another Redis Desktop Manager</a></p>
-<p>安裝完成後打開介面如下<br>
-<img src="https://i.imgur.com/cP1RtiK.jpg" alt=""></p>
-<p>接下來點選左上角建立連線。<br>
-<img src="https://i.imgur.com/KXAwyAQ.jpg" alt=""></p>
-<p>建立成功點開Server就會看到以下視窗。<br>
-<img src="https://i.imgur.com/6z2d6IU.jpg" alt=""></p>
-<p>點選test就會看到我們剛剛存放的第一筆資料，TTL代表著他還有多久過期，-1則代表永久存在。<br>
-<img src="https://i.imgur.com/Npgngip.jpg" alt=""></p>
-<p>-1這種永久存在的資料就會占用到硬碟空間，同時也會增加I/O讀取得時間，所以並不建議放這種資料在Redis。</p>
-<p>通常設定快取資料最常不超過一小時。</p>
-<!-- raw HTML omitted -->
-<h2 id="參考資料">參考資料</h2>
-<ul>
-<li>1、<a href="https://jed1978.github.io/2018/05/02/Redis-Environment-Installation-Configuration.html">Redis系列 - 環境建置篇</a>。</li>
-<li>2、<a href="https://blog.capslock.tw/hello-redis-a-simple-redis-tutorial/">Hello Redis! 從零開始的NoSQL生活 - Redis的淺入淺出</a>。</li>
-<li>3、<a href="https://zh.wikipedia.org/wiki/NoSQL">NoSQL</a>。</li>
-<li>4、<a href="https://www.twblogs.net/a/5d4adfd2bd9eee5327fc0a7e">Redis數據庫的介紹、安裝、數據結構、常用命令</a>。</li>
-<li>5、<a href="https://marcus116.blogspot.com/2019/02/how-to-run-redis-in-docker.html">使用 Docker 安裝 Redis</a>。</li>
-<li>6、<a href="https://marcus116.blogspot.com/2020/04/tool-redis-another-redis-desktop-manager.html">Redis 管理工具 - Another Redis Desktop Manager</a></li>
+<li>1、<a href="https://docs.microsoft.com/zh-tw/azure/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache">在 .NET Framework 中使用 Azure Cache for Redis</a>。</li>
+<li>2、<a href="https://github.com/neuecc/MessagePack-CSharp">MessagePack-CSharp</a>。</li>
+<li>3、<a href="https://jed1978.github.io/2018/05/11/Redis-Programming-CSharp-Basic-1.html">Redis系列 - C#存取Redis (上)</a>。</li>
+<li>4、<a href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>。</li>
 </ul>
 
     </div>
@@ -265,7 +283,7 @@ string類型控制在10KB以內，hash、list、set、zset元素個數不要超�
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</span>
+                    <a href=https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/>https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/</span>
             </p>
             
              
@@ -300,10 +318,8 @@ string類型控制在10KB以內，hash、list、set、zset元素個數不要超�
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="prev" rel="prev" title="docker 基本操作"><i class="iconfont icon-left"></i>&nbsp;docker 基本操作</a>
+        <a href="https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/" class="prev" rel="prev" title="Redis - 1 基本介紹"><i class="iconfont icon-left"></i>&nbsp;Redis - 1 基本介紹</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/" class="next" rel="next" title="Redis - 2 (Csharp操作示範)">Redis - 2 (Csharp操作示範)&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
