@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           Redis - 3 (資料結構與適用情境) | Sian	
+       	
+  </title>	
+  <meta name="title" content="Redis - 3 (資料結構與適用情境) | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Redis - 3 (資料結構與適用情境)",
+    "headline" : "Redis - 3 (資料結構與適用情境)",
+    "description" : "Redis - 3(資料結構與適用情境)",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-04-24 18:40:45  UTC",
+    "dateModified" : "2021-04-24 18:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83\/",
+    "wordCount" : "205",
+    "keywords" : ["docker","Redis","NoSql", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Redis - 3 (資料結構與適用情境)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-04-24 itemprop="datePublished">April 24, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="本文">本文</h2>
+<h3 id="1string">1、String</h3>
+<p>Redis內最基本的資料型態，以Binary safe的方式進行儲存。</p>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>Binary safe<br>
+C語言中對字串的儲存形式會用'\0&rsquo;來做為字串結束的判斷。<br>
+而Redis雖然是使用C語言寫的，但優化了這個部分，所以Redis只需專注於讀寫整個Binary string，而不用為了某種特殊格式而需要進行特殊化的解析。</p>
+</blockquote>
+<p>優點：</p>
+<ul>
+<li>可以儲存任何格式的資料，包括了圖片、檔案、及任何序列化後的物件。</li>
+</ul>
+<p>使用提醒：</p>
+<ul>
+<li>Redis中一個String的最大上限為512MB。</li>
+</ul>
+<p>適用場景：</p>
+<ul>
+<li>普通的快取資料。</li>
+<li>用來實作統計等相關功能 Ex: 網站的瀏覽人數。</li>
+<li>分散式架構下的Web共用Session。</li>
+</ul>
+<h3 id="2list">2、List</h3>
+<p>由Redis內多個String所組成，類似於Linked-List的資料結構。</p>
+<p>優點：</p>
+<ul>
+<li>插入和刪除資料的操作很快，時間複雜度為O(1)。</li>
+</ul>
+<p>使用提醒：</p>
+<ul>
+<li>Redis中一個List的最大長度上限為 2^32  - 1。</li>
+</ul>
+<p>適用場景：</p>
+<ul>
+<li>可用來實作佇列的Queue(First in first out)。</li>
+<li>可用來實作Stack(Last in first out)。</li>
+<li>社群功能的留言板、排行榜、關注等功能。</li>
+</ul>
+<p>示範：<br>
+有一個留言板，現在有了三則留言。</p>
+<pre><code class="language-shell=" data-lang="shell=">LPUSH board firstMessage
+LPUSH board secondMessage
+LPUSH board thirdMessage
+</code></pre><p><img src="https://i.imgur.com/mNzvbgO.jpg" alt=""></p>
+<p>我們要拿取最新的那一筆留言。</p>
+<pre><code class="language-shell=" data-lang="shell=">LPOP board
+</code></pre><p><img src="https://i.imgur.com/8CMMcrf.jpg" alt=""></p>
+<h3 id="3hash">3、Hash</h3>
+<p>由一個String類型的field和value所組成，資料會進行壓縮，有點類似於C#的Dictionary。</p>
+<p>優點：</p>
+<ul>
+<li>同類型的資料可以進行整合儲存，方便於管理。</li>
+<li>比string消耗的記憶體更小。</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>過期的功能只能針對Key使用，無法針對個別field。</li>
+<li>Redis的叢集架構下不適合大量使用。</li>
+</ul>
+<p>使用提醒：</p>
+<ul>
+<li>Redis中一個Hash的最大儲存上限為 2^32 - 1。</li>
+</ul>
+<p>適用場景：</p>
+<ul>
+<li>購物車功能，Ex:使用者Id為key、商品Id為field、商品數量為value，即可組成購物車需要的元素。</li>
+<li>任何Object，Hash所提供的key、field、value剛好可以對應物件的Id、屬性、值。</li>
+</ul>
+<p>示範：<br>
+有一個購物車內，放了user001要購買的商品，他一共買了a001商品1件、a002商品2件。</p>
+<pre><code class="language-shell=" data-lang="shell=">hset shoppingcart:user001 a001 1
+hset shoppingcart:user001 a002 2
+</code></pre><p><img src="https://i.imgur.com/V28F3KT.jpg" alt=""></p>
+<p>列出目前購物車內所有商品。</p>
+<pre><code class="language-shell=" data-lang="shell=">hgetall shoppingcart:user001
+</code></pre><p><img src="https://i.imgur.com/kpErAE3.jpg" alt=""></p>
+<p>使用者決定不買a001的商品了。</p>
+<pre><code class="language-shell=" data-lang="shell=">hdel shoppingcart:user001 a001
+</code></pre><p><img src="https://i.imgur.com/HixiisY.jpg" alt=""></p>
+<h3 id="4set">4、Set</h3>
+<p>由多個String以無序的方式所組成，保證Key是唯一的。</p>
+<p>優點：</p>
+<ul>
+<li>因為是透過Hash Map組成，新增、刪除、查找複雜度都是O(1)。</li>
+<li>因為是一個集合，也可用作聯集、交集、差集等處理。</li>
+</ul>
+<p>使用提醒：</p>
+<ul>
+<li>Redis中一個Set的最大上限為 2^32 - 1。</li>
+</ul>
+<p>適用場景：</p>
+<ul>
+<li>抽獎功能，Ex:將擁有抽獎資格的使用者加入一個Set內，因為保證不用有重複的Key，所以不會發生同一個使用者被重複抽。</li>
+<li>社群軟體中可以找出共同關注、共同粉絲相關的集合功能。</li>
+</ul>
+<p>示範：<br>
+現在有一個抽獎活動，我們將可以餐與抽獎的使用者放入集合內。</p>
+<pre><code class="language-shell=" data-lang="shell=">SADD key user001
+SADD key user002
+SADD key user003
+SADD key user004
+SADD key user005
+</code></pre><p><img src="https://i.imgur.com/hPfxi3g.jpg" alt=""></p>
+<p>列出參與抽獎的使用者。</p>
+<pre><code class="language-shell=" data-lang="shell=">SMEMBERS key
+</code></pre><p><img src="https://i.imgur.com/5oX3GQ6.jpg" alt=""></p>
+<p>接下來我們從這個集合內抽出一名幸運的中獎者並將他從集合內移出。</p>
+<pre><code class="language-shell=" data-lang="shell=">SPOP key 1
+</code></pre><p><img src="https://i.imgur.com/GUH8eVa.jpg" alt=""></p>
+<p>再次觀看目前參與抽獎的使用者列表。<br>
+<img src="https://i.imgur.com/xxjRRqg.jpg" alt=""></p>
+<h3 id="5sorted-set">5、Sorted set</h3>
+<p>與上述的Set大致上相同，特殊點在於Sorted set是有順序區別的。</p>
+<p>使用提醒：</p>
+<ul>
+<li>Redis中一個Set的最大上限為 2^32 - 1。</li>
+</ul>
+<p>適用場景：</p>
+<ul>
+<li>需要進行排序的集合，Ex:當日排行榜、一周內排行榜。</li>
+</ul>
+<p>示範：<br>
+我們需要有一個呈現當日搜尋排行榜的列表，每當有一個搜尋紀錄時我們就將它塞入Set。</p>
+<pre><code class="language-shell=" data-lang="shell=">ZINCRBY hostSearch:20210425 1 Redis
+ZINCRBY hostSearch:20210425 1 Redis
+ZINCRBY hostSearch:20210425 1 MongoDB
+ZINCRBY hostSearch:20210425 1 MSSQL
+</code></pre><p><img src="https://i.imgur.com/pmfFkdt.jpg" alt=""></p>
+<p>抓取當日排行榜前十的搜尋紀錄，並把搜尋次數列出來。</p>
+<pre><code class="language-shell=" data-lang="shell=">ZREVRANGE hostSearch:20210425 0 9 WITHSCORES
+</code></pre><p><img src="https://i.imgur.com/uZUBlwM.jpg" alt=""></p>
+<h3 id="6geo">6、GEO</h3>
+<p>這邊還發現了其實Redis也提供了GEO的資料型態，用來做地理位置相關資料的儲存。</p>
+<p>適用場景：</p>
+<ul>
+<li>給一個座標，找出附近相關的地標有哪些。</li>
+</ul>
+<p>拿之前抓的Youbike做示範：<br>
+首先存入兩個Youbike的站點。</p>
+<pre><code class="language-shell=" data-lang="shell="> GEOADD Youbike 121.5436 25.02605 &quot;500101001&quot; 121.54357 25.02565 500101002
+</code></pre><p><img src="https://i.imgur.com/1tIUr0t.jpg" alt=""></p>
+<p>接下來我們找某個座標內一百公尺的Youbike站有哪些並返回座標與Youbike站的距離。</p>
+<pre><code class="language-shell=" data-lang="shell=">GEORADIUS Youbike 121.54355666801028 25.026613968659696 100 m WITHDIST
+</code></pre><p><img src="https://i.imgur.com/zVL0eFZ.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>這邊只簡單記錄了一些使用情境以及方法，若有興趣了解Redis底層如何實作推薦觀看，<a href="http://redisbook.com/index.html">Redis 設計與實現</a>。</p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://jed1978.github.io/2018/05/11/Redis-Programming-CSharp-Basic-1.html">Redis系列 - C#存取Redis (上)</a>。</li>
+<li>2、<a href="https://blog.techbridge.cc/2016/06/18/redis-introduction/">資料庫的好夥伴：Redis</a>。</li>
+<li>3、<a href="https://medium.com/happy-friday/%E5%88%9D%E8%AD%98-redis-%E4%BA%94%E5%A4%A7%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5-3c67c05238d0">初識 Redis : 五大資料型別</a>。</li>
+<li>4、<a href="https://www.it145.com/9/78904.html">阿里面試常問的redis資料結構</a>。</li>
+<li>5、<a href="http://redisbook.com/index.html">Redis 設計與實現</a>。</li>
+<li>6、<a href="https://www.mdeditor.tw/pl/pjhd/zh-tw">Redis 5種資料結構及對應使用場景</a>。</li>
+<li>7、<a href="https://www.mdeditor.tw/pl/29vf/zh-tw">Redis基本型別及其資料結構</a>。</li>
+<li>8、<a href="https://www.runoob.com/redis/redis-tutorial.html">Redis 教程</a>。</li>
+<li>9、<a href="https://redis.io/topics/data-types">Redis 官方文件</a>。</li>
+<li>10、<a href="https://en.wikipedia.org/wiki/Binary-safe">Binary-safe</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/docker/">
+                    #docker</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/redis/">
+                    #Redis</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/nosql/">
+                    #NoSql</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/" class="prev" rel="prev" title="Redis - 2 (Csharp操作示範)"><i class="iconfont icon-left"></i>&nbsp;Redis - 2 (Csharp操作示範)</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

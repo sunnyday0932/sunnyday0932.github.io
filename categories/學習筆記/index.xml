@@ -6,7 +6,32 @@
     <description>Recent content in 學習筆記 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 21 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis - 3 (資料結構與適用情境)</title>
+      <link>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</link>
+      <pubDate>Sat, 24 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</guid>
+      <description>本文 1、String Redis內最基本的資料型態，以Binary safe的方式進行儲存。
+ Binary safe
+C語言中對字串的儲存形式會用&#39;\0&amp;rsquo;來做為字串結束的判斷。
+而Redis雖然是使用C語言寫的，但優化了這個部分，所以Redis只需專注於讀寫整個Binary string，而不用為了某種特殊格式而需要進行特殊化的解析。
+ 優點：
+ 可以儲存任何格式的資料，包括了圖片、檔案、及任何序列化後的物件。  使用提醒：
+ Redis中一個String的最大上限為512MB。  適用場景：
+ 普通的快取資料。 用來實作統計等相關功能 Ex: 網站的瀏覽人數。 分散式架構下的Web共用Session。  2、List 由Redis內多個String所組成，類似於Linked-List的資料結構。
+優點：
+ 插入和刪除資料的操作很快，時間複雜度為O(1)。  使用提醒：
+ Redis中一個List的最大長度上限為 2^32 - 1。  適用場景：
+ 可用來實作佇列的Queue(First in first out)。 可用來實作Stack(Last in first out)。 社群功能的留言板、排行榜、關注等功能。  示範：
+有一個留言板，現在有了三則留言。
+LPUSH board firstMessage LPUSH board secondMessage LPUSH board thirdMessage 我們要拿取最新的那一筆留言。
+LPOP board 3、Hash 由一個String類型的field和value所組成，資料會進行壓縮，有點類似於C#的Dictionary。
+優點：
+ 同類型的資料可以進行整合儲存，方便於管理。 比string消耗的記憶體更小。  缺點：</description>
+    </item>
+    
     <item>
       <title>Redis - 2 (Csharp操作示範)</title>
       <link>https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/</link>
