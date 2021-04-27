@@ -6,7 +6,19 @@
     <description>Recent content in 學習筆記 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 24 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Decorator Pattern - 裝飾者模式</title>
+      <link>https://sunnyday0932.github.io/2021/decorator-pattern-%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 26 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/decorator-pattern-%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <description>本文 我們在先前SOLID - OCP(開放封閉原則)有提到過，軟體設計原則，應該對擴展開放，對修改封閉。
+而這次我們要介紹的裝飾者模式能夠更優雅地做到這件事。
+首先我們先回憶一下，特斯拉(不要懷疑我又回來啦)在不違反OCP原則下安裝軟體的時候我們可以怎麼做。
+internal class Program { static void Main(string[] args) { var tesla = new Tesla(&amp;quot;Model3&amp;quot;); tesla.Print(); var autoPilot= new AutoPilot(); var settingRing = new SettingRing(); autoPilot.AddSoftWare(); settingRing.AddSoftWare(); } } public class Tesla { private string _model; public Tesla(string model) { this._model = model; } public void Print() { Console.WriteLine(this._model); } } public abstract class SoftWare { public abstract void AddSoftWare(); } public class AutoPilot : SoftWare { public override void AddSoftWare() { Console.</description>
+    </item>
+    
     <item>
       <title>Redis - 3 (資料結構與適用情境)</title>
       <link>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</link>

@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 24 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design Pattern</title>
+      <link>https://sunnyday0932.github.io/tags/design-pattern/</link>
+      <pubDate>Mon, 26 Apr 2021 18:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/design-pattern/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>docker</title>
       <link>https://sunnyday0932.github.io/tags/docker/</link>
