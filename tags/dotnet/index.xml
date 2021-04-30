@@ -6,7 +6,24 @@
     <description>Recent content in dotnet on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 12 Apr 2021 18:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Apr 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CoreProfiler - 監看WebApi效能的工具</title>
+      <link>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Thu, 29 Apr 2021 19:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</guid>
+      <description>前言 接下來會用到CoreProfiler這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。
+本文 CorePofiler這個工具是提供給Core版本的效能工具，也有給dotnet framework的版本NanoProfiler。
+用到的Nuget  CoreProfiler.Web 安裝在Application。 CoreProfiler 安裝在Application跟要監看的類別庫。  使用方式 1、在我們需要監看的地方加上以下程式。
+var stepName = $&amp;quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;quot;; using (ProfilingSession.Current.Step(stepName)) { } 2、在Service與Repository的地方都加上。
+Service：
+Repository：
+3、若要監看與DB存取資料的狀況，可以到DatabaseHelper這麼做。
+/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ? null : new DbProfiler(ProfilingSession.Current.Profiler) ); return conn; } 4、CoreProfiler的設定，可以建立一個coreprofiler.json的檔案。
+{ //資料保存上限 &amp;quot;circularBufferSize&amp;quot;: 200, //要過濾掉的項目 &amp;quot;filters&amp;quot;: [ { &amp;quot;key&amp;quot;: &amp;quot;/coreprofiler&amp;quot;, &amp;quot;value&amp;quot;: &amp;quot;/coreprofiler&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;CoreProfiler.</description>
+    </item>
+    
     <item>
       <title>dotnet Core HangFire - Youbike練習題</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</link>
