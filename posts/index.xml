@@ -6,7 +6,23 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 29 Apr 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Apr 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WebApi 加入快取 - 1</title>
+      <link>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1/</link>
+      <pubDate>Fri, 30 Apr 2021 01:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1/</guid>
+      <description>前言 延續上次我們使用Hangfire排程抓取Youbike的練習題，這次我們要做一個Youbike的Service，專門提供查詢Youbike相關站點資訊的服務；前面製作排程的時候有提到因為Youbike站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。
+本文 快取的使用時機 當API效能遇到瓶頸的時候，就可以使用快取來減少不必要去DB撈取資料的動作，最常使用的會是記憶體快取、Redis快取等。
+快取的適用時機 一般使用快取的功能通常是資料的變動性不大、不太會被變更的資料。
+當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們DB資料同步的問題。
+快取的注意事項 使用快取的方式簡單來說是用錢換取時間(記憶體比起硬碟貴了許多)，通常在放資料進快取的時候會需要注意資料的大小、能不能適度地進行切分，以及存放的過期時間，而不是拿了就丟全部放入快取內(當然如果你本多忠勝不在此限)。
+開始前準備 這邊基本的API就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部Youbike站點的功能、另一個是查詢指定Youbike站點的功能。
+先看一下初始的Repository結構。
+/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].[dbo].[YoubikeStation]&amp;quot;; using (var conn = this._databaseHelper.GetConnection(this._connectionString)) { var result = await conn.QueryAsync&amp;lt;StationDataModel&amp;gt;(sql); return result; } } /// &amp;lt;summary&amp;gt; /// 取得指定Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;stationNo&amp;quot;&amp;gt;The station no.</description>
+    </item>
+    
     <item>
       <title>CoreProfiler - 監看WebApi效能的工具</title>
       <link>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</link>
