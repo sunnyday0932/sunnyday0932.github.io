@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 30 Apr 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WebApi 加入快取 - 2(使用裝飾者模式)</title>
+      <link>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-2%E4%BD%BF%E7%94%A8%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 01 May 2021 01:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-2%E4%BD%BF%E7%94%A8%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <description>前言 上一篇我們示範了如何加上快取，而上次的作法是直接在原程式上加上記憶體快取。
+原程式：
+/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].[dbo].[YoubikeStation]&amp;quot;; using (var conn = this._databaseHelper.GetConnection(this._connectionString)) { var result = await conn.QueryAsync&amp;lt;StationDataModel&amp;gt;(sql); return result; } } 加入快取後的程式：
+/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var stepName = $&amp;quot;{nameof(StationRepository)}.</description>
+    </item>
+    
     <item>
       <title>WebApi 加入快取 - 1</title>
       <link>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1/</link>
