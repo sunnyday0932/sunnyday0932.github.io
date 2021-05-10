@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           Message Queue - 1(基本介紹) | Sian	
+       	
+  </title>	
+  <meta name="title" content="Message Queue - 1(基本介紹) | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Message Queue - 1(基本介紹)",
+    "headline" : "Message Queue - 1(基本介紹)",
+    "description" : "Message Queue - 1(基本介紹)",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-05-10 01:40:45  UTC",
+    "dateModified" : "2021-05-10 01:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9\/",
+    "wordCount" : "119",
+    "keywords" : ["Message Queue", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Message Queue - 1(基本介紹)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-05-10 itemprop="datePublished">May 10, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>延續上述練習，接下來我們想做到，當HangFire撈取新Youbike資料的同時，讓系統能夠同步更新我們的快取資料確保使用者能夠拿到最即時的資料，這時候Message Queue就會派上用場，接下來就來研究看看Message Queue能做到那些事，以及如何實作。</p>
+<h2 id="本文">本文</h2>
+<h3 id="application-intergration系統整合">Application Intergration(系統整合)</h3>
+<p>在開始認識Message Queue之前我們需要先對系統整合有些許概念。</p>
+<p>系統整合指的是：<br>
+一個完整的系統，不會只有一支程式在運作，而是有各種不同的程式各個相互合作下達成不同的任務，在合作的過程中就需要透過訊息傳遞的幫助來協助彼此間相互合作，這類的需求我們就稱之為系統整合需要做到的事。</p>
+<p>Ex:設想一個工廠的運作也是如此，工廠內不會只有一個產線在運行，像是特斯拉的工廠，我們從源頭需要備料，每一個零件的組裝，到一個完整的汽車烤漆，層層都有各個產線需要完成的事情，而相互間溝通就是需要透過系統整合來協助達成。</p>
+<p>而系統整合分為了以下幾種方式：</p>
+<h4 id="1filed-based-integration檔案為主的整合方式">1、Filed Based Integration(檔案為主的整合方式)。</h4>
+<p><img src="https://i.imgur.com/KcSgqA1.jpg" alt=""></p>
+<p>Source Appication(來源程式)會根據要處理的任務，產生相對應的檔案到指定的路徑中，而Proccess Appication(處理程式)就會一直監看資料夾內有沒有需要處理的任務，當有的時候就會取出檔案作相對應的處理，並將處理的結果放到合適的檔案存放區。</p>
+<h4 id="2shared-database-integration共享資料庫的整合方式">2、Shared Database Integration(共享資料庫的整合方式)。</h4>
+<p><img src="https://i.imgur.com/yBRqU0s.jpg" alt=""></p>
+<p>Source Appication(來源程式)將要處理的任務寫入DB，Proccess Appication(處理程式)就會一直監看DB有沒有需要處理的任務，當有的時候就會取出任務作相對應的處理，並將處理的結果寫回到DB。<br>
+<code>這種方式就有點像我們Hangfire的運作模式</code>。</p>
+<h4 id="3direct-connection-integration直接連結的整合方式">3、Direct Connection Integration(直接連結的整合方式)。</h4>
+<p><img src="https://i.imgur.com/5uotIeE.jpg" alt=""></p>
+<p>Source Appication(來源程式)透過提前協議好的連結方式(TCP/IP、<a href="https://zh.wikipedia.org/wiki/%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93">Named pipe connection</a>)，直接傳遞要處理的任務，傳遞的資料格式可能為(Binary、XML、JSON等)，Proccess Appication(處理程式)處理完任務後再將結果傳回。</p>
+<h4 id="4asynchronous-message-broker透過message-broker的非同步傳遞方式">4、Asynchronous Message Broker(透過Message Broker的非同步傳遞方式)。</h4>
+<p><img src="https://i.imgur.com/Kej6VbN.jpg" alt=""></p>
+<p>來源程式(這邊會稱為:Producer Appication)將任務傳給Message Broker，Message Boker在透過佇列(Queue)的方式將任務排列先後順序，最後將任務傳遞給處理程式進行處理(這邊稱之為Consumer Application)。</p>
+<p>這種類型的傳遞方式特點為：</p>
+<ul>
+<li>不限制傳遞的資料格式。</li>
+<li>需要有一個Message Broker Middleware進行協助處理任務的排列。</li>
+<li>非同步的溝通方式，Producer傳送訊息至Message Queue後不需要立即得到回應，可以先行處理其他事情。</li>
+<li>Comsumer可以等到有空的時候再來處理任務。</li>
+</ul>
+<p>所以這邊最大的特點是，將收發訊息的雙方進行了解耦合的動作，兩邊在開發上可以專注在開發自己的程式上、收送雙方也不需要彼此的實體位置(IP地址、接收訊息的程式在哪)僅需要把訊息往Message Broker送即可。</p>
+<p>有著好的可靠性，訊息放在Queue中使得資料不容易流失、Comsumer就算暫時無法消化訊息也沒關係，Message Queue會暫時將資料存起來等到Comsumer有資源可以消化時再將訊息送出去。</p>
+<p>架構上也可以達到彈性擴展，Poducer、Message Broker、Comsumer都可以依照需求增減，Message Queue也是微服務的架構下最主要的溝通模式。</p>
+<h3 id="rabbitmq">RabbitMQ</h3>
+<p>這次我們要研究的Message Queue就是<a href="https://www.rabbitmq.com/">RabbitMQ</a>。<br>
+<img src="https://i.imgur.com/1jGvdEL.jpg" alt=""></p>
+<p>主要的腳色有：</p>
+<ul>
+<li>Producer - 負責丟訊息到Queue的。</li>
+<li>Consumer - 負責消化來自Queue的訊息。</li>
+<li>Queue - 負責存放所需的資料，一樣有著First-In-First-Out的特性。</li>
+<li>Exchange - 在Poducer與Queue中間的一個元件，如果有Exchage的時候Poducer不再是直接把Message丟給Queue，而是把Message丟給Exchange後，由他來決定要丟給誰，主要有四種方式<br>
+&ndash; Direct：直接丟給指定的Queue。<br>
+&ndash; Topic：可以透過類似於正則表達式來設定Binding的規則，丟給符合的Queue。<br>
+&ndash; Headers：透過傳送資料的Header來指定要丟給哪個Queue。<br>
+&ndash; Fanout：一次丟給全部的Queue。</li>
+</ul>
+<p>常見的模式有：</p>
+<h4 id="simple-mode">Simple Mode</h4>
+<p>最簡單的模式，Poducer、Message Broker、Consumer都只有一個。</p>
+<p><img src="https://i.imgur.com/kXFlCfg.jpg" alt=""></p>
+<h4 id="work-queues">Work queues</h4>
+<p>Woker模式下，可以有多個Consumer來幫忙消化訊息。<br>
+(還記得Hangfire的Woker嗎，就是差不多的東西)
+<img src="https://i.imgur.com/OAi4HYS.jpg" alt=""></p>
+<h4 id="publishsubscribe">Publish/Subscribe</h4>
+<p>在訂閱模式下，Exchange是透過Fanout的方式，確保所有訂閱的Queue都能接收到訊息。</p>
+<p><img src="https://i.imgur.com/vhGOaMU.jpg" alt=""></p>
+<h4 id="routing">Routing</h4>
+<p>在路由的模式下，Exchange會透過direct的方式，直接將Message丟給指定的Queue。</p>
+<p><img src="https://i.imgur.com/RIyNPmq.jpg" alt=""></p>
+<h4 id="topics">Topics</h4>
+<p>在此模式下Exchange就是透過Topic的方式，將Message丟給符合的Queue。</p>
+<p><img src="https://i.imgur.com/uf3cIM1.jpg" alt=""></p>
+<h4 id="rpc">RPC</h4>
+<p>若Client需要收到回傳訊息的話就可以透過RPC的模式來進行。</p>
+<p><img src="https://i.imgur.com/LES58ct.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>我們今天介紹了系統整合傳遞訊息的方式，也因此帶到了Message Queue，介紹了RabbitMQ常見的幾種傳遞訊息方式，下一篇我們就會進行實際的練習。</p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://www.rabbitmq.com/">RabbitMQ</a>。</li>
+<li>2、<a href="https://godleon.github.io/blog/ChatOps/message-queue-concepts/">Message Queue 簡介(以 RabbitMQ 為例)</a>。</li>
+<li>3、<a href="https://medium.com/starbugs/%E8%AE%93%E4%BB%BB%E5%8B%99%E6%8E%92%E9%9A%8A%E5%90%A7-message-queue-1-de949e274c43">讓任務排隊吧：Message Queue — (1)</a>。</li>
+<li>4、<a href="https://medium.com/starbugs/%E8%AE%93%E4%BB%BB%E5%8B%99%E6%8E%92%E9%9A%8A%E5%90%A7-message-queue-2-305165f0dcad">讓任務排隊吧：Message Queue — (2)</a>。</li>
+<li>5、<a href="https://kucw.github.io/blog/2020/11/rabbitmq/">RabbitMQ 基本介紹、安裝教學</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/>https://sunnyday0932.github.io/2021/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/message-queue/">
+                    #Message Queue</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96/" class="prev" rel="prev" title="WebApi 加入快取 - 3(使用Redis進行快取)"><i class="iconfont icon-left"></i>&nbsp;WebApi 加入快取 - 3(使用Redis進行快取)</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
