@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           Message Queue - 2(RabbitMQ) | Sian	
+       	
+  </title>	
+  <meta name="title" content="Message Queue - 2(RabbitMQ) | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Message Queue - 2(RabbitMQ)",
+    "headline" : "Message Queue - 2(RabbitMQ)",
+    "description" : "Message Queue - 2(RabbitMQ)",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-05-17 01:40:45  UTC",
+    "dateModified" : "2021-05-17 01:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/message-queue-2rabbitmq\/",
+    "wordCount" : "438",
+    "keywords" : ["Message Queue","RabbitMQ", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Message Queue - 2(RabbitMQ)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-05-17 itemprop="datePublished">May 17, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="本文">本文</h2>
+<h3 id="架設rabbitmq">架設RabbitMQ</h3>
+<p>首先我們使用docker來架設練習用的RabbitMQ。</p>
+<p>我們要使用rabbitmq:management的image，除了會幫我們架設起一個RabbitMQ外，也包含了可以管理的Web介面。</p>
+<p>使用以下語法，並給予預設帳號的帳號密碼。</p>
+<pre><code class="language-shell=" data-lang="shell=">docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management
+</code></pre><p>可以看到輸入後就算目前沒有該Image也會自動幫你下載(懶人的福音R)<br>
+<img src="https://i.imgur.com/Qdy2a1e.jpg" alt=""></p>
+<p>接下來可以到docker確認是否已經啟用。<br>
+<img src="https://i.imgur.com/fTWOuEW.jpg" alt=""></p>
+<p>那麼就可以輸入以下網址登入測試了。</p>
+<pre><code class="language-shell=" data-lang="shell=">http://localhost:15672/
+</code></pre><p>連上後就會看到登入畫面。<br>
+<img src="https://i.imgur.com/9S6yG0j.jpg" alt=""></p>
+<p>輸入我們剛剛設定的預設值即可。</p>
+<pre><code class="language-shell=" data-lang="shell=">Account: admin
+Password: a1234
+</code></pre><p>成功進入後就會看到初始畫面儀錶板，一樣可以在Overview看到RabbitMQ目前有哪些東西在作用。<br>
+<img src="https://i.imgur.com/M1Z5UkL.jpg" alt=""></p>
+<p>這邊就只挑比較特別的地方做介紹。</p>
+<h4 id="exchange">Exchange</h4>
+<p>這邊可以看到目前有建立了哪些Exchange，畫面上看到的都是預設的。<br>
+<img src="https://i.imgur.com/dIpb9AZ.jpg" alt=""></p>
+<p>使用Web介面的好處是可以直接透過介面建立。<br>
+<img src="https://i.imgur.com/neXHS3l.jpg" alt=""></p>
+<p>點選Exchange可以看到細部的設定。<br>
+<img src="https://i.imgur.com/iRoluhp.gif" alt=""></p>
+<h4 id="queue">Queue</h4>
+<p>一樣是可以透過介面觀看有哪些佇列、與其細項內容，並可以直接透過介面新增。</p>
+<p><img src="https://i.imgur.com/4VNNYvf.jpg" alt=""></p>
+<h4 id="admin">Admin</h4>
+<p>這邊就是管理者的介面可以設定帳號，增加使用者等。<br>
+<img src="https://i.imgur.com/0wflcVc.jpg" alt=""></p>
+<p>右方還有更細部的設定，比如可以設定一些連接數、政策規範等。<br>
+<img src="https://i.imgur.com/TqQsyaW.jpg" alt=""></p>
+<h3 id="實作練習">實作練習</h3>
+<p>這次主要範例會使用RabbitMQ官方的Nuget。<br>
+<a href="https://www.rabbitmq.com/dotnet-api-guide.html">RabbitMQ.Cleint</a><br>
+<img src="https://i.imgur.com/asxjGtb.jpg" alt=""></p>
+<p>讓我們先建立ConsoleApp。<br>
+<img src="https://i.imgur.com/4eC2PbD.jpg" alt=""></p>
+<p>需要建立一個Publisher、一個Reciever。<br>
+<img src="https://i.imgur.com/4Ju5NTy.jpg" alt=""></p>
+<p>接下來先安裝RabbitMQ.Client。<br>
+<img src="https://i.imgur.com/WEjUQAr.jpg" alt=""></p>
+<p>我們就可以來開始先做我們的Publisher發布訊息內容。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            //設定主機位置以及帳號密碼
+            var factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            //連線設定
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                //Queue的設定
+                channel.QueueDeclare
+                    (
+                        queue: &quot;hello&quot;,    //Queue的名稱
+                        durable: false,    //Queue是否持久化保存，是的話會寫入硬碟即便RabbitMQ重啟也不會遺失。
+                        exclusive: false,  //Queue是否為私有訪問機制，是的話當有一個Reciever在訪問該Queue就會對其Lock。
+                        autoDelete: false  //Queue是否自動刪除，是的話當最後一個Reciever段開連結後會自動刪除Queue。
+                    );
+
+                //設定我們要傳送的訊息
+                string message = &quot;Hello World!&quot;;
+                var body = Encoding.UTF8.GetBytes(message);
+
+                //設定Publisher
+                channel.BasicPublish
+                    (
+                        exchange: &quot;&quot;,
+                        routingKey: &quot;hello&quot;,
+                        basicProperties: null,
+                        body: body
+                    );
+                Console.WriteLine(&quot; 送出訊息： {0}&quot;, message);
+            }
+
+            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.ReadLine();
+        }
+</code></pre><p>接著製作Reciever。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            //設定主機位置以及帳號密碼
+            var factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+
+                //Queue的設定
+                channel.QueueDeclare
+                    (
+                        queue: &quot;hello&quot;,    //Queue的名稱。
+                        durable: false,    //Queue是否持久化保存，是的話會寫入硬碟即便RabbitMQ重啟也不會遺失。
+                        exclusive: false,  //Queue是否為私有訪問機制，是的話當有一個Reciever在訪問該Queue就會對其Lock。
+                        autoDelete: false  //Queue是否自動刪除，是的話當最後一個Reciever段開連結後會自動刪除Queue。
+                    );
+
+                //Comsumer主要處理訊息內容
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =&gt;
+                {
+                    var message = ea.Body.ToArray();
+                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, Encoding.UTF8.GetString(message));
+                };
+
+                //建立Consumer接收
+                channel.BasicConsume
+                    (
+                        queue: &quot;hello&quot;,    //指定Queue的名稱。
+                        autoAck: true,     //True的話會自動發送有無接收到訊息給RabbitMQ做確認。
+                        consumer: consumer //Consumer內容
+                    );
+
+                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.ReadLine();
+            }
+        }
+</code></pre><p>我們來測試看看，首先執行Publisher。<br>
+<img src="https://i.imgur.com/KXG67cU.jpg" alt=""></p>
+<p>送出後我們可以到管理介面確認一下。<br>
+<img src="https://i.imgur.com/XHQUIxS.gif" alt=""></p>
+<p>接下來我們執行Reciever。<br>
+<img src="https://i.imgur.com/944fFuH.jpg" alt=""></p>
+<p>現在到管理介面看Connections，就會看到目前有一個連線。<br>
+<img src="https://i.imgur.com/1F695xw.jpg" alt=""></p>
+<p>Channel的地方也會看到目前使用中的有誰。<br>
+<img src="https://i.imgur.com/byao8D4.jpg" alt=""></p>
+<p>基本的範例做完後，我們來試試看調用Exchange來幫我們決定要發送到哪個Queue。</p>
+<p>Publisher</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            //設定主機位置以及帳號密碼
+            var factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                //Exchange設定
+                channel.ExchangeDeclare
+                    (
+                        &quot;testExchange&quot;,
+                        ExchangeType.Direct  //使用Direct方式
+                    );
+
+                channel.QueueDeclare
+                    (
+                        queue: &quot;HelloExchange&quot;,
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false
+                    );
+
+                //Queue 與 Exchange繫結處理
+                channel.QueueBind
+                    (
+                        queue: &quot;HelloExchange&quot;,
+                        exchange: &quot;testExchange&quot;,
+                        routingKey: &quot;hello&quot;,
+                        null
+                    );
+
+                string message = &quot;Hello World!&quot;;
+                var body = Encoding.UTF8.GetBytes(message);
+
+                channel.BasicPublish
+                    (
+                        exchange: &quot;testExchange&quot;,
+                        routingKey: &quot;hello&quot;,
+                        basicProperties: null,
+                        body: body
+                    );
+
+                Console.WriteLine(&quot; 送出訊息： {0}&quot;, message);
+            }
+
+            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.ReadLine();
+        }
+</code></pre><p>Publisher</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    class Program
+    {
+        static void Main(string[] args)
+        {
+            //設定主機位置以及帳號密碼
+            var factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.QueueDeclare
+                    (
+                        queue: &quot;HelloExchange&quot;,
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false
+                    );
+
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =&gt;
+                {
+                    var message = ea.Body.ToArray();
+                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, Encoding.UTF8.GetString(message));
+                };
+                channel.BasicConsume(queue: &quot;HelloExchange&quot;,
+                                         autoAck: true,
+                                         consumer: consumer);
+                //建立Consumer接收
+                channel.BasicConsume
+                    (
+                        queue: &quot;HelloExchange&quot;,    //指定Queue的名稱。
+                        autoAck: true,     //True的話會自動發送有無接收到訊息給RabbitMQ做確認。
+                        consumer: consumer //Consumer內容
+                    );
+
+                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.ReadLine();
+            }
+        }
+</code></pre><p>我們一樣先執行Publisher進行測試。<br>
+<img src="https://i.imgur.com/UB6rKxK.jpg" alt=""></p>
+<p>執行完後首先到管理介面看Exchange就會看到多出了一個testExchange。<br>
+<img src="https://i.imgur.com/mHt7JGx.gif" alt=""></p>
+<p>Queue的地方一樣會看到新的HelloExchange有一個項目正在等待接收。<br>
+<img src="https://i.imgur.com/6keAIkj.jpg" alt=""></p>
+<p>接著執行Reciever，成功收到訊息。<br>
+<img src="https://i.imgur.com/IUGWF3a.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>本篇基本用法就介紹到這邊，下篇我們再來研究有哪些特殊的使用方式。</p>
+<p><a href="https://github.com/sunnyday0932/RabbitMQSample">一樣會把Code放在Github上有需要的歡迎取用。  </a></p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://www.rabbitmq.com/dotnet-api-guide.html#major-api-elements">RabbitMQ .NET/C# Client API Guide</a>。</li>
+<li>2、<a href="https://github.com/HsYu223/RabbitMQ">前輩的示範Code</a>。</li>
+<li>3、<a href="https://blog.yowko.com/rabbitmq-client-send-consume/">使用 .Net client 連線至 RabbitMQ 收發訊息</a>。</li>
+<li>4、<a href="https://blog.yowko.com/dotnet-client-rabbitmq-cluster/">C# 連線至 RabbitMQ Cluster - 使用 RabbitMQ .Net Client 及 EasyNetQ</a>。</li>
+<li>5、<a href="https://kucw.github.io/blog/2020/11/rabbitmq/">RabbitMQ 基本介紹、安裝教學</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/>https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/message-queue/">
+                    #Message Queue</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/rabbitmq/">
+                    #RabbitMQ</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/" class="prev" rel="prev" title="Message Queue - 1(基本介紹)"><i class="iconfont icon-left"></i>&nbsp;Message Queue - 1(基本介紹)</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

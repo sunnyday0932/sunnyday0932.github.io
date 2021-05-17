@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RabbitMQ on Sian</title>
+    <link>https://sunnyday0932.github.io/tags/rabbitmq/</link>
+    <description>Recent content in RabbitMQ on Sian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 17 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Message Queue - 2(RabbitMQ)</title>
+      <link>https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/</link>
+      <pubDate>Mon, 17 May 2021 01:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/</guid>
+      <description>本文 架設RabbitMQ 首先我們使用docker來架設練習用的RabbitMQ。
+我們要使用rabbitmq:management的image，除了會幫我們架設起一個RabbitMQ外，也包含了可以管理的Web介面。
+使用以下語法，並給予預設帳號的帳號密碼。
+docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management 可以看到輸入後就算目前沒有該Image也會自動幫你下載(懶人的福音R)
+接下來可以到docker確認是否已經啟用。
+那麼就可以輸入以下網址登入測試了。
+http://localhost:15672/ 連上後就會看到登入畫面。
+輸入我們剛剛設定的預設值即可。
+Account: admin Password: a1234 成功進入後就會看到初始畫面儀錶板，一樣可以在Overview看到RabbitMQ目前有哪些東西在作用。
+這邊就只挑比較特別的地方做介紹。
+Exchange 這邊可以看到目前有建立了哪些Exchange，畫面上看到的都是預設的。
+使用Web介面的好處是可以直接透過介面建立。
+點選Exchange可以看到細部的設定。
+Queue 一樣是可以透過介面觀看有哪些佇列、與其細項內容，並可以直接透過介面新增。
+Admin 這邊就是管理者的介面可以設定帳號，增加使用者等。
+右方還有更細部的設定，比如可以設定一些連接數、政策規範等。
+實作練習 這次主要範例會使用RabbitMQ官方的Nuget。
+RabbitMQ.Cleint
+讓我們先建立ConsoleApp。
+需要建立一個Publisher、一個Reciever。
+接下來先安裝RabbitMQ.Client。
+我們就可以來開始先做我們的Publisher發布訊息內容。
+static void Main(string[] args) { //設定主機位置以及帳號密碼 var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; //連線設定 using (var connection = factory.</description>
+    </item>
+    
+  </channel>
+</rss>
