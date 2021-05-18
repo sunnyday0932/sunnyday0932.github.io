@@ -6,7 +6,21 @@
     <description>Recent content in RabbitMQ on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 17 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Message Queue - 3(RabbitMQ)</title>
+      <link>https://sunnyday0932.github.io/2021/message-queue-3rabbitmq/</link>
+      <pubDate>Tue, 18 May 2021 01:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/message-queue-3rabbitmq/</guid>
+      <description>前言 前一篇介紹了基本的用法，接下來我們就來研究第一篇有介紹過的各種特殊處理。
+本文 這邊主要的練習都是參考以下文件：
+RabbitMQ 中文文檔
+Work Queues 有多個Consumer可以來幫忙消化Queue內的任務模式。
+首先我們一樣先建立一個Pubisher，這次改成由外部接收要傳送的訊息再丟給Queue。
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
+    </item>
+    
     <item>
       <title>Message Queue - 2(RabbitMQ)</title>
       <link>https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/</link>
