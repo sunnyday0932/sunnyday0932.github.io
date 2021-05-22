@@ -6,7 +6,19 @@
     <description>Recent content in Message Queue on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 18 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/message-queue/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/message-queue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Message Queue - 4(RabbitMQ)</title>
+      <link>https://sunnyday0932.github.io/2021/message-queue-4rabbitmq/</link>
+      <pubDate>Thu, 20 May 2021 01:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/message-queue-4rabbitmq/</guid>
+      <description>本文 Publish/Subscribe 我們來練習使用Exchange透過Fanout的方式發送訊息給所有Queue。
+現在我們目標是要發送log給所有Queue。
+一樣先建立Publisher。
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.WriteLine(&amp;quot;請按任意鍵離開!&amp;quot;); Console.ReadLine(); } private static string GetMessage(string[] args) { return ((args.</description>
+    </item>
+    
     <item>
       <title>Message Queue - 3(RabbitMQ)</title>
       <link>https://sunnyday0932.github.io/2021/message-queue-3rabbitmq/</link>
@@ -44,7 +56,7 @@ Queue 一樣是可以透過介面觀看有哪些佇列、與其細項內容，�
 Admin 這邊就是管理者的介面可以設定帳號，增加使用者等。
 右方還有更細部的設定，比如可以設定一些連接數、政策規範等。
 實作練習 這次主要範例會使用RabbitMQ官方的Nuget。
-RabbitMQ.Cleint
+RabbitMQ.Client
 讓我們先建立ConsoleApp。
 需要建立一個Publisher、一個Reciever。
 接下來先安裝RabbitMQ.Client。
