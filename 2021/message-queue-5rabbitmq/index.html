@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%BE%9E%E5%95%86%E6%A5%AD%E6%87%89%E7%94%A8%E9%A9%85%E5%8B%95%E6%9E%B6%E8%A8%AD%E8%A8%AD%E8%A8%88-%E5%BF%83%E5%BE%97/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           Message Queue - 5(RabbitMQ) | Sian	
+       	
+  </title>	
+  <meta name="title" content="Message Queue - 5(RabbitMQ) | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Message Queue - 5(RabbitMQ)",
+    "headline" : "Message Queue - 5(RabbitMQ)",
+    "description" : "Message Queue - 5(RabbitMQ)",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-05-30 01:40:45  UTC",
+    "dateModified" : "2021-05-30 01:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/message-queue-5rabbitmq\/",
+    "wordCount" : "697",
+    "keywords" : ["Message Queue","RabbitMQ", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Message Queue - 5(RabbitMQ)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-05-30 itemprop="datePublished">May 30, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="本文">本文</h2>
+<h3 id="topics">Topics</h3>
+<p><img src="https://i.imgur.com/uf3cIM1.jpg" alt=""></p>
+<p>這個模式下Exchange會透過Topic的方式，將訊息丟給符合的Queue傳給相對應的Reciver。</p>
+<p>Topic會透過我們給予的Key來決定要給哪些人，而Key可以使用兩種特殊符號：</p>
+<ul>
+<li>1、 * (星號)：它能夠代表一個萬用詞。</li>
+<li>2、 # (井號)：則是能夠代表零個或多的萬用詞。</li>
+</ul>
+<p>舉例來說上圖我們有一個 ＊.orange.＊ 的Key，那他就允許兩個*字號替代的單詞，所以它會允許sweet.orange.juice通過，如果多加了一個字 sweet.good.orange.juice則不允許通過。</p>
+<p>那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &hellip; 都允許通過。</p>
+<p>接著我們來實作測試看看吧。</p>
+<p>Publisher</p>
+<pre><code class="language-csharp=" data-lang="csharp=">            var factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                //創建一個Exchange設定為topic_logs 透過Topic方式發送
+                channel.ExchangeDeclare(
+                    exchange: &quot;topic_logs&quot;,
+                    ExchangeType.Topic);
+
+                //我們已接收到的第一個參數來當key決定要丟給哪一個Queue
+                var key = (args.Length &gt; 0) ? args[0] : &quot;anonymous.info&quot;;
+
+                var message = (args.Length &gt; 1)
+                              ? string.Join(&quot; &quot;, args.Skip(1).ToArray())
+                              : &quot;Hello World!&quot;;
+
+                var body = Encoding.UTF8.GetBytes(message);
+
+                channel.BasicPublish(exchange: &quot;topic_logs&quot;, //設定我們的Exchange為topic_logs
+                                     routingKey: key,
+                                     basicProperties: null,
+                                     body: body);
+
+                Console.WriteLine($&quot; 送出訊息： '{key}' : '{message}'&quot;);
+            }
+
+            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.ReadLine();
+</code></pre><p>我們的Reciver1負責拿取 ＊.safe的logs。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            ConnectionFactory factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                //一樣是topic_logs Exchange
+                channel.ExchangeDeclare(
+                    exchange: &quot;topic_logs&quot;,
+                    ExchangeType.Topic);
+
+                //這方法會隨機建立一個非持久化、自動刪除的、獨立的Queue
+                var queueName = channel.QueueDeclare().QueueName;
+
+                channel.QueueBind(queue: queueName,
+                                  exchange: &quot;topic_logs&quot;, //指定透過我們的logsExchange
+                                  routingKey: &quot;*.safe&quot;);     //只拿取*.safe的logs
+
+                Console.WriteLine(&quot; 等待拿取log &quot;);
+
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =&gt;
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, message);
+                };
+                channel.BasicConsume(queue: queueName,
+                                     autoAck: true,
+                                     consumer: consumer);
+
+                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.ReadLine();
+            }
+        }
+</code></pre><p>Reciver2拿取任何有包含warning的logs。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            ConnectionFactory factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                //一樣是topic_logs Exchange
+                channel.ExchangeDeclare(
+                    exchange: &quot;topic_logs&quot;,
+                    ExchangeType.Topic);
+
+                //這方法會隨機建立一個非持久化、自動刪除的、獨立的Queue
+                var queueName = channel.QueueDeclare().QueueName;
+
+                channel.QueueBind(queue: queueName,
+                                  exchange: &quot;topic_logs&quot;, //指定透過我們的logsExchange
+                                  routingKey: &quot;#.warning.#&quot;);//只拿取warning有關的logs
+
+                Console.WriteLine(&quot; 等待拿取log &quot;);
+
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =&gt;
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, message);
+                };
+                channel.BasicConsume(queue: queueName,
+                                     autoAck: true,
+                                     consumer: consumer);
+
+                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.ReadLine();
+            }
+        }
+</code></pre><p>我們發送</p>
+<pre><code class="language-shell=" data-lang="shell="> dotnet run &quot;Status.safe&quot; &quot;沒事沒事系統還活著繼續睡!&quot;
+</code></pre><p><img src="https://i.imgur.com/oFMGJZX.jpg" alt=""></p>
+<p>可以觀察到只會有Reciver1拿到訊息。</p>
+<p>接著發送</p>
+<pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;Status.safe.Good!&quot; &quot;沒事沒事系統還活著繼續睡!&quot;
+</code></pre><p><img src="https://i.imgur.com/PCBwQig.jpg" alt=""></p>
+<p>因為沒有任何可對應的key則不會有人收到訊息。<br>
+<img src="https://i.imgur.com/oQoNNtT.jpg" alt=""></p>
+<p>接著我們來測試warning相關的訊息</p>
+<pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;Status.warning&quot; &quot;你家系統大爆炸!&quot;
+</code></pre><p>就只有Reciver2會拿到訊息。<br>
+<img src="https://i.imgur.com/uqQ8w6h.jpg" alt=""></p>
+<p>再試著發送</p>
+<pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;Status.warning.dead&quot; &quot;你家系統大爆炸!&quot;
+dotnet run &quot;Status.warning.dead.enmergency&quot; &quot;你家系統大爆炸!&quot;
+</code></pre><p>Reciver2都還是會拿到訊息。<br>
+<img src="https://i.imgur.com/Q8sUqlY.jpg" alt=""></p>
+<h3 id="rpc">RPC</h3>
+<p><img src="https://i.imgur.com/LES58ct.jpg" alt=""></p>
+<p>最後一個範例要介紹的是RPC，此模式最大特點是可以接收Server的回傳訊息。</p>
+<p>過程使用的方式就是藉由一個RPC的協定(類似的有：<a href="https://grpc.io/docs/languages/csharp/quickstart/">gRPC</a>)，大概的概念就是A服務可以透過RPC來呼叫B服務的程式，好處就是對A服務來說就好像使用了本地端的程式一樣，並不需要做額外的互動處理(對比對象可以想像我們先前常使用的API與之差異)。</p>
+<p>缺點的話就是debug不容易，問題出現的時候不容易發覺到底是我們本地程式有問題還是呼叫RPC服務過程有狀況，所以文件上也有提供了三個建議：</p>
+<ul>
+<li>確保能夠清楚看出哪一個方法是本地執行，哪一個方法是透過RPC服務執行的。</li>
+<li>建立完整的文件，可以清楚看出服務之間的依賴。</li>
+<li>要有錯誤處理機制，如果RPC服務反應時間過長，Client該如何做應對處理。</li>
+</ul>
+<p>那我們就來做個簡單的範例，Client透過RPC呼叫一個兩數相加的方法。</p>
+<p>Server</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            var factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                //設定RPC Queue
+                channel.QueueDeclare
+                    (
+                        queue: &quot;rpc_queue&quot;,
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false,
+                        arguments: null
+                    );
+                //訊息分配設定
+                channel.BasicQos
+                    (
+                        prefetchSize: 0,
+                        prefetchCount: 1,
+                        global: false
+                    );
+
+                var consumer = new EventingBasicConsumer(channel);
+                channel.BasicConsume
+                    (
+                        queue: &quot;rpc_queue&quot;,
+                        autoAck: false,
+                        consumer: consumer
+                    );
+
+                Console.WriteLine(&quot; 等待RPC請求中 &quot;);
+
+                consumer.Received += (model, ea) =&gt;
+                {
+                    string response = null;
+
+                    var body = ea.Body.ToArray();
+                    var props = ea.BasicProperties;
+                    var replyProps = channel.CreateBasicProperties();
+                    //藉由CorrelationId來匹配請求
+                    replyProps.CorrelationId = props.CorrelationId;
+
+                    try
+                    {
+                        var message = Encoding.UTF8.GetString(body);
+                        Console.WriteLine($&quot;兩數相加：{message}&quot;);
+                        response = AddNumber(message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(&quot;請確認錯誤訊息：&quot; + ex.Message);
+                        response = string.Empty;
+                    }
+                    finally
+                    {
+                        var responseBytes = Encoding.UTF8.GetBytes(response);
+
+                        channel.BasicPublish
+                        (
+                            exchange: &quot;&quot;,
+                            routingKey: props.ReplyTo,
+                            basicProperties: replyProps,
+                            body: responseBytes
+                         );
+
+                        channel.BasicAck
+                        (
+                            deliveryTag: ea.DeliveryTag,
+                            multiple: false
+                        );
+
+                        Console.WriteLine(&quot;回傳訊息成功!&quot;);
+                    }
+                };
+
+                Console.WriteLine(&quot; 請按任意鍵離開! &quot;);
+                Console.ReadLine();
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Adds the number.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;message&quot;&gt;The message.&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        private static string AddNumber(string message)
+        {
+            var strArry = message.Split(',');
+            if (string.IsNullOrWhiteSpace(strArry.FirstOrDefault()) &amp;&amp;
+                string.IsNullOrWhiteSpace(strArry.LastOrDefault()))
+            {
+                throw new Exception(&quot;請確認傳入參數&quot;);
+            }
+
+            if (int.TryParse(strArry[0], out int firstNumber).Equals(false))
+            {
+                throw new Exception(&quot;第一個數字轉換出錯&quot;);
+            }
+
+            if (int.TryParse(strArry[1], out int secondNumber).Equals(false))
+            {
+                throw new Exception(&quot;第二個數字轉換出錯&quot;);
+            }
+
+            var result = firstNumber + secondNumber;
+
+            return result.ToString();
+        }
+</code></pre><p>Client</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+        {
+            var factory = new ConnectionFactory()
+            {
+                HostName = &quot;localhost&quot;,
+                UserName = &quot;admin&quot;,
+                Password = &quot;a1234&quot;
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                var replyQueueName = channel.QueueDeclare().QueueName;
+                var consumer = new EventingBasicConsumer(channel);
+
+                var props = channel.CreateBasicProperties();
+                //使用Guid創建一組獨一無二的CorrelationId
+                props.CorrelationId = Guid.NewGuid().ToString();
+                props.ReplyTo = replyQueueName;
+
+                var message = GetMessage(args);
+                Console.WriteLine(&quot; 兩數相加請求 &quot;);
+                var messageBytes = Encoding.UTF8.GetBytes(message);
+                channel.BasicPublish
+                    (
+                        exchange: &quot;&quot;,
+                        routingKey: &quot;rpc_queue&quot;,
+                        basicProperties: props,
+                        body: messageBytes
+                    );
+
+                channel.BasicConsume
+                    (
+                        consumer: consumer,
+                        queue: replyQueueName,
+                        autoAck: true
+                    );
+
+                //接收回傳訊息
+                consumer.Received += (model, ea) =&gt;
+                {
+                    var body = ea.Body.ToArray();
+                    var response = Encoding.UTF8.GetString(body);
+                    //只接收CorrelationId與我們發送出去相同的訊息其餘忽略
+                    if (ea.BasicProperties.CorrelationId == props.CorrelationId)
+                    {
+                        Console.WriteLine($&quot; 兩數相加結果：{response}&quot;);
+                    }
+                };
+                Console.WriteLine(&quot; 請按任意鍵離開! &quot;);
+                Console.ReadLine();
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Gets the message.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;args&quot;&gt;The arguments.&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        private static string GetMessage(string[] args)
+        {
+            return ((args.Length &gt; 0) ? string.Join(&quot; &quot;, args) : &quot;Hello World!&quot;);
+        }
+</code></pre><p>測試：<br>
+首先執行我們Server<br>
+<img src="https://i.imgur.com/c0A5coB.jpg" alt=""></p>
+<p>接著透過PowerShell執行我們的Client</p>
+<pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;1,2&quot;
+</code></pre><p><img src="https://i.imgur.com/G4NA13U.jpg" alt=""></p>
+<p>也可以觀察一下Server端的訊息<br>
+<img src="https://i.imgur.com/xWGIK6y.jpg" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>那麼RabbitMQ基本使用就介紹到這邊，這邊都是直接參照官方文件做的練習，若需要更深入了解還是建議看一下官方文件細節。</p>
+<p>一樣會把程式放在GitHub上有需要歡迎取用。</p>
+<p><a href="https://github.com/sunnyday0932/RabbitMQSample/tree/main/TopicsSample/Sample/Sample">Topics Sample</a></p>
+<p><a href="https://github.com/sunnyday0932/RabbitMQSample/tree/main/RPCSample/Sample/Sample">RPC Sample</a></p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://rabbitmq.mr-ping.com/">RabbitMQ 中文文檔</a>。</li>
+<li>2、<a href="https://www.rabbitmq.com/getstarted.html">RabbitMQ Tutorials</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/message-queue/">
+                    #Message Queue</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/rabbitmq/">
+                    #RabbitMQ</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%BE%9E%E5%95%86%E6%A5%AD%E6%87%89%E7%94%A8%E9%A9%85%E5%8B%95%E6%9E%B6%E8%A8%AD%E8%A8%AD%E8%A8%88-%E5%BF%83%E5%BE%97/" class="prev" rel="prev" title="技術管理者論壇(從商業應用驅動架設設計) - 心得"><i class="iconfont icon-left"></i>&nbsp;技術管理者論壇(從商業應用驅動架設設計) - 心得</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

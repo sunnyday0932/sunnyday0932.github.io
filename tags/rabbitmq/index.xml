@@ -6,7 +6,22 @@
     <description>Recent content in RabbitMQ on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 20 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Message Queue - 5(RabbitMQ)</title>
+      <link>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</link>
+      <pubDate>Sun, 30 May 2021 01:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</guid>
+      <description>本文 Topics 這個模式下Exchange會透過Topic的方式，將訊息丟給符合的Queue傳給相對應的Reciver。
+Topic會透過我們給予的Key來決定要給哪些人，而Key可以使用兩種特殊符號：
+ 1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多的萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的Key，那他就允許兩個*字號替代的單詞，所以它會允許sweet.orange.juice通過，如果多加了一個字 sweet.good.orange.juice則不允許通過。
+那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &amp;hellip; 都允許通過。
+接著我們來實作測試看看吧。
+Publisher
+var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.Topic); //我們已接收到的第一個參數來當key決定要丟給哪一個Queue var key = (args.Length &amp;gt; 0) ? args[0] : &amp;quot;anonymous.info&amp;quot;; var message = (args.</description>
+    </item>
+    
     <item>
       <title>Message Queue - 4(RabbitMQ)</title>
       <link>https://sunnyday0932.github.io/2021/message-queue-4rabbitmq/</link>
