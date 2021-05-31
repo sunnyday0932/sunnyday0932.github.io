@@ -6,7 +6,22 @@
     <description>Recent content in 學習筆記 on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 30 May 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL CONVERT DATETIME(採坑筆記)</title>
+      <link>https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/</guid>
+      <description>本文 事情發生是這樣的，今天突然接到一個線上問題，數據報表顯示有問題有幾個不該出現的數據卻出現了。
+問題發生當下馬上查了一下撈取數據顯示的語法，想知道判斷日期的地方是否有遺漏，然後就看到了一段類似於下列的語法
+WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111) 當下不疑有他第一個查的當然是CONVERT()的用法，查了一下發現是VARCHAR可以轉換成DATETIME的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。
+   數字 日期格式 範例     23 yyyy-mm-dd 2021-05-31   111 yyyy/mm/dd 2021/05/31   112 yyyymmdd 20210531    SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放KeyInDate這個VARCHAR欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本WHERE判斷會誤判。
+第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。
+大概有人開始越想越不對勁了，對&amp;hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。
+參考連結  1、SQL Server CONVERT() Function。 2、Date and Time Conversions Using SQL Server。  </description>
+    </item>
+    
     <item>
       <title>Message Queue - 5(RabbitMQ)</title>
       <link>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</link>
