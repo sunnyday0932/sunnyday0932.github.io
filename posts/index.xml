@@ -19,7 +19,10 @@ WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111
    數字 日期格式 範例     23 yyyy-mm-dd 2021-05-31   111 yyyy/mm/dd 2021/05/31   112 yyyymmdd 20210531    SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放KeyInDate這個VARCHAR欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本WHERE判斷會誤判。
 第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。
 大概有人開始越想越不對勁了，對&amp;hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。
-參考連結  1、SQL Server CONVERT() Function。 2、Date and Time Conversions Using SQL Server。  </description>
+ 2021/06/06 回來補做法
+ 感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用DateTime.TryParseExact這個方法來轉換日期格式。
+首先來了解一下這個方法要怎麼用。
+TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime) //第一個String是放我們要轉換的字串 //第二個String是我們要轉換的字串日期格式是甚麼例如第一個String是2021/06/06那第二個String就是yyyy/MM/dd //IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW //DateTimeStyles則是可以決定我們允許哪些符合的字串格式能夠轉換 //DateTime 這就是我們要輸出的日期格式 簡單範例</description>
     </item>
     
     <item>

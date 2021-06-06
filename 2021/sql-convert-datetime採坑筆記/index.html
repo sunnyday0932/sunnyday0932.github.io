@@ -71,8 +71,8 @@
     "datePublished": "2021-05-31 00:00:00  UTC",
     "dateModified" : "2021-05-31 00:00:00  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98\/",
-    "wordCount" : "60",
-    "keywords" : ["SQL", "Sian"]
+    "wordCount" : "206",
+    "keywords" : ["SQL","csharp", "Sian"]
 }
 </script>
 	
@@ -211,10 +211,83 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 <p>第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。</p>
 <!-- raw HTML omitted -->
 <p>大概有人開始越想越不對勁了，對&hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。</p>
+<blockquote>
+<p>2021/06/06 回來補做法</p>
+</blockquote>
+<p>感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.datetime.tryparseexact?view=net-5.0&amp;fbclid=IwAR27JCDpmhFiz4pJFycB2VXI_IydAAnV0fdFEZUHJAc4ouqHouZrUiQxwYQ">DateTime.TryParseExact</a>這個方法來轉換日期格式。</p>
+<p>首先來了解一下這個方法要怎麼用。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime)
+//第一個String是放我們要轉換的字串
+//第二個String是我們要轉換的字串日期格式是甚麼例如第一個String是2021/06/06那第二個String就是yyyy/MM/dd
+//IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW
+//DateTimeStyles則是可以決定我們允許哪些符合的字串格式能夠轉換
+//DateTime 這就是我們要輸出的日期格式
+</code></pre><p>簡單範例</p>
+<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+{
+	var culture = new CultureInfo(&quot;zh-TW&quot;);
+	var dateStr = &quot;2021/06/06&quot;;
+	if (DateTime.TryParseExact(dateStr, &quot;yyyy/MM/dd&quot;,culture,DateTimeStyles.None, out var date))
+	{
+		Console.WriteLine(date);
+	}
+
+		Console.ReadLine();
+}
+</code></pre><p>輸出<br>
+<img src="https://i.imgur.com/cD02AyC.jpg" alt=""></p>
+<p>而第二個允許的string可以是一個array，所以我們就能夠這麼做。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+{
+	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
+	var dateStr = Console.ReadLine();
+	var formate = new[] { &quot;yyyy/MM/dd&quot;, &quot;yyyy-MM-dd&quot; };
+	var culture = new CultureInfo(&quot;zh-TW&quot;);
+	if (DateTime.TryParseExact(dateStr, formate,culture,DateTimeStyles.None, out var date))
+	{
+		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
+	}
+
+		Console.ReadLine();
+}
+</code></pre><p>這樣無論是yyyy/MM/dd或是yyyy-MM-dd就都能夠成功轉換為日期格式，日後如果還要有多日期判斷也可以直接擴充formate內容即可。<br>
+<img src="https://i.imgur.com/70Wcx2t.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/vMgSYaQ.png" alt=""></p>
+<p>DateTime Style的部分就是可以允許一些特殊格式字串出現，例如我們的字串中出現了空格就可以使用DateTimeStyles.AllowInnerWhite</p>
+<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+{
+	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
+	var dateStr = Console.ReadLine();
+	var formate = new[] { &quot;yyyy/MM/dd&quot;, &quot;yyyy-MM-dd&quot; };
+	var culture = new CultureInfo(&quot;zh-TW&quot;);
+	if (DateTime.TryParseExact(dateStr, formate, culture,DateTimeStyles.AllowInnerWhite, out var date))
+	{
+		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
+	}
+
+		Console.ReadLine();
+}
+</code></pre><p><img src="https://i.imgur.com/AbiMyKP.jpg" alt=""></p>
+<p>至於如果是UTC這種日期格式的轉換可以使用&quot;O&quot;這個formate直接轉換為當地時間。</p>
+<p><img src="https://i.imgur.com/r1G2nwi.jpg" alt=""></p>
+<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+{
+	var culture = new CultureInfo(&quot;zh-TW&quot;);
+	var dateStr = &quot;2021-06-06T16:11:20.0904778Z&quot;;
+	if (DateTime.TryParseExact(dateStr, &quot;o&quot;, culture,DateTimeStyles.None, out var date))
+	{
+		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
+	}
+
+		Console.ReadLine();
+}
+</code></pre><p><img src="https://i.imgur.com/2bXzerU.jpg" alt=""></p>
+<p>還有更多用法就留待大家自己研究使用啦~~~</p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://www.w3schools.com/sql/func_sqlserver_convert.asp">SQL Server CONVERT() Function</a>。</li>
 <li>2、<a href="https://www.mssqltips.com/sqlservertip/1145/date-and-time-conversions-using-sql-server/">Date and Time Conversions Using SQL Server</a>。</li>
+<li>3、<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.datetime.tryparseexact?view=net-5.0&amp;fbclid=IwAR27JCDpmhFiz4pJFycB2VXI_IydAAnV0fdFEZUHJAc4ouqHouZrUiQxwYQ">DateTime.TryParseExact 方法</a>。</li>
 </ul>
 
     </div>
@@ -248,6 +321,9 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
             
             <span class="tag"><a href="https://sunnyday0932.github.io/tags/sql/">
                     #SQL</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
             
             </section>
         
