@@ -6,7 +6,24 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 31 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jun 2021 05:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 IHostedService 建立背景排程</title>
+      <link>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/</link>
+      <pubDate>Mon, 28 Jun 2021 05:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/</guid>
+      <description>前言 在前幾篇研究快取的時候發現公司大神有在快取示範中使用了 IHostedService 這個東西，之前是選擇性跳過，這次發現接下來要做的東西會用上，還不馬上補齊。
+本文 IHostedService是甚麼呢?
+簡單來說就是 Core 內建的一個背景處理的介面，可以簡單的透過 BackgroundService 這個基底類別來使用它。
+官方文件也提到幾點可以透過 IHostedService 簡單處理的東西：
+接下來我們就來練習實作使用這個東西。
+首先建立一個 Core API 的範例程式
+接著就可以建立一個 HostService 並且繼承 BackgroundService ，繼承完後應該會馬上就看到提示需要實作 ExecuteAsync ，這個 ExecuteAsync 就是我們可以拿來實作排程。
+public class HostService : BackgroundService { protected override Task ExecuteAsync(CancellationToken stoppingToken) { throw new NotImplementedException(); } } 簡單測試我們寫一個每10秒會去 D:/ 寫入 log 檔的背景程序。
+public class HostService : BackgroundService { private readonly string _filePath; public HostService(string filePath) { this._filePath = filePath; } /// &amp;lt;summary&amp;gt; /// This method is called when the &amp;lt;see cref=&amp;quot;T:Microsoft.</description>
+    </item>
+    
     <item>
       <title>SQL CONVERT DATETIME(採坑筆記)</title>
       <link>https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/</link>
@@ -33,11 +50,11 @@ TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime) //第�
       <guid>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</guid>
       <description>本文 Topics 這個模式下Exchange會透過Topic的方式，將訊息丟給符合的Queue傳給相對應的Reciver。
 Topic會透過我們給予的Key來決定要給哪些人，而Key可以使用兩種特殊符號：
- 1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多的萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的Key，那他就允許兩個*字號替代的單詞，所以它會允許sweet.orange.juice通過，如果多加了一個字 sweet.good.orange.juice則不允許通過。
+ 1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
 那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &amp;hellip; 都允許通過。
 接著我們來實作測試看看吧。
 Publisher
-var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.Topic); //我們已接收到的第一個參數來當key決定要丟給哪一個Queue var key = (args.Length &amp;gt; 0) ? args[0] : &amp;quot;anonymous.info&amp;quot;; var message = (args.</description>
+var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.Topic); //我們已接收到的第一個參數來當key決定要丟給哪一個Queue var key = (args.Length &amp;gt; 0) ? args[0] : &amp;quot;anonymous.</description>
     </item>
     
     <item>

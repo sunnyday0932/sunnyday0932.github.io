@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">	
   <meta name="keywords" content="Sian">	
   	
-  <link rel="prev" href="https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/" />	
-  <link rel="next" href="https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/" />	
-  <link rel="canonical" href="https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/" />	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/" />	
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           SQL CONVERT DATETIME(採坑筆記) | Sian	
+           使用 IHostedService 建立背景排程 | Sian	
        	
   </title>	
-  <meta name="title" content="SQL CONVERT DATETIME(採坑筆記) | Sian">	
+  <meta name="title" content="使用 IHostedService 建立背景排程 | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "SQL CONVERT DATETIME(採坑筆記)",
-    "headline" : "SQL CONVERT DATETIME(採坑筆記)",
-    "description" : "SQL CONVERT DATETIME(採坑筆記)",
+    "name" : "使用 IHostedService 建立背景排程",
+    "headline" : "使用 IHostedService 建立背景排程",
+    "description" : "使用 IHostedService 建立背景排程",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,11 +68,11 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2021",
-    "datePublished": "2021-05-31 00:00:00  UTC",
-    "dateModified" : "2021-05-31 00:00:00  UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2021\/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98\/",
-    "wordCount" : "206",
-    "keywords" : ["SQL","csharp", "Sian"]
+    "datePublished": "2021-06-28 05:40:45  UTC",
+    "dateModified" : "2021-06-28 05:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B\/",
+    "wordCount" : "250",
+    "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
 	
@@ -134,11 +134,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">SQL CONVERT DATETIME(採坑筆記)</h1>
+        <h1 class="post-title" itemprop="name headline">使用 IHostedService 建立背景排程</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2021-05-31 itemprop="datePublished">May 31, 2021</time>
+                on <time datetime=2021-06-28 itemprop="datePublished">June 28, 2021</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -170,124 +170,98 @@
           
           
 
-          <h2 id="本文">本文</h2>
-<p>事情發生是這樣的，今天突然接到一個線上問題，數據報表顯示有問題有幾個不該出現的數據卻出現了。</p>
-<p>問題發生當下馬上查了一下撈取數據顯示的語法，想知道判斷日期的地方是否有遺漏，然後就看到了一段類似於下列的語法</p>
-<pre><code class="language-sql=" data-lang="sql=">WHERE CONVERT(VARCHAR, KeyInDate, 111) &gt;= CONVERT(VARCHAR, Getdate(), 111)
-</code></pre><p>當下不疑有他第一個查的當然是CONVERT()的用法，查了一下發現是VARCHAR可以轉換成DATETIME的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。</p>
-<table>
-<thead>
-<tr>
-<th>數字</th>
-<th>日期格式</th>
-<th>範例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>23</td>
-<td>yyyy-mm-dd</td>
-<td>2021-05-31</td>
-</tr>
-<tr>
-<td>111</td>
-<td>yyyy/mm/dd</td>
-<td>2021/05/31</td>
-</tr>
-<tr>
-<td>112</td>
-<td>yyyymmdd</td>
-<td>20210531</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="language-sql=" data-lang="sql=">SELECT CONVERT(VARCHAR, Getdate(), 23)
+          <h2 id="前言">前言</h2>
+<p>在前幾篇研究快取的時候發現公司大神有在快取示範中使用了 IHostedService 這個東西，之前是選擇性跳過，這次發現接下來要做的東西會用上，還不馬上補齊。</p>
+<h2 id="本文">本文</h2>
+<p><img src="https://i.imgur.com/QTvCFVJ.png" alt=""></p>
+<p><a href="https://docs.microsoft.com/zh-tw/dotnet/architecture/microservices/multi-container-microservice-net-applications/background-tasks-with-ihostedservice">IHostedService</a>是甚麼呢?</p>
+<p>簡單來說就是 Core 內建的一個背景處理的介面，可以簡單的透過 BackgroundService 這個基底類別來使用它。</p>
+<p>官方文件也提到幾點可以透過 IHostedService 簡單處理的東西：<br>
+<img src="https://i.imgur.com/13KkLMz.png" alt=""></p>
+<p>接下來我們就來練習實作使用這個東西。</p>
+<p>首先建立一個 Core API 的範例程式<br>
+<img src="https://i.imgur.com/dSrFJRf.png" alt=""></p>
+<p>接著就可以建立一個 HostService 並且繼承 BackgroundService ，繼承完後應該會馬上就看到提示需要實作 ExecuteAsync ，這個 ExecuteAsync 就是我們可以拿來實作排程。</p>
+<pre><code class="language-csharp=" data-lang="csharp="> public class HostService : BackgroundService
+    {
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            throw new NotImplementedException();
+        }
+    }
+</code></pre><p>簡單測試我們寫一個每10秒會去 D:/ 寫入 log 檔的背景程序。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class HostService : BackgroundService
+    {
+        private readonly string _filePath;
 
-SELECT CONVERT(VARCHAR, Getdate(), 111)
+        public HostService(string filePath)
+        {
+            this._filePath = filePath;
+        }
 
-SELECT CONVERT(VARCHAR, Getdate(), 112)
-</code></pre><p><img src="https://i.imgur.com/SsNf897.jpg" alt=""></p>
-<p>而這次的問題就是原本存放KeyInDate這個VARCHAR欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本WHERE判斷會誤判。</p>
-<p>第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。</p>
-<!-- raw HTML omitted -->
-<p>大概有人開始越想越不對勁了，對&hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。</p>
-<blockquote>
-<p>2021/06/06 回來補做法</p>
-</blockquote>
-<p>感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.datetime.tryparseexact?view=net-5.0&amp;fbclid=IwAR27JCDpmhFiz4pJFycB2VXI_IydAAnV0fdFEZUHJAc4ouqHouZrUiQxwYQ">DateTime.TryParseExact</a>這個方法來轉換日期格式。</p>
-<p>首先來了解一下這個方法要怎麼用。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime)
-//第一個String是放我們要轉換的字串
-//第二個String是我們要轉換的字串日期格式是甚麼例如第一個String是2021/06/06那第二個String就是yyyy/MM/dd
-//IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW
-//DateTimeStyles則是可以決定我們允許哪些符合的字串格式能夠轉換
-//DateTime 這就是我們要輸出的日期格式
-</code></pre><p>簡單範例</p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
-{
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
-	var dateStr = &quot;2021/06/06&quot;;
-	if (DateTime.TryParseExact(dateStr, &quot;yyyy/MM/dd&quot;,culture,DateTimeStyles.None, out var date))
-	{
-		Console.WriteLine(date);
-	}
+        /// &lt;summary&gt;
+        /// This method is called when the &lt;see cref=&quot;T:Microsoft.Extensions.Hosting.IHostedService&quot; /&gt; starts. The implementation should return a task that represents
+        /// the lifetime of the long running operation(s) being performed.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;stoppingToken&quot;&gt;Triggered when &lt;see cref=&quot;M:Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)&quot; /&gt; is called.&lt;/param&gt;
+        /// &lt;returns&gt;
+        /// A &lt;see cref=&quot;T:System.Threading.Tasks.Task&quot; /&gt; that represents the long running operations.
+        /// &lt;/returns&gt;
+        /// &lt;exception cref=&quot;NotImplementedException&quot;&gt;&lt;/exception&gt;
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            while (true)
+            {
+                //寫入log
+                await Log(content: &quot;TestHostService&quot;);
 
-		Console.ReadLine();
+                //每十秒執行一次
+                await Task.Delay(TimeSpan.FromSeconds(value: 10));
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Logs the specified content.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;content&quot;&gt;The content.&lt;/param&gt;
+        private async Task Log(string content)
+        {
+            using StreamWriter sw = new StreamWriter(this._filePath, append: true);
+            await sw.WriteLineAsync(value: $&quot;紀錄Log:{content}_{DateTime.Now}&quot;);
+        }
+    }
+</code></pre><p>接著我們先到 appsettings 補上我們的 log 檔案位置。</p>
+<pre><code class="language-json=" data-lang="json=">{
+  &quot;Logging&quot;: {
+    &quot;LogLevel&quot;: {
+      &quot;Default&quot;: &quot;Information&quot;,
+      &quot;Microsoft&quot;: &quot;Warning&quot;,
+      &quot;Microsoft.Hosting.Lifetime&quot;: &quot;Information&quot;
+    }
+  },
+  &quot;AllowedHosts&quot;: &quot;*&quot;,
+  &quot;LogPath&quot;: &quot;D:/Log.txt&quot;
 }
-</code></pre><p>輸出<br>
-<img src="https://i.imgur.com/cD02AyC.jpg" alt=""></p>
-<p>而第二個允許的string可以是一個array，所以我們就能夠這麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
-{
-	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
-	var dateStr = Console.ReadLine();
-	var formate = new[] { &quot;yyyy/MM/dd&quot;, &quot;yyyy-MM-dd&quot; };
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
-	if (DateTime.TryParseExact(dateStr, formate,culture,DateTimeStyles.None, out var date))
-	{
-		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
-	}
-
-		Console.ReadLine();
-}
-</code></pre><p>這樣無論是yyyy/MM/dd或是yyyy-MM-dd就都能夠成功轉換為日期格式，日後如果還要有多日期判斷也可以直接擴充formate內容即可。<br>
-<img src="https://i.imgur.com/70Wcx2t.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/vMgSYaQ.png" alt=""></p>
-<p>DateTime Style的部分就是可以允許一些特殊格式字串出現，例如我們的字串中出現了空格就可以使用DateTimeStyles.AllowInnerWhite</p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
-{
-	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
-	var dateStr = Console.ReadLine();
-	var formate = new[] { &quot;yyyy/MM/dd&quot;, &quot;yyyy-MM-dd&quot; };
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
-	if (DateTime.TryParseExact(dateStr, formate, culture,DateTimeStyles.AllowInnerWhite, out var date))
-	{
-		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
-	}
-
-		Console.ReadLine();
-}
-</code></pre><p><img src="https://i.imgur.com/AbiMyKP.jpg" alt=""></p>
-<p>至於如果是UTC這種日期格式的轉換可以使用&quot;O&quot;這個formate直接轉換為當地時間。</p>
-<p><img src="https://i.imgur.com/r1G2nwi.jpg" alt=""></p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
-{
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
-	var dateStr = &quot;2021-06-06T16:11:20.0904778Z&quot;;
-	if (DateTime.TryParseExact(dateStr, &quot;o&quot;, culture,DateTimeStyles.None, out var date))
-	{
-		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
-	}
-
-		Console.ReadLine();
-}
-</code></pre><p><img src="https://i.imgur.com/2bXzerU.jpg" alt=""></p>
-<p>還有更多用法就留待大家自己研究使用啦~~~</p>
+</code></pre><p>最後到 StartUp 的 ConfigureServices 註冊我們的背景服務。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public void ConfigureServices(IServiceCollection services)
+        {
+            var logPath = this.Configuration.GetValue&lt;string&gt;(&quot;LogPath&quot;);
+            services.AddControllers();
+            services.AddHostedService&lt;HostService&gt;(sp =&gt;
+            {
+                return new HostService(logPath);
+            });
+        }
+</code></pre><p>執行程式進行測試<br>
+<img src="https://i.imgur.com/Ns0GI9F.jpg" alt=""></p>
+<p>接下來到 D:/log.txt 看看我們的 log 紀錄。</p>
+<p><img src="https://i.imgur.com/ptYZk5f.jpg" alt=""></p>
+<p>大致上的使用示範就是這樣，而這邊實務面上使用就如同文件所述，公司內部大神示範的是使用這個 BackgroundService 來定期檢查快取資料庫是否正常運行，若異常就可以做特殊處理，更多使用方法就留待日後慢慢探索啦。</p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
-<li>1、<a href="https://www.w3schools.com/sql/func_sqlserver_convert.asp">SQL Server CONVERT() Function</a>。</li>
-<li>2、<a href="https://www.mssqltips.com/sqlservertip/1145/date-and-time-conversions-using-sql-server/">Date and Time Conversions Using SQL Server</a>。</li>
-<li>3、<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.datetime.tryparseexact?view=net-5.0&amp;fbclid=IwAR27JCDpmhFiz4pJFycB2VXI_IydAAnV0fdFEZUHJAc4ouqHouZrUiQxwYQ">DateTime.TryParseExact 方法</a>。</li>
+<li>1、<a href="https://docs.microsoft.com/zh-tw/dotnet/architecture/microservices/multi-container-microservice-net-applications/background-tasks-with-ihostedservice">在微服務中使用 IHostedService 和 BackgroundService 類別實作背景工作</a>。</li>
+<li>2、<a href="https://blog.maartenballiauw.be/post/2017/08/01/building-a-scheduled-cache-updater-in-aspnet-core-2.html">Building a scheduled task in ASP.NET Core/Standard 2.0</a>。</li>
+<li>3、<a href="https://www.cnblogs.com/uoyo/p/12377645.html">后台任务的积木。.NetCore中的IHostedService</a>。</li>
 </ul>
 
     </div>
@@ -303,7 +277,7 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/>https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/</span>
             </p>
             
              
@@ -319,11 +293,14 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/sql/">
-                    #SQL</a></span>
-            
             <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
                     #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
             
             </section>
         
@@ -335,10 +312,8 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/" class="prev" rel="prev" title="Message Queue - 5(RabbitMQ)"><i class="iconfont icon-left"></i>&nbsp;Message Queue - 5(RabbitMQ)</a>
+        <a href="https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/" class="prev" rel="prev" title="SQL CONVERT DATETIME(採坑筆記)"><i class="iconfont icon-left"></i>&nbsp;SQL CONVERT DATETIME(採坑筆記)</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/" class="next" rel="next" title="使用 IHostedService 建立背景排程">使用 IHostedService 建立背景排程&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

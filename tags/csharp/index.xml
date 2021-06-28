@@ -6,7 +6,24 @@
     <description>Recent content in csharp on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 31 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jun 2021 05:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 IHostedService 建立背景排程</title>
+      <link>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/</link>
+      <pubDate>Mon, 28 Jun 2021 05:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/</guid>
+      <description>前言 在前幾篇研究快取的時候發現公司大神有在快取示範中使用了 IHostedService 這個東西，之前是選擇性跳過，這次發現接下來要做的東西會用上，還不馬上補齊。
+本文 IHostedService是甚麼呢?
+簡單來說就是 Core 內建的一個背景處理的介面，可以簡單的透過 BackgroundService 這個基底類別來使用它。
+官方文件也提到幾點可以透過 IHostedService 簡單處理的東西：
+接下來我們就來練習實作使用這個東西。
+首先建立一個 Core API 的範例程式
+接著就可以建立一個 HostService 並且繼承 BackgroundService ，繼承完後應該會馬上就看到提示需要實作 ExecuteAsync ，這個 ExecuteAsync 就是我們可以拿來實作排程。
+public class HostService : BackgroundService { protected override Task ExecuteAsync(CancellationToken stoppingToken) { throw new NotImplementedException(); } } 簡單測試我們寫一個每10秒會去 D:/ 寫入 log 檔的背景程序。
+public class HostService : BackgroundService { private readonly string _filePath; public HostService(string filePath) { this._filePath = filePath; } /// &amp;lt;summary&amp;gt; /// This method is called when the &amp;lt;see cref=&amp;quot;T:Microsoft.</description>
+    </item>
+    
     <item>
       <title>SQL CONVERT DATETIME(採坑筆記)</title>
       <link>https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/</link>
