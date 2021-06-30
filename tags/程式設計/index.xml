@@ -73,7 +73,7 @@ public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public st
  不應該強迫用戶去依賴他們未使用的方法。
 意及應該要最小化類別與類別之間的介面。
  基本原則：
- 1、interface功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及Gogoro。
+ 1、interface 功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。
 public interface 車子 { public string 引擎(); public string 後照鏡(); public string 車門(); } public class 特斯拉 : 車子 { public string 引擎() { return &amp;#34;3秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&amp;#34;; } public string 車門() { return &amp;#34;側開敞篷車門&amp;#34;; } } public class Gogoro : 車子 { public string 引擎() { return &amp;#34;5秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡&amp;#34;; } public string 車門() { return &amp;#34;痾沒有車門&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
     </item>
     
@@ -85,7 +85,7 @@ public interface 車子 { public string 引擎(); public string 後照鏡(); pub
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</guid>
       <description>本文 狄米特法則 Law of Demeter(LoD) 又稱為 最少知識原則 Least Knowledge Principle(LKP)
 定義
- 一個object應該對其他object有最少的瞭解。
+ 一個 object 應該對其他 object 有最少的瞭解。
  優點
  1、可以降低類別與類別之間的耦合度。 2、當耦合度降低的時候，類別的重用性就會提高。   2020/08/25 更新範例
 舉例：前面例子我們知道特斯拉都是透過軟體的更新來讓車子增加新功能的，今天我們需要特斯拉有招喚模式，讓特斯拉能夠自己開到我們所在的位子；所以我們建造一個特斯拉類別裡面有更新系統的動作。
@@ -102,13 +102,13 @@ public class 特斯拉 { public string 更新(string 更新項目) { return $&am
       <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
  軟體設計原則，應該對擴展開放，對修改封閉。
  甚麼意思呢？
- 1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。  那為甚麼要使用OCP？
+ 1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。  那為甚麼要使用 OCP？
  1、程式碼可維護性提高。 2、程式碼可擴展性提高。 3、程式碼可複用、靈活性高。 4、程式碼可測試性提高。  2020/09/08更新
 寫完這篇跟同事討論過後決定要更改，一直發懶就放到現在，被迫要在進入下階段前先把前面要改的改完。
-現在回頭看覺得當初為啥寫這例子怪怪的，回想起來才發現，原來我是為了避免使用到DI的觀念啊，但後來看了其他人寫的文章，用DI好像比較容易敘述這個概念&amp;hellip;
+現在回頭看覺得當初為啥寫這例子怪怪的，回想起來才發現，原來我是為了避免使用到 DI 的觀念啊，但後來看了其他人寫的文章，用 DI 好像比較容易敘述這個概念&amp;hellip;
 所以就頭都要洗了，就先挖個坑吧。
 我們來看一段例子，傳統汽車對於軟體硬體整合，還不夠靈活的時候，需要更改東西就需要把整台汽車拆開某些部分增加功能、每一次更改都是一項大工程。
-public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.安裝(); } public string 安裝自動導航裝置() { var 自動導航裝置 = new 自動導航裝置(); return 自動導航裝置.</description>
+public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.</description>
     </item>
     
     <item>
@@ -117,8 +117,8 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
       <pubDate>Tue, 21 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
-      <description>本文 OOP原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
-這時候了解設計原則SOLID就很重要了&amp;hellip;
+      <description>本文 OOP 原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
+這時候了解設計原則 SOLID 就很重要了&amp;hellip;
 1、Single Responsibility Principle(SRP) 單一職責  大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。  什麼意思呢？概念上就是，一個類別就只專注於完成一件事。
 為甚麼要只專注於做一件事呢?
 我們來看看範例，當今天特斯拉的駕駛走投無路需要賺外快的時候，他需要上路招攬客人&amp;hellip;
@@ -136,7 +136,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
 今天我想要讓特斯拉具備螢幕、音響這些娛樂設施可以看電影，有了電影當然需要食物啊，那就需要有在特斯拉上吃爆米花的功能。
 //產生一個特斯拉類別有螢幕、音響、吃爆米花  public class 特斯拉 { public string 螢幕() { return &amp;#34;播放電影&amp;#34;; } public string 音響() { return &amp;#34;杜比環繞音效&amp;#34;; } public string 吃爆米花() { return &amp;#34;爆米花好吃&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.WriteLine(&amp;#34;特斯拉 :&amp;#34; + Tesla.螢幕()); Console.WriteLine(&amp;#34;特斯拉開啟 :&amp;#34; + Tesla.音響()); Console.WriteLine(Tesla.吃爆米花()); } 這時候要提到程式設計常聽到的。
 高內聚  高內聚力的好處就是提高了模組的『獨立性』，也就是說這個模組可以被單獨使用，也可以被單獨修改。  那應該怎麼做呢？
- 思考模組的關聯性。  以我們剛剛舉的例子特斯拉具備螢幕、音響這些娛樂設備是合理的，但吃爆米花的動作是不是在這個Class中顯得有點怪異了呢？
+ 思考模組的關聯性。  以我們剛剛舉的例子特斯拉具備螢幕、音響這些娛樂設備是合理的，但吃爆米花的動作是不是在這個 Class 中顯得有點怪異了呢？
  特斯拉本身並不需要知道怎麼吃爆米花，需要知道怎麼吃爆米花的是人。  我們修改一下範例</description>
     </item>
     
@@ -162,8 +162,8 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
 當我們按下鍵盤A的時候，螢幕上會顯示A，但我們不必知道電腦背後是怎麼運作，就可以使用它。
 程式的舉例： 個人寫程式到目前以來最常使用的C#判斷式，用來檢查字串是否為空。
 var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNullOrEmpty(test); //檢查字串是否為Null或是空 //我們不必知道IsNullOrEmpty這個方法是如何實作的， //但我們知道它會幫我們判斷字串是否為Null或是空，並回傳true or false。 2、繼承(Inheritance) 以下取自大話設計模式：
- 物件的繼承代表了一種&amp;quot;is-a&amp;quot;的關係，如果兩個物件A和B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。 繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。 繼承定義了類別如何相互關聯共用特性。 子類別不但繼承父類別所有特性，還可以定義新的特性。   如果子類別繼承於父類別：
- 一、子類別擁有父類別非private的屬性和功能。 二、子類別具有自己的屬性和功能 =&amp;gt; 子類別可以擴展父類別的所有特性。 三、子類別還可以用自己的方式實現父類別 =&amp;gt; 方法重寫。  //產生一個汽車的類別，有一個方向盤、四個輪子。 public class 汽車 { protected int 輪子 = 4; protected int 方向盤 = 1; } //產生一個特斯拉類別繼承汽車 public class 特斯拉 : 汽車 { public string 特斯拉輪子() { return &amp;#34;特斯拉有&amp;#34; + 輪子 + &amp;#34;個輪子&amp;#34;; } public string 特斯拉方向盤() { return &amp;#34;特斯拉有&amp;#34; + 方向盤 + &amp;#34;個方向盤&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
+ 物件的繼承代表了一種 &amp;ldquo;is-a&amp;rdquo; 的關係，如果兩個物件 A 和 B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。 繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。 繼承定義了類別如何相互關聯共用特性。 子類別不但繼承父類別所有特性，還可以定義新的特性。   如果子類別繼承於父類別：
+ 一、子類別擁有父類別非 private 的屬性和功能。 二、子類別具有自己的屬性和功能 =&amp;gt; 子類別可以擴展父類別的所有特性。 三、子類別還可以用自己的方式實現父類別 =&amp;gt; 方法重寫。  //產生一個汽車的類別，有一個方向盤、四個輪子。 public class 汽車 { protected int 輪子 = 4; protected int 方向盤 = 1; } //產生一個特斯拉類別繼承汽車 public class 特斯拉 : 汽車 { public string 特斯拉輪子() { return &amp;#34;特斯拉有&amp;#34; + 輪子 + &amp;#34;個輪子&amp;#34;; } public string 特斯拉方向盤() { return &amp;#34;特斯拉有&amp;#34; + 方向盤 + &amp;#34;個方向盤&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
     </item>
     
     <item>
@@ -173,8 +173,8 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</guid>
       <description>本文 1、建構式(Constructor)
- 實體化類別的動作，也就是New這個步驟。 建構式與類別同名，無return值。 大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要void，在New時調用。  Public class 特斯拉() { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 車子 = new 特斯拉(); //這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池 2、多載(Overloading)
- 相同function名稱，可以有不同參數或不同的型別。 大話設計模式：多載提供了建立同名的多個方法的能力，但這些方法須使用不同的參數類型。
+ 實體化類別的動作，也就是 New 這個步驟。 建構式與類別同名，無 return 值。 大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要 void，在 New 時調用。  Public class 特斯拉() { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 車子 = new 特斯拉(); //這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池 2、多載(Overloading)
+ 相同 function 名稱，可以有不同參數或不同的型別。 大話設計模式：多載提供了建立同名的多個方法的能力，但這些方法須使用不同的參數類型。
 2020/06/30 修改範例  //首先建立一個特斯拉的類別。 Public class 特斯拉 { public void 配件() //預設基本配件有輪子、方向盤、電池。 	{ private 輪子(){} private 方向盤(){} private 電池(){} } public void 配件(int 加購價 ) //加購價的配件會有更高級的配備。 	{ private 跑車輪子(){} private 跑車方向盤(){} private 高電量電池(){} } } 特斯拉 ModelX = new 特斯拉(); ModelX.</description>
     </item>
     
@@ -190,11 +190,10 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
   2、物件(Object)
  實際設計出來的物品。 大話設計模式：物件是一個獨立自主的實體，用一組可識別的特性和行為來標示。 Ex:特斯拉汽車、101大樓。
   3、實體化
- 描繪類別變成實體物件的狀態。 Ex:C#程式中會使用New來實體化出一個物件。  class 車子 { private 輪子(){} private 電池(){} private 方向盤(){} } 車子 特斯拉 = new 車子() 問題討論 這邊的問題取自保哥物件導向基礎，建議往下看前先自行思考作答。
+ 描繪類別變成實體物件的狀態。 Ex:C#程式中會使用 New 來實體化出一個物件。  class 車子 { private 輪子(){} private 電池(){} private 方向盤(){} } 車子 特斯拉 = new 車子() 問題討論 這邊的問題取自保哥物件導向基礎，建議往下看前先自行思考作答。
  1、請問「類別」可不可以包含「物件」？ 2、請問「物件」可不可以包含「類別」？ 3、請問「類別」可不可以包含「類別」？ 4、請問「物件」可不可以包含「物件」？ 5、請問「物件」可不可以當成資料傳遞？ 6、請問「類別」可不可以當成資料傳遞？ 7、 在 .NET 的世界，請問「物件」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 8、在 .NET 的世界，請問「類別」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 9、在 .NET 的世界，程式在執行的時候，「類別」可不可以被動態修改？ 10、如果有兩台主機要互相傳遞資料，他們傳遞的是「類別」還是「物件」？ 11、請問「物件」是否包含「方法(Method)」？ 12、如果「物件」從 A 電腦傳遞到 B 電腦時，若該物件要執行「方法」還需不需要有「類別」存在？
    作答
-1、不可以。本題提供同事講解易懂方式 Ex:特斯拉設計圖內不會包含真的特斯拉。
-2、不可以。物件是實體的東西、而類別再被new出來前都是虛擬的，故實體物件不應該包含虛擬類別。</description>
+1、不可以。本題提供同事講解易懂方式 Ex:特斯拉設計圖內不會包含真的特斯拉。</description>
     </item>
     
   </channel>

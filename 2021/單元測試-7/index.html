@@ -71,7 +71,7 @@
     "datePublished": "2021-02-22 20:40:45  UTC",
     "dateModified" : "2021-02-22 20:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7\/",
-    "wordCount" : "1959",
+    "wordCount" : "1988",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -171,10 +171,10 @@
           
 
           <h2 id="前言">前言</h2>
-<p>接續完成我們API的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。</p>
+<p>接續完成我們 API 的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。</p>
 <h2 id="本文">本文</h2>
 <h3 id="getaccount取得單筆帳號資訊">GetAccount(取得單筆帳號資訊)</h3>
-<h4 id="1輸入的account不可為空">1、輸入的Account不可為空。</h4>
+<h4 id="1輸入的-account-不可為空">1、輸入的 Account 不可為空。</h4>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -191,7 +191,7 @@
             actual.Should().Throw&lt;Exception&gt;()
                 .Which.Message.Contains(&quot;Account 不可為空 !&quot;);
         }
-</code></pre><h4 id="2若查詢的account有資料應回傳正確資訊">2、若查詢的Account有資料應回傳正確資訊。</h4>
+</code></pre><h4 id="2若查詢的-account-有資料應回傳正確資訊">2、若查詢的 Account 有資料應回傳正確資訊。</h4>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -226,7 +226,7 @@
             //assert
             actual.Should().BeEquivalentTo(expect);
         }
-</code></pre><h4 id="3若查詢的account無資料應回傳空值">3、若查詢的Account無資料應回傳空值。</h4>
+</code></pre><h4 id="3若查詢的-account-無資料應回傳空值">3、若查詢的 Account 無資料應回傳空值。</h4>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -245,10 +245,10 @@
         }
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/jBb7vw9.jpg" alt=""></p>
-<p>這就抓到了一個錯誤，應該為Null的地方沒有正確轉型，我們就可以回頭檢查一下程式。</p>
-<p>在AccountDataModel的地方，我們使用了DateTime型別。<br>
+<p>這就抓到了一個錯誤，應該為 Null 的地方沒有正確轉型，我們就可以回頭檢查一下程式。</p>
+<p>在 AccountDataModel 的地方，我們使用了 DateTime 型別。<br>
 <img src="https://i.imgur.com/LXm5Beo.jpg" alt=""></p>
-<p>因為有可能會是Null的情況所以我們改變一下做法。</p>
+<p>因為有可能會是 Null 的情況所以我們改變一下做法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountDataModel
     {
         /// &lt;summary&gt;
@@ -282,7 +282,7 @@
         public string ModifyUser { get; set; }
     }
 </code></pre><p>接著看錯誤清單，我們會需要修改使用到的地方。<br>
-第一個是Service Mapping的地方，改成這樣。</p>
+第一個是 Service Mapping 的地方，改成這樣。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public ServiceProfile()
         {
             this.CreateMap&lt;AccountDataModel, AccountDto&gt;()
@@ -291,7 +291,7 @@
 
             this.CreateMap&lt;AccountInfoModel, AccountCondition&gt;();
         }
-</code></pre><p>第二個是GetAccountList這個方法使用的地方，改成這樣。</p>
+</code></pre><p>第二個是 GetAccountList 這個方法使用的地方，改成這樣。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public IEnumerable&lt;AccountDto&gt; GetAccountList()
         {
             var data = this._accountRepository.GetAccountList();
@@ -309,7 +309,7 @@
         }
 </code></pre><p>接著回頭執行我們剛剛的測試。</p>
 <p><img src="https://i.imgur.com/vE5nXXI.jpg" alt=""></p>
-<p>回頭檢查Service 方法，少了一個驗證，改成。</p>
+<p>回頭檢查 Service 方法，少了一個驗證，改成。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得單筆帳號資訊
         /// &lt;/summary&gt;
@@ -386,7 +386,7 @@
             actual.Should().BeNull();
         }
 </code></pre><p><img src="https://i.imgur.com/YApPeK8.jpg" alt=""></p>
-<p>修改Service方法。</p>
+<p>修改 Service 方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">         /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
@@ -1197,8 +1197,8 @@
 </code></pre><h3 id="測試結果">測試結果</h3>
 <p><img src="https://i.imgur.com/91BYPCA.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>這樣就補完我們API的單元測試了，這次示範也是找了自己先前應該注意到的回傳值錯誤，是不是馬上體現單元測試的重要性，可以及早發現問題，當然因為這是採用事後補上測試的做法，如果是TDD的模式，在開發的當下就能發現錯，盡早解決問題。</p>
-<p><a href="https://github.com/sunnyday0932/WebApiPhase2">一樣會把程式放在Github有需要的歡迎取用。</a></p>
+<p>這樣就補完我們 API 的單元測試了，這次示範也是找了自己先前應該注意到的回傳值錯誤，是不是馬上體現單元測試的重要性，可以及早發現問題，當然因為這是採用事後補上測試的做法，如果是 TDD 的模式，在開發的當下就能發現錯，盡早解決問題。</p>
+<p><a href="https://github.com/sunnyday0932/WebApiPhase2">一樣會把程式放在 Github 有需要的歡迎取用。</a></p>
 
     </div>
 
@@ -1251,7 +1251,7 @@
         <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/" class="prev" rel="prev" title="單元測試 - 8(CsvHelper、AutoFixture)"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 8(CsvHelper、AutoFixture)</a>
          
         
-        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/" class="next" rel="next" title="單元測試 - 9(Repository測試)">單元測試 - 9(Repository測試)&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/" class="next" rel="next" title="單元測試 - 9(Repository 測試)">單元測試 - 9(Repository 測試)&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

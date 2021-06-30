@@ -71,7 +71,7 @@
     "datePublished": "2021-03-09 16:40:45  UTC",
     "dateModified" : "2021-03-09 16:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "342",
+    "wordCount" : "449",
     "keywords" : ["csharp","dotnet","async", "Sian"]
 }
 </script>
@@ -171,7 +171,7 @@
           
 
           <h2 id="前言">前言</h2>
-<p>先前我們介紹了API的基本用法，現在我們來介紹非同步的方法。</p>
+<p>先前我們介紹了 API 的基本用法，現在我們來介紹非同步的方法。</p>
 <h2 id="本文">本文</h2>
 <p>首先還是要先提醒一下，對於非同步程式設計有很多眉眉角角，這邊只能簡單說明，所以若想更深入了解還是推薦大家尋求專業知識來源。</p>
 <p>首推：</p>
@@ -184,7 +184,7 @@
 <p>我們先來認識一下甚麼叫做同步的程式設計。<br>
 其實你已經寫過了。</p>
 <p><img src="https://i.imgur.com/OYibwxi.jpg" alt=""></p>
-<p>拿之前寫過的UpdataAccount Service來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。</p>
+<p>拿之前寫過的 UpdataAccount Service 來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。</p>
 <p>(圖片取自.NET 本事－非同步程式設計)
 <img src="https://i.imgur.com/Xny8FOF.jpg" alt=""></p>
 <p>而這種同步程式設計有很明顯的問題。</p>
@@ -192,13 +192,13 @@
 <li>a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。</li>
 <li>b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。</li>
 </ul>
-<p>當上述這些情況發生時當電腦只有一顆CPU可以執行Process，那就會很明顯的被Lock住。<br>
-而為了解決CPU無法分頭進行處理就有了新的執行續(Thread)概念。</p>
-<h4 id="2thread執行續">2、Thread(執行續)。</h4>
+<p>當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。<br>
+而為了解決 CPU 無法分頭進行處理就有了新的執行序(Thread)概念。</p>
+<h4 id="2thread執行序">2、Thread(執行序)。</h4>
 <p>這時候就可以把當年準備考試的筆記拿出來用一下了。<br>
 <img src="https://i.imgur.com/ad1S7sF.jpg" alt=""></p>
-<p>當年上課老師也比喻Thread就像是一台車裡面有幾個引擎的概念。</p>
-<p>Thread 與 Process的差別。</p>
+<p>當年上課老師也比喻 Thread 就像是一台車裡面有幾個引擎的概念。</p>
+<p>Thread 與 Process 的差別。</p>
 <table>
 <thead>
 <tr>
@@ -209,68 +209,68 @@
 <tbody>
 <tr>
 <td>OS 分配資源的對象單位</td>
-<td>OS分配CPU時間的對象單位</td>
+<td>OS 分配 CPU 時間的對象單位</td>
 </tr>
 <tr>
-<td>Process之間無共享的資源及記憶體(除了Shared memory溝通外)</td>
-<td>同一個Process內的threads彼此共享此Process的記憶體與OS資源</td>
+<td>Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外)</td>
+<td>同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源</td>
 </tr>
 <tr>
-<td>Process的Ceation、Context Switching較慢，管理成本高。</td>
-<td>Thread的較快、管理成本低。</td>
+<td>Process 的 Ceation、Context Switching 較慢，管理成本高。</td>
+<td>Thread 的較快、管理成本低。</td>
 </tr>
 <tr>
-<td>Process內的Single-thread若Blocked，則整個Process也一起Blocked</td>
-<td>Process內只要有Thread還可以執行，則Process不會被Blocked</td>
+<td>Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked</td>
+<td>Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked</td>
 </tr>
 <tr>
-<td>Multiprocessor架構之效益發揮較差。</td>
+<td>Multiprocessor 架構之效益發揮較差。</td>
 <td>較佳。</td>
 </tr>
 <tr>
-<td>不需提供互斥存取機制(除了Shared memory溝通外)</td>
-<td>必須對Threads共享的資源及Data，提供互斥存取，控制防止資料不正確等問題。</td>
+<td>不需提供互斥存取機制(除了 Shared memory 溝通外)</td>
+<td>必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。</td>
 </tr>
 <tr>
-<td>適用時機：一個時間只有一個Task執行時EX:Command interpreter、Linux Shell。</td>
-<td>適用時機：一個時間有多個Task同時執行EX:Clent-Server架構的Server。</td>
+<td>適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。</td>
+<td>適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。</td>
 </tr>
 </tbody>
 </table>
-<p>所以透過多個執行續的概念我們希望程式能夠達到這樣。<br>
-(圖片取自.NET 本事－非同步程式設計)<br>
+<p>所以透過多個執行序的概念我們希望程式能夠達到這樣。<br>
+(圖片取自 .NET 本事－非同步程式設計)<br>
 <img src="https://i.imgur.com/4XxbRuE.jpg" alt=""></p>
 <h4 id="3議題">3、議題。</h4>
 <p>a、Context Swithcing。<br>
 解釋：<br>
-當Cpu要從執行中的Process切換給另一個Process執行時，kernel必須先保存執中的Process狀態資訊且要載入另一個Process的狀態資訊。</p>
-<p>所以我們知道其實相互切換是很浪費時間的，所以解決Context Swithcing消耗過多資源的其中一個方式就是使用MultiThreading技術。</p>
+當 Cpu 要從執行中的 Process 切換給另一個 Process 執行時，kernel 必須先保存執中的 Process 狀態資訊且要載入另一個 Process 的狀態資訊。</p>
+<p>所以我們知道其實相互切換是很浪費時間的，所以解決 Context Swithcing 消耗過多資源的其中一個方式就是使用 MultiThreading 技術。</p>
 <p>b、Starvation。<br>
-每個執行續都有其優先順序，而當高優先權的執行續搶走大部分資源時就有可能造成Starvation。<br>
+每個執行序都有其優先順序，而當高優先權的執行序搶走大部分資源時就有可能造成 Starvation。<br>
 解釋：<br>
-Process因為長期無法取的完工所需的各式資源，以至於遲遲無法完成工作，本身形成&quot;Indefinite Blocking(不明確的)&ldquo;現象。</p>
+Process 因為長期無法取的完工所需的各式資源，以至於遲遲無法完成工作，本身形成&quot;Indefinite Blocking(不明確的)&ldquo;現象。</p>
 <h4 id="4相關名詞">4、相關名詞。</h4>
 <p>a、並行(Concurrency)：<br>
 一次處理多件工作。Ex:使用者輸入文字，應用程式在背景執行拼字檢查。<br>
-b、多執行續(MultiThreading)：<br>
-以多執行續的方式來實現並行(Concurrency)。<br>
+b、多執行序(MultiThreading)：<br>
+以多執行序的方式來實現並行(Concurrency)。<br>
 c、平行處理(Parallel processing)：<br>
 把工作切分成小單元、交給多條Thread來同時執行。<br>
 d、非同步處理(Asunchronous processing)：<br>
-是並行(Concurrency)的一種形式，但不必然(甚至是避免)使用Thread，而是採用承諾(Promise)或Callback event的形式來達到並行。</p>
+是並行(Concurrency)的一種形式，但不必然(甚至是避免)使用 Thread，而是採用承諾(Promise)或 Callback event 的形式來達到並行。</p>
 <h4 id="5非同步">5、非同步。</h4>
 <p>我們使用非同步的目的就是：</p>
 <ul>
 <li>a、提升應用程式的回應速度。</li>
-<li>b、提升應用程式整體產能，多執行續的應用程式更能善用CPU的運算能力。</li>
+<li>b、提升應用程式整體產能，多執行序的應用程式更能善用 CPU 的運算能力。</li>
 </ul>
 <h3 id="二如何使用非同步">二、如何使用非同步。</h3>
 <blockquote>
 <p>2021/03/22
-今天發現對Task理解好像有點問題，回來補上作法。</p>
+今天發現對 Task 理解好像有點問題，回來補上作法。</p>
 </blockquote>
-<p>在.NET裡面會使用到一個Task工作。<br>
-而Task會使用到async、await來互相搭配(通常一個async至少會搭配一個await)。<br>
+<p>在 .NET 裡面會使用到一個 Task 工作。<br>
+而 Task 會使用到 async、await 來互相搭配(通常一個 async 至少會搭配一個 await)。<br>
 拿個簡單的範例來看一下：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static async Task Main(string[] args)
         {
@@ -349,7 +349,7 @@ ConfigureAwait(false).GetAwaiter().GetResult()</p>
 </code></pre><p>結果總花費5秒：<br>
 <img src="https://i.imgur.com/tr6rQph.jpg" alt=""></p>
 <p>Task.WhenAll()</p>
-<p>用法1、可以等待同質性的工作一起回來，使用場景EX:當對方的API只提供一次撈取一個資料時，就可以使用WhenAll的方式等我們需要的資料全部撈完後再繼續動作。</p>
+<p>用法1、可以等待同質性的工作一起回來，使用場景 EX:當對方的 API 只提供一次撈取一個資料時，就可以使用 WhenAll 的方式等我們需要的資料全部撈完後再繼續動作。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static async Task Main(string[] args)
         {
             Task&lt;int&gt; task1 = Task.FromResult(1);
@@ -362,7 +362,7 @@ ConfigureAwait(false).GetAwaiter().GetResult()</p>
         }
 </code></pre><p>結果：<br>
 <img src="https://i.imgur.com/GefbUuC.jpg" alt=""></p>
-<p>用法2、或是可以一起等待不同Task回來。</p>
+<p>用法2、或是可以一起等待不同 Task 回來。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        private static async Task Main(string[] args)
         {
             Console.WriteLine($&quot;開始時間：{DateTime.Now.Second}&quot;);
@@ -403,11 +403,11 @@ ConfigureAwait(false).GetAwaiter().GetResult()</p>
         }
 </code></pre><p>結果總花費3秒:
 <img src="https://i.imgur.com/k3TRYEr.jpg" alt=""></p>
-<p>明顯看出與先前一個步驟一個步驟await等結果回來不同，因為任務是一起出去執行的，可以減少等待執行的時間。<br>
+<p>明顯看出與先前一個步驟一個步驟 await 等結果回來不同，因為任務是一起出去執行的，可以減少等待執行的時間。<br>
 提醒：這種使用方法就必須注意程式執行的先後順序，若使用到的地方在還沒回來前就被叫用，就有可能出錯。</p>
 <h2 id="後記">後記</h2>
 <p>這邊僅列出三種比較常看到的用法，最後還是得強調，非同步的水很深，需要謹慎使用。<br>
-接下來我們會進行修改先前API把它改成非同步的模式。<br>
+接下來我們會進行修改先前 API 把它改成非同步的模式。<br>
 那麼非同步基礎介紹就到此告一個段落。</p>
 <p>推薦延伸閱讀：</p>
 <ul>

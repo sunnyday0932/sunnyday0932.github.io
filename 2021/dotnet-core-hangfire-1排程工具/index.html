@@ -71,7 +71,7 @@
     "datePublished": "2021-03-28 18:40:45  UTC",
     "dateModified" : "2021-03-28 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7\/",
-    "wordCount" : "97",
+    "wordCount" : "126",
     "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
 }
 </script>
@@ -171,23 +171,23 @@
           
 
           <h2 id="前言">前言</h2>
-<p>這次主題要來介紹排程，一般原生作法排程會直接寫一個Windows排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供.NET製作排程，如：<a href="https://www.quartz-scheduler.net/">Quartz.Net</a>、<a href="https://docs.coravel.net/">Coravel</a>。</p>
-<p>而這次主要會介紹HangFire。</p>
+<p>這次主題要來介紹排程，一般原生作法排程會直接寫一個 Windows 排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供 .NET 製作排程，如： <a href="https://www.quartz-scheduler.net/">Quartz.Net</a>、<a href="https://docs.coravel.net/">Coravel</a>。</p>
+<p>而這次主要會介紹 HangFire。</p>
 <h2 id="本文">本文</h2>
 <h3 id="一相關資源">一、相關資源。</h3>
 <p>1、<a href="https://docs.hangfire.io/en/latest/">官方文件</a>。<br>
 2、<a href="https://www.bookstack.cn/read/Hangfire-zh-official/README.md">中文文件</a>。</p>
 <h3 id="二基本介紹">二、基本介紹。</h3>
 <h4 id="a特別注意的特性">A、特別注意的特性：</h4>
-<p>HangFire在建構起來後就等同於一個網站，所以它也有著一般IIS會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。<br>
-像我們公司解法就是透過硬體，A10機器會定期訪問HangFire站台，確保站台是有在運行的。</p>
+<p>HangFire 在建構起來後就等同於一個網站，所以它也有著一般 IIS 會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。<br>
+像我們公司解法就是透過硬體，A10 機器會定期訪問 HangFire 站台，確保站台是有在運行的。</p>
 <h4 id="bhangfire優點">B、HangFire優點：</h4>
 <ul>
 <li>Simple - 開發簡單、安裝簡易、部屬到站台也很方便。</li>
-<li>Reliable - HangFire提供了排程失敗的自動重試機制。</li>
+<li>Reliable - HangFire 提供了排程失敗的自動重試機制。</li>
 <li>Distributed - 可透過分散式處理消化大量工作。</li>
-<li>Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis等)地方，不必擔心站台被回收後排程任務消失。</li>
-<li>Transparent - 透明化的作業流程，HangFire提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。</li>
+<li>Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis 等)地方，不必擔心站台被回收後排程任務消失。</li>
+<li>Transparent - 透明化的作業流程，HangFire 提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。</li>
 </ul>
 <h4 id="c三大核心元件">C、三大核心元件。</h4>
 <p><img src="https://i.imgur.com/9ZgOKjS.jpg" alt=""></p>
@@ -199,12 +199,12 @@
 <p>排程工作的完整流程：</p>
 <ul>
 <li>1、Client 建立一個排程任務。</li>
-<li>2、排程任務儲存到Storage後，回傳一個JobId給Client。</li>
-<li>3、Server端存Storage拿取要處理的排程任務。</li>
-<li>4、Server端處理排程任務。</li>
+<li>2、排程任務儲存到 Storage 後，回傳一個 JobId 給 Client。</li>
+<li>3、Server 端存 Storage 拿取要處理的排程任務。</li>
+<li>4、Server 端處理排程任務。</li>
 </ul>
 <h4 id="d排程任務的類型">D、排程任務的類型。</h4>
-<p>1、Fire-and-forget Jobs - 這類型的Job進到排程佇列後會馬上執行且只會執行一次。</p>
+<p>1、Fire-and-forget Jobs - 這類型的 Job 進到排程佇列後會馬上執行且只會執行一次。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">var jobId = BackgroundJob.Enqueue(
     () =&gt; Console.WriteLine(&quot;Fire-and-forget!&quot;));
 </code></pre><p>2、Delayed jobs - 這類型的排程可以延遲執行。</p>
@@ -222,7 +222,7 @@
 </code></pre><h2 id="參考資料">參考資料</h2>
 <ul>
 <li>1、<a href="https://dotblogs.com.tw/yc421206/2020/02/27/hangfire_dashboard_management">ASP.NET Core Hangfire 排程管理 - Hangfire.Dashboard.Management</a>。</li>
-<li>2、<a href="https://codingnote.cc/zh-tw/p/4528/">.NET之Hangfire快速入門和使用</a>。</li>
+<li>2、<a href="https://codingnote.cc/zh-tw/p/4528/">.NET 之 Hangfire 快速入門和使用</a>。</li>
 <li>3、<a href="https://as880074.medium.com/mvc-hangfire-%E6%8E%92%E7%A8%8B%E5%A5%97%E4%BB%B6%E5%AE%89%E8%A3%9D-867c19adf115">Hangfire 排程套件安裝</a>。</li>
 </ul>
 

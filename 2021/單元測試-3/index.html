@@ -71,7 +71,7 @@
     "datePublished": "2021-01-30 18:40:45  UTC",
     "dateModified" : "2021-01-30 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3\/",
-    "wordCount" : "377",
+    "wordCount" : "401",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -172,7 +172,7 @@
 
           <h2 id="本文">本文</h2>
 <h3 id="比對兩個物件方式">比對兩個物件方式</h3>
-<p>首先我們建立一個測試用Model。</p>
+<p>首先我們建立一個測試用 Model。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class TestModel
     {
         public string UserName { get; set; }
@@ -243,13 +243,13 @@
 </tr>
 <tr>
 <td>AreEqual()</td>
-<td>AreEqual則是繼承了原本Object使用的Equals，也是比較記憶體位址。</td>
+<td>AreEqual 則是繼承了原本 Object 使用的 Equals，也是比較記憶體位址。</td>
 </tr>
 </tbody>
 </table>
-<p>所以如果要解決此種情況，就只能複寫原本的AreEqual()方法，所以基於<del>懶惰原則</del>，當然是另尋出路。</p>
+<p>所以如果要解決此種情況，就只能複寫原本的 AreEqual() 方法，所以基於<del>懶惰原則</del>，當然是另尋出路。</p>
 <p><img src="https://i.imgur.com/2SetbnU.jpg" alt=""></p>
-<p>Fluentassertion有提供這個方法比較，我們來測試看看。</p>
+<p>Fluentassertion 有提供這個方法比較，我們來測試看看。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;Class1&quot;)]
@@ -277,7 +277,7 @@
 </code></pre><p>結果<br>
 <img src="https://i.imgur.com/587OQDp.jpg" alt=""></p>
 <h3 id="比對兩個集合方式">比對兩個集合方式</h3>
-<p>一樣也可以透過BeEquivalentTo這個方法驗證。</p>
+<p>一樣也可以透過 BeEquivalentTo 這個方法驗證。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;Class1&quot;)]
@@ -350,7 +350,7 @@
 
         public static DateTime Today =&gt; SetToday();
     }
-</code></pre><p>接下來把DateTime改成使用SystemTime。</p>
+</code></pre><p>接下來把 DateTime 改成使用 SystemTime。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        public string GetNewYear()
         {
             if (SystemTime.Today.Month == 1 &amp;&amp;
@@ -361,14 +361,14 @@
 
             return &quot;Today is not Holiday&quot;;
         }
-</code></pre><p>接下來為了讓測試專案可以改變Internal屬性，需要到AssemblyInfo.cs加入東西。<br>
+</code></pre><p>接下來為了讓測試專案可以改變 Internal 屬性，需要到 AssemblyInfo.cs 加入東西。<br>
 先切換成資料夾檢視。<br>
 <img src="https://i.imgur.com/PKI1pJz.jpg" alt=""></p>
-<p>為了要看到AssemblyInfo.cs需要先把顯示所有檔案打開。<br>
+<p>為了要看到 AssemblyInfo.cs 需要先把顯示所有檔案打開。<br>
 <img src="https://i.imgur.com/EOvpM84.jpg" alt=""></p>
-<p>搜尋AssemblyInfo。<br>
+<p>搜尋 AssemblyInfo。<br>
 <img src="https://i.imgur.com/RDtUJqH.jpg" alt=""></p>
-<p>有Debug版本以及Release版本，兩個都要記得修改。<br>
+<p>有 Debug 版本以及 Release 版本，兩個都要記得修改。<br>
 加入以下程式碼。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">[assembly: InternalsVisibleTo(&quot;UnitTestProject&quot;)]
 </code></pre><p><img src="https://i.imgur.com/NTrjJ4A.jpg" alt=""></p>

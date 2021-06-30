@@ -71,7 +71,7 @@
     "datePublished": "2020-12-22 19:40:45  UTC",
     "dateModified" : "2020-12-22 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapiphase2-3\/",
-    "wordCount" : "952",
+    "wordCount" : "976",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -173,7 +173,7 @@
           <h2 id="本文">本文</h2>
 <p>繼續接著進行後續步驟。</p>
 <h3 id="刪除使用者">刪除使用者</h3>
-<p>1、建立 空的Controller。</p>
+<p>1、建立 空的 Controller。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 刪除帳號
         /// &lt;/summary&gt;
@@ -184,14 +184,14 @@
         public ResultViewModel RemoveAccount([FromBody]AccountParameter parameter)
         {
         }
-</code></pre><p>2、建立 Service介面。</p>
+</code></pre><p>2、建立 Service 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 刪除帳號
         /// &lt;/summary&gt;
         /// &lt;param name=&quot;info&quot;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public ResultDto RemoveAccount(AccountInfoModel info);
-</code></pre><p>3、建立 空的Service實作。</p>
+</code></pre><p>3、建立 空的 Service 實作。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 刪除帳號
         /// &lt;/summary&gt;
@@ -201,7 +201,7 @@
         {
             throw new NotImplementedException();
         }
-</code></pre><p>4、建立 Repository介面。</p>
+</code></pre><p>4、建立 Repository 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 刪除帳號
         /// &lt;/summary&gt;
@@ -231,7 +231,7 @@
                 return result &gt; 0;
             }
         }
-</code></pre><p>6、回頭接上Service。<br>
+</code></pre><p>6、回頭接上 Service。<br>
 別忘了我們的規格：</p>
 <ul>
 <li>驗證註冊時輸入之帳號、信箱、手機，都正確即可刪除。</li>
@@ -287,7 +287,7 @@
                 Message = result ? &quot;刪除成功&quot; : &quot;刪除失敗&quot;
             };
         }
-</code></pre><p>7、回到Controller接上方法。</p>
+</code></pre><p>7、回到 Controller 接上方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 刪除帳號
         /// &lt;/summary&gt;
@@ -310,7 +310,7 @@
 <p>資料庫刪除後。<br>
 <img src="https://i.imgur.com/CdPpQHW.jpg" alt=""></p>
 <h3 id="使用者更新基本資料">使用者更新基本資料</h3>
-<p>1、建立 空的Controller。</p>
+<p>1、建立 空的 Controller。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
@@ -322,14 +322,14 @@
         { 
             
         }
-</code></pre><p>2、建立 Service介面。</p>
+</code></pre><p>2、建立 Service 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
         /// &lt;param name=&quot;info&quot;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public ResultDto UpdateAccount(AccountInfoModel info);
-</code></pre><p>3、建立 空的Service實作。</p>
+</code></pre><p>3、建立 空的 Service 實作。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
@@ -339,7 +339,7 @@
         {
             throw new NotImplementedException();
         }
-</code></pre><p>4、建立 Repository介面。</p>
+</code></pre><p>4、建立 Repository 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
@@ -417,7 +417,7 @@
                 return result;
             }
         }
-</code></pre><p>6、回頭接上Service。<br>
+</code></pre><p>6、回頭接上 Service。<br>
 別忘了我們的規格：</p>
 <ul>
 <li>驗證帳號、密碼，都正確即可更新。</li>
@@ -467,7 +467,7 @@
                 Message = result ? &quot;更新成功&quot; : &quot;更新失敗&quot;
             };
         }
-</code></pre><p>7、回到Controller接上方法。</p>
+</code></pre><p>7、回到 Controller 接上方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
@@ -490,7 +490,7 @@
 <p>更新後資料庫。<br>
 <img src="https://i.imgur.com/vubu3YH.jpg" alt=""></p>
 <h2 id="忘記密碼">忘記密碼。</h2>
-<p>1、建立 空的Controller。</p>
+<p>1、建立 空的 Controller。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 忘記密碼
         /// &lt;/summary&gt;
@@ -501,14 +501,14 @@
         public ResultViewModel ForgetPassword([FromBody]AccountParameter parameter)
         {
         }
-</code></pre><p>2、建立 Service介面。</p>
+</code></pre><p>2、建立 Service 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 忘記密碼
         /// &lt;/summary&gt;
         /// &lt;param name=&quot;info&quot;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public ResultDto ForgetPassword(AccountInfoModel info);
-</code></pre><p>3、建立 空的Service實作。</p>
+</code></pre><p>3、建立 空的 Service 實作。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 忘記密碼
         /// &lt;/summary&gt;
@@ -518,7 +518,7 @@
         {
             throw new NotImplementedException();
         }
-</code></pre><p>4、建立 Repository介面。</p>
+</code></pre><p>4、建立 Repository 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 忘記密碼
         /// &lt;/summary&gt;
@@ -550,7 +550,7 @@
                 return result &gt; 0;
             }
         }
-</code></pre><p>6、回頭接上Service。<br>
+</code></pre><p>6、回頭接上 Service。<br>
 別忘了我們的規格：</p>
 <ul>
 <li>驗證註冊時輸入之帳號、信箱、手機，都正確即可更新密碼。</li>
@@ -611,7 +611,7 @@
                 Message = result ? &quot;更新密碼成功&quot; : &quot;更新密碼失敗&quot;
             };
         }
-</code></pre><p>7、回到Controller接上方法。</p>
+</code></pre><p>7、回到 Controller 接上方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 忘記密碼
         /// &lt;/summary&gt;

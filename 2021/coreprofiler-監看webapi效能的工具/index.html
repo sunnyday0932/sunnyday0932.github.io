@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           CoreProfiler - 監看WebApi效能的工具 | Sian	
+           CoreProfiler - 監看 WebApi 效能的工具 | Sian	
        	
   </title>	
-  <meta name="title" content="CoreProfiler - 監看WebApi效能的工具 | Sian">	
+  <meta name="title" content="CoreProfiler - 監看 WebApi 效能的工具 | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "CoreProfiler - 監看WebApi效能的工具",
-    "headline" : "CoreProfiler - 監看WebApi效能的工具",
-    "description" : "CoreProfiler - 監看WebApi效能的工具",
+    "name" : "CoreProfiler - 監看 WebApi 效能的工具",
+    "headline" : "CoreProfiler - 監看 WebApi 效能的工具",
+    "description" : "CoreProfiler - 監看 WebApi 效能的工具",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -71,7 +71,7 @@
     "datePublished": "2021-04-29 19:40:45  UTC",
     "dateModified" : "2021-04-29 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7\/",
-    "wordCount" : "118",
+    "wordCount" : "143",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -134,7 +134,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">CoreProfiler - 監看WebApi效能的工具</h1>
+        <h1 class="post-title" itemprop="name headline">CoreProfiler - 監看 WebApi 效能的工具</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
@@ -171,14 +171,14 @@
           
 
           <h2 id="前言">前言</h2>
-<p>接下來會用到CoreProfiler這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。</p>
+<p>接下來會用到 CoreProfiler 這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。</p>
 <h2 id="本文">本文</h2>
-<p><a href="https://github.com/teddymacn/CoreProfiler">CorePofiler</a>這個工具是提供給Core版本的效能工具，也有給dotnet framework的版本<a href="https://github.com/ef-labs/nanoprofiler">NanoProfiler</a>。</p>
+<p><a href="https://github.com/teddymacn/CoreProfiler">CorePofiler</a> 這個工具是提供給 Core 版本的效能工具，也有給 dotnet framework 的版本 <a href="https://github.com/ef-labs/nanoprofiler">NanoProfiler</a>。</p>
 <p><img src="https://i.imgur.com/yepP700.jpg" alt=""></p>
 <h3 id="用到的nuget">用到的Nuget</h3>
 <ul>
-<li>CoreProfiler.Web 安裝在Application。</li>
-<li>CoreProfiler 安裝在Application跟要監看的類別庫。</li>
+<li>CoreProfiler.Web 安裝在 Application。</li>
+<li>CoreProfiler 安裝在 Application 跟要監看的類別庫。</li>
 </ul>
 <p><img src="https://i.imgur.com/ZwjgwCY.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/3KRsqj9.jpg" alt=""></p>
@@ -190,12 +190,12 @@ using (ProfilingSession.Current.Step(stepName))
             
 }
 </code></pre><p><img src="https://i.imgur.com/kg5b0Bl.jpg" alt=""></p>
-<p>2、在Service與Repository的地方都加上。</p>
+<p>2、在 Service 與 Repository 的地方都加上。</p>
 <p>Service：<br>
 <img src="https://i.imgur.com/ACgOaZg.jpg" alt=""></p>
 <p>Repository：<br>
 <img src="https://i.imgur.com/KQOIP5J.jpg" alt=""></p>
-<p>3、若要監看與DB存取資料的狀況，可以到DatabaseHelper這麼做。</p>
+<p>3、若要監看與 DB 存取資料的狀況，可以到 DatabaseHelper 這麼做。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 建立連線
         /// &lt;/summary&gt;
@@ -212,7 +212,7 @@ using (ProfilingSession.Current.Step(stepName))
 
             return conn;
         }
-</code></pre><p>4、CoreProfiler的設定，可以建立一個coreprofiler.json的檔案。</p>
+</code></pre><p>4、CoreProfiler 的設定，可以建立一個 coreprofiler.json 的檔案。</p>
 <pre><code class="language-json=" data-lang="json=">{
   //資料保存上限
   &quot;circularBufferSize&quot;: 200,
@@ -233,7 +233,7 @@ using (ProfilingSession.Current.Step(stepName))
 </code></pre><p>提醒：<br>
 檔案屬性要記得調整。<br>
 <img src="https://i.imgur.com/6FuRKRq.jpg" alt=""></p>
-<p>5、到StartUp Cofigure的地方引用CoreProfiler。</p>
+<p>5、到 StartUp Cofigure 的地方引用 CoreProfiler。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">app.UseCoreProfiler(true);
 </code></pre><p><img src="https://i.imgur.com/pCC8Eoj.jpg" alt=""></p>
 <p>6、接下來就可以進行測試了。</p>

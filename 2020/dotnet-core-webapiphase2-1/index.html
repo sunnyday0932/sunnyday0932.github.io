@@ -71,7 +71,7 @@
     "datePublished": "2020-12-15 22:19:33  CST",
     "dateModified" : "2020-12-15 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapiphase2-1\/",
-    "wordCount" : "884",
+    "wordCount" : "978",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -177,11 +177,11 @@
 <ul>
 <li><input disabled="" type="checkbox"> 1. 建立 Service</li>
 <li><input disabled="" type="checkbox"> 2. 建立 Repository</li>
-<li><input disabled="" type="checkbox"> 3. 建立 FirstController 要傳接的Model(Parameter、ViewModel)</li>
+<li><input disabled="" type="checkbox"> 3. 建立 FirstController 要傳接的 Model(Parameter、ViewModel)</li>
 <li><input disabled="" type="checkbox"> 4. 建立空的 FirstController (First = 主要功能)</li>
-<li><input disabled="" type="checkbox"> 5. 建立 FirstService 要傳接的Model(InfoModel、Dto)</li>
+<li><input disabled="" type="checkbox"> 5. 建立 FirstService 要傳接的 Model(InfoModel、Dto)</li>
 <li><input disabled="" type="checkbox"> 6. 建立 FirstService 介面 和一個空的 GetXXX 方法（XXX = 查詢之類的）</li>
-<li><input disabled="" type="checkbox"> 7. 建立 FirstRepository 要傳接的Model(Condition、DataModel)</li>
+<li><input disabled="" type="checkbox"> 7. 建立 FirstRepository 要傳接的 Model(Condition、DataModel)</li>
 <li><input disabled="" type="checkbox"> 8. 建立 FirstRepository 介面 和一個空的 GetXXX 方法</li>
 <li><input disabled="" type="checkbox"> 9. 將 Service 注入到 Controller, 將 Repository 注入到 Service</li>
 <li><input disabled="" type="checkbox"> 10. 安裝 AutoMapper</li>
@@ -193,7 +193,7 @@
 <li><input disabled="" type="checkbox"> 16. 自由發揮</li>
 </ul>
 <h3 id="基礎架構">基礎架構。</h3>
-<p>首先第一步我們先把這次要做的分層架構給準備好，一樣先開好一個Core Web應用程式，這次我們選擇空白專案。<br>
+<p>首先第一步我們先把這次要做的分層架構給準備好，一樣先開好一個 Core Web 應用程式，這次我們選擇空白專案。<br>
 <img src="https://i.imgur.com/hCeeB17.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/PPEsEHR.jpg" alt=""></p>
 <p>建立完後我們有了初始化的結構。<br>
@@ -205,17 +205,17 @@
 <img src="https://i.imgur.com/qVyfvm1.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/oOQYEt8.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/1FG1oZG.jpg" alt=""></p>
-<p>這樣我們的Service層架構就建完了。<br>
-接下來把剩下Repository完成(備註：Common層這次示範不會用到就不特別建了)。<br>
+<p>這樣我們的 Service 層架構就建完了。<br>
+接下來把剩下 Repository 完成(備註：Common 層這次示範不會用到就不特別建了)。<br>
 現在我們的專案結構長這樣：<br>
 <img src="https://i.imgur.com/S9zqOcp.jpg" alt=""></p>
 <p>個人習慣，也是延續前輩們的用法會使用資料夾來做排序分類。<br>
 <img src="https://i.imgur.com/uLQRJUL.jpg" alt=""></p>
 <h3 id="開始實作">開始實作。</h3>
-<p>1、首先我們建立一個Controller，這次要實作的目標都圍繞在使用者帳號這個主題上，所以就創立一個AccountController。<br>
+<p>1、首先我們建立一個 Controller，這次要實作的目標都圍繞在使用者帳號這個主題上，所以就創立一個 AccountController。<br>
 <img src="https://i.imgur.com/eLmNYtK.jpg" alt=""></p>
-<p>接著要先建立一個取得使用者資訊的API。<br>
-2、把要回傳的Model準備好，這邊是Controller要回傳的Model所以是ViewModel。</p>
+<p>接著要先建立一個取得使用者資訊的 API。<br>
+2、把要回傳的 Model 準備好，這邊是 Controller 要回傳的 Model 所以是 ViewModel。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    /// &lt;summary&gt;
     /// 帳號
     /// &lt;/summary&gt;
@@ -266,7 +266,7 @@
         {
         }
     }
-</code></pre><p>4、建立Service要回傳的Model(Dto)。</p>
+</code></pre><p>4、建立 Service 要回傳的 Model(Dto)。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountDto
     {
         /// &lt;summary&gt;
@@ -299,7 +299,7 @@
         /// &lt;/summary&gt;
         public string ModifyUser { get; set; }
     }
-</code></pre><p>5、建立Service介面。</p>
+</code></pre><p>5、建立 Service 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public interface IAccountService
     {
         /// &lt;summary&gt;
@@ -309,7 +309,7 @@
         /// &lt;returns&gt;&lt;/returns&gt;
         public AccountDto GetAccount(string account);
     }
-</code></pre><p>6、建立空的Service實作。</p>
+</code></pre><p>6、建立空的 Service 實作。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">     public class AccountService : IAccountService
     {
         /// &lt;summary&gt;
@@ -322,7 +322,7 @@
             throw new NotImplementedException();
         }
     }
-</code></pre><p>7、建立Repository要回傳的Model(DataModel)。</p>
+</code></pre><p>7、建立 Repository 要回傳的 Model(DataModel)。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountDataModel
     {
         /// &lt;summary&gt;
@@ -355,7 +355,7 @@
         /// &lt;/summary&gt;
         public string ModifyUser { get; set; }
     }
-</code></pre><p>8、建立Repository介面。</p>
+</code></pre><p>8、建立 Repository 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public interface IAccountRepository
     {
         /// &lt;summary&gt;
@@ -365,7 +365,7 @@
         /// &lt;returns&gt;&lt;/returns&gt;
         public AccountDataModel GetAccount(string account);
     }
-</code></pre><p>9、建立空的Repository實作。</p>
+</code></pre><p>9、建立空的 Repository 實作。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountRepository : IAccountRepository
     {
         /// &lt;summary&gt;
@@ -378,7 +378,7 @@
             throw new NotImplementedException();
         }
     }
-</code></pre><p>10、在Repository加入DatabaseHelper幫助我們與資料庫建立連線。</p>
+</code></pre><p>10、在 Repository 加入 DatabaseHelper 幫助我們與資料庫建立連線。</p>
 <p>介面</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public interface IDatabaseHelper
     {
@@ -409,7 +409,7 @@
             return conn;
         }
     }
-</code></pre><p>11、到Startup把我們需要的東西註冊注入。</p>
+</code></pre><p>11、到 Startup 把我們需要的東西註冊注入。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">public void ConfigureServices(IServiceCollection services)
         {
 
@@ -418,13 +418,13 @@
             services.AddScoped&lt;IAccountRepository, AccountRepository&gt;();
             services.AddScoped&lt;IDatabaseHelper&gt;(x =&gt; new DatabaseHelper(@&quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&quot;));
         }
-</code></pre><p>12、安裝AutoMapper。</p>
-<p>AutoMapper要安裝在Webapi還有Service。<br>
+</code></pre><p>12、安裝 AutoMapper。</p>
+<p>AutoMapper 要安裝在 Webapi 還有 Service。<br>
 <img src="https://i.imgur.com/N9fMrAw.jpg" alt=""></p>
-<p>AutoMapper.Extensions.Microsoft.DependencyInjection要安裝在Webapi。<br>
+<p>AutoMapper.Extensions.Microsoft.DependencyInjection 要安裝在 Webapi。<br>
 <img src="https://i.imgur.com/Mg2Rrti.jpg" alt=""></p>
-<p>13、建立各層的AutoMapper。</p>
-<p>Service層，我們目前需要對照的是Repository回傳的Model與Service要回傳給Contoller的Model，其中有兩個datetime的model我們需要做特殊處理轉換。</p>
+<p>13、建立各層的 AutoMapper。</p>
+<p>Service 層，我們目前需要對照的是 Repository 回傳的 Model 與 Service 要回傳給 Contoller 的 Model，其中有兩個 datetime 的 model 我們需要做特殊處理轉換。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class ServiceProfile : Profile
     {
         public ServiceProfile()
@@ -434,7 +434,7 @@
                 .ForMember(x =&gt; x.ModifyDate, y =&gt; y.MapFrom(z =&gt; z.ModifyDate.ToString(&quot;yyyy/MM/dd&quot;)));
         }
     }
-</code></pre><p>Controller層，我們目前需要對照的是Service回傳的Model與Controller要回傳的Model。</p>
+</code></pre><p>Controller 層，我們目前需要對照的是 Service 回傳的 Model 與 Controller 要回傳的 Model。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class ControllerProfile : Profile
     {
         public ControllerProfile()
@@ -443,13 +443,13 @@
         }
     }
 
-</code></pre><p>14、將AutoMapper檔案註冊加入statup。</p>
+</code></pre><p>14、將 AutoMapper 檔案註冊加入 startup。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">            //AutoMapper
             services.AddAutoMapper(
                 typeof(ControllerProfile),
                 typeof(ServiceProfile));
 </code></pre><p>15、Controller 方法和 Service 方法對接。</p>
-<p>首先在Controller注入我們需要用到的Service與AutoMapper。</p>
+<p>首先在 Controller 注入我們需要用到的 Service 與 AutoMapper。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        private IAccountService _accountService;
         private IMapper _mapper;
 
@@ -475,7 +475,7 @@
             return result;
         }
 </code></pre><p>16、Service 方法和 Repository 方法對接。</p>
-<p>一樣在Service注入我們需要用到的Repository與AutoMapper。</p>
+<p>一樣在 Service 注入我們需要用到的 Repository 與 AutoMapper。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        private IAccountRepository _accountRepository;
         private IMapper _mapper;
 
@@ -502,7 +502,7 @@
 </code></pre><p>可別忘了我們的規格。<br>
 a、僅可取得帳號、電話、信箱、建立日期、異動日期、異動人員。<br>
 b、個資規定使用者電話後四碼必須以＊字號取代。</p>
-<p>所以我們需要把電話後四碼以＊字號取代，我們建立一個private function來做這件事。</p>
+<p>所以我們需要把電話後四碼以＊字號取代，我們建立一個 private function 來做這件事。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 轉換電話號碼
         /// &lt;/summary&gt;
@@ -519,7 +519,7 @@ b、個資規定使用者電話後四碼必須以＊字號取代。</p>
                 return (phoneNumber.Substring(0, 6) + new string('*', phoneNumber.Length - 6));
             }
         }
-</code></pre><p>把這方法加入原本的function順便補上一些錯誤處理。</p>
+</code></pre><p>把這方法加入原本的 function 順便補上一些錯誤處理。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得單筆帳號資訊
         /// &lt;/summary&gt;
@@ -537,10 +537,10 @@ b、個資規定使用者電話後四碼必須以＊字號取代。</p>
             result.Phone = ConvertPhoneNumber(result.Phone);
             return result;
         }
-</code></pre><p>17、安裝Dapper。<br>
+</code></pre><p>17、安裝 Dapper。<br>
 <img src="https://i.imgur.com/v5EdDif.jpg" alt=""></p>
-<p>18、開始實作Repository。</p>
-<p>一樣先在Repository注入我們需要的DatabaseHelper。</p>
+<p>18、開始實作 Repository。</p>
+<p>一樣先在 Repository 注入我們需要的 DatabaseHelper。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">         private readonly IDatabaseHelper _databaseHelper;
 
         public AccountRepository(IDatabaseHelper databaseHelper)
@@ -579,7 +579,7 @@ b、個資規定使用者電話後四碼必須以＊字號取代。</p>
         }
 </code></pre><p>19、進行測試。<br>
 <img src="https://i.imgur.com/wTpwvC3.jpg" alt=""></p>
-<p>這樣我們的第一個API就完成了，下篇接續。<br>
+<p>這樣我們的第一個 API 就完成了，下篇接續。<br>
 <!-- raw HTML omitted --></p>
 <p>目前進度:</p>
 <ul>

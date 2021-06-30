@@ -13,9 +13,9 @@
       <pubDate>Tue, 04 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96/</guid>
-      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰Redis快取。
-本文 開始前準備 我們先到CacheTypeEnum加入Redis。
-/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在Common Settings加入一個RedisConfigurationOptions。
+      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰 Redis 快取。
+本文 開始前準備 我們先到 CacheTypeEnum 加入 Redis。
+/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在 Common Settings 加入一個 RedisConfigurationOptions。
 public class RedisConfigurationOptions { /// &amp;lt;summary&amp;gt; /// The configuration. /// &amp;lt;/summary&amp;gt; public string Configuration { get; set; } /// &amp;lt;summary&amp;gt; /// The name of the instance. /// &amp;lt;/summary&amp;gt; public string InstanceName { get; set; } } 接著建立 IRedisCacheHelper
 public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指定 cachekey 的快取資料 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;cachekey&amp;quot;&amp;gt;The cachekey.</description>
     </item>
@@ -26,23 +26,18 @@ public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指�
       <pubDate>Sat, 24 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</guid>
-      <description>本文 1、String Redis內最基本的資料型態，以Binary safe的方式進行儲存。
+      <description>本文 1、String Redis 內最基本的資料型態，以 Binary safe 的方式進行儲存。
  Binary safe
-C語言中對字串的儲存形式會用&#39;\0&amp;rsquo;來做為字串結束的判斷。
-而Redis雖然是使用C語言寫的，但優化了這個部分，所以Redis只需專注於讀寫整個Binary string，而不用為了某種特殊格式而需要進行特殊化的解析。
+C語言中對字串的儲存形式會用 &amp;lsquo;\0&amp;rsquo; 來做為字串結束的判斷。
+而Redis雖然是使用C語言寫的，但優化了這個部分，所以 Redis 只需專注於讀寫整個 Binary string ，而不用為了某種特殊格式而需要進行特殊化的解析。
  優點：
  可以儲存任何格式的資料，包括了圖片、檔案、及任何序列化後的物件。  使用提醒：
- Redis中一個String的最大上限為512MB。  適用場景：
- 普通的快取資料。 用來實作統計等相關功能 Ex: 網站的瀏覽人數。 分散式架構下的Web共用Session。  2、List 由Redis內多個String所組成，類似於Linked-List的資料結構。
+ Redis 中一個 String 的最大上限為512MB。  適用場景：
+ 普通的快取資料。 用來實作統計等相關功能 Ex: 網站的瀏覽人數。 分散式架構下的 Web 共用 Session。  2、List 由 Redis 內多個 String 所組成，類似於 Linked-List 的資料結構。
 優點：
- 插入和刪除資料的操作很快，時間複雜度為O(1)。  使用提醒：
- Redis中一個List的最大長度上限為 2^32 - 1。  適用場景：
- 可用來實作佇列的Queue(First in first out)。 可用來實作Stack(Last in first out)。 社群功能的留言板、排行榜、關注等功能。  示範：
-有一個留言板，現在有了三則留言。
-LPUSH board firstMessage LPUSH board secondMessage LPUSH board thirdMessage 我們要拿取最新的那一筆留言。
-LPOP board 3、Hash 由一個String類型的field和value所組成，資料會進行壓縮，有點類似於C#的Dictionary。
-優點：
- 同類型的資料可以進行整合儲存，方便於管理。 比string消耗的記憶體更小。  缺點：</description>
+ 插入和刪除資料的操作很快，時間複雜度為 O(1)。  使用提醒：
+ Redis 中一個 List 的最大長度上限為 2^32 - 1。  適用場景：
+ 可用來實作佇列的 Queue(First in first out)。 可用來實作 Stack(Last in first out)。 社群功能的留言板、排行榜、關注等功能。  示範：</description>
     </item>
     
     <item>
@@ -51,11 +46,11 @@ LPOP board 3、Hash 由一個String類型的field和value所組成，資料會�
       <pubDate>Wed, 21 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/</guid>
-      <description>前言 本篇我們會示範使用C#來對Redis進行儲存。
+      <description>前言 本篇我們會示範使用 C# 來對 Redis 進行儲存。
 本文 我們會使用StackExchange.Redis這個Nuget套件進行示範。
-接下來我們建立一個簡易的Model。
-public class Employee { public string Id { get; set; } public string Name { get; set; } public int Age { get; set; } public Employee(string employeeId, string name, int age) { Id = employeeId; Name = name; Age = age; } } 給予一個初始值後我們將他轉成JSON的格式存入Redis。
-static void Main(string[] args) { //先取得連線 var connection = ConnectionMultiplexer.Connect(&amp;quot;127.0.0.1:6379&amp;quot;); var db = connection.GetDatabase(); var emp = new Employee(&amp;quot;1&amp;quot;,&amp;quot;Sian&amp;quot;,27); Console.WriteLine(&amp;quot;資料存入Redis成功 : &amp;quot; + db.</description>
+接下來我們建立一個簡易的 Model。
+public class Employee { public string Id { get; set; } public string Name { get; set; } public int Age { get; set; } public Employee(string employeeId, string name, int age) { Id = employeeId; Name = name; Age = age; } } 給予一個初始值後我們將他轉成 JSON 的格式存入 Redis。
+static void Main(string[] args) { //先取得連線 var connection = ConnectionMultiplexer.Connect(&amp;quot;127.0.0.1:6379&amp;quot;); var db = connection.</description>
     </item>
     
     <item>
@@ -64,30 +59,19 @@ static void Main(string[] args) { //先取得連線 var connection = ConnectionM
       <pubDate>Tue, 20 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</guid>
-      <description>前言 接下來會開始研究一些Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。
+      <description>前言 接下來會開始研究一些 Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。
 本文 Redis基本介紹 特點：
- 儲存資料是由Key-Value所組成。 資料儲存在記憶體內。 Single Thread I/O Multiplex。  1、儲存資料是由Key-Value所組成。 一般我們使用的SQL資料庫如：MSSQL、MySQL等，是屬於表格的方式儲存，傳統稱之為結構化數據。
-而Redis這類的NoSQL儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。
-簡單來說，在Redis內一組Key對應一組Value。
-2、資料儲存在記憶體內。 資料都是儲存在記憶體內，所以比起傳統DB可以達到更快速存取的機制。
-但也不是全部都只能放在記憶體，Redis也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。
+ 儲存資料是由 Key-Value 所組成。 資料儲存在記憶體內。 Single Thread I/O Multiplex。  1、儲存資料是由Key-Value所組成。 一般我們使用的 SQL 資料庫如：MSSQL、MySQL 等，是屬於表格的方式儲存，傳統稱之為結構化數據。
+而Redis這類的 NoSQL 儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。
+簡單來說，在 Redis 內一組 Key 對應一組 Value。
+2、資料儲存在記憶體內。 資料都是儲存在記憶體內，所以比起傳統 DB 可以達到更快速存取的機制。
+但也不是全部都只能放在記憶體，Redis 也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。
 注意要點：
-因為資料是存放在記憶體內，並不適合什麼東西都直接往Redis塞，稍一不甚使用就會悲劇。
-string類型控制在10KB以內，hash、list、set、zset元素個數不要超過5000。
-3、Single Thread I/O Multiplex。 Single Thread意味著不管裝載Redis的Server上有幾顆Cpu核心，一個Redis DB就只會使用到一個核心。
-(新版的Redis似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)
-一次只能使用一個Cpu的核心也就意味著一次只能接收一個Request，所以當有某一個Request佔用了太長的時間就會導致Redis無法應付其他的Request，這也跟上面第二點資料的存放大小有關。
-使用情景：
-傳統的程式如果要做快取通常第一選項都會直接使用本機的memory cache，但在分散式的架構下，當大家需要共用cache時，通常都會選擇使用Redis來當作快取資料庫。
-安裝說明 這邊我們會使用docker來進行安裝Redis。
-首先要下載Redis，這邊不指定版本預設就是下載最新版。
-docker pull redis 下載完後就可以執行Image。
-設定執行 container 的名字為 redis-test，port 為 6379，並設定背景執行。
-docker run --name redis-test -p 6379:6379 -d redis 可以使用docker ps觀看目前運行的container。
-測試 首先要先進到Redis-cli。
-第一步我們要指定使用Redis的container。 55d5是縮上面containerId的縮寫。
-docker exec -it 55d5 bash 接下來輸入以下指令，就可以看到我們已經連入Redis可以開始下指令了。
-redis-cli Redis提供一些簡單的指令供我們測試。</description>
+因為資料是存放在記憶體內，並不適合什麼東西都直接往 Redis 塞，稍一不甚使用就會悲劇。
+string 類型控制在10KB以內，hash、list、set、zset 元素個數不要超過 5000。
+3、Single Thread I/O Multiplex。 Single Thread 意味著不管裝載 Redis 的 Server 上有幾顆Cpu核心，一個 Redis DB 就只會使用到一個核心。
+(新版的 Redis 似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)
+一次只能使用一個 Cpu 的核心也就意味著一次只能接收一個 Request，所以當有某一個 Request 佔用了太長的時間就會導致 Redis 無法應付其他的 Request，這也跟上面第二點資料的存放大小有關。</description>
     </item>
     
   </channel>

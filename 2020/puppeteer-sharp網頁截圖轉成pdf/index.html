@@ -71,7 +71,7 @@
     "datePublished": "2020-08-04 22:19:33  CST",
     "dateModified" : "2020-08-04 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/puppeteer-sharp%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf\/",
-    "wordCount" : "232",
+    "wordCount" : "247",
     "keywords" : ["csharp", "Sian"]
 }
 </script>
@@ -176,12 +176,12 @@
 甚麼？你問隕石開發法跟這篇文有甚麼關係？</p>
 <h3 id="因為神有了需求">因為神有了需求</h3>
 <h2 id="本文">本文</h2>
-<p>上次有提到<a href="https://github.com/puppeteer/puppeteer">Puppeteer Sharp</a>這個套件、以及黑大這篇文<a href="https://blog.darkthread.net/blog/puppeteer-sharp/">C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp</a>，但因為我的chromium版本一直無法運行就此作罷；直到主管突然提起同單位有人成功使用這個套件實作出功能。</p>
+<p>上次有提到 <a href="https://github.com/puppeteer/puppeteer">Puppeteer Sharp</a> 這個套件、以及黑大這篇文 <a href="https://blog.darkthread.net/blog/puppeteer-sharp/">C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp</a> ，但因為我的 chromium 版本一直無法運行就此作罷；直到主管突然提起同單位有人成功使用這個套件實作出功能。</p>
 <ul>
 <li>這時候別人用了同工具可以，沒道理我不行的心就蠢蠢欲動了。</li>
 </ul>
-<p>把問題倒回碰到的起始點，是chromium無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下chromuim的版本，<a href="https://www.chromium.org/getting-involved/download-chromium">官方文件在此</a>，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此<a href="https://download-chromium.appspot.com/">網址</a>下載了官方提供版本更換套件內抓取的chromium測試。</p>
-<p>1、 先到專案資料夾底下bin &gt; Debugger &gt; .local-chromium 內。
+<p>把問題倒回碰到的起始點，是 chromium 無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下 chromuim 的版本，<a href="https://www.chromium.org/getting-involved/download-chromium">官方文件在此</a>，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此<a href="https://download-chromium.appspot.com/">網址</a>下載了官方提供版本更換套件內抓取的chromium測試。</p>
+<p>1、 先到專案資料夾底下 bin &gt; Debugger &gt; .local-chromium 內。
 <img src="https://i.imgur.com/6v5MO0k.jpg" alt=""></p>
 <p>2、將下載版本複製貼上並取代此資料夾內檔案。
 <img src="https://i.imgur.com/GpdllEB.jpg" alt=""></p>
@@ -220,7 +220,7 @@
 <h3 id="實際結果">實際結果</h3>
 <p><img src="https://i.imgur.com/NyXx0rU.jpg" alt=""></p>
 <!-- raw HTML omitted -->
-<p>測試成功後我們回到需求本身，是需要將兩個不同的網頁合成為一個pdf檔案，研究了一下套件用法，我選擇結合itextSharp達成目的。</p>
+<p>測試成功後我們回到需求本身，是需要將兩個不同的網頁合成為一個 pdf 檔案，研究了一下套件用法，我選擇結合 itextSharp 達成目的。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
         {
 			Test().Wait();

@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           單元測試 - 5(NSubstitute介紹) | Sian	
+           單元測試 - 5( NSubstitute 介紹) | Sian	
        	
   </title>	
-  <meta name="title" content="單元測試 - 5(NSubstitute介紹) | Sian">	
+  <meta name="title" content="單元測試 - 5( NSubstitute 介紹) | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "單元測試 - 5(NSubstitute介紹)",
-    "headline" : "單元測試 - 5(NSubstitute介紹)",
-    "description" : "單元測試 - 5(NSubstitute介紹)",
+    "name" : "單元測試 - 5( NSubstitute 介紹)",
+    "headline" : "單元測試 - 5( NSubstitute 介紹)",
+    "description" : "單元測試 - 5( NSubstitute 介紹)",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -71,7 +71,7 @@
     "datePublished": "2021-02-05 20:40:45  UTC",
     "dateModified" : "2021-02-05 20:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "415",
+    "wordCount" : "434",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -134,7 +134,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">單元測試 - 5(NSubstitute介紹)</h1>
+        <h1 class="post-title" itemprop="name headline">單元測試 - 5( NSubstitute 介紹)</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
@@ -171,13 +171,13 @@
           
 
           <h2 id="前言">前言</h2>
-<p>上一篇提到了NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(<del>絕對不是我原本想要跳過不介紹被抓到才補上這篇</del>)。</p>
+<p>上一篇提到了 NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(<del>絕對不是我原本想要跳過不介紹被抓到才補上這篇</del>)。</p>
 <h2 id="本文">本文</h2>
 <h3 id="驗證互動是否符合預期方法">驗證互動是否符合預期方法</h3>
 <p>接續上次使用範例。</p>
 <p>情境:<br>
-我們現在有一個Check的方法，若出現錯誤則會紀錄一筆log。</p>
-<p>首先先把log方法準備好。</p>
+我們現在有一個 Check 的方法，若出現錯誤則會紀錄一筆log。</p>
+<p>首先先把 log 方法準備好。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public interface ILog
     {
         void SaveLog(string message);
@@ -236,7 +236,7 @@
             this._log.Received(1);
         }
 </code></pre><p><img src="https://i.imgur.com/Tv0Eq5I.jpg" alt=""></p>
-<p>也可以驗證log記下的內容。</p>
+<p>也可以驗證 log 記下的內容。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    [TestMethod()]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;ServiceTest&quot;)]
@@ -272,8 +272,8 @@
 </code></pre><p><img src="https://i.imgur.com/oExnpv4.jpg" alt=""></p>
 <h3 id="傳遞的參數">傳遞的參數</h3>
 <p>情境:<br>
-Insert一筆資料到DB若成功回傳True，失敗則False。</p>
-<p>Repository準備</p>
+Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
+<p>Repository 準備</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
@@ -286,7 +286,7 @@ Insert一筆資料到DB若成功回傳True，失敗則False。</p>
             //你知道的這只是一種假設沒有要真的實作。
             return true;
         }
-</code></pre><p>Service的部分。</p>
+</code></pre><p>Service 的部分。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 
         /// &lt;/summary&gt;
@@ -324,7 +324,7 @@ Insert一筆資料到DB若成功回傳True，失敗則False。</p>
         }
 </code></pre><p><img src="https://i.imgur.com/wJ3fChm.jpg" alt=""></p>
 <!-- raw HTML omitted -->
-<p>可以看到傳遞給Repository的參數我們直接使用了Args.Any<!-- raw HTML omitted -->這個方式，並直接指定了回傳的內容，<del>又被你學到一個偷懶的方式</del> 。</p>
+<p>可以看到傳遞給 Repository 的參數我們直接使用了 Args.Any<!-- raw HTML omitted --> 這個方式，並直接指定了回傳的內容，<del>又被你學到一個偷懶的方式</del> 。</p>
 <!-- raw HTML omitted -->
 <p>同樣的驗證False也可以這麼做。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
@@ -438,8 +438,8 @@ Insert一筆資料到DB若成功回傳True，失敗則False。</p>
 </ul>
 <h2 id="參考連結">參考連結</h2>
 <ul>
-<li>1、<a href="https://nsubstitute.github.io/help.html">NSubstitute官方文件</a>。</li>
-<li>2、<a href="https://www.cnblogs.com/gaochundong/archive/2013/05/21/nsubstitute_get_started.html">NSubstitute完全手册</a>。</li>
+<li>1、<a href="https://nsubstitute.github.io/help.html">NSubstitute 官方文件</a>。</li>
+<li>2、<a href="https://www.cnblogs.com/gaochundong/archive/2013/05/21/nsubstitute_get_started.html">NSubstitute 完全手册</a>。</li>
 </ul>
 
     </div>

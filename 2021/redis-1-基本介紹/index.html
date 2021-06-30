@@ -71,7 +71,7 @@
     "datePublished": "2021-04-20 18:40:45  UTC",
     "dateModified" : "2021-04-20 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "119",
+    "wordCount" : "196",
     "keywords" : ["docker","Redis","NoSql", "Sian"]
 }
 </script>
@@ -171,55 +171,55 @@
           
 
           <h2 id="前言">前言</h2>
-<p>接下來會開始研究一些Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。</p>
+<p>接下來會開始研究一些 Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。</p>
 <h2 id="本文">本文</h2>
 <h3 id="redis基本介紹">Redis基本介紹</h3>
 <p>特點：</p>
 <ul>
-<li>儲存資料是由Key-Value所組成。</li>
+<li>儲存資料是由 Key-Value 所組成。</li>
 <li>資料儲存在記憶體內。</li>
 <li>Single Thread I/O Multiplex。</li>
 </ul>
 <h4 id="1儲存資料是由key-value所組成">1、儲存資料是由Key-Value所組成。</h4>
-<p>一般我們使用的SQL資料庫如：MSSQL、MySQL等，是屬於表格的方式儲存，傳統稱之為結構化數據。<br>
-而Redis這類的NoSQL儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。</p>
-<p>簡單來說，在Redis內一組Key對應一組Value。</p>
+<p>一般我們使用的 SQL 資料庫如：MSSQL、MySQL 等，是屬於表格的方式儲存，傳統稱之為結構化數據。<br>
+而Redis這類的 NoSQL 儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。</p>
+<p>簡單來說，在 Redis 內一組 Key 對應一組 Value。</p>
 <h4 id="2資料儲存在記憶體內">2、資料儲存在記憶體內。</h4>
-<p>資料都是儲存在記憶體內，所以比起傳統DB可以達到更快速存取的機制。<br>
-但也不是全部都只能放在記憶體，Redis也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。</p>
+<p>資料都是儲存在記憶體內，所以比起傳統 DB 可以達到更快速存取的機制。<br>
+但也不是全部都只能放在記憶體，Redis 也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。</p>
 <p>注意要點：<br>
-因為資料是存放在記憶體內，並不適合什麼東西都直接往Redis塞，稍一不甚使用就會悲劇。<br>
-string類型控制在10KB以內，hash、list、set、zset元素個數不要超過5000。</p>
+因為資料是存放在記憶體內，並不適合什麼東西都直接往 Redis 塞，稍一不甚使用就會悲劇。<br>
+string 類型控制在10KB以內，hash、list、set、zset 元素個數不要超過 5000。</p>
 <h4 id="3single-thread-io-multiplex">3、Single Thread I/O Multiplex。</h4>
-<p>Single Thread意味著不管裝載Redis的Server上有幾顆Cpu核心，一個Redis DB就只會使用到一個核心。<br>
-(新版的Redis似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)</p>
-<p>一次只能使用一個Cpu的核心也就意味著一次只能接收一個Request，所以當有某一個Request佔用了太長的時間就會導致Redis無法應付其他的Request，這也跟上面第二點資料的存放大小有關。</p>
+<p>Single Thread 意味著不管裝載 Redis 的 Server 上有幾顆Cpu核心，一個 Redis DB 就只會使用到一個核心。<br>
+(新版的 Redis 似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)</p>
+<p>一次只能使用一個 Cpu 的核心也就意味著一次只能接收一個 Request，所以當有某一個 Request 佔用了太長的時間就會導致 Redis 無法應付其他的 Request，這也跟上面第二點資料的存放大小有關。</p>
 <p>使用情景：<br>
-傳統的程式如果要做快取通常第一選項都會直接使用本機的memory cache，但在分散式的架構下，當大家需要共用cache時，通常都會選擇使用Redis來當作快取資料庫。</p>
+傳統的程式如果要做快取通常第一選項都會直接使用本機的 memory cache，但在分散式的架構下，當大家需要共用 cache 時，通常都會選擇使用 Redis 來當作快取資料庫。</p>
 <h3 id="安裝說明">安裝說明</h3>
-<p>這邊我們會使用docker來進行安裝Redis。</p>
-<p>首先要下載Redis，這邊不指定版本預設就是下載最新版。</p>
+<p>這邊我們會使用 docker 來進行安裝 Redis。</p>
+<p>首先要下載 Redis，這邊不指定版本預設就是下載最新版。</p>
 <pre><code class="language-shell=" data-lang="shell=">docker pull redis
 </code></pre><p><img src="https://i.imgur.com/m2HEXQ6.jpg" alt=""></p>
-<p>下載完後就可以執行Image。<br>
+<p>下載完後就可以執行 Image。<br>
 設定執行 container 的名字為 redis-test，port 為 6379，並設定背景執行。</p>
 <pre><code class="language-shell=" data-lang="shell=">docker run --name redis-test -p 6379:6379 -d redis
 </code></pre><p><img src="https://i.imgur.com/tQpJyVO.jpg" alt=""></p>
-<p>可以使用docker ps觀看目前運行的container。<br>
+<p>可以使用 docker ps 觀看目前運行的 container。<br>
 <img src="https://i.imgur.com/c7pNfXq.jpg" alt=""></p>
 <h3 id="測試">測試</h3>
-<p>首先要先進到Redis-cli。</p>
-<p>第一步我們要指定使用Redis的container。
-55d5是縮上面containerId的縮寫。</p>
+<p>首先要先進到 Redis-cli。</p>
+<p>第一步我們要指定使用 Redis 的 container。
+55d5 是縮上面 containerId 的縮寫。</p>
 <pre><code class="language-shell=" data-lang="shell=">docker exec -it 55d5 bash
 </code></pre><p><img src="https://i.imgur.com/7SGgj0t.jpg" alt=""></p>
-<p>接下來輸入以下指令，就可以看到我們已經連入Redis可以開始下指令了。</p>
+<p>接下來輸入以下指令，就可以看到我們已經連入 Redis 可以開始下指令了。</p>
 <pre><code class="language-shell=" data-lang="shell=">redis-cli
 </code></pre><p><img src="https://i.imgur.com/DBeaFtt.jpg" alt=""></p>
-<p>Redis提供一些簡單的指令供我們測試。<br>
+<p>Redis 提供一些簡單的指令供我們測試。<br>
 輸入：</p>
 <pre><code class="language-shell=" data-lang="shell=">Ping
-</code></pre><p>Redis回應Pong。<br>
+</code></pre><p>Redis 回應 Pong。<br>
 <img src="https://i.imgur.com/r14TE1v.jpg" alt=""></p>
 <p>測試簡單資料儲存。<br>
 輸入：</p>
@@ -229,17 +229,17 @@ string類型控制在10KB以內，hash、list、set、zset元素個數不要超�
 <pre><code class="language-shell=" data-lang="shell=">get test
 </code></pre><p><img src="https://i.imgur.com/9N79VfS.jpg" alt=""></p>
 <h3 id="管理工具">管理工具</h3>
-<p>喜歡GUI的朋友有福了，這邊也有提供了GUI介面的管理方式。<br>
+<p>喜歡 GUI 的朋友有福了，這邊也有提供了 GUI 介面的管理方式。<br>
 <a href="https://github.com/qishibo/AnotherRedisDesktopManager">Another Redis Desktop Manager</a></p>
 <p>安裝完成後打開介面如下<br>
 <img src="https://i.imgur.com/cP1RtiK.jpg" alt=""></p>
 <p>接下來點選左上角建立連線。<br>
 <img src="https://i.imgur.com/KXAwyAQ.jpg" alt=""></p>
-<p>建立成功點開Server就會看到以下視窗。<br>
+<p>建立成功點開 Server 就會看到以下視窗。<br>
 <img src="https://i.imgur.com/6z2d6IU.jpg" alt=""></p>
-<p>點選test就會看到我們剛剛存放的第一筆資料，TTL代表著他還有多久過期，-1則代表永久存在。<br>
+<p>點選 test 就會看到我們剛剛存放的第一筆資料，TTL 代表著他還有多久過期，-1 則代表永久存在。<br>
 <img src="https://i.imgur.com/Npgngip.jpg" alt=""></p>
-<p>-1這種永久存在的資料就會占用到硬碟空間，同時也會增加I/O讀取得時間，所以並不建議放這種資料在Redis。</p>
+<p>-1 這種永久存在的資料就會占用到硬碟空間，同時也會增加 I/O 讀取得時間，所以並不建議放這種資料在 Redis。</p>
 <p>通常設定快取資料最常不超過一小時。</p>
 <!-- raw HTML omitted -->
 <h2 id="參考資料">參考資料</h2>

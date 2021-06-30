@@ -13,13 +13,13 @@
       <pubDate>Sun, 30 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</guid>
-      <description>本文 Topics 這個模式下Exchange會透過Topic的方式，將訊息丟給符合的Queue傳給相對應的Reciver。
-Topic會透過我們給予的Key來決定要給哪些人，而Key可以使用兩種特殊符號：
+      <description>本文 Topics 這個模式下 Exchange 會透過 Topic 的方式，將訊息丟給符合的 Queue 傳給相對應的 Reciver。
+Topic 會透過我們給予的 Key 來決定要給哪些人，而 Key 可以使用兩種特殊符號：
  1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
 那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &amp;hellip; 都允許通過。
 接著我們來實作測試看看吧。
 Publisher
-var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.Topic); //我們已接收到的第一個參數來當key決定要丟給哪一個Queue var key = (args.Length &amp;gt; 0) ? args[0] : &amp;quot;anonymous.</description>
+var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.</description>
     </item>
     
     <item>
@@ -28,10 +28,10 @@ var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;
       <pubDate>Thu, 20 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-4rabbitmq/</guid>
-      <description>本文 Publish/Subscribe 我們來練習使用Exchange透過Fanout的方式發送訊息給所有Queue。
-現在我們目標是要發送log給所有Queue。
+      <description>本文 Publish/Subscribe 我們來練習使用 Exchange 透過 Fanout 的方式發送訊息給所有 Queue。
+現在我們目標是要發送 log 給所有 Queue。
 一樣先建立Publisher。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.WriteLine(&amp;quot;請按任意鍵離開!&amp;quot;); Console.ReadLine(); } private static string GetMessage(string[] args) { return ((args.</description>
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
     </item>
     
     <item>
@@ -43,9 +43,9 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
       <description>前言 前一篇介紹了基本的用法，接下來我們就來研究第一篇有介紹過的各種特殊處理。
 本文 這邊主要的練習都是參考以下文件：
 RabbitMQ 中文文檔
-Work Queues 有多個Consumer可以來幫忙消化Queue內的任務模式。
-首先我們一樣先建立一個Pubisher，這次改成由外部接收要傳送的訊息再丟給Queue。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
+Work Queues 有多個 Consumer 可以來幫忙消化 Queue 內的任務模式。
+首先我們一樣先建立一個 Pubisher，這次改成由外部接收要傳送的訊息再丟給 Queue。
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.</description>
     </item>
     
     <item>
@@ -54,29 +54,25 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
       <pubDate>Mon, 17 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/</guid>
-      <description>本文 架設RabbitMQ 首先我們使用docker來架設練習用的RabbitMQ。
-我們要使用rabbitmq:management的image，除了會幫我們架設起一個RabbitMQ外，也包含了可以管理的Web介面。
+      <description>本文 架設RabbitMQ 首先我們使用 docker 來架設練習用的 RabbitMQ。
+我們要使用 rabbitmq:management的image ，除了會幫我們架設起一個 RabbitMQ 外，也包含了可以管理的 Web 介面。
 使用以下語法，並給予預設帳號的帳號密碼。
-docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management 可以看到輸入後就算目前沒有該Image也會自動幫你下載(懶人的福音R)
-接下來可以到docker確認是否已經啟用。
+docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management 可以看到輸入後就算目前沒有該 Image 也會自動幫你下載(懶人的福音R)
+接下來可以到 docker 確認是否已經啟用。
 那麼就可以輸入以下網址登入測試了。
 http://localhost:15672/ 連上後就會看到登入畫面。
 輸入我們剛剛設定的預設值即可。
-Account: admin Password: a1234 成功進入後就會看到初始畫面儀錶板，一樣可以在Overview看到RabbitMQ目前有哪些東西在作用。
+Account: admin Password: a1234 成功進入後就會看到初始畫面儀錶板，一樣可以在 Overview 看到 RabbitMQ 目前有哪些東西在作用。
 這邊就只挑比較特別的地方做介紹。
-Exchange 這邊可以看到目前有建立了哪些Exchange，畫面上看到的都是預設的。
-使用Web介面的好處是可以直接透過介面建立。
-點選Exchange可以看到細部的設定。
+Exchange 這邊可以看到目前有建立了哪些 Exchange，畫面上看到的都是預設的。
+使用 Web 介面的好處是可以直接透過介面建立。
+點選 Exchange 可以看到細部的設定。
 Queue 一樣是可以透過介面觀看有哪些佇列、與其細項內容，並可以直接透過介面新增。
 Admin 這邊就是管理者的介面可以設定帳號，增加使用者等。
 右方還有更細部的設定，比如可以設定一些連接數、政策規範等。
-實作練習 這次主要範例會使用RabbitMQ官方的Nuget。
+實作練習 這次主要範例會使用 RabbitMQ 官方的 Nuget。
 RabbitMQ.Client
-讓我們先建立ConsoleApp。
-需要建立一個Publisher、一個Reciever。
-接下來先安裝RabbitMQ.Client。
-我們就可以來開始先做我們的Publisher發布訊息內容。
-static void Main(string[] args) { //設定主機位置以及帳號密碼 var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; //連線設定 using (var connection = factory.</description>
+讓我們先建立 ConsoleApp。</description>
     </item>
     
     <item>
@@ -85,24 +81,19 @@ static void Main(string[] args) { //設定主機位置以及帳號密碼 var fac
       <pubDate>Mon, 10 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</guid>
-      <description>前言 延續上述練習，接下來我們想做到，當HangFire撈取新Youbike資料的同時，讓系統能夠同步更新我們的快取資料確保使用者能夠拿到最即時的資料，這時候Message Queue就會派上用場，接下來就來研究看看Message Queue能做到那些事，以及如何實作。
-本文 Application Intergration(系統整合) 在開始認識Message Queue之前我們需要先對系統整合有些許概念。
+      <description>前言 延續上述練習，接下來我們想做到，當 HangFire 撈取新 Youbike 資料的同時，讓系統能夠同步更新我們的快取資料確保使用者能夠拿到最即時的資料，這時候 Message Queue就會派上用場，接下來就來研究看看Message Queue 能做到那些事，以及如何實作。
+本文 Application Intergration(系統整合) 在開始認識 Message Queue 之前我們需要先對系統整合有些許概念。
 系統整合指的是：
 一個完整的系統，不會只有一支程式在運作，而是有各種不同的程式各個相互合作下達成不同的任務，在合作的過程中就需要透過訊息傳遞的幫助來協助彼此間相互合作，這類的需求我們就稱之為系統整合需要做到的事。
 Ex:設想一個工廠的運作也是如此，工廠內不會只有一個產線在運行，像是特斯拉的工廠，我們從源頭需要備料，每一個零件的組裝，到一個完整的汽車烤漆，層層都有各個產線需要完成的事情，而相互間溝通就是需要透過系統整合來協助達成。
 而系統整合分為了以下幾種方式：
-1、Filed Based Integration(檔案為主的整合方式)。 Source Appication(來源程式)會根據要處理的任務，產生相對應的檔案到指定的路徑中，而Proccess Appication(處理程式)就會一直監看資料夾內有沒有需要處理的任務，當有的時候就會取出檔案作相對應的處理，並將處理的結果放到合適的檔案存放區。
-2、Shared Database Integration(共享資料庫的整合方式)。 Source Appication(來源程式)將要處理的任務寫入DB，Proccess Appication(處理程式)就會一直監看DB有沒有需要處理的任務，當有的時候就會取出任務作相對應的處理，並將處理的結果寫回到DB。
+1、Filed Based Integration(檔案為主的整合方式)。 Source Appication(來源程式)會根據要處理的任務，產生相對應的檔案到指定的路徑中，而 Proccess Appication(處理程式)就會一直監看資料夾內有沒有需要處理的任務，當有的時候就會取出檔案作相對應的處理，並將處理的結果放到合適的檔案存放區。
+2、Shared Database Integration(共享資料庫的整合方式)。 Source Appication(來源程式)將要處理的任務寫入 DB，Proccess Appication(處理程式)就會一直監看 DB 有沒有需要處理的任務，當有的時候就會取出任務作相對應的處理，並將處理的結果寫回到 DB。
 這種方式就有點像我們Hangfire的運作模式。
 3、Direct Connection Integration(直接連結的整合方式)。 Source Appication(來源程式)透過提前協議好的連結方式(TCP/IP、Named pipe connection)，直接傳遞要處理的任務，傳遞的資料格式可能為(Binary、XML、JSON等)，Proccess Appication(處理程式)處理完任務後再將結果傳回。
-4、Asynchronous Message Broker(透過Message Broker的非同步傳遞方式)。 來源程式(這邊會稱為:Producer Appication)將任務傳給Message Broker，Message Boker在透過佇列(Queue)的方式將任務排列先後順序，最後將任務傳遞給處理程式進行處理(這邊稱之為Consumer Application)。
+4、Asynchronous Message Broker(透過Message Broker的非同步傳遞方式)。 來源程式(這邊會稱為:Producer Appication)將任務傳給 Message Broker，Message Boker 在透過佇列(Queue)的方式將任務排列先後順序，最後將任務傳遞給處理程式進行處理(這邊稱之為Consumer Application)。
 這種類型的傳遞方式特點為：
- 不限制傳遞的資料格式。 需要有一個Message Broker Middleware進行協助處理任務的排列。 非同步的溝通方式，Producer傳送訊息至Message Queue後不需要立即得到回應，可以先行處理其他事情。 Comsumer可以等到有空的時候再來處理任務。  所以這邊最大的特點是，將收發訊息的雙方進行了解耦合的動作，兩邊在開發上可以專注在開發自己的程式上、收送雙方也不需要彼此的實體位置(IP地址、接收訊息的程式在哪)僅需要把訊息往Message Broker送即可。
-有著好的可靠性，訊息放在Queue中使得資料不容易流失、Comsumer就算暫時無法消化訊息也沒關係，Message Queue會暫時將資料存起來等到Comsumer有資源可以消化時再將訊息送出去。
-架構上也可以達到彈性擴展，Poducer、Message Broker、Comsumer都可以依照需求增減，Message Queue也是微服務的架構下最主要的溝通模式。
-RabbitMQ 這次我們要研究的Message Queue就是RabbitMQ。
-主要的腳色有：
- Producer - 負責丟訊息到Queue的。 Consumer - 負責消化來自Queue的訊息。 Queue - 負責存放所需的資料，一樣有著First-In-First-Out的特性。 Exchange - 在Poducer與Queue中間的一個元件，如果有Exchage的時候Poducer不再是直接把Message丟給Queue，而是把Message丟給Exchange後，由他來決定要丟給誰，主要有四種方式</description>
+ 不限制傳遞的資料格式。 需要有一個 Message Broker Middleware 進行協助處理任務的排列。 非同步的溝通方式，Producer 傳送訊息至 Message Queue 後不需要立即得到回應，可以先行處理其他事情。 Comsumer 可以等到有空的時候再來處理任務。  所以這邊最大的特點是，將收發訊息的雙方進行了解耦合的動作，兩邊在開發上可以專注在開發自己的程式上、收送雙方也不需要彼此的實體位置(IP地址、接收訊息的程式在哪)僅需要把訊息往 Message Broker 送即可。</description>
     </item>
     
   </channel>

@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           單元測試 - 9(Repository測試) | Sian	
+           單元測試 - 9(Repository 測試) | Sian	
        	
   </title>	
-  <meta name="title" content="單元測試 - 9(Repository測試) | Sian">	
+  <meta name="title" content="單元測試 - 9(Repository 測試) | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "單元測試 - 9(Repository測試)",
-    "headline" : "單元測試 - 9(Repository測試)",
-    "description" : "單元測試 - 9(Repository測試)",
+    "name" : "單元測試 - 9(Repository 測試)",
+    "headline" : "單元測試 - 9(Repository 測試)",
+    "description" : "單元測試 - 9(Repository 測試)",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -71,7 +71,7 @@
     "datePublished": "2021-03-01 20:40:45  UTC",
     "dateModified" : "2021-03-01 20:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6\/",
-    "wordCount" : "1346",
+    "wordCount" : "1397",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -134,7 +134,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">單元測試 - 9(Repository測試)</h1>
+        <h1 class="post-title" itemprop="name headline">單元測試 - 9(Repository 測試)</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
@@ -171,22 +171,22 @@
           
 
           <h2 id="前言">前言</h2>
-<p>前面介紹完Service層的測試方法，接續介紹Repository的測試。</p>
+<p>前面介紹完 Service 層的測試方法，接續介紹 Repository 的測試。</p>
 <h2 id="本文">本文</h2>
-<p>這邊先講解一下要如何進行Repository的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過Container例如:docker、或是使用localDB進行整合測試，這邊主要是以localDB進行示範。<br>
+<p>這邊先講解一下要如何進行 Repository 的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過 Container 例如: docker、或是使用 localDB 進行整合測試，這邊主要是以 localDB 進行示範。<br>
 <!-- raw HTML omitted --></p>
-<p>一樣先建立一個Repository的測試專案。<br>
+<p>一樣先建立一個 Repository 的測試專案。<br>
 <img src="https://i.imgur.com/ZglOjki.jpg" alt=""></p>
-<p>記得測試專案要加入原本Repository的參考。<br>
+<p>記得測試專案要加入原本 Repository 的參考。<br>
 <img src="https://i.imgur.com/6OujuNB.jpg" alt=""></p>
-<h3 id="使用ssms取得建立table的sql語法">使用SSMS取得建立Table的SQL語法。</h3>
+<h3 id="使用-ssms-取得建立-table-的-sql-語法">使用 SSMS 取得建立 Table 的 SQL 語法。</h3>
 <p><img src="https://i.imgur.com/zWffDIL.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/ZQdLR0I.jpg" alt=""></p>
 <p>將SQL檔案存放到測試專案內。<br>
 <img src="https://i.imgur.com/5bjPBKI.jpg" alt=""></p>
 <p>記得也要調整檔案屬性，為永遠複製。<br>
 <img src="https://i.imgur.com/7WoLZwb.jpg" alt=""></p>
-<h3 id="使用ssms取得insert-data的sql語法">使用SSMS取得INSERT DATA的SQL語法。</h3>
+<h3 id="使用-ssms-取得-insert-data-的-sql-語法">使用 SSMS 取得 INSERT DATA 的 SQL 語法。</h3>
 <p><img src="https://i.imgur.com/RGfH6PU.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/12CRxmL.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/p2KKJX8.jpg" alt=""></p>
@@ -195,9 +195,9 @@
 產出的檔案：<br>
 <img src="https://i.imgur.com/6DnVUIt.jpg" alt=""></p>
 <h3 id="安裝dapper到repository測試專案">安裝Dapper到Repository測試專案。</h3>
-<p>因為測試SQL Command時會利用Dapper去執行SQL，所以需要安裝。<br>
+<p>因為測試 SQL Command 時會利用 Dapper 去執行 SQL，所以需要安裝。<br>
 <img src="https://i.imgur.com/tc34ERc.jpg" alt=""></p>
-<h3 id="準備repository測試使用到之方法">準備Repository測試使用到之方法。</h3>
+<h3 id="準備-repository-測試使用到之方法">準備 Repository 測試使用到之方法。</h3>
 <h4 id="1databasename">1、DatabaseName。</h4>
 <pre><code class="language-csharp=" data-lang="csharp=">public class DatabaseName
     {
@@ -842,18 +842,18 @@
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/Zzr1BoC.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>提供以上測試Repository的測試方法，另外也跟同事討論到Repository的測試到底該到哪種程度？</p>
-<p>在這邊公司大神也有提供了如何捏造SqlException的測試方法，或是Mock dapper回傳的內容。</p>
+<p>提供以上測試 Repository 的測試方法，另外也跟同事討論到 Repository 的測試到底該到哪種程度？</p>
+<p>在這邊公司大神也有提供了如何捏造 SqlException 的測試方法，或是 Mock dapper 回傳的內容。</p>
 <p>但討論出來的結果我認為只需要有這些基本測試就足夠了，理由呢？<br>
-是開發的時候基本上都一定會有測試的DB能夠進行測試，所以我個人當下一定會先將SQL語法在測試DB執行過成功後才放入程式，因此就只對Repository進行這些基本的測試，但當然或許有我考慮不夠周全的地方，也歡迎大家提出互相交流。<br>
+是開發的時候基本上都一定會有測試的 DB 能夠進行測試，所以我個人當下一定會先將 SQL 語法在測試DB執行過成功後才放入程式，因此就只對 Repository 進行這些基本的測試，但當然或許有我考慮不夠周全的地方，也歡迎大家提出互相交流。<br>
 以上提供給大家參考。</p>
-<p><a href="https://github.com/sunnyday0932/WebApiPhase2">程式一樣會放在Github，有需要的人歡迎取用。</a></p>
+<p><a href="https://github.com/sunnyday0932/WebApiPhase2">程式一樣會放在 Github，有需要的人歡迎取用。</a></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
-<li>1、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part1.html">MRKT Repository 測試使用 LocalDB - Part.1</a>。</li>
-<li>2、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part2.html">MRKT Repository 測試使用 LocalDB - Part.2</a>。</li>
-<li>3、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part3.html">MRKT Repository 測試使用 LocalDB - Part.3</a>。</li>
-<li>4、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part4.html">MRKT Repository 測試使用 LocalDB - Part.4</a>。</li>
+<li>1、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part1.html">mrkt Repository 測試使用 LocalDB - Part.1</a>。</li>
+<li>2、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part2.html">mrkt Repository 測試使用 LocalDB - Part.2</a>。</li>
+<li>3、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part3.html">mrkt Repository 測試使用 LocalDB - Part.3</a>。</li>
+<li>4、<a href="https://kevintsengtw.blogspot.com/2016/10/repository-localdb-part4.html">mrkt Repository 測試使用 LocalDB - Part.4</a>。</li>
 </ul>
 
     </div>

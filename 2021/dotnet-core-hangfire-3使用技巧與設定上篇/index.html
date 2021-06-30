@@ -71,7 +71,7 @@
     "datePublished": "2021-04-03 18:40:45  UTC",
     "dateModified" : "2021-04-03 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87\/",
-    "wordCount" : "422",
+    "wordCount" : "548",
     "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
 }
 </script>
@@ -173,8 +173,8 @@
           <h2 id="前言">前言</h2>
 <p>本篇會介紹一些特殊使用技巧，跟一些可以調整的設定。</p>
 <h2 id="本文">本文</h2>
-<h3 id="1api觸發排程">1、API觸發排程。</h3>
-<p>首先建立一個API Controller。</p>
+<h3 id="1api-觸發排程">1、API 觸發排程。</h3>
+<p>首先建立一個 API Controller。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">
     [Route(&quot;api/[controller]&quot;)]
     [ApiController]
@@ -194,14 +194,14 @@
 </code></pre><p>測試：<br>
 <img src="https://i.imgur.com/Xa3JiYG.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/OFNjAxd.jpg" alt=""></p>
-<h3 id="2設定排程priority">2、設定排程Priority。</h3>
-<p>先在StartUp中ConfigureService設定Priority。</p>
+<h3 id="2設定排程-priority">2、設定排程 Priority。</h3>
+<p>先在 StartUp 中 ConfigureService 設定 Priority。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">services.AddHangfireServer(options =&gt;
             {
                 //priority
                 options.Queues = new[] { &quot;alpha&quot;, &quot;beta&quot;, &quot;default&quot; };
             });
-</code></pre><p>將Recurring Job 改成：</p>
+</code></pre><p>將 Recurring Job 改成：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">            //Recurring job
             RecurringJob.AddOrUpdate
                 (
@@ -236,25 +236,25 @@
 <p>執行順序：<br>
 alpha &gt; beta &gt; default</p>
 <p>2021/04/19更新<br>
-感謝同事協助指正，這邊我們測試過後發現，Hangfire提供的Priority似乎沒有真正的作用，是我上方實驗方式有誤。<br>
-這邊我們先將Worker數量改成1，然後讓原本印出起始以及結束時間的JOB改成sleep 20秒。</p>
+感謝同事協助指正，這邊我們測試過後發現，Hangfire 提供的 Priority 似乎沒有真正的作用，是我上方實驗方式有誤。<br>
+這邊我們先將 Worker 數量改成 1，然後讓原本印出起始以及結束時間的 JOB 改成 sleep 20秒。</p>
 <p><img src="https://i.imgur.com/W5GKT03.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/jncTNkW.jpg" alt=""></p>
-<p>接下來把原本固定執行的JOB都改為1小時，避免影響測試。<br>
+<p>接下來把原本固定執行的 JOB 都改為1小時，避免影響測試。<br>
 <img src="https://i.imgur.com/sl1MTdo.jpg" alt=""></p>
-<p>運行Hangfire後，我們的操作方式會是先執行印出起始以及結束時間的JOB，當他在執行的時候把2個beta job排入佇列，1個alpha job排入佇列，觀察執行結果。<br>
+<p>運行 Hangfire 後，我們的操作方式會是先執行印出起始以及結束時間的 JOB，當他在執行的時候把2個 beta job 排入佇列，1個 alpha job 排入佇列，觀察執行結果。<br>
 <img src="https://i.imgur.com/YmqpKih.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/idJHZYx.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/ilYwbkP.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/D1mrDGv.jpg" alt=""></p>
 <p>會發現實驗結果還是按照先後順序執行，並沒有真的依照優先度做排序，<a href="https://discuss.hangfire.io/t/multiple-queue-priority-order-is-not-working/784">這邊也有看到相關討論</a>，並不確定是否我的用法有誤，歡迎指正。</p>
 <!-- raw HTML omitted -->
-<p>回歸正題，那到底該如何確保Hangfire的Job能夠有優先權先後的執行順序呢？<br>
-我們公司作法是透過RabbitMQ來實作Job Priority，由RabbitMQ的佇列來決定工作的執行先後順序，提供給大家做參考。</p>
+<p>回歸正題，那到底該如何確保 Hangfire 的 Job 能夠有優先權先後的執行順序呢？<br>
+我們公司作法是透過 RabbitMQ 來實作 Job Priority，由 RabbitMQ 的佇列來決定工作的執行先後順序，提供給大家做參考。</p>
 <p>2021/04/21 再度更新<br>
-感謝前輩幫忙解惑另一個使用方式，這邊Hangfire文件提供的另一個方式是使用內建的Attribute。<br>
+感謝前輩幫忙解惑另一個使用方式，這邊 Hangfire 文件提供的另一個方式是使用內建的 Attribute。<br>
 <img src="https://i.imgur.com/RYWu4Nj.jpg" alt=""></p>
-<p>那我們現在就把AlphaJob跟BetaJob拆成下列使用方式。</p>
+<p>那我們現在就把 AlphaJob 跟 BetaJob 拆成下列使用方式。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public interface IAlphaJob
     {
         [Queue(&quot;alpha&quot;)]
@@ -292,9 +292,9 @@ alpha &gt; beta &gt; default</p>
         }
     }
 </code></pre><p>注意要點：<br>
-感謝前輩特別提醒Attribute要掛在介面，因為Hangfire是透過反射的方式抓取。<br>
+感謝前輩特別提醒 Attribute 要掛在介面，因為 Hangfire 是透過反射的方式抓取。<br>
 <del>不信的話你也可以試試看放在實作</del></p>
-<p>接下來HangfireJobTrigger的地方我們調整成。</p>
+<p>接下來 HangfireJobTrigger 的地方我們調整成。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class HangfireJobTrigger : IHangfireJobTrigger
     {
         public void OnStart()
@@ -329,7 +329,7 @@ alpha &gt; beta &gt; default</p>
                 );
         }
     }
-</code></pre><p>記得要DI Extension的地方注入我們剛剛的JOB。</p>
+</code></pre><p>記得要 DI Extension 的地方注入我們剛剛的 JOB。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public static class DependencyInjectionExtension
     {
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services)
@@ -346,11 +346,11 @@ alpha &gt; beta &gt; default</p>
             return services;
         }
     }
-</code></pre><p>一樣要把worker數量設成1。<br>
+</code></pre><p>一樣要把 worker 數量設成1。<br>
 <img src="https://i.imgur.com/5vsBmQX.jpg" alt=""></p>
 <p>實驗方式：<br>
-一樣先執行GetCurrentTime這個JOB因為會睡20秒，按完執行我們馬上按兩次Beta接著按一次Alpha。</p>
-<p>可以觀察到等待的佇列會變成Alpha為下一個執行的順序。<br>
+一樣先執行 GetCurrentTime 這個 JOB 因為會睡20秒，按完執行我們馬上按兩次 Beta 接著按一次 Alpha。</p>
+<p>可以觀察到等待的佇列會變成 Alpha 為下一個執行的順序。<br>
 <img src="https://i.imgur.com/6NnBH6i.jpg" alt=""></p>
 <p>執行完後，完成工作這邊會以編號做排序。<br>
 <img src="https://i.imgur.com/Qm7n6zc.jpg" alt=""></p>
@@ -362,32 +362,32 @@ alpha &gt; beta &gt; default</p>
 <p><img src="https://i.imgur.com/jLHmUnv.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p><img src="https://i.imgur.com/HBrqB0A.jpg" alt=""></p>
-<p>這樣很明顯看到GetCurrentTime這個Job一結束就換Alpha接下來才是Beta。<br>
-至於為甚麼直接在設定內指定Queue無效這個目前還是不得而知，提供以上用法供大家參考。</p>
-<h3 id="3hangfire-server設定">3、Hangfire Server設定。</h3>
-<h4 id="a設定serve-name用以識別個別機器">a、設定Serve Name：用以識別個別機器。</h4>
-<p>一樣是在StartUp的ConfigureServices加入設定</p>
+<p>這樣很明顯看到 GetCurrentTime 這個 Job 一結束就換 Alpha 接下來才是 Beta。<br>
+至於為甚麼直接在設定內指定 Queue 無效這個目前還是不得而知，提供以上用法供大家參考。</p>
+<h3 id="3hangfire-server-設定">3、Hangfire Server 設定。</h3>
+<h4 id="a設定-serve-name用以識別個別機器">a、設定 Serve Name：用以識別個別機器。</h4>
+<p>一樣是在 StartUp 的 ConfigureServices 加入設定</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    //Server Name
     options.ServerName = $&quot;{Environment.MachineName}:NetCore&quot;;
 </code></pre><p><img src="https://i.imgur.com/kodmnLJ.jpg" alt=""></p>
-<p>接下來打開Hangfire儀表板Server的地方就會看到出現機器名稱。</p>
+<p>接下來打開 Hangfire 儀表板 Server 的地方就會看到出現機器名稱。</p>
 <p><img src="https://i.imgur.com/xOvSvsA.jpg" alt=""></p>
-<h4 id="b設定worker數量hangfire-server可以同時處理工作的數量">b、設定Worker數量：Hangfire Server可以同時處理工作的數量。</h4>
+<h4 id="b設定-worke-r數量hangfire-server-可以同時處理工作的數量">b、設定 Worke r數量：Hangfire Server 可以同時處理工作的數量。</h4>
 <p>這邊若一開始沒有特別給予特別的設定，預設值會是20。<br>
-而Hangfire官方建議配置數量為Hangfire Server的CPU數量乘以5。<br>
-Ex: 目前架設的Hangfire Server CPU數量為4核心，那就可以配置 4 * 5 = 20的Worker數量。</p>
+而 Hangfire 官方建議配置數量為 Hangfire Server 的 CPU 數量乘以5。<br>
+Ex: 目前架設的 Hangfire Server CPU 數量為4核心，那就可以配置 4 * 5 = 20的 Worker 數量。</p>
 <p>提醒：</p>
 <blockquote>
-<p>Woker的設置數量並不是越多越好，必須考量目前架設Hangfire Server的CPU等級、數量，以及在同一台Server上的其他Hangfire服務。</p>
+<p>Woker 的設置數量並不是越多越好，必須考量目前架設 Hangfire Server 的 CPU 等級、數量，以及在同一台 Server 上的其他 Hangfire 服務。</p>
 </blockquote>
-<p>設置地點同樣在StartUp的ConfigureServices。</p>
+<p>設置地點同樣在 StartUp 的 ConfigureServices。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">//Worker
 options.WorkerCount = 20;
 </code></pre><p><img src="https://i.imgur.com/Div88AB.jpg" alt=""></p>
 <p>也可以在儀錶板看到相關數量。<br>
 <img src="https://i.imgur.com/cjmcNkn.jpg" alt=""></p>
 <h4 id="c設定儀錶板路徑">c、設定儀錶板路徑。</h4>
-<p>儀錶板設定的地方在StartUp的Configure。</p>
+<p>儀錶板設定的地方在 StartUp 的 Configure。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">            //Hangfire
             app.UseHangfireDashboard(
                  //dashboard path
@@ -398,7 +398,7 @@ options.WorkerCount = 20;
                     IgnoreAntiforgeryToken = true
                 });
 </code></pre><h4 id="d設定首頁顯示的資訊">d、設定首頁顯示的資訊。</h4>
-<p>一樣是在StartUp的ConfigureServices加入設定。</p>
+<p>一樣是在 StartUp 的 ConfigureServices 加入設定。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        services.AddHangfire(config =&gt;
             {
                 config.UseSqlServerStorage(
@@ -434,14 +434,14 @@ options.WorkerCount = 20;
 </code></pre><p><img src="https://i.imgur.com/7O7l1Ip.jpg" alt=""></p>
 <h4 id="ejob資料的保存期限設定">e、Job資料的保存期限設定。</h4>
 <ul>
-<li>預設的SqlServerStorageOptions相關資料保存時間為一天。</li>
-<li>Hangfire Server會每30分鐘去檢查是否有超過保存時間的資料如果超過保存時間就會予以刪除。</li>
+<li>預設的 SqlServerStorageOptions 相關資料保存時間為一天。</li>
+<li>Hangfire Server 會每30分鐘去檢查是否有超過保存時間的資料如果超過保存時間就會予以刪除。</li>
 </ul>
 <p>提醒：</p>
 <blockquote>
-<p>太過頻繁檢查會使得Sql Server與 Hangfire Server附載過重。</p>
+<p>太過頻繁檢查會使得 Sql Server 與 Hangfire Server 附載過重。</p>
 </blockquote>
-<p>可在StartUp的ConfigureServices加入設定。</p>
+<p>可在 StartUp 的 ConfigureServices 加入設定。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">            config.UseSqlServerStorage(
                     nameOrConnectionString: hangfireConnection,
                     options: new SqlServerStorageOptions
@@ -451,7 +451,7 @@ options.WorkerCount = 20;
                         JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60)
                     })
 </code></pre><h2 id="後記">後記</h2>
-<p><a href="https://github.com/sunnyday0932/HangFireSample">程式一樣會放在GitHub有需要的歡迎取用。</a></p>
+<p><a href="https://github.com/sunnyday0932/HangFireSample">程式一樣會放在 GitHub 有需要的歡迎取用。</a></p>
 
     </div>
 

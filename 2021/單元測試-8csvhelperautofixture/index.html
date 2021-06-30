@@ -71,7 +71,7 @@
     "datePublished": "2021-02-22 20:40:45  UTC",
     "dateModified" : "2021-02-22 20:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture\/",
-    "wordCount" : "421",
+    "wordCount" : "464",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -171,26 +171,26 @@
           
 
           <h2 id="前言">前言</h2>
-<p>本篇會介紹測試Service層好用工具，可以加快撰寫測試。</p>
+<p>本篇會介紹測試 Service 層好用工具，可以加快撰寫測試。</p>
 <h2 id="本文">本文</h2>
 <h3 id="csvhelper">CsvHelper</h3>
 <p>先前我們在測試方法時，遇到要取用資料都只能自己手刻。<br>
 <img src="https://i.imgur.com/S8TKjSH.jpg" alt=""></p>
-<p>這時候就可以使用一個好用的工具CsvHelper。<br>
-這邊主要是將資料庫的DATA匯出CSV檔，透過CsvHelper讀取資料，模擬Repository回傳資料給Service進行測試。</p>
-<h4 id="1先將db資料匯成csv檔">1、先將DB資料匯成CSV檔。</h4>
-<p>將我們要匯出的資料使用MSSQL SELECT出來。<br>
+<p>這時候就可以使用一個好用的工具 CsvHelper。<br>
+這邊主要是將資料庫的 DATA 匯出 CSV 檔，透過 CsvHelper 讀取資料，模擬 Repository 回傳資料給 Service 進行測試。</p>
+<h4 id="1先將-db-資料匯成-csv-檔">1、先將 DB 資料匯成 CSV 檔。</h4>
+<p>將我們要匯出的資料使用 MSSQL SELECT出來。<br>
 <img src="https://i.imgur.com/fB21W8J.jpg" alt=""></p>
 <p>對左上方空白的地方點選滑鼠右鍵，選擇儲存結果。<br>
 <img src="https://i.imgur.com/RJ7YulM.jpg" alt=""></p>
-<p>將檔案儲存到我們測試專案地方，建立一個TestData資料夾存放。<br>
+<p>將檔案儲存到我們測試專案地方，建立一個 TestData 資料夾存放。<br>
 <img src="https://i.imgur.com/mqwJKwF.jpg" alt=""></p>
-<p>記得要到專案內，將要測試的CSV檔案屬性改成永遠複製。<br>
+<p>記得要到專案內，將要測試的 CSV 檔案屬性改成永遠複製。<br>
 <img src="https://i.imgur.com/nnvtRSh.jpg" alt=""></p>
-<h4 id="2安裝nuget-套件">2、安裝Nuget 套件。</h4>
+<h4 id="2安裝-nuget-套件">2、安裝 Nuget 套件。</h4>
 <p><img src="https://i.imgur.com/tvMWXV0.jpg" alt=""></p>
 <h4 id="3修改測試方法">3、修改測試方法。</h4>
-<p>首先在測試Class加上一個Attribute。</p>
+<p>首先在測試 Class 加上一個 Attribute。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">[DeploymentItem(@&quot;TestData\AccountData.csv&quot;)]
 </code></pre><p><img src="https://i.imgur.com/x5H8TtG.jpg" alt=""></p>
 <p>接著我們就可以在要使用的地方這麼做。</p>
@@ -262,11 +262,11 @@
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h3 id="autofixture">AutoFixture</h3>
-<p>接下來介紹，AutoFixture，也是在測試時需要手捏Model的好用工具。</p>
-<p>先到Nuget安裝AutoFixture。<br>
+<p>接下來介紹，AutoFixture，也是在測試時需要手捏 Model 的好用工具。</p>
+<p>先到 Nuget 安裝 AutoFixture。<br>
 <img src="https://i.imgur.com/9a9BnJ0.jpg" alt=""></p>
 <p>接下來到我們單元測試的地方修改一下測試方法。<br>
-我們拿AddAccount_Account為空_應回傳Exception作為示範。<br>
+我們拿 AddAccount_Account 為空_應回傳 Exception 作為示範。<br>
 原本的做法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
@@ -290,7 +290,7 @@
             actual.Should().Throw&lt;Exception&gt;()
                 .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
         }
-</code></pre><p>使用AutoFixture製造傳遞Model的作法。</p>
+</code></pre><p>使用 AutoFixture 製造傳遞 Model 的作法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -342,7 +342,7 @@
         }
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/bi2tG5S.jpg" alt=""></p>
-<h4 id="遇到list資料時可以這麼做">遇到List資料時可以這麼做。</h4>
+<h4 id="遇到-list-資料時可以這麼做">遇到 List 資料時可以這麼做。</h4>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -372,24 +372,24 @@
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/IWLMHBy.jpg" alt=""></p>
 <p>還有一些進階使用方法，可以參考大神示範，這邊就不獻醜了XD<br>
-<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值</a><br>
-<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture_28.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - 設定屬性名稱與範圍</a><br>
-<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture-customize-icustomization.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - Customize, ICustomization</a></p>
+<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture.html">mrkt 使用 AutoFixture 產生指定範圍的隨機數值</a><br>
+<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture_28.html">mrkt 使用 AutoFixture 產生指定範圍的隨機數值 - 設定屬性名稱與範圍</a><br>
+<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture-customize-icustomization.html">mrkt 使用 AutoFixture 產生指定範圍的隨機數值 - Customize, ICustomization</a></p>
 <!-- raw HTML omitted -->
-<p><a href="https://github.com/sunnyday0932/WebApiPhase2">這邊一樣會把示範範例放在GitHub歡迎取用。</a></p>
+<p><a href="https://github.com/sunnyday0932/WebApiPhase2">這邊一樣會把示範範例放在 GitHub 歡迎取用。</a></p>
 <h2 id="參考連結">參考連結</h2>
 <p>CsvHelper</p>
 <ul>
-<li>1、<a href="https://kevintsengtw.blogspot.com/2015/04/csvhelper-part2.html">MRKT 使用 CsvHelper - Part.2 資料讀取</a>。</li>
-<li>2、<a href="https://kevintsengtw.blogspot.com/2015/04/csvhelper-part3.html">MRKT 使用 CsvHelper - Part.3 其他操作說明</a>。</li>
+<li>1、<a href="https://kevintsengtw.blogspot.com/2015/04/csvhelper-part2.html">mrkt 使用 CsvHelper - Part.2 資料讀取</a>。</li>
+<li>2、<a href="https://kevintsengtw.blogspot.com/2015/04/csvhelper-part3.html">mrkt 使用 CsvHelper - Part.3 其他操作說明</a>。</li>
 <li>3、<a href="https://joshclose.github.io/CsvHelper/api/CsvHelper">CsvHelper官方</a>。</li>
 </ul>
 <p>AutoFixture</p>
 <ul>
 <li>1、<a href="https://github.com/AutoFixture/AutoFixture/">AutoFixture 官方</a>。</li>
-<li>2、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值</a>。</li>
-<li>3、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture_28.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - 設定屬性名稱與範圍</a>。</li>
-<li>4、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture-customize-icustomization.html">MRKT 使用 AutoFixture 產生指定範圍的隨機數值 - Customize, ICustomization</a></li>
+<li>2、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture.html">mrkt 使用 AutoFixture 產生指定範圍的隨機數值</a>。</li>
+<li>3、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture_28.html">mrkt 使用 AutoFixture 產生指定範圍的隨機數值 - 設定屬性名稱與範圍</a>。</li>
+<li>4、<a href="https://kevintsengtw.blogspot.com/2018/01/autofixture-customize-icustomization.html">mrkt 使用 AutoFixture 產生指定範圍的隨機數值 - Customize, ICustomization</a></li>
 </ul>
 
     </div>

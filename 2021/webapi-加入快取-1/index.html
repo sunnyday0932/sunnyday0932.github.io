@@ -71,7 +71,7 @@
     "datePublished": "2021-04-30 01:40:45  UTC",
     "dateModified" : "2021-04-30 01:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1\/",
-    "wordCount" : "3478",
+    "wordCount" : "3518",
     "keywords" : ["csharp","Core","dotnet","Cache", "Sian"]
 }
 </script>
@@ -171,17 +171,17 @@
           
 
           <h2 id="前言">前言</h2>
-<p>延續上次我們使用Hangfire排程抓取Youbike的練習題，這次我們要做一個Youbike的Service，專門提供查詢Youbike相關站點資訊的服務；前面製作排程的時候有提到因為Youbike站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。</p>
+<p>延續上次我們使用 Hangfire 排程抓取 Youbike 的練習題，這次我們要做一個 Youbike 的 Service，專門提供查詢 Youbike 相關站點資訊的服務；前面製作排程的時候有提到因為 Youbike 站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。</p>
 <h2 id="本文">本文</h2>
 <h3 id="快取的使用時機">快取的使用時機</h3>
-<p>當API效能遇到瓶頸的時候，就可以使用快取來減少不必要去DB撈取資料的動作，最常使用的會是記憶體快取、Redis快取等。</p>
+<p>當 API 效能遇到瓶頸的時候，就可以使用快取來減少不必要去 DB 撈取資料的動作，最常使用的會是記憶體快取、Redis 快取等。</p>
 <h3 id="快取的適用時機">快取的適用時機</h3>
 <p>一般使用快取的功能通常是資料的變動性不大、不太會被變更的資料。</p>
-<p>當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們DB資料同步的問題。</p>
+<p>當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們 DB 資料同步的問題。</p>
 <h3 id="快取的注意事項">快取的注意事項</h3>
 <p>使用快取的方式簡單來說是用錢換取時間(記憶體比起硬碟貴了許多)，通常在放資料進快取的時候會需要注意資料的大小、能不能適度地進行切分，以及存放的過期時間，而不是拿了就丟全部放入快取內(當然如果你本多忠勝不在此限)。</p>
 <h3 id="開始前準備">開始前準備</h3>
-<p>這邊基本的API就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部Youbike站點的功能、另一個是查詢指定Youbike站點的功能。</p>
+<p>這邊基本的 API 就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部 Youbike 站點的功能、另一個是查詢指定 Youbike 站點的功能。</p>
 <p>先看一下初始的Repository結構。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得全部Youbike站點
@@ -261,7 +261,7 @@
         }
 </code></pre><h3 id="加入記憶體快取">加入記憶體快取</h3>
 <p>這邊會示範簡單的加入記憶體快取。<br>
-使用到的Nuget套件：</p>
+使用到的 Nuget 套件：</p>
 <ul>
 <li>Microsoft.Extensions.Caching.Memory</li>
 <li>Microsoft.Extensions.Caching.Abstractions</li>
@@ -352,7 +352,7 @@
         }
     }
 </code></pre><p>接下來要建立一個快取共用的基底。<br>
-建立ICacheProvider。</p>
+建立 ICacheProvider。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    /// &lt;summary&gt;
     /// 
     /// &lt;/summary&gt;
@@ -484,7 +484,7 @@
         /// &lt;returns&gt;&lt;/returns&gt;
         Task&lt;T&gt; GetOrSaveAsync&lt;T&gt;(string key, Func&lt;Task&lt;T&gt;&gt; method, TimeSpan cacheTime);
     }
-</code></pre><p>實作CacheProvider。</p>
+</code></pre><p>實作 CacheProvider。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">/// &lt;summary&gt;
     /// abstract CacheProvider.
     /// &lt;/summary&gt;
@@ -1281,12 +1281,12 @@
             return result;
         }
     }
-</code></pre><p>上面會看到有使用Lock的相關用法，大師們都有介紹小弟就不獻醜了，相關原因可以參考：</p>
+</code></pre><p>上面會看到有使用 Lock 的相關用法，大師們都有介紹小弟就不獻醜了，相關原因可以參考：</p>
 <ul>
-<li><a href="https://blog.darkthread.net/blog/improved-getcachabledata/">改良式GetCachableData可快取查詢函式</a>。</li>
+<li><a href="https://blog.darkthread.net/blog/improved-getcachabledata/">改良式 GetCachableData 可快取查詢函式</a>。</li>
 <li><a href="https://raychiutw.github.io/2019/%E9%9A%A8%E6%89%8B-Design-Pattern-5-%E9%9B%99%E9%87%8D%E6%AA%A2%E6%9F%A5%E9%8E%96%E5%AE%9A%E6%A8%A1%E5%BC%8F-Double-Checked-Locking-Pattern/">隨手 Design Pattern (5) - 雙重檢查鎖定模式 </a>。</li>
 </ul>
-<p>接下來就可以來使用記憶體快取了，來改寫一下Repository。</p>
+<p>接下來就可以來使用記憶體快取了，來改寫一下 Repository。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">public class StationRepository : IStationRepository
     {
         private readonly string _connectionString;
@@ -1376,8 +1376,8 @@
             }   
         }
     }
-</code></pre><p>因為上面已將所有站點加入快取，GetStationAsync這個方法我就使用拿取原本的資料塞選我們使用的站點。</p>
-<p>StartUp地方加入快取設定。</p>
+</code></pre><p>因為上面已將所有站點加入快取，GetStationAsync 這個方法我就使用拿取原本的資料塞選我們使用的站點。</p>
+<p>StartUp 地方加入快取設定。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">services.AddMemoryCache();
 services.AddSingleton&lt;IMemoryCache&gt;(sp =&gt; new MemoryCache(new MemoryCacheOptions()));
 services.AddSingleton&lt;ICacheProvider&gt;(
@@ -1400,15 +1400,15 @@ services.AddSingleton&lt;IDatabaseHelper, DatabaseHelper&gt;()
 <p>實際測試看看：<br>
 撈取所有站點資料。<br>
 <img src="https://i.imgur.com/9iHdAjc.jpg" alt=""></p>
-<p>CoreProfiler監看。<br>
+<p>CoreProfiler 監看。<br>
 連續要資料兩次的結果：<br>
 <img src="https://i.imgur.com/Z88hHgB.jpg" alt=""></p>
-<p>第一次進DB撈取資料花了701毫秒：<br>
+<p>第一次進 DB 撈取資料花了701毫秒：<br>
 <img src="https://i.imgur.com/ue9Y68v.jpg" alt=""></p>
 <p>第二次進入快取撈資料只花了19毫秒：<br>
 <img src="https://i.imgur.com/03trm8Y.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>這邊的程式大部分都是觀看公司大神、前輩寫過的Code做為參考，自己再試著加入現有的程式測試，為了保持原始程式乾淨供對照，我切了分支出來做示範，歡迎取用。<br>
+<p>這邊的程式大部分都是觀看公司大神、前輩寫過的 Code 做為參考，自己再試著加入現有的程式測試，為了保持原始程式乾淨供對照，我切了分支出來做示範，歡迎取用。<br>
 <a href="https://github.com/sunnyday0932/YouBikeService/tree/feature/MemoryCache">程式連結。</a></p>
 <h2 id="參考連結">參考連結</h2>
 <p>快取：</p>
@@ -1476,7 +1476,7 @@ services.AddSingleton&lt;IDatabaseHelper, DatabaseHelper&gt;()
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/" class="prev" rel="prev" title="CoreProfiler - 監看WebApi效能的工具"><i class="iconfont icon-left"></i>&nbsp;CoreProfiler - 監看WebApi效能的工具</a>
+        <a href="https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/" class="prev" rel="prev" title="CoreProfiler - 監看 WebApi 效能的工具"><i class="iconfont icon-left"></i>&nbsp;CoreProfiler - 監看 WebApi 效能的工具</a>
          
         
         <a href="https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-2%E4%BD%BF%E7%94%A8%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="WebApi 加入快取 - 2(使用裝飾者模式)">WebApi 加入快取 - 2(使用裝飾者模式)&nbsp;<i class="iconfont icon-right"></i></a>

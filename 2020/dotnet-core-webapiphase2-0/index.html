@@ -71,7 +71,7 @@
     "datePublished": "2020-12-03 22:19:33  CST",
     "dateModified" : "2020-12-03 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapiphase2-0\/",
-    "wordCount" : "92",
+    "wordCount" : "102",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -172,10 +172,10 @@
 
           <h2 id="前言">前言</h2>
 <p>前面介紹了三層式架構、DI，接下來就是要來實做啦。<br>
-這次的實作會自己設計一張Table，並設計API情境，當練習寫SPEC；所以這篇是前置動作準備。</p>
+這次的實作會自己設計一張 Table，並設計 API 情境，當練習寫 SPEC；所以這篇是前置動作準備。</p>
 <h2 id="本文">本文</h2>
 <h3 id="1資料庫準備">1、資料庫準備。</h3>
-<p>首先這次打算做一個使用者管理功能，所以先來建造Table，就直接放在先前的Norwind底下就可以了。</p>
+<p>首先這次打算做一個使用者管理功能，所以先來建造 Table，就直接放在先前的 Norwind 底下就可以了。</p>
 <pre><code class="language-sql=" data-lang="sql=">CREATE TABLE Users (
   Idx INT IDENTITY,
   Account varchar(30) PRIMARY KEY NOT NULL,
@@ -186,7 +186,7 @@
   ModifyDate DATETIME NOT NULL,
   ModifyUser varchar(30) NOT NULL
 );
-</code></pre><p>建立完後重新整理即可在Northwind底下看到新Table。<br>
+</code></pre><p>建立完後重新整理即可在 Northwind 底下看到新 Table。<br>
 <img src="https://i.imgur.com/LfWMxiB.jpg" alt=""></p>
 <p>新增一筆資料測試。</p>
 <pre><code class="language-sql=" data-lang="sql=">Insert into [Northwind].[dbo].[Users]
@@ -240,7 +240,7 @@
 <p>2、取得所有使用者。</p>
 <ul>
 <li>a、僅可取得帳號、電話、信箱、建立日期、異動日期、異動人員。</li>
-<li>b、個資規定使用者電話後四碼必須以*字號取代。</li>
+<li>b、個資規定使用者電話後四碼必須以＊字號取代。</li>
 </ul>
 <p>3、取得個別使用者。</p>
 <ul>

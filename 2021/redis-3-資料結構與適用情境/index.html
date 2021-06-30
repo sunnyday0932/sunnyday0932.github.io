@@ -71,7 +71,7 @@
     "datePublished": "2021-04-24 18:40:45  UTC",
     "dateModified" : "2021-04-24 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83\/",
-    "wordCount" : "205",
+    "wordCount" : "301",
     "keywords" : ["docker","Redis","NoSql", "Sian"]
 }
 </script>
@@ -172,12 +172,12 @@
 
           <h2 id="本文">本文</h2>
 <h3 id="1string">1、String</h3>
-<p>Redis內最基本的資料型態，以Binary safe的方式進行儲存。</p>
+<p>Redis 內最基本的資料型態，以 Binary safe 的方式進行儲存。</p>
 <!-- raw HTML omitted -->
 <blockquote>
 <p>Binary safe<br>
-C語言中對字串的儲存形式會用'\0&rsquo;來做為字串結束的判斷。<br>
-而Redis雖然是使用C語言寫的，但優化了這個部分，所以Redis只需專注於讀寫整個Binary string，而不用為了某種特殊格式而需要進行特殊化的解析。</p>
+C語言中對字串的儲存形式會用 &lsquo;\0&rsquo; 來做為字串結束的判斷。<br>
+而Redis雖然是使用C語言寫的，但優化了這個部分，所以 Redis 只需專注於讀寫整個 Binary string ，而不用為了某種特殊格式而需要進行特殊化的解析。</p>
 </blockquote>
 <p>優點：</p>
 <ul>
@@ -185,28 +185,28 @@ C語言中對字串的儲存形式會用'\0&rsquo;來做為字串結束的判斷
 </ul>
 <p>使用提醒：</p>
 <ul>
-<li>Redis中一個String的最大上限為512MB。</li>
+<li>Redis 中一個 String 的最大上限為512MB。</li>
 </ul>
 <p>適用場景：</p>
 <ul>
 <li>普通的快取資料。</li>
 <li>用來實作統計等相關功能 Ex: 網站的瀏覽人數。</li>
-<li>分散式架構下的Web共用Session。</li>
+<li>分散式架構下的 Web 共用 Session。</li>
 </ul>
 <h3 id="2list">2、List</h3>
-<p>由Redis內多個String所組成，類似於Linked-List的資料結構。</p>
+<p>由 Redis 內多個 String 所組成，類似於 Linked-List 的資料結構。</p>
 <p>優點：</p>
 <ul>
-<li>插入和刪除資料的操作很快，時間複雜度為O(1)。</li>
+<li>插入和刪除資料的操作很快，時間複雜度為 O(1)。</li>
 </ul>
 <p>使用提醒：</p>
 <ul>
-<li>Redis中一個List的最大長度上限為 2^32  - 1。</li>
+<li>Redis 中一個 List 的最大長度上限為 2^32  - 1。</li>
 </ul>
 <p>適用場景：</p>
 <ul>
-<li>可用來實作佇列的Queue(First in first out)。</li>
-<li>可用來實作Stack(Last in first out)。</li>
+<li>可用來實作佇列的 Queue(First in first out)。</li>
+<li>可用來實作 Stack(Last in first out)。</li>
 <li>社群功能的留言板、排行榜、關注等功能。</li>
 </ul>
 <p>示範：<br>
@@ -219,51 +219,51 @@ LPUSH board thirdMessage
 <pre><code class="language-shell=" data-lang="shell=">LPOP board
 </code></pre><p><img src="https://i.imgur.com/8CMMcrf.jpg" alt=""></p>
 <h3 id="3hash">3、Hash</h3>
-<p>由一個String類型的field和value所組成，資料會進行壓縮，有點類似於C#的Dictionary。</p>
+<p>由一個 String 類型的 field 和 value 所組成，資料會進行壓縮，有點類似於 C# 的 Dictionary。</p>
 <p>優點：</p>
 <ul>
 <li>同類型的資料可以進行整合儲存，方便於管理。</li>
-<li>比string消耗的記憶體更小。</li>
+<li>比 string 消耗的記憶體更小。</li>
 </ul>
 <p>缺點：</p>
 <ul>
-<li>過期的功能只能針對Key使用，無法針對個別field。</li>
-<li>Redis的叢集架構下不適合大量使用。</li>
+<li>過期的功能只能針對 Key 使用，無法針對個別 field。</li>
+<li>Redis 的叢集架構下不適合大量使用。</li>
 </ul>
 <p>使用提醒：</p>
 <ul>
-<li>Redis中一個Hash的最大儲存上限為 2^32 - 1。</li>
+<li>Redis 中一個 Hash 的最大儲存上限為 2^32 - 1。</li>
 </ul>
 <p>適用場景：</p>
 <ul>
-<li>購物車功能，Ex:使用者Id為key、商品Id為field、商品數量為value，即可組成購物車需要的元素。</li>
-<li>任何Object，Hash所提供的key、field、value剛好可以對應物件的Id、屬性、值。</li>
+<li>購物車功能，Ex:使用者 Id 為 key、商品 Id 為 field、商品數量為 value，即可組成購物車需要的元素。</li>
+<li>任何 Object，Hash 所提供的 key、field、value 剛好可以對應物件的Id、屬性、值。</li>
 </ul>
 <p>示範：<br>
-有一個購物車內，放了user001要購買的商品，他一共買了a001商品1件、a002商品2件。</p>
+有一個購物車內，放了 user001 要購買的商品，他一共買了 a001 商品1件、a002 商品2件。</p>
 <pre><code class="language-shell=" data-lang="shell=">hset shoppingcart:user001 a001 1
 hset shoppingcart:user001 a002 2
 </code></pre><p><img src="https://i.imgur.com/V28F3KT.jpg" alt=""></p>
 <p>列出目前購物車內所有商品。</p>
 <pre><code class="language-shell=" data-lang="shell=">hgetall shoppingcart:user001
 </code></pre><p><img src="https://i.imgur.com/kpErAE3.jpg" alt=""></p>
-<p>使用者決定不買a001的商品了。</p>
+<p>使用者決定不買 a001 的商品了。</p>
 <pre><code class="language-shell=" data-lang="shell=">hdel shoppingcart:user001 a001
 </code></pre><p><img src="https://i.imgur.com/HixiisY.jpg" alt=""></p>
 <h3 id="4set">4、Set</h3>
-<p>由多個String以無序的方式所組成，保證Key是唯一的。</p>
+<p>由多個 String 以無序的方式所組成，保證 Key 是唯一的。</p>
 <p>優點：</p>
 <ul>
-<li>因為是透過Hash Map組成，新增、刪除、查找複雜度都是O(1)。</li>
+<li>因為是透過 Hash Map 組成，新增、刪除、查找複雜度都是 O(1)。</li>
 <li>因為是一個集合，也可用作聯集、交集、差集等處理。</li>
 </ul>
 <p>使用提醒：</p>
 <ul>
-<li>Redis中一個Set的最大上限為 2^32 - 1。</li>
+<li>Redis 中一個 Set 的最大上限為 2^32 - 1。</li>
 </ul>
 <p>適用場景：</p>
 <ul>
-<li>抽獎功能，Ex:將擁有抽獎資格的使用者加入一個Set內，因為保證不用有重複的Key，所以不會發生同一個使用者被重複抽。</li>
+<li>抽獎功能，Ex:將擁有抽獎資格的使用者加入一個 Set 內，因為保證不用有重複的 Key，所以不會發生同一個使用者被重複抽。</li>
 <li>社群軟體中可以找出共同關注、共同粉絲相關的集合功能。</li>
 </ul>
 <p>示範：<br>
@@ -283,7 +283,7 @@ SADD key user005
 <p>再次觀看目前參與抽獎的使用者列表。<br>
 <img src="https://i.imgur.com/xxjRRqg.jpg" alt=""></p>
 <h3 id="5sorted-set">5、Sorted set</h3>
-<p>與上述的Set大致上相同，特殊點在於Sorted set是有順序區別的。</p>
+<p>與上述的 Set 大致上相同，特殊點在於 Sorted set 是有順序區別的。</p>
 <p>使用提醒：</p>
 <ul>
 <li>Redis中一個Set的最大上限為 2^32 - 1。</li>
@@ -293,7 +293,7 @@ SADD key user005
 <li>需要進行排序的集合，Ex:當日排行榜、一周內排行榜。</li>
 </ul>
 <p>示範：<br>
-我們需要有一個呈現當日搜尋排行榜的列表，每當有一個搜尋紀錄時我們就將它塞入Set。</p>
+我們需要有一個呈現當日搜尋排行榜的列表，每當有一個搜尋紀錄時我們就將它塞入 Set。</p>
 <pre><code class="language-shell=" data-lang="shell=">ZINCRBY hostSearch:20210425 1 Redis
 ZINCRBY hostSearch:20210425 1 Redis
 ZINCRBY hostSearch:20210425 1 MongoDB
@@ -303,20 +303,20 @@ ZINCRBY hostSearch:20210425 1 MSSQL
 <pre><code class="language-shell=" data-lang="shell=">ZREVRANGE hostSearch:20210425 0 9 WITHSCORES
 </code></pre><p><img src="https://i.imgur.com/uZUBlwM.jpg" alt=""></p>
 <h3 id="6geo">6、GEO</h3>
-<p>這邊還發現了其實Redis也提供了GEO的資料型態，用來做地理位置相關資料的儲存。</p>
+<p>這邊還發現了其實 Redis 也提供了 GEO 的資料型態，用來做地理位置相關資料的儲存。</p>
 <p>適用場景：</p>
 <ul>
 <li>給一個座標，找出附近相關的地標有哪些。</li>
 </ul>
-<p>拿之前抓的Youbike做示範：<br>
-首先存入兩個Youbike的站點。</p>
+<p>拿之前抓的 Youbike 做示範：<br>
+首先存入兩個 Youbike 的站點。</p>
 <pre><code class="language-shell=" data-lang="shell="> GEOADD Youbike 121.5436 25.02605 &quot;500101001&quot; 121.54357 25.02565 500101002
 </code></pre><p><img src="https://i.imgur.com/1tIUr0t.jpg" alt=""></p>
-<p>接下來我們找某個座標內一百公尺的Youbike站有哪些並返回座標與Youbike站的距離。</p>
+<p>接下來我們找某個座標內一百公尺的 Youbike 站有哪些並返回座標與 Youbike 站的距離。</p>
 <pre><code class="language-shell=" data-lang="shell=">GEORADIUS Youbike 121.54355666801028 25.026613968659696 100 m WITHDIST
 </code></pre><p><img src="https://i.imgur.com/zVL0eFZ.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>這邊只簡單記錄了一些使用情境以及方法，若有興趣了解Redis底層如何實作推薦觀看，<a href="http://redisbook.com/index.html">Redis 設計與實現</a>。</p>
+<p>這邊只簡單記錄了一些使用情境以及方法，若有興趣了解 Redis 底層如何實作推薦觀看， <a href="http://redisbook.com/index.html">Redis 設計與實現</a>。</p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://jed1978.github.io/2018/05/11/Redis-Programming-CSharp-Basic-1.html">Redis系列 - C#存取Redis (上)</a>。</li>

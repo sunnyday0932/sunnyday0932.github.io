@@ -71,7 +71,7 @@
     "datePublished": "2021-05-01 01:40:45  UTC",
     "dateModified" : "2021-05-01 01:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-2%E4%BD%BF%E7%94%A8%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F\/",
-    "wordCount" : "2449",
+    "wordCount" : "2497",
     "keywords" : ["csharp","Core","dotnet","Cache", "Sian"]
 }
 </script>
@@ -264,8 +264,8 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
 <li>ICacheProvider。</li>
 <li>CacheUtility。</li>
 </ul>
-<p>MemoryCacheProvider、CacheProvider以及ICacheProvider需要把GetOrSaveAsync這個方法拿掉，我們會把這個方法搬到其他地方，剩下的都可以留著不動。</p>
-<p>開始之前我們先把加入記憶體快取的Repository恢復成原始Repository，包含GetStationAsync這個方法。</p>
+<p>MemoryCacheProvider、CacheProvider 以及 ICacheProvider 需要把 GetOrSaveAsync這 個方法拿掉，我們會把這個方法搬到其他地方，剩下的都可以留著不動。</p>
+<p>開始之前我們先把加入記憶體快取的 Repository 恢復成原始 Repository，包含 GetStationAsync 這個方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class StationRepository : IStationRepository
     {
         private readonly string _connectionString;
@@ -542,7 +542,7 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
         }
     }
 </code></pre><h3 id="cachetypeenum">CacheTypeEnum</h3>
-<p>作為快取共用的Type。</p>
+<p>作為快取共用的 Type。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public enum CacheTypeEnum
     {
         /// &lt;summary&gt;
@@ -559,7 +559,7 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
     }
 </code></pre><h3 id="cacheproviderresolver">CacheProviderResolver</h3>
 <p>這個類別用來控制我們要啟用哪種快取。</p>
-<p>會使用到Microsoft.Extensions.DependencyInjection這個Nuget套件。</p>
+<p>會使用到 Microsoft.Extensions.DependencyInjection 這個 Nuget 套件。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public interface ICacheProviderResolver
     {
         /// &lt;summary&gt;
@@ -616,7 +616,7 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
         }
     }
 </code></pre><h3 id="decorator-setting">Decorator Setting</h3>
-<p>接下來要做幾個用來控制Cache Decorator的Setting。</p>
+<p>接下來要做幾個用來控制 Cache Decorator的Setting。</p>
 <p>CacheDecoratorSettings：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    /// &lt;summary&gt;
     /// Class CacheDecoratorSettings.
@@ -746,7 +746,7 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
         }
     }
 </code></pre><h3 id="enumhelper">EnumHelper</h3>
-<p>等下會使用到，先做一個Eumhelper。</p>
+<p>等下會使用到，先做一個 Eumhelper。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public static class EnumHelper
     {
         public static string GetDescriptionText&lt;T&gt;(this T source)
@@ -760,9 +760,9 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
     }
 </code></pre><p>現在的程式結構：<br>
 <img src="https://i.imgur.com/z32pTjr.jpg" alt=""></p>
-<p>接著我們就可以回到Repository的地方開始增加我們要裝飾的物件了。</p>
+<p>接著我們就可以回到 Repository 的地方開始增加我們要裝飾的物件了。</p>
 <h3 id="cachedrepositorybase">CachedRepositoryBase</h3>
-<p>用作之後快取相關的Repository共用的基底。</p>
+<p>用作之後快取相關的 Repository 共用的基底。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    /// &lt;summary&gt;
     /// class CachedRepositoryBase
     /// &lt;/summary&gt;
@@ -869,7 +869,7 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
         protected abstract void RemoveCacheItemByKeyPrefix(string keyPrefix);
     }
 </code></pre><h3 id="cachekeys">Cachekeys</h3>
-<p>用來設定快取Key的方法。</p>
+<p>用來設定快取 Key 的方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class Cachekeys
     {
         public class Combo
@@ -1034,7 +1034,7 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
         }
     }
 </code></pre><h3 id="cachestationrepository">CacheStationRepository</h3>
-<p>接下來就可以製作我們要用來裝飾StationRepository的物件了。</p>
+<p>接下來就可以製作我們要用來裝飾 StationRepository 的物件了。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">     public class CacheStationRepository : 
      MemoryCacheRepositoryBase, 
      IStationRepository
@@ -1099,8 +1099,8 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
             }
         }
     }
-</code></pre><p>這樣就可以不需要更動原始StaionRepository，直接使用CacheStationRepository直接對其進行裝飾。</p>
-<p>最後我們要先到appsettings加入我們剛剛加的DecoratorSetting。</p>
+</code></pre><p>這樣就可以不需要更動原始 StaionRepository ，直接使用 CacheStationRepository 直接對其進行裝飾。</p>
+<p>最後我們要先到 appsettings 加入我們剛剛加的 DecoratorSetting。</p>
 <pre><code class="language-json=" data-lang="json=">&quot;CacheDecoratorSettings&quot;: {
     &quot;CacheProviders&quot;: [ &quot;MemoryCacheProvider&quot; ],
     &quot;CacheDecorators&quot;: [
@@ -1111,8 +1111,8 @@ public async Task&lt;IEnumerable&lt;StationDataModel&gt;&gt; GetAllStationAsync(
     ]
   }
 </code></pre><p><img src="https://i.imgur.com/i3aVapH.jpg" alt=""></p>
-<p>接著我們需要到StartUp修改一下設定。<br>
-會使用到<a href="https://github.com/khellang/Scrutor">Scrutor</a>這個Nuget套件。</p>
+<p>接著我們需要到 StartUp 修改一下設定。<br>
+會使用到 <a href="https://github.com/khellang/Scrutor">Scrutor</a> 這個 Nuget 套件。</p>
 <p><img src="https://i.imgur.com/Z9HkDbM.jpg" alt=""></p>
 <pre><code class="language-csharp=" data-lang="csharp=">//取得快取裝飾者設定
 var cacheDecoratorSettings = new CacheDecoratorSettings();
@@ -1140,13 +1140,13 @@ services.AddSingleton&lt;IDatabaseHelper, DatabaseHelper&gt;()
 </code></pre><p><img src="https://i.imgur.com/OWYqrGt.jpg" alt=""></p>
 <p>進行測試：<br>
 <img src="https://i.imgur.com/c8pAqS2.jpg" alt=""></p>
-<p>第一次進入DB撈取資料：<br>
+<p>第一次進入 DB 撈取資料：<br>
 <img src="https://i.imgur.com/NI9PaE4.jpg" alt=""></p>
 <p>第二次進入快取：<br>
 <img src="https://i.imgur.com/fgtLRLb.jpg" alt=""></p>
 <p>GetStationAsync也是直接進入快取拿資料。<br>
 <img src="https://i.imgur.com/MLVdd2Y.jpg" alt=""></p>
-<p>如果不要快取的時候就可以到appsettings把設定改成。</p>
+<p>如果不要快取的時候就可以到 appsettings 把設定改成。</p>
 <pre><code class="language-json=" data-lang="json=">&quot;CacheDecoratorSettings&quot;: {
     &quot;CacheProviders&quot;: [ &quot;NullCacheProvider&quot; ],
     &quot;CacheDecorators&quot;: [
@@ -1158,7 +1158,7 @@ services.AddSingleton&lt;IDatabaseHelper, DatabaseHelper&gt;()
   }
 </code></pre><p>試打API：<br>
 <img src="https://i.imgur.com/49HYDZZ.jpg" alt=""></p>
-<p>三次都是直接進DB撈取資料。<br>
+<p>三次都是直接進 DB 撈取資料。<br>
 <img src="https://i.imgur.com/OV3DoSu.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/tl8WaQ8.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/RGBIO9Q.jpg" alt=""></p>
@@ -1173,9 +1173,9 @@ services.AddSingleton&lt;IDatabaseHelper, DatabaseHelper&gt;()
     ]
   }
 </code></pre><h2 id="後記">後記</h2>
-<p>一樣為了保持原本的程式供參考，切了另一個DecoratorCache分支出來。<br>
+<p>一樣為了保持原本的程式供參考，切了另一個 DecoratorCache 分支出來。<br>
 <a href="https://github.com/sunnyday0932/YouBikeService/tree/feature/DecoratorCache">有需要的歡迎取用。</a></p>
-<p>那麼下一篇我們就會嘗試加入Redis快取。</p>
+<p>那麼下一篇我們就會嘗試加入 Redis 快取。</p>
 
     </div>
 

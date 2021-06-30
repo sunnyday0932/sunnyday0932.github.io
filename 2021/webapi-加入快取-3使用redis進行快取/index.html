@@ -71,7 +71,7 @@
     "datePublished": "2021-05-04 01:40:45  UTC",
     "dateModified" : "2021-05-04 01:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96\/",
-    "wordCount" : "3328",
+    "wordCount" : "3395",
     "keywords" : ["csharp","Core","dotnet","Cache","Redis", "Sian"]
 }
 </script>
@@ -171,10 +171,10 @@
           
 
           <h2 id="前言">前言</h2>
-<p>上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰Redis快取。</p>
+<p>上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰 Redis 快取。</p>
 <h2 id="本文">本文</h2>
 <h3 id="開始前準備">開始前準備</h3>
-<p>我們先到CacheTypeEnum加入Redis。</p>
+<p>我們先到 CacheTypeEnum 加入 Redis。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// Redis - RedisCacheProvider
         /// &lt;/summary&gt;
@@ -182,7 +182,7 @@
         Redis = 2
 </code></pre><p><img src="https://i.imgur.com/NSBgHuN.jpg" alt=""></p>
 <h3 id="主要設定">主要設定</h3>
-<p>首先我們在Common Settings加入一個RedisConfigurationOptions。</p>
+<p>首先我們在 Common Settings 加入一個 RedisConfigurationOptions。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class RedisConfigurationOptions
     {
         /// &lt;summary&gt;
@@ -305,7 +305,7 @@
         Task&lt;long&gt; HashLengthAsync();
     }
 </code></pre><p>以及他的實作。<br>
-這邊會用到我們上次介紹的StackExchange.Redis Nuget套件。</p>
+這邊會用到我們上次介紹的 StackExchange.Redis Nuget 套件。</p>
 <p><img src="https://i.imgur.com/cw5cIDP.jpg" alt=""></p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class RedisCacheHelper : IRedisCacheHelper
     {
@@ -740,8 +740,8 @@
             return result;
         }
     }
-</code></pre><p>加入RedisCacheProvider。<br>
-這邊會使用到MessagePack用來壓縮我們放入Redis內資料大小。</p>
+</code></pre><p>加入 RedisCacheProvider。<br>
+這邊會使用到 MessagePack 用來壓縮我們放入 Redis 內資料大小。</p>
 <p><img src="https://i.imgur.com/a5EVTjV.jpg" alt=""></p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class RedisCacheProvider : CacheProvider
     {
@@ -1156,8 +1156,8 @@
             return result;
         }
     }
-</code></pre><p>接著就可以到Repository做我們要裝飾的Redis快取了。<br>
-先做RedisCache基底。</p>
+</code></pre><p>接著就可以到 Repository 做我們要裝飾的 Redis 快取了。<br>
+先做 RedisCache 基底。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class RedisCacheRepositoryBase : CachedRepositoryBase
     {
         protected const string CachekeyPrefix = &quot;::&quot;;
@@ -1297,7 +1297,7 @@
             }
         }
     }
-</code></pre><p>實作RedisCacheRepository。</p>
+</code></pre><p>實作 RedisCacheRepository。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class RedisCacheStationRepository : RedisCacheRepositoryBase, IStationRepository
     {
         private readonly IStationRepository _stationRepository;
@@ -1361,7 +1361,7 @@
             }
         }
     }
-</code></pre><p>還有別忘了到StationDataModel加上MessagePack會用到的attribute</p>
+</code></pre><p>還有別忘了到 StationDataModel 加上 MessagePack 會用到的 attribute</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    [MessagePackObject]
     public class StationDataModel
     {
@@ -1473,7 +1473,7 @@
         [Key(17)]
         public DateTime InfoDate { get; set; }
     }
-</code></pre><p>接下來我們調整一下appsettings內容，這邊加入了系統名稱，以及Redis連線所要使用的連接字串。</p>
+</code></pre><p>接下來我們調整一下 appsettings 內容，這邊加入了系統名稱，以及 Redis 連線所要使用的連接字串。</p>
 <pre><code class="language-json=" data-lang="json=">&quot;ServiceName&quot;: &quot;YoubikeWebApi&quot;,
   &quot;ConnectionString&quot;: {
     &quot;Northwind&quot;: &quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&quot;,
@@ -1489,8 +1489,8 @@
     ]
   }
 </code></pre><p><img src="https://i.imgur.com/SSh1E3Z.jpg" alt=""></p>
-<p>接著要在Controller的Infrastructure建立一個做Redis相關連線服務的功能。<br>
-這邊會使用到 Microsoft.Extensions.Caching.StackExchangeRedis 這個Nuget套件。</p>
+<p>接著要在 Controller 的 Infrastructure 建立一個做 Redis 相關連線服務的功能。<br>
+這邊會使用到 Microsoft.Extensions.Caching.StackExchangeRedis 這個 Nuget 套件。</p>
 <p><img src="https://i.imgur.com/i5BB6cE.jpg" alt=""></p>
 <pre><code class="language-csharp=" data-lang="csharp=">public static class RedisCacheServiceCollectionExtensions
     {
@@ -1553,7 +1553,7 @@
             return services;
         }
     }
-</code></pre><p>接著調整CacheProviderResolver。</p>
+</code></pre><p>接著調整 CacheProviderResolver。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">            switch (cacheType)
             {
                 case CacheTypeEnum.None:
@@ -1571,7 +1571,7 @@
                     break;
             }
 </code></pre><p><img src="https://i.imgur.com/Rmj4vpp.jpg" alt=""></p>
-<p>最後調整StartUp</p>
+<p>最後調整 StartUp</p>
 <pre><code class="language-csharp=" data-lang="csharp=">             //Redis Cache Helper
             services.AddSingleton&lt;IRedisCacheHelper, RedisCacheHelper&gt;();
 
@@ -1600,27 +1600,27 @@
                 .Decorate&lt;IStationRepository,MemoryCacheStationRepository&gt;();
 </code></pre><p><img src="https://i.imgur.com/ZPdDmGo.jpg" alt=""></p>
 <h3 id="測試">測試</h3>
-<p>為了方便觀測我們先把MemoryCache拿掉當然只需要調整appsettings。
+<p>為了方便觀測我們先把 MemoryCache 拿掉當然只需要調整 appsettings。
 <img src="https://i.imgur.com/M39wqHC.jpg" alt=""></p>
-<p>先將我們的Redis準備好，初始畫面。<br>
+<p>先將我們的 Redis 準備好，初始畫面。<br>
 <img src="https://i.imgur.com/nnYXWTG.jpg" alt=""></p>
-<p>打過API後觀察nanoprofiler<br>
+<p>打過 API 後觀察 nanoprofiler<br>
 <img src="https://i.imgur.com/YpSjszL.jpg" alt=""></p>
 <p>確定第二次是有進快取的。<br>
 <img src="https://i.imgur.com/9ZoxVAw.jpg" alt=""></p>
-<p>看一下Redis內的存放狀態，我們在程式內用 :: 在Redis內是資料夾分層的用法。<br>
+<p>看一下 Redis 內的存放狀態，我們在程式內用 :: 在Redis 內是資料夾分層的用法。<br>
 <img src="https://i.imgur.com/MbvQz0G.jpg" alt=""></p>
 <p>可以觀察裡面存放的資料。<br>
 <img src="https://i.imgur.com/rQ5OTV1.jpg" alt=""></p>
-<p>接著我們把MemoryCache加回觀察一下。<br>
+<p>接著我們把 MemoryCache 加回觀察一下。<br>
 <img src="https://i.imgur.com/AunBTEA.jpg" alt=""></p>
-<p>就可以觀察到有快取的情況下因為MemoryCache在裝飾的最外層，所以拿到資料就馬上返回了。<br>
+<p>就可以觀察到有快取的情況下因為 MemoryCache 在裝飾的最外層，所以拿到資料就馬上返回了。<br>
 <img src="https://i.imgur.com/ZQvh49G.jpg" alt=""></p>
-<p>這樣Redis快取就大功告成啦~~~~</p>
+<p>這樣 Redis 快取就大功告成啦~~~~</p>
 <h2 id="後記">後記</h2>
 <p>基本快取用法就大概會介紹到這樣，最後還是要提醒一下，因為我們示範的資料小，所以就直接全部塞入
-Redis內，還是要切記在正式運用的情況下要思考資料該如何分批存入。</p>
-<p>後續更進階的用法就留待有時間的時候會繼續研究，例如：公司大神也提出了Redis如果出現中斷的情況服務不應該因為Redis中斷就無法正常回傳資料，應該要有相對應的處理；或是前輩也提醒過快取資料與資料庫資料如何卻保資料的一致性，像我們這次提供的方法是對YouBike資料進行快取一分鐘，那當Hangfire已經撈取新的一批資料時，我們該如何快速的進行資料同步，就留待後續探究啦。</p>
+Redis 內，還是要切記在正式運用的情況下要思考資料該如何分批存入。</p>
+<p>後續更進階的用法就留待有時間的時候會繼續研究，例如：公司大神也提出了 Redis 如果出現中斷的情況服務不應該因為 Redis 中斷就無法正常回傳資料，應該要有相對應的處理；或是前輩也提醒過快取資料與資料庫資料如何卻保資料的一致性，像我們這次提供的方法是對 YouBike 資料進行快取一分鐘，那當 Hangfire 已經撈取新的一批資料時，我們該如何快速的進行資料同步，就留待後續探究啦。</p>
 <p><a href="https://github.com/sunnyday0932/YouBikeService/tree/feature/DecoratorCache">這次的程式也會放在另一個分支，有需要歡迎取用</a>。</p>
 
     </div>

@@ -71,7 +71,7 @@
     "datePublished": "2021-03-15 19:40:45  UTC",
     "dateModified" : "2021-03-15 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89\/",
-    "wordCount" : "784",
+    "wordCount" : "860",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -171,15 +171,15 @@
           
 
           <h2 id="前言">前言</h2>
-<p>介紹完非同步程式設計接下來就可以開始實作了，基本上大同小異，這次也只會著重在特別的地方說明，剩下的會把Code放在Github上，有需要的歡迎取用。</p>
+<p>介紹完非同步程式設計接下來就可以開始實作了，基本上大同小異，這次也只會著重在特別的地方說明，剩下的會把 Code 放在 Github 上，有需要的歡迎取用。</p>
 <h2 id="本文">本文</h2>
 <h3 id="1appsettings">1、appsettings。</h3>
-<p>之前介紹Core都沒有特別提到appsettings，其實它就是dotnet framework的config設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。</p>
-<p>這次我們把DB的連線字串放在appsettings內，透過startup的時候拿取所需的DB連接字串。</p>
+<p>之前介紹 Core 都沒有特別提到 appsettings，其實它就是 dotnet framework 的 config 設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。</p>
+<p>這次我們把DB的連線字串放在 appsettings 內，透過 startup 的時候拿取所需的 DB 連接字串。</p>
 <p>2021/04/19更新<br>
-感謝同事協助指正，appsettings並不完全等同於dotnet framework的Webconfig，而是core將原本全部擠在Webconfig的地方拆分歸類在不同地方，例如：Nuget套件就歸在csproj、appsettings區塊就是Core的appsettings。<br>
-那Core難道就完全不需要Webconfig了嗎？</p>
-<p>倒也不是，像是我們公司的Core專案還是會加上Webconfig檔案，內容就主要做為設定CI建置的調整、或是對IIS的一些細部設定，還是可以透過Webconfig來做，可供大家使用上做參考。</p>
+感謝同事協助指正，appsettings 並不完全等同於 dotnet framework 的 Webconfig，而是 core 將原本全部擠在 Webconfig 的地方拆分歸類在不同地方，例如：Nuget 套件就歸在 csproj、appsettings 區塊就是 Core 的 appsettings。<br>
+那 Core 難道就完全不需要 Webconfig 了嗎？</p>
+<p>倒也不是，像是我們公司的 Core 專案還是會加上 Webconfig 檔案，內容就主要做為設定 CI 建置的調整、或是對 IIS 的一些細部設定，還是可以透過 Webconfig 來做，可供大家使用上做參考。</p>
 <pre><code class="language-json=" data-lang="json=">{
   &quot;Logging&quot;: {
     &quot;LogLevel&quot;: {
@@ -193,7 +193,7 @@
   }
 }
 
-</code></pre><p>在StartUp拿取connetcion。</p>
+</code></pre><p>在 StartUp 拿取 connetcion。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得DB連線
         /// &lt;/summary&gt;
@@ -204,7 +204,7 @@
 
             return connection;
         }
-</code></pre><p>完整StartUp。</p>
+</code></pre><p>完整 StartUp。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class Startup
     {
 
@@ -277,7 +277,7 @@
             return connection;
         }
     }
-</code></pre><p>注意到DatabaseHelper的方式改變了。</p>
+</code></pre><p>注意到 DatabaseHelper 的方式改變了。</p>
 <p>介面：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">public interface IDatabaseHelper
     {
@@ -301,7 +301,7 @@
             return conn;
         }
     }
-</code></pre><p>AccountRepository取用的方式。</p>
+</code></pre><p>AccountRepository 取用的方式。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountRepository : IAccountRepository
     {
         private readonly string _connectionString;
@@ -357,11 +357,11 @@
         }
     }
 </code></pre><h3 id="2欄位驗證">2、欄位驗證。</h3>
-<p>這次要來介紹Controller透過FluentValidation做到欄位驗證的方式。</p>
+<p>這次要來介紹 Controller 透過 FluentValidation 做到欄位驗證的方式。</p>
 <p><a href="https://docs.fluentvalidation.net/en/latest/">FluentValidation官方文件</a>。</p>
-<p>首先記得要先在Nuget安裝FluentValidation。<br>
+<p>首先記得要先在 Nuget 安裝 FluentValidation。<br>
 <img src="https://i.imgur.com/zR2BamQ.jpg" alt=""></p>
-<p>接下來我們建立一個IValidatorAttribute的介面。</p>
+<p>接下來我們建立一個 IValidatorAttribute 的介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public interface IValidatorAttribute
     {
         /// &lt;summary&gt;
@@ -372,7 +372,7 @@
         ValidationResult Validator(object obj);
     }
 
-</code></pre><p>然後我們就可以建立一Account使用的Validator。</p>
+</code></pre><p>然後我們就可以建立一 Account 使用的 Validator。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class InsertUpdateValidator : AbstractValidator&lt;AccountParameter&gt;, IValidatorAttribute
     {
         public InsertUpdateValidator()
@@ -393,7 +393,7 @@
             return validation;
         }
     }
-</code></pre><p>接下來我們需要做一個可以掛在Attribute控制Controller的驗證。</p>
+</code></pre><p>接下來我們需要做一個可以掛在 Attribute 控制 Controller 的驗證。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class ValidatorParameterAttribute : ActionFilterAttribute
     {
         private readonly Type _type;
@@ -454,7 +454,7 @@
             }
         }
     }
-</code></pre><p>裡面有一個使用到的FailResultViewModel，這其實是目前公司會使用的一種自訂格式，大家都會follow這種制式規定，我取了某些部分當作示範。</p>
+</code></pre><p>裡面有一個使用到的 FailResultViewModel，這其實是目前公司會使用的一種自訂格式，大家都會 follow 這種制式規定，我取了某些部分當作示範。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class FailResultViewModel
     {
         public string Method { get; set; }
@@ -472,7 +472,7 @@
 
         public string Message { get; set; }
     }
-</code></pre><p>接下來就是回到Controller補上Attribute。</p>
+</code></pre><p>接下來就是回到 Controller 補上 Attribute。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
@@ -493,7 +493,7 @@
 <img src="https://i.imgur.com/mjsB64y.jpg" alt=""></p>
 <p>回傳：<br>
 <img src="https://i.imgur.com/XjhQHd8.jpg" alt=""></p>
-<p>這樣就可以簡單的透過Attribute來驗證輸入的欄位是否有缺漏。</p>
+<p>這樣就可以簡單的透過 Attribute 來驗證輸入的欄位是否有缺漏。</p>
 <p>回頭補上剩下的欄位驗證。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class InsertUpdateValidator : AbstractValidator&lt;AccountParameter&gt;, IValidatorAttribute
     {

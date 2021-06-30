@@ -71,7 +71,7 @@
     "datePublished": "2021-05-30 01:40:45  UTC",
     "dateModified" : "2021-05-30 01:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/message-queue-5rabbitmq\/",
-    "wordCount" : "702",
+    "wordCount" : "764",
     "keywords" : ["Message Queue","RabbitMQ", "Sian"]
 }
 </script>
@@ -173,13 +173,13 @@
           <h2 id="本文">本文</h2>
 <h3 id="topics">Topics</h3>
 <p><img src="https://i.imgur.com/uf3cIM1.jpg" alt=""></p>
-<p>這個模式下Exchange會透過Topic的方式，將訊息丟給符合的Queue傳給相對應的Reciver。</p>
-<p>Topic會透過我們給予的Key來決定要給哪些人，而Key可以使用兩種特殊符號：</p>
+<p>這個模式下 Exchange 會透過 Topic 的方式，將訊息丟給符合的 Queue 傳給相對應的 Reciver。</p>
+<p>Topic 會透過我們給予的 Key 來決定要給哪些人，而 Key 可以使用兩種特殊符號：</p>
 <ul>
 <li>1、 * (星號)：它能夠代表一個萬用詞。</li>
 <li>2、 # (井號)：則是能夠代表零個或多個萬用詞。</li>
 </ul>
-<p>舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。</p>
+<p>舉例來說上圖我們有一個  ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice  通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。</p>
 <p>那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &hellip; 都允許通過。</p>
 <p>接著我們來實作測試看看吧。</p>
 <p>Publisher</p>
@@ -217,7 +217,7 @@
 
             Console.WriteLine(&quot;請按任意鍵離開!&quot;);
             Console.ReadLine();
-</code></pre><p>我們的Reciver1負責拿取 ＊.safe的logs。</p>
+</code></pre><p>我們的 Reciver1 負責拿取 ＊.safe的logs。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             ConnectionFactory factory = new ConnectionFactory()
@@ -259,7 +259,7 @@
                 Console.ReadLine();
             }
         }
-</code></pre><p>Reciver2拿取任何有包含warning的logs。</p>
+</code></pre><p>Reciver2 拿取任何有包含 warning 的 logs。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             ConnectionFactory factory = new ConnectionFactory()
@@ -304,32 +304,32 @@
 </code></pre><p>我們發送</p>
 <pre><code class="language-shell=" data-lang="shell="> dotnet run &quot;Status.safe&quot; &quot;沒事沒事系統還活著繼續睡!&quot;
 </code></pre><p><img src="https://i.imgur.com/oFMGJZX.jpg" alt=""></p>
-<p>可以觀察到只會有Reciver1拿到訊息。</p>
+<p>可以觀察到只會有 Reciver1 拿到訊息。</p>
 <p>接著發送</p>
 <pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;Status.safe.Good!&quot; &quot;沒事沒事系統還活著繼續睡!&quot;
 </code></pre><p><img src="https://i.imgur.com/PCBwQig.jpg" alt=""></p>
-<p>因為沒有任何可對應的key則不會有人收到訊息。<br>
+<p>因為沒有任何可對應的 key 則不會有人收到訊息。<br>
 <img src="https://i.imgur.com/oQoNNtT.jpg" alt=""></p>
-<p>接著我們來測試warning相關的訊息</p>
+<p>接著我們來測試 warning 相關的訊息</p>
 <pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;Status.warning&quot; &quot;你家系統大爆炸!&quot;
-</code></pre><p>就只有Reciver2會拿到訊息。<br>
+</code></pre><p>就只有 Reciver2 會拿到訊息。<br>
 <img src="https://i.imgur.com/uqQ8w6h.jpg" alt=""></p>
 <p>再試著發送</p>
 <pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;Status.warning.dead&quot; &quot;你家系統大爆炸!&quot;
 dotnet run &quot;Status.warning.dead.enmergency&quot; &quot;你家系統大爆炸!&quot;
-</code></pre><p>Reciver2都還是會拿到訊息。<br>
+</code></pre><p>Reciver2 都還是會拿到訊息。<br>
 <img src="https://i.imgur.com/Q8sUqlY.jpg" alt=""></p>
 <h3 id="rpc">RPC</h3>
 <p><img src="https://i.imgur.com/LES58ct.jpg" alt=""></p>
-<p>最後一個範例要介紹的是RPC，此模式最大特點是可以接收Server的回傳訊息。</p>
-<p>過程使用的方式就是藉由一個RPC的協定(類似的有：<a href="https://grpc.io/docs/languages/csharp/quickstart/">gRPC</a>)，大概的概念就是A服務可以透過RPC來呼叫B服務的程式，好處就是對A服務來說就好像使用了本地端的程式一樣，並不需要做額外的互動處理(對比對象可以想像我們先前常使用的API與之差異)。</p>
-<p>缺點的話就是debug不容易，問題出現的時候不容易發覺到底是我們本地程式有問題還是呼叫RPC服務過程有狀況，所以文件上也有提供了三個建議：</p>
+<p>最後一個範例要介紹的是 RPC，此模式最大特點是可以接收 Server 的回傳訊息。</p>
+<p>過程使用的方式就是藉由一個 RPC 的協定(類似的有：<a href="https://grpc.io/docs/languages/csharp/quickstart/">gRPC</a>)，大概的概念就是A服務可以透過 RPC 來呼叫 B 服務的程式，好處就是對 A 服務來說就好像使用了本地端的程式一樣，並不需要做額外的互動處理(對比對象可以想像我們先前常使用的 API 與之差異)。</p>
+<p>缺點的話就是 debug 不容易，問題出現的時候不容易發覺到底是我們本地程式有問題還是呼叫 RPC 服務過程有狀況，所以文件上也有提供了三個建議：</p>
 <ul>
-<li>確保能夠清楚看出哪一個方法是本地執行，哪一個方法是透過RPC服務執行的。</li>
+<li>確保能夠清楚看出哪一個方法是本地執行，哪一個方法是透過 RPC 服務執行的。</li>
 <li>建立完整的文件，可以清楚看出服務之間的依賴。</li>
-<li>要有錯誤處理機制，如果RPC服務反應時間過長，Client該如何做應對處理。</li>
+<li>要有錯誤處理機制，如果 RPC 服務反應時間過長，Client 該如何做應對處理。</li>
 </ul>
-<p>那我們就來做個簡單的範例，Client透過RPC呼叫一個兩數相加的方法。</p>
+<p>那我們就來做個簡單的範例，Client 透過 RPC 呼叫一個兩數相加的方法。</p>
 <p>Server</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
@@ -511,16 +511,16 @@ dotnet run &quot;Status.warning.dead.enmergency&quot; &quot;你家系統大爆�
             return ((args.Length &gt; 0) ? string.Join(&quot; &quot;, args) : &quot;Hello World!&quot;);
         }
 </code></pre><p>測試：<br>
-首先執行我們Server<br>
+首先執行我們 Server<br>
 <img src="https://i.imgur.com/c0A5coB.jpg" alt=""></p>
-<p>接著透過PowerShell執行我們的Client</p>
+<p>接著透過 PowerShell 執行我們的 Client</p>
 <pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;1,2&quot;
 </code></pre><p><img src="https://i.imgur.com/G4NA13U.jpg" alt=""></p>
-<p>也可以觀察一下Server端的訊息<br>
+<p>也可以觀察一下 Server 端的訊息<br>
 <img src="https://i.imgur.com/xWGIK6y.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>那麼RabbitMQ基本使用就介紹到這邊，這邊都是直接參照官方文件做的練習，若需要更深入了解還是建議看一下官方文件細節。</p>
-<p>一樣會把程式放在GitHub上有需要歡迎取用。</p>
+<p>那麼 RabbitMQ 基本使用就介紹到這邊，這邊都是直接參照官方文件做的練習，若需要更深入了解還是建議看一下官方文件細節。</p>
+<p>一樣會把程式放在 GitHub 上有需要歡迎取用。</p>
 <p><a href="https://github.com/sunnyday0932/RabbitMQSample/tree/main/TopicsSample/Sample/Sample">Topics Sample</a></p>
 <p><a href="https://github.com/sunnyday0932/RabbitMQSample/tree/main/RPCSample/Sample/Sample">RPC Sample</a></p>
 <h2 id="參考連結">參考連結</h2>

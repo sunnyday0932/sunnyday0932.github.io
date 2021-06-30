@@ -71,7 +71,7 @@
     "datePublished": "2021-04-01 18:40:45  UTC",
     "dateModified" : "2021-04-01 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-2\/",
-    "wordCount" : "212",
+    "wordCount" : "250",
     "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
 }
 </script>
@@ -171,14 +171,14 @@
           
 
           <h2 id="前言">前言</h2>
-<p>接下來試做HangFire。</p>
+<p>接下來試做 HangFire。</p>
 <h2 id="本文">本文</h2>
 <h3 id="1前置步驟">1、前置步驟。</h3>
-<p>一樣選擇Web應用程式。<br>
+<p>一樣選擇 Web 應用程式。<br>
 <img src="https://i.imgur.com/Nm5Qztn.jpg" alt=""></p>
-<p>接下來要選擇MVC的架構。<br>
+<p>接下來要選擇 MVC 的架構。<br>
 <img src="https://i.imgur.com/bvZudKs.jpg" alt=""></p>
-<p>安裝以下三個Nuget套件。</p>
+<p>安裝以下三個 Nuget 套件。</p>
 <ul>
 <li>Hangfire</li>
 <li>Hangfire.AspNetCore</li>
@@ -187,15 +187,15 @@
 <p><img src="https://i.imgur.com/KGrdyfC.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/mvSKKFJ.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/Vbxkxdz.jpg" alt=""></p>
-<p>在SSMS中localhost新建一個Hangfire DB。<br>
+<p>在 SSMS 中 localhost 新建一個 Hangfire DB。<br>
 <img src="https://i.imgur.com/UDn0xro.jpg" alt=""></p>
 <h2 id="2設定">2、設定。</h2>
-<p>把DB連線放在appsettings中加入connection string。</p>
+<p>把 DB 連線放在 appsettings 中加入 connection string。</p>
 <pre><code class="language-json=" data-lang="json=">&quot;ConnectionStrings&quot;: {
     &quot;HangFire&quot;: &quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&quot;
   }
 </code></pre><p><img src="https://i.imgur.com/UDCUZDd.jpg" alt=""></p>
-<p>StartUp加入設定。</p>
+<p>StartUp 加入設定。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
@@ -253,15 +253,15 @@
                 });
         }
 </code></pre><p>接下來就可以啟動專案。<br>
-連線到Hangfire儀錶板，預設路徑會是<code>https://{localhost啟動的port}/hangfire</code>。<br>
+連線到 Hangfire 儀錶板，預設路徑會是<code>https://{localhost啟動的port}/hangfire</code>。<br>
 <img src="https://i.imgur.com/m0OTprA.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/QwH0RIA.jpg" alt=""></p>
-<p>查看DB Hangfire的地方會發現已經生成了預設的Table。<br>
+<p>查看 DB Hangfire 的地方會發現已經生成了預設的 Table。<br>
 <img src="https://i.imgur.com/O6whzQp.jpg" alt=""></p>
-<p>這邊的TableName不可以隨意更換，如果要生成新的可以透過StatUp SchemaName修改。<br>
+<p>這邊的 TableName 不可以隨意更換，如果要生成新的可以透過 StatUp SchemaName 修改。<br>
 <img src="https://i.imgur.com/NGni3wM.jpg" alt=""></p>
 <h2 id="3測試">3、測試。</h2>
-<p>在Controller加入排程。</p>
+<p>在 Controller 加入排程。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        public IActionResult Index()
         {
             BackgroundJob.Enqueue(() =&gt; Console.WriteLine(&quot;Index頁面觸發：Fire and Foreget Schedule!&quot;));
@@ -288,7 +288,7 @@
                 );
             return View();
         }
-</code></pre><p>在StartUp加入Recurring job。</p>
+</code></pre><p>在 StartUp 加入 Recurring job。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">            //Recurring job
             RecurringJob.AddOrUpdate
                 (
@@ -297,7 +297,7 @@
                     TimeZoneInfo.Local
                 );
 </code></pre><p><img src="https://i.imgur.com/W1H3I3w.jpg" alt=""></p>
-<p>這個cronExpression可以透過以下網頁測試：<br>
+<p>這個 cronExpression 可以透過以下網頁測試：<br>
 <a href="https://crontab.guru/#*/1_*_*_*_*">crontab guru</a></p>
 <!-- raw HTML omitted -->
 <p>Fire and Foreget Schedule：<br>
@@ -308,9 +308,9 @@
 <p><img src="https://i.imgur.com/puWwRL6.jpg" alt=""></p>
 <p>Continuations Job：<br>
 <img src="https://i.imgur.com/BXWuR45.jpg" alt=""></p>
-<p>第一個Job:<br>
+<p>第一個 Job:<br>
 <img src="https://i.imgur.com/Hm1REuW.jpg" alt=""></p>
-<p>第二個Job：<br>
+<p>第二個 Job：<br>
 <img src="https://i.imgur.com/b8buPhg.jpg" alt=""></p>
 <p>Recurring job：<br>
 <img src="https://i.imgur.com/3nARuHP.jpg" alt=""></p>
@@ -318,7 +318,7 @@
 <img src="https://i.imgur.com/NLk8YAK.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/S8os4NF.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p><a href="https://github.com/sunnyday0932/HangFireSample">程式一樣會放在GitHub有需要的歡迎取用。</a></p>
+<p><a href="https://github.com/sunnyday0932/HangFireSample">程式一樣會放在 GitHub 有需要的歡迎取用。</a></p>
 
     </div>
 

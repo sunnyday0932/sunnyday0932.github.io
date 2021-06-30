@@ -71,7 +71,7 @@
     "datePublished": "2021-01-22 19:40:45  UTC",
     "dateModified" : "2021-01-22 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-efcore\/",
-    "wordCount" : "595",
+    "wordCount" : "659",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -171,9 +171,9 @@
           
 
           <h2 id="前言">前言</h2>
-<p>前面我們已經練習過使用Dapper，剛好前輩提起EF也是需要練習熟悉的，就做了一個EF Core的版本，基本上內容與先前<a href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/">API 第二版本</a>大致相同，這邊就只會列出差異部分與碰到的問題。</p>
+<p>前面我們已經練習過使用 Dapper，剛好前輩提起 EF 也是需要練習熟悉的，就做了一個 EF Core 的版本，基本上內容與先前 <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/">API 第二版本</a>大致相同，這邊就只會列出差異部分與碰到的問題。</p>
 <h2 id="本文">本文</h2>
-<h3 id="一首先我們會需要先安裝三個ef需要使用到的nuget-套件">一、首先我們會需要先安裝三個EF需要使用到的Nuget 套件。</h3>
+<h3 id="一首先我們會需要先安裝三個-ef-需要使用到的-nuget-套件">一、首先我們會需要先安裝三個 EF 需要使用到的 Nuget 套件。</h3>
 <p>分別是：</p>
 <table>
 <thead>
@@ -200,24 +200,24 @@
 <p><img src="https://i.imgur.com/W16C61U.jpg" alt="">
 <img src="https://i.imgur.com/K4DIyTw.jpg" alt="">
 <img src="https://i.imgur.com/XC7QsCe.jpg" alt=""></p>
-<h3 id="二接下來需要輸入指令建立efcore所使用的dbcontext">二、接下來需要輸入指令建立EFCore所使用的DBContext。</h3>
+<h3 id="二接下來需要輸入指令建立-efcore-所使用的-dbcontext">二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。</h3>
 <p>完整指令如下：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext 'Data Source=localhost;Database=Northwind;Trusted_Connection=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force
 </code></pre><p>這邊提一下指令由前到後介紹：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext 'Data Source=localhost;Database=Northwind;Trusted_Connection=True;' Microsoft.EntityFrameworkCore.SqlServer
-</code></pre><p>這段是我們與DB連線字串，然後指定所使用的DB是SQL server。</p>
+</code></pre><p>這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">-OutputDir Conditions
 </code></pre><p>這邊是生成檔案放置地點。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">-Tables Users
-</code></pre><p>指定的Table名稱。</p>
+</code></pre><p>指定的 Table 名稱。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">-context AccountContext
-</code></pre><p>這是會生成的DBContext檔案名稱，這邊我取名為AccountContext。</p>
+</code></pre><p>這是會生成的 DBContext 檔案名稱，這邊我取名為 AccountContext。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">-Project WebApiEFCoreRepository -force
-</code></pre><p>指定生成在Repository專案，最後的force其實第一次生成DBContext時不用加，但後續要再加Table的時候可能會用上；至於我為甚麼留著呢？那當然是因為 <del>懶惰</del></p>
+</code></pre><p>指定生成在 Repository 專案，最後的 force 其實第一次生成 DBContext 時不用加，但後續要再加 Table 的時候可能會用上；至於我為甚麼留著呢？那當然是因為 <del>懶惰</del></p>
 <h3 id="三建完之後步驟">三、建完之後步驟。</h3>
-<p>指令建出來的context檔案其中有一段DB連線的地方這邊可以先拿掉，之後我們會使用注入的方式拿取連線字串。</p>
+<p>指令建出來的 context 檔案其中有一段 DB 連線的地方這邊可以先拿掉，之後我們會使用注入的方式拿取連線字串。</p>
 <p><img src="https://i.imgur.com/c3wy5hF.jpg" alt=""></p>
-<p>接下來建立IAccountRepository</p>
+<p>接下來建立 IAccountRepository</p>
 <pre><code class="language-csharp=" data-lang="csharp=">public interface IAccountRepository
     {
         /// &lt;summary&gt;
@@ -261,7 +261,7 @@
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool ForgetPassword(AccountCondition condition);
     }
-</code></pre><p>實作AccountRepository</p>
+</code></pre><p>實作 AccountRepository</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountRepository : IAccountRepository
     {
         private readonly AccountContext _accountContext;
@@ -356,7 +356,7 @@
             return result &gt; 0;
         }
     }
-</code></pre><p>接下來Service部分列出稍微不同的地方</p>
+</code></pre><p>接下來 Service 部分列出稍微不同的地方</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
@@ -404,7 +404,7 @@
                 Message = result ? &quot;更新成功&quot; : &quot;更新失敗&quot;
             };
         }
-</code></pre><p>StartUp部分</p>
+</code></pre><p>StartUp 部分</p>
 <pre><code class="language-csharp=" data-lang="csharp=">public void ConfigureServices(IServiceCollection services)
         {
             //注入註冊
@@ -424,8 +424,8 @@
 同樣的我也會把程式碼同步放上<a href="https://github.com/sunnyday0932/WebApiEFCore">GitHub歡迎取用參考</a>。</p>
 <h3 id="四重點筆記">四、重點筆記。</h3>
 <p>1、部分更新問題。<br>
-這邊遇到第一個大問題是原來EF並不希望你使用部分更新，因此一開始直接使用update馬上就報錯給我看，查了好幾種解決方式，我現在也不確定目前使用這種做法是否合適，若有更好的方法歡迎交流。<br>
-附上查詢到的StackOverflow連結：
+這邊遇到第一個大問題是原來 EF 並不希望你使用部分更新，因此一開始直接使用 update 馬上就報錯給我看，查了好幾種解決方式，我現在也不確定目前使用這種做法是否合適，若有更好的方法歡迎交流。<br>
+附上查詢到的 StackOverflow 連結：
 <a href="https://stackoverflow.com/questions/12871892/entity-framework-validation-with-partial-updates">Entity Framework validation with partial updates</a></p>
 <p>2021/04/19更新<br>
 感謝同事指正，提供了新的部分更新做法。<br>
@@ -471,15 +471,15 @@
 <img src="https://i.imgur.com/hO9Znrg.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>2、Repository Pattern Unit of Work。<br>
-這邊也看到EF使用Repository時會在隔離一個Unit of Work出來，研究了大約一周，還沒多大感受(其實是我偏愛Dapper)，所以這邊就使用最簡單作法。<br>
+這邊也看到 EF 使用 Repository 時會在隔離一個 Unit of Work 出來，研究了大約一周，還沒多大感受(其實是我偏愛 Dapper)，所以這邊就使用最簡單作法。<br>
 如有興趣研究的也附上連結：</p>
 <ul>
 <li><a href="https://raychiutw.github.io/2019/%E9%9A%A8%E6%89%8B-Design-Pattern-4-Repository-%E6%A8%A1%E5%BC%8F-Repository-Pattern/">大師部落格 Design Pattern (4) - Repository 模式</a>。</li>
 <li><a href="https://ithelp.ithome.com.tw/articles/10157700">加上 Unit of Work，抽離Entity Framework的依賴就完美了</a></li>
 </ul>
 <h2 id="後記">後記</h2>
-<p>這次自己從頭到尾做一次EF版本的API有一種自斷手腳的感覺，平常用Dapper簡單CRUD不用三兩下就完成的，換了一個工具還真的體會轉換陣痛期。</p>
-<p>但EF是.NET自家指定用法身為微軟全家餐的受害者(？，免不了還是要學習一下，在此提供弱弱筆記供大家參考。</p>
+<p>這次自己從頭到尾做一次 EF 版本的 API 有一種自斷手腳的感覺，平常用 Dapper 簡單 CRUD 不用三兩下就完成的，換了一個工具還真的體會轉換陣痛期。</p>
+<p>但 EF 是 .NET 自家指定用法身為微軟全家餐的受害者(？，免不了還是要學習一下，在此提供弱弱筆記供大家參考。</p>
 
     </div>
 

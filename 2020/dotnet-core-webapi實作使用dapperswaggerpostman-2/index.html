@@ -71,7 +71,7 @@
     "datePublished": "2020-09-29 22:19:33  CST",
     "dateModified" : "2020-09-29 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2\/",
-    "wordCount" : "268",
+    "wordCount" : "318",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -171,11 +171,11 @@
           
 
           <h2 id="前言">前言</h2>
-<p>我們接續著上次的介紹，會把CRUD功能補齊。<br>
-CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。</p>
+<p>我們接續著上次的介紹，會把 CRUD 功能補齊。<br>
+CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。</p>
 <h2 id="本文">本文</h2>
 <h3 id="新增">新增</h3>
-<p>1、首先我們先建立一個用來回傳的Model。</p>
+<p>1、首先我們先建立一個用來回傳的 Model。</p>
 <p>建立 ResultModel</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultModel</span>
     {
@@ -189,8 +189,8 @@ CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，�
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Message { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
     }
-</code></pre></div><p>2、把新增商品的Repository完成。</p>
-<p>新增商品Repository</p>
+</code></pre></div><p>2、把新增商品的 Repository 完成。</p>
+<p>新增商品 Repository</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增一筆商品
         /// &lt;/summary&gt;
@@ -235,7 +235,7 @@ CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，�
 
             return result &gt; 0;
         }
-</code></pre><p>3、增加一個Controller接口來接收新增商品。</p>
+</code></pre><p>3、增加一個 Controller 接口來接收新增商品。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">        [HttpPost]</span>
         <span style="color:#66d9ef">public</span> ResultModel CreateProduct([FromBody] ProductModel productModel)
         {
@@ -257,16 +257,16 @@ CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，�
 
             <span style="color:#66d9ef">return</span> result;
 </code></pre></div><p>4、測試方法</p>
-<p>因為這個方法使用的是Post，所以需要透過模擬瀏覽器送資料的方式。<br>
+<p>因為這個方法使用的是 Post，所以需要透過模擬瀏覽器送資料的方式。<br>
 這邊介紹兩種我常用的方法。</p>
 <p>方法一：<a href="https://www.postman.com/">PostMan</a>
 <img src="https://i.imgur.com/OMOygNy.jpg" alt=""></p>
 <p>到網站下載後進行安裝。<br>
-打開PostMan進行登入後我們會看到以下畫面。</p>
+打開 PostMan 進行登入後我們會看到以下畫面。</p>
 <p><img src="https://i.imgur.com/zwpZgGE.jpg" alt=""></p>
 <p>首先我們先建立一個測試方法，點選 +。<br>
 <img src="https://i.imgur.com/77bTgdA.jpg" alt=""></p>
-<p>選擇方法Post，並選擇Body &gt; raw &gt; json的方式，把資料填滿。<br>
+<p>選擇方法 Post，並選擇Body &gt; raw &gt; json的方式，把資料填滿。<br>
 <img src="https://i.imgur.com/bKG8w9D.jpg" alt=""></p>
 <pre><code class="language-json=" data-lang="json=">{
     &quot;ProductName&quot;: &quot;testProduct&quot;,
@@ -279,18 +279,18 @@ CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，�
     &quot;ReorderLevel&quot;: 10,
     &quot;Discontinued&quot;: false
 }
-</code></pre><p>settings將兩個選項改為ON。<br>
+</code></pre><p>settings 將兩個選項改為ON。<br>
 <img src="https://i.imgur.com/LJDqdjY.jpg" alt=""></p>
-<p>點選Send。<br>
+<p>點選 Send。<br>
 <img src="https://i.imgur.com/RPH4XvL.jpg" alt=""></p>
-<p>新增完後可以透過上次的Get方法確認資料。<br>
+<p>新增完後可以透過上次的 Get 方法確認資料。<br>
 <img src="https://i.imgur.com/9gIu68Z.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>方法二：<a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore">Swagger</a></p>
-<p>首先先到Nuget安裝頁面搜尋Swashbuckle，選擇Swashbuckle.AspNetCore安裝。
+<p>首先先到 Nuget 安裝頁面搜尋 Swashbuckle，選擇 Swashbuckle.AspNetCore 安裝。
 <img src="https://i.imgur.com/2Yo25uH.jpg" alt=""></p>
-<p>安裝完成後到startup.cs。<br>
-在ConfigureServices 註冊swagger。</p>
+<p>安裝完成後到 startup.cs。<br>
+在 ConfigureServices 註冊 swagger。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">services.AddSwaggerGen(options =&gt;
             {
                 options.SwaggerDoc(&quot;v1&quot;, new OpenApiInfo { Title = &quot;WebApiPhase1&quot;, Version = &quot;v1&quot; });
@@ -302,31 +302,31 @@ CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，�
                 options.IncludeXmlComments(xmlPath, true);
             });
 </code></pre><p><img src="https://i.imgur.com/yOQ4GWo.jpg" alt=""></p>
-<p>在Configure中啟用swagger，並指定存放的JSON位置。</p>
+<p>在 Configure 中啟用 swagger，並指定存放的 JSON 位置。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">            app.UseSwagger();
             app.UseSwaggerUI(c =&gt;
             {
                 c.SwaggerEndpoint(<span style="color:#e6db74">&#34;/swagger/v1/swagger.json&#34;</span>, <span style="color:#e6db74">&#34;WebApiPhase1&#34;</span>);
             });
 </code></pre></div><p><img src="https://i.imgur.com/aUQDknB.jpg" alt=""></p>
-<p>接下來要到專案屬性設定產生xml檔案，首先點選webapplication1右鍵選擇屬性。<br>
+<p>接下來要到專案屬性設定產生 xml 檔案，首先點選 webapplication1 右鍵選擇屬性。<br>
 <img src="https://i.imgur.com/nlhu9Xp.jpg" alt=""></p>
 <p>選擇建置，在輸出的地方把XML文件檔案打勾，並儲存。<br>
 <img src="https://i.imgur.com/kd2sj7v.jpg" alt=""></p>
-<p>接下來我們回到contorller補上註解。<br>
+<p>接下來我們回到 contorller 補上註解。<br>
 <img src="https://i.imgur.com/dyxuncJ.jpg" alt=""></p>
-<p>運行專案，在port之後輸入swagger，即可看到頁面。<br>
+<p>運行專案，在 port 之後輸入 swagger，即可看到頁面。<br>
 <img src="https://i.imgur.com/DpGADLP.jpg" alt=""></p>
-<p>點選try it，點選excute即可進行測試。<br>
+<p>點選 try it，點選 excute 即可進行測試。<br>
 <img src="https://i.imgur.com/6Jvt8JO.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/HluFXUk.jpg" alt=""></p>
-<p>而post的方式也可以直接透過網頁輸入參數。<br>
+<p>而 post 的方式也可以直接透過網頁輸入參數。<br>
 <img src="https://i.imgur.com/jQUsovP.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/oUNKBcv.jpg" alt=""></p>
-<p>一樣可以透過GET確認新增資料。
+<p>一樣可以透過 GET 確認新增資料。
 <img src="https://i.imgur.com/mfBjrXv.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>目前工作上如果是要透過網頁測試api正不正常我就會使用Swagger；但大多時間都是使用POSTMAN，因為可以儲存參數、ROUTER、整理成資料夾等方式，都大大便利許多，在此提供兩種方式以供大家參考。</p>
+<p>目前工作上如果是要透過網頁測試 API 正不正常我就會使用 Swagger；但大多時間都是使用 POSTMAN，因為可以儲存參數、ROUTER、整理成資料夾等方式，都大大便利許多，在此提供兩種方式以供大家參考。</p>
 <h2 id="參考資料">參考資料</h2>
 <ul>
 <li>1、<a href="https://docs.microsoft.com/zh-tw/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&amp;tabs=visual-studio">Swashbuckle 與 ASP.NET Core 使用者入門</a></li>

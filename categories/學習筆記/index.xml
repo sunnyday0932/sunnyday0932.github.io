@@ -32,14 +32,9 @@ public class HostService : BackgroundService { private readonly string _filePath
       <guid>https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/</guid>
       <description>本文 事情發生是這樣的，今天突然接到一個線上問題，數據報表顯示有問題有幾個不該出現的數據卻出現了。
 問題發生當下馬上查了一下撈取數據顯示的語法，想知道判斷日期的地方是否有遺漏，然後就看到了一段類似於下列的語法
-WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111) 當下不疑有他第一個查的當然是CONVERT()的用法，查了一下發現是VARCHAR可以轉換成DATETIME的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。
-   數字 日期格式 範例     23 yyyy-mm-dd 2021-05-31   111 yyyy/mm/dd 2021/05/31   112 yyyymmdd 20210531    SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放KeyInDate這個VARCHAR欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本WHERE判斷會誤判。
-第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。
-大概有人開始越想越不對勁了，對&amp;hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。
- 2021/06/06 回來補做法
- 感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用DateTime.TryParseExact這個方法來轉換日期格式。
-首先來了解一下這個方法要怎麼用。
-TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime) //第一個String是放我們要轉換的字串 //第二個String是我們要轉換的字串日期格式是甚麼例如第一個String是2021/06/06那第二個String就是yyyy/MM/dd //IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW //DateTimeStyles則是可以決定我們允許哪些符合的字串格式能夠轉換 //DateTime 這就是我們要輸出的日期格式 簡單範例</description>
+WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111) 當下不疑有他第一個查的當然是 CONVERT() 的用法，查了一下發現是 VARCHAR 可以轉換成 DATETIME 的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。
+   數字 日期格式 範例     23 yyyy-mm-dd 2021-05-31   111 yyyy/mm/dd 2021/05/31   112 yyyymmdd 20210531    SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放 KeyInDate 這個 VARCHAR 欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本 WHERE 判斷會誤判。
+第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種 Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。</description>
     </item>
     
     <item>
@@ -48,13 +43,13 @@ TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime) //第�
       <pubDate>Sun, 30 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</guid>
-      <description>本文 Topics 這個模式下Exchange會透過Topic的方式，將訊息丟給符合的Queue傳給相對應的Reciver。
-Topic會透過我們給予的Key來決定要給哪些人，而Key可以使用兩種特殊符號：
+      <description>本文 Topics 這個模式下 Exchange 會透過 Topic 的方式，將訊息丟給符合的 Queue 傳給相對應的 Reciver。
+Topic 會透過我們給予的 Key 來決定要給哪些人，而 Key 可以使用兩種特殊符號：
  1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
 那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &amp;hellip; 都允許通過。
 接著我們來實作測試看看吧。
 Publisher
-var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.Topic); //我們已接收到的第一個參數來當key決定要丟給哪一個Queue var key = (args.Length &amp;gt; 0) ? args[0] : &amp;quot;anonymous.</description>
+var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.</description>
     </item>
     
     <item>
@@ -65,11 +60,11 @@ var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;
       <guid>https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%BE%9E%E5%95%86%E6%A5%AD%E6%87%89%E7%94%A8%E9%A9%85%E5%8B%95%E6%9E%B6%E8%A8%AD%E8%A8%AD%E8%A8%88-%E5%BF%83%E5%BE%97/</guid>
       <description>本文 這次主題主要是分享主題是架構師是如何從商業應用場景來設計目前的系統架構。
 1、架構思維 傳統我們對架構師的期待可能就是技術要很強、懂得如何建構系統就好(還是其他人的印象不一樣，只是我以為？)
-講師Jed分享下對這印象改觀了不少。
+講師 Jed 分享下對這印象改觀了不少。
 架構師的腳色定位為何?
  技術的廣度與深度 處理人與人之間的關係(軟實力) 理解與實踐組織期望  傳統的場景比較像是由架構師一人規劃系統、負責核心底層，後續才交由其他PG設計。
-但Jed這邊分享認為更好的方式是兩邊一起緊密合作溝通而非單向傳授，畢竟架構設計並沒有完美這件事&amp;hellip;
-這邊也提到架構師很難專精某一項技術，因為有許多考量、商業考量、安全性考量、預算考量，要學習的範圍擴大，不只有技術這一項需要學習而已。 最印象深刻的是Jed分享提到以技術深度來說，團隊內的工程師經理、資深工程師都有比自己更強的部分，但架構師要懂得更廣。
+但 Jed 這邊分享認為更好的方式是兩邊一起緊密合作溝通而非單向傳授，畢竟架構設計並沒有完美這件事&amp;hellip;
+這邊也提到架構師很難專精某一項技術，因為有許多考量、商業考量、安全性考量、預算考量，要學習的範圍擴大，不只有技術這一項需要學習而已。 最印象深刻的是 Jed 分享提到以技術深度來說，團隊內的工程師經理、資深工程師都有比自己更強的部分，但架構師要懂得更廣。
 中間也帶了一個小範例講解兩種快取可能需要考慮到的地方。
 最後帶到了
  架構師的第一法則
@@ -84,7 +79,7 @@ var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;
 所以新的方式:
 應該是讓架構師規劃後，讓團隊成員去開發。
 架構師應該只需要負責一部分的業務需求開發，這樣除了維持架構師的技術，也能提升團隊成員對整體架構了解程度。
-2、需求結構化與架構特性 來源書:一線架構師實際指南  功能性需求(Functional Requirements) 約束性需求(Constraint) Ex:資源約束、商業約束、法律約束、資安約束等。 品質屬性(非功能性需求Non-Functional Requirements)  品質屬性，最常被忽略，需求單位不會知道這是甚麼，大多是需要技術人員才能提出
+2、需求結構化與架構特性 來源書:一線架構師實際指南  功能性需求(Functional Requirements) 約束性需求(Constraint) Ex:資源約束、商業約束、法律約束、資安約束等。 品質屬性(非功能性需求 Non-Functional Requirements)  品質屬性，最常被忽略，需求單位不會知道這是甚麼，大多是需要技術人員才能提出
 ex:效能相關問題，頁面的回應時間要低於幾秒，同上人數要多少?
 這邊也帶了一個小範例電商需要考慮的需求矩陣有哪些
 重點：不同的需求其實會有交互影響的。
@@ -94,14 +89,10 @@ ex:效能相關問題，頁面的回應時間要低於幾秒，同上人數要�
 關鍵要做到：
 3、軟體是為了解決複雜問題 這個小節最大重點應該是右下那張圖XD
 盲點： 不要從技術的角度來設計架構，會與現實脫節，因為商業才是現實面最大的考量。
-從第一場Gipi院長到第二場講師Jed分享都有一再提到過這件事，技術開發者很容易陷入由技術為主要考量的出發點，但現時面還是要回歸到商業，畢竟一間公司的營運都是需要考量到錢。
-在此就有提到幫助釐清問題的邊界方法，有帶到了DDD。
+從第一場 Gipi 院長到第二場講師 Jed 分享都有一再提到過這件事，技術開發者很容易陷入由技術為主要考量的出發點，但現時面還是要回歸到商業，畢竟一間公司的營運都是需要考量到錢。
+在此就有提到幫助釐清問題的邊界方法，有帶到了 DDD。
 主要有三個邊界需要考量：
- 商業問題邊界 人員溝通問題邊界 技術邊界   Jed提到當你理解商業時，可以幫你驅動技術變化，而當你的技術進步，有時也會促進商業進化。
- 商業的策略驅動軟體服務的進化實例：
-很多公司把軟體變成SaaS服務。
-舉例: Adobe photoshop。
-事後來看Saas服務已經遠高於單機版的軟體。</description>
+ 商業問題邊界 人員溝通問題邊界 技術邊界   Jed 提到當你理解商業時，可以幫你驅動技術變化，而當你的技術進步，有時也會促進商業進化。</description>
     </item>
     
     <item>
@@ -110,10 +101,10 @@ ex:效能相關問題，頁面的回應時間要低於幾秒，同上人數要�
       <pubDate>Thu, 20 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-4rabbitmq/</guid>
-      <description>本文 Publish/Subscribe 我們來練習使用Exchange透過Fanout的方式發送訊息給所有Queue。
-現在我們目標是要發送log給所有Queue。
+      <description>本文 Publish/Subscribe 我們來練習使用 Exchange 透過 Fanout 的方式發送訊息給所有 Queue。
+現在我們目標是要發送 log 給所有 Queue。
 一樣先建立Publisher。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.WriteLine(&amp;quot;請按任意鍵離開!&amp;quot;); Console.ReadLine(); } private static string GetMessage(string[] args) { return ((args.</description>
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
     </item>
     
     <item>
@@ -125,9 +116,9 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
       <description>前言 前一篇介紹了基本的用法，接下來我們就來研究第一篇有介紹過的各種特殊處理。
 本文 這邊主要的練習都是參考以下文件：
 RabbitMQ 中文文檔
-Work Queues 有多個Consumer可以來幫忙消化Queue內的任務模式。
-首先我們一樣先建立一個Pubisher，這次改成由外部接收要傳送的訊息再丟給Queue。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
+Work Queues 有多個 Consumer 可以來幫忙消化 Queue 內的任務模式。
+首先我們一樣先建立一個 Pubisher，這次改成由外部接收要傳送的訊息再丟給 Queue。
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.</description>
     </item>
     
     <item>
@@ -136,29 +127,25 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
       <pubDate>Mon, 17 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/</guid>
-      <description>本文 架設RabbitMQ 首先我們使用docker來架設練習用的RabbitMQ。
-我們要使用rabbitmq:management的image，除了會幫我們架設起一個RabbitMQ外，也包含了可以管理的Web介面。
+      <description>本文 架設RabbitMQ 首先我們使用 docker 來架設練習用的 RabbitMQ。
+我們要使用 rabbitmq:management的image ，除了會幫我們架設起一個 RabbitMQ 外，也包含了可以管理的 Web 介面。
 使用以下語法，並給予預設帳號的帳號密碼。
-docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management 可以看到輸入後就算目前沒有該Image也會自動幫你下載(懶人的福音R)
-接下來可以到docker確認是否已經啟用。
+docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management 可以看到輸入後就算目前沒有該 Image 也會自動幫你下載(懶人的福音R)
+接下來可以到 docker 確認是否已經啟用。
 那麼就可以輸入以下網址登入測試了。
 http://localhost:15672/ 連上後就會看到登入畫面。
 輸入我們剛剛設定的預設值即可。
-Account: admin Password: a1234 成功進入後就會看到初始畫面儀錶板，一樣可以在Overview看到RabbitMQ目前有哪些東西在作用。
+Account: admin Password: a1234 成功進入後就會看到初始畫面儀錶板，一樣可以在 Overview 看到 RabbitMQ 目前有哪些東西在作用。
 這邊就只挑比較特別的地方做介紹。
-Exchange 這邊可以看到目前有建立了哪些Exchange，畫面上看到的都是預設的。
-使用Web介面的好處是可以直接透過介面建立。
-點選Exchange可以看到細部的設定。
+Exchange 這邊可以看到目前有建立了哪些 Exchange，畫面上看到的都是預設的。
+使用 Web 介面的好處是可以直接透過介面建立。
+點選 Exchange 可以看到細部的設定。
 Queue 一樣是可以透過介面觀看有哪些佇列、與其細項內容，並可以直接透過介面新增。
 Admin 這邊就是管理者的介面可以設定帳號，增加使用者等。
 右方還有更細部的設定，比如可以設定一些連接數、政策規範等。
-實作練習 這次主要範例會使用RabbitMQ官方的Nuget。
+實作練習 這次主要範例會使用 RabbitMQ 官方的 Nuget。
 RabbitMQ.Client
-讓我們先建立ConsoleApp。
-需要建立一個Publisher、一個Reciever。
-接下來先安裝RabbitMQ.Client。
-我們就可以來開始先做我們的Publisher發布訊息內容。
-static void Main(string[] args) { //設定主機位置以及帳號密碼 var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; //連線設定 using (var connection = factory.</description>
+讓我們先建立 ConsoleApp。</description>
     </item>
     
     <item>
@@ -167,24 +154,19 @@ static void Main(string[] args) { //設定主機位置以及帳號密碼 var fac
       <pubDate>Mon, 10 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-1%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</guid>
-      <description>前言 延續上述練習，接下來我們想做到，當HangFire撈取新Youbike資料的同時，讓系統能夠同步更新我們的快取資料確保使用者能夠拿到最即時的資料，這時候Message Queue就會派上用場，接下來就來研究看看Message Queue能做到那些事，以及如何實作。
-本文 Application Intergration(系統整合) 在開始認識Message Queue之前我們需要先對系統整合有些許概念。
+      <description>前言 延續上述練習，接下來我們想做到，當 HangFire 撈取新 Youbike 資料的同時，讓系統能夠同步更新我們的快取資料確保使用者能夠拿到最即時的資料，這時候 Message Queue就會派上用場，接下來就來研究看看Message Queue 能做到那些事，以及如何實作。
+本文 Application Intergration(系統整合) 在開始認識 Message Queue 之前我們需要先對系統整合有些許概念。
 系統整合指的是：
 一個完整的系統，不會只有一支程式在運作，而是有各種不同的程式各個相互合作下達成不同的任務，在合作的過程中就需要透過訊息傳遞的幫助來協助彼此間相互合作，這類的需求我們就稱之為系統整合需要做到的事。
 Ex:設想一個工廠的運作也是如此，工廠內不會只有一個產線在運行，像是特斯拉的工廠，我們從源頭需要備料，每一個零件的組裝，到一個完整的汽車烤漆，層層都有各個產線需要完成的事情，而相互間溝通就是需要透過系統整合來協助達成。
 而系統整合分為了以下幾種方式：
-1、Filed Based Integration(檔案為主的整合方式)。 Source Appication(來源程式)會根據要處理的任務，產生相對應的檔案到指定的路徑中，而Proccess Appication(處理程式)就會一直監看資料夾內有沒有需要處理的任務，當有的時候就會取出檔案作相對應的處理，並將處理的結果放到合適的檔案存放區。
-2、Shared Database Integration(共享資料庫的整合方式)。 Source Appication(來源程式)將要處理的任務寫入DB，Proccess Appication(處理程式)就會一直監看DB有沒有需要處理的任務，當有的時候就會取出任務作相對應的處理，並將處理的結果寫回到DB。
+1、Filed Based Integration(檔案為主的整合方式)。 Source Appication(來源程式)會根據要處理的任務，產生相對應的檔案到指定的路徑中，而 Proccess Appication(處理程式)就會一直監看資料夾內有沒有需要處理的任務，當有的時候就會取出檔案作相對應的處理，並將處理的結果放到合適的檔案存放區。
+2、Shared Database Integration(共享資料庫的整合方式)。 Source Appication(來源程式)將要處理的任務寫入 DB，Proccess Appication(處理程式)就會一直監看 DB 有沒有需要處理的任務，當有的時候就會取出任務作相對應的處理，並將處理的結果寫回到 DB。
 這種方式就有點像我們Hangfire的運作模式。
 3、Direct Connection Integration(直接連結的整合方式)。 Source Appication(來源程式)透過提前協議好的連結方式(TCP/IP、Named pipe connection)，直接傳遞要處理的任務，傳遞的資料格式可能為(Binary、XML、JSON等)，Proccess Appication(處理程式)處理完任務後再將結果傳回。
-4、Asynchronous Message Broker(透過Message Broker的非同步傳遞方式)。 來源程式(這邊會稱為:Producer Appication)將任務傳給Message Broker，Message Boker在透過佇列(Queue)的方式將任務排列先後順序，最後將任務傳遞給處理程式進行處理(這邊稱之為Consumer Application)。
+4、Asynchronous Message Broker(透過Message Broker的非同步傳遞方式)。 來源程式(這邊會稱為:Producer Appication)將任務傳給 Message Broker，Message Boker 在透過佇列(Queue)的方式將任務排列先後順序，最後將任務傳遞給處理程式進行處理(這邊稱之為Consumer Application)。
 這種類型的傳遞方式特點為：
- 不限制傳遞的資料格式。 需要有一個Message Broker Middleware進行協助處理任務的排列。 非同步的溝通方式，Producer傳送訊息至Message Queue後不需要立即得到回應，可以先行處理其他事情。 Comsumer可以等到有空的時候再來處理任務。  所以這邊最大的特點是，將收發訊息的雙方進行了解耦合的動作，兩邊在開發上可以專注在開發自己的程式上、收送雙方也不需要彼此的實體位置(IP地址、接收訊息的程式在哪)僅需要把訊息往Message Broker送即可。
-有著好的可靠性，訊息放在Queue中使得資料不容易流失、Comsumer就算暫時無法消化訊息也沒關係，Message Queue會暫時將資料存起來等到Comsumer有資源可以消化時再將訊息送出去。
-架構上也可以達到彈性擴展，Poducer、Message Broker、Comsumer都可以依照需求增減，Message Queue也是微服務的架構下最主要的溝通模式。
-RabbitMQ 這次我們要研究的Message Queue就是RabbitMQ。
-主要的腳色有：
- Producer - 負責丟訊息到Queue的。 Consumer - 負責消化來自Queue的訊息。 Queue - 負責存放所需的資料，一樣有著First-In-First-Out的特性。 Exchange - 在Poducer與Queue中間的一個元件，如果有Exchage的時候Poducer不再是直接把Message丟給Queue，而是把Message丟給Exchange後，由他來決定要丟給誰，主要有四種方式</description>
+ 不限制傳遞的資料格式。 需要有一個 Message Broker Middleware 進行協助處理任務的排列。 非同步的溝通方式，Producer 傳送訊息至 Message Queue 後不需要立即得到回應，可以先行處理其他事情。 Comsumer 可以等到有空的時候再來處理任務。  所以這邊最大的特點是，將收發訊息的雙方進行了解耦合的動作，兩邊在開發上可以專注在開發自己的程式上、收送雙方也不需要彼此的實體位置(IP地址、接收訊息的程式在哪)僅需要把訊息往 Message Broker 送即可。</description>
     </item>
     
     <item>
@@ -193,9 +175,9 @@ RabbitMQ 這次我們要研究的Message Queue就是RabbitMQ。
       <pubDate>Tue, 04 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96/</guid>
-      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰Redis快取。
-本文 開始前準備 我們先到CacheTypeEnum加入Redis。
-/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在Common Settings加入一個RedisConfigurationOptions。
+      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰 Redis 快取。
+本文 開始前準備 我們先到 CacheTypeEnum 加入 Redis。
+/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在 Common Settings 加入一個 RedisConfigurationOptions。
 public class RedisConfigurationOptions { /// &amp;lt;summary&amp;gt; /// The configuration. /// &amp;lt;/summary&amp;gt; public string Configuration { get; set; } /// &amp;lt;summary&amp;gt; /// The name of the instance. /// &amp;lt;/summary&amp;gt; public string InstanceName { get; set; } } 接著建立 IRedisCacheHelper
 public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指定 cachekey 的快取資料 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;cachekey&amp;quot;&amp;gt;The cachekey.</description>
     </item>
@@ -218,31 +200,30 @@ public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指�
       <pubDate>Fri, 30 Apr 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1/</guid>
-      <description>前言 延續上次我們使用Hangfire排程抓取Youbike的練習題，這次我們要做一個Youbike的Service，專門提供查詢Youbike相關站點資訊的服務；前面製作排程的時候有提到因為Youbike站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。
-本文 快取的使用時機 當API效能遇到瓶頸的時候，就可以使用快取來減少不必要去DB撈取資料的動作，最常使用的會是記憶體快取、Redis快取等。
+      <description>前言 延續上次我們使用 Hangfire 排程抓取 Youbike 的練習題，這次我們要做一個 Youbike 的 Service，專門提供查詢 Youbike 相關站點資訊的服務；前面製作排程的時候有提到因為 Youbike 站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。
+本文 快取的使用時機 當 API 效能遇到瓶頸的時候，就可以使用快取來減少不必要去 DB 撈取資料的動作，最常使用的會是記憶體快取、Redis 快取等。
 快取的適用時機 一般使用快取的功能通常是資料的變動性不大、不太會被變更的資料。
-當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們DB資料同步的問題。
+當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們 DB 資料同步的問題。
 快取的注意事項 使用快取的方式簡單來說是用錢換取時間(記憶體比起硬碟貴了許多)，通常在放資料進快取的時候會需要注意資料的大小、能不能適度地進行切分，以及存放的過期時間，而不是拿了就丟全部放入快取內(當然如果你本多忠勝不在此限)。
-開始前準備 這邊基本的API就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部Youbike站點的功能、另一個是查詢指定Youbike站點的功能。
+開始前準備 這邊基本的 API 就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部 Youbike 站點的功能、另一個是查詢指定 Youbike 站點的功能。
 先看一下初始的Repository結構。
-/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].[dbo].[YoubikeStation]&amp;quot;; using (var conn = this._databaseHelper.GetConnection(this._connectionString)) { var result = await conn.QueryAsync&amp;lt;StationDataModel&amp;gt;(sql); return result; } } /// &amp;lt;summary&amp;gt; /// 取得指定Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;stationNo&amp;quot;&amp;gt;The station no.</description>
+/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].</description>
     </item>
     
     <item>
-      <title>CoreProfiler - 監看WebApi效能的工具</title>
+      <title>CoreProfiler - 監看 WebApi 效能的工具</title>
       <link>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 29 Apr 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</guid>
-      <description>前言 接下來會用到CoreProfiler這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。
-本文 CorePofiler這個工具是提供給Core版本的效能工具，也有給dotnet framework的版本NanoProfiler。
-用到的Nuget  CoreProfiler.Web 安裝在Application。 CoreProfiler 安裝在Application跟要監看的類別庫。  使用方式 1、在我們需要監看的地方加上以下程式。
-var stepName = $&amp;quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;quot;; using (ProfilingSession.Current.Step(stepName)) { } 2、在Service與Repository的地方都加上。
+      <description>前言 接下來會用到 CoreProfiler 這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。
+本文 CorePofiler 這個工具是提供給 Core 版本的效能工具，也有給 dotnet framework 的版本 NanoProfiler。
+用到的Nuget  CoreProfiler.Web 安裝在 Application。 CoreProfiler 安裝在 Application 跟要監看的類別庫。  使用方式 1、在我們需要監看的地方加上以下程式。
+var stepName = $&amp;quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;quot;; using (ProfilingSession.Current.Step(stepName)) { } 2、在 Service 與 Repository 的地方都加上。
 Service：
 Repository：
-3、若要監看與DB存取資料的狀況，可以到DatabaseHelper這麼做。
-/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ? null : new DbProfiler(ProfilingSession.Current.Profiler) ); return conn; } 4、CoreProfiler的設定，可以建立一個coreprofiler.json的檔案。
-{ //資料保存上限 &amp;quot;circularBufferSize&amp;quot;: 200, //要過濾掉的項目 &amp;quot;filters&amp;quot;: [ { &amp;quot;key&amp;quot;: &amp;quot;/coreprofiler&amp;quot;, &amp;quot;value&amp;quot;: &amp;quot;/coreprofiler&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;CoreProfiler.</description>
+3、若要監看與 DB 存取資料的狀況，可以到 DatabaseHelper 這麼做。
+/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ?</description>
     </item>
     
     <item>
@@ -251,9 +232,9 @@ Repository：
       <pubDate>Mon, 26 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/decorator-pattern-%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
-      <description>本文 我們在先前SOLID - OCP(開放封閉原則)有提到過，軟體設計原則，應該對擴展開放，對修改封閉。
+      <description>本文 我們在先前 SOLID - OCP(開放封閉原則) 有提到過，軟體設計原則，應該對擴展開放，對修改封閉。
 而這次我們要介紹的裝飾者模式能夠更優雅地做到這件事。
-首先我們先回憶一下，特斯拉(不要懷疑我又回來啦)在不違反OCP原則下安裝軟體的時候我們可以怎麼做。
+首先我們先回憶一下，特斯拉(不要懷疑我又回來啦)在不違反 OCP 原則下安裝軟體的時候我們可以怎麼做。
 internal class Program { static void Main(string[] args) { var tesla = new Tesla(&amp;quot;Model3&amp;quot;); tesla.Print(); var autoPilot= new AutoPilot(); var settingRing = new SettingRing(); autoPilot.AddSoftWare(); settingRing.AddSoftWare(); } } public class Tesla { private string _model; public Tesla(string model) { this._model = model; } public void Print() { Console.WriteLine(this._model); } } public abstract class SoftWare { public abstract void AddSoftWare(); } public class AutoPilot : SoftWare { public override void AddSoftWare() { Console.</description>
     </item>
     
@@ -263,23 +244,18 @@ internal class Program { static void Main(string[] args) { var tesla = new Tesla
       <pubDate>Sat, 24 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</guid>
-      <description>本文 1、String Redis內最基本的資料型態，以Binary safe的方式進行儲存。
+      <description>本文 1、String Redis 內最基本的資料型態，以 Binary safe 的方式進行儲存。
  Binary safe
-C語言中對字串的儲存形式會用&#39;\0&amp;rsquo;來做為字串結束的判斷。
-而Redis雖然是使用C語言寫的，但優化了這個部分，所以Redis只需專注於讀寫整個Binary string，而不用為了某種特殊格式而需要進行特殊化的解析。
+C語言中對字串的儲存形式會用 &amp;lsquo;\0&amp;rsquo; 來做為字串結束的判斷。
+而Redis雖然是使用C語言寫的，但優化了這個部分，所以 Redis 只需專注於讀寫整個 Binary string ，而不用為了某種特殊格式而需要進行特殊化的解析。
  優點：
  可以儲存任何格式的資料，包括了圖片、檔案、及任何序列化後的物件。  使用提醒：
- Redis中一個String的最大上限為512MB。  適用場景：
- 普通的快取資料。 用來實作統計等相關功能 Ex: 網站的瀏覽人數。 分散式架構下的Web共用Session。  2、List 由Redis內多個String所組成，類似於Linked-List的資料結構。
+ Redis 中一個 String 的最大上限為512MB。  適用場景：
+ 普通的快取資料。 用來實作統計等相關功能 Ex: 網站的瀏覽人數。 分散式架構下的 Web 共用 Session。  2、List 由 Redis 內多個 String 所組成，類似於 Linked-List 的資料結構。
 優點：
- 插入和刪除資料的操作很快，時間複雜度為O(1)。  使用提醒：
- Redis中一個List的最大長度上限為 2^32 - 1。  適用場景：
- 可用來實作佇列的Queue(First in first out)。 可用來實作Stack(Last in first out)。 社群功能的留言板、排行榜、關注等功能。  示範：
-有一個留言板，現在有了三則留言。
-LPUSH board firstMessage LPUSH board secondMessage LPUSH board thirdMessage 我們要拿取最新的那一筆留言。
-LPOP board 3、Hash 由一個String類型的field和value所組成，資料會進行壓縮，有點類似於C#的Dictionary。
-優點：
- 同類型的資料可以進行整合儲存，方便於管理。 比string消耗的記憶體更小。  缺點：</description>
+ 插入和刪除資料的操作很快，時間複雜度為 O(1)。  使用提醒：
+ Redis 中一個 List 的最大長度上限為 2^32 - 1。  適用場景：
+ 可用來實作佇列的 Queue(First in first out)。 可用來實作 Stack(Last in first out)。 社群功能的留言板、排行榜、關注等功能。  示範：</description>
     </item>
     
     <item>
@@ -288,11 +264,11 @@ LPOP board 3、Hash 由一個String類型的field和value所組成，資料會�
       <pubDate>Wed, 21 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/redis-2-csharp%E6%93%8D%E4%BD%9C%E7%A4%BA%E7%AF%84/</guid>
-      <description>前言 本篇我們會示範使用C#來對Redis進行儲存。
+      <description>前言 本篇我們會示範使用 C# 來對 Redis 進行儲存。
 本文 我們會使用StackExchange.Redis這個Nuget套件進行示範。
-接下來我們建立一個簡易的Model。
-public class Employee { public string Id { get; set; } public string Name { get; set; } public int Age { get; set; } public Employee(string employeeId, string name, int age) { Id = employeeId; Name = name; Age = age; } } 給予一個初始值後我們將他轉成JSON的格式存入Redis。
-static void Main(string[] args) { //先取得連線 var connection = ConnectionMultiplexer.Connect(&amp;quot;127.0.0.1:6379&amp;quot;); var db = connection.GetDatabase(); var emp = new Employee(&amp;quot;1&amp;quot;,&amp;quot;Sian&amp;quot;,27); Console.WriteLine(&amp;quot;資料存入Redis成功 : &amp;quot; + db.</description>
+接下來我們建立一個簡易的 Model。
+public class Employee { public string Id { get; set; } public string Name { get; set; } public int Age { get; set; } public Employee(string employeeId, string name, int age) { Id = employeeId; Name = name; Age = age; } } 給予一個初始值後我們將他轉成 JSON 的格式存入 Redis。
+static void Main(string[] args) { //先取得連線 var connection = ConnectionMultiplexer.Connect(&amp;quot;127.0.0.1:6379&amp;quot;); var db = connection.</description>
     </item>
     
     <item>
@@ -301,30 +277,19 @@ static void Main(string[] args) { //先取得連線 var connection = ConnectionM
       <pubDate>Tue, 20 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</guid>
-      <description>前言 接下來會開始研究一些Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。
+      <description>前言 接下來會開始研究一些 Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。
 本文 Redis基本介紹 特點：
- 儲存資料是由Key-Value所組成。 資料儲存在記憶體內。 Single Thread I/O Multiplex。  1、儲存資料是由Key-Value所組成。 一般我們使用的SQL資料庫如：MSSQL、MySQL等，是屬於表格的方式儲存，傳統稱之為結構化數據。
-而Redis這類的NoSQL儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。
-簡單來說，在Redis內一組Key對應一組Value。
-2、資料儲存在記憶體內。 資料都是儲存在記憶體內，所以比起傳統DB可以達到更快速存取的機制。
-但也不是全部都只能放在記憶體，Redis也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。
+ 儲存資料是由 Key-Value 所組成。 資料儲存在記憶體內。 Single Thread I/O Multiplex。  1、儲存資料是由Key-Value所組成。 一般我們使用的 SQL 資料庫如：MSSQL、MySQL 等，是屬於表格的方式儲存，傳統稱之為結構化數據。
+而Redis這類的 NoSQL 儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。
+簡單來說，在 Redis 內一組 Key 對應一組 Value。
+2、資料儲存在記憶體內。 資料都是儲存在記憶體內，所以比起傳統 DB 可以達到更快速存取的機制。
+但也不是全部都只能放在記憶體，Redis 也支援存放永久機制的資料，這部分就會使用到硬碟，這點請慎用。
 注意要點：
-因為資料是存放在記憶體內，並不適合什麼東西都直接往Redis塞，稍一不甚使用就會悲劇。
-string類型控制在10KB以內，hash、list、set、zset元素個數不要超過5000。
-3、Single Thread I/O Multiplex。 Single Thread意味著不管裝載Redis的Server上有幾顆Cpu核心，一個Redis DB就只會使用到一個核心。
-(新版的Redis似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)
-一次只能使用一個Cpu的核心也就意味著一次只能接收一個Request，所以當有某一個Request佔用了太長的時間就會導致Redis無法應付其他的Request，這也跟上面第二點資料的存放大小有關。
-使用情景：
-傳統的程式如果要做快取通常第一選項都會直接使用本機的memory cache，但在分散式的架構下，當大家需要共用cache時，通常都會選擇使用Redis來當作快取資料庫。
-安裝說明 這邊我們會使用docker來進行安裝Redis。
-首先要下載Redis，這邊不指定版本預設就是下載最新版。
-docker pull redis 下載完後就可以執行Image。
-設定執行 container 的名字為 redis-test，port 為 6379，並設定背景執行。
-docker run --name redis-test -p 6379:6379 -d redis 可以使用docker ps觀看目前運行的container。
-測試 首先要先進到Redis-cli。
-第一步我們要指定使用Redis的container。 55d5是縮上面containerId的縮寫。
-docker exec -it 55d5 bash 接下來輸入以下指令，就可以看到我們已經連入Redis可以開始下指令了。
-redis-cli Redis提供一些簡單的指令供我們測試。</description>
+因為資料是存放在記憶體內，並不適合什麼東西都直接往 Redis 塞，稍一不甚使用就會悲劇。
+string 類型控制在10KB以內，hash、list、set、zset 元素個數不要超過 5000。
+3、Single Thread I/O Multiplex。 Single Thread 意味著不管裝載 Redis 的 Server 上有幾顆Cpu核心，一個 Redis DB 就只會使用到一個核心。
+(新版的 Redis 似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)
+一次只能使用一個 Cpu 的核心也就意味著一次只能接收一個 Request，所以當有某一個 Request 佔用了太長的時間就會導致 Redis 無法應付其他的 Request，這也跟上面第二點資料的存放大小有關。</description>
     </item>
     
     <item>
@@ -333,33 +298,26 @@ redis-cli Redis提供一些簡單的指令供我們測試。</description>
       <pubDate>Sat, 17 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
-      <description>前言 本篇會先示範docker基本操作，因為接下來會開始進行一些練習，會需要使用到docker，就一併記錄下來。
-本文 開始前須要先確認windows版本為專業版。
-接下來需要到控制台 &amp;gt; 程式和功能的地方打開Hyper-V。
-重新啟動後就可以開始安裝docker了。
+      <description>前言 本篇會先示範 docker 基本操作，因為接下來會開始進行一些練習，會需要使用到 docker，就一併記錄下來。
+本文 開始前須要先確認 windows 版本為專業版。
+接下來需要到控制台 &amp;gt; 程式和功能的地方打開 Hyper-V。
+重新啟動後就可以開始安裝 docker 了。
 docker下載連結
-接下來需要有輸入指令的軟體，可以使用Powershell。
-個人是使用大神所推薦的Cmder。
-工具齊全後我們來練習抓取MSSQL Image並且執行。
+接下來需要有輸入指令的軟體，可以使用 Powershell。
+個人是使用大神所推薦的 Cmder。
+工具齊全後我們來練習抓取 MSSQL Image 並且執行。
 docker pull microsoft/mssql-server-linux
-建立前要看一下說明，需要調整一下docker 設定。 這邊設定是可以直接透過GUI介面的，但不知道為啥我的doker desktop打開發現找不到advanced，Goole發現也有人有同樣問題，於是我就直接使用指令啦。
+建立前要看一下說明，需要調整一下 docker 設定。 這邊設定是可以直接透過 GUI 介面的，但不知道為啥我的 doker desktop 打開發現找不到 advanced，Goole 發現也有人有同樣問題，於是我就直接使用指令啦。
 問題連結一併附上。
 執行指令：
 docker run -e &amp;ldquo;ACCEPT_EULA=Y&amp;rdquo; -e &amp;ldquo;SA_PASSWORD=1qaz@2wsx&amp;rdquo; &amp;ndash;memory 4096m &amp;ndash;cpus 2 -p 1433:1433 -d microsoft/mssql-server-linux
-觀看Contanier運行結果。
-使用SSMS連線進行測試。
+觀看 Contanier 運行結果。
+使用 SSMS 連線進行測試。
 帳號:sa 密碼是剛剛設定的:1qaz@2wsx
 確認資料庫版本。
-關閉執行中的Container。
+關閉執行中的 Container。
 docker stop (這邊輸入Container的名字)
-不知道的話可以透過 docker ps -a 查詢目前有哪些container
-觀看Container狀態
-接下來刪除Container。
-docker rm (這邊輸入container名稱)
-觀看Container狀態
-要移除Contanier image的話可以輸入
-docker rmi (這邊輸入image名稱)
-觀看目前的Image就會發現已經移除了。</description>
+不知道的話可以透過 docker ps -a 查詢目前有哪些 container</description>
     </item>
     
     <item>
@@ -368,24 +326,24 @@ docker rmi (這邊輸入image名稱)
       <pubDate>Sat, 17 Apr 2021 06:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%95%86%E6%A5%AD%E8%88%87%E6%8A%80%E8%A1%93%E7%9A%84%E5%B9%B3%E8%A1%A1-%E5%BF%83%E5%BE%97/</guid>
-      <description>前言 作為未來有興趣往PM發展的工程師，閱讀到這段馬上就選擇報名了。
-本文 上半場 開場由91APP的Ruddy老師導引了一些敏捷團隊該努力的方向。
+      <description>前言 作為未來有興趣往 PM 發展的工程師，閱讀到這段馬上就選擇報名了。
+本文 上半場 開場由 91APP 的 Ruddy 老師導引了一些敏捷團隊該努力的方向。
 自己聽到的重點有：
- 敏捷團隊不該出現很忙的情況，代表有問題沒有釐清，反思敏捷精神。  小增量 多迭代 求回饋   尋求議題清晰，目標清楚。 使用OKR。  詳細內容可參考Ruddy老師寫的這篇文章：
+ 敏捷團隊不該出現很忙的情況，代表有問題沒有釐清，反思敏捷精神。  小增量 多迭代 求回饋   尋求議題清晰，目標清楚。 使用 OKR。  詳細內容可參考 Ruddy 老師寫的這篇文章：
 主管；你很忙嗎?
 這邊個人理解成，真正有照著敏捷跑的團隊因為目標夠明確，能夠切分，所以應該都要能夠在一個時程內完成。
 上半場的感想，確實比較面相對已經是管理階級的工程師開的論壇，但整個大主題圍繞在 傳承 這些經驗、或是帶著大家找尋最佳解，就代表也需要有新血流入，況且主題是管理結合技術本來就是我比較感興趣得題目，可以再多關注社群公布的消息。
-下半場 下半場開場由商業思維學院院長gipi分享之前在業界的經驗。
+下半場 下半場開場由商業思維學院院長 Gipi 分享之前在業界的經驗。
 首先提到了為何台灣的技術思維還停留在原始代工的階段，而期望達到的境界為：
 從他的自身經驗分享提到公司團隊合作方式。
 第一階段：未開化時期。 所有需求單位都可以直接對工程師提需求，而造就了這種情況。
 這張圖出現的時候，馬上就引起不少共鳴XD
 第二階段：逐漸敏捷。 公司開始有一個產品經理的職位出現，但因為以前都能直接對工程師提需求，所以需求單位並不習慣這種方式，於是就需要有數據佐證，透過產品經理的職位來達到雙向溝通；提升了多少等數據。
 這邊有提到目前大多數的公司敏捷團隊都只停留在技術團隊，有沒有可能跨出技術團隊，讓整個組織都敏捷呢？
-第三階段：敏捷完整體。 讓敏捷的精神跨出技術團隊，帶入整個公司，gipi提到，他們當初是透過接收需求端後，找出目標實驗客群，透過目標推送客製化內容，每兩周讓客服與客戶對焦回饋心得，以此方式迭帶收集需求，最後找到一個最佳解再進行工程團隊開發。
+第三階段：敏捷完整體。 讓敏捷的精神跨出技術團隊，帶入整個公司，Gipi 提到，他們當初是透過接收需求端後，找出目標實驗客群，透過目標推送客製化內容，每兩周讓客服與客戶對焦回饋心得，以此方式迭帶收集需求，最後找到一個最佳解再進行工程團隊開發。
 第二個主題分享是目前很多企業推廣敏捷、OKR、轉型的原因。
-敏捷 世界為何變得VUKA？
-VUKA是「波動、不確定、複雜和模糊的縮寫」（volatile, uncertain, complex and ambiguous）。
+敏捷 世界為何變得 VUKA？
+VUKA 是「波動、不確定、複雜和模糊的縮寫」（volatile, uncertain, complex and ambiguous）。
 1、全球化。
 =&amp;gt; 競爭對手已經不適原本所想的那些人。
 這邊自己所想到的例子是：Amazon。
@@ -395,32 +353,20 @@ VUKA是「波動、不確定、複雜和模糊的縮寫」（volatile, uncertain
 網路更快、消費意識抬頭、全球化競爭 =&amp;gt; 應變速度要更快。
 Ex:過去鄉下地方買電器可能找鄰近的電器行，而電器行會透過合作廠商推廣電器，消費者選擇少；現今使用網路選擇多樣化的情況下，廠商競爭者變多了。
 3、商業合作面。
-過去產業鏈單純、現在跨界企業出現。
-講者是以Tesla顛覆汽車業做舉例。
-這邊我也是想到Amazion，顛覆原產業、連結整個Amazon生態系。
-4、科技。
-科技進步速度加快。
-Ex:摩爾定律。
-這邊有提到如何用舊思維理解新技術？
-高層可能會遇到難以理解新技術的情況。
-這邊個人想到的是當初教授有提到，新技術根本還是回到Computer Science本身，DS、OS、演算法這些本同源，永遠不會過時，所以個人對這點也比較難以理解。
-後來分組討論的Konrad老師，本身也在台積電待了很多年現已退休，最後也是告訴我們有些東西不會過時，而那些根本才是技術人的精隨。
-OKR 台灣晚了20年導入。
-一開始的導入原因，需求難以對焦，從高層傳達下來的時間過長、甚至意思不夠明確。
-關鍵問題在於：</description>
+過去產業鏈單純、現在跨界企業出現。</description>
     </item>
     
     <item>
-      <title>dotnet Core HangFire - Youbike練習題</title>
+      <title>dotnet Core HangFire - Youbike 練習題</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</link>
       <pubDate>Mon, 12 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</guid>
-      <description>前言 前面介紹完Hangfire後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。
-內文 1、目標。  使用Youbike2.0政府開放資料。 每分鐘去抓取資料後寫回DB。  2、實作。 使用API網址為：Youbike2.0政府開放資料。。
+      <description>前言 前面介紹完 Hangfire 後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。
+內文 1、目標。  使用 Youbike2.0 政府開放資料。 每分鐘去抓取資料後寫回 DB。  2、實作。 使用 API 網址為： Youbike2.0政府開放資料。。
 使用說明：
-觀察一下API格式。
-建立Model存放。
+觀察一下 API 格式。
+建立 Model 存放。
 public class YoubikeDataModel { /// &amp;lt;summary&amp;gt; /// 站點代號 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sno&amp;quot;)] public string StationNo { get; set; } /// &amp;lt;summary&amp;gt; /// 場站中文名稱 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sna&amp;quot;)] public string StationName { get; set; } /// &amp;lt;summary&amp;gt; /// 場站總停車格 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;tot&amp;quot;)] public int Total { get; set; } /// &amp;lt;summary&amp;gt; /// 場站目前車輛數量 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sbi&amp;quot;)] public int BikeAmount { get; set; } /// &amp;lt;summary&amp;gt; /// 場站區域 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sarea&amp;quot;)] public string StaionArea { get; set; } /// &amp;lt;summary&amp;gt; /// 資料更新時間 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;mday&amp;quot;)] public DateTime ModifyDate { get; set; } /// &amp;lt;summary&amp;gt; /// 緯度 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;lat&amp;quot;)] public double Latitude { get; set; } /// &amp;lt;summary&amp;gt; /// 經度 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;lng&amp;quot;)] public double Longitude { get; set; } /// &amp;lt;summary&amp;gt; /// 地點 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;ar&amp;quot;)] public string Address { get; set; } /// &amp;lt;summary&amp;gt; /// 場站區域英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sareaen&amp;quot;)] public string StationAreaEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 場站名稱英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;snaen&amp;quot;)] public string StationNameEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 地址英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;aren&amp;quot;)] public string AddressEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 空位數量 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;bemp&amp;quot;)] public int Available { get; set; } /// &amp;lt;summary&amp;gt; /// 全站禁用狀態 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;act&amp;quot;)] public string Active { get; set; } /// &amp;lt;summary&amp;gt; /// source update time.</description>
     </item>
     
@@ -430,12 +376,12 @@ public class YoubikeDataModel { /// &amp;lt;summary&amp;gt; /// 站點代號 ///
       <pubDate>Mon, 05 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/</guid>
-      <description>本文 1、Trigger(觸發程序)。 看到這裡，我一開始以為所謂的Trigger就只有類似於在SQL Server當觸動某張Table時，會觸發某種事件這樣，但其實並不只是只有此種才稱之為Trigger，所以一開始看到大神介紹此種方法的時候還一頭霧水。
-我們可以將排程做成Trigger的方式，由程式啟動的時候觸發部屬排程工作。
+      <description>本文 1、Trigger(觸發程序)。 看到這裡，我一開始以為所謂的 Trigger 就只有類似於在 SQL Server 當觸動某張 Table 時，會觸發某種事件這樣，但其實並不只是只有此種才稱之為 Trigger ，所以一開始看到大神介紹此種方法的時候還一頭霧水。
+我們可以將排程做成 Trigger 的方式，由程式啟動的時候觸發部屬排程工作。
 順便會帶一點將排程執行的邏輯拆程類似之前分層架構的模式。
-首先我們建立一個ITimeService介面、與實作就是取得當下時間。
-public interface ITimeService { public DateTime GetCurrentTime(); } public class TimeService : ITimeService { public DateTime GetCurrentTime() { var currentTime = DateTime.Now; return currentTime; } } 接下來建立一個HangfireJob的介面與類別，這邊實體就會使用到剛剛所建立的TimeService。
-public interface IHangfireJob { void GetCurrentTime(); } public class HangfireJob : IHangfireJob { private readonly ITimeService _timeService; public HangfireJob( ITimeService timeService) { this._timeService = timeService; } public void GetCurrentTime() { var startTime = this._timeService.GetCurrentTime(); Console.WriteLine($&amp;quot;起始時間：{startTime.ToLocalTime():yyyy/MM/dd HH:mm:ss}&amp;quot;); Thread.</description>
+首先我們建立一個 ITimeService 介面、與實作就是取得當下時間。
+public interface ITimeService { public DateTime GetCurrentTime(); } public class TimeService : ITimeService { public DateTime GetCurrentTime() { var currentTime = DateTime.Now; return currentTime; } } 接下來建立一個 HangfireJob 的介面與類別，這邊實體就會使用到剛剛所建立的 TimeService。
+public interface IHangfireJob { void GetCurrentTime(); } public class HangfireJob : IHangfireJob { private readonly ITimeService _timeService; public HangfireJob( ITimeService timeService) { this.</description>
     </item>
     
     <item>
@@ -445,11 +391,11 @@ public interface IHangfireJob { void GetCurrentTime(); } public class HangfireJo
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/</guid>
       <description>前言 本篇會介紹一些特殊使用技巧，跟一些可以調整的設定。
-本文 1、API觸發排程。 首先建立一個API Controller。
+本文 1、API 觸發排程。 首先建立一個 API Controller。
 [Route(&amp;quot;api/[controller]&amp;quot;)] [ApiController] public class HangfireApiController : ControllerBase { [Route(&amp;quot;enquee&amp;quot;)] [HttpGet] public string TestHangfire() { BackgroundJob.Enqueue( () =&amp;gt; Console.WriteLine(&amp;quot;API觸發：Fire and Foreget Schedule!&amp;quot;)); return &amp;quot;排程觸發&amp;quot;; } } 測試：
-2、設定排程Priority。 先在StartUp中ConfigureService設定Priority。
-services.AddHangfireServer(options =&amp;gt; { //priority options.Queues = new[] { &amp;quot;alpha&amp;quot;, &amp;quot;beta&amp;quot;, &amp;quot;default&amp;quot; }; }); 將Recurring Job 改成：
-//Recurring job RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;Recurring job&amp;quot;, () =&amp;gt; Console.WriteLine($&amp;quot;Recurring job觸發時間：{DateTime.Now}&amp;quot;), cronExpression:&amp;quot;*/1 * * * *&amp;quot;, TimeZoneInfo.Local ); RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;alpha job&amp;quot;, () =&amp;gt; Console.</description>
+2、設定排程 Priority。 先在 StartUp 中 ConfigureService 設定 Priority。
+services.AddHangfireServer(options =&amp;gt; { //priority options.Queues = new[] { &amp;quot;alpha&amp;quot;, &amp;quot;beta&amp;quot;, &amp;quot;default&amp;quot; }; }); 將 Recurring Job 改成：
+//Recurring job RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;Recurring job&amp;quot;, () =&amp;gt; Console.WriteLine($&amp;quot;Recurring job觸發時間：{DateTime.Now}&amp;quot;), cronExpression:&amp;quot;*/1 * * * *&amp;quot;, TimeZoneInfo.</description>
     </item>
     
     <item>
@@ -458,14 +404,14 @@ services.AddHangfireServer(options =&amp;gt; { //priority options.Queues = new[]
       <pubDate>Thu, 01 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/</guid>
-      <description>前言 接下來試做HangFire。
-本文 1、前置步驟。 一樣選擇Web應用程式。
-接下來要選擇MVC的架構。
-安裝以下三個Nuget套件。
- Hangfire Hangfire.AspNetCore Newtonsoft.Json  在SSMS中localhost新建一個Hangfire DB。
-2、設定。 把DB連線放在appsettings中加入connection string。
-&amp;quot;ConnectionStrings&amp;quot;: { &amp;quot;HangFire&amp;quot;: &amp;quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&amp;quot; } StartUp加入設定。
-public void ConfigureServices(IServiceCollection services) { services.AddControllersWithViews(); //Hangfire var hangfireConnection = this.Configuration.GetConnectionString(name:&amp;quot;Hangfire&amp;quot;); services.AddHangfire(config =&amp;gt; { config.UseSqlServerStorage( nameOrConnectionString: hangfireConnection, options: new SqlServerStorageOptions { SchemaName = &amp;quot;HangfireSample&amp;quot;, JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60) }); }); services.AddHangfireServer(); } public void Configure(IApplicationBuilder app, IWebHostEnvironment env) { if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); } else { app.UseExceptionHandler(&amp;quot;/Home/Error&amp;quot;); // The default HSTS value is 30 days.</description>
+      <description>前言 接下來試做 HangFire。
+本文 1、前置步驟。 一樣選擇 Web 應用程式。
+接下來要選擇 MVC 的架構。
+安裝以下三個 Nuget 套件。
+ Hangfire Hangfire.AspNetCore Newtonsoft.Json  在 SSMS 中 localhost 新建一個 Hangfire DB。
+2、設定。 把 DB 連線放在 appsettings 中加入 connection string。
+&amp;quot;ConnectionStrings&amp;quot;: { &amp;quot;HangFire&amp;quot;: &amp;quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&amp;quot; } StartUp 加入設定。
+public void ConfigureServices(IServiceCollection services) { services.AddControllersWithViews(); //Hangfire var hangfireConnection = this.Configuration.GetConnectionString(name:&amp;quot;Hangfire&amp;quot;); services.AddHangfire(config =&amp;gt; { config.UseSqlServerStorage( nameOrConnectionString: hangfireConnection, options: new SqlServerStorageOptions { SchemaName = &amp;quot;HangfireSample&amp;quot;, JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60) }); }); services.</description>
     </item>
     
     <item>
@@ -474,16 +420,14 @@ public void ConfigureServices(IServiceCollection services) { services.AddControl
       <pubDate>Sun, 28 Mar 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</guid>
-      <description>前言 這次主題要來介紹排程，一般原生作法排程會直接寫一個Windows排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供.NET製作排程，如：Quartz.Net、Coravel。
-而這次主要會介紹HangFire。
+      <description>前言 這次主題要來介紹排程，一般原生作法排程會直接寫一個 Windows 排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供 .NET 製作排程，如： Quartz.Net、Coravel。
+而這次主要會介紹 HangFire。
 本文 一、相關資源。 1、官方文件。
 2、中文文件。
-二、基本介紹。 A、特別注意的特性： HangFire在建構起來後就等同於一個網站，所以它也有著一般IIS會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。
-像我們公司解法就是透過硬體，A10機器會定期訪問HangFire站台，確保站台是有在運行的。
-B、HangFire優點：  Simple - 開發簡單、安裝簡易、部屬到站台也很方便。 Reliable - HangFire提供了排程失敗的自動重試機制。 Distributed - 可透過分散式處理消化大量工作。 Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis等)地方，不必擔心站台被回收後排程任務消失。 Transparent - 透明化的作業流程，HangFire提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。  C、三大核心元件。  HangFire Client - 主要建立後端排程任務(Ex:前面說的一個網站)。 Job Storage - 主要儲存排程任務(Ex:DB)。 HangFire Server - 主要處理排程任務的地方。  排程工作的完整流程：
- 1、Client 建立一個排程任務。 2、排程任務儲存到Storage後，回傳一個JobId給Client。 3、Server端存Storage拿取要處理的排程任務。 4、Server端處理排程任務。  D、排程任務的類型。 1、Fire-and-forget Jobs - 這類型的Job進到排程佇列後會馬上執行且只會執行一次。
-var jobId = BackgroundJob.Enqueue( () =&amp;gt; Console.WriteLine(&amp;quot;Fire-and-forget!&amp;quot;)); 2、Delayed jobs - 這類型的排程可以延遲執行。
-var jobId = BackgroundJob.</description>
+二、基本介紹。 A、特別注意的特性： HangFire 在建構起來後就等同於一個網站，所以它也有著一般 IIS 會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。
+像我們公司解法就是透過硬體，A10 機器會定期訪問 HangFire 站台，確保站台是有在運行的。
+B、HangFire優點：  Simple - 開發簡單、安裝簡易、部屬到站台也很方便。 Reliable - HangFire 提供了排程失敗的自動重試機制。 Distributed - 可透過分散式處理消化大量工作。 Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis 等)地方，不必擔心站台被回收後排程任務消失。 Transparent - 透明化的作業流程，HangFire 提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。  C、三大核心元件。  HangFire Client - 主要建立後端排程任務(Ex:前面說的一個網站)。 Job Storage - 主要儲存排程任務(Ex:DB)。 HangFire Server - 主要處理排程任務的地方。  排程工作的完整流程：
+ 1、Client 建立一個排程任務。 2、排程任務儲存到 Storage 後，回傳一個 JobId 給 Client。 3、Server 端存 Storage 拿取要處理的排程任務。 4、Server 端處理排程任務。  D、排程任務的類型。 1、Fire-and-forget Jobs - 這類型的 Job 進到排程佇列後會馬上執行且只會執行一次。</description>
     </item>
     
     <item>
@@ -493,7 +437,7 @@ var jobId = BackgroundJob.</description>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</guid>
       <description>前言 接續上一篇，這篇主要是講解非同步的單元測試，同樣也只會列出不同的地方。
-本文 1、Service Test。 傳入Model為空。
+本文 1、Service Test。 傳入 Model 為空。
 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_傳入Model為空_應回傳ArgumentNullException() { //assert var sut = this.GetSystemUnderTest(); //act var exception = await Assert.ThrowsExceptionAsync&amp;lt;ArgumentNullException&amp;gt;( async () =&amp;gt; await sut.AddAccount(null)); //arrange exception.Message.Contains(&amp;quot;不可為空&amp;quot;); } 結果：
 某一個欄位為空。
 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_Account為空_應回傳ArgumentException() { //assert var sut = this.GetSystemUnderTest(); var fixture = new Fixture(); var info = fixture.Build&amp;lt;AccountInfoModel&amp;gt;() .Without(x =&amp;gt; x.Account) .Create(); //act var exception = await Assert.</description>
@@ -505,12 +449,12 @@ var jobId = BackgroundJob.</description>
       <pubDate>Tue, 16 Mar 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging/</guid>
-      <description>本文 1、第二層驗證(Service、Repository)。 上一篇我們介紹了Controller的驗證，接下來介紹Service、Repository層的驗證方式，大概會有疑惑為甚麼Controller驗證過了接下來兩層還需要驗證呢？
+      <description>本文 1、第二層驗證(Service、Repository)。 上一篇我們介紹了 Controller 的驗證，接下來介紹 Service、Repository 層的驗證方式，大概會有疑惑為甚麼 Controller 驗證過了接下來兩層還需要驗證呢？
 先前介紹過三層式架構的開發，其中也有提到其實三層是可以分開進行的，所以當然是也需要驗證。
-驗證的方式會給Service與Repository使用，所以我們做成一個共用方法放在Common層，Service跟Repository再對Common加入參考使用。
-Common層需要加入System.ComponentModel.Annotations Nuget套件。
-驗證Model使用方法。
-public class ModelValidator { /// &amp;lt;summary&amp;gt; /// Validates the specified model. /// &amp;lt;/summary&amp;gt; /// &amp;lt;typeparam name=&amp;quot;T&amp;quot;&amp;gt;&amp;lt;/typeparam&amp;gt; /// &amp;lt;param name=&amp;quot;model&amp;quot;&amp;gt;The model.&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;parameterName&amp;quot;&amp;gt;Name of the parameter.&amp;lt;/param&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentNullException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; public static void Validate&amp;lt;T&amp;gt;(T model, string parameterName) where T : class { if (model is null) { if (string.IsNullOrWhiteSpace(parameterName)) { parameterName = nameof(model); } throw new ArgumentNullException(paramName: parameterName, message: $&amp;quot;{parameterName}不可為空&amp;quot;); } var errors = new List&amp;lt;ValidationResult&amp;gt;(); var validation = Validator.</description>
+驗證的方式會給 Service 與 Repository 使用，所以我們做成一個共用方法放在 Common 層，Service 跟 Repository 再對 Common 加入參考使用。
+Common 層需要加入 System.ComponentModel.Annotations Nuget 套件。
+驗證 Model 使用方法。
+public class ModelValidator { /// &amp;lt;summary&amp;gt; /// Validates the specified model. /// &amp;lt;/summary&amp;gt; /// &amp;lt;typeparam name=&amp;quot;T&amp;quot;&amp;gt;&amp;lt;/typeparam&amp;gt; /// &amp;lt;param name=&amp;quot;model&amp;quot;&amp;gt;The model.&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;parameterName&amp;quot;&amp;gt;Name of the parameter.&amp;lt;/param&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentNullException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; public static void Validate&amp;lt;T&amp;gt;(T model, string parameterName) where T : class { if (model is null) { if (string.</description>
     </item>
     
     <item>
@@ -519,16 +463,14 @@ public class ModelValidator { /// &amp;lt;summary&amp;gt; /// Validates the spec
       <pubDate>Mon, 15 Mar 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89/</guid>
-      <description>前言 介紹完非同步程式設計接下來就可以開始實作了，基本上大同小異，這次也只會著重在特別的地方說明，剩下的會把Code放在Github上，有需要的歡迎取用。
-本文 1、appsettings。 之前介紹Core都沒有特別提到appsettings，其實它就是dotnet framework的config設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。
-這次我們把DB的連線字串放在appsettings內，透過startup的時候拿取所需的DB連接字串。
+      <description>前言 介紹完非同步程式設計接下來就可以開始實作了，基本上大同小異，這次也只會著重在特別的地方說明，剩下的會把 Code 放在 Github 上，有需要的歡迎取用。
+本文 1、appsettings。 之前介紹 Core 都沒有特別提到 appsettings，其實它就是 dotnet framework 的 config 設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。
+這次我們把DB的連線字串放在 appsettings 內，透過 startup 的時候拿取所需的 DB 連接字串。
 2021/04/19更新
-感謝同事協助指正，appsettings並不完全等同於dotnet framework的Webconfig，而是core將原本全部擠在Webconfig的地方拆分歸類在不同地方，例如：Nuget套件就歸在csproj、appsettings區塊就是Core的appsettings。
-那Core難道就完全不需要Webconfig了嗎？
-倒也不是，像是我們公司的Core專案還是會加上Webconfig檔案，內容就主要做為設定CI建置的調整、或是對IIS的一些細部設定，還是可以透過Webconfig來做，可供大家使用上做參考。
-{ &amp;quot;Logging&amp;quot;: { &amp;quot;LogLevel&amp;quot;: { &amp;quot;Default&amp;quot;: &amp;quot;Information&amp;quot;, &amp;quot;Microsoft&amp;quot;: &amp;quot;Warning&amp;quot;, &amp;quot;Microsoft.Hosting.Lifetime&amp;quot;: &amp;quot;Information&amp;quot; } }, &amp;quot;ConnectionString&amp;quot;: { &amp;quot;Northwind&amp;quot;: &amp;quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&amp;quot; } } 在StartUp拿取connetcion。
-/// &amp;lt;summary&amp;gt; /// 取得DB連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; private string GetConnection(string databaseName) { var connection = this._configuration.GetValue&amp;lt;string&amp;gt;($&amp;quot;ConnectionString:{databaseName}&amp;quot;); return connection; } 完整StartUp。
-public class Startup { /// &amp;lt;summary&amp;gt; /// Startup /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;configuration&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public Startup(IConfiguration configuration) { this.</description>
+感謝同事協助指正，appsettings 並不完全等同於 dotnet framework 的 Webconfig，而是 core 將原本全部擠在 Webconfig 的地方拆分歸類在不同地方，例如：Nuget 套件就歸在 csproj、appsettings 區塊就是 Core 的 appsettings。
+那 Core 難道就完全不需要 Webconfig 了嗎？
+倒也不是，像是我們公司的 Core 專案還是會加上 Webconfig 檔案，內容就主要做為設定 CI 建置的調整、或是對 IIS 的一些細部設定，還是可以透過 Webconfig 來做，可供大家使用上做參考。
+{ &amp;quot;Logging&amp;quot;: { &amp;quot;LogLevel&amp;quot;: { &amp;quot;Default&amp;quot;: &amp;quot;Information&amp;quot;, &amp;quot;Microsoft&amp;quot;: &amp;quot;Warning&amp;quot;, &amp;quot;Microsoft.Hosting.Lifetime&amp;quot;: &amp;quot;Information&amp;quot; } }, &amp;quot;ConnectionString&amp;quot;: { &amp;quot;Northwind&amp;quot;: &amp;quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&amp;quot; } } 在 StartUp 拿取 connetcion。</description>
     </item>
     
     <item>
@@ -537,19 +479,19 @@ public class Startup { /// &amp;lt;summary&amp;gt; /// Startup /// &amp;lt;/summ
       <pubDate>Tue, 09 Mar 2021 16:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9/</guid>
-      <description>前言 先前我們介紹了API的基本用法，現在我們來介紹非同步的方法。
+      <description>前言 先前我們介紹了 API 的基本用法，現在我們來介紹非同步的方法。
 本文 首先還是要先提醒一下，對於非同步程式設計有很多眉眉角角，這邊只能簡單說明，所以若想更深入了解還是推薦大家尋求專業知識來源。
 首推：
  MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。  一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
 其實你已經寫過了。
-拿之前寫過的UpdataAccount Service來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。
+拿之前寫過的 UpdataAccount Service 來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。
 (圖片取自.NET 本事－非同步程式設計) 而這種同步程式設計有很明顯的問題。
- a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。  當上述這些情況發生時當電腦只有一顆CPU可以執行Process，那就會很明顯的被Lock住。
-而為了解決CPU無法分頭進行處理就有了新的執行續(Thread)概念。
-2、Thread(執行續)。 這時候就可以把當年準備考試的筆記拿出來用一下了。
-當年上課老師也比喻Thread就像是一台車裡面有幾個引擎的概念。
-Thread 與 Process的差別。
-   Process Thread     OS 分配資源的對象單位 OS分配CPU時間的對象單位   Process之間無共享的資源及記憶體(除了Shared memory溝通外) 同一個Process內的threads彼此共享此Process的記憶體與OS資源   Process的Ceation、Context Switching較慢，管理成本高。 Thread的較快、管理成本低。   Process內的Single-thread若Blocked，則整個Process也一起Blocked Process內只要有Thread還可以執行，則Process不會被Blocked   Multiprocessor架構之效益發揮較差。 較佳。   不需提供互斥存取機制(除了Shared memory溝通外) 必須對Threads共享的資源及Data，提供互斥存取，控制防止資料不正確等問題。   適用時機：一個時間只有一個Task執行時EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個Task同時執行EX:Clent-Server架構的Server。    所以透過多個執行續的概念我們希望程式能夠達到這樣。</description>
+ a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。  當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。
+而為了解決 CPU 無法分頭進行處理就有了新的執行序(Thread)概念。
+2、Thread(執行序)。 這時候就可以把當年準備考試的筆記拿出來用一下了。
+當年上課老師也比喻 Thread 就像是一台車裡面有幾個引擎的概念。
+Thread 與 Process 的差別。
+   Process Thread     OS 分配資源的對象單位 OS 分配 CPU 時間的對象單位   Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外) 同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源   Process 的 Ceation、Context Switching 較慢，管理成本高。 Thread 的較快、管理成本低。   Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked   Multiprocessor 架構之效益發揮較差。 較佳。   不需提供互斥存取機制(除了 Shared memory 溝通外) 必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。   適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。    所以透過多個執行序的概念我們希望程式能夠達到這樣。</description>
     </item>
     
     <item>
@@ -559,50 +501,40 @@ Thread 與 Process的差別。
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</guid>
       <description>前言 前幾篇已經介紹完單元測試基本方法了，那這篇主要是介紹一些好用的工具，能夠透過工具檢視程式碼目前單元測試的涵蓋率、以及查看複雜度；透過這些數據來檢視自己的程式碼是否還能夠在更優化。
-本文 1、Find Code Coverage。 原本是要介紹另一個測試方法，是使用Axocover；但在完成這幾篇的當下，馬上看到公司大神推薦了這個，現成的就拿來用啦XD，若有興趣的會把Axocover連結附在此。
+本文 1、Find Code Coverage。 原本是要介紹另一個測試方法，是使用 Axocover ；但在完成這幾篇的當下，馬上看到公司大神推薦了這個，現成的就拿來用啦 XD，若有興趣的會把 Axocover 連結附在此。
 Axocover For Visual Studio 2019。 
 進入正題。
 Find Code Coverage
 首先我們先打開Visual Stdio Extension進行安裝。
 下載完後安裝視窗跳出時記得先把VS關掉，不然會無法完成安裝。
-接下來打開VS到檢視 &amp;gt; 其他視窗 &amp;gt; 點選Find Code Coverage打開視窗。
+接下來打開 VS 到檢視 &amp;gt; 其他視窗 &amp;gt; 點選 Find Code Coverage 打開視窗。
 首次打開視窗會是空的，要先執行一次測試才會有東西。
 再次打開就可以看到結果。
-通常我們都會要求涵蓋率在95%以上，但當然各家公司實踐上有自己的標準，就可以依此來查看數據當作依據。
+通常我們都會要求涵蓋率在 95% 以上，但當然各家公司實踐上有自己的標準，就可以依此來查看數據當作依據。
  小提醒 因為 Find Code Coverage 會在每一次測試時幫你去計算覆蓋率，等於一個測試會跑兩次，若不想每次重跑一遍可以到設定的地方關掉，再要看覆蓋率時再打開即可。
  設定方式：
 打開 工具 &amp;gt; 選項。
-找到 Find Code Coverage，把Run的選項Enable改成False即可。
+找到 Find Code Coverage，把 Run 的選項 Enable 改成 False 即可。
 2、CodeMaintainibility。 CodeMaintainibility
-一樣要到Extension的地方搜尋安裝。
-安裝完重新打開VS後會發現每一個方法都會出現一個旗子。
-點選後會顯示一些指標，可以供看這段程式碼的複雜度等，以此作為依據方法是否需要拆分、優化等。
-3、CodeMaid。 CodeMaid
-一樣是到Extension搜尋後安裝。
-安裝完後打開VS，要到延伸模組 &amp;gt; CodeMaid &amp;gt; Spade地方將儀表板打開。
-打開後就可以看到現在該方法的程式碼複雜度。
-滑鼠移過去就會顯示每一個Function。
-後記 單元測試基本介紹就到這邊告一個尾聲，若有興趣可以自行研究TDD、BDD等實踐方式，以此相互搭配。
-這些工具提供出來是想讓各位做為依據，通常在一段程式碼需要重構的時候都會先透過工具來觀察程式碼複雜度，接下來會先進行單元測試，讓單元測試作為一個防線，保證重構的過程不會把核心邏輯給改壞。
-那麼單元測試就到此告一個段落。</description>
+一樣要到 Extension 的地方搜尋安裝。</description>
     </item>
     
     <item>
-      <title>單元測試 - 9(Repository測試)</title>
+      <title>單元測試 - 9(Repository 測試)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</link>
       <pubDate>Mon, 01 Mar 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</guid>
-      <description>前言 前面介紹完Service層的測試方法，接續介紹Repository的測試。
-本文 這邊先講解一下要如何進行Repository的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過Container例如:docker、或是使用localDB進行整合測試，這邊主要是以localDB進行示範。
-一樣先建立一個Repository的測試專案。
-記得測試專案要加入原本Repository的參考。
-使用SSMS取得建立Table的SQL語法。 將SQL檔案存放到測試專案內。
+      <description>前言 前面介紹完 Service 層的測試方法，接續介紹 Repository 的測試。
+本文 這邊先講解一下要如何進行 Repository 的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過 Container 例如: docker、或是使用 localDB 進行整合測試，這邊主要是以 localDB 進行示範。
+一樣先建立一個 Repository 的測試專案。
+記得測試專案要加入原本 Repository 的參考。
+使用 SSMS 取得建立 Table 的 SQL 語法。 將SQL檔案存放到測試專案內。
 記得也要調整檔案屬性，為永遠複製。
-使用SSMS取得INSERT DATA的SQL語法。 接下來就是一直下一步完成。
+使用 SSMS 取得 INSERT DATA 的 SQL 語法。 接下來就是一直下一步完成。
 產出的檔案：
-安裝Dapper到Repository測試專案。 因為測試SQL Command時會利用Dapper去執行SQL，所以需要安裝。
-準備Repository測試使用到之方法。 1、DatabaseName。 public class DatabaseName { public const string Default = &amp;quot;master&amp;quot;; public const string SampleDB = &amp;quot;Northwind&amp;quot;; } 2、DatabaseCommands。 public class DatabaseCommands { /// &amp;lt;summary&amp;gt; /// 建立DB /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;connectionString&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;database&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public static void CreateDatabase( string connectionString, string database) { var IsExists = DatabaseExists(connectionString, database); if (IsExists) { return; } using var conn = new SqlConnection(connectionString); conn.</description>
+安裝Dapper到Repository測試專案。 因為測試 SQL Command 時會利用 Dapper 去執行 SQL，所以需要安裝。
+準備 Repository 測試使用到之方法。 1、DatabaseName。 public class DatabaseName { public const string Default = &amp;quot;master&amp;quot;; public const string SampleDB = &amp;quot;Northwind&amp;quot;; } 2、DatabaseCommands。 public class DatabaseCommands { /// &amp;lt;summary&amp;gt; /// 建立DB /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;connectionString&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;database&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public static void CreateDatabase( string connectionString, string database) { var IsExists = DatabaseExists(connectionString, database); if (IsExists) { return; } using var conn = new SqlConnection(connectionString); conn.</description>
     </item>
     
     <item>
@@ -611,8 +543,8 @@ Find Code Coverage
       <pubDate>Mon, 22 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</guid>
-      <description>前言 接續完成我們API的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。
-本文 GetAccount(取得單筆帳號資訊) 1、輸入的Account不可為空。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;quot;&amp;quot;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;quot;Account 不可為空 !&amp;quot;); } 2、若查詢的Account有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;quot;test123&amp;quot;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;quot;test123@gmail.com&amp;quot;, ModifyUser = &amp;quot;sys&amp;quot;, Phone = &amp;quot;0918777888&amp;quot; }; var sut = this.</description>
+      <description>前言 接續完成我們 API 的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。
+本文 GetAccount(取得單筆帳號資訊) 1、輸入的 Account 不可為空。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;quot;&amp;quot;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;quot;Account 不可為空 !&amp;quot;); } 2、若查詢的 Account 有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;quot;test123&amp;quot;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;quot;test123@gmail.com&amp;quot;, ModifyUser = &amp;quot;sys&amp;quot;, Phone = &amp;quot;0918777888&amp;quot; }; var sut = this.</description>
     </item>
     
     <item>
@@ -621,17 +553,17 @@ Find Code Coverage
       <pubDate>Mon, 22 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/</guid>
-      <description>前言 本篇會介紹測試Service層好用工具，可以加快撰寫測試。
+      <description>前言 本篇會介紹測試 Service 層好用工具，可以加快撰寫測試。
 本文 CsvHelper 先前我們在測試方法時，遇到要取用資料都只能自己手刻。
-這時候就可以使用一個好用的工具CsvHelper。
-這邊主要是將資料庫的DATA匯出CSV檔，透過CsvHelper讀取資料，模擬Repository回傳資料給Service進行測試。
-1、先將DB資料匯成CSV檔。 將我們要匯出的資料使用MSSQL SELECT出來。
+這時候就可以使用一個好用的工具 CsvHelper。
+這邊主要是將資料庫的 DATA 匯出 CSV 檔，透過 CsvHelper 讀取資料，模擬 Repository 回傳資料給 Service 進行測試。
+1、先將 DB 資料匯成 CSV 檔。 將我們要匯出的資料使用 MSSQL SELECT出來。
 對左上方空白的地方點選滑鼠右鍵，選擇儲存結果。
-將檔案儲存到我們測試專案地方，建立一個TestData資料夾存放。
-記得要到專案內，將要測試的CSV檔案屬性改成永遠複製。
-2、安裝Nuget 套件。 3、修改測試方法。 首先在測試Class加上一個Attribute。
+將檔案儲存到我們測試專案地方，建立一個 TestData 資料夾存放。
+記得要到專案內，將要測試的 CSV 檔案屬性改成永遠複製。
+2、安裝 Nuget 套件。 3、修改測試方法。 首先在測試 Class 加上一個 Attribute。
 [DeploymentItem(@&amp;quot;TestData\AccountData.csv&amp;quot;)] 接著我們就可以在要使用的地方這麼做。
-[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;quot;AccountData.csv&amp;quot;)) using (var reader = new CsvReader(sr, CultureInfo.InvariantCulture)) { var records = reader.GetRecords&amp;lt;AccountDataModel&amp;gt;(); sourceData.AddRange(records); } var sut = this.GetSystemUnderTest(); this._accountRepository.GetAccount(&amp;quot;test2&amp;quot;).Returns(sourceData.FirstOrDefault(x =&amp;gt; x.Account == &amp;quot;test2&amp;quot;)); var expect = this._mapper.Map&amp;lt;AccountDto&amp;gt;(sourceData.FirstOrDefault(x =&amp;gt; x.Account == &amp;quot;test2&amp;quot;)); expect.</description>
+[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;quot;AccountData.csv&amp;quot;)) using (var reader = new CsvReader(sr, CultureInfo.</description>
     </item>
     
     <item>
@@ -640,31 +572,29 @@ Find Code Coverage
       <pubDate>Wed, 17 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/</guid>
-      <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的API當作練習，補上該有的測試。
+      <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的 API 當作練習，補上該有的測試。
 本文 首先我們建立一個放置測試專案的資料夾。
 接著建立完測試專案。
- 2021/02/21更新 原本是只想開一個測試專案把Repository跟Service的測試都放在一起後來想想不太對。 更新後的專案結構如下。
- 因為是要對Service層進行測試，記得要加入專案參考。
+ 2021/02/21更新 原本是只想開一個測試專案把 Repository 跟 Service 的測試都放在一起後來想想不太對。 更新後的專案結構如下。
+ 因為是要對 Service 層進行測試，記得要加入專案參考。
 接下來先把基礎測試專案需要用到的東西準備好。
-[TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在AutoMapper的地方，我們並不需要製作一個假的AutoMapper，所以可以直接使用原本方法。
-接下來就可以開始寫單元測試了。
-AddAccount(新增帳號) 1、有四個必填欄位需要確認。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public void AddAccount_Account為空_應回傳Exception() { //assert var sut = this.</description>
+[TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在 AutoMapper 的地方，我們並不需要製作一個假的 AutoMapper，所以可以直接使用原本方法。</description>
     </item>
     
     <item>
-      <title>單元測試 - 5(NSubstitute介紹)</title>
+      <title>單元測試 - 5( NSubstitute 介紹)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</link>
       <pubDate>Fri, 05 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</guid>
-      <description>前言 上一篇提到了NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(絕對不是我原本想要跳過不介紹被抓到才補上這篇)。
+      <description>前言 上一篇提到了 NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(絕對不是我原本想要跳過不介紹被抓到才補上這篇)。
 本文 驗證互動是否符合預期方法 接續上次使用範例。
 情境:
-我們現在有一個Check的方法，若出現錯誤則會紀錄一筆log。
-首先先把log方法準備好。
+我們現在有一個 Check 的方法，若出現錯誤則會紀錄一筆log。
+首先先把 log 方法準備好。
 public interface ILog { void SaveLog(string message); } public class Log : ILog { public void SaveLog(string message) { Console.WriteLine(message); } } Check 方法。
 bool Check(string text); public bool Check(string text) { if (string.IsNullOrWhiteSpace(text)) { this._log.SaveLog(&amp;quot;text 不可為空!&amp;quot;); return false; } return true; } 接下來我們先調整一下我們的測試方法。
-private ILog _log; private IRepository _repository; [TestInitialize] public void TestInitialize() { this._log = Substitute.For&amp;lt;ILog&amp;gt;(); this._repository = Substitute.For&amp;lt;IRepository&amp;gt;(); } private Service GetSystemUnderTest() { var sut = new Service(this.</description>
+private ILog _log; private IRepository _repository; [TestInitialize] public void TestInitialize() { this._log = Substitute.</description>
     </item>
     
     <item>
@@ -673,10 +603,10 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       <pubDate>Mon, 01 Feb 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</guid>
-      <description>本文 初始化與清除使用的Attribute 上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個Attribute可以派上用場。
-   Attribute 用法 頻率     TestInitialize() 在執行每一項測試之前，會先執行TestInitialize的程式碼。 每執行一個TestMethod會觸發一次。   TestCleanup() 在執行每一項測試之後，會執行TestCleanup的程式碼。 每執行一個TestMethod會觸發一次。   ClassInitialize() 在執行該類別的測試之前，會先執行ClassInitialize的程式碼。 以測試類別為單位執行一次。   ClassCleanup() 在執行該類別的測試之後，會執行ClassCleanup的程式碼。 以測試類別為單位執行一次。   AssemblyInitialize() 在執行所有類別的測試之前，會先執行AssemblyInitialize的程式碼。 以測試專案為單位執行一次。   AssemblyCleanup() 在執行該類別的測試之後，會執行AssemblyCleanup的程式碼。 以測試專案為單位執行一次。    練習:
+      <description>本文 初始化與清除使用的 Attribute 上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個 Attribute 可以派上用場。
+   Attribute 用法 頻率     TestInitialize() 在執行每一項測試之前，會先執行 TestInitialize 的程式碼。 每執行一個 TestMethod 會觸發一次。   TestCleanup() 在執行每一項測試之後，會執行 TestCleanup 的程式碼。 每執行一個 TestMethod 會觸發一次。   ClassInitialize() 在執行該類別的測試之前，會先執行 ClassInitialize 的程式碼。 以測試類別為單位執行一次。   ClassCleanup() 在執行該類別的測試之後，會執行 ClassCleanup 的程式碼。 以測試類別為單位執行一次。   AssemblyInitialize() 在執行所有類別的測試之前，會先執行 AssemblyInitialize 的程式碼。 以測試專案為單位執行一次。   AssemblyCleanup() 在執行該類別的測試之後，會執行 AssemblyCleanup 的程式碼。 以測試專案為單位執行一次。    練習:
 如題為了避免我們改變時間進而影響到其他單元測試，我們在執行每一個測試前後都會初始化一次時間。
-[TestInitialize] public void TestInitial() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } [TestCleanup] public void TestClean() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } 隔離物件 測試的時候我們會需要隔離要測試的物件，如果直接相依物件會產生一些不必要的問題導致測試結果可能有誤。</description>
+[TestInitialize] public void TestInitial() { SystemTime.</description>
     </item>
     
     <item>
@@ -685,7 +615,7 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       <pubDate>Sat, 30 Jan 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/</guid>
-      <description>本文 比對兩個物件方式 首先我們建立一個測試用Model。
+      <description>本文 比對兩個物件方式 首先我們建立一個測試用 Model。
 public class TestModel { public string UserName { get; set; } public string Account { get; set; } } 建立一個測試方法驗證兩個物件是否相同。
 [TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; secondObject.Should().Be(fistObject); } 結果 有點奇怪，我們換回內建的方法測試看看。
 [TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; //secondObject.</description>
@@ -699,10 +629,10 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/</guid>
       <description>本文 單元測試方法命名 單元測試的藝術內簡單得規範出一種一目了然的命名方式。
 分為三個部分：
-   名稱 解釋     1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。   2、Scenario(情境) 要測試的情境，例如:傳入NULL、傳入字串。   3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期    單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
+   名稱 解釋     1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。   2、Scenario(情境) 要測試的情境，例如:傳入 NULL、傳入字串。   3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期    單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
 接著我們就可以修改一下前次練習的測試方法名稱。
-常用到的Attribute 接下來介紹幾個比較常用到的Attribute：
-   Attribute 用途     [TestMethod] 表示這是一個測試方法。   [OwnerName] 此測試方法的建立者。   [TestCategory] 測試的方法在哪個類別。   [TestProperty] 表示該方法是在哪個類別內的測試方法。   [Ignore] 驗證測試時會忽略該方法。   [ExpectedException] 驗證例外處理的Attribute。    用法示範：
+常用到的 Attribute 接下來介紹幾個比較常用到的 Attribute：
+   Attribute 用途     [TestMethod] 表示這是一個測試方法。   [OwnerName] 此測試方法的建立者。   [TestCategory] 測試的方法在哪個類別。   [TestProperty] 表示該方法是在哪個類別內的測試方法。   [Ignore] 驗證測試時會忽略該方法。   [ExpectedException] 驗證例外處理的 Attribute。    用法示範：
 [TestMethod()] //這是一個測試方法 [Owner(&amp;quot;Sian&amp;quot;)] //此方法由Sian建立 [TestCategory(&amp;quot;Class1&amp;quot;)] //此測試方法在Class1這個類別 [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;GetUserName&amp;quot;)] //此測試方法是Class1類別內的GetUserName public void GetUserName_輸入的UserName為空值_應回傳提示訊息() { //arrange var target = new Class1(); var name = string.</description>
     </item>
     
@@ -712,7 +642,7 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <pubDate>Wed, 27 Jan 2021 13:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/</guid>
-      <description>前言 API講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以單元測試的藝術以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。
+      <description>前言 API 講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以單元測試的藝術以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。
 內文 單元測試 單元測試的藝術對一個優秀單元測試的定義為：
 一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元， 之後對這個單元的單一最終結果的某些假設或期望進行驗證。 單元測試幾乎都是使用單元測試框架進行撰寫的。 撰寫單元測試很容易，執行起來快速。 單元測試可靠、易讀、並且很容易維護。 只要產品程式碼不發生變化，單元測試的執行結果是穩定一致的。 該具備的特性有：
    特性 定義     1、Fast(快速) 每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。   2、Independent(獨立性) 不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。   3、Repeatable(可重複) 單元測試要是可以重複執行的，其結果不會因為執行次數而改變。   4、Self-Validating(可反應驗證結果) 單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。   5、Timely(及時) 單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。    單元測試的3A原則:    原則     1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。   2、Act : 呼叫目標物件的方法。   3、Assert : 驗證是否符合預期。    整合測試 接下來介紹一下可能會混淆的整合測試。</description>
@@ -724,18 +654,12 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <pubDate>Fri, 22 Jan 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/</guid>
-      <description>前言 前面我們已經練習過使用Dapper，剛好前輩提起EF也是需要練習熟悉的，就做了一個EF Core的版本，基本上內容與先前API 第二版本大致相同，這邊就只會列出差異部分與碰到的問題。
-本文 一、首先我們會需要先安裝三個EF需要使用到的Nuget 套件。 分別是：
-   Nuget名稱 安裝地點     EntityFrameworkCore Repository   EntityFrameworkCore.SqlServer Repository   EntityFrameworkCore.Tools Controller    二、接下來需要輸入指令建立EFCore所使用的DBContext。 完整指令如下：
+      <description>前言 前面我們已經練習過使用 Dapper，剛好前輩提起 EF 也是需要練習熟悉的，就做了一個 EF Core 的版本，基本上內容與先前 API 第二版本大致相同，這邊就只會列出差異部分與碰到的問題。
+本文 一、首先我們會需要先安裝三個 EF 需要使用到的 Nuget 套件。 分別是：
+   Nuget名稱 安裝地點     EntityFrameworkCore Repository   EntityFrameworkCore.SqlServer Repository   EntityFrameworkCore.Tools Controller    二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。 完整指令如下：
 Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force 這邊提一下指令由前到後介紹：
-Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與DB連線字串，然後指定所使用的DB是SQL server。
--OutputDir Conditions 這邊是生成檔案放置地點。
--Tables Users 指定的Table名稱。
--context AccountContext 這是會生成的DBContext檔案名稱，這邊我取名為AccountContext。
--Project WebApiEFCoreRepository -force 指定生成在Repository專案，最後的force其實第一次生成DBContext時不用加，但後續要再加Table的時候可能會用上；至於我為甚麼留著呢？那當然是因為 懶惰
-三、建完之後步驟。 指令建出來的context檔案其中有一段DB連線的地方這邊可以先拿掉，之後我們會使用注入的方式拿取連線字串。
-接下來建立IAccountRepository
-public interface IAccountRepository { /// &amp;lt;summary&amp;gt; /// 取得單筆帳號資訊 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public AccountCondition GetAccount(string account); /// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountCondition&amp;gt; GetAccountList(); /// &amp;lt;summary&amp;gt; /// 新增帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool AddAccount(AccountCondition condition); /// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool RemoveAccount(string account); /// &amp;lt;summary&amp;gt; /// 更新帳號資訊 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool UpdateAccount(AccountCondition condition); /// &amp;lt;summary&amp;gt; /// 忘記密碼 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool ForgetPassword(AccountCondition condition); } 實作AccountRepository</description>
+Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。
+-OutputDir Conditions 這邊是生成檔案放置地點。</description>
     </item>
     
     <item>
@@ -744,23 +668,15 @@ public interface IAccountRepository { /// &amp;lt;summary&amp;gt; /// 取得單�
       <pubDate>Sat, 26 Dec 2020 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/</guid>
-      <description>前言 API第二階段告一段了，此篇整理一下這次所做API會需要注意的事項。
-本文 1、API驗證欄位。 在這次API會看到在新增、更新、刪除資料時，第一件事都會檢查欄位是否有缺少，這邊也是我剛開始寫API常會遺忘的事情，之前也常被前輩叮嚀；現在完成的API架構屬於前、後端分離，首先我們不能預設前端會是哪些Ex:網頁、Android、Ios等，當然也不能預設串接API那一方一定會依照我們所開的規格輸入。
- 簡單來說：『製作API時，你永遠不能相信你的前端。』  (希望我的前端不會看到這一篇&amp;hellip;)
-回歸重點，這裡不是要大家去前、後端對立(請不要劃錯重點XD)，而是要有預備心態，當今天API路徑被其他人知道、或是前端頁面因為某些原因漏傳了幾個參數，此時可能會造成資料庫形成髒資料、或是被刪除了某些必要資料。
- 在製作API時前輩也叮嚀過，自己做出來的API就是死命用不同的方式打掛他測試就對了。  或是可以跟別人交換測試API，自己測有盲點別人幫你測很快就會找到問題。
-當然最好的方式是使用單元測試、或是有QA團隊幫忙監控產品品質，但畢竟大家所處環境不同，不是哪裡都有QA團隊、或是時間趕根本沒時間給你寫單元測試(我沒有在暗指&amp;hellip;)，在此當作提醒分享給大家。
-2、錯誤訊息處理。 這次我的作法當欄位有缺少時是直接throw new exception，大家都有不同的做法，個人傾向當欄位缺少這種比較顯而易見的就是直接讓他報錯；那如果是ㄧ些沒被發現的錯誤、或是要記Log這種，我們公司目前的做法是使用Nlog搭配Exceptionless做紀錄。
-3、Dapper寫法。 這次Repository使用Dapper時會看到有以下這種寫法。
-var parameters = new DynamicParameters(); parameters.Add(&amp;quot;@Password&amp;quot;, condition.Password, DbType.String); parameters.Add(&amp;quot;@Account&amp;quot;, condition.Account,DbType.String); 在加入變數給Dapper時預先給了DbType，這是之前在看前輩的Code時發現他會這樣寫，細問之下才知道原來Dapper在未指定欄位的型態時，它會用猜的來決定變數型態，因此會大大影響執行效能，所以後來使用Dapper都會順手加上欄位對應的型態。
-若想詳細知道內容可參考這篇： Dapper 用起來很友善，但是預設的參數型別對執行計劃不太友善。
-4、正則表達式。 這次檢查信箱是否合法寫法是&amp;hellip;
-private bool CheckMailFormate(string email) { try { var mail = new MailAddress(email); return true; } catch { return false; } } 這是剛好看到原來.NET有提供這種檢查方式，平常我們的做法可能是會使用正則表達式，它能夠更細部的規範到底可以輸入哪些字元。
-有興趣的可以參考以下： .NET 規則運算式
-總結 剛開始寫程式很容易進入一種走火入魔階段，一開始就想要寫得很好，思考半天卻甚麼都沒寫出來、或是參考別人程式後複製貼上，根本也不知道為甚麼別人這樣寫。
-這邊一開始也是受到滿多前輩的幫助，大致上可以概括成：
- 先求有，再求好。  例如：看到別人寫了一串很潮的Lambda語法一行就解決了，但根本也不知道他在做甚麼；其實就可以退回到最原始的寫法，先使用For迴圈或是Foreach，完成後再來思考怎麼改進自己的程式、或是詢問別人為甚麼這樣寫。
-以上分享，希望對大家能有所幫助。</description>
+      <description>前言 API 第二階段告一段了，此篇整理一下這次所做 API會 需要注意的事項。
+本文 1、API 驗證欄位。 在這次 API 會看到在新增、更新、刪除資料時，第一件事都會檢查欄位是否有缺少，這邊也是我剛開始寫 API 常會遺忘的事情，之前也常被前輩叮嚀；現在完成的 API 架構屬於前、後端分離，首先我們不能預設前端會是哪些Ex:網頁、Android、Ios 等，當然也不能預設串接 API 那一方一定會依照我們所開的規格輸入。
+ 簡單來說：『製作 API 時，你永遠不能相信你的前端。』  (希望我的前端不會看到這一篇&amp;hellip;)
+回歸重點，這裡不是要大家去前、後端對立(請不要劃錯重點XD)，而是要有預備心態，當今天 API 路徑被其他人知道、或是前端頁面因為某些原因漏傳了幾個參數，此時可能會造成資料庫形成髒資料、或是被刪除了某些必要資料。
+ 在製作 API 時前輩也叮嚀過，自己做出來的 API 就是死命用不同的方式打掛他測試就對了。  或是可以跟別人交換測試 API，自己測有盲點別人幫你測很快就會找到問題。
+當然最好的方式是使用單元測試、或是有 QA 團隊幫忙監控產品品質，但畢竟大家所處環境不同，不是哪裡都有QA團隊、或是時間趕根本沒時間給你寫單元測試(我沒有在暗指&amp;hellip;)，在此當作提醒分享給大家。
+2、錯誤訊息處理。 這次我的作法當欄位有缺少時是直接 throw new exception，大家都有不同的做法，個人傾向當欄位缺少這種比較顯而易見的就是直接讓他報錯；那如果是ㄧ些沒被發現的錯誤、或是要記 Log 這種，我們公司目前的做法是使用 Nlog 搭配 Exceptionless 做紀錄。
+3、Dapper 寫法。 這次 Repository 使用 Dapper 時會看到有以下這種寫法。
+var parameters = new DynamicParameters(); parameters.Add(&amp;quot;@Password&amp;quot;, condition.Password, DbType.String); parameters.Add(&amp;quot;@Account&amp;quot;, condition.Account,DbType.String); 在加入變數給 Dapper 時預先給了 DbType，這是之前在看前輩的 Code 時發現他會這樣寫，細問之下才知道原來 Dapper 在未指定欄位的型態時，它會用猜的來決定變數型態，因此會大大影響執行效能，所以後來使用Dapper都會順手加上欄位對應的型態。</description>
     </item>
     
     <item>
@@ -770,11 +686,10 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-3/</guid>
       <description>本文 繼續接著進行後續步驟。
-刪除使用者 1、建立 空的Controller。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;parameter&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpDelete] public ResultViewModel RemoveAccount([FromBody]AccountParameter parameter) { } 2、建立 Service介面。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info); 3、建立 空的Service實作。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info) { throw new NotImplementedException(); } 4、建立 Repository介面。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool RemoveAccount(string account); 5、實作 Repository。</description>
+刪除使用者 1、建立 空的 Controller。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;parameter&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpDelete] public ResultViewModel RemoveAccount([FromBody]AccountParameter parameter) { } 2、建立 Service 介面。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info); 3、建立 空的 Service 實作。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info) { throw new NotImplementedException(); } 4、建立 Repository 介面。</description>
     </item>
     
     <item>
@@ -785,11 +700,10 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-2/</guid>
       <description>本文 先來看進度表。
  1、新增使用者。 2、取得所有使用者。 3、取得個別使用者。 4、刪除使用者。 5、使用者更新基本資料。 6、忘記密碼。  既然已經完成取得個別使用者，那我們就從取得帳號列表接續進行。
-取得帳號列表 1、先建立一個空的Controller方法，這邊因為取得List，所以會是一個Array使用IEnumerable來包Model。
-/// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpGet] public IEnumerable&amp;lt;AccountViewModel&amp;gt; GetAccountList() { } 2、建立 取得帳號列表Service介面。
-/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList(); 3、實作 取得帳號列表空的Service。
-/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList() { throw new NotImplementedException(); } 4、建立 取得帳號列表Repository介面。
-/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDataModel&amp;gt; GetAccountList(); 5、實作 取得帳號列表Repository方法。</description>
+取得帳號列表 1、先建立一個空的 Controller 方法，這邊因為取得 List，所以會是一個 Array 使用 IEnumerable 來包 Model。
+/// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpGet] public IEnumerable&amp;lt;AccountViewModel&amp;gt; GetAccountList() { } 2、建立 取得帳號列表 Service 介面。
+/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList(); 3、實作 取得帳號列表空的 Service。
+/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList() { throw new NotImplementedException(); } 4、建立 取得帳號列表 Repository 介面。</description>
     </item>
     
     <item>
@@ -799,7 +713,7 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/</guid>
       <description>本文 進度欄。 這邊附上同事提供的建一個新專案需要完成的步驟，我加以改成自己習慣的方式。 再次幫推廣他的部落格
- 1. 建立 Service 2. 建立 Repository 3. 建立 FirstController 要傳接的Model(Parameter、ViewModel) 4. 建立空的 FirstController (First = 主要功能) 5. 建立 FirstService 要傳接的Model(InfoModel、Dto) 6. 建立 FirstService 介面 和一個空的 GetXXX 方法（XXX = 查詢之類的） 7. 建立 FirstRepository 要傳接的Model(Condition、DataModel) 8. 建立 FirstRepository 介面 和一個空的 GetXXX 方法 9. 將 Service 注入到 Controller, 將 Repository 注入到 Service 10. 安裝 AutoMapper 11. 將 AutoMapper 注入到 Controller, Service 12. Controller Get 方法和 Service Get 方法對接 13.</description>
+ 1. 建立 Service 2. 建立 Repository 3. 建立 FirstController 要傳接的 Model(Parameter、ViewModel) 4. 建立空的 FirstController (First = 主要功能) 5. 建立 FirstService 要傳接的 Model(InfoModel、Dto) 6. 建立 FirstService 介面 和一個空的 GetXXX 方法（XXX = 查詢之類的） 7. 建立 FirstRepository 要傳接的 Model(Condition、DataModel) 8. 建立 FirstRepository 介面 和一個空的 GetXXX 方法 9. 將 Service 注入到 Controller, 將 Repository 注入到 Service 10. 安裝 AutoMapper 11. 將 AutoMapper 注入到 Controller, Service 12. Controller Get 方法和 Service Get 方法對接 13.</description>
     </item>
     
     <item>
@@ -808,13 +722,13 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       <pubDate>Sun, 06 Dec 2020 12:01:15 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/</guid>
-      <description>本文 之前Google Console不斷提醒網頁結構有問題。
+      <description>本文 之前 Google Console 不斷提醒網頁結構有問題。
 就是這個&amp;hellip;
 之前都直接手動修改，昨天心血來潮決定把源頭找出來到底出在哪裡
-經過同事幫忙，發現在主題資料夾下有一個seo_schema.html檔案。
-詳細路徑在themes\LeaveIt\layouts\partials\seo_schema.html
+經過同事幫忙，發現在主題資料夾下有一個 seo_schema.html 檔案。
+詳細路徑在 themes\LeaveIt\layouts\partials\seo_schema.html
 裡面長這樣： 一開始裡面就少了一個括號，只要把這邊補上就正常啦。
-{ &amp;quot;@context&amp;quot; : &amp;quot;http://schema.org&amp;quot;, &amp;quot;@type&amp;quot; : &amp;quot;BlogPosting&amp;quot;, &amp;quot;mainEntityOfPage&amp;quot;: { &amp;quot;@type&amp;quot;: &amp;quot;WebPage&amp;quot;, &amp;quot;@id&amp;quot;: &amp;quot;{{ .Site.BaseURL }}&amp;quot; }, &amp;quot;articleSection&amp;quot; : &amp;quot;{{ .Section }}&amp;quot;, &amp;quot;name&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;headline&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;description&amp;quot; : &amp;quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;quot;, &amp;quot;inLanguage&amp;quot; : &amp;quot;{{ .Site.LanguageCode }}&amp;quot;, &amp;quot;author&amp;quot; : &amp;quot;{{ if isset .Params &amp;quot;author&amp;quot; }}{{ .</description>
+{ &amp;quot;@context&amp;quot; : &amp;quot;http://schema.org&amp;quot;, &amp;quot;@type&amp;quot; : &amp;quot;BlogPosting&amp;quot;, &amp;quot;mainEntityOfPage&amp;quot;: { &amp;quot;@type&amp;quot;: &amp;quot;WebPage&amp;quot;, &amp;quot;@id&amp;quot;: &amp;quot;{{ .Site.BaseURL }}&amp;quot; }, &amp;quot;articleSection&amp;quot; : &amp;quot;{{ .Section }}&amp;quot;, &amp;quot;name&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;headline&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;description&amp;quot; : &amp;quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;quot;, &amp;quot;inLanguage&amp;quot; : &amp;quot;{{ .Site.LanguageCode }}&amp;quot;, &amp;quot;author&amp;quot; : &amp;quot;{{ if isset .</description>
     </item>
     
     <item>
@@ -824,12 +738,11 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</guid>
       <description>前言 前面介紹了三層式架構、DI，接下來就是要來實做啦。
-這次的實作會自己設計一張Table，並設計API情境，當練習寫SPEC；所以這篇是前置動作準備。
-本文 1、資料庫準備。 首先這次打算做一個使用者管理功能，所以先來建造Table，就直接放在先前的Norwind底下就可以了。
-CREATE TABLE Users ( Idx INT IDENTITY, Account varchar(30) PRIMARY KEY NOT NULL, Password varchar(50) NOT NULL, Phone varchar(20) NOT NULL, Email varchar(50) NOT NULL, CreateDate DATETIME NOT NULL, ModifyDate DATETIME NOT NULL, ModifyUser varchar(30) NOT NULL ); 建立完後重新整理即可在Northwind底下看到新Table。
+這次的實作會自己設計一張 Table，並設計 API 情境，當練習寫 SPEC；所以這篇是前置動作準備。
+本文 1、資料庫準備。 首先這次打算做一個使用者管理功能，所以先來建造 Table，就直接放在先前的 Norwind 底下就可以了。
+CREATE TABLE Users ( Idx INT IDENTITY, Account varchar(30) PRIMARY KEY NOT NULL, Password varchar(50) NOT NULL, Phone varchar(20) NOT NULL, Email varchar(50) NOT NULL, CreateDate DATETIME NOT NULL, ModifyDate DATETIME NOT NULL, ModifyUser varchar(30) NOT NULL ); 建立完後重新整理即可在 Northwind 底下看到新 Table。
 新增一筆資料測試。
-Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,[CreateDate] ,[ModifyDate] ,[ModifyUser]) values(&#39;ss123456&#39;,&#39;esetttt&#39;,&#39;0917444&#39;,&#39;ew@gmail.com&#39;,GETDATE(),GETDATE(),&#39;system&#39;) 2、API SPEC。 首先我們會需要的功能有：
-   功能     1、新增使用者。   2、取得所有使用者。   3、取得個別使用者。   4、刪除使用者。   5、使用者更新基本資料。   6、忘記密碼。    功能細項規格：</description>
+Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,[CreateDate] ,[ModifyDate] ,[ModifyUser]) values(&#39;ss123456&#39;,&#39;esetttt&#39;,&#39;0917444&#39;,&#39;ew@gmail.com&#39;,GETDATE(),GETDATE(),&#39;system&#39;) 2、API SPEC。 首先我們會需要的功能有：</description>
     </item>
     
     <item>
@@ -839,51 +752,44 @@ Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,
       
       <guid>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</guid>
       <description>前言 終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。
-本文 講解DI前會有兩個先行觀念需要了解，分別是：
+本文 講解 DI 前會有兩個先行觀念需要了解，分別是：
  1、DIP(Dependency Inversion Principle) 依賴反轉。 2、IOC(Inversion of Control) 控制反轉。  1、DIP 依賴反轉。 複習一下前面講解到的依賴反轉概念：
-我們了解到DIP最重要的目標是要解除物件與物間之間直接依賴的關係。
+我們了解到 DIP 最重要的目標是要解除物件與物間之間直接依賴的關係。
 不熟的同學起點這複習。
 2、IOC 控制反轉。 那甚麼又是控制反轉呢？
 控制反轉最重要的概念是：
 把對於某個物件的控制權移轉給第三方容器。 甚麼意思呢？
 回憶一下，還記得前面實作的第一版API嗎？
-我們的Controller在跟Repository要資料的時候是怎麼做的呢？ 看到關鍵字了嗎？
+我們的 Controller 在跟 Repository 要資料的時候是怎麼做的呢？ 看到關鍵字了嗎？
 沒有？那這樣呢？
-就是那個NEW代表著我們的Controller其實是直接依賴Repository的。
+就是那個 NEW 代表著我們的 Controller 其實是直接依賴 Repository 的。
 他們之間的關係如下圖。
-所以理想中IOC概念我們的關係圖應該長這樣： 我們的Controller應該把對於Repository的控制權移交給IOC。
-3、DI 依賴注入。 講了這麼多那所以甚麼是DI呢？
-聰明的同學應該發現了上述的DIP、IOC都只是一種精神、概念；而DI就是實現上述兩種精神的方法。
-講解DI的精神最經典的就是：  好萊塢原則 (Hollywood Principle)
-don‘t call us, we‘ll call you
-在好萊塢演員要應徵的時候僅需要把履歷上繳，之後剩下的就只能等待演藝公司通知。
-這就是一種被動接受的方式。  所以呢有了DI的概念我們理想中的關係圖應該要變成： 4、注入的方式。 注入的方式有以下三種：
- a、建構式注入 (Constructor Injection) b、設值方法注入 (Setter Injection) c、介面注入 (Interface Injection)  以我們先前的Controller進行示範
-public class ProductContorller : ControllerBase { //a、建構式注入 private readonly IProductRepository _productRepository; public ProductContorller( IProductRepository productRepository) { this.</description>
+所以理想中 IOC 概念我們的關係圖應該長這樣： 我們的 Controller 應該把對於 Repository 的控制權移交給 IOC。
+3、DI 依賴注入。 講了這麼多那所以甚麼是 DI 呢？
+聰明的同學應該發現了上述的 DIP、IOC 都只是一種精神、概念；而 DI 就是實現上述兩種精神的方法。
+講解 DI 的精神最經典的就是：  好萊塢原則 (Hollywood Principle)</description>
     </item>
     
     <item>
-      <title>SQL 模糊搜尋Like替代方式</title>
+      <title>SQL 模糊搜尋 Like 替代方式</title>
       <link>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Fri, 27 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</guid>
-      <description>本文 今天在查找SQL效能Like會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。
-在處理模糊搜尋的條件常常會使用LIKE&#39;%關鍵字%&amp;lsquo;這種做法，但SQL的索引在LIKE&amp;rsquo;%關鍵字&amp;rsquo;的情況會失效，更不用說使用LIKE&#39;%關鍵字%&amp;lsquo;當資料一大效能真的是非常差。
+      <description>本文 今天在查找 SQL 效能 Like 會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。
+在處理模糊搜尋的條件常常會使用 LIKE&#39;%關鍵字%&#39; 這種做法，但 SQL 的索引在 LIKE&#39;%關鍵字&#39; 的情況會失效，更不用說使用 LIKE&#39;%關鍵字%&#39; 當資料一大效能真的是非常差。
 這裡介紹一個替代使用語法 CHARINDEX。
 首先我們先看一下MSDN介紹用法。
-這裡可以知道charindex其實是可以用來計算兩個字元間有多少相同的地方。
+這裡可以知道 charindex 其實是可以用來計算兩個字元間有多少相同的地方。
 現在來測試一下
 SELECT CHARINDEX(&#39;a&#39;,&#39; apple is apple&#39;) 結果：
 或是可以用來判斷相同的字元出現的位子。
 SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,5) 結果： 這邊第三個參數5是從第五個字元開始往後搜尋。
 所以如果改成0結果就會是
-SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,0) 結果： 替代LIKE的方式 好了說了這麼多到底要怎麼替代LIKE呢？
+SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,0) 結果： 替代 LIKE 的方式 好了說了這麼多到底要怎麼替代 LIKE 呢？
 可以使用這種方式替代
 CHARINDEX(&#39;模糊搜尋關鍵字&#39;, 要搜尋的資料行) &amp;gt; 0 實際測試，使用NorthWind Product Table
-SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductName) &amp;gt; 0 使用CHARINDEX結果： SELECT * FROM [Northwind].[dbo].[Products] where ProductName LIKE &#39;%a%&#39; 使用LIKE結果： 哪種方式比較好？ 因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下CHARINDEX會比LIKE還要快，但如果有吃到索引LIKE的速度還是優於CHARINDEX的。
-所以如果在非得需要進行LIKE&amp;rsquo;%關鍵字%&amp;lsquo;搜尋資料時，沒辦法吃到索引，就可以使用CHARINDEX來替代LIKE，大家可以自行測試看看。
-參考資料  1、CHARINDEX。 2、SqlServer之like、charindex、patindex區別及性能分析。  </description>
+SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductName) &amp;gt; 0 使用CHARINDEX結果： SELECT * FROM [Northwind].[dbo].[Products] where ProductName LIKE &#39;%a%&#39; 使用 LIKE 結果： 哪種方式比較好？ 因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下 CHARINDEX 會比 LIKE 還要快，但如果有吃到索引 LIKE 的速度還是優於 CHARINDEX 的。</description>
     </item>
     
     <item>
@@ -892,11 +798,11 @@ SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductNa
       <pubDate>Wed, 25 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</guid>
-      <description>前言 上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的Model，那要怎麼將各個Model轉換呢？
-難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具Automapper了。
-本文 基本用法 首先到Nuget安裝Automapper。 安裝好後我們建立兩個測試用的Model
-private class Model1 { public string Name { get; set; } public int Id { get; set; } } private class Model2 { public string Name { get; set; } public int Id { get; set; } } 使用Automapper對應Model1到Model2。
-var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.CreateMap&amp;lt;Model1, Model2&amp;gt;()); //從左邊Model對應到右邊 var mapper = config.</description>
+      <description>前言 上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的 Model ，那要怎麼將各個 Model 轉換呢？
+難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具 Automapper了。
+本文 基本用法 首先到 Nuget 安裝 Automapper。 安裝好後我們建立兩個測試用的 Model
+private class Model1 { public string Name { get; set; } public int Id { get; set; } } private class Model2 { public string Name { get; set; } public int Id { get; set; } } 使用 Automapper 對應 Model1 到 Model2。
+var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.</description>
     </item>
     
     <item>
@@ -908,15 +814,11 @@ var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var con
       <description>前言 接下來開始講解三層式架構，這是工作以來第一個學會的架構，也使用了一段時間，就以這段時間自己的體悟來敘述。
 本文 為甚麼要分層呢？ 前一篇我們提到，如果程式全部一條龍寫到底，後續會產生很多問題，難以維護、難以閱讀、更甚至是萬一人家要接手你的程式碼，這時候改Ａ壞Ｂ，耦合度過高的情況下，你只能祈禱接手的人不知道你住哪。
 這種情況下只有自己寫可能還好，那如果需要跟人合作呢？
-大家可能容易出現重複的Code，也難以說明誰該負責寫哪部分。
+大家可能容易出現重複的 Code，也難以說明誰該負責寫哪部分。
 這時候有一個好的架構，就很重要了。
-優缺點    優點     1、較好形成一個規範，可做為標準化流程。   2、提高重用性，透過分層將相同類型的程式碼放在一塊。   3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。   4、具有好的開放性、可擴充性優點。   5、降低程式碼之間的依賴，每層溝通是透過介面。   6、提高系統安全性，因為使用者需要透過Service層才有機會與下一層Repository撈取資料。       缺點     1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。   2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。   3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。    簡介 三層式架構顧名思義，主要分為了三層：
+優缺點    優點     1、較好形成一個規範，可做為標準化流程。   2、提高重用性，透過分層將相同類型的程式碼放在一塊。   3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。   4、具有好的開放性、可擴充性優點。   5、降低程式碼之間的依賴，每層溝通是透過介面。   6、提高系統安全性，因為使用者需要透過 Service 層才有機會與下一層 Repository 撈取資料。       缺點     1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。   2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。   3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。    簡介 三層式架構顧名思義，主要分為了三層：
  1、Controller：控制層，作為接口。 2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。 3、Repository：倉儲層，作為資料存儲的一層。 4、Common：共用層，作為存放各層會用到的相同東西。  他們之間的關係如下圖:
-Service 從最重要的Service層開始講解起。
-在我們程式中『最重要』的就屬於商業邏輯了，這一層是會特別關注的一層；這邊大家可能會問，那商業邏輯是指哪些呢？
-我自己認為最簡單分辨的方式，舉凡任何需要對資料特別處理的地方都會是放在這一層，如常見的：登入驗證、加減法運算、確認是否驗證成功等。
-Controller 在我們WebAPI中，Controller就屬於接口，負責處理Router，如常見的：Get、Post、Patch等，都會是在這層負責接應相對應的路由。
-Repository 資料倉儲層，這層主要處理『有關資料串接』的部分，如：資料庫連接、下SQL取Table資料等，都會是在Repository處理。</description>
+Service 從最重要的 Service 層開始講解起。</description>
     </item>
     
     <item>
@@ -925,15 +827,15 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
       <pubDate>Tue, 10 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</guid>
-      <description>本文 先前完成了API，接下來聊聊目前這樣做法可能會碰到的問題。
-1、程式碼四散。 現在做法是從Controller決定執行動作後，到Repository撈取DB資料後回傳json；那麼今天假如有要處理的關鍵商業邏輯，是該寫在Controller或是Repository呢？
-又如果今天多人合作的情況下，甲覺得應該放在Repository、而乙覺得應該放在Controller，這樣就會造成程式碼四散，對後續要維護的人造成很大的困擾。
-2、容易有重工。 現行做法如果多人合作的時候，可以用Repository名稱來定義是從哪個DB撈取資料；Controller也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的Model不同因此再合作的時候建了一堆不同的Model出來，卻其實是撈同一個Table的資料，應該想辦法避免做重複的事情。
-3、耦合過高。 現行做法很容易再單一的class做了太多事，還記得前幾篇提到的SOLID原則嗎？若所有事情都包在同一個class中完成，藕合度就會過高這種情況應該要想辦法解決。
-那有甚麼好方法呢？ 像傳統的MVC就是把程式分成Model-View-Controller。
- 1、Model：處理商業邏輯、資料傳輸的Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。  透過將程式分開讓藕合性降低、也讓後續維護者好維護。
-其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將API實作。
-參考連結  1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼? 我只知道三層肉  </description>
+      <description>本文 先前完成了 API，接下來聊聊目前這樣做法可能會碰到的問題。
+1、程式碼四散。 現在做法是從 Controller 決定執行動作後，到 Repository 撈取 DB 資料後回傳 json；那麼今天假如有要處理的關鍵商業邏輯，是該寫在 Controller 或是 Repository 呢？
+又如果今天多人合作的情況下，甲覺得應該放在 Repository、而乙覺得應該放在 Controller ，這樣就會造成程式碼四散，對後續要維護的人造成很大的困擾。
+2、容易有重工。 現行做法如果多人合作的時候，可以用 Repository 名稱來定義是從哪個 DB 撈取資料； Controller 也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的 Model 不同因此再合作的時候建了一堆不同的 Model 出來，卻其實是撈同一個 Table 的資料，應該想辦法避免做重複的事情。
+3、耦合過高。 現行做法很容易再單一的 class 做了太多事，還記得前幾篇提到的 SOLID 原則嗎？若所有事情都包在同一個 class中完成，藕合度就會過高這種情況應該要想辦法解決。
+那有甚麼好方法呢？ 像傳統的 MVC 就是把程式分成 Model-View-Controller。
+ 1、Model：處理商業邏輯、資料傳輸的 Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。  透過將程式分開讓藕合性降低、也讓後續維護者好維護。
+其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將 API 實作。
+參考連結  1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼?</description>
     </item>
     
     <item>
@@ -942,12 +844,10 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
       <pubDate>Thu, 29 Oct 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</guid>
-      <description>本文 REST是Representational State Transfer的縮寫，是一種設計模式，RESTful API就是遵循這種設計模式所創造的API。
-那RESTful是怎樣的一個設計模式呢? 首先組成RESTful API三大要素有:
-   組成要素 說明     1、Nouns (名詞) 一組獨一無二的URL用來定義網址。   2、Verbs (動詞) 用來描述對URL所執行的動作，也就是HTTP Method。   3、Content Types(資源呈現方式) API資源呈現的方式 EX:JSON、XML。    以前幾篇的API為範例:
-   Method router 說明     GET api/Product 取得商品列表   POST api/Product 新增商品   PATCH api/Product 修改商品資訊   DELETE api/Product/85 商除指定商品    固定的Router，但使用Method來區分要進行的動作，好處是不會有五花八門的router出現，一旦用了此種模式，大家就能輕易區分API會做些甚麼，我該取用哪隻API。
-常見的Method有以下幾種:
-   Method 說明     GET 讀取資料   POST 新增資料，亦可作為其他動詞使用。   PUT 更新   PATCH 部分更新資料   DELETE 刪除資料    備註: POST被視作萬用動詞，可以作為其他動作。</description>
+      <description>本文 REST 是 Representational State Transfer 的縮寫，是一種設計模式，RESTful API 就是遵循這種設計模式所創造的 API。
+那 RESTful 是怎樣的一個設計模式呢? 首先組成 RESTful API 三大要素有:
+   組成要素 說明     1、Nouns (名詞) 一組獨一無二的 URL 用來定義網址。   2、Verbs (動詞) 用來描述對 URL 所執行的動作，也就是 HTTP Method。   3、Content Types(資源呈現方式) API 資源呈現的方式 EX:JSON、XML。    以前幾篇的 API 為範例:
+   Method router 說明     GET api/Product 取得商品列表   POST api/Product 新增商品   PATCH api/Product 修改商品資訊   DELETE api/Product/85 商除指定商品    固定的 Router，但使用 Method 來區分要進行的動作，好處是不會有五花八門的 router 出現，一旦用了此種模式，大家就能輕易區分 API 會做些甚麼，我該取用哪隻 API。</description>
     </item>
     
     <item>
@@ -966,12 +866,12 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
       <pubDate>Tue, 29 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</guid>
-      <description>前言 我們接續著上次的介紹，會把CRUD功能補齊。
-CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。
-本文 新增 1、首先我們先建立一個用來回傳的Model。
+      <description>前言 我們接續著上次的介紹，會把 CRUD 功能補齊。
+CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。
+本文 新增 1、首先我們先建立一個用來回傳的 Model。
 建立 ResultModel
-public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;/summary&amp;gt;  public bool Result { get; set; } /// &amp;lt;summary&amp;gt;  /// 提示訊息  /// &amp;lt;/summary&amp;gt;  public string Message { get; set; } } 2、把新增商品的Repository完成。
-新增商品Repository
+public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;/summary&amp;gt;  public bool Result { get; set; } /// &amp;lt;summary&amp;gt;  /// 提示訊息  /// &amp;lt;/summary&amp;gt;  public string Message { get; set; } } 2、把新增商品的 Repository 完成。
+新增商品 Repository
 /// &amp;lt;summary&amp;gt; /// 新增一筆商品 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;productModel&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool CreateProduct(ProductModel productModel) { var sql = @&amp;quot;INSERT INTO products (productname, supplierid, categoryid, quantityperunit, unitprice, unitsinstock, unitsonorder, reorderlevel, discontinued) VALUES (@ProductName, @SupplierID, @CategoryID, @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued) &amp;quot;; var parameters = new DynamicParameters(); parameters.</description>
     </item>
     
@@ -981,11 +881,11 @@ public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;
       <pubDate>Tue, 22 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</guid>
-      <description>前言 終於進入WebApi部分，也是目前工作最常做的一部分。
-這邊會從原始MVC作為開頭介紹，內容會帶入Dapper、Restful介紹，以及一些好用小工具分享。
-本文 一、事前準備 1、首先我們先建立一個core專案。 選擇API建立 2、資料庫準備。 先到此連結下載北風資料庫
-點選instnwnd.sql，選擇Download。 會看到瀏覽器顯示一長串SQL語法，把這邊全部複製起來。 到SSMS點選新增查詢，把語法貼上後執行。 看到資料庫出現Northwind代表成功。 二、API開發 1、首先我們建立一個Models資料夾。 建立一個ProductModel類別，對應北風資料庫的Products。 建立 ProductModel
-public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  /// &amp;lt;/summary&amp;gt;  public int ProductID { get; set; } /// &amp;lt;summary&amp;gt;  /// 商品名稱  /// &amp;lt;/summary&amp;gt;  public string ProductName { get; set; } /// &amp;lt;summary&amp;gt;  /// 供應商ID  /// &amp;lt;/summary&amp;gt;  public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt;  /// 種類ID  /// &amp;lt;/summary&amp;gt;  public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位數量  /// &amp;lt;/summary&amp;gt;  public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位價格  /// &amp;lt;/summary&amp;gt;  public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位稅額  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位訂購價  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt;  /// 重新訂購等級  /// &amp;lt;/summary&amp;gt;  public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt;  /// 是否已停產  /// &amp;lt;/summary&amp;gt;  public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看DB內資料類型</description>
+      <description>前言 終於進入 WebApi 部分，也是目前工作最常做的一部分。
+這邊會從原始 MVC 作為開頭介紹，內容會帶入 Dapper、Restful 介紹，以及一些好用小工具分享。
+本文 一、事前準備 1、首先我們先建立一個 core 專案。 選擇 API 建立 2、資料庫準備。 先到此連結下載北風資料庫
+點選 instnwnd.sql，選擇 Download。 會看到瀏覽器顯示一長串 SQ L語法，把這邊全部複製起來。 到 SSMS 點選新增查詢，把語法貼上後執行。 看到資料庫出現 Northwind 代表成功。 二、API 開發 1、首先我們建立一個 Models 資料夾。 建立一個 ProductModel 類別，對應北風資料庫的 Products。 建立 ProductModel
+public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  /// &amp;lt;/summary&amp;gt;  public int ProductID { get; set; } /// &amp;lt;summary&amp;gt;  /// 商品名稱  /// &amp;lt;/summary&amp;gt;  public string ProductName { get; set; } /// &amp;lt;summary&amp;gt;  /// 供應商ID  /// &amp;lt;/summary&amp;gt;  public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt;  /// 種類ID  /// &amp;lt;/summary&amp;gt;  public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位數量  /// &amp;lt;/summary&amp;gt;  public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位價格  /// &amp;lt;/summary&amp;gt;  public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位稅額  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位訂購價  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt;  /// 重新訂購等級  /// &amp;lt;/summary&amp;gt;  public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt;  /// 是否已停產  /// &amp;lt;/summary&amp;gt;  public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看 DB 內資料類型</description>
     </item>
     
     <item>
@@ -1054,7 +954,7 @@ public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public st
  不應該強迫用戶去依賴他們未使用的方法。
 意及應該要最小化類別與類別之間的介面。
  基本原則：
- 1、interface功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及Gogoro。
+ 1、interface 功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。
 public interface 車子 { public string 引擎(); public string 後照鏡(); public string 車門(); } public class 特斯拉 : 車子 { public string 引擎() { return &amp;#34;3秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&amp;#34;; } public string 車門() { return &amp;#34;側開敞篷車門&amp;#34;; } } public class Gogoro : 車子 { public string 引擎() { return &amp;#34;5秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡&amp;#34;; } public string 車門() { return &amp;#34;痾沒有車門&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
     </item>
     
@@ -1066,7 +966,7 @@ public interface 車子 { public string 引擎(); public string 後照鏡(); pub
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</guid>
       <description>本文 狄米特法則 Law of Demeter(LoD) 又稱為 最少知識原則 Least Knowledge Principle(LKP)
 定義
- 一個object應該對其他object有最少的瞭解。
+ 一個 object 應該對其他 object 有最少的瞭解。
  優點
  1、可以降低類別與類別之間的耦合度。 2、當耦合度降低的時候，類別的重用性就會提高。   2020/08/25 更新範例
 舉例：前面例子我們知道特斯拉都是透過軟體的更新來讓車子增加新功能的，今天我們需要特斯拉有招喚模式，讓特斯拉能夠自己開到我們所在的位子；所以我們建造一個特斯拉類別裡面有更新系統的動作。
@@ -1083,10 +983,10 @@ public class 特斯拉 { public string 更新(string 更新項目) { return $&am
       <description>前言 你聽過隕石開發法嗎？
 沒聽過？那你可以看看轉載好文:隕石開發法
 甚麼？你問隕石開發法跟這篇文有甚麼關係？
-因為神有了需求 本文 上次有提到Puppeteer Sharp這個套件、以及黑大這篇文C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp，但因為我的chromium版本一直無法運行就此作罷；直到主管突然提起同單位有人成功使用這個套件實作出功能。
- 這時候別人用了同工具可以，沒道理我不行的心就蠢蠢欲動了。  把問題倒回碰到的起始點，是chromium無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下chromuim的版本，官方文件在此，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此網址下載了官方提供版本更換套件內抓取的chromium測試。
-1、 先到專案資料夾底下bin &amp;gt; Debugger &amp;gt; .local-chromium 內。 2、將下載版本複製貼上並取代此資料夾內檔案。 3、進行測試。
-static void Main(string[] args) { Test().Wait(); } static async Task Test() { try { await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision); using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions() { Headless = true //偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)  })) { using (var page = await browser.NewPageAsync()) { await page.GoToAsync(&amp;#34;https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/&amp;#34;); Thread.Sleep(1000); await page.</description>
+因為神有了需求 本文 上次有提到 Puppeteer Sharp 這個套件、以及黑大這篇文 C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp ，但因為我的 chromium 版本一直無法運行就此作罷；直到主管突然提起同單位有人成功使用這個套件實作出功能。
+ 這時候別人用了同工具可以，沒道理我不行的心就蠢蠢欲動了。  把問題倒回碰到的起始點，是 chromium 無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下 chromuim 的版本，官方文件在此，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此網址下載了官方提供版本更換套件內抓取的chromium測試。
+1、 先到專案資料夾底下 bin &amp;gt; Debugger &amp;gt; .local-chromium 內。 2、將下載版本複製貼上並取代此資料夾內檔案。 3、進行測試。
+static void Main(string[] args) { Test().Wait(); } static async Task Test() { try { await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision); using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions() { Headless = true //偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)  })) { using (var page = await browser.</description>
     </item>
     
     <item>
@@ -1098,36 +998,36 @@ static void Main(string[] args) { Test().Wait(); } static async Task Test() { tr
       <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
  軟體設計原則，應該對擴展開放，對修改封閉。
  甚麼意思呢？
- 1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。  那為甚麼要使用OCP？
+ 1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。  那為甚麼要使用 OCP？
  1、程式碼可維護性提高。 2、程式碼可擴展性提高。 3、程式碼可複用、靈活性高。 4、程式碼可測試性提高。  2020/09/08更新
 寫完這篇跟同事討論過後決定要更改，一直發懶就放到現在，被迫要在進入下階段前先把前面要改的改完。
-現在回頭看覺得當初為啥寫這例子怪怪的，回想起來才發現，原來我是為了避免使用到DI的觀念啊，但後來看了其他人寫的文章，用DI好像比較容易敘述這個概念&amp;hellip;
+現在回頭看覺得當初為啥寫這例子怪怪的，回想起來才發現，原來我是為了避免使用到 DI 的觀念啊，但後來看了其他人寫的文章，用 DI 好像比較容易敘述這個概念&amp;hellip;
 所以就頭都要洗了，就先挖個坑吧。
 我們來看一段例子，傳統汽車對於軟體硬體整合，還不夠靈活的時候，需要更改東西就需要把整台汽車拆開某些部分增加功能、每一次更改都是一項大工程。
-public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.安裝(); } public string 安裝自動導航裝置() { var 自動導航裝置 = new 自動導航裝置(); return 自動導航裝置.</description>
+public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.</description>
     </item>
     
     <item>
-      <title>網頁截圖轉成pdf檔(純屬好玩)</title>
+      <title>網頁截圖轉成 pdf 檔(純屬好玩)</title>
       <link>https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/</link>
       <pubDate>Thu, 23 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/</guid>
-      <description>前言 昨天接到一個新需求，需要用Url連結到其他網頁將該頁面截圖後，轉換成pdf檔供使用者下載。
+      <description>前言 昨天接到一個新需求，需要用 Url 連結到其他網頁將該頁面截圖後，轉換成pdf檔供使用者下載。
 今天研究了一下覺得好玩紀錄一下。
-本文 接到需求後一開始是用 .NET Webpage to pdf當關鍵字搜尋，無奈找了幾個套件不是要收費就是已經年代久遠，最後用中文搜尋到了黑大去年寫的一篇文章。
+本文 接到需求後一開始是用 .NET Webpage to pdf 當關鍵字搜尋，無奈找了幾個套件不是要收費就是已經年代久遠，最後用中文搜尋到了黑大去年寫的一篇文章。
 C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp
-此篇是用Puppeteer Sharp這個套件將網頁截圖後儲存，套件資訊可以自行參閱。
-Puppeteer Sharp是使用Chromium幫你截圖網站頁面，所以其實後背後運作 .NET還是有幫你開啟網頁的。
+此篇是用Puppeteer Sharp 這個套件將網頁截圖後儲存，套件資訊可以自行參閱。
+Puppeteer Sharp 是使用 Chromium 幫你截圖網站頁面，所以其實後背後運作 .NET 還是有幫你開啟網頁的。
 無奈今天嘗試後遇到 Failed to launch chrome 錯誤。
 Google後發現很多人都有遇到類似問題，有很多人發issue給作者。
 最後決定回頭繼續搜尋其他方式，這時候發現黑大今年又寫了另一篇文章。
 C# 網頁轉圖檔 WebAPI - 青春版
-這方法使用的是原生System.Web.Forms.WebBrowser方式擷取網頁圖片，一樣的 .NET有幫你開啟網頁進行截圖的動作，只是這個原生的方式就是使用IE。
-測試的此方式可行後我就開始尋找第二步動作，該怎麼把圖檔轉換成pdf，於是找到了另一個套件iTextSharp。
+這方法使用的是原生 System.Web.Forms.WebBrowser 方式擷取網頁圖片，一樣的 .NET 有幫你開啟網頁進行截圖的動作，只是這個原生的方式就是使用IE。
+測試的此方式可行後我就開始尋找第二步動作，該怎麼把圖檔轉換成 pdf，於是找到了另一個套件iTextSharp。
 可以套過套件將圖檔直接轉換成pdf的強大方法。
-將黑大的方法結合iTextSharp就能得到想到的結果如下&amp;hellip;
-private static void Main(string[] args) { string url = null; var png = WebSnapTool.Snapshot(url ?? &amp;#34;https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/&amp;#34;, delaySecs: 0); using (var stream = File.Create(@&amp;#34;D:\test\test.pdf&amp;#34;)) using (var doc = new Document()) using (var pdfWriter = PdfWriter.</description>
+將黑大的方法結合 iTextSharp 就能得到想到的結果如下&amp;hellip;
+private static void Main(string[] args) { string url = null; var png = WebSnapTool.Snapshot(url ?? &amp;#34;https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/&amp;#34;, delaySecs: 0); using (var stream = File.</description>
     </item>
     
     <item>
@@ -1136,8 +1036,8 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
       <pubDate>Tue, 21 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
-      <description>本文 OOP原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
-這時候了解設計原則SOLID就很重要了&amp;hellip;
+      <description>本文 OOP 原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
+這時候了解設計原則 SOLID 就很重要了&amp;hellip;
 1、Single Responsibility Principle(SRP) 單一職責  大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。  什麼意思呢？概念上就是，一個類別就只專注於完成一件事。
 為甚麼要只專注於做一件事呢?
 我們來看看範例，當今天特斯拉的駕駛走投無路需要賺外快的時候，他需要上路招攬客人&amp;hellip;
@@ -1155,7 +1055,7 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
 今天我想要讓特斯拉具備螢幕、音響這些娛樂設施可以看電影，有了電影當然需要食物啊，那就需要有在特斯拉上吃爆米花的功能。
 //產生一個特斯拉類別有螢幕、音響、吃爆米花  public class 特斯拉 { public string 螢幕() { return &amp;#34;播放電影&amp;#34;; } public string 音響() { return &amp;#34;杜比環繞音效&amp;#34;; } public string 吃爆米花() { return &amp;#34;爆米花好吃&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.WriteLine(&amp;#34;特斯拉 :&amp;#34; + Tesla.螢幕()); Console.WriteLine(&amp;#34;特斯拉開啟 :&amp;#34; + Tesla.音響()); Console.WriteLine(Tesla.吃爆米花()); } 這時候要提到程式設計常聽到的。
 高內聚  高內聚力的好處就是提高了模組的『獨立性』，也就是說這個模組可以被單獨使用，也可以被單獨修改。  那應該怎麼做呢？
- 思考模組的關聯性。  以我們剛剛舉的例子特斯拉具備螢幕、音響這些娛樂設備是合理的，但吃爆米花的動作是不是在這個Class中顯得有點怪異了呢？
+ 思考模組的關聯性。  以我們剛剛舉的例子特斯拉具備螢幕、音響這些娛樂設備是合理的，但吃爆米花的動作是不是在這個 Class 中顯得有點怪異了呢？
  特斯拉本身並不需要知道怎麼吃爆米花，需要知道怎麼吃爆米花的是人。  我們修改一下範例</description>
     </item>
     
@@ -1181,24 +1081,24 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
 當我們按下鍵盤A的時候，螢幕上會顯示A，但我們不必知道電腦背後是怎麼運作，就可以使用它。
 程式的舉例： 個人寫程式到目前以來最常使用的C#判斷式，用來檢查字串是否為空。
 var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNullOrEmpty(test); //檢查字串是否為Null或是空 //我們不必知道IsNullOrEmpty這個方法是如何實作的， //但我們知道它會幫我們判斷字串是否為Null或是空，並回傳true or false。 2、繼承(Inheritance) 以下取自大話設計模式：
- 物件的繼承代表了一種&amp;quot;is-a&amp;quot;的關係，如果兩個物件A和B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。 繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。 繼承定義了類別如何相互關聯共用特性。 子類別不但繼承父類別所有特性，還可以定義新的特性。   如果子類別繼承於父類別：
- 一、子類別擁有父類別非private的屬性和功能。 二、子類別具有自己的屬性和功能 =&amp;gt; 子類別可以擴展父類別的所有特性。 三、子類別還可以用自己的方式實現父類別 =&amp;gt; 方法重寫。  //產生一個汽車的類別，有一個方向盤、四個輪子。 public class 汽車 { protected int 輪子 = 4; protected int 方向盤 = 1; } //產生一個特斯拉類別繼承汽車 public class 特斯拉 : 汽車 { public string 特斯拉輪子() { return &amp;#34;特斯拉有&amp;#34; + 輪子 + &amp;#34;個輪子&amp;#34;; } public string 特斯拉方向盤() { return &amp;#34;特斯拉有&amp;#34; + 方向盤 + &amp;#34;個方向盤&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
+ 物件的繼承代表了一種 &amp;ldquo;is-a&amp;rdquo; 的關係，如果兩個物件 A 和 B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。 繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。 繼承定義了類別如何相互關聯共用特性。 子類別不但繼承父類別所有特性，還可以定義新的特性。   如果子類別繼承於父類別：
+ 一、子類別擁有父類別非 private 的屬性和功能。 二、子類別具有自己的屬性和功能 =&amp;gt; 子類別可以擴展父類別的所有特性。 三、子類別還可以用自己的方式實現父類別 =&amp;gt; 方法重寫。  //產生一個汽車的類別，有一個方向盤、四個輪子。 public class 汽車 { protected int 輪子 = 4; protected int 方向盤 = 1; } //產生一個特斯拉類別繼承汽車 public class 特斯拉 : 汽車 { public string 特斯拉輪子() { return &amp;#34;特斯拉有&amp;#34; + 輪子 + &amp;#34;個輪子&amp;#34;; } public string 特斯拉方向盤() { return &amp;#34;特斯拉有&amp;#34; + 方向盤 + &amp;#34;個方向盤&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
     </item>
     
     <item>
-      <title>Json格式轉換，序列化(Serialize)與反序列化(Deserialize)</title>
+      <title>Json 格式轉換，序列化(Serialize)與反序列化(Deserialize)</title>
       <link>https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/</link>
       <pubDate>Tue, 30 Jun 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/json%E6%A0%BC%E5%BC%8F%E8%BD%89%E6%8F%9B%E5%BA%8F%E5%88%97%E5%8C%96serialize%E8%88%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96deserialize/</guid>
-      <description>前言 今天在工作上剛好碰到了要將字串轉換成Json格式傳遞給別人，遇到了有趣的事情特別記錄一下。
-本文 一開始很好奇我擷取的字串出來序列化的Json格式，會多出空行的符號\r\n。
+      <description>前言 今天在工作上剛好碰到了要將字串轉換成 Json 格式傳遞給別人，遇到了有趣的事情特別記錄一下。
+本文 一開始很好奇我擷取的字串出來序列化的 Json 格式，會多出空行的符號\r\n。
 &amp;#34;{\&amp;#34;A\&amp;#34;:\&amp;#34;ss\r\nss\&amp;#34;,\&amp;#34;B\&amp;#34;:\&amp;#34;ss\nss\&amp;#34;}&amp;#34; 於是就跟同事討論起這件事，我一開始想法是這是不是會影響別人收到後處理結果呢?
 同事做了簡單範例解釋。
 class Program { static void Main(string[] args) { var objTest = new Test { A = &amp;#34;ss\r\nss&amp;#34;, B = &amp;#34;ss\nss&amp;#34; }; var jsonObj = JsonConvert.SerializeObject(objTest); Console.WriteLine(jsonObj); var obj2 = JsonConvert.DeserializeObject&amp;lt;Test&amp;gt;(&amp;#34;{\&amp;#34;A\&amp;#34;:\&amp;#34;ss\r\nss\&amp;#34;,\&amp;#34;B\&amp;#34;:\&amp;#34;ss\nss\&amp;#34;}&amp;#34;); Console.WriteLine(obj2.A); Console.WriteLine(obj2.B); } public class Test { public string A { get; set; } public string B { get; set; } } } 輸出結果
-Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會將字串轉換成我們看到的正常樣貌。
+Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會將字串轉換成我們看到的正常樣貌。
 所以結論就是，通通丟給對方處理就對了🤟
-參考連結  1、Json官方文件 2、瞭解Json格式  </description>
+參考連結  1、Json 官方文件 2、瞭解 Json 格式  </description>
     </item>
     
     <item>
@@ -1208,8 +1108,8 @@ Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會�
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</guid>
       <description>本文 1、建構式(Constructor)
- 實體化類別的動作，也就是New這個步驟。 建構式與類別同名，無return值。 大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要void，在New時調用。  Public class 特斯拉() { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 車子 = new 特斯拉(); //這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池 2、多載(Overloading)
- 相同function名稱，可以有不同參數或不同的型別。 大話設計模式：多載提供了建立同名的多個方法的能力，但這些方法須使用不同的參數類型。
+ 實體化類別的動作，也就是 New 這個步驟。 建構式與類別同名，無 return 值。 大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要 void，在 New 時調用。  Public class 特斯拉() { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 車子 = new 特斯拉(); //這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池 2、多載(Overloading)
+ 相同 function 名稱，可以有不同參數或不同的型別。 大話設計模式：多載提供了建立同名的多個方法的能力，但這些方法須使用不同的參數類型。
 2020/06/30 修改範例  //首先建立一個特斯拉的類別。 Public class 特斯拉 { public void 配件() //預設基本配件有輪子、方向盤、電池。 	{ private 輪子(){} private 方向盤(){} private 電池(){} } public void 配件(int 加購價 ) //加購價的配件會有更高級的配備。 	{ private 跑車輪子(){} private 跑車方向盤(){} private 高電量電池(){} } } 特斯拉 ModelX = new 特斯拉(); ModelX.</description>
     </item>
     
@@ -1225,11 +1125,10 @@ Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會�
   2、物件(Object)
  實際設計出來的物品。 大話設計模式：物件是一個獨立自主的實體，用一組可識別的特性和行為來標示。 Ex:特斯拉汽車、101大樓。
   3、實體化
- 描繪類別變成實體物件的狀態。 Ex:C#程式中會使用New來實體化出一個物件。  class 車子 { private 輪子(){} private 電池(){} private 方向盤(){} } 車子 特斯拉 = new 車子() 問題討論 這邊的問題取自保哥物件導向基礎，建議往下看前先自行思考作答。
+ 描繪類別變成實體物件的狀態。 Ex:C#程式中會使用 New 來實體化出一個物件。  class 車子 { private 輪子(){} private 電池(){} private 方向盤(){} } 車子 特斯拉 = new 車子() 問題討論 這邊的問題取自保哥物件導向基礎，建議往下看前先自行思考作答。
  1、請問「類別」可不可以包含「物件」？ 2、請問「物件」可不可以包含「類別」？ 3、請問「類別」可不可以包含「類別」？ 4、請問「物件」可不可以包含「物件」？ 5、請問「物件」可不可以當成資料傳遞？ 6、請問「類別」可不可以當成資料傳遞？ 7、 在 .NET 的世界，請問「物件」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 8、在 .NET 的世界，請問「類別」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 9、在 .NET 的世界，程式在執行的時候，「類別」可不可以被動態修改？ 10、如果有兩台主機要互相傳遞資料，他們傳遞的是「類別」還是「物件」？ 11、請問「物件」是否包含「方法(Method)」？ 12、如果「物件」從 A 電腦傳遞到 B 電腦時，若該物件要執行「方法」還需不需要有「類別」存在？
    作答
-1、不可以。本題提供同事講解易懂方式 Ex:特斯拉設計圖內不會包含真的特斯拉。
-2、不可以。物件是實體的東西、而類別再被new出來前都是虛擬的，故實體物件不應該包含虛擬類別。</description>
+1、不可以。本題提供同事講解易懂方式 Ex:特斯拉設計圖內不會包含真的特斯拉。</description>
     </item>
     
     <item>
@@ -1240,15 +1139,15 @@ Json格式會有自己特殊的跳脫字元，而在反序列化中程式就會�
       <guid>https://sunnyday0932.github.io/2020/sql-for-xml%E5%90%88%E4%BD%B5%E6%AC%84%E4%BD%8D%E9%A1%AF%E7%A4%BA-substring%E6%93%B7%E5%8F%96%E5%AD%97%E4%B8%B2/</guid>
       <description>前言 前陣子工作上需求，需要做匯出報表功能，要將不同欄位資料合併再一起後匯出，順手記錄一下。
 本文 示範資料表如下
-我們需要把相同Level的欄位匯總再一起，做成一個統計用報表。
+我們需要把相同 Level 的欄位匯總再一起，做成一個統計用報表。
 首先每個區域後面先加、
 select District+&#39;、&#39; from DistrictData 接下來使用
 select level, ( select District+&#39;、&#39; from DistrictData as B where A.Level = B.Level FOR XML PATH(&#39;&#39;) )AS District FROM DistrictData AS A GROUP BY level 即可得到想要的成果。
-其中FOR XML PATH(&#39;&#39;)功能是因為如果沒有加的話會出現以下錯誤訊息。
+其中 FOR XML PATH(&#39;&#39;) 功能是因為如果沒有加的話會出現以下錯誤訊息。
 接下來會發現顯示格式不太對，要加上、的部分最後一筆應該要排除。
-這時候就可以使用SUBSTRING
+這時候就可以使用 SUBSTRING
 select SUBSTRING(&#39;大安區、信義區、松山區、中山區、中正區、&#39;,0,LEN(&#39;大安區、信義區、松山區、中山區、中正區、&#39;)) 可以得到以下。
-SUBSTRING這個語法中SUBSTRING(string, start, lenth)，第1、2個參數代表的是string這個字串中要起始的位置為start，lenth則為最後要計算數字。
+SUBSTRING 這個語法中 SUBSTRING(string, start, lenth) ，第1、2個參數代表的是 string 這個字串中要起始的位置為 start ， lenth 則為最後要計算數字。
 簡單實驗一下
 select SUBSTRING(&#39;123&#39;,0,3) 這邊我們會得到
 參考資料 https://www.1keydata.com/tw/sql/sql-substring.html
@@ -1262,24 +1161,24 @@ https://dotblogs.com.tw/supershowwei/2016/01/26/145353</description>
       <pubDate>Sun, 24 May 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8/</guid>
-      <description>前言 開始使用Hugo後，對於目前使用的主題Leaveit不盡滿意，於是開始研究修改，改完又想在現在版型加上其他功能EX:觀看人數、留言功能，Google搜尋後有很多種方法，選了自己順眼的就開始動工，內容如下。
-本文 一、留言功能 留言功能有很多方式，最後決定選用DISQUS，原本還有另一套utteranc，但&amp;hellip;DISQUS看起來較為順眼、再加上留言方式多元於是雀屏中選(?
+      <description>前言 開始使用 Hugo 後，對於目前使用的主題 Leaveit不盡滿意，於是開始研究修改，改完又想在現在版型加上其他功能EX:觀看人數、留言功能，Google搜尋後有很多種方法，選了自己順眼的就開始動工，內容如下。
+本文 一、留言功能 留言功能有很多方式，最後決定選用 DISQUS，原本還有另一套 utteranc，但&amp;hellip; DISQUS 看起來較為順眼、再加上留言方式多元於是雀屏中選(?
 對沒什麼高尚理由，單純就是覺得好看。
-1、先到DISQUS註冊帳號。
+1、先到 DISQUS 註冊帳號。
 2、註冊完後會到以下畫面，選擇下方選項 I want to install Disqus on my site。
 (小提醒註冊完後記得先到信箱點選註冊確認信)
-3、輸入website名稱，選擇Category分類，點選建立。
-4、接下來會到選擇方案頁面，點選下方Basic版本(此為免費版)。
-5、接著install頁面，會發現選項內並沒有HUGO，但不打緊，DISQUS提供自行手動設定，步驟稍後說明。
-6、最後config設定，加入網站URL註冊步驟就完成了。
-接下來就可以開始設定留言功能到我們的HUGO網站。
+3、輸入 website 名稱，選擇 Category 分類，點選建立。
+4、接下來會到選擇方案頁面，點選下方 Basic 版本(此為免費版)。
+5、接著 install 頁面，會發現選項內並沒有 HUGO ，但不打緊，DISQUS 提供自行手動設定，步驟稍後說明。
+6、最後 config 設定，加入網站 URL 註冊步驟就完成了。
+接下來就可以開始設定留言功能到我們的 HUGO 網站。
 7、 開啟 Config.toml 加入下方參數。
 disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot; 8、接著在目錄/layouts/partials/內新增一個disqus.html檔案，官方提供的內容如下。 這邊需要注意的是，如果你是有使用主題，會需要移至主題底下目錄此路經新增。
-&amp;lt;div id=&amp;quot;disqus_thread&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; (function() { // Don&#39;t ever inject Disqus on localhost--it creates unwanted // discussions from &#39;localhost:1313&#39; on your Disqus account... if (window.location.hostname == &amp;quot;localhost&amp;quot;) return; var dsq = document.createElement(&#39;script&#39;); dsq.type = &#39;text/javascript&#39;; dsq.async = true; var disqus_shortname = &#39;{{ .</description>
+&amp;lt;div id=&amp;quot;disqus_thread&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; (function() { // Don&#39;t ever inject Disqus on localhost--it creates unwanted // discussions from &#39;localhost:1313&#39; on your Disqus account.</description>
     </item>
     
     <item>
-      <title>Hugo架站教學</title>
+      <title>Hugo 架站教學</title>
       <link>https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/</link>
       <pubDate>Sun, 10 May 2020 22:19:33 +0800</pubDate>
       
@@ -1287,32 +1186,23 @@ disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot;
       <description>前言 受到前輩、夥伴、朋友的激勵，決定開始記錄自己學習過程。
 這次在架站花了過多時間在調畫面，最後還是沒到自己滿意狀態；但花的時間過久，決定先生出第一篇文章之後再來調剩下的東西。
 希望不會就此停留在現在模板😂
-本文 這次選擇Hugo主要是因為朋友推薦、中文資源夠多，再加上主題豐富，於是自己花時間摸索一下也覺得不難就決定選用Hugo。
-一、環境變數設定 1、首先到Hugo官方提供下載點將相對應個別系統的安裝包下載下來。
+本文 這次選擇 Hugo 主要是因為朋友推薦、中文資源夠多，再加上主題豐富，於是自己花時間摸索一下也覺得不難就決定選用 Hugo。
+一、環境變數設定 1、首先到 Hugo 官方提供下載點將相對應個別系統的安裝包下載下來。
 2、將下載下來安裝包解壓縮後會得到以下檔案。
-3、將hugo.exe檔案複製或剪下至C:\
+3、將 hugo.exe 檔案複製或剪下至 C:\
 4、設定系統環境變數，路徑:控制台&amp;gt;系統及安全性&amp;gt;系統&amp;gt;進階系統設定。
 5、選擇系統環境設定。
-6、系統變數Path點選編輯。
-7、新增系統變數，這邊因為我將hugo.exe放在C巢跟目錄底下因此設定為C:\。
-8、接下來回到C:\使用CMD測試hugo，輸入hugo version，只要出現以下畫面就代表環境設定完成。
- 二、架設方式 1、使用CMD輸入hugo new site &amp;ldquo;你要放資料夾的位子&amp;rdquo;。
-2、hugo會自動建立預設資料夾。
-然後就可以套用自己想要的主題到themes這個資料架內，主題可以到以下連結選擇。
-3、套用主題，在themes資料夾使用CMD輸入git clone &amp;ldquo;你想要的主題&amp;rdquo;。
+6、系統變數 Path 點選編輯。
+7、新增系統變數，這邊因為我將 hugo.exe 放在 C 巢跟目錄底下因此設定為 C:\。
+8、接下來回到 C:\ 使用 CMD 測試 hugo，輸入hugo version，只要出現以下畫面就代表環境設定完成。
+ 二、架設方式 1、使用 CMD 輸入 hugo new site &amp;ldquo;你要放資料夾的位子&amp;rdquo;。
+2、hugo 會自動建立預設資料夾。
+然後就可以套用自己想要的主題到 themes 這個資料架內，主題可以到以下連結選擇。
+3、套用主題，在 themes 資料夾使用 CMD 輸入 git clone &amp;ldquo;你想要的主題&amp;rdquo;。
 4、順利下載就會出現許多新資料夾。
 5、接下來就是修改內容改成自己想要的樣子就算完成了。
- 三、預覽方式 1、在資料夾使用CMD輸入hugo server -v。
- 這裡要注意的是因為我們將hugo放在C:\，因此要啟用server時要將路徑給上。   2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。
- 四、部屬方式 1、首先到Github建立兩個Repository，一個隨便、另一個要為&amp;rsquo;你的帳號&#39;.github.io。
-2、在hugo存放自己blog的資料夾下建立public，並連結GitHub上自己的Repository。
-git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public3、在資料夾使用CMD輸入C:\hugo執行建立內容到public，成功的話在public內會出現以下資料夾。
-4、將public 內檔案 commit and push 到&amp;rsquo;你的帳號&#39;.github.io。
-5、回到存放blog的資料夾內，連結git上存放blog的Repository。
-git remote add origin https://github.com/sunnyday0932/hugo_blog.git6、commit and push 到github上。
-7、接下來只要輸入https://&amp;lsquo;你的帳號&amp;rsquo;.github.io/即可預覽網站。
-五、參考連結 https://carrie-lai.github.io/post/createhugoblog/
-https://raychiutw.github.io/2019/Hugo-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/</description>
+ 三、預覽方式 1、在資料夾使用 CMD 輸入 hugo server -v。
+ 這裡要注意的是因為我們將 hugo 放在 C:\，因此要啟用 server 時要將路徑給上。   2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。</description>
     </item>
     
   </channel>

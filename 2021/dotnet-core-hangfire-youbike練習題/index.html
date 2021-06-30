@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           dotnet Core HangFire - Youbike練習題 | Sian	
+           dotnet Core HangFire - Youbike 練習題 | Sian	
        	
   </title>	
-  <meta name="title" content="dotnet Core HangFire - Youbike練習題 | Sian">	
+  <meta name="title" content="dotnet Core HangFire - Youbike 練習題 | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "dotnet Core HangFire - Youbike練習題",
-    "headline" : "dotnet Core HangFire - Youbike練習題",
-    "description" : "dotnet Core HangFire - Youbike練習題",
+    "name" : "dotnet Core HangFire - Youbike 練習題",
+    "headline" : "dotnet Core HangFire - Youbike 練習題",
+    "description" : "dotnet Core HangFire - Youbike 練習題",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -71,7 +71,7 @@
     "datePublished": "2021-04-12 18:40:45  UTC",
     "dateModified" : "2021-04-12 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C\/",
-    "wordCount" : "970",
+    "wordCount" : "1018",
     "keywords" : ["csharp","Core","dotnet","HangFire", "Sian"]
 }
 </script>
@@ -134,7 +134,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - Youbike練習題</h1>
+        <h1 class="post-title" itemprop="name headline">dotnet Core HangFire - Youbike 練習題</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
@@ -171,20 +171,20 @@
           
 
           <h2 id="前言">前言</h2>
-<p>前面介紹完Hangfire後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。</p>
+<p>前面介紹完 Hangfire 後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。</p>
 <h2 id="內文">內文</h2>
 <h3 id="1目標">1、目標。</h3>
 <ul>
-<li>使用Youbike2.0政府開放資料。</li>
-<li>每分鐘去抓取資料後寫回DB。</li>
+<li>使用 Youbike2.0 政府開放資料。</li>
+<li>每分鐘去抓取資料後寫回 DB。</li>
 </ul>
 <h3 id="2實作">2、實作。</h3>
-<p>使用API網址為：<a href="https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json">Youbike2.0政府開放資料。</a>。</p>
+<p>使用 API 網址為： <a href="https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json">Youbike2.0政府開放資料。</a>。</p>
 <p>使用說明：<br>
 <img src="https://i.imgur.com/yPdzSzN.jpg" alt=""></p>
-<p>觀察一下API格式。<br>
+<p>觀察一下 API 格式。<br>
 <img src="https://i.imgur.com/nRuGowE.jpg" alt=""></p>
-<p>建立Model存放。</p>
+<p>建立 Model 存放。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class YoubikeDataModel
     {
         /// &lt;summary&gt;
@@ -291,7 +291,7 @@
         /// &lt;/summary&gt;
         public DateTime InfoDate { get; set; }
     }
-</code></pre><p>YoubikeRepository實作地方，使用JsonConvert.DeserializeObject反序列化拿回資料。</p>
+</code></pre><p>YoubikeRepository 實作地方，使用 JsonConvert.DeserializeObject 反序列化拿回資料。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得Youbike資料
         /// &lt;/summary&gt;
@@ -311,7 +311,7 @@
 
             throw new HttpRequestException(&quot;取得Youbike 資訊失敗!&quot;);
         }
-</code></pre><p>串建存放YouBike資訊的Table。</p>
+</code></pre><p>串建存放 YouBike 資訊的 Table。</p>
 <pre><code class="language-sql=" data-lang="sql=">CREATE TABLE [dbo].[YoubikeStation](
 	[StationNo] [nvarchar](10) NOT NULL,
 	[StationName] [nvarchar](50) NOT NULL,
@@ -336,8 +336,8 @@
 	[StationNo] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )
-</code></pre><p>StationRepository實作。<br>
-因為每次都會重新抓取資料後放回，這邊使用簡單又暴力方法，直接TRUNCATE整張Table。</p>
+</code></pre><p>StationRepository 實作。<br>
+因為每次都會重新抓取資料後放回，這邊使用簡單又暴力方法，直接 TRUNCATE 整張 Table。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 刪除Station
         /// &lt;/summary&gt;
@@ -352,7 +352,7 @@
                 await conn.ExecuteAsync(sql);
             }
         }
-</code></pre><p>新增資料，使用Dapper一次大量INSERT。</p>
+</code></pre><p>新增資料，使用 Dapper 一次大量 INSERT。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增Station
         /// &lt;/summary&gt;
@@ -438,7 +438,7 @@
                 return result &gt; 0;
             }
         }
-</code></pre><p>StationService的地方有使用TransactionScope，主要用來避免執行一半錯誤發生資料不一致問題。</p>
+</code></pre><p>StationService 的地方有使用 TransactionScope，主要用來避免執行一半錯誤發生資料不一致問題。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新YouBike站
         /// &lt;/summary&gt;
@@ -481,8 +481,8 @@
             }
 
         }
-</code></pre><p>Hangfire相關設定。<br>
-Youbike job會印出目前執行狀態以及步驟。</p>
+</code></pre><p>Hangfire 相關設定。<br>
+Youbike job 會印出目前執行狀態以及步驟。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新Youbike站資訊
         /// &lt;/summary&gt;
@@ -502,7 +502,7 @@ Youbike job會印出目前執行狀態以及步驟。</p>
             var endMessage = $&quot;排程結束時間：{DateTime.Now.ToLocalTime():yyyy/MM/dd HH:mm:ss}&quot;;
             context.WriteLine(endMessage);
         }
-</code></pre><p>Hangfire Trigger，一樣起始先把Job清空，配合原始API更新時間，一分鐘抓取資料更新即可。</p>
+</code></pre><p>Hangfire Trigger，一樣起始先把 Job 清空，配合原始 API 更新時間，一分鐘抓取資料更新即可。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        public void OnStart()
         {
             //清除所有的排程
@@ -520,7 +520,7 @@ Youbike job會印出目前執行狀態以及步驟。</p>
                     timeZone: TimeZoneInfo.Local
                 );
         }
-</code></pre><p>ConnectionString以及Url都放在appsettings內，透過StartUp注入時拿取。</p>
+</code></pre><p>ConnectionString 以及 Url 都放在 appsettings 內，透過 StartUp 注入時拿取。</p>
 <pre><code class="language-json=" data-lang="json=">{
   &quot;Logging&quot;: {
     &quot;LogLevel&quot;: {
@@ -538,7 +538,7 @@ Youbike job會印出目前執行狀態以及步驟。</p>
     &quot;HangFire&quot;: &quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&quot;
   }
 }
-</code></pre><p>StartUp，特別的地方是為了避免sockets exhaustion問題將HttpClient註冊為Singleton共用。</p>
+</code></pre><p>StartUp，特別的地方是為了避免 sockets exhaustion 問題將 HttpClient 註冊為 Singleton 共用。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得DB連線
         /// &lt;/summary&gt;
@@ -647,7 +647,7 @@ Youbike job會印出目前執行狀態以及步驟。</p>
 <p>DB狀態：<br>
 <img src="https://i.imgur.com/6yza2GF.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p><a href="https://github.com/sunnyday0932/YouBikeScheduler">程式一樣會放在Github上，有需要歡迎取用。</a></p>
+<p><a href="https://github.com/sunnyday0932/YouBikeScheduler">程式一樣會放在 Github 上，有需要歡迎取用。</a></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://kevintsengtw.blogspot.com/2018/01/aspnet-core-webapi-youbike.html">mrkt ASP.NET Core WebAPI - 台北市 YouBike 公開資料</a>。</li>

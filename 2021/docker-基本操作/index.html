@@ -71,7 +71,7 @@
     "datePublished": "2021-04-17 18:40:45  UTC",
     "dateModified" : "2021-04-17 18:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C\/",
-    "wordCount" : "62",
+    "wordCount" : "98",
     "keywords" : ["docker", "Sian"]
 }
 </script>
@@ -171,51 +171,51 @@
           
 
           <h2 id="前言">前言</h2>
-<p>本篇會先示範docker基本操作，因為接下來會開始進行一些練習，會需要使用到docker，就一併記錄下來。</p>
+<p>本篇會先示範 docker 基本操作，因為接下來會開始進行一些練習，會需要使用到 docker，就一併記錄下來。</p>
 <h2 id="本文">本文</h2>
-<p>開始前須要先確認windows版本為專業版。<br>
+<p>開始前須要先確認 windows 版本為專業版。<br>
 <img src="https://i.imgur.com/Hdm1bte.jpg" alt=""></p>
-<p>接下來需要到控制台 &gt; 程式和功能的地方打開Hyper-V。<br>
+<p>接下來需要到控制台 &gt; 程式和功能的地方打開 Hyper-V。<br>
 <img src="https://i.imgur.com/Fe4eHCF.jpg" alt=""></p>
-<p>重新啟動後就可以開始安裝docker了。</p>
+<p>重新啟動後就可以開始安裝 docker 了。</p>
 <p><img src="https://i.imgur.com/Arqyrss.jpg" alt=""></p>
 <p><a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">docker下載連結</a></p>
-<p>接下來需要有輸入指令的軟體，可以使用Powershell。<br>
-個人是使用大神所推薦的<a href="https://cmder.net/">Cmder</a>。<br>
+<p>接下來需要有輸入指令的軟體，可以使用 Powershell。<br>
+個人是使用大神所推薦的 <a href="https://cmder.net/">Cmder</a>。<br>
 <img src="https://i.imgur.com/H1DJzv3.jpg" alt=""></p>
-<p>工具齊全後我們來練習抓取MSSQL Image並且執行。</p>
+<p>工具齊全後我們來練習抓取 MSSQL Image 並且執行。</p>
 <p><img src="https://i.imgur.com/JZZACbH.jpg" alt=""></p>
 <p>docker pull microsoft/mssql-server-linux</p>
 <p><img src="https://i.imgur.com/dzd6gxG.jpg" alt=""></p>
-<p>建立前要看一下說明，需要調整一下docker 設定。
-這邊設定是可以直接透過GUI介面的，但不知道為啥我的doker desktop打開發現找不到advanced，Goole發現也有人有同樣問題，於是我就直接使用指令啦。<br>
+<p>建立前要看一下說明，需要調整一下 docker 設定。
+這邊設定是可以直接透過 GUI 介面的，但不知道為啥我的 doker desktop 打開發現找不到 advanced，Goole 發現也有人有同樣問題，於是我就直接使用指令啦。<br>
 <a href="https://forums.docker.com/t/missing-options-in-the-settings-menu/55316/5">問題連結一併附上。</a><br>
 <img src="https://i.imgur.com/OxYozbG.jpg" alt=""></p>
 <p>執行指令：<br>
 docker run -e &ldquo;ACCEPT_EULA=Y&rdquo; -e &ldquo;SA_PASSWORD=1qaz@2wsx&rdquo; &ndash;memory 4096m &ndash;cpus 2 -p 1433:1433 -d microsoft/mssql-server-linux</p>
 <p><img src="https://i.imgur.com/C1DPjvL.jpg" alt=""></p>
-<p>觀看Contanier運行結果。<br>
+<p>觀看 Contanier 運行結果。<br>
 <img src="https://i.imgur.com/615O9MX.jpg" alt=""></p>
-<p>使用SSMS連線進行測試。<br>
+<p>使用 SSMS 連線進行測試。<br>
 帳號:sa 密碼是剛剛設定的:1qaz@2wsx<br>
 <img src="https://i.imgur.com/6CjWUSi.jpg" alt=""></p>
 <p>確認資料庫版本。<br>
 <img src="https://i.imgur.com/7fEo8Qr.jpg" alt=""></p>
-<p>關閉執行中的Container。<br>
+<p>關閉執行中的 Container。<br>
 docker stop (這邊輸入Container的名字)<br>
-不知道的話可以透過 docker ps -a 查詢目前有哪些container</p>
+不知道的話可以透過 docker ps -a 查詢目前有哪些 container</p>
 <p><img src="https://i.imgur.com/J4Slvkd.jpg" alt=""></p>
-<p>觀看Container狀態<br>
+<p>觀看 Container 狀態<br>
 <img src="https://i.imgur.com/mKfh3XS.jpg" alt=""></p>
-<p>接下來刪除Container。<br>
-docker rm (這邊輸入container名稱)<br>
+<p>接下來刪除 Container。<br>
+docker rm (這邊輸入 container 名稱)<br>
 <img src="https://i.imgur.com/Wku1ZZN.jpg" alt=""></p>
-<p>觀看Container狀態<br>
+<p>觀看 Container 狀態<br>
 <img src="https://i.imgur.com/nIliIUn.jpg" alt=""></p>
-<p>要移除Contanier image的話可以輸入<br>
+<p>要移除 Contanier image 的話可以輸入<br>
 docker rmi (這邊輸入image名稱)<br>
 <img src="https://i.imgur.com/8ZO99VT.jpg" alt=""></p>
-<p>觀看目前的Image就會發現已經移除了。<br>
+<p>觀看目前的 Image 就會發現已經移除了。<br>
 <img src="https://i.imgur.com/1zsZ178.jpg" alt=""></p>
 
     </div>

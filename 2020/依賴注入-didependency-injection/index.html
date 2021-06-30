@@ -71,7 +71,7 @@
     "datePublished": "2020-12-02 22:19:33  CST",
     "dateModified" : "2020-12-02 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection\/",
-    "wordCount" : "127",
+    "wordCount" : "160",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -173,7 +173,7 @@
           <h2 id="前言">前言</h2>
 <p>終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。</p>
 <h2 id="本文">本文</h2>
-<p>講解DI前會有兩個先行觀念需要了解，分別是：</p>
+<p>講解 DI 前會有兩個先行觀念需要了解，分別是：</p>
 <ul>
 <li>1、DIP(Dependency Inversion Principle) 依賴反轉。</li>
 <li>2、IOC(Inversion of Control) 控制反轉。</li>
@@ -182,7 +182,7 @@
 <p>複習一下前面講解到的依賴反轉概念：</p>
 <p><img src="https://i.imgur.com/PL51zgY.jpg" alt="">
 <!-- raw HTML omitted --></p>
-<p>我們了解到DIP最重要的目標是要解除物件與物間之間直接依賴的關係。<br>
+<p>我們了解到 DIP 最重要的目標是要解除物件與物間之間直接依賴的關係。<br>
 <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/">不熟的同學起點這複習</a>。</p>
 <h3 id="2ioc-控制反轉">2、IOC 控制反轉。</h3>
 <p>那甚麼又是<code>控制反轉</code>呢？</p>
@@ -190,22 +190,22 @@
 <h4 id="把對於某個物件的控制權移轉給第三方容器">把對於某個物件的控制權移轉給第三方容器。</h4>
 <p>甚麼意思呢？</p>
 <p>回憶一下，還記得前面實作的第一版API嗎？</p>
-<p>我們的Controller在跟Repository要資料的時候是怎麼做的呢？
+<p>我們的 Controller 在跟 Repository 要資料的時候是怎麼做的呢？
 <img src="https://i.imgur.com/vYzHpTq.jpg" alt=""></p>
 <p>看到關鍵字了嗎？</p>
 <p>沒有？那這樣呢？<br>
 <img src="https://i.imgur.com/Gg2rDiK.jpg" alt=""></p>
-<p>就是那個NEW代表著我們的Controller其實是直接依賴Repository的。<br>
+<p>就是那個 NEW 代表著我們的 Controller 其實是直接依賴 Repository 的。<br>
 他們之間的關係如下圖。</p>
 <p><img src="https://i.imgur.com/XpawSKn.png" alt="">
 <!-- raw HTML omitted --></p>
-<p>所以理想中IOC概念我們的關係圖應該長這樣：
+<p>所以理想中 IOC 概念我們的關係圖應該長這樣：
 <img src="https://i.imgur.com/TRCC8tI.png" alt=""></p>
-<p>我們的Controller應該把對於Repository的控制權移交給IOC。</p>
+<p>我們的 Controller 應該把對於 Repository 的控制權移交給 IOC。</p>
 <h3 id="3di-依賴注入">3、DI 依賴注入。</h3>
-<p>講了這麼多那所以甚麼是DI呢？</p>
-<p>聰明的同學應該發現了上述的DIP、IOC都只是一種精神、概念；而DI就是實現上述兩種精神的方法。</p>
-<p>講解DI的精神最經典的就是：
+<p>講了這麼多那所以甚麼是 DI 呢？</p>
+<p>聰明的同學應該發現了上述的 DIP、IOC 都只是一種精神、概念；而 DI 就是實現上述兩種精神的方法。</p>
+<p>講解 DI 的精神最經典的就是：
 <!-- raw HTML omitted --></p>
 <blockquote>
 <p>好萊塢原則 (Hollywood Principle)<br>
@@ -214,7 +214,7 @@ don‘t call us, we‘ll call you<br>
 這就是一種被動接受的方式。
 <!-- raw HTML omitted --></p>
 </blockquote>
-<p>所以呢有了DI的概念我們理想中的關係圖應該要變成：
+<p>所以呢有了 DI 的概念我們理想中的關係圖應該要變成：
 <img src="https://i.imgur.com/2uQJ1LK.png" alt=""></p>
 <h3 id="4注入的方式">4、注入的方式。</h3>
 <p>注入的方式有以下三種：</p>
@@ -223,7 +223,7 @@ don‘t call us, we‘ll call you<br>
 <li>b、設值方法注入 (Setter Injection)</li>
 <li>c、介面注入 (Interface Injection)</li>
 </ul>
-<p>以我們先前的Controller進行示範</p>
+<p>以我們先前的 Controller 進行示範</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class ProductContorller : ControllerBase
     {
         
@@ -311,7 +311,7 @@ don‘t call us, we‘ll call you<br>
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/" class="prev" rel="prev" title="SQL 模糊搜尋Like替代方式"><i class="iconfont icon-left"></i>&nbsp;SQL 模糊搜尋Like替代方式</a>
+        <a href="https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/" class="prev" rel="prev" title="SQL 模糊搜尋 Like 替代方式"><i class="iconfont icon-left"></i>&nbsp;SQL 模糊搜尋 Like 替代方式</a>
          
         
         <a href="https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/" class="next" rel="next" title="dotnet Core WebApi(Phase2) - 0">dotnet Core WebApi(Phase2) - 0&nbsp;<i class="iconfont icon-right"></i></a>

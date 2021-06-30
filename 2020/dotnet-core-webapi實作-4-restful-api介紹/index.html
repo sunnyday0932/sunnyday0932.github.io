@@ -71,7 +71,7 @@
     "datePublished": "2020-10-29 22:19:33  CST",
     "dateModified" : "2020-10-29 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "120",
+    "wordCount" : "168",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -169,9 +169,9 @@
           
 
           <h2 id="本文">本文</h2>
-<p>REST是Representational State Transfer的縮寫，是一種設計模式，RESTful API就是遵循這種設計模式所創造的API。</p>
-<h3 id="那restful是怎樣的一個設計模式呢">那RESTful是怎樣的一個設計模式呢?</h3>
-<p>首先組成RESTful API三大要素有:</p>
+<p>REST 是 Representational State Transfer 的縮寫，是一種設計模式，RESTful API 就是遵循這種設計模式所創造的 API。</p>
+<h3 id="那-restful-是怎樣的一個設計模式呢">那 RESTful 是怎樣的一個設計模式呢?</h3>
+<p>首先組成 RESTful API 三大要素有:</p>
 <table>
 <thead>
 <tr>
@@ -182,20 +182,20 @@
 <tbody>
 <tr>
 <td>1、Nouns (名詞)</td>
-<td>一組獨一無二的URL用來定義網址。</td>
+<td>一組獨一無二的 URL 用來定義網址。</td>
 </tr>
 <tr>
 <td>2、Verbs (動詞)</td>
-<td>用來描述對URL所執行的動作，也就是HTTP Method。</td>
+<td>用來描述對 URL 所執行的動作，也就是 HTTP Method。</td>
 </tr>
 <tr>
 <td>3、Content Types(資源呈現方式)</td>
-<td>API資源呈現的方式 EX:JSON、XML。</td>
+<td>API 資源呈現的方式 EX:JSON、XML。</td>
 </tr>
 </tbody>
 </table>
 <!-- raw HTML omitted -->
-<p>以前幾篇的API為範例:</p>
+<p>以前幾篇的 API 為範例:</p>
 <table>
 <thead>
 <tr>
@@ -227,8 +227,8 @@
 </tr>
 </tbody>
 </table>
-<p>固定的Router，但使用Method來區分要進行的動作，好處是不會有五花八門的router出現，一旦用了此種模式，大家就能輕易區分API會做些甚麼，我該取用哪隻API。</p>
-<p>常見的Method有以下幾種:</p>
+<p>固定的 Router，但使用 Method 來區分要進行的動作，好處是不會有五花八門的 router 出現，一旦用了此種模式，大家就能輕易區分 API 會做些甚麼，我該取用哪隻 API。</p>
+<p>常見的 Method 有以下幾種:</p>
 <table>
 <thead>
 <tr>
@@ -260,8 +260,8 @@
 </tbody>
 </table>
 <p>備註:
-POST被視作萬用動詞，可以作為其他動作。<br>
-例如:當需要取得商品資訊時需要多傳幾個參數給API就可以使用POST。<br>
+POST 被視作萬用動詞，可以作為其他動作。<br>
+例如:當需要取得商品資訊時需要多傳幾個參數給 API 就可以使用 POST。<br>
 <!-- raw HTML omitted --></p>
 <h3 id="restful-的特點">RESTful 的特點</h3>
 <ul>
@@ -270,14 +270,14 @@ POST被視作萬用動詞，可以作為其他動作。<br>
 <li>2、無狀態。(Stateless)
 &ndash; 伺服器不能儲存客戶端的資訊, 每一次從客戶端傳送的請求中, 要包含所有的必須的狀態資訊。</li>
 <li>3、快取（Cacheability）
-&ndash; 在server端可以透過快取機制加快回應速度，EX:GET過的資料如果沒有被改變過，就可以透過快取機制在下一次，有相同API較用服務時更快的回應。</li>
+&ndash; 在 Server 端可以透過快取機制加快回應速度，EX:GET 過的資料如果沒有被改變過，就可以透過快取機制在下一次，有相同 API 較用服務時更快的回應。</li>
 <li>4、分層系統架構 (Layered System)
-&ndash; Client並不會知道在API怎麼通過Server跟資料庫拿到資料的，就可以在這些Server做負載平衡、共享快取等提高擴充性，也便於做安全性作業。</li>
+&ndash; Client 並不會知道在API怎麼通過 Server 跟資料庫拿到資料的，就可以在這些 Server 做負載平衡、共享快取等提高擴充性，也便於做安全性作業。</li>
 <li>5、客戶端與伺服器分離（Client-Server）
-&ndash; 將Client與Server分開是為了將使用者介面所關注的邏輯和資料儲存所關注的邏輯分離開來，有助於提高使用者介面的跨平台的可移植性；通過簡化伺服器模組也有助於伺服器模組的可延伸性。</li>
+&ndash; 將 Client 與 Server 分開是為了將使用者介面所關注的邏輯和資料儲存所關注的邏輯分離開來，有助於提高使用者介面的跨平台的可移植性；通過簡化伺服器模組也有助於伺服器模組的可延伸性。</li>
 </ul>
 <h2 id="後記">後記</h2>
-<p>RESTful目前對我來說最大的特點就是大家都能快速依照規範好的結構開發，例如我們現在前後端的合作模式就是一開始先訂好API規格，
+<p>RESTful 目前對我來說最大的特點就是大家都能快速依照規範好的結構開發，例如我們現在前後端的合作模式就是一開始先訂好 API 規格，
 EX:</p>
 <pre><code class="language-json=" data-lang="json=">Method:DELETE
 Router:/api/Product

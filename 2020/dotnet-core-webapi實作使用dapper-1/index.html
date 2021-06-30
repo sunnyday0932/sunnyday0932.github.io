@@ -71,7 +71,7 @@
     "datePublished": "2020-09-22 22:19:33  CST",
     "dateModified" : "2020-09-22 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1\/",
-    "wordCount" : "291",
+    "wordCount" : "344",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -171,34 +171,34 @@
           
 
           <h2 id="前言">前言</h2>
-<p>終於進入WebApi部分，也是目前工作最常做的一部分。<br>
-這邊會從原始MVC作為開頭介紹，內容會帶入Dapper、Restful介紹，以及一些好用小工具分享。</p>
+<p>終於進入 WebApi 部分，也是目前工作最常做的一部分。<br>
+這邊會從原始 MVC 作為開頭介紹，內容會帶入 Dapper、Restful 介紹，以及一些好用小工具分享。</p>
 <h2 id="本文">本文</h2>
 <h3 id="一事前準備">一、事前準備</h3>
-<p>1、首先我們先建立一個core專案。
+<p>1、首先我們先建立一個 core 專案。
 <img src="https://i.imgur.com/YQV6FRf.jpg" alt="">
 <!-- raw HTML omitted -->
-選擇API建立
+選擇 API 建立
 <img src="https://i.imgur.com/nbqCupc.jpg" alt=""></p>
 <p>2、資料庫準備。
 先到<a href="https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs">此連結下載北風資料庫</a></p>
 <p><img src="https://i.imgur.com/T71U4eZ.jpg" alt=""><br>
 <!-- raw HTML omitted --></p>
-<p>點選instnwnd.sql，選擇Download。
+<p>點選 instnwnd.sql，選擇 Download。
 <img src="https://i.imgur.com/BO3kLUE.jpg" alt=""></p>
-<p>會看到瀏覽器顯示一長串SQL語法，把這邊全部複製起來。
+<p>會看到瀏覽器顯示一長串 SQ L語法，把這邊全部複製起來。
 <img src="https://i.imgur.com/JV8IZ3a.jpg" alt=""></p>
-<p>到SSMS點選新增查詢，把語法貼上後執行。
+<p>到 SSMS 點選新增查詢，把語法貼上後執行。
 <img src="https://i.imgur.com/TKGzh6r.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/uQly5jU.jpg" alt=""></p>
 <!-- raw HTML omitted -->
-<p>看到資料庫出現Northwind代表成功。
+<p>看到資料庫出現 Northwind 代表成功。
 <img src="https://i.imgur.com/x3W3Jhv.jpg" alt=""></p>
-<h3 id="二api開發">二、API開發</h3>
-<p>1、首先我們建立一個Models資料夾。
+<h3 id="二api-開發">二、API 開發</h3>
+<p>1、首先我們建立一個 Models 資料夾。
 <img src="https://i.imgur.com/phw3NCX.jpg" alt="">
 <!-- raw HTML omitted --></p>
-<p>建立一個ProductModel類別，對應北風資料庫的Products。
+<p>建立一個 ProductModel 類別，對應北風資料庫的 Products。
 <img src="https://i.imgur.com/H5t24pr.jpg" alt=""></p>
 <p>建立 ProductModel</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProductModel</span>
@@ -253,19 +253,19 @@
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Discontinued { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
     }
-</code></pre></div><p>這邊各欄位的型態可以先看DB內資料類型</p>
+</code></pre></div><p>這邊各欄位的型態可以先看 DB 內資料類型</p>
 <p><img src="https://i.imgur.com/eyJ6tMT.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/0vpK64B.jpg" alt=""></p>
 <p>再到<a href="https://docs.microsoft.com/zh-tw/dotnet/framework/data/adonet/sql-server-data-type-mappings">以下網址對照型態</a></p>
-<p>2、安裝Dapper</p>
-<p>到專案Nuget套件管理員，點選管理方案的Nuget套件。
+<p>2、安裝 Dapper</p>
+<p>到專案 Nuget 套件管理員，點選管理方案的 Nuget 套件。
 <img src="https://i.imgur.com/V9SkmF7.jpg" alt=""></p>
-<p>搜尋Dapper，並且安裝。
+<p>搜尋 Dapper，並且安裝。
 <img src="https://i.imgur.com/kuLTAy0.jpg" alt=""></p>
-<p>3、建立一個Repositories資料夾。</p>
-<p>這邊Repositories資料夾統整跟資料庫相關檔案。<br>
+<p>3、建立一個 Repositories 資料夾。</p>
+<p>這邊 Repositories 資料夾統整跟資料庫相關檔案。<br>
 <img src="https://i.imgur.com/n3KHsPP.jpg" alt=""></p>
-<p>建立ConnectionHelper</p>
+<p>建立 ConnectionHelper</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConnectionHelper</span>
     {
         <span style="color:#75715e">/// &lt;summary&gt;
@@ -279,7 +279,7 @@
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> ConnectionStr { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _connectionStr; } }
     }
 </code></pre></div><p>備註：這邊一般資料庫連線字串正常都會有使用者帳號、密碼，為了方便示範，就用此方法連線。</p>
-<p>建立ProductRepository</p>
+<p>建立 ProductRepository</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#75715e">/// &lt;summary&gt;
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 取得產品列表
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
@@ -307,9 +307,9 @@
 
             <span style="color:#66d9ef">return</span> result;
         }
-</code></pre></div><p>備註：這邊SqlConnection一開始應該會出現提示紅字，要記得透過Nuget安裝SqlClient。
+</code></pre></div><p>備註：這邊 SqlConnection 一開始應該會出現提示紅字，要記得透過 Nuget 安裝 SqlClient。
 <img src="https://i.imgur.com/tLsR6DL.jpg" alt=""></p>
-<p>4、建立PoructController</p>
+<p>4、建立 PoructController</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    [Route(&quot;api/&quot;)]
     public class ProductContorller : ControllerBase
     {
@@ -324,11 +324,11 @@
         }
     }
 </code></pre><p>5、運行專案進行測試。</p>
-<p>Router：https://localhost:44395/api/product  &laquo; 這邊前面localhost數字是port有可能專案建置會不同，要自己更改成專案運行起來的設置。<br>
-成功後會看到一串密密麻麻的JSON字串。</p>
+<p>Router：https://localhost:44395/api/product  &laquo; 這邊前面 localhost 數字是port有可能專案建置會不同，要自己更改成專案運行起來的設置。<br>
+成功後會看到一串密密麻麻的 JSON 字串。</p>
 <p><img src="https://i.imgur.com/4VML0J3.jpg" alt=""></p>
-<p>因為這樣不容易閱讀，使用Chrome的話可以安裝<a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=zh-TW">jsonViewer</a>這個擴充功能。</p>
-<p>安裝完後啟用再到剛剛網址重新整理，就可以看到工整的JSON字串了。
+<p>因為這樣不容易閱讀，使用 Chrome 的話可以安裝 <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=zh-TW">jsonViewer</a>這個擴充功能。</p>
+<p>安裝完後啟用再到剛剛網址重新整理，就可以看到工整的 JSON 字串了。
 <img src="https://i.imgur.com/JDkjTx8.jpg" alt=""></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>

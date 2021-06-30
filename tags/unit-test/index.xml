@@ -14,7 +14,7 @@
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</guid>
       <description>前言 接續上一篇，這篇主要是講解非同步的單元測試，同樣也只會列出不同的地方。
-本文 1、Service Test。 傳入Model為空。
+本文 1、Service Test。 傳入 Model 為空。
 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_傳入Model為空_應回傳ArgumentNullException() { //assert var sut = this.GetSystemUnderTest(); //act var exception = await Assert.ThrowsExceptionAsync&amp;lt;ArgumentNullException&amp;gt;( async () =&amp;gt; await sut.AddAccount(null)); //arrange exception.Message.Contains(&amp;quot;不可為空&amp;quot;); } 結果：
 某一個欄位為空。
 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_Account為空_應回傳ArgumentException() { //assert var sut = this.GetSystemUnderTest(); var fixture = new Fixture(); var info = fixture.Build&amp;lt;AccountInfoModel&amp;gt;() .Without(x =&amp;gt; x.Account) .Create(); //act var exception = await Assert.</description>
@@ -27,50 +27,40 @@
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</guid>
       <description>前言 前幾篇已經介紹完單元測試基本方法了，那這篇主要是介紹一些好用的工具，能夠透過工具檢視程式碼目前單元測試的涵蓋率、以及查看複雜度；透過這些數據來檢視自己的程式碼是否還能夠在更優化。
-本文 1、Find Code Coverage。 原本是要介紹另一個測試方法，是使用Axocover；但在完成這幾篇的當下，馬上看到公司大神推薦了這個，現成的就拿來用啦XD，若有興趣的會把Axocover連結附在此。
+本文 1、Find Code Coverage。 原本是要介紹另一個測試方法，是使用 Axocover ；但在完成這幾篇的當下，馬上看到公司大神推薦了這個，現成的就拿來用啦 XD，若有興趣的會把 Axocover 連結附在此。
 Axocover For Visual Studio 2019。 
 進入正題。
 Find Code Coverage
 首先我們先打開Visual Stdio Extension進行安裝。
 下載完後安裝視窗跳出時記得先把VS關掉，不然會無法完成安裝。
-接下來打開VS到檢視 &amp;gt; 其他視窗 &amp;gt; 點選Find Code Coverage打開視窗。
+接下來打開 VS 到檢視 &amp;gt; 其他視窗 &amp;gt; 點選 Find Code Coverage 打開視窗。
 首次打開視窗會是空的，要先執行一次測試才會有東西。
 再次打開就可以看到結果。
-通常我們都會要求涵蓋率在95%以上，但當然各家公司實踐上有自己的標準，就可以依此來查看數據當作依據。
+通常我們都會要求涵蓋率在 95% 以上，但當然各家公司實踐上有自己的標準，就可以依此來查看數據當作依據。
  小提醒 因為 Find Code Coverage 會在每一次測試時幫你去計算覆蓋率，等於一個測試會跑兩次，若不想每次重跑一遍可以到設定的地方關掉，再要看覆蓋率時再打開即可。
  設定方式：
 打開 工具 &amp;gt; 選項。
-找到 Find Code Coverage，把Run的選項Enable改成False即可。
+找到 Find Code Coverage，把 Run 的選項 Enable 改成 False 即可。
 2、CodeMaintainibility。 CodeMaintainibility
-一樣要到Extension的地方搜尋安裝。
-安裝完重新打開VS後會發現每一個方法都會出現一個旗子。
-點選後會顯示一些指標，可以供看這段程式碼的複雜度等，以此作為依據方法是否需要拆分、優化等。
-3、CodeMaid。 CodeMaid
-一樣是到Extension搜尋後安裝。
-安裝完後打開VS，要到延伸模組 &amp;gt; CodeMaid &amp;gt; Spade地方將儀表板打開。
-打開後就可以看到現在該方法的程式碼複雜度。
-滑鼠移過去就會顯示每一個Function。
-後記 單元測試基本介紹就到這邊告一個尾聲，若有興趣可以自行研究TDD、BDD等實踐方式，以此相互搭配。
-這些工具提供出來是想讓各位做為依據，通常在一段程式碼需要重構的時候都會先透過工具來觀察程式碼複雜度，接下來會先進行單元測試，讓單元測試作為一個防線，保證重構的過程不會把核心邏輯給改壞。
-那麼單元測試就到此告一個段落。</description>
+一樣要到 Extension 的地方搜尋安裝。</description>
     </item>
     
     <item>
-      <title>單元測試 - 9(Repository測試)</title>
+      <title>單元測試 - 9(Repository 測試)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</link>
       <pubDate>Mon, 01 Mar 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</guid>
-      <description>前言 前面介紹完Service層的測試方法，接續介紹Repository的測試。
-本文 這邊先講解一下要如何進行Repository的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過Container例如:docker、或是使用localDB進行整合測試，這邊主要是以localDB進行示範。
-一樣先建立一個Repository的測試專案。
-記得測試專案要加入原本Repository的參考。
-使用SSMS取得建立Table的SQL語法。 將SQL檔案存放到測試專案內。
+      <description>前言 前面介紹完 Service 層的測試方法，接續介紹 Repository 的測試。
+本文 這邊先講解一下要如何進行 Repository 的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過 Container 例如: docker、或是使用 localDB 進行整合測試，這邊主要是以 localDB 進行示範。
+一樣先建立一個 Repository 的測試專案。
+記得測試專案要加入原本 Repository 的參考。
+使用 SSMS 取得建立 Table 的 SQL 語法。 將SQL檔案存放到測試專案內。
 記得也要調整檔案屬性，為永遠複製。
-使用SSMS取得INSERT DATA的SQL語法。 接下來就是一直下一步完成。
+使用 SSMS 取得 INSERT DATA 的 SQL 語法。 接下來就是一直下一步完成。
 產出的檔案：
-安裝Dapper到Repository測試專案。 因為測試SQL Command時會利用Dapper去執行SQL，所以需要安裝。
-準備Repository測試使用到之方法。 1、DatabaseName。 public class DatabaseName { public const string Default = &amp;quot;master&amp;quot;; public const string SampleDB = &amp;quot;Northwind&amp;quot;; } 2、DatabaseCommands。 public class DatabaseCommands { /// &amp;lt;summary&amp;gt; /// 建立DB /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;connectionString&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;database&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public static void CreateDatabase( string connectionString, string database) { var IsExists = DatabaseExists(connectionString, database); if (IsExists) { return; } using var conn = new SqlConnection(connectionString); conn.</description>
+安裝Dapper到Repository測試專案。 因為測試 SQL Command 時會利用 Dapper 去執行 SQL，所以需要安裝。
+準備 Repository 測試使用到之方法。 1、DatabaseName。 public class DatabaseName { public const string Default = &amp;quot;master&amp;quot;; public const string SampleDB = &amp;quot;Northwind&amp;quot;; } 2、DatabaseCommands。 public class DatabaseCommands { /// &amp;lt;summary&amp;gt; /// 建立DB /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;connectionString&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;database&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public static void CreateDatabase( string connectionString, string database) { var IsExists = DatabaseExists(connectionString, database); if (IsExists) { return; } using var conn = new SqlConnection(connectionString); conn.</description>
     </item>
     
     <item>
@@ -79,8 +69,8 @@ Find Code Coverage
       <pubDate>Mon, 22 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</guid>
-      <description>前言 接續完成我們API的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。
-本文 GetAccount(取得單筆帳號資訊) 1、輸入的Account不可為空。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;quot;&amp;quot;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;quot;Account 不可為空 !&amp;quot;); } 2、若查詢的Account有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;quot;test123&amp;quot;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;quot;test123@gmail.com&amp;quot;, ModifyUser = &amp;quot;sys&amp;quot;, Phone = &amp;quot;0918777888&amp;quot; }; var sut = this.</description>
+      <description>前言 接續完成我們 API 的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。
+本文 GetAccount(取得單筆帳號資訊) 1、輸入的 Account 不可為空。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;quot;&amp;quot;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;quot;Account 不可為空 !&amp;quot;); } 2、若查詢的 Account 有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;quot;test123&amp;quot;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;quot;test123@gmail.com&amp;quot;, ModifyUser = &amp;quot;sys&amp;quot;, Phone = &amp;quot;0918777888&amp;quot; }; var sut = this.</description>
     </item>
     
     <item>
@@ -89,17 +79,17 @@ Find Code Coverage
       <pubDate>Mon, 22 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/</guid>
-      <description>前言 本篇會介紹測試Service層好用工具，可以加快撰寫測試。
+      <description>前言 本篇會介紹測試 Service 層好用工具，可以加快撰寫測試。
 本文 CsvHelper 先前我們在測試方法時，遇到要取用資料都只能自己手刻。
-這時候就可以使用一個好用的工具CsvHelper。
-這邊主要是將資料庫的DATA匯出CSV檔，透過CsvHelper讀取資料，模擬Repository回傳資料給Service進行測試。
-1、先將DB資料匯成CSV檔。 將我們要匯出的資料使用MSSQL SELECT出來。
+這時候就可以使用一個好用的工具 CsvHelper。
+這邊主要是將資料庫的 DATA 匯出 CSV 檔，透過 CsvHelper 讀取資料，模擬 Repository 回傳資料給 Service 進行測試。
+1、先將 DB 資料匯成 CSV 檔。 將我們要匯出的資料使用 MSSQL SELECT出來。
 對左上方空白的地方點選滑鼠右鍵，選擇儲存結果。
-將檔案儲存到我們測試專案地方，建立一個TestData資料夾存放。
-記得要到專案內，將要測試的CSV檔案屬性改成永遠複製。
-2、安裝Nuget 套件。 3、修改測試方法。 首先在測試Class加上一個Attribute。
+將檔案儲存到我們測試專案地方，建立一個 TestData 資料夾存放。
+記得要到專案內，將要測試的 CSV 檔案屬性改成永遠複製。
+2、安裝 Nuget 套件。 3、修改測試方法。 首先在測試 Class 加上一個 Attribute。
 [DeploymentItem(@&amp;quot;TestData\AccountData.csv&amp;quot;)] 接著我們就可以在要使用的地方這麼做。
-[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;quot;AccountData.csv&amp;quot;)) using (var reader = new CsvReader(sr, CultureInfo.InvariantCulture)) { var records = reader.GetRecords&amp;lt;AccountDataModel&amp;gt;(); sourceData.AddRange(records); } var sut = this.GetSystemUnderTest(); this._accountRepository.GetAccount(&amp;quot;test2&amp;quot;).Returns(sourceData.FirstOrDefault(x =&amp;gt; x.Account == &amp;quot;test2&amp;quot;)); var expect = this._mapper.Map&amp;lt;AccountDto&amp;gt;(sourceData.FirstOrDefault(x =&amp;gt; x.Account == &amp;quot;test2&amp;quot;)); expect.</description>
+[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;quot;AccountData.csv&amp;quot;)) using (var reader = new CsvReader(sr, CultureInfo.</description>
     </item>
     
     <item>
@@ -108,31 +98,29 @@ Find Code Coverage
       <pubDate>Wed, 17 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6/</guid>
-      <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的API當作練習，補上該有的測試。
+      <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的 API 當作練習，補上該有的測試。
 本文 首先我們建立一個放置測試專案的資料夾。
 接著建立完測試專案。
- 2021/02/21更新 原本是只想開一個測試專案把Repository跟Service的測試都放在一起後來想想不太對。 更新後的專案結構如下。
- 因為是要對Service層進行測試，記得要加入專案參考。
+ 2021/02/21更新 原本是只想開一個測試專案把 Repository 跟 Service 的測試都放在一起後來想想不太對。 更新後的專案結構如下。
+ 因為是要對 Service 層進行測試，記得要加入專案參考。
 接下來先把基礎測試專案需要用到的東西準備好。
-[TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在AutoMapper的地方，我們並不需要製作一個假的AutoMapper，所以可以直接使用原本方法。
-接下來就可以開始寫單元測試了。
-AddAccount(新增帳號) 1、有四個必填欄位需要確認。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public void AddAccount_Account為空_應回傳Exception() { //assert var sut = this.</description>
+[TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在 AutoMapper 的地方，我們並不需要製作一個假的 AutoMapper，所以可以直接使用原本方法。</description>
     </item>
     
     <item>
-      <title>單元測試 - 5(NSubstitute介紹)</title>
+      <title>單元測試 - 5( NSubstitute 介紹)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</link>
       <pubDate>Fri, 05 Feb 2021 20:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/</guid>
-      <description>前言 上一篇提到了NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(絕對不是我原本想要跳過不介紹被抓到才補上這篇)。
+      <description>前言 上一篇提到了 NSubstitute，前輩看到後提點了一些用法，順勢研究完多一篇筆記紀錄一下(絕對不是我原本想要跳過不介紹被抓到才補上這篇)。
 本文 驗證互動是否符合預期方法 接續上次使用範例。
 情境:
-我們現在有一個Check的方法，若出現錯誤則會紀錄一筆log。
-首先先把log方法準備好。
+我們現在有一個 Check 的方法，若出現錯誤則會紀錄一筆log。
+首先先把 log 方法準備好。
 public interface ILog { void SaveLog(string message); } public class Log : ILog { public void SaveLog(string message) { Console.WriteLine(message); } } Check 方法。
 bool Check(string text); public bool Check(string text) { if (string.IsNullOrWhiteSpace(text)) { this._log.SaveLog(&amp;quot;text 不可為空!&amp;quot;); return false; } return true; } 接下來我們先調整一下我們的測試方法。
-private ILog _log; private IRepository _repository; [TestInitialize] public void TestInitialize() { this._log = Substitute.For&amp;lt;ILog&amp;gt;(); this._repository = Substitute.For&amp;lt;IRepository&amp;gt;(); } private Service GetSystemUnderTest() { var sut = new Service(this.</description>
+private ILog _log; private IRepository _repository; [TestInitialize] public void TestInitialize() { this._log = Substitute.</description>
     </item>
     
     <item>
@@ -141,10 +129,10 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       <pubDate>Mon, 01 Feb 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</guid>
-      <description>本文 初始化與清除使用的Attribute 上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個Attribute可以派上用場。
-   Attribute 用法 頻率     TestInitialize() 在執行每一項測試之前，會先執行TestInitialize的程式碼。 每執行一個TestMethod會觸發一次。   TestCleanup() 在執行每一項測試之後，會執行TestCleanup的程式碼。 每執行一個TestMethod會觸發一次。   ClassInitialize() 在執行該類別的測試之前，會先執行ClassInitialize的程式碼。 以測試類別為單位執行一次。   ClassCleanup() 在執行該類別的測試之後，會執行ClassCleanup的程式碼。 以測試類別為單位執行一次。   AssemblyInitialize() 在執行所有類別的測試之前，會先執行AssemblyInitialize的程式碼。 以測試專案為單位執行一次。   AssemblyCleanup() 在執行該類別的測試之後，會執行AssemblyCleanup的程式碼。 以測試專案為單位執行一次。    練習:
+      <description>本文 初始化與清除使用的 Attribute 上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個 Attribute 可以派上用場。
+   Attribute 用法 頻率     TestInitialize() 在執行每一項測試之前，會先執行 TestInitialize 的程式碼。 每執行一個 TestMethod 會觸發一次。   TestCleanup() 在執行每一項測試之後，會執行 TestCleanup 的程式碼。 每執行一個 TestMethod 會觸發一次。   ClassInitialize() 在執行該類別的測試之前，會先執行 ClassInitialize 的程式碼。 以測試類別為單位執行一次。   ClassCleanup() 在執行該類別的測試之後，會執行 ClassCleanup 的程式碼。 以測試類別為單位執行一次。   AssemblyInitialize() 在執行所有類別的測試之前，會先執行 AssemblyInitialize 的程式碼。 以測試專案為單位執行一次。   AssemblyCleanup() 在執行該類別的測試之後，會執行 AssemblyCleanup 的程式碼。 以測試專案為單位執行一次。    練習:
 如題為了避免我們改變時間進而影響到其他單元測試，我們在執行每一個測試前後都會初始化一次時間。
-[TestInitialize] public void TestInitial() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } [TestCleanup] public void TestClean() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } 隔離物件 測試的時候我們會需要隔離要測試的物件，如果直接相依物件會產生一些不必要的問題導致測試結果可能有誤。</description>
+[TestInitialize] public void TestInitial() { SystemTime.</description>
     </item>
     
     <item>
@@ -153,7 +141,7 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       <pubDate>Sat, 30 Jan 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/</guid>
-      <description>本文 比對兩個物件方式 首先我們建立一個測試用Model。
+      <description>本文 比對兩個物件方式 首先我們建立一個測試用 Model。
 public class TestModel { public string UserName { get; set; } public string Account { get; set; } } 建立一個測試方法驗證兩個物件是否相同。
 [TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; secondObject.Should().Be(fistObject); } 結果 有點奇怪，我們換回內建的方法測試看看。
 [TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; //secondObject.</description>
@@ -167,10 +155,10 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/</guid>
       <description>本文 單元測試方法命名 單元測試的藝術內簡單得規範出一種一目了然的命名方式。
 分為三個部分：
-   名稱 解釋     1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。   2、Scenario(情境) 要測試的情境，例如:傳入NULL、傳入字串。   3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期    單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
+   名稱 解釋     1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。   2、Scenario(情境) 要測試的情境，例如:傳入 NULL、傳入字串。   3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期    單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
 接著我們就可以修改一下前次練習的測試方法名稱。
-常用到的Attribute 接下來介紹幾個比較常用到的Attribute：
-   Attribute 用途     [TestMethod] 表示這是一個測試方法。   [OwnerName] 此測試方法的建立者。   [TestCategory] 測試的方法在哪個類別。   [TestProperty] 表示該方法是在哪個類別內的測試方法。   [Ignore] 驗證測試時會忽略該方法。   [ExpectedException] 驗證例外處理的Attribute。    用法示範：
+常用到的 Attribute 接下來介紹幾個比較常用到的 Attribute：
+   Attribute 用途     [TestMethod] 表示這是一個測試方法。   [OwnerName] 此測試方法的建立者。   [TestCategory] 測試的方法在哪個類別。   [TestProperty] 表示該方法是在哪個類別內的測試方法。   [Ignore] 驗證測試時會忽略該方法。   [ExpectedException] 驗證例外處理的 Attribute。    用法示範：
 [TestMethod()] //這是一個測試方法 [Owner(&amp;quot;Sian&amp;quot;)] //此方法由Sian建立 [TestCategory(&amp;quot;Class1&amp;quot;)] //此測試方法在Class1這個類別 [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;GetUserName&amp;quot;)] //此測試方法是Class1類別內的GetUserName public void GetUserName_輸入的UserName為空值_應回傳提示訊息() { //arrange var target = new Class1(); var name = string.</description>
     </item>
     
@@ -180,7 +168,7 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <pubDate>Wed, 27 Jan 2021 13:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1/</guid>
-      <description>前言 API講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以單元測試的藝術以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。
+      <description>前言 API 講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以單元測試的藝術以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。
 內文 單元測試 單元測試的藝術對一個優秀單元測試的定義為：
 一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元， 之後對這個單元的單一最終結果的某些假設或期望進行驗證。 單元測試幾乎都是使用單元測試框架進行撰寫的。 撰寫單元測試很容易，執行起來快速。 單元測試可靠、易讀、並且很容易維護。 只要產品程式碼不發生變化，單元測試的執行結果是穩定一致的。 該具備的特性有：
    特性 定義     1、Fast(快速) 每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。   2、Independent(獨立性) 不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。   3、Repeatable(可重複) 單元測試要是可以重複執行的，其結果不會因為執行次數而改變。   4、Self-Validating(可反應驗證結果) 單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。   5、Timely(及時) 單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。    單元測試的3A原則:    原則     1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。   2、Act : 呼叫目標物件的方法。   3、Assert : 驗證是否符合預期。    整合測試 接下來介紹一下可能會混淆的整合測試。</description>

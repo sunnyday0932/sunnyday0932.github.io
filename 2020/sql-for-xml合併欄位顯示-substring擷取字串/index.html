@@ -71,7 +71,7 @@
     "datePublished": "2020-05-29 22:19:33  CST",
     "dateModified" : "2020-05-29 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/sql-for-xml%E5%90%88%E4%BD%B5%E6%AC%84%E4%BD%8D%E9%A1%AF%E7%A4%BA-substring%E6%93%B7%E5%8F%96%E5%AD%97%E4%B8%B2\/",
-    "wordCount" : "56",
+    "wordCount" : "70",
     "keywords" : ["SQL", "Sian"]
 }
 </script>
@@ -175,7 +175,7 @@
 <h3 id="本文">本文</h3>
 <p>示範資料表如下<br>
 <img src="https://i.imgur.com/njffq46.jpg" alt=""></p>
-<p>我們需要把相同Level的欄位匯總再一起，做成一個統計用報表。</p>
+<p>我們需要把相同 Level 的欄位匯總再一起，做成一個統計用報表。</p>
 <p>首先每個區域後面先加、</p>
 <pre><code>select District+'、' from DistrictData
 </code></pre><p><img src="https://i.imgur.com/juFYK26.jpg" alt=""></p>
@@ -190,14 +190,14 @@ FROM DistrictData AS A
 GROUP BY level
 </code></pre><p>即可得到想要的成果。<br>
 <img src="https://i.imgur.com/14HCquT.jpg" alt=""></p>
-<p>其中<code>FOR XML PATH('')</code>功能是因為如果沒有加的話會出現以下錯誤訊息。<br>
+<p>其中 <code>FOR XML PATH('')</code> 功能是因為如果沒有加的話會出現以下錯誤訊息。<br>
 <img src="https://i.imgur.com/kCjVEQY.jpg" alt=""></p>
 <p>接下來會發現顯示格式不太對，要加上、的部分最後一筆應該要排除。<br>
-這時候就可以使用<strong>SUBSTRING</strong></p>
+這時候就可以使用 <strong>SUBSTRING</strong></p>
 <pre><code>select SUBSTRING('大安區、信義區、松山區、中山區、中正區、',0,LEN('大安區、信義區、松山區、中山區、中正區、')) 
 </code></pre><p>可以得到以下。<br>
 <img src="https://i.imgur.com/VGamTxp.jpg" alt=""></p>
-<p><strong>SUBSTRING</strong>這個語法中SUBSTRING(string, start, lenth)，第1、2個參數代表的是string這個字串中要起始的位置為start，lenth則為最後要計算數字。<br>
+<p><strong>SUBSTRING</strong> 這個語法中 SUBSTRING(string, start, lenth) ，第1、2個參數代表的是 string 這個字串中要起始的位置為 start ， lenth 則為最後要計算數字。<br>
 簡單實驗一下</p>
 <pre><code>select SUBSTRING('123',0,3) 
 </code></pre><p>這邊我們會得到<br>

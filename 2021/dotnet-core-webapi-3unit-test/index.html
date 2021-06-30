@@ -71,7 +71,7 @@
     "datePublished": "2021-03-20 19:40:45  UTC",
     "dateModified" : "2021-03-20 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-3unit-test\/",
-    "wordCount" : "340",
+    "wordCount" : "353",
     "keywords" : ["csharp","Core","dotnet","Unit-test", "Sian"]
 }
 </script>
@@ -174,7 +174,7 @@
 <p>接續上一篇，這篇主要是講解非同步的單元測試，同樣也只會列出不同的地方。</p>
 <h2 id="本文">本文</h2>
 <h3 id="1service-test">1、Service Test。</h3>
-<p>傳入Model為空。</p>
+<p>傳入 Model 為空。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -242,8 +242,8 @@
 </code></pre><p>結果：<br>
 <img src="https://i.imgur.com/DGt9svJ.jpg" alt=""></p>
 <h3 id="2repository-test">2、Repository Test。</h3>
-<p>一些基礎的設定，使用LocalDB的方式都如同先前示範。</p>
-<p>特別的地方，databaseHelper因為有改變用法，所以在TestInitialize的方式變成：</p>
+<p>一些基礎的設定，使用 LocalDB 的方式都如同先前示範。</p>
+<p>特別的地方，databaseHelper 因為有改變用法，所以在 TestInitialize 的方式變成：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    [TestClass]
     public class AccountRepositoryTest
     {
@@ -279,7 +279,7 @@
             return sut;
         }
     }
-</code></pre><p>傳入Model為空。</p>
+</code></pre><p>傳入 Model 為空。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -322,7 +322,7 @@
         }
 </code></pre><p>結果：<br>
 <img src="https://i.imgur.com/KQnq6rL.jpg" alt=""></p>
-<p>回傳SqlException。</p>
+<p>回傳 SqlException。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [TestCategory(&quot;AccountRepository&quot;)]
         [TestProperty(&quot;AccountRepository&quot;, &quot;AddAccount&quot;)]
@@ -349,8 +349,8 @@
 </code></pre><p>結果：<br>
 <img src="https://i.imgur.com/9qKK0pk.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>那麼API的介紹到此告一個段落。</p>
-<p><a href="https://github.com/sunnyday0932/WebApiPhase3">範例一樣會放在GitHub，歡迎取用。</a></p>
+<p>那麼 API 的介紹到此告一個段落。</p>
+<p><a href="https://github.com/sunnyday0932/WebApiPhase3">範例一樣會放在 GitHub，歡迎取用。</a></p>
 
     </div>
 

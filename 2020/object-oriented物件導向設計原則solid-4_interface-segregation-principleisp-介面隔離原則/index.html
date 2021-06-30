@@ -71,7 +71,7 @@
     "datePublished": "2020-08-25 22:19:33  CST",
     "dateModified" : "2020-08-25 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87\/",
-    "wordCount" : "254",
+    "wordCount" : "259",
     "keywords" : ["OOP","程式設計","SOLID", "Sian"]
 }
 </script>
@@ -185,11 +185,11 @@
 </blockquote>
 <p>基本原則：</p>
 <ul>
-<li>1、interface功能盡量少：達到一個介面只服務一個子模組/商業邏輯。
+<li>1、interface 功能盡量少：達到一個介面只服務一個子模組/商業邏輯。
 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。</li>
 <li>2、不應該強迫實作沒用到的方法。</li>
 </ul>
-<p>舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及Gogoro。</p>
+<p>舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">車子</span>
         {
             <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>();
@@ -251,7 +251,7 @@
             Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.車門()}&#34;</span>);
         }
 </code></pre></div><p><img src="https://i.imgur.com/HgfrcKl.jpg" alt=""></p>
-<p>這時候會發現我們設計稿並不適用於Gogoro，思考一下特斯拉與Gogoro的種類，一種為電動車、一種為電動機車，兩者的配件也不同不可互用；所以我們應該拆分兩種不同的設計稿，程式修改如下。</p>
+<p>這時候會發現我們設計稿並不適用於 Gogoro，思考一下特斯拉與 Gogoro 的種類，一種為電動車、一種為電動機車，兩者的配件也不同不可互用；所以我們應該拆分兩種不同的設計稿，程式修改如下。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">電動車</span>
         {
             <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車引擎</span>();

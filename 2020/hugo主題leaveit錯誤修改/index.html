@@ -71,7 +71,7 @@
     "datePublished": "2020-12-06 12:01:15  CST",
     "dateModified" : "2020-12-06 12:01:15  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9\/",
-    "wordCount" : "205",
+    "wordCount" : "216",
     "keywords" : ["Hugo","github", "Sian"]
 }
 </script>
@@ -171,12 +171,12 @@
           
 
           <h2 id="本文">本文</h2>
-<p>之前Google Console不斷提醒網頁結構有問題。<br>
+<p>之前 Google Console 不斷提醒網頁結構有問題。<br>
 就是這個&hellip;<br>
 <img src="https://i.imgur.com/hA2sV9h.jpg" alt=""></p>
 <p>之前都直接手動修改，昨天心血來潮決定把源頭找出來到底出在哪裡<br>
-經過同事幫忙，發現在主題資料夾下有一個seo_schema.html檔案。<br>
-詳細路徑在themes\LeaveIt\layouts\partials\seo_schema.html<br>
+經過同事幫忙，發現在主題資料夾下有一個 seo_schema.html 檔案。<br>
+詳細路徑在 themes\LeaveIt\layouts\partials\seo_schema.html<br>
 裡面長這樣：
 <img src="https://i.imgur.com/xUstLXz.jpg" alt=""></p>
 <p>一開始裡面就少了一個括號，只要把這邊補上就正常啦。</p>
@@ -206,12 +206,12 @@
 }
 </code></pre><p>目前還有另一個已知問題，字串中的逸出序列無效。<br>
 <img src="https://i.imgur.com/4xDYJQO.jpg" alt=""></p>
-<p>目前已知情況應該是時間格式不對查找其他相關Hugo發現原版日期格式應該是 <code>yyyy-MM-dd’T’HH:mm:ss.SSSZ</code> ，所以產生出來日期格式應該要是 <code>2020-11-25 22:19:33 +0800 CST</code>
+<p>目前已知情況應該是時間格式不對查找其他相關 Hugo 發現原版日期格式應該是 <code>yyyy-MM-dd’T’HH:mm:ss.SSSZ</code> ，所以產生出來日期格式應該要是 <code>2020-11-25 22:19:33 +0800 CST</code>
 ，但從這邊可以發現＋號變成了\x2b。</p>
 <p>目前試過了幾個方法還找不到正常解法，以下提供偏方給大家參考。<br>
-打開VS CODE，以資料夾方式打開hugo資料夾。<br>
+打開 VS CODE，以資料夾方式打開 hugo 資料夾。<br>
 <img src="https://i.imgur.com/vzwzbMW.jpg" alt=""></p>
-<p>按下Cirl＋Shift＋F，將\x2b全部取代為＋。<br>
+<p>按下 Cirl＋Shift＋F，將\x2b全部取代為＋。<br>
 <img src="https://i.imgur.com/BLfNLBe.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
 <p>畢竟是開源的主題，作者似乎也沒再更新了。<br>

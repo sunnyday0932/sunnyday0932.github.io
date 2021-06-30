@@ -71,7 +71,7 @@
     "datePublished": "2021-05-17 01:40:45  UTC",
     "dateModified" : "2021-05-17 01:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/message-queue-2rabbitmq\/",
-    "wordCount" : "438",
+    "wordCount" : "489",
     "keywords" : ["Message Queue","RabbitMQ", "Sian"]
 }
 </script>
@@ -172,13 +172,13 @@
 
           <h2 id="本文">本文</h2>
 <h3 id="架設rabbitmq">架設RabbitMQ</h3>
-<p>首先我們使用docker來架設練習用的RabbitMQ。</p>
-<p>我們要使用rabbitmq:management的image，除了會幫我們架設起一個RabbitMQ外，也包含了可以管理的Web介面。</p>
+<p>首先我們使用 docker 來架設練習用的 RabbitMQ。</p>
+<p>我們要使用 rabbitmq:management的image ，除了會幫我們架設起一個 RabbitMQ 外，也包含了可以管理的 Web 介面。</p>
 <p>使用以下語法，並給予預設帳號的帳號密碼。</p>
 <pre><code class="language-shell=" data-lang="shell=">docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management
-</code></pre><p>可以看到輸入後就算目前沒有該Image也會自動幫你下載(懶人的福音R)<br>
+</code></pre><p>可以看到輸入後就算目前沒有該 Image 也會自動幫你下載(懶人的福音R)<br>
 <img src="https://i.imgur.com/Qdy2a1e.jpg" alt=""></p>
-<p>接下來可以到docker確認是否已經啟用。<br>
+<p>接下來可以到 docker 確認是否已經啟用。<br>
 <img src="https://i.imgur.com/fTWOuEW.jpg" alt=""></p>
 <p>那麼就可以輸入以下網址登入測試了。</p>
 <pre><code class="language-shell=" data-lang="shell=">http://localhost:15672/
@@ -187,15 +187,15 @@
 <p>輸入我們剛剛設定的預設值即可。</p>
 <pre><code class="language-shell=" data-lang="shell=">Account: admin
 Password: a1234
-</code></pre><p>成功進入後就會看到初始畫面儀錶板，一樣可以在Overview看到RabbitMQ目前有哪些東西在作用。<br>
+</code></pre><p>成功進入後就會看到初始畫面儀錶板，一樣可以在 Overview 看到 RabbitMQ 目前有哪些東西在作用。<br>
 <img src="https://i.imgur.com/M1Z5UkL.jpg" alt=""></p>
 <p>這邊就只挑比較特別的地方做介紹。</p>
 <h4 id="exchange">Exchange</h4>
-<p>這邊可以看到目前有建立了哪些Exchange，畫面上看到的都是預設的。<br>
+<p>這邊可以看到目前有建立了哪些 Exchange，畫面上看到的都是預設的。<br>
 <img src="https://i.imgur.com/dIpb9AZ.jpg" alt=""></p>
-<p>使用Web介面的好處是可以直接透過介面建立。<br>
+<p>使用 Web 介面的好處是可以直接透過介面建立。<br>
 <img src="https://i.imgur.com/neXHS3l.jpg" alt=""></p>
-<p>點選Exchange可以看到細部的設定。<br>
+<p>點選 Exchange 可以看到細部的設定。<br>
 <img src="https://i.imgur.com/iRoluhp.gif" alt=""></p>
 <h4 id="queue">Queue</h4>
 <p>一樣是可以透過介面觀看有哪些佇列、與其細項內容，並可以直接透過介面新增。</p>
@@ -206,16 +206,16 @@ Password: a1234
 <p>右方還有更細部的設定，比如可以設定一些連接數、政策規範等。<br>
 <img src="https://i.imgur.com/TqQsyaW.jpg" alt=""></p>
 <h3 id="實作練習">實作練習</h3>
-<p>這次主要範例會使用RabbitMQ官方的Nuget。<br>
+<p>這次主要範例會使用 RabbitMQ 官方的 Nuget。<br>
 <a href="https://www.rabbitmq.com/dotnet-api-guide.html">RabbitMQ.Client</a><br>
 <img src="https://i.imgur.com/asxjGtb.jpg" alt=""></p>
-<p>讓我們先建立ConsoleApp。<br>
+<p>讓我們先建立 ConsoleApp。<br>
 <img src="https://i.imgur.com/4eC2PbD.jpg" alt=""></p>
-<p>需要建立一個Publisher、一個Reciever。<br>
+<p>需要建立一個 Publisher、一個 Reciever。<br>
 <img src="https://i.imgur.com/4Ju5NTy.jpg" alt=""></p>
-<p>接下來先安裝RabbitMQ.Client。<br>
+<p>接下來先安裝 RabbitMQ.Client。<br>
 <img src="https://i.imgur.com/WEjUQAr.jpg" alt=""></p>
-<p>我們就可以來開始先做我們的Publisher發布訊息內容。</p>
+<p>我們就可以來開始先做我們的 Publisher發布訊息內容。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             //設定主機位置以及帳號密碼
@@ -257,7 +257,7 @@ Password: a1234
             Console.WriteLine(&quot;請按任意鍵離開!&quot;);
             Console.ReadLine();
         }
-</code></pre><p>接著製作Reciever。</p>
+</code></pre><p>接著製作 Reciever。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             //設定主機位置以及帳號密碼
@@ -301,17 +301,17 @@ Password: a1234
                 Console.ReadLine();
             }
         }
-</code></pre><p>我們來測試看看，首先執行Publisher。<br>
+</code></pre><p>我們來測試看看，首先執行 Publisher。<br>
 <img src="https://i.imgur.com/KXG67cU.jpg" alt=""></p>
 <p>送出後我們可以到管理介面確認一下。<br>
 <img src="https://i.imgur.com/XHQUIxS.gif" alt=""></p>
-<p>接下來我們執行Reciever。<br>
+<p>接下來我們執行 Reciever。<br>
 <img src="https://i.imgur.com/944fFuH.jpg" alt=""></p>
-<p>現在到管理介面看Connections，就會看到目前有一個連線。<br>
+<p>現在到管理介面看 Connections，就會看到目前有一個連線。<br>
 <img src="https://i.imgur.com/1F695xw.jpg" alt=""></p>
-<p>Channel的地方也會看到目前使用中的有誰。<br>
+<p>Channel 的地方也會看到目前使用中的有誰。<br>
 <img src="https://i.imgur.com/byao8D4.jpg" alt=""></p>
-<p>基本的範例做完後，我們來試試看調用Exchange來幫我們決定要發送到哪個Queue。</p>
+<p>基本的範例做完後，我們來試試看調用 Exchange 來幫我們決定要發送到哪個 Queue。</p>
 <p>Publisher</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
@@ -412,17 +412,17 @@ Password: a1234
                 Console.ReadLine();
             }
         }
-</code></pre><p>我們一樣先執行Publisher進行測試。<br>
+</code></pre><p>我們一樣先執行 Publisher 進行測試。<br>
 <img src="https://i.imgur.com/UB6rKxK.jpg" alt=""></p>
-<p>執行完後首先到管理介面看Exchange就會看到多出了一個testExchange。<br>
+<p>執行完後首先到管理介面看 Exchange 就會看到多出了一個 testExchange。<br>
 <img src="https://i.imgur.com/mHt7JGx.gif" alt=""></p>
-<p>Queue的地方一樣會看到新的HelloExchange有一個項目正在等待接收。<br>
+<p>Queue 的地方一樣會看到新的 HelloExchange 有一個項目正在等待接收。<br>
 <img src="https://i.imgur.com/6keAIkj.jpg" alt=""></p>
-<p>接著執行Reciever，成功收到訊息。<br>
+<p>接著執行 Reciever，成功收到訊息。<br>
 <img src="https://i.imgur.com/IUGWF3a.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
 <p>本篇基本用法就介紹到這邊，下篇我們再來研究有哪些特殊的使用方式。</p>
-<p><a href="https://github.com/sunnyday0932/RabbitMQSample">一樣會把Code放在Github上有需要的歡迎取用。  </a></p>
+<p><a href="https://github.com/sunnyday0932/RabbitMQSample">一樣會把 Code 放在 Github 上有需要的歡迎取用。  </a></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://www.rabbitmq.com/dotnet-api-guide.html#major-api-elements">RabbitMQ .NET/C# Client API Guide</a>。</li>

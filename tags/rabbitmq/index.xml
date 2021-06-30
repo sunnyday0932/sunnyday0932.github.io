@@ -13,13 +13,13 @@
       <pubDate>Sun, 30 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</guid>
-      <description>本文 Topics 這個模式下Exchange會透過Topic的方式，將訊息丟給符合的Queue傳給相對應的Reciver。
-Topic會透過我們給予的Key來決定要給哪些人，而Key可以使用兩種特殊符號：
+      <description>本文 Topics 這個模式下 Exchange 會透過 Topic 的方式，將訊息丟給符合的 Queue 傳給相對應的 Reciver。
+Topic 會透過我們給予的 Key 來決定要給哪些人，而 Key 可以使用兩種特殊符號：
  1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
 那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &amp;hellip; 都允許通過。
 接著我們來實作測試看看吧。
 Publisher
-var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.Topic); //我們已接收到的第一個參數來當key決定要丟給哪一個Queue var key = (args.Length &amp;gt; 0) ? args[0] : &amp;quot;anonymous.</description>
+var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.</description>
     </item>
     
     <item>
@@ -28,10 +28,10 @@ var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;
       <pubDate>Thu, 20 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-4rabbitmq/</guid>
-      <description>本文 Publish/Subscribe 我們來練習使用Exchange透過Fanout的方式發送訊息給所有Queue。
-現在我們目標是要發送log給所有Queue。
+      <description>本文 Publish/Subscribe 我們來練習使用 Exchange 透過 Fanout 的方式發送訊息給所有 Queue。
+現在我們目標是要發送 log 給所有 Queue。
 一樣先建立Publisher。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.WriteLine(&amp;quot;請按任意鍵離開!&amp;quot;); Console.ReadLine(); } private static string GetMessage(string[] args) { return ((args.</description>
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
     </item>
     
     <item>
@@ -43,9 +43,9 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
       <description>前言 前一篇介紹了基本的用法，接下來我們就來研究第一篇有介紹過的各種特殊處理。
 本文 這邊主要的練習都是參考以下文件：
 RabbitMQ 中文文檔
-Work Queues 有多個Consumer可以來幫忙消化Queue內的任務模式。
-首先我們一樣先建立一個Pubisher，這次改成由外部接收要傳送的訊息再丟給Queue。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
+Work Queues 有多個 Consumer 可以來幫忙消化 Queue 內的任務模式。
+首先我們一樣先建立一個 Pubisher，這次改成由外部接收要傳送的訊息再丟給 Queue。
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.</description>
     </item>
     
     <item>
@@ -54,29 +54,25 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
       <pubDate>Mon, 17 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/message-queue-2rabbitmq/</guid>
-      <description>本文 架設RabbitMQ 首先我們使用docker來架設練習用的RabbitMQ。
-我們要使用rabbitmq:management的image，除了會幫我們架設起一個RabbitMQ外，也包含了可以管理的Web介面。
+      <description>本文 架設RabbitMQ 首先我們使用 docker 來架設練習用的 RabbitMQ。
+我們要使用 rabbitmq:management的image ，除了會幫我們架設起一個 RabbitMQ 外，也包含了可以管理的 Web 介面。
 使用以下語法，並給予預設帳號的帳號密碼。
-docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management 可以看到輸入後就算目前沒有該Image也會自動幫你下載(懶人的福音R)
-接下來可以到docker確認是否已經啟用。
+docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management 可以看到輸入後就算目前沒有該 Image 也會自動幫你下載(懶人的福音R)
+接下來可以到 docker 確認是否已經啟用。
 那麼就可以輸入以下網址登入測試了。
 http://localhost:15672/ 連上後就會看到登入畫面。
 輸入我們剛剛設定的預設值即可。
-Account: admin Password: a1234 成功進入後就會看到初始畫面儀錶板，一樣可以在Overview看到RabbitMQ目前有哪些東西在作用。
+Account: admin Password: a1234 成功進入後就會看到初始畫面儀錶板，一樣可以在 Overview 看到 RabbitMQ 目前有哪些東西在作用。
 這邊就只挑比較特別的地方做介紹。
-Exchange 這邊可以看到目前有建立了哪些Exchange，畫面上看到的都是預設的。
-使用Web介面的好處是可以直接透過介面建立。
-點選Exchange可以看到細部的設定。
+Exchange 這邊可以看到目前有建立了哪些 Exchange，畫面上看到的都是預設的。
+使用 Web 介面的好處是可以直接透過介面建立。
+點選 Exchange 可以看到細部的設定。
 Queue 一樣是可以透過介面觀看有哪些佇列、與其細項內容，並可以直接透過介面新增。
 Admin 這邊就是管理者的介面可以設定帳號，增加使用者等。
 右方還有更細部的設定，比如可以設定一些連接數、政策規範等。
-實作練習 這次主要範例會使用RabbitMQ官方的Nuget。
+實作練習 這次主要範例會使用 RabbitMQ 官方的 Nuget。
 RabbitMQ.Client
-讓我們先建立ConsoleApp。
-需要建立一個Publisher、一個Reciever。
-接下來先安裝RabbitMQ.Client。
-我們就可以來開始先做我們的Publisher發布訊息內容。
-static void Main(string[] args) { //設定主機位置以及帳號密碼 var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; //連線設定 using (var connection = factory.</description>
+讓我們先建立 ConsoleApp。</description>
     </item>
     
   </channel>

@@ -71,7 +71,7 @@
     "datePublished": "2020-11-25 22:19:33  CST",
     "dateModified" : "2020-11-25 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7\/",
-    "wordCount" : "385",
+    "wordCount" : "442",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -171,13 +171,13 @@
           
 
           <h2 id="前言">前言</h2>
-<p>上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的Model，那要怎麼將各個Model轉換呢？</p>
-<p>難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具<a href="https://github.com/AutoMapper/AutoMapper">Automapper</a>了。</p>
+<p>上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的 Model ，那要怎麼將各個 Model 轉換呢？</p>
+<p>難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具 <a href="https://github.com/AutoMapper/AutoMapper">Automapper</a>了。</p>
 <h2 id="本文">本文</h2>
 <h3 id="基本用法">基本用法</h3>
-<p>首先到Nuget安裝Automapper。
+<p>首先到 Nuget 安裝 Automapper。
 <img src="https://i.imgur.com/ORrVgoE.jpg" alt=""></p>
-<p>安裝好後我們建立兩個測試用的Model</p>
+<p>安裝好後我們建立兩個測試用的 Model</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        private class Model1
         {
             public string Name { get; set; }
@@ -189,7 +189,7 @@
             public string Name { get; set; }
             public int Id { get; set; }
         }
-</code></pre><p>使用Automapper對應Model1到Model2。</p>
+</code></pre><p>使用 Automapper 對應 Model1 到 Model2。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">           var testModel = new Model1
             {
                 Name = &quot;ALLEN&quot;,
@@ -205,14 +205,14 @@
             Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
 </code></pre><p>結果：</p>
 <p><img src="https://i.imgur.com/BTyS80I.jpg" alt=""></p>
-<p>如此一來就可以很輕鬆的對應Model了。<br>
+<p>如此一來就可以很輕鬆的對應 Model 了。<br>
 <!-- raw HTML omitted --></p>
-<p>偷懶小技巧：如果一時分不清是哪個Model要對應到哪個Model，那可以加上ReverseMap反轉雙向對應。</p>
+<p>偷懶小技巧：如果一時分不清是哪個 Model 要對應到哪個 Model，那可以加上 ReverseMap 反轉雙向對應。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">var config = new MapperConfiguration(cfg =&gt; 
 cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
 </code></pre><h3 id="客製化對應">客製化對應</h3>
-<p>我們上一篇講到的三層式架構，有提到每一層分工的時候會建立自己的Model有的時候可能各層間Model命名方式不同、或是需要對Model進行特殊處理，那就可以用以下方法來處理對應。</p>
-<p>一樣先建立兩個測試用Model</p>
+<p>我們上一篇講到的三層式架構，有提到每一層分工的時候會建立自己的 Model 有的時候可能各層間 Model 命名方式不同、或是需要對 Model 進行特殊處理，那就可以用以下方法來處理對應。</p>
+<p>一樣先建立兩個測試用 Model</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        private class Model1
         {
             public string Name { get; set; }
@@ -243,7 +243,7 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
 </code></pre><p>結果：
 <img src="https://i.imgur.com/eBWj4Kx.jpg" alt=""></p>
 <h3 id="進行特殊處理方式">進行特殊處理方式</h3>
-<p>首先在Model2多加一個string</p>
+<p>首先在 Model2 多加一個 string</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        private class Model2
         {
             public string Name { get; set; }
@@ -269,9 +269,9 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
             Console.WriteLine($&quot;Model2 User:{model2.User}&quot;);
 </code></pre><p>結果：
 <img src="https://i.imgur.com/4I5tkzL.jpg" alt=""></p>
-<p>這邊做點小提醒，因為可以透過此種方式很方便的對Model對應出來的資料動手腳，那麼下一個人接手的時候就有機會找不到資料是在哪邊被動過了，所以使用ForMember做特殊對應的話建議還是要特別註明。</p>
+<p>這邊做點小提醒，因為可以透過此種方式很方便的對 Model 對應出來的資料動手腳，那麼下一個人接手的時候就有機會找不到資料是在哪邊被動過了，所以使用 ForMember 做特殊對應的話建議還是要特別註明。</p>
 <h3 id="忽略對應">忽略對應</h3>
-<p>除了可以做到小處理Automapper也支援忽略對應，可以用此種方式達到。</p>
+<p>除了可以做到小處理 Automapper 也支援忽略對應，可以用此種方式達到。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">       private static void Main(string[] args)
         {
             var testModel = new Model1
@@ -295,10 +295,10 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
 </code></pre><p>結果：
 <img src="https://i.imgur.com/88Ul2GT.jpg" alt=""></p>
 <h3 id="集中管理">集中管理</h3>
-<p>上面示範用法都是在個別區塊中使用，這樣不方便管理，我們可以建立一個profile檔案繼承Automapper的profile來集中管理這些mapping。</p>
-<p>首先dotnet core要先安裝AutoMapper.Extensions.Microsoft.DependencyInjection。
+<p>上面示範用法都是在個別區塊中使用，這樣不方便管理，我們可以建立一個 profile 檔案繼承 Automapper 的 profile 來集中管理這些 mapping。</p>
+<p>首先 dotnet core 要先安裝 AutoMapper.Extensions.Microsoft.DependencyInjection。
 <img src="https://i.imgur.com/lwK5NZ0.jpg" alt=""></p>
-<p>接下來建立一個profile檔案繼承Profile。</p>
+<p>接下來建立一個 profile 檔案繼承 Profile。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class ControllerProfile : Profile
     {
         public ControllerProfile()
@@ -307,10 +307,10 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
             //CreateMap&lt;&gt;();  接著建立其他mapping
         }
     }
-</code></pre><p>再到startup內ConfigureServices註冊Automapper。</p>
+</code></pre><p>再到 startup 內 ConfigureServices 註冊 Automapper。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">services.AddAutoMapper(typeof(ControllerProfile));
             //將剛剛建好的ControllerProfile加入註冊
-</code></pre><p>接下來我們可以透過注入的方式使用mapping。</p>
+</code></pre><p>接下來我們可以透過注入的方式使用 mapping。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        private IMapper _mapper;
 
         public WeatherForecastController(
@@ -333,7 +333,7 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
         }
 </code></pre><p><img src="https://i.imgur.com/hEYvMN9.jpg" alt="">
 <!-- raw HTML omitted --></p>
-<p>如此一來就可以透過簡單的方式轉換各個Model，提供這方便的套件供大家參考使用。</p>
+<p>如此一來就可以透過簡單的方式轉換各個 Model，提供這方便的套件供大家參考使用。</p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://igouist.github.io/post/2020/07/automapper/">AutoMapper —— 類別轉換超省力</a>。</li>
@@ -391,7 +391,7 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
         <a href="https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/" class="prev" rel="prev" title="三層式架構"><i class="iconfont icon-left"></i>&nbsp;三層式架構</a>
          
         
-        <a href="https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/" class="next" rel="next" title="SQL 模糊搜尋Like替代方式">SQL 模糊搜尋Like替代方式&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/" class="next" rel="next" title="SQL 模糊搜尋 Like 替代方式">SQL 模糊搜尋 Like 替代方式&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

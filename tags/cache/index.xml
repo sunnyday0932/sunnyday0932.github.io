@@ -13,9 +13,9 @@
       <pubDate>Tue, 04 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96/</guid>
-      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰Redis快取。
-本文 開始前準備 我們先到CacheTypeEnum加入Redis。
-/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在Common Settings加入一個RedisConfigurationOptions。
+      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰 Redis 快取。
+本文 開始前準備 我們先到 CacheTypeEnum 加入 Redis。
+/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在 Common Settings 加入一個 RedisConfigurationOptions。
 public class RedisConfigurationOptions { /// &amp;lt;summary&amp;gt; /// The configuration. /// &amp;lt;/summary&amp;gt; public string Configuration { get; set; } /// &amp;lt;summary&amp;gt; /// The name of the instance. /// &amp;lt;/summary&amp;gt; public string InstanceName { get; set; } } 接著建立 IRedisCacheHelper
 public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指定 cachekey 的快取資料 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;cachekey&amp;quot;&amp;gt;The cachekey.</description>
     </item>
@@ -38,14 +38,14 @@ public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指�
       <pubDate>Fri, 30 Apr 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1/</guid>
-      <description>前言 延續上次我們使用Hangfire排程抓取Youbike的練習題，這次我們要做一個Youbike的Service，專門提供查詢Youbike相關站點資訊的服務；前面製作排程的時候有提到因為Youbike站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。
-本文 快取的使用時機 當API效能遇到瓶頸的時候，就可以使用快取來減少不必要去DB撈取資料的動作，最常使用的會是記憶體快取、Redis快取等。
+      <description>前言 延續上次我們使用 Hangfire 排程抓取 Youbike 的練習題，這次我們要做一個 Youbike 的 Service，專門提供查詢 Youbike 相關站點資訊的服務；前面製作排程的時候有提到因為 Youbike 站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。
+本文 快取的使用時機 當 API 效能遇到瓶頸的時候，就可以使用快取來減少不必要去 DB 撈取資料的動作，最常使用的會是記憶體快取、Redis 快取等。
 快取的適用時機 一般使用快取的功能通常是資料的變動性不大、不太會被變更的資料。
-當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們DB資料同步的問題。
+當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們 DB 資料同步的問題。
 快取的注意事項 使用快取的方式簡單來說是用錢換取時間(記憶體比起硬碟貴了許多)，通常在放資料進快取的時候會需要注意資料的大小、能不能適度地進行切分，以及存放的過期時間，而不是拿了就丟全部放入快取內(當然如果你本多忠勝不在此限)。
-開始前準備 這邊基本的API就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部Youbike站點的功能、另一個是查詢指定Youbike站點的功能。
+開始前準備 這邊基本的 API 就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部 Youbike 站點的功能、另一個是查詢指定 Youbike 站點的功能。
 先看一下初始的Repository結構。
-/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].[dbo].[YoubikeStation]&amp;quot;; using (var conn = this._databaseHelper.GetConnection(this._connectionString)) { var result = await conn.QueryAsync&amp;lt;StationDataModel&amp;gt;(sql); return result; } } /// &amp;lt;summary&amp;gt; /// 取得指定Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;stationNo&amp;quot;&amp;gt;The station no.</description>
+/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].</description>
     </item>
     
   </channel>

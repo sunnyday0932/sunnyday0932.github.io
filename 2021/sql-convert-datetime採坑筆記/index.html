@@ -71,7 +71,7 @@
     "datePublished": "2021-05-31 00:00:00  UTC",
     "dateModified" : "2021-05-31 00:00:00  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98\/",
-    "wordCount" : "206",
+    "wordCount" : "247",
     "keywords" : ["SQL","csharp", "Sian"]
 }
 </script>
@@ -174,7 +174,7 @@
 <p>事情發生是這樣的，今天突然接到一個線上問題，數據報表顯示有問題有幾個不該出現的數據卻出現了。</p>
 <p>問題發生當下馬上查了一下撈取數據顯示的語法，想知道判斷日期的地方是否有遺漏，然後就看到了一段類似於下列的語法</p>
 <pre><code class="language-sql=" data-lang="sql=">WHERE CONVERT(VARCHAR, KeyInDate, 111) &gt;= CONVERT(VARCHAR, Getdate(), 111)
-</code></pre><p>當下不疑有他第一個查的當然是CONVERT()的用法，查了一下發現是VARCHAR可以轉換成DATETIME的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。</p>
+</code></pre><p>當下不疑有他第一個查的當然是 CONVERT() 的用法，查了一下發現是 VARCHAR 可以轉換成 DATETIME 的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。</p>
 <table>
 <thead>
 <tr>
@@ -207,20 +207,20 @@ SELECT CONVERT(VARCHAR, Getdate(), 111)
 
 SELECT CONVERT(VARCHAR, Getdate(), 112)
 </code></pre><p><img src="https://i.imgur.com/SsNf897.jpg" alt=""></p>
-<p>而這次的問題就是原本存放KeyInDate這個VARCHAR欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本WHERE判斷會誤判。</p>
-<p>第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。</p>
+<p>而這次的問題就是原本存放 KeyInDate 這個 VARCHAR 欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本 WHERE 判斷會誤判。</p>
+<p>第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種 Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。</p>
 <!-- raw HTML omitted -->
 <p>大概有人開始越想越不對勁了，對&hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。</p>
 <blockquote>
 <p>2021/06/06 回來補做法</p>
 </blockquote>
-<p>感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.datetime.tryparseexact?view=net-5.0&amp;fbclid=IwAR27JCDpmhFiz4pJFycB2VXI_IydAAnV0fdFEZUHJAc4ouqHouZrUiQxwYQ">DateTime.TryParseExact</a>這個方法來轉換日期格式。</p>
+<p>感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用 <a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.datetime.tryparseexact?view=net-5.0&amp;fbclid=IwAR27JCDpmhFiz4pJFycB2VXI_IydAAnV0fdFEZUHJAc4ouqHouZrUiQxwYQ">DateTime.TryParseExact</a> 這個方法來轉換日期格式。</p>
 <p>首先來了解一下這個方法要怎麼用。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime)
-//第一個String是放我們要轉換的字串
-//第二個String是我們要轉換的字串日期格式是甚麼例如第一個String是2021/06/06那第二個String就是yyyy/MM/dd
+//第一個 String 是放我們要轉換的字串
+//第二個 String 是我們要轉換的字串日期格式是甚麼例如第一個 String 是2021/06/06那第二個 String 就是yyyy/MM/dd
 //IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW
-//DateTimeStyles則是可以決定我們允許哪些符合的字串格式能夠轉換
+//DateTimeStyles 則是可以決定我們允許哪些符合的字串格式能夠轉換
 //DateTime 這就是我們要輸出的日期格式
 </code></pre><p>簡單範例</p>
 <pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
@@ -236,7 +236,7 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 }
 </code></pre><p>輸出<br>
 <img src="https://i.imgur.com/cD02AyC.jpg" alt=""></p>
-<p>而第二個允許的string可以是一個array，所以我們就能夠這麼做。</p>
+<p>而第二個允許的 string 可以是一個 array，所以我們就能夠這麼做。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
 {
 	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
@@ -250,10 +250,10 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 
 		Console.ReadLine();
 }
-</code></pre><p>這樣無論是yyyy/MM/dd或是yyyy-MM-dd就都能夠成功轉換為日期格式，日後如果還要有多日期判斷也可以直接擴充formate內容即可。<br>
+</code></pre><p>這樣無論是 yyyy/MM/dd 或是 yyyy-MM-dd 就都能夠成功轉換為日期格式，日後如果還要有多日期判斷也可以直接擴充 formate 內容即可。<br>
 <img src="https://i.imgur.com/70Wcx2t.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/vMgSYaQ.png" alt=""></p>
-<p>DateTime Style的部分就是可以允許一些特殊格式字串出現，例如我們的字串中出現了空格就可以使用DateTimeStyles.AllowInnerWhite</p>
+<p>DateTime Style 的部分就是可以允許一些特殊格式字串出現，例如我們的字串中出現了空格就可以使用 DateTimeStyles.AllowInnerWhite</p>
 <pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
 {
 	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
@@ -268,7 +268,7 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 		Console.ReadLine();
 }
 </code></pre><p><img src="https://i.imgur.com/AbiMyKP.jpg" alt=""></p>
-<p>至於如果是UTC這種日期格式的轉換可以使用&quot;O&quot;這個formate直接轉換為當地時間。</p>
+<p>至於如果是 UTC 這種日期格式的轉換可以使用 &ldquo;O&rdquo; 這個 formate 直接轉換為當地時間。</p>
 <p><img src="https://i.imgur.com/r1G2nwi.jpg" alt=""></p>
 <pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
 {

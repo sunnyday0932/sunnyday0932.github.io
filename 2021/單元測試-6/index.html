@@ -71,7 +71,7 @@
     "datePublished": "2021-02-17 20:40:45  UTC",
     "dateModified" : "2021-02-17 20:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-6\/",
-    "wordCount" : "745",
+    "wordCount" : "797",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -171,18 +171,18 @@
           
 
           <h2 id="前言">前言</h2>
-<p>我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的API當作練習，補上該有的測試。</p>
+<p>我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的 API 當作練習，補上該有的測試。</p>
 <h2 id="本文">本文</h2>
 <p>首先我們建立一個放置測試專案的資料夾。</p>
 <p><img src="https://i.imgur.com/Zuvt13R.jpg" alt=""></p>
 <p>接著建立完測試專案。</p>
 <blockquote>
 <p>2021/02/21更新
-原本是只想開一個測試專案把Repository跟Service的測試都放在一起後來想想不太對。
+原本是只想開一個測試專案把 Repository 跟 Service 的測試都放在一起後來想想不太對。
 更新後的專案結構如下。</p>
 </blockquote>
 <p><img src="https://i.imgur.com/iknT9o0.jpg" alt=""></p>
-<p>因為是要對Service層進行測試，記得要加入專案參考。<br>
+<p>因為是要對 Service 層進行測試，記得要加入專案參考。<br>
 <img src="https://i.imgur.com/IRx0F2t.jpg" alt=""></p>
 <p>接下來先把基礎測試專案需要用到的東西準備好。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestClass]
@@ -215,7 +215,7 @@
         {
         }
     }
-</code></pre><p>這邊需要特別注意的地方在AutoMapper的地方，我們並不需要製作一個假的AutoMapper，所以可以直接使用原本方法。</p>
+</code></pre><p>這邊需要特別注意的地方在 AutoMapper 的地方，我們並不需要製作一個假的 AutoMapper，所以可以直接使用原本方法。</p>
 <p>接下來就可以開始寫單元測試了。</p>
 <h3 id="addaccount新增帳號">AddAccount(新增帳號)</h3>
 <h4 id="1有四個必填欄位需要確認">1、有四個必填欄位需要確認。</h4>
@@ -384,8 +384,8 @@
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/U8PWSHv.jpg" alt=""></p>
 <h3 id="4密碼需透過加密處理存入資料庫">4、密碼需透過加密處理存入資料庫。</h3>
-<p>這邊比較特別的是ConverPassword這個Function是Private，一般來說我們並不會特別針對Private Function做測試，理由是一個Private Function一定會在某個Public Function被執行。</p>
-<p>當然要對Private Function 進行測試也不是不行的，可以使用以下方式。</p>
+<p>這邊比較特別的是 ConverPassword 這個 Function 是 Private，一般來說我們並不會特別針對 Private Function 做測試，理由是一個 Private Function 一定會在某個 Public Function 被執行。</p>
+<p>當然要對 Private Function 進行測試也不是不行的，可以使用以下方式。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -405,28 +405,28 @@
         }
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/D7hDhPL.jpg" alt=""></p>
-<p>這邊特別提醒一下，.NET Core似乎已經沒有<a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2013/ms245564(v=vs.120)?redirectedfrom=MSDN">Private Object</a>這個Class了，所以另尋出入找了這個方法。</p>
+<p>這邊特別提醒一下，.NET Core 似乎已經沒有<a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2013/ms245564(v=vs.120)?redirectedfrom=MSDN">Private Object</a>這個 Class 了，所以另尋出入找了這個方法。</p>
 <p><a href="https://stackoverflow.com/questions/59678504/how-to-unit-test-private-method-in-net-core-application-which-does-not-support">可以參考這邊的資料</a>。</p>
 <blockquote>
 <p>021/02/21更新
 發現公司大神提供了另一個方法，還不趕快更新一下。</p>
 </blockquote>
-<p>因為Private只能透過上面那種方式測試，但如果是Internal那就有不同做法了。<br>
-首先我們試著把ConverPassword這個function改成Internal。<br>
+<p>因為 Private 只能透過上面那種方式測試，但如果是 Internal 那就有不同做法了。<br>
+首先我們試著把 ConverPassword 這個 function 改成 Internal。<br>
 <img src="https://i.imgur.com/zZnIJks.jpg" alt=""></p>
-<p>接著需要安裝Meziantou.MSBuild.InternalsVisibleTo這個Nuget套件。<br>
+<p>接著需要安裝 Meziantou.MSBuild.InternalsVisibleTo 這個 Nuget 套件。<br>
 <img src="https://i.imgur.com/RWf4suw.jpg" alt=""></p>
 <p>請注意這邊安裝的是目標專案，並不是測試專案喔!!!<br>
 <a href="https://github.com/meziantou/Meziantou.MSBuild.InternalsVisibleTo">此套件的使用方法可以參照這個地方。  </a></p>
-<p>安裝完後要到Service的csproj檔新增以下設定。</p>
+<p>安裝完後要到 Service 的 csproj 檔新增以下設定。</p>
 <p><img src="https://i.imgur.com/Fm7sPHV.jpg" alt=""></p>
-<p>對專案左鍵點擊兩下即可進入csproj。</p>
+<p>對專案左鍵點擊兩下即可進入 csproj。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">&lt;ItemGroup&gt;
   &lt;InternalsVisibleTo Include=&quot;$(AssemblyName)Tests&quot;/&gt; 
   //專案名稱有Tests結尾的都可以看到Internal
 &lt;/ItemGroup&gt;
 </code></pre><p><img src="https://i.imgur.com/Fq3lUga.jpg" alt=""></p>
-<p>接下來到我們的測試專案原本測試Private function的地方。<br>
+<p>接下來到我們的測試專案原本測試 Private function 的地方。<br>
 <img src="https://i.imgur.com/p1c1PfZ.jpg" alt=""></p>
 <p>修改一下寫法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
@@ -448,7 +448,7 @@
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/LUBH685.jpg" alt=""></p>
 <h3 id="檢查信箱是否合法">檢查信箱是否合法。</h3>
-<p>同上一樣可以透過以下方式確認這個Function是否正確。</p>
+<p>同上一樣可以透過以下方式確認這個 Function 是否正確。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
         [Owner(&quot;Sian&quot;)]
         [TestCategory(&quot;AccountServiceTest&quot;)]
@@ -582,8 +582,8 @@
 <img src="https://i.imgur.com/WcxQBZK.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/YvHSuYa.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>這樣我們第一個功能新增帳號的Service部分就完成了，接下來後續示範就會加緊腳步，比較特殊地方才會拿出來講解。</p>
-<p><a href="https://github.com/sunnyday0932/WebApiPhase2">以上示範一樣會同步放在GitHub有需要觀看歡迎取用。</a></p>
+<p>這樣我們第一個功能新增帳號的 Service 部分就完成了，接下來後續示範就會加緊腳步，比較特殊地方才會拿出來講解。</p>
+<p><a href="https://github.com/sunnyday0932/WebApiPhase2">以上示範一樣會同步放在 GitHub 有需要觀看歡迎取用。</a></p>
 <h2 id="參考資料">參考資料</h2>
 <ul>
 <li>1、<a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2013/ms245564(v=vs.120)?redirectedfrom=MSDN">PrivateObject Class</a>。</li>
@@ -640,7 +640,7 @@
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/" class="prev" rel="prev" title="單元測試 - 5(NSubstitute介紹)"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 5(NSubstitute介紹)</a>
+        <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9/" class="prev" rel="prev" title="單元測試 - 5( NSubstitute 介紹)"><i class="iconfont icon-left"></i>&nbsp;單元測試 - 5( NSubstitute 介紹)</a>
          
         
         <a href="https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-8csvhelperautofixture/" class="next" rel="next" title="單元測試 - 8(CsvHelper、AutoFixture)">單元測試 - 8(CsvHelper、AutoFixture)&nbsp;<i class="iconfont icon-right"></i></a>

@@ -71,7 +71,7 @@
     "datePublished": "2020-05-24 22:19:33  CST",
     "dateModified" : "2020-05-24 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/hugo%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80%E8%A7%80%E7%9C%8B%E4%BA%BA%E6%95%B8\/",
-    "wordCount" : "200",
+    "wordCount" : "253",
     "keywords" : ["Hugo","github", "Sian"]
 }
 </script>
@@ -171,24 +171,24 @@
           
 
           <h3 id="前言">前言</h3>
-<p>開始使用Hugo後，對於目前使用的主題<a href="https://github.com/liuzc/leaveit">Leaveit</a>不盡滿意，於是開始研究修改，改完又想在現在版型加上其他功能EX:觀看人數、留言功能，Google搜尋後有很多種方法，選了自己順眼的就開始動工，內容如下。</p>
+<p>開始使用 Hugo 後，對於目前使用的主題 <a href="https://github.com/liuzc/leaveit">Leaveit</a>不盡滿意，於是開始研究修改，改完又想在現在版型加上其他功能EX:觀看人數、留言功能，Google搜尋後有很多種方法，選了自己順眼的就開始動工，內容如下。</p>
 <h3 id="本文">本文</h3>
 <h4 id="一留言功能">一、留言功能</h4>
-<p>留言功能有很多方式，最後決定選用DISQUS，原本還有另一套<a href="https://utteranc.es/">utteranc</a>，但&hellip;DISQUS看起來較為順眼、再加上留言方式多元於是雀屏中選(?<br>
+<p>留言功能有很多方式，最後決定選用 DISQUS，原本還有另一套 <a href="https://utteranc.es/">utteranc</a>，但&hellip; DISQUS 看起來較為順眼、再加上留言方式多元於是雀屏中選(?<br>
 對沒什麼高尚理由，單純就是覺得好看。</p>
-<p>1、先到<a href="https://disqus.com/">DISQUS</a>註冊帳號。</p>
+<p>1、先到 <a href="https://disqus.com/">DISQUS</a> 註冊帳號。</p>
 <p>2、註冊完後會到以下畫面，選擇下方選項 I want to install Disqus on my site。<br>
 <strong>(小提醒註冊完後記得先到信箱點選註冊確認信)</strong></p>
 <p><img src="https://i.imgur.com/OfCNg0F.jpg" alt=""></p>
-<p>3、輸入website名稱，選擇Category分類，點選建立。</p>
+<p>3、輸入 website 名稱，選擇 Category 分類，點選建立。</p>
 <p><img src="https://i.imgur.com/r0z9bYP.jpg" alt=""></p>
-<p>4、接下來會到選擇方案頁面，點選下方Basic版本(此為免費版)。</p>
+<p>4、接下來會到選擇方案頁面，點選下方 Basic 版本(此為免費版)。</p>
 <p><img src="https://i.imgur.com/OXyd3Sl.jpg" alt=""></p>
-<p>5、接著install頁面，會發現選項內並沒有HUGO，但不打緊，DISQUS提供自行手動設定，步驟稍後說明。</p>
+<p>5、接著 install 頁面，會發現選項內並沒有 HUGO ，但不打緊，DISQUS 提供自行手動設定，步驟稍後說明。</p>
 <p><img src="https://i.imgur.com/PuBUGMM.jpg" alt=""></p>
-<p>6、最後config設定，加入網站URL註冊步驟就完成了。</p>
+<p>6、最後 config 設定，加入網站 URL 註冊步驟就完成了。</p>
 <p><img src="https://i.imgur.com/BJ6RIRy.jpg" alt=""></p>
-<p>接下來就可以開始設定留言功能到我們的HUGO網站。</p>
+<p>接下來就可以開始設定留言功能到我們的 HUGO 網站。</p>
 <p>7、 開啟 Config.toml 加入下方參數。</p>
 <pre><code>disqusShortname = &quot;你在DISQUS註冊時輸入的Website name&quot;
 </code></pre><p>8、接著在目錄/layouts/partials/內新增一個disqus.html檔案，官方提供的內容如下。
@@ -210,31 +210,31 @@
 &lt;/script&gt;
 &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
 &lt;a href=&quot;http://disqus.com/&quot; class=&quot;dsq-brlink&quot;&gt;comments powered by &lt;span class=&quot;logo-disqus&quot;&gt;Disqus&lt;/span&gt;&lt;/a&gt;
-</code></pre><p>9、接著到/layouts/_default/single.html 內新增內容如下。<br>
+</code></pre><p>9、接著到 /layouts/_default/single.html 內新增內容如下。<br>
 <strong>這邊一樣是到主題目錄底下路徑。</strong></p>
 <pre><code>&lt;div class=&quot;disqus markdown&quot;&gt;
   {{ partial &quot;disqus.html&quot; . }}
 &lt;/div&gt;
-</code></pre><p>10、上傳HUGO就可以觀看到留言功能了。</p>
+</code></pre><p>10、上傳 HUGO 就可以觀看到留言功能了。</p>
 <p><strong>小提醒:在本機使用localhost的時候會無法觀看到留言功能，因為在disqus.html內有設定當server為localhost直接return，若需要在本機測試可以註解此部分。</strong></p>
 <p><img src="https://i.imgur.com/DNn8Jkl.jpg" alt=""></p>
 <h4 id="二觀看人數">二、觀看人數</h4>
-<p>除了可以利用<a href="https://analytics.google.com/analytics/web/">Google Analytics</a>來觀看瀏覽次數分析等功能外，若想加入本站觀看人數的話可以使用<a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a>簡易的顯示站內瀏覽人數。</p>
-<p>1、跟著不蒜子文件第一步，先到layouts/partials/head.html內引入不蒜子的JS。
+<p>除了可以利用 <a href="https://analytics.google.com/analytics/web/">Google Analytics</a> 來觀看瀏覽次數分析等功能外，若想加入本站觀看人數的話可以使用<a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a>簡易的顯示站內瀏覽人數。</p>
+<p>1、跟著不蒜子文件第一步，先到 layouts/partials/head.html 內引入不蒜子的 JS。
 <strong>小提醒:不蒜子的網域有更新過，需要用以下新的網域，建議還是看官方文件是否有更新。</strong></p>
 <pre><code>&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>2、引入後就可以在要顯示統計數字的地方加入，首先到footer加入總瀏覽次數。</p>
+</code></pre><p>2、引入後就可以在要顯示統計數字的地方加入，首先到 footer 加入總瀏覽次數。</p>
 <p>這邊不蒜子提供了兩種方式，第一種是按照點擊次數統計，稱為PV。</p>
 <pre><code>&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;
     總瀏覽&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次
 &lt;/span&gt;
-</code></pre><p>第二種會依照不同使用者來統計，及同一個使用者就算重複點擊也只算一次，稱為UV。</p>
+</code></pre><p>第二種會依照不同使用者來統計，及同一個使用者就算重複點擊也只算一次，稱為 UV。</p>
 <pre><code>&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;
   總瀏覽&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;次
 &lt;/span&gt;  
 </code></pre><p>加入完就可以測試預覽人數。</p>
 <p><img src="https://i.imgur.com/1FCIwTg.jpg" alt=""></p>
-<p>3、單篇文章加入瀏覽次數，這邊我就使用了PV方式，依照點擊次數統計。</p>
+<p>3、單篇文章加入瀏覽次數，這邊我就使用了 PV 方式，依照點擊次數統計。</p>
 <pre><code>&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;
   觀看次數:&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;
 &lt;/span&gt;
@@ -258,16 +258,16 @@
 </code></pre><p>更改後現在變成&hellip;<br>
 <img src="https://i.imgur.com/0HJ2XvS.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/ad8xycr.jpg" alt=""></p>
-<p>2、加入favicon。<br>
+<p>2、加入 favicon。<br>
 favicon就是瀏覽器打開網頁時會顯示的小圖案如圖。</p>
 <p><img src="https://i.imgur.com/Ym8laZa.jpg" alt=""></p>
-<p>要準備favicon首先挑好想要圖案後可以到<a href="https://realfavicongenerator.net/">以下網站</a>免費製作。</p>
+<p>要準備 favicon 首先挑好想要圖案後可以到<a href="https://realfavicongenerator.net/">以下網站</a>免費製作。</p>
 <p>製作完後網站會幫你打包檔案下載，解壓縮後會得到以下檔案。<br>
 <img src="https://i.imgur.com/WPqdM7c.jpg" alt=""></p>
-<p>我們只需要facicon.ico這個檔案即可，將檔案放到HUGO相對應路徑後，前往config設定。</p>
+<p>我們只需要 facicon.ico 這個檔案即可，將檔案放到 HUGO 相對應路徑後，前往 config 設定。</p>
 <p><img src="https://i.imgur.com/poZEnRN.jpg" alt=""></p>
-<p>接下來還需要到header.html加入相關路徑設定。<br>
-<strong>小提醒:這邊每個主題設定地方不同，像我使用的主題就是在head.html，還是需要自己研究一下路徑。</strong></p>
+<p>接下來還需要到 header.html 加入相關路徑設定。<br>
+<strong>小提醒:這邊每個主題設定地方不同，像我使用的主題就是在 head.html，還是需要自己研究一下路徑。</strong></p>
 <p><img src="https://i.imgur.com/859lPO2.jpg" alt=""></p>
 <p>這樣就大功告成。</p>
 <h4 id="參考連結">參考連結</h4>
@@ -279,7 +279,7 @@ favicon就是瀏覽器打開網頁時會顯示的小圖案如圖。</p>
 <a href="https://wwcreator.github.io/2017/02/21/hugo-%E6%B7%BB%E5%8A%A0%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF/">https://wwcreator.github.io/2017/02/21/hugo-%E6%B7%BB%E5%8A%A0%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF/</a></p>
 <p><a href="http://ibruce.info/2015/04/04/busuanzi/">http://ibruce.info/2015/04/04/busuanzi/</a></p>
 <h3 id="後記">後記</h3>
-<p>零零總總的也花了不少時間，終於完工，目前就是最終樣貌；這次架站覺得前端果然還是比後端反饋來的快許多，只要改完參數馬上就能看到畫面，我們後端就&hellip;如果想要馬上看到畫面通常都是<del>編譯器沒過然後開始跳一堆ERROR</del>，就像同事常再說:「你不會想看到CI/CD過程有任何動靜的，通常有任何回饋就代表開始報錯了。」<br>
+<p>零零總總的也花了不少時間，終於完工，目前就是最終樣貌；這次架站覺得前端果然還是比後端反饋來的快許多，只要改完參數馬上就能看到畫面，我們後端就&hellip;如果想要馬上看到畫面通常都是<del>編譯器沒過然後開始跳一堆ERROR</del>，就像同事常再說:「你不會想看到 CI/CD 過程有任何動靜的，通常有任何回饋就代表開始報錯了。」<br>
 但不管前後端，最後程式完成帶來愉悅感都是相同的。</p>
 
     </div>
@@ -327,7 +327,7 @@ favicon就是瀏覽器打開網頁時會顯示的小圖案如圖。</p>
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/" class="prev" rel="prev" title="Hugo架站教學"><i class="iconfont icon-left"></i>&nbsp;Hugo架站教學</a>
+        <a href="https://sunnyday0932.github.io/2020/hugo%E6%9E%B6%E7%AB%99%E6%95%99%E5%AD%B8/" class="prev" rel="prev" title="Hugo 架站教學"><i class="iconfont icon-left"></i>&nbsp;Hugo 架站教學</a>
          
         
         <a href="https://sunnyday0932.github.io/2020/sql-for-xml%E5%90%88%E4%BD%B5%E6%AC%84%E4%BD%8D%E9%A1%AF%E7%A4%BA-substring%E6%93%B7%E5%8F%96%E5%AD%97%E4%B8%B2/" class="next" rel="next" title="SQL FOR XML合併欄位顯示 SUBSTRING擷取字串">SQL FOR XML合併欄位顯示 SUBSTRING擷取字串&nbsp;<i class="iconfont icon-right"></i></a>

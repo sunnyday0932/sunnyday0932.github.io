@@ -71,7 +71,7 @@
     "datePublished": "2021-01-27 13:40:45  UTC",
     "dateModified" : "2021-01-27 13:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-1\/",
-    "wordCount" : "172",
+    "wordCount" : "182",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -171,7 +171,7 @@
           
 
           <h2 id="前言">前言</h2>
-<p>API講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以<a href="https://www.books.com.tw/products/0010765689">單元測試的藝術</a>以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。</p>
+<p>API 講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以<a href="https://www.books.com.tw/products/0010765689">單元測試的藝術</a>以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。</p>
 <h2 id="內文">內文</h2>
 <h3 id="單元測試">單元測試</h3>
 <p>單元測試的藝術對一個優秀單元測試的定義為：</p>
@@ -242,9 +242,9 @@
 <p>TDD是一種開發的模式，詳細的步驟可以參考下圖1-4(取自單元測試的藝術)。<br>
 <img src="https://i.imgur.com/m2PNA4L.jpg" alt=""></p>
 <!-- raw HTML omitted -->
-<p>可以看到TDD的步驟如下：</p>
+<p>可以看到 TDD 的步驟如下：</p>
 <ol>
-<li>撰寫一個測試Function。</li>
+<li>撰寫一個測試 Function。</li>
 <li>執行測試，因為還沒實作要測試的目標，所以得到失敗結果。</li>
 <li>撰寫剛好能通過測試的產品程式碼。</li>
 <li>執行測試，成功撰寫下一個測試；失敗修正程式。</li>
@@ -258,7 +258,7 @@
 </ul>
 <!-- raw HTML omitted -->
 <p>碎碎念分隔線：<br>
-當然這是理想情況下能夠進行TDD，而真實自身經驗情況都是圖1-3，除了重要商業邏輯程式外，真的是有空再回來補測試，而且有的時候商業邏輯被翻盤了，舊的測試邏輯也不符合情境，一切都是浮雲。</p>
+當然這是理想情況下能夠進行 TDD，而真實自身經驗情況都是圖1-3，除了重要商業邏輯程式外，真的是有空再回來補測試，而且有的時候商業邏輯被翻盤了，舊的測試邏輯也不符合情境，一切都是浮雲。</p>
 <h3 id="練習">練習</h3>
 <p>接下來我們就來練習寫一個簡單的單元測試。</p>
 <p>首先建立一個單元測試的專案：<br>
@@ -270,7 +270,7 @@
 <img src="https://i.imgur.com/52oR2fk.jpg" alt=""></p>
 <p>現在我們的專案結構如下：<br>
 <img src="https://i.imgur.com/DQdAmhI.jpg" alt=""></p>
-<p>接著在Class1.cs內建立一個簡單的Function</p>
+<p>接著在 Class1.cs 內建立一個簡單的 Function</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        public string GetUserName(string name)
         { 
             if(string.IsNullOrWhiteSpace(name))
@@ -280,7 +280,7 @@
 
             return $&quot;Hi!{name}，歡迎使用&quot;;
         }
-</code></pre><p>接著對Class點選右鍵建立單元測試。<br>
+</code></pre><p>接著對 Class 點選右鍵建立單元測試。<br>
 <img src="https://i.imgur.com/Bh9mQxX.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/oyYmvUC.jpg" alt=""></p>
 <p>開始寫我們的第一個單元測試</p>

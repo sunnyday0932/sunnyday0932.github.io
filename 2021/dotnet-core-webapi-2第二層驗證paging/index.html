@@ -71,7 +71,7 @@
     "datePublished": "2021-03-16 19:40:45  UTC",
     "dateModified" : "2021-03-16 19:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging\/",
-    "wordCount" : "1005",
+    "wordCount" : "1065",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -172,13 +172,13 @@
 
           <h2 id="本文">本文</h2>
 <h3 id="1第二層驗證servicerepository">1、第二層驗證(Service、Repository)。</h3>
-<p>上一篇我們介紹了Controller的驗證，接下來介紹Service、Repository層的驗證方式，大概會有疑惑為甚麼Controller驗證過了接下來兩層還需要驗證呢？</p>
+<p>上一篇我們介紹了 Controller 的驗證，接下來介紹 Service、Repository 層的驗證方式，大概會有疑惑為甚麼 Controller 驗證過了接下來兩層還需要驗證呢？</p>
 <p>先前介紹過<a href="https://sunnyday0932.github.io/2020/%E4%B8%89%E5%B1%A4%E5%BC%8F%E6%9E%B6%E6%A7%8B/">三層式架構的開發</a>，其中也有提到其實三層是可以分開進行的，所以當然是也需要驗證。</p>
-<p>驗證的方式會給Service與Repository使用，所以我們做成一個共用方法放在Common層，Service跟Repository再對Common加入參考使用。</p>
+<p>驗證的方式會給 Service 與 Repository 使用，所以我們做成一個共用方法放在 Common 層，Service 跟 Repository 再對 Common 加入參考使用。</p>
 <p><img src="https://i.imgur.com/ihFx61j.jpg" alt=""></p>
-<p>Common層需要加入System.ComponentModel.Annotations Nuget套件。<br>
+<p>Common 層需要加入 System.ComponentModel.Annotations Nuget 套件。<br>
 <img src="https://i.imgur.com/UTLaz7p.jpg" alt=""></p>
-<p>驗證Model使用方法。</p>
+<p>驗證 Model 使用方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class ModelValidator
     {
         /// &lt;summary&gt;
@@ -209,9 +209,9 @@
             }
         }
     }
-</code></pre><p>記得將Common加入參考。<br>
+</code></pre><p>記得將 Common 加入參考。<br>
 <img src="https://i.imgur.com/XN4zLGa.jpg" alt=""></p>
-<p>接下來就可以再使用的Model加上Attribute。</p>
+<p>接下來就可以再使用的 Mode 加上 Attribute。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountInfoModel
     {
         /// &lt;summary&gt;
@@ -370,8 +370,8 @@
 </code></pre><p>測試：
 <img src="https://i.imgur.com/sVBQhPt.jpg" alt=""></p>
 <h3 id="2分頁paging">2、分頁(Paging)。</h3>
-<p>分頁的方式大致分為兩種，一種是Google搜尋的方式一頁顯示幾筆然後有多頁，另一種就是Facebool這種無限下拉的分頁方式。</p>
-<p>這邊介紹的實作方式類於Google搜尋後的分頁方式。</p>
+<p>分頁的方式大致分為兩種，一種是 Google 搜尋的方式一頁顯示幾筆然後有多頁，另一種就是 Facebook 這種無限下拉的分頁方式。</p>
+<p>這邊介紹的實作方式類於 Google 搜尋後的分頁方式。</p>
 <p>如有興趣多研究分頁方式可參考：</p>
 <ul>
 <li>1、<a href="https://b96016.gitlab.io/post/how-to-pagination/">How to do Pagination?</a>。</li>
@@ -379,7 +379,7 @@
 <li>3、<a href="https://jiepeng.me/2019/12/06/learning-how-to-implement-graphql-pagination%E3%80%82">深入淺出 GraphQL Pagination 實作</a></li>
 </ul>
 <!-- raw HTML omitted -->
-<p>我們先在Common建立一個Paging使用的Model。</p>
+<p>我們先在 Common 建立一個 Paging 使用的 Model。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class PagingInfoModel
     {
         public int PageSize { get; set; }
@@ -392,7 +392,7 @@
 
         public bool Descending { get; set; }
     }
-</code></pre><p>建立一個PagingHelper。</p>
+</code></pre><p>建立一個 PagingHelper。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public static class PagingHelper
     {
         /// &lt;summary&gt;
@@ -498,7 +498,7 @@
         }
     }
 </code></pre><p>使用的方法：<br>
-我們要在Controller使用的地方加上傳給paging使用的參數。</p>
+我們要在 Controller 使用的地方加上傳給 paging 使用的參數。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
@@ -522,13 +522,13 @@
                 Result = result
             };
         }
-</code></pre><p>在Service的地方也要修改成有接收paging參數。</p>
+</code></pre><p>在 Service 的地方也要修改成有接收 paging 參數。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         Task&lt;IEnumerable&lt;AccountDto&gt;&gt; GetAccountList(PagingInfoModel paing);
-</code></pre><p>Service實作的地方。</p>
+</code></pre><p>Service 實作的地方。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
@@ -566,7 +566,7 @@
 
             return result;
         }
-</code></pre><p>這邊使用到的_accountListColumMap是用來給有傳入orderColum name時來排序使用。</p>
+</code></pre><p>這邊使用到的 _accountListColumMap 是用來給有傳入 orderColum name 時來排序使用。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">     private static readonly Dictionary&lt;string, Func&lt;AccountDto, object&gt;&gt; _accountListColumMap =
             new Dictionary&lt;string, Func&lt;AccountDto, object&gt;&gt;
             {
@@ -577,7 +577,7 @@
                 [&quot;modifyDate&quot;] = row =&gt; row.ModifyDate,
                 [&quot;modifyUser&quot;] = row =&gt; row.ModifyUser
             };
-</code></pre><p>這邊也要特別注意Controller回傳的方式有改變。<br>
+</code></pre><p>這邊也要特別注意 Controller 回傳的方式有改變。<br>
 <img src="https://i.imgur.com/xkaNSlZ.jpg" alt=""></p>
 <p>PagingViewModle。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    /// &lt;summary&gt;
@@ -596,7 +596,7 @@
         /// &lt;/summary&gt;
         public PageViewModel Paging { get; set; }
     }
-</code></pre><p>而使用的到PagingParameter與PageViewModel都跟PagingInfoModel一樣這邊就不在多說明。</p>
+</code></pre><p>而使用的到 PagingParameter 與 PageViewModel 都跟 PagingInfoModel 一樣這邊就不在多說明。</p>
 <p>測試分頁：<br>
 <img src="https://i.imgur.com/yvDenh4.jpg" alt=""></p>
 <p>加入排序欄位名稱測試：<br>

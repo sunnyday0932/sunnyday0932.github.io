@@ -71,7 +71,7 @@
     "datePublished": "2021-05-18 01:40:45  UTC",
     "dateModified" : "2021-05-18 01:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/message-queue-3rabbitmq\/",
-    "wordCount" : "289",
+    "wordCount" : "380",
     "keywords" : ["Message Queue","RabbitMQ", "Sian"]
 }
 </script>
@@ -177,8 +177,8 @@
 <a href="https://rabbitmq.mr-ping.com/tutorials_with_csharp/HelloWorld.html">RabbitMQ 中文文檔</a></p>
 <h3 id="work-queues">Work Queues</h3>
 <p><img src="https://i.imgur.com/OAi4HYS.jpg" alt=""></p>
-<p>有多個Consumer可以來幫忙消化Queue內的任務模式。</p>
-<p>首先我們一樣先建立一個Pubisher，這次改成由外部接收要傳送的訊息再丟給Queue。</p>
+<p>有多個 Consumer 可以來幫忙消化 Queue 內的任務模式。</p>
+<p>首先我們一樣先建立一個 Pubisher，這次改成由外部接收要傳送的訊息再丟給 Queue。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             var factory = new ConnectionFactory()
@@ -213,7 +213,7 @@
         {
             return ((args.Length &gt; 0) ? string.Join(&quot; &quot;, args) : &quot;Hello World!&quot;);
         }
-</code></pre><p>接著我們需要創建兩個Reciver，這邊特殊的地方在我們藉由訊息傳送的 點號來模擬處理繁忙的情況，每一個點號我們就睡一秒。</p>
+</code></pre><p>接著我們需要創建兩個 Reciver，這邊特殊的地方在我們藉由訊息傳送的 點號來模擬處理繁忙的情況，每一個點號我們就睡一秒。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        var factory = new ConnectionFactory()
 			{
 				HostName = &quot;localhost&quot;,
@@ -257,20 +257,20 @@
 				Console.ReadLine();
 			}
 </code></pre><p><img src="https://i.imgur.com/zjFJ5Sk.jpg" alt=""></p>
-<p>Reciever1和Reciever2程式內容是一樣的。</p>
+<p>Reciever1 和 Reciever2 程式內容是一樣的。</p>
 <p>那麼我們就來進行測試吧，首先我們把專案的起始方式改成多個起始專案。</p>
 <p>對解決方案點選右鍵後點選屬性。<br>
 <img src="https://i.imgur.com/Dcm7jGw.jpg" alt=""></p>
 <p>將設定改成下圖。<br>
 <img src="https://i.imgur.com/FBjjBg9.jpg" alt=""></p>
-<p>Publisher的啟動方式我們會改用PowerShell執行，先將專案起始後看看執行狀況。</p>
+<p>Publisher 的啟動方式我們會改用 PowerShell 執行，先將專案起始後看看執行狀況。</p>
 <p><img src="https://i.imgur.com/ALcU8Su.jpg" alt=""></p>
 <p>這樣測試環境就準備好了，接著我們可以開始來發布訊息了。</p>
-<p>首先打開你的PowerShell。<br>
+<p>首先打開你的 PowerShell。<br>
 有需要修改字型設定的可參考同事這一篇。<br>
 <a href="https://igouist.github.io/post/2020/08/powershell-beauty/">Powershell 美化作戰 —— 字型、執行原則和 oh-my-posh</a></p>
 <p><img src="https://i.imgur.com/N1fCtUk.jpg" alt=""></p>
-<p>先移動到我們的Publisher所在的位子，請視自行狀況修改路徑。</p>
+<p>先移動到我們的 Publisher 所在的位子，請視自行狀況修改路徑。</p>
 <pre><code class="language-shell=" data-lang="shell=">cd D:\Program\RabbitMQSample\WorkQueuesSample\Sample\Publisher
 </code></pre><p><img src="https://i.imgur.com/1ya6vja.jpg" alt=""></p>
 <p>接著就可以開始執行以下測試，我們會依序執行以下指令</p>
@@ -282,39 +282,39 @@ dotnet run &quot;Fifth message.....&quot;
 </code></pre><p><img src="https://i.imgur.com/LeiPcyj.jpg" alt=""></p>
 <p>回頭看一下我們的兩個Reciever。<br>
 <img src="https://i.imgur.com/kJZ0GXj.jpg" alt=""></p>
-<p>這邊我們使用基本的設定，RabbitMQ會將訊息依序發給下一個Reciever，這種方式被稱作Round-Robin。</p>
+<p>這邊我們使用基本的設定，RabbitMQ 會將訊息依序發給下一個 Reciever，這種方式被稱作 Round-Robin。</p>
 <h3 id="訊息確認方式">訊息確認方式</h3>
-<p>在目前使用的方法當我們的Reciever接收到訊息後就會自動回復一個Ack給RabbitMQ。<br>
+<p>在目前使用的方法當我們的 Reciever 接收到訊息後就會自動回復一個 Ack 給 RabbitMQ。<br>
 <img src="https://i.imgur.com/RFMvigt.jpg" alt=""></p>
-<p>這種情況最大的問題是接收端雖然收到訊息了，但發生了Crash、或是執行被中斷了，RabbitMQ並不會知道有這種情形發生，任務就會因此而遺失。</p>
-<p>我們可以來測試看看，首先使用Publisher發送一個需要長時間執行的任務，當有Reciever收到的時候就馬上將他關閉，模擬執行被中斷的情況。</p>
-<p>這邊我們先使用PowerShell執行Publisher觀察Queue中的情況就好還先不要執行Reciever應用程式。<br>
+<p>這種情況最大的問題是接收端雖然收到訊息了，但發生了 Crash、或是執行被中斷了，RabbitMQ 並不會知道有這種情形發生，任務就會因此而遺失。</p>
+<p>我們可以來測試看看，首先使用 Publisher 發送一個需要長時間執行的任務，當有 Reciever 收到的時候就馬上將他關閉，模擬執行被中斷的情況。</p>
+<p>這邊我們先使用 PowerShell 執行 Publisher 觀察 Queue 中的情況就好還先不要執行 Reciever 應用程式。<br>
 <img src="https://i.imgur.com/3FrkD0v.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/K1mC0jS.jpg" alt=""></p>
-<p>接著我們執行兩個Reciever應用程式，當收到訊息的當下馬上就將該應用程式結束執行。<br>
+<p>接著我們執行兩個 Reciever 應用程式，當收到訊息的當下馬上就將該應用程式結束執行。<br>
 <img src="https://i.imgur.com/JQjm6Oo.jpg" alt=""></p>
-<p>回去看RabbitMQ監控台。<br>
+<p>回去看 RabbitMQ 監控台。<br>
 <img src="https://i.imgur.com/XKIfBWb.jpg" alt=""></p>
-<p>雖然訊息已經發送出去了，但其實只執行到一半沒有完成，為了預防這種情況發生，我們可以使用自行回傳Act的方式。<br>
-修改一下我們的Reciever程式。</p>
+<p>雖然訊息已經發送出去了，但其實只執行到一半沒有完成，為了預防這種情況發生，我們可以使用自行回傳 Act 的方式。<br>
+修改一下我們的 Reciever 程式。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
 </code></pre><p><img src="https://i.imgur.com/83yKbrA.jpg" alt=""></p>
-<p>一樣記得兩個Reciver都要修改喔！！</p>
+<p>一樣記得兩個 Reciver 都要修改喔！！</p>
 <p>接著我們來測試看看他的效果吧，發送一個需要長時間執行的任務。</p>
 <p><img src="https://i.imgur.com/3FrkD0v.jpg" alt=""></p>
-<p>執行我們的Reciver觀察情況。<br>
+<p>執行我們的 Reciver 觀察情況。<br>
 <img src="https://i.imgur.com/7APLV4w.gif" alt=""></p>
-<p>可以觀察到當我們把第一個接收到任務執行的Reciver關掉，RabbitMQ就會馬上把任務拿回佇列找尋下一個可以接收任務的Reciver。</p>
-<p>儘管此種方式可以預防Reicever執行中斷保存訊息的好方法，但並沒有辦法保證當RabbitMQ自身斷線、或是重啟的時候確保訊息是能夠繼續派送的。</p>
-<p>可以實驗看看我們先發送一個訊息到RabbitMQ，確認Queue內有資料後我們把RabbitMQ重啟再來觀察。<br>
+<p>可以觀察到當我們把第一個接收到任務執行的 Reciver 關掉，RabbitMQ 就會馬上把任務拿回佇列找尋下一個可以接收任務的 Reciver。</p>
+<p>儘管此種方式可以預防 Reicever 執行中斷保存訊息的好方法，但並沒有辦法保證當 RabbitMQ 自身斷線、或是重啟的時候確保訊息是能夠繼續派送的。</p>
+<p>可以實驗看看我們先發送一個訊息到 RabbitMQ，確認 Queue 內有資料後我們把 RabbitMQ 重啟再來觀察。<br>
 <img src="https://i.imgur.com/3FrkD0v.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/K1mC0jS.jpg" alt=""></p>
-<p>接著把RabbitMQ重啟。<br>
+<p>接著把 RabbitMQ 重啟。<br>
 <img src="https://i.imgur.com/WQ9ACfc.gif" alt=""></p>
-<p>馬上就看到連Queue都消失啦~~~~<br>
+<p>馬上就看到連 Queue 都消失啦~~~~<br>
 <img src="https://i.imgur.com/RVGEN0p.jpg" alt=""></p>
 <h3 id="訊息持久化方式">訊息持久化方式</h3>
-<p>這裡第一步是要先改變我們的Queue設定。</p>
+<p>這裡第一步是要先改變我們的 Queue 設定。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">channel.QueueDeclare(
 queue: &quot;WorkeTestQueue&quot;,
 durable: true, //持久化設定
@@ -322,12 +322,12 @@ exclusive: false,
 autoDelete: false,
 arguments: null);
 </code></pre><p><img src="https://i.imgur.com/gIqfU19.jpg" alt=""></p>
-<p>接下來我們傳送一個訊息後，確認Queue內有資料後再把RabbitMQ重啟測試。</p>
+<p>接下來我們傳送一個訊息後，確認 Queue 內有資料後再把 RabbitMQ 重啟測試。</p>
 <p><img src="https://i.imgur.com/GPqIeoI.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/WQ9ACfc.gif" alt=""></p>
-<p>這次我們發現Queue是保存住了，但是我們還沒被接收的訊息卻消失了，為了解決這點，我們需要多加設定。<br>
+<p>這次我們發現 Queue 是保存住了，但是我們還沒被接收的訊息卻消失了，為了解決這點，我們需要多加設定。<br>
 <img src="https://i.imgur.com/8Na32fa.jpg" alt=""></p>
-<p>修改一下Publisher</p>
+<p>修改一下 Publisher</p>
 <pre><code class="language-csharp=" data-lang="csharp=">var properties = channel.CreateBasicProperties();
 properties.Persistent = true;
 </code></pre><p><img src="https://i.imgur.com/JHPOeb2.jpg" alt=""></p>
@@ -338,16 +338,16 @@ properties.Persistent = true;
 <p>成功保存了未送出的訊息。<br>
 <img src="https://i.imgur.com/tNb6R7B.jpg" alt=""></p>
 <h3 id="平均分配訊息的方式">平均分配訊息的方式</h3>
-<p>為了避免我們有許多個Reicever，但卻把工作都只丟給某一個做，可以加上以下設定讓RabbitMQ不要一次給同一個Reicever多於一個的任務，在他還沒處理完該任務且回傳Ack確認前都不該再派送訊息給他。</p>
+<p>為了避免我們有許多個 Reicever，但卻把工作都只丟給某一個做，可以加上以下設定讓 RabbitMQ不 要一次給同一個 Reicever 多於一個的任務，在他還沒處理完該任務且回傳 Ack 確認前都不該再派送訊息給他。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 </code></pre><p><img src="https://i.imgur.com/vxXysvS.jpg" alt=""></p>
-<p>也是一樣要記得加在兩個Reiciver內。</p>
+<p>也是一樣要記得加在兩個 Reiciver 內。</p>
 <p>接下來我們來完整測試目前的程式吧。<br>
 <img src="https://i.imgur.com/DEMMQmS.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/hzFYIQi.jpg" alt=""></p>
-<p>可以觀察到因為某一個Reicever正在執行需要長時間運行的任務，就會交由有空閒時間的Reicever來執行剩餘的工作。</p>
+<p>可以觀察到因為某一個 Reicever 正在執行需要長時間運行的任務，就會交由有空閒時間的 Reicever 來執行剩餘的工作。</p>
 <h2 id="後記">後記</h2>
-<p>這篇介紹就到這邊，一樣會把程式碼放在GitHub歡迎取用。<br>
+<p>這篇介紹就到這邊，一樣會把程式碼放在 GitHub 歡迎取用。<br>
 <a href="https://github.com/sunnyday0932/RabbitMQSample/tree/main/WorkQueuesSample/Sample">WorkQueue Sample</a></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>

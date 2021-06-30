@@ -30,9 +30,9 @@ public class HostService : BackgroundService { private readonly string _filePath
       <pubDate>Tue, 04 May 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96/</guid>
-      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰Redis快取。
-本文 開始前準備 我們先到CacheTypeEnum加入Redis。
-/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在Common Settings加入一個RedisConfigurationOptions。
+      <description>前言 上一篇我們練習過了記憶體快取，那麼這一篇我們就來實戰 Redis 快取。
+本文 開始前準備 我們先到 CacheTypeEnum 加入 Redis。
+/// &amp;lt;summary&amp;gt; /// Redis - RedisCacheProvider /// &amp;lt;/summary&amp;gt; [Description(&amp;quot;RedisCacheProvider&amp;quot;)] Redis = 2 主要設定 首先我們在 Common Settings 加入一個 RedisConfigurationOptions。
 public class RedisConfigurationOptions { /// &amp;lt;summary&amp;gt; /// The configuration. /// &amp;lt;/summary&amp;gt; public string Configuration { get; set; } /// &amp;lt;summary&amp;gt; /// The name of the instance. /// &amp;lt;/summary&amp;gt; public string InstanceName { get; set; } } 接著建立 IRedisCacheHelper
 public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指定 cachekey 的快取資料 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;cachekey&amp;quot;&amp;gt;The cachekey.</description>
     </item>
@@ -55,44 +55,43 @@ public interface IRedisCacheHelper { /// &amp;lt;summary&amp;gt; /// 移除指�
       <pubDate>Fri, 30 Apr 2021 01:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1/</guid>
-      <description>前言 延續上次我們使用Hangfire排程抓取Youbike的練習題，這次我們要做一個Youbike的Service，專門提供查詢Youbike相關站點資訊的服務；前面製作排程的時候有提到因為Youbike站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。
-本文 快取的使用時機 當API效能遇到瓶頸的時候，就可以使用快取來減少不必要去DB撈取資料的動作，最常使用的會是記憶體快取、Redis快取等。
+      <description>前言 延續上次我們使用 Hangfire 排程抓取 Youbike 的練習題，這次我們要做一個 Youbike 的 Service，專門提供查詢 Youbike 相關站點資訊的服務；前面製作排程的時候有提到因為 Youbike 站點資訊一分鐘才會更新一次，為了加快程式的查詢效率我們就可以將查詢的資料做成快取一分鐘在此期間加快查詢的效能。
+本文 快取的使用時機 當 API 效能遇到瓶頸的時候，就可以使用快取來減少不必要去 DB 撈取資料的動作，最常使用的會是記憶體快取、Redis 快取等。
 快取的適用時機 一般使用快取的功能通常是資料的變動性不大、不太會被變更的資料。
-當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們DB資料同步的問題。
+當然當某些特殊情境的情況下也可以使用快取Ex:購物節的時候電商網站等，那這種情況下就需要考慮到快取資料與我們 DB 資料同步的問題。
 快取的注意事項 使用快取的方式簡單來說是用錢換取時間(記憶體比起硬碟貴了許多)，通常在放資料進快取的時候會需要注意資料的大小、能不能適度地進行切分，以及存放的過期時間，而不是拿了就丟全部放入快取內(當然如果你本多忠勝不在此限)。
-開始前準備 這邊基本的API就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部Youbike站點的功能、另一個是查詢指定Youbike站點的功能。
+開始前準備 這邊基本的 API 就不再進行示範，我們現在簡單的提供兩個功能，一個是查詢全部 Youbike 站點的功能、另一個是查詢指定 Youbike 站點的功能。
 先看一下初始的Repository結構。
-/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].[dbo].[YoubikeStation]&amp;quot;; using (var conn = this._databaseHelper.GetConnection(this._connectionString)) { var result = await conn.QueryAsync&amp;lt;StationDataModel&amp;gt;(sql); return result; } } /// &amp;lt;summary&amp;gt; /// 取得指定Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;stationNo&amp;quot;&amp;gt;The station no.</description>
+/// &amp;lt;summary&amp;gt; /// 取得全部Youbike站點 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public async Task&amp;lt;IEnumerable&amp;lt;StationDataModel&amp;gt;&amp;gt; GetAllStationAsync() { var sql = @&amp;quot;SELECT [StationNo] ,[StationName] ,[Total] ,[BikeAmount] ,[StationArea] ,[ModifyDate] ,[Latitude] ,[Longitude] ,[Address] ,[StationAreaEnglish] ,[StationNameEnglish] ,[AddressEnglish] ,[Available] ,[Active] ,[SrcUpdateTime] ,[UpdateTime] ,[InfoTime] ,[InfoDate] FROM [Northwind].</description>
     </item>
     
     <item>
-      <title>CoreProfiler - 監看WebApi效能的工具</title>
+      <title>CoreProfiler - 監看 WebApi 效能的工具</title>
       <link>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 29 Apr 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</guid>
-      <description>前言 接下來會用到CoreProfiler這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。
-本文 CorePofiler這個工具是提供給Core版本的效能工具，也有給dotnet framework的版本NanoProfiler。
-用到的Nuget  CoreProfiler.Web 安裝在Application。 CoreProfiler 安裝在Application跟要監看的類別庫。  使用方式 1、在我們需要監看的地方加上以下程式。
-var stepName = $&amp;quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;quot;; using (ProfilingSession.Current.Step(stepName)) { } 2、在Service與Repository的地方都加上。
+      <description>前言 接下來會用到 CoreProfiler 這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。
+本文 CorePofiler 這個工具是提供給 Core 版本的效能工具，也有給 dotnet framework 的版本 NanoProfiler。
+用到的Nuget  CoreProfiler.Web 安裝在 Application。 CoreProfiler 安裝在 Application 跟要監看的類別庫。  使用方式 1、在我們需要監看的地方加上以下程式。
+var stepName = $&amp;quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;quot;; using (ProfilingSession.Current.Step(stepName)) { } 2、在 Service 與 Repository 的地方都加上。
 Service：
 Repository：
-3、若要監看與DB存取資料的狀況，可以到DatabaseHelper這麼做。
-/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ? null : new DbProfiler(ProfilingSession.Current.Profiler) ); return conn; } 4、CoreProfiler的設定，可以建立一個coreprofiler.json的檔案。
-{ //資料保存上限 &amp;quot;circularBufferSize&amp;quot;: 200, //要過濾掉的項目 &amp;quot;filters&amp;quot;: [ { &amp;quot;key&amp;quot;: &amp;quot;/coreprofiler&amp;quot;, &amp;quot;value&amp;quot;: &amp;quot;/coreprofiler&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;CoreProfiler.</description>
+3、若要監看與 DB 存取資料的狀況，可以到 DatabaseHelper 這麼做。
+/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ?</description>
     </item>
     
     <item>
-      <title>dotnet Core HangFire - Youbike練習題</title>
+      <title>dotnet Core HangFire - Youbike 練習題</title>
       <link>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</link>
       <pubDate>Mon, 12 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</guid>
-      <description>前言 前面介紹完Hangfire後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。
-內文 1、目標。  使用Youbike2.0政府開放資料。 每分鐘去抓取資料後寫回DB。  2、實作。 使用API網址為：Youbike2.0政府開放資料。。
+      <description>前言 前面介紹完 Hangfire 後，這邊是個人製作簡易練習題，所以不會有太多敘述，比較偏向個人筆記。
+內文 1、目標。  使用 Youbike2.0 政府開放資料。 每分鐘去抓取資料後寫回 DB。  2、實作。 使用 API 網址為： Youbike2.0政府開放資料。。
 使用說明：
-觀察一下API格式。
-建立Model存放。
+觀察一下 API 格式。
+建立 Model 存放。
 public class YoubikeDataModel { /// &amp;lt;summary&amp;gt; /// 站點代號 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sno&amp;quot;)] public string StationNo { get; set; } /// &amp;lt;summary&amp;gt; /// 場站中文名稱 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sna&amp;quot;)] public string StationName { get; set; } /// &amp;lt;summary&amp;gt; /// 場站總停車格 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;tot&amp;quot;)] public int Total { get; set; } /// &amp;lt;summary&amp;gt; /// 場站目前車輛數量 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sbi&amp;quot;)] public int BikeAmount { get; set; } /// &amp;lt;summary&amp;gt; /// 場站區域 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sarea&amp;quot;)] public string StaionArea { get; set; } /// &amp;lt;summary&amp;gt; /// 資料更新時間 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;mday&amp;quot;)] public DateTime ModifyDate { get; set; } /// &amp;lt;summary&amp;gt; /// 緯度 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;lat&amp;quot;)] public double Latitude { get; set; } /// &amp;lt;summary&amp;gt; /// 經度 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;lng&amp;quot;)] public double Longitude { get; set; } /// &amp;lt;summary&amp;gt; /// 地點 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;ar&amp;quot;)] public string Address { get; set; } /// &amp;lt;summary&amp;gt; /// 場站區域英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;sareaen&amp;quot;)] public string StationAreaEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 場站名稱英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;snaen&amp;quot;)] public string StationNameEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 地址英文 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;aren&amp;quot;)] public string AddressEnglish { get; set; } /// &amp;lt;summary&amp;gt; /// 空位數量 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;bemp&amp;quot;)] public int Available { get; set; } /// &amp;lt;summary&amp;gt; /// 全站禁用狀態 /// &amp;lt;/summary&amp;gt; [JsonProperty(&amp;quot;act&amp;quot;)] public string Active { get; set; } /// &amp;lt;summary&amp;gt; /// source update time.</description>
     </item>
     
@@ -102,12 +101,12 @@ public class YoubikeDataModel { /// &amp;lt;summary&amp;gt; /// 站點代號 ///
       <pubDate>Mon, 05 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/</guid>
-      <description>本文 1、Trigger(觸發程序)。 看到這裡，我一開始以為所謂的Trigger就只有類似於在SQL Server當觸動某張Table時，會觸發某種事件這樣，但其實並不只是只有此種才稱之為Trigger，所以一開始看到大神介紹此種方法的時候還一頭霧水。
-我們可以將排程做成Trigger的方式，由程式啟動的時候觸發部屬排程工作。
+      <description>本文 1、Trigger(觸發程序)。 看到這裡，我一開始以為所謂的 Trigger 就只有類似於在 SQL Server 當觸動某張 Table 時，會觸發某種事件這樣，但其實並不只是只有此種才稱之為 Trigger ，所以一開始看到大神介紹此種方法的時候還一頭霧水。
+我們可以將排程做成 Trigger 的方式，由程式啟動的時候觸發部屬排程工作。
 順便會帶一點將排程執行的邏輯拆程類似之前分層架構的模式。
-首先我們建立一個ITimeService介面、與實作就是取得當下時間。
-public interface ITimeService { public DateTime GetCurrentTime(); } public class TimeService : ITimeService { public DateTime GetCurrentTime() { var currentTime = DateTime.Now; return currentTime; } } 接下來建立一個HangfireJob的介面與類別，這邊實體就會使用到剛剛所建立的TimeService。
-public interface IHangfireJob { void GetCurrentTime(); } public class HangfireJob : IHangfireJob { private readonly ITimeService _timeService; public HangfireJob( ITimeService timeService) { this._timeService = timeService; } public void GetCurrentTime() { var startTime = this._timeService.GetCurrentTime(); Console.WriteLine($&amp;quot;起始時間：{startTime.ToLocalTime():yyyy/MM/dd HH:mm:ss}&amp;quot;); Thread.</description>
+首先我們建立一個 ITimeService 介面、與實作就是取得當下時間。
+public interface ITimeService { public DateTime GetCurrentTime(); } public class TimeService : ITimeService { public DateTime GetCurrentTime() { var currentTime = DateTime.Now; return currentTime; } } 接下來建立一個 HangfireJob 的介面與類別，這邊實體就會使用到剛剛所建立的 TimeService。
+public interface IHangfireJob { void GetCurrentTime(); } public class HangfireJob : IHangfireJob { private readonly ITimeService _timeService; public HangfireJob( ITimeService timeService) { this.</description>
     </item>
     
     <item>
@@ -117,11 +116,11 @@ public interface IHangfireJob { void GetCurrentTime(); } public class HangfireJo
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/</guid>
       <description>前言 本篇會介紹一些特殊使用技巧，跟一些可以調整的設定。
-本文 1、API觸發排程。 首先建立一個API Controller。
+本文 1、API 觸發排程。 首先建立一個 API Controller。
 [Route(&amp;quot;api/[controller]&amp;quot;)] [ApiController] public class HangfireApiController : ControllerBase { [Route(&amp;quot;enquee&amp;quot;)] [HttpGet] public string TestHangfire() { BackgroundJob.Enqueue( () =&amp;gt; Console.WriteLine(&amp;quot;API觸發：Fire and Foreget Schedule!&amp;quot;)); return &amp;quot;排程觸發&amp;quot;; } } 測試：
-2、設定排程Priority。 先在StartUp中ConfigureService設定Priority。
-services.AddHangfireServer(options =&amp;gt; { //priority options.Queues = new[] { &amp;quot;alpha&amp;quot;, &amp;quot;beta&amp;quot;, &amp;quot;default&amp;quot; }; }); 將Recurring Job 改成：
-//Recurring job RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;Recurring job&amp;quot;, () =&amp;gt; Console.WriteLine($&amp;quot;Recurring job觸發時間：{DateTime.Now}&amp;quot;), cronExpression:&amp;quot;*/1 * * * *&amp;quot;, TimeZoneInfo.Local ); RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;alpha job&amp;quot;, () =&amp;gt; Console.</description>
+2、設定排程 Priority。 先在 StartUp 中 ConfigureService 設定 Priority。
+services.AddHangfireServer(options =&amp;gt; { //priority options.Queues = new[] { &amp;quot;alpha&amp;quot;, &amp;quot;beta&amp;quot;, &amp;quot;default&amp;quot; }; }); 將 Recurring Job 改成：
+//Recurring job RecurringJob.AddOrUpdate ( recurringJobId: &amp;quot;Recurring job&amp;quot;, () =&amp;gt; Console.WriteLine($&amp;quot;Recurring job觸發時間：{DateTime.Now}&amp;quot;), cronExpression:&amp;quot;*/1 * * * *&amp;quot;, TimeZoneInfo.</description>
     </item>
     
     <item>
@@ -130,14 +129,14 @@ services.AddHangfireServer(options =&amp;gt; { //priority options.Queues = new[]
       <pubDate>Thu, 01 Apr 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/</guid>
-      <description>前言 接下來試做HangFire。
-本文 1、前置步驟。 一樣選擇Web應用程式。
-接下來要選擇MVC的架構。
-安裝以下三個Nuget套件。
- Hangfire Hangfire.AspNetCore Newtonsoft.Json  在SSMS中localhost新建一個Hangfire DB。
-2、設定。 把DB連線放在appsettings中加入connection string。
-&amp;quot;ConnectionStrings&amp;quot;: { &amp;quot;HangFire&amp;quot;: &amp;quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&amp;quot; } StartUp加入設定。
-public void ConfigureServices(IServiceCollection services) { services.AddControllersWithViews(); //Hangfire var hangfireConnection = this.Configuration.GetConnectionString(name:&amp;quot;Hangfire&amp;quot;); services.AddHangfire(config =&amp;gt; { config.UseSqlServerStorage( nameOrConnectionString: hangfireConnection, options: new SqlServerStorageOptions { SchemaName = &amp;quot;HangfireSample&amp;quot;, JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60) }); }); services.AddHangfireServer(); } public void Configure(IApplicationBuilder app, IWebHostEnvironment env) { if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); } else { app.UseExceptionHandler(&amp;quot;/Home/Error&amp;quot;); // The default HSTS value is 30 days.</description>
+      <description>前言 接下來試做 HangFire。
+本文 1、前置步驟。 一樣選擇 Web 應用程式。
+接下來要選擇 MVC 的架構。
+安裝以下三個 Nuget 套件。
+ Hangfire Hangfire.AspNetCore Newtonsoft.Json  在 SSMS 中 localhost 新建一個 Hangfire DB。
+2、設定。 把 DB 連線放在 appsettings 中加入 connection string。
+&amp;quot;ConnectionStrings&amp;quot;: { &amp;quot;HangFire&amp;quot;: &amp;quot;Server=localhost;Database=Hangfire;Trusted_Connection=True;&amp;quot; } StartUp 加入設定。
+public void ConfigureServices(IServiceCollection services) { services.AddControllersWithViews(); //Hangfire var hangfireConnection = this.Configuration.GetConnectionString(name:&amp;quot;Hangfire&amp;quot;); services.AddHangfire(config =&amp;gt; { config.UseSqlServerStorage( nameOrConnectionString: hangfireConnection, options: new SqlServerStorageOptions { SchemaName = &amp;quot;HangfireSample&amp;quot;, JobExpirationCheckInterval = TimeSpan.FromMinutes(value:60) }); }); services.</description>
     </item>
     
     <item>
@@ -146,16 +145,14 @@ public void ConfigureServices(IServiceCollection services) { services.AddControl
       <pubDate>Sun, 28 Mar 2021 18:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</guid>
-      <description>前言 這次主題要來介紹排程，一般原生作法排程會直接寫一個Windows排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供.NET製作排程，如：Quartz.Net、Coravel。
-而這次主要會介紹HangFire。
+      <description>前言 這次主題要來介紹排程，一般原生作法排程會直接寫一個 Windows 排程，而這種做法就是管理不易，所以後續就有一些開源專案來提供 .NET 製作排程，如： Quartz.Net、Coravel。
+而這次主要會介紹 HangFire。
 本文 一、相關資源。 1、官方文件。
 2、中文文件。
-二、基本介紹。 A、特別注意的特性： HangFire在建構起來後就等同於一個網站，所以它也有著一般IIS會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。
-像我們公司解法就是透過硬體，A10機器會定期訪問HangFire站台，確保站台是有在運行的。
-B、HangFire優點：  Simple - 開發簡單、安裝簡易、部屬到站台也很方便。 Reliable - HangFire提供了排程失敗的自動重試機制。 Distributed - 可透過分散式處理消化大量工作。 Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis等)地方，不必擔心站台被回收後排程任務消失。 Transparent - 透明化的作業流程，HangFire提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。  C、三大核心元件。  HangFire Client - 主要建立後端排程任務(Ex:前面說的一個網站)。 Job Storage - 主要儲存排程任務(Ex:DB)。 HangFire Server - 主要處理排程任務的地方。  排程工作的完整流程：
- 1、Client 建立一個排程任務。 2、排程任務儲存到Storage後，回傳一個JobId給Client。 3、Server端存Storage拿取要處理的排程任務。 4、Server端處理排程任務。  D、排程任務的類型。 1、Fire-and-forget Jobs - 這類型的Job進到排程佇列後會馬上執行且只會執行一次。
-var jobId = BackgroundJob.Enqueue( () =&amp;gt; Console.WriteLine(&amp;quot;Fire-and-forget!&amp;quot;)); 2、Delayed jobs - 這類型的排程可以延遲執行。
-var jobId = BackgroundJob.</description>
+二、基本介紹。 A、特別注意的特性： HangFire 在建構起來後就等同於一個網站，所以它也有著一般 IIS 會遇到的特性，就是網站若一段時間沒人訪問會進入睡眠狀態，一旦進入睡眠模式排程就有機會遺漏未執行。
+像我們公司解法就是透過硬體，A10 機器會定期訪問 HangFire 站台，確保站台是有在運行的。
+B、HangFire優點：  Simple - 開發簡單、安裝簡易、部屬到站台也很方便。 Reliable - HangFire 提供了排程失敗的自動重試機制。 Distributed - 可透過分散式處理消化大量工作。 Persistent - 任務可存放在多種儲存裝置中(如:SQLServer、Redis 等)地方，不必擔心站台被回收後排程任務消失。 Transparent - 透明化的作業流程，HangFire 提供了儀錶板可以即時的查看任務工作執行的狀態，同時也可以透過儀表板取消、或是執行排程任務。  C、三大核心元件。  HangFire Client - 主要建立後端排程任務(Ex:前面說的一個網站)。 Job Storage - 主要儲存排程任務(Ex:DB)。 HangFire Server - 主要處理排程任務的地方。  排程工作的完整流程：
+ 1、Client 建立一個排程任務。 2、排程任務儲存到 Storage 後，回傳一個 JobId 給 Client。 3、Server 端存 Storage 拿取要處理的排程任務。 4、Server 端處理排程任務。  D、排程任務的類型。 1、Fire-and-forget Jobs - 這類型的 Job 進到排程佇列後會馬上執行且只會執行一次。</description>
     </item>
     
     <item>
@@ -165,7 +162,7 @@ var jobId = BackgroundJob.</description>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</guid>
       <description>前言 接續上一篇，這篇主要是講解非同步的單元測試，同樣也只會列出不同的地方。
-本文 1、Service Test。 傳入Model為空。
+本文 1、Service Test。 傳入 Model 為空。
 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_傳入Model為空_應回傳ArgumentNullException() { //assert var sut = this.GetSystemUnderTest(); //act var exception = await Assert.ThrowsExceptionAsync&amp;lt;ArgumentNullException&amp;gt;( async () =&amp;gt; await sut.AddAccount(null)); //arrange exception.Message.Contains(&amp;quot;不可為空&amp;quot;); } 結果：
 某一個欄位為空。
 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_Account為空_應回傳ArgumentException() { //assert var sut = this.GetSystemUnderTest(); var fixture = new Fixture(); var info = fixture.Build&amp;lt;AccountInfoModel&amp;gt;() .Without(x =&amp;gt; x.Account) .Create(); //act var exception = await Assert.</description>
@@ -177,12 +174,12 @@ var jobId = BackgroundJob.</description>
       <pubDate>Tue, 16 Mar 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging/</guid>
-      <description>本文 1、第二層驗證(Service、Repository)。 上一篇我們介紹了Controller的驗證，接下來介紹Service、Repository層的驗證方式，大概會有疑惑為甚麼Controller驗證過了接下來兩層還需要驗證呢？
+      <description>本文 1、第二層驗證(Service、Repository)。 上一篇我們介紹了 Controller 的驗證，接下來介紹 Service、Repository 層的驗證方式，大概會有疑惑為甚麼 Controller 驗證過了接下來兩層還需要驗證呢？
 先前介紹過三層式架構的開發，其中也有提到其實三層是可以分開進行的，所以當然是也需要驗證。
-驗證的方式會給Service與Repository使用，所以我們做成一個共用方法放在Common層，Service跟Repository再對Common加入參考使用。
-Common層需要加入System.ComponentModel.Annotations Nuget套件。
-驗證Model使用方法。
-public class ModelValidator { /// &amp;lt;summary&amp;gt; /// Validates the specified model. /// &amp;lt;/summary&amp;gt; /// &amp;lt;typeparam name=&amp;quot;T&amp;quot;&amp;gt;&amp;lt;/typeparam&amp;gt; /// &amp;lt;param name=&amp;quot;model&amp;quot;&amp;gt;The model.&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;parameterName&amp;quot;&amp;gt;Name of the parameter.&amp;lt;/param&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentNullException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; public static void Validate&amp;lt;T&amp;gt;(T model, string parameterName) where T : class { if (model is null) { if (string.IsNullOrWhiteSpace(parameterName)) { parameterName = nameof(model); } throw new ArgumentNullException(paramName: parameterName, message: $&amp;quot;{parameterName}不可為空&amp;quot;); } var errors = new List&amp;lt;ValidationResult&amp;gt;(); var validation = Validator.</description>
+驗證的方式會給 Service 與 Repository 使用，所以我們做成一個共用方法放在 Common 層，Service 跟 Repository 再對 Common 加入參考使用。
+Common 層需要加入 System.ComponentModel.Annotations Nuget 套件。
+驗證 Model 使用方法。
+public class ModelValidator { /// &amp;lt;summary&amp;gt; /// Validates the specified model. /// &amp;lt;/summary&amp;gt; /// &amp;lt;typeparam name=&amp;quot;T&amp;quot;&amp;gt;&amp;lt;/typeparam&amp;gt; /// &amp;lt;param name=&amp;quot;model&amp;quot;&amp;gt;The model.&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;parameterName&amp;quot;&amp;gt;Name of the parameter.&amp;lt;/param&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentNullException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; /// &amp;lt;exception cref=&amp;quot;System.ArgumentException&amp;quot;&amp;gt;&amp;lt;/exception&amp;gt; public static void Validate&amp;lt;T&amp;gt;(T model, string parameterName) where T : class { if (model is null) { if (string.</description>
     </item>
     
     <item>
@@ -191,16 +188,14 @@ public class ModelValidator { /// &amp;lt;summary&amp;gt; /// Validates the spec
       <pubDate>Mon, 15 Mar 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89/</guid>
-      <description>前言 介紹完非同步程式設計接下來就可以開始實作了，基本上大同小異，這次也只會著重在特別的地方說明，剩下的會把Code放在Github上，有需要的歡迎取用。
-本文 1、appsettings。 之前介紹Core都沒有特別提到appsettings，其實它就是dotnet framework的config設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。
-這次我們把DB的連線字串放在appsettings內，透過startup的時候拿取所需的DB連接字串。
+      <description>前言 介紹完非同步程式設計接下來就可以開始實作了，基本上大同小異，這次也只會著重在特別的地方說明，剩下的會把 Code 放在 Github 上，有需要的歡迎取用。
+本文 1、appsettings。 之前介紹 Core 都沒有特別提到 appsettings，其實它就是 dotnet framework 的 config 設定檔，可以透過不同的組態設定在不同的環境做切換，Ex:正式環境、測試環境。
+這次我們把DB的連線字串放在 appsettings 內，透過 startup 的時候拿取所需的 DB 連接字串。
 2021/04/19更新
-感謝同事協助指正，appsettings並不完全等同於dotnet framework的Webconfig，而是core將原本全部擠在Webconfig的地方拆分歸類在不同地方，例如：Nuget套件就歸在csproj、appsettings區塊就是Core的appsettings。
-那Core難道就完全不需要Webconfig了嗎？
-倒也不是，像是我們公司的Core專案還是會加上Webconfig檔案，內容就主要做為設定CI建置的調整、或是對IIS的一些細部設定，還是可以透過Webconfig來做，可供大家使用上做參考。
-{ &amp;quot;Logging&amp;quot;: { &amp;quot;LogLevel&amp;quot;: { &amp;quot;Default&amp;quot;: &amp;quot;Information&amp;quot;, &amp;quot;Microsoft&amp;quot;: &amp;quot;Warning&amp;quot;, &amp;quot;Microsoft.Hosting.Lifetime&amp;quot;: &amp;quot;Information&amp;quot; } }, &amp;quot;ConnectionString&amp;quot;: { &amp;quot;Northwind&amp;quot;: &amp;quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&amp;quot; } } 在StartUp拿取connetcion。
-/// &amp;lt;summary&amp;gt; /// 取得DB連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; private string GetConnection(string databaseName) { var connection = this._configuration.GetValue&amp;lt;string&amp;gt;($&amp;quot;ConnectionString:{databaseName}&amp;quot;); return connection; } 完整StartUp。
-public class Startup { /// &amp;lt;summary&amp;gt; /// Startup /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;configuration&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public Startup(IConfiguration configuration) { this.</description>
+感謝同事協助指正，appsettings 並不完全等同於 dotnet framework 的 Webconfig，而是 core 將原本全部擠在 Webconfig 的地方拆分歸類在不同地方，例如：Nuget 套件就歸在 csproj、appsettings 區塊就是 Core 的 appsettings。
+那 Core 難道就完全不需要 Webconfig 了嗎？
+倒也不是，像是我們公司的 Core 專案還是會加上 Webconfig 檔案，內容就主要做為設定 CI 建置的調整、或是對 IIS 的一些細部設定，還是可以透過 Webconfig 來做，可供大家使用上做參考。
+{ &amp;quot;Logging&amp;quot;: { &amp;quot;LogLevel&amp;quot;: { &amp;quot;Default&amp;quot;: &amp;quot;Information&amp;quot;, &amp;quot;Microsoft&amp;quot;: &amp;quot;Warning&amp;quot;, &amp;quot;Microsoft.Hosting.Lifetime&amp;quot;: &amp;quot;Information&amp;quot; } }, &amp;quot;ConnectionString&amp;quot;: { &amp;quot;Northwind&amp;quot;: &amp;quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&amp;quot; } } 在 StartUp 拿取 connetcion。</description>
     </item>
     
     <item>
@@ -209,18 +204,12 @@ public class Startup { /// &amp;lt;summary&amp;gt; /// Startup /// &amp;lt;/summ
       <pubDate>Fri, 22 Jan 2021 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/</guid>
-      <description>前言 前面我們已經練習過使用Dapper，剛好前輩提起EF也是需要練習熟悉的，就做了一個EF Core的版本，基本上內容與先前API 第二版本大致相同，這邊就只會列出差異部分與碰到的問題。
-本文 一、首先我們會需要先安裝三個EF需要使用到的Nuget 套件。 分別是：
-   Nuget名稱 安裝地點     EntityFrameworkCore Repository   EntityFrameworkCore.SqlServer Repository   EntityFrameworkCore.Tools Controller    二、接下來需要輸入指令建立EFCore所使用的DBContext。 完整指令如下：
+      <description>前言 前面我們已經練習過使用 Dapper，剛好前輩提起 EF 也是需要練習熟悉的，就做了一個 EF Core 的版本，基本上內容與先前 API 第二版本大致相同，這邊就只會列出差異部分與碰到的問題。
+本文 一、首先我們會需要先安裝三個 EF 需要使用到的 Nuget 套件。 分別是：
+   Nuget名稱 安裝地點     EntityFrameworkCore Repository   EntityFrameworkCore.SqlServer Repository   EntityFrameworkCore.Tools Controller    二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。 完整指令如下：
 Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force 這邊提一下指令由前到後介紹：
-Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與DB連線字串，然後指定所使用的DB是SQL server。
--OutputDir Conditions 這邊是生成檔案放置地點。
--Tables Users 指定的Table名稱。
--context AccountContext 這是會生成的DBContext檔案名稱，這邊我取名為AccountContext。
--Project WebApiEFCoreRepository -force 指定生成在Repository專案，最後的force其實第一次生成DBContext時不用加，但後續要再加Table的時候可能會用上；至於我為甚麼留著呢？那當然是因為 懶惰
-三、建完之後步驟。 指令建出來的context檔案其中有一段DB連線的地方這邊可以先拿掉，之後我們會使用注入的方式拿取連線字串。
-接下來建立IAccountRepository
-public interface IAccountRepository { /// &amp;lt;summary&amp;gt; /// 取得單筆帳號資訊 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public AccountCondition GetAccount(string account); /// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountCondition&amp;gt; GetAccountList(); /// &amp;lt;summary&amp;gt; /// 新增帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool AddAccount(AccountCondition condition); /// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool RemoveAccount(string account); /// &amp;lt;summary&amp;gt; /// 更新帳號資訊 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool UpdateAccount(AccountCondition condition); /// &amp;lt;summary&amp;gt; /// 忘記密碼 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;condition&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool ForgetPassword(AccountCondition condition); } 實作AccountRepository</description>
+Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。
+-OutputDir Conditions 這邊是生成檔案放置地點。</description>
     </item>
     
     <item>
@@ -229,23 +218,15 @@ public interface IAccountRepository { /// &amp;lt;summary&amp;gt; /// 取得單�
       <pubDate>Sat, 26 Dec 2020 19:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/</guid>
-      <description>前言 API第二階段告一段了，此篇整理一下這次所做API會需要注意的事項。
-本文 1、API驗證欄位。 在這次API會看到在新增、更新、刪除資料時，第一件事都會檢查欄位是否有缺少，這邊也是我剛開始寫API常會遺忘的事情，之前也常被前輩叮嚀；現在完成的API架構屬於前、後端分離，首先我們不能預設前端會是哪些Ex:網頁、Android、Ios等，當然也不能預設串接API那一方一定會依照我們所開的規格輸入。
- 簡單來說：『製作API時，你永遠不能相信你的前端。』  (希望我的前端不會看到這一篇&amp;hellip;)
-回歸重點，這裡不是要大家去前、後端對立(請不要劃錯重點XD)，而是要有預備心態，當今天API路徑被其他人知道、或是前端頁面因為某些原因漏傳了幾個參數，此時可能會造成資料庫形成髒資料、或是被刪除了某些必要資料。
- 在製作API時前輩也叮嚀過，自己做出來的API就是死命用不同的方式打掛他測試就對了。  或是可以跟別人交換測試API，自己測有盲點別人幫你測很快就會找到問題。
-當然最好的方式是使用單元測試、或是有QA團隊幫忙監控產品品質，但畢竟大家所處環境不同，不是哪裡都有QA團隊、或是時間趕根本沒時間給你寫單元測試(我沒有在暗指&amp;hellip;)，在此當作提醒分享給大家。
-2、錯誤訊息處理。 這次我的作法當欄位有缺少時是直接throw new exception，大家都有不同的做法，個人傾向當欄位缺少這種比較顯而易見的就是直接讓他報錯；那如果是ㄧ些沒被發現的錯誤、或是要記Log這種，我們公司目前的做法是使用Nlog搭配Exceptionless做紀錄。
-3、Dapper寫法。 這次Repository使用Dapper時會看到有以下這種寫法。
-var parameters = new DynamicParameters(); parameters.Add(&amp;quot;@Password&amp;quot;, condition.Password, DbType.String); parameters.Add(&amp;quot;@Account&amp;quot;, condition.Account,DbType.String); 在加入變數給Dapper時預先給了DbType，這是之前在看前輩的Code時發現他會這樣寫，細問之下才知道原來Dapper在未指定欄位的型態時，它會用猜的來決定變數型態，因此會大大影響執行效能，所以後來使用Dapper都會順手加上欄位對應的型態。
-若想詳細知道內容可參考這篇： Dapper 用起來很友善，但是預設的參數型別對執行計劃不太友善。
-4、正則表達式。 這次檢查信箱是否合法寫法是&amp;hellip;
-private bool CheckMailFormate(string email) { try { var mail = new MailAddress(email); return true; } catch { return false; } } 這是剛好看到原來.NET有提供這種檢查方式，平常我們的做法可能是會使用正則表達式，它能夠更細部的規範到底可以輸入哪些字元。
-有興趣的可以參考以下： .NET 規則運算式
-總結 剛開始寫程式很容易進入一種走火入魔階段，一開始就想要寫得很好，思考半天卻甚麼都沒寫出來、或是參考別人程式後複製貼上，根本也不知道為甚麼別人這樣寫。
-這邊一開始也是受到滿多前輩的幫助，大致上可以概括成：
- 先求有，再求好。  例如：看到別人寫了一串很潮的Lambda語法一行就解決了，但根本也不知道他在做甚麼；其實就可以退回到最原始的寫法，先使用For迴圈或是Foreach，完成後再來思考怎麼改進自己的程式、或是詢問別人為甚麼這樣寫。
-以上分享，希望對大家能有所幫助。</description>
+      <description>前言 API 第二階段告一段了，此篇整理一下這次所做 API會 需要注意的事項。
+本文 1、API 驗證欄位。 在這次 API 會看到在新增、更新、刪除資料時，第一件事都會檢查欄位是否有缺少，這邊也是我剛開始寫 API 常會遺忘的事情，之前也常被前輩叮嚀；現在完成的 API 架構屬於前、後端分離，首先我們不能預設前端會是哪些Ex:網頁、Android、Ios 等，當然也不能預設串接 API 那一方一定會依照我們所開的規格輸入。
+ 簡單來說：『製作 API 時，你永遠不能相信你的前端。』  (希望我的前端不會看到這一篇&amp;hellip;)
+回歸重點，這裡不是要大家去前、後端對立(請不要劃錯重點XD)，而是要有預備心態，當今天 API 路徑被其他人知道、或是前端頁面因為某些原因漏傳了幾個參數，此時可能會造成資料庫形成髒資料、或是被刪除了某些必要資料。
+ 在製作 API 時前輩也叮嚀過，自己做出來的 API 就是死命用不同的方式打掛他測試就對了。  或是可以跟別人交換測試 API，自己測有盲點別人幫你測很快就會找到問題。
+當然最好的方式是使用單元測試、或是有 QA 團隊幫忙監控產品品質，但畢竟大家所處環境不同，不是哪裡都有QA團隊、或是時間趕根本沒時間給你寫單元測試(我沒有在暗指&amp;hellip;)，在此當作提醒分享給大家。
+2、錯誤訊息處理。 這次我的作法當欄位有缺少時是直接 throw new exception，大家都有不同的做法，個人傾向當欄位缺少這種比較顯而易見的就是直接讓他報錯；那如果是ㄧ些沒被發現的錯誤、或是要記 Log 這種，我們公司目前的做法是使用 Nlog 搭配 Exceptionless 做紀錄。
+3、Dapper 寫法。 這次 Repository 使用 Dapper 時會看到有以下這種寫法。
+var parameters = new DynamicParameters(); parameters.Add(&amp;quot;@Password&amp;quot;, condition.Password, DbType.String); parameters.Add(&amp;quot;@Account&amp;quot;, condition.Account,DbType.String); 在加入變數給 Dapper 時預先給了 DbType，這是之前在看前輩的 Code 時發現他會這樣寫，細問之下才知道原來 Dapper 在未指定欄位的型態時，它會用猜的來決定變數型態，因此會大大影響執行效能，所以後來使用Dapper都會順手加上欄位對應的型態。</description>
     </item>
     
     <item>
@@ -255,11 +236,10 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-3/</guid>
       <description>本文 繼續接著進行後續步驟。
-刪除使用者 1、建立 空的Controller。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;parameter&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpDelete] public ResultViewModel RemoveAccount([FromBody]AccountParameter parameter) { } 2、建立 Service介面。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info); 3、建立 空的Service實作。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info) { throw new NotImplementedException(); } 4、建立 Repository介面。
-/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;account&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool RemoveAccount(string account); 5、實作 Repository。</description>
+刪除使用者 1、建立 空的 Controller。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;parameter&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpDelete] public ResultViewModel RemoveAccount([FromBody]AccountParameter parameter) { } 2、建立 Service 介面。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info); 3、建立 空的 Service 實作。
+/// &amp;lt;summary&amp;gt; /// 刪除帳號 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;info&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public ResultDto RemoveAccount(AccountInfoModel info) { throw new NotImplementedException(); } 4、建立 Repository 介面。</description>
     </item>
     
     <item>
@@ -270,11 +250,10 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-2/</guid>
       <description>本文 先來看進度表。
  1、新增使用者。 2、取得所有使用者。 3、取得個別使用者。 4、刪除使用者。 5、使用者更新基本資料。 6、忘記密碼。  既然已經完成取得個別使用者，那我們就從取得帳號列表接續進行。
-取得帳號列表 1、先建立一個空的Controller方法，這邊因為取得List，所以會是一個Array使用IEnumerable來包Model。
-/// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpGet] public IEnumerable&amp;lt;AccountViewModel&amp;gt; GetAccountList() { } 2、建立 取得帳號列表Service介面。
-/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList(); 3、實作 取得帳號列表空的Service。
-/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList() { throw new NotImplementedException(); } 4、建立 取得帳號列表Repository介面。
-/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDataModel&amp;gt; GetAccountList(); 5、實作 取得帳號列表Repository方法。</description>
+取得帳號列表 1、先建立一個空的 Controller 方法，這邊因為取得 List，所以會是一個 Array 使用 IEnumerable 來包 Model。
+/// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; [Route(&amp;quot;&amp;quot;)] [HttpGet] public IEnumerable&amp;lt;AccountViewModel&amp;gt; GetAccountList() { } 2、建立 取得帳號列表 Service 介面。
+/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList(); 3、實作 取得帳號列表空的 Service。
+/// &amp;lt;summary&amp;gt; /// 取得帳號列表 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IEnumerable&amp;lt;AccountDto&amp;gt; GetAccountList() { throw new NotImplementedException(); } 4、建立 取得帳號列表 Repository 介面。</description>
     </item>
     
     <item>
@@ -284,7 +263,7 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/</guid>
       <description>本文 進度欄。 這邊附上同事提供的建一個新專案需要完成的步驟，我加以改成自己習慣的方式。 再次幫推廣他的部落格
- 1. 建立 Service 2. 建立 Repository 3. 建立 FirstController 要傳接的Model(Parameter、ViewModel) 4. 建立空的 FirstController (First = 主要功能) 5. 建立 FirstService 要傳接的Model(InfoModel、Dto) 6. 建立 FirstService 介面 和一個空的 GetXXX 方法（XXX = 查詢之類的） 7. 建立 FirstRepository 要傳接的Model(Condition、DataModel) 8. 建立 FirstRepository 介面 和一個空的 GetXXX 方法 9. 將 Service 注入到 Controller, 將 Repository 注入到 Service 10. 安裝 AutoMapper 11. 將 AutoMapper 注入到 Controller, Service 12. Controller Get 方法和 Service Get 方法對接 13.</description>
+ 1. 建立 Service 2. 建立 Repository 3. 建立 FirstController 要傳接的 Model(Parameter、ViewModel) 4. 建立空的 FirstController (First = 主要功能) 5. 建立 FirstService 要傳接的 Model(InfoModel、Dto) 6. 建立 FirstService 介面 和一個空的 GetXXX 方法（XXX = 查詢之類的） 7. 建立 FirstRepository 要傳接的 Model(Condition、DataModel) 8. 建立 FirstRepository 介面 和一個空的 GetXXX 方法 9. 將 Service 注入到 Controller, 將 Repository 注入到 Service 10. 安裝 AutoMapper 11. 將 AutoMapper 注入到 Controller, Service 12. Controller Get 方法和 Service Get 方法對接 13.</description>
     </item>
     
     <item>
@@ -294,12 +273,11 @@ private bool CheckMailFormate(string email) { try { var mail = new MailAddress(e
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</guid>
       <description>前言 前面介紹了三層式架構、DI，接下來就是要來實做啦。
-這次的實作會自己設計一張Table，並設計API情境，當練習寫SPEC；所以這篇是前置動作準備。
-本文 1、資料庫準備。 首先這次打算做一個使用者管理功能，所以先來建造Table，就直接放在先前的Norwind底下就可以了。
-CREATE TABLE Users ( Idx INT IDENTITY, Account varchar(30) PRIMARY KEY NOT NULL, Password varchar(50) NOT NULL, Phone varchar(20) NOT NULL, Email varchar(50) NOT NULL, CreateDate DATETIME NOT NULL, ModifyDate DATETIME NOT NULL, ModifyUser varchar(30) NOT NULL ); 建立完後重新整理即可在Northwind底下看到新Table。
+這次的實作會自己設計一張 Table，並設計 API 情境，當練習寫 SPEC；所以這篇是前置動作準備。
+本文 1、資料庫準備。 首先這次打算做一個使用者管理功能，所以先來建造 Table，就直接放在先前的 Norwind 底下就可以了。
+CREATE TABLE Users ( Idx INT IDENTITY, Account varchar(30) PRIMARY KEY NOT NULL, Password varchar(50) NOT NULL, Phone varchar(20) NOT NULL, Email varchar(50) NOT NULL, CreateDate DATETIME NOT NULL, ModifyDate DATETIME NOT NULL, ModifyUser varchar(30) NOT NULL ); 建立完後重新整理即可在 Northwind 底下看到新 Table。
 新增一筆資料測試。
-Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,[CreateDate] ,[ModifyDate] ,[ModifyUser]) values(&#39;ss123456&#39;,&#39;esetttt&#39;,&#39;0917444&#39;,&#39;ew@gmail.com&#39;,GETDATE(),GETDATE(),&#39;system&#39;) 2、API SPEC。 首先我們會需要的功能有：
-   功能     1、新增使用者。   2、取得所有使用者。   3、取得個別使用者。   4、刪除使用者。   5、使用者更新基本資料。   6、忘記密碼。    功能細項規格：</description>
+Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,[CreateDate] ,[ModifyDate] ,[ModifyUser]) values(&#39;ss123456&#39;,&#39;esetttt&#39;,&#39;0917444&#39;,&#39;ew@gmail.com&#39;,GETDATE(),GETDATE(),&#39;system&#39;) 2、API SPEC。 首先我們會需要的功能有：</description>
     </item>
     
     <item>
@@ -309,27 +287,22 @@ Insert into [Northwind].[dbo].[Users] ([Account] ,[Password] ,[Phone] ,[Email] ,
       
       <guid>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</guid>
       <description>前言 終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。
-本文 講解DI前會有兩個先行觀念需要了解，分別是：
+本文 講解 DI 前會有兩個先行觀念需要了解，分別是：
  1、DIP(Dependency Inversion Principle) 依賴反轉。 2、IOC(Inversion of Control) 控制反轉。  1、DIP 依賴反轉。 複習一下前面講解到的依賴反轉概念：
-我們了解到DIP最重要的目標是要解除物件與物間之間直接依賴的關係。
+我們了解到 DIP 最重要的目標是要解除物件與物間之間直接依賴的關係。
 不熟的同學起點這複習。
 2、IOC 控制反轉。 那甚麼又是控制反轉呢？
 控制反轉最重要的概念是：
 把對於某個物件的控制權移轉給第三方容器。 甚麼意思呢？
 回憶一下，還記得前面實作的第一版API嗎？
-我們的Controller在跟Repository要資料的時候是怎麼做的呢？ 看到關鍵字了嗎？
+我們的 Controller 在跟 Repository 要資料的時候是怎麼做的呢？ 看到關鍵字了嗎？
 沒有？那這樣呢？
-就是那個NEW代表著我們的Controller其實是直接依賴Repository的。
+就是那個 NEW 代表著我們的 Controller 其實是直接依賴 Repository 的。
 他們之間的關係如下圖。
-所以理想中IOC概念我們的關係圖應該長這樣： 我們的Controller應該把對於Repository的控制權移交給IOC。
-3、DI 依賴注入。 講了這麼多那所以甚麼是DI呢？
-聰明的同學應該發現了上述的DIP、IOC都只是一種精神、概念；而DI就是實現上述兩種精神的方法。
-講解DI的精神最經典的就是：  好萊塢原則 (Hollywood Principle)
-don‘t call us, we‘ll call you
-在好萊塢演員要應徵的時候僅需要把履歷上繳，之後剩下的就只能等待演藝公司通知。
-這就是一種被動接受的方式。  所以呢有了DI的概念我們理想中的關係圖應該要變成： 4、注入的方式。 注入的方式有以下三種：
- a、建構式注入 (Constructor Injection) b、設值方法注入 (Setter Injection) c、介面注入 (Interface Injection)  以我們先前的Controller進行示範
-public class ProductContorller : ControllerBase { //a、建構式注入 private readonly IProductRepository _productRepository; public ProductContorller( IProductRepository productRepository) { this.</description>
+所以理想中 IOC 概念我們的關係圖應該長這樣： 我們的 Controller 應該把對於 Repository 的控制權移交給 IOC。
+3、DI 依賴注入。 講了這麼多那所以甚麼是 DI 呢？
+聰明的同學應該發現了上述的 DIP、IOC 都只是一種精神、概念；而 DI 就是實現上述兩種精神的方法。
+講解 DI 的精神最經典的就是：  好萊塢原則 (Hollywood Principle)</description>
     </item>
     
     <item>
@@ -338,11 +311,11 @@ public class ProductContorller : ControllerBase { //a、建構式注入 private 
       <pubDate>Wed, 25 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/automapper-%E9%A1%9E%E5%88%A5%E8%BD%89%E6%8F%9B%E5%A5%BD%E7%94%A8%E5%B7%A5%E5%85%B7/</guid>
-      <description>前言 上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的Model，那要怎麼將各個Model轉換呢？
-難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具Automapper了。
-本文 基本用法 首先到Nuget安裝Automapper。 安裝好後我們建立兩個測試用的Model
-private class Model1 { public string Name { get; set; } public int Id { get; set; } } private class Model2 { public string Name { get; set; } public int Id { get; set; } } 使用Automapper對應Model1到Model2。
-var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.CreateMap&amp;lt;Model1, Model2&amp;gt;()); //從左邊Model對應到右邊 var mapper = config.</description>
+      <description>前言 上一篇介紹了三層式架構，有些人可能會有疑問，三層各有自己的 Model ，那要怎麼將各個 Model 轉換呢？
+難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具 Automapper了。
+本文 基本用法 首先到 Nuget 安裝 Automapper。 安裝好後我們建立兩個測試用的 Model
+private class Model1 { public string Name { get; set; } public int Id { get; set; } } private class Model2 { public string Name { get; set; } public int Id { get; set; } } 使用 Automapper 對應 Model1 到 Model2。
+var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.</description>
     </item>
     
     <item>
@@ -354,15 +327,11 @@ var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var con
       <description>前言 接下來開始講解三層式架構，這是工作以來第一個學會的架構，也使用了一段時間，就以這段時間自己的體悟來敘述。
 本文 為甚麼要分層呢？ 前一篇我們提到，如果程式全部一條龍寫到底，後續會產生很多問題，難以維護、難以閱讀、更甚至是萬一人家要接手你的程式碼，這時候改Ａ壞Ｂ，耦合度過高的情況下，你只能祈禱接手的人不知道你住哪。
 這種情況下只有自己寫可能還好，那如果需要跟人合作呢？
-大家可能容易出現重複的Code，也難以說明誰該負責寫哪部分。
+大家可能容易出現重複的 Code，也難以說明誰該負責寫哪部分。
 這時候有一個好的架構，就很重要了。
-優缺點    優點     1、較好形成一個規範，可做為標準化流程。   2、提高重用性，透過分層將相同類型的程式碼放在一塊。   3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。   4、具有好的開放性、可擴充性優點。   5、降低程式碼之間的依賴，每層溝通是透過介面。   6、提高系統安全性，因為使用者需要透過Service層才有機會與下一層Repository撈取資料。       缺點     1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。   2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。   3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。    簡介 三層式架構顧名思義，主要分為了三層：
+優缺點    優點     1、較好形成一個規範，可做為標準化流程。   2、提高重用性，透過分層將相同類型的程式碼放在一塊。   3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。   4、具有好的開放性、可擴充性優點。   5、降低程式碼之間的依賴，每層溝通是透過介面。   6、提高系統安全性，因為使用者需要透過 Service 層才有機會與下一層 Repository 撈取資料。       缺點     1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。   2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。   3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。    簡介 三層式架構顧名思義，主要分為了三層：
  1、Controller：控制層，作為接口。 2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。 3、Repository：倉儲層，作為資料存儲的一層。 4、Common：共用層，作為存放各層會用到的相同東西。  他們之間的關係如下圖:
-Service 從最重要的Service層開始講解起。
-在我們程式中『最重要』的就屬於商業邏輯了，這一層是會特別關注的一層；這邊大家可能會問，那商業邏輯是指哪些呢？
-我自己認為最簡單分辨的方式，舉凡任何需要對資料特別處理的地方都會是放在這一層，如常見的：登入驗證、加減法運算、確認是否驗證成功等。
-Controller 在我們WebAPI中，Controller就屬於接口，負責處理Router，如常見的：Get、Post、Patch等，都會是在這層負責接應相對應的路由。
-Repository 資料倉儲層，這層主要處理『有關資料串接』的部分，如：資料庫連接、下SQL取Table資料等，都會是在Repository處理。</description>
+Service 從最重要的 Service 層開始講解起。</description>
     </item>
     
     <item>
@@ -371,15 +340,15 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
       <pubDate>Tue, 10 Nov 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-5-%E5%B0%8F%E7%B5%90%E5%88%86%E6%9E%90/</guid>
-      <description>本文 先前完成了API，接下來聊聊目前這樣做法可能會碰到的問題。
-1、程式碼四散。 現在做法是從Controller決定執行動作後，到Repository撈取DB資料後回傳json；那麼今天假如有要處理的關鍵商業邏輯，是該寫在Controller或是Repository呢？
-又如果今天多人合作的情況下，甲覺得應該放在Repository、而乙覺得應該放在Controller，這樣就會造成程式碼四散，對後續要維護的人造成很大的困擾。
-2、容易有重工。 現行做法如果多人合作的時候，可以用Repository名稱來定義是從哪個DB撈取資料；Controller也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的Model不同因此再合作的時候建了一堆不同的Model出來，卻其實是撈同一個Table的資料，應該想辦法避免做重複的事情。
-3、耦合過高。 現行做法很容易再單一的class做了太多事，還記得前幾篇提到的SOLID原則嗎？若所有事情都包在同一個class中完成，藕合度就會過高這種情況應該要想辦法解決。
-那有甚麼好方法呢？ 像傳統的MVC就是把程式分成Model-View-Controller。
- 1、Model：處理商業邏輯、資料傳輸的Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。  透過將程式分開讓藕合性降低、也讓後續維護者好維護。
-其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將API實作。
-參考連結  1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼? 我只知道三層肉  </description>
+      <description>本文 先前完成了 API，接下來聊聊目前這樣做法可能會碰到的問題。
+1、程式碼四散。 現在做法是從 Controller 決定執行動作後，到 Repository 撈取 DB 資料後回傳 json；那麼今天假如有要處理的關鍵商業邏輯，是該寫在 Controller 或是 Repository 呢？
+又如果今天多人合作的情況下，甲覺得應該放在 Repository、而乙覺得應該放在 Controller ，這樣就會造成程式碼四散，對後續要維護的人造成很大的困擾。
+2、容易有重工。 現行做法如果多人合作的時候，可以用 Repository 名稱來定義是從哪個 DB 撈取資料； Controller 也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的 Model 不同因此再合作的時候建了一堆不同的 Model 出來，卻其實是撈同一個 Table 的資料，應該想辦法避免做重複的事情。
+3、耦合過高。 現行做法很容易再單一的 class 做了太多事，還記得前幾篇提到的 SOLID 原則嗎？若所有事情都包在同一個 class中完成，藕合度就會過高這種情況應該要想辦法解決。
+那有甚麼好方法呢？ 像傳統的 MVC 就是把程式分成 Model-View-Controller。
+ 1、Model：處理商業邏輯、資料傳輸的 Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。  透過將程式分開讓藕合性降低、也讓後續維護者好維護。
+其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將 API 實作。
+參考連結  1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼?</description>
     </item>
     
     <item>
@@ -388,12 +357,10 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
       <pubDate>Thu, 29 Oct 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</guid>
-      <description>本文 REST是Representational State Transfer的縮寫，是一種設計模式，RESTful API就是遵循這種設計模式所創造的API。
-那RESTful是怎樣的一個設計模式呢? 首先組成RESTful API三大要素有:
-   組成要素 說明     1、Nouns (名詞) 一組獨一無二的URL用來定義網址。   2、Verbs (動詞) 用來描述對URL所執行的動作，也就是HTTP Method。   3、Content Types(資源呈現方式) API資源呈現的方式 EX:JSON、XML。    以前幾篇的API為範例:
-   Method router 說明     GET api/Product 取得商品列表   POST api/Product 新增商品   PATCH api/Product 修改商品資訊   DELETE api/Product/85 商除指定商品    固定的Router，但使用Method來區分要進行的動作，好處是不會有五花八門的router出現，一旦用了此種模式，大家就能輕易區分API會做些甚麼，我該取用哪隻API。
-常見的Method有以下幾種:
-   Method 說明     GET 讀取資料   POST 新增資料，亦可作為其他動詞使用。   PUT 更新   PATCH 部分更新資料   DELETE 刪除資料    備註: POST被視作萬用動詞，可以作為其他動作。</description>
+      <description>本文 REST 是 Representational State Transfer 的縮寫，是一種設計模式，RESTful API 就是遵循這種設計模式所創造的 API。
+那 RESTful 是怎樣的一個設計模式呢? 首先組成 RESTful API 三大要素有:
+   組成要素 說明     1、Nouns (名詞) 一組獨一無二的 URL 用來定義網址。   2、Verbs (動詞) 用來描述對 URL 所執行的動作，也就是 HTTP Method。   3、Content Types(資源呈現方式) API 資源呈現的方式 EX:JSON、XML。    以前幾篇的 API 為範例:
+   Method router 說明     GET api/Product 取得商品列表   POST api/Product 新增商品   PATCH api/Product 修改商品資訊   DELETE api/Product/85 商除指定商品    固定的 Router，但使用 Method 來區分要進行的動作，好處是不會有五花八門的 router 出現，一旦用了此種模式，大家就能輕易區分 API 會做些甚麼，我該取用哪隻 API。</description>
     </item>
     
     <item>
@@ -412,12 +379,12 @@ Repository 資料倉儲層，這層主要處理『有關資料串接』的部分
       <pubDate>Tue, 29 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-2/</guid>
-      <description>前言 我們接續著上次的介紹，會把CRUD功能補齊。
-CRUD指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。
-本文 新增 1、首先我們先建立一個用來回傳的Model。
+      <description>前言 我們接續著上次的介紹，會把 CRUD 功能補齊。
+CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。
+本文 新增 1、首先我們先建立一個用來回傳的 Model。
 建立 ResultModel
-public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;/summary&amp;gt;  public bool Result { get; set; } /// &amp;lt;summary&amp;gt;  /// 提示訊息  /// &amp;lt;/summary&amp;gt;  public string Message { get; set; } } 2、把新增商品的Repository完成。
-新增商品Repository
+public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;/summary&amp;gt;  public bool Result { get; set; } /// &amp;lt;summary&amp;gt;  /// 提示訊息  /// &amp;lt;/summary&amp;gt;  public string Message { get; set; } } 2、把新增商品的 Repository 完成。
+新增商品 Repository
 /// &amp;lt;summary&amp;gt; /// 新增一筆商品 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;productModel&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool CreateProduct(ProductModel productModel) { var sql = @&amp;quot;INSERT INTO products (productname, supplierid, categoryid, quantityperunit, unitprice, unitsinstock, unitsonorder, reorderlevel, discontinued) VALUES (@ProductName, @SupplierID, @CategoryID, @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued) &amp;quot;; var parameters = new DynamicParameters(); parameters.</description>
     </item>
     
@@ -427,11 +394,11 @@ public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;
       <pubDate>Tue, 22 Sep 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapper-1/</guid>
-      <description>前言 終於進入WebApi部分，也是目前工作最常做的一部分。
-這邊會從原始MVC作為開頭介紹，內容會帶入Dapper、Restful介紹，以及一些好用小工具分享。
-本文 一、事前準備 1、首先我們先建立一個core專案。 選擇API建立 2、資料庫準備。 先到此連結下載北風資料庫
-點選instnwnd.sql，選擇Download。 會看到瀏覽器顯示一長串SQL語法，把這邊全部複製起來。 到SSMS點選新增查詢，把語法貼上後執行。 看到資料庫出現Northwind代表成功。 二、API開發 1、首先我們建立一個Models資料夾。 建立一個ProductModel類別，對應北風資料庫的Products。 建立 ProductModel
-public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  /// &amp;lt;/summary&amp;gt;  public int ProductID { get; set; } /// &amp;lt;summary&amp;gt;  /// 商品名稱  /// &amp;lt;/summary&amp;gt;  public string ProductName { get; set; } /// &amp;lt;summary&amp;gt;  /// 供應商ID  /// &amp;lt;/summary&amp;gt;  public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt;  /// 種類ID  /// &amp;lt;/summary&amp;gt;  public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位數量  /// &amp;lt;/summary&amp;gt;  public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位價格  /// &amp;lt;/summary&amp;gt;  public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位稅額  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位訂購價  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt;  /// 重新訂購等級  /// &amp;lt;/summary&amp;gt;  public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt;  /// 是否已停產  /// &amp;lt;/summary&amp;gt;  public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看DB內資料類型</description>
+      <description>前言 終於進入 WebApi 部分，也是目前工作最常做的一部分。
+這邊會從原始 MVC 作為開頭介紹，內容會帶入 Dapper、Restful 介紹，以及一些好用小工具分享。
+本文 一、事前準備 1、首先我們先建立一個 core 專案。 選擇 API 建立 2、資料庫準備。 先到此連結下載北風資料庫
+點選 instnwnd.sql，選擇 Download。 會看到瀏覽器顯示一長串 SQ L語法，把這邊全部複製起來。 到 SSMS 點選新增查詢，把語法貼上後執行。 看到資料庫出現 Northwind 代表成功。 二、API 開發 1、首先我們建立一個 Models 資料夾。 建立一個 ProductModel 類別，對應北風資料庫的 Products。 建立 ProductModel
+public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  /// &amp;lt;/summary&amp;gt;  public int ProductID { get; set; } /// &amp;lt;summary&amp;gt;  /// 商品名稱  /// &amp;lt;/summary&amp;gt;  public string ProductName { get; set; } /// &amp;lt;summary&amp;gt;  /// 供應商ID  /// &amp;lt;/summary&amp;gt;  public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt;  /// 種類ID  /// &amp;lt;/summary&amp;gt;  public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位數量  /// &amp;lt;/summary&amp;gt;  public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位價格  /// &amp;lt;/summary&amp;gt;  public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位稅額  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位訂購價  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt;  /// 重新訂購等級  /// &amp;lt;/summary&amp;gt;  public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt;  /// 是否已停產  /// &amp;lt;/summary&amp;gt;  public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看 DB 內資料類型</description>
     </item>
     
   </channel>

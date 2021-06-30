@@ -71,7 +71,7 @@
     "datePublished": "2021-05-20 01:40:45  UTC",
     "dateModified" : "2021-05-20 01:40:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/message-queue-4rabbitmq\/",
-    "wordCount" : "470",
+    "wordCount" : "534",
     "keywords" : ["Message Queue","RabbitMQ", "Sian"]
 }
 </script>
@@ -173,8 +173,8 @@
           <h2 id="本文">本文</h2>
 <h3 id="publishsubscribe">Publish/Subscribe</h3>
 <p><img src="https://i.imgur.com/vhGOaMU.jpg" alt=""></p>
-<p>我們來練習使用Exchange透過Fanout的方式發送訊息給所有Queue。</p>
-<p>現在我們目標是要發送log給所有Queue。<br>
+<p>我們來練習使用 Exchange 透過 Fanout 的方式發送訊息給所有 Queue。</p>
+<p>現在我們目標是要發送 log 給所有 Queue。<br>
 一樣先建立Publisher。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
@@ -212,7 +212,7 @@
                    ? string.Join(&quot; &quot;, args)
                    : &quot;info: Hello World!&quot;);
         }
-</code></pre><p>一樣會創建兩個Reciver</p>
+</code></pre><p>一樣會創建兩個 Reciver</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
         
@@ -250,26 +250,26 @@
                 Console.WriteLine(&quot;請按任意鍵離開!&quot;);
                 Console.ReadLine();
             }
-</code></pre><p>首先我們先使用Publisher發送log觀察RabbitMQ。</p>
+</code></pre><p>首先我們先使用 Publisher 發送 log 觀察 RabbitMQ。</p>
 <p><img src="https://i.imgur.com/hBQstrK.jpg" alt=""></p>
-<p>看一下RabbitMQ目前的狀態，多出了一個Exchange。<br>
+<p>看一下 RabbitMQ 目前的狀態，多出了一個 Exchange。<br>
 <img src="https://i.imgur.com/xZzWclx.jpg" alt=""></p>
-<p>接著就運行我們的兩個Reciver看看吧：<br>
+<p>接著就運行我們的兩個 Reciver 看看吧：<br>
 打開之後發送兩個訊息<br>
 <img src="https://i.imgur.com/sWGm8Ro.jpg" alt=""></p>
 <p>接收結果：<br>
 <img src="https://i.imgur.com/Wt9t9c4.jpg" alt=""></p>
-<p>我們再回頭看一下RabbitMQ狀態。<br>
+<p>我們再回頭看一下 RabbitMQ 狀態。<br>
 <img src="https://i.imgur.com/duBfjEI.jpg" alt=""></p>
-<p>看到多出了兩個隨機的Queue。<br>
+<p>看到多出了兩個隨機的 Queue。<br>
 接下來我們把應用程式關閉再來觀察看看<br>
 <img src="https://i.imgur.com/ZmeXKUH.jpg" alt=""></p>
-<p>Queue就消失啦~~~</p>
-<p>這邊就是簡單的透過Exchange發送Fanout模式練習。</p>
+<p>Queue 就消失啦~~~</p>
+<p>這邊就是簡單的透過 Exchange 發送 Fanout 模式練習。</p>
 <h3 id="routing">Routing</h3>
 <p><img src="https://i.imgur.com/RIyNPmq.jpg" alt=""></p>
-<p>接著是透過Exchange使用direct的方式，直接將Message丟給指定的Queue。</p>
-<p>延續上一個範例，雖然都是log，但我們會想針對某一種型態的log傳給其中一個Reciever接收就好，這次目標就是把Warning的log傳給Reciever2接收即可。</p>
+<p>接著是透過 Exchange 使用 direct 的方式，直接將 Message 丟給指定的 Queue。</p>
+<p>延續上一個範例，雖然都是 log，但我們會想針對某一種型態的 log 傳給其中一個 Reciever 接收就好，這次目標就是把 Warning 的 log 傳給 Reciever2 接收即可。</p>
 <p>Publisher：</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
@@ -308,7 +308,7 @@
             Console.WriteLine(&quot;請按任意鍵離開!&quot;);
             Console.ReadLine();
         }
-</code></pre><p>Reciever1負責拿取Safe的log。</p>
+</code></pre><p>Reciever1 負責拿取 Safe 的 log。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             ConnectionFactory factory = new ConnectionFactory()
@@ -350,7 +350,7 @@
                 Console.ReadLine();
             }
         }
-</code></pre><p>Reciver2負責拿取Warning的log。</p>
+</code></pre><p>Reciver2 負責拿取 Warning 的 log。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             ConnectionFactory factory = new ConnectionFactory()
@@ -392,19 +392,19 @@
                 Console.ReadLine();
             }
         }
-</code></pre><p>接下來我們來進行測試，送出一個Warning的訊息。</p>
+</code></pre><p>接下來我們來進行測試，送出一個 Warning 的訊息。</p>
 <pre><code class="language-shell=" data-lang="shell=">dotnet run warning &quot;你家系統大爆炸!&quot;
 </code></pre><p><img src="https://i.imgur.com/bQL5hlo.jpg" alt=""></p>
-<p>可以觀察到就只有Reciver2有收到訊息。<br>
+<p>可以觀察到就只有 Reciver2 有收到訊息。<br>
 <img src="https://i.imgur.com/dAKL1Jd.jpg" alt=""></p>
-<p>反之如果我們送出一個safe的訊息。</p>
+<p>反之如果我們送出一個 safe 的訊息。</p>
 <pre><code class="language-shell=" data-lang="shell=">dotnet run safe &quot;沒事沒事系統還活著繼續睡!&quot;
 </code></pre><p><img src="https://i.imgur.com/VRl7Tz7.jpg" alt=""></p>
-<p>只有Reciver1會收到訊息。<br>
+<p>只有 Reciver1 會收到訊息。<br>
 <img src="https://i.imgur.com/MThAZE8.jpg" alt=""></p>
 <h2 id="後記">後記</h2>
-<p>這次就介紹Publish/Subscribe、Routing，兩個範例。<br>
-程式一樣會放在GitHub有需要的歡迎取用：<br>
+<p>這次就介紹 Publish/Subscribe、Routing，兩個範例。<br>
+程式一樣會放在 GitHub 有需要的歡迎取用：<br>
 <a href="https://github.com/sunnyday0932/RabbitMQSample/tree/main/PublishSubscribeSample/Sample">Publish/Subscribe Sample</a><br>
 <a href="https://github.com/sunnyday0932/RabbitMQSample/tree/main/RoutingSample/Sample/Sample">Routing Sample</a></p>
 <h2 id="參考連結">參考連結</h2>

@@ -71,7 +71,7 @@
     "datePublished": "2020-12-21 21:50:45  UTC",
     "dateModified" : "2020-12-21 21:50:45  UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/dotnet-core-webapiphase2-2\/",
-    "wordCount" : "885",
+    "wordCount" : "931",
     "keywords" : ["csharp","Core","dotnet", "Sian"]
 }
 </script>
@@ -182,7 +182,7 @@
 </ul>
 <p>既然已經完成取得個別使用者，那我們就從取得帳號列表接續進行。</p>
 <h3 id="取得帳號列表">取得帳號列表</h3>
-<p>1、先建立一個空的Controller方法，這邊因為取得List，所以會是一個Array使用IEnumerable來包Model。</p>
+<p>1、先建立一個空的 Controller 方法，這邊因為取得 List，所以會是一個 Array 使用 IEnumerable 來包 Model。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// 取得帳號列表
         /// &lt;/summary&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
@@ -192,13 +192,13 @@
         {
            
         }
-</code></pre><p>2、建立 取得帳號列表Service介面。</p>
+</code></pre><p>2、建立 取得帳號列表 Service 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public IEnumerable&lt;AccountDto&gt; GetAccountList();
-</code></pre><p>3、實作 取得帳號列表空的Service。</p>
+</code></pre><p>3、實作 取得帳號列表空的 Service。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
@@ -207,13 +207,13 @@
         {
             throw new NotImplementedException();
         }
-</code></pre><p>4、建立 取得帳號列表Repository介面。</p>
+</code></pre><p>4、建立 取得帳號列表 Repository 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public IEnumerable&lt;AccountDataModel&gt; GetAccountList();
-</code></pre><p>5、實作 取得帳號列表Repository方法。</p>
+</code></pre><p>5、實作 取得帳號列表 Repository 方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
@@ -237,7 +237,7 @@
                 return result;
             }
         }
-</code></pre><p>6、回頭接上 取得帳號列表Service方法。</p>
+</code></pre><p>6、回頭接上 取得帳號列表 Service 方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
@@ -257,7 +257,7 @@
 
             return result;
         }
-</code></pre><p>7、最後回到Contoller接上方法。</p>
+</code></pre><p>7、最後回到 Contoller 接上方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
@@ -274,7 +274,7 @@
 </code></pre><p>8、測試：<br>
 <img src="https://i.imgur.com/gBo6pyG.jpg" alt=""></p>
 <h3 id="新增使用者">新增使用者</h3>
-<p>1、建立 Controller要回傳的ViewModel。</p>
+<p>1、建立 Controller 要回傳的 ViewModel。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">     public class ResultViewModel
     {
         /// &lt;summary&gt;
@@ -287,7 +287,7 @@
         /// &lt;/summary&gt;
         public string Message { get; set; }
     }
-</code></pre><p>Contoller要接收的Parameter。</p>
+</code></pre><p>Contoller 要接收的 Parameter。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountParameter
     {
         /// &lt;summary&gt;
@@ -310,7 +310,7 @@
         /// &lt;/summary&gt;
         public string Email { get; set; }
     }
-</code></pre><p>建立空的Controller。</p>
+</code></pre><p>建立空的 Controller。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
@@ -322,7 +322,7 @@
         {
 
         }
-</code></pre><p>2、建立 Service要接收的InfoModel。</p>
+</code></pre><p>2、建立 Service 要接收的 InfoModel。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountInfoModel
     {
         /// &lt;summary&gt;
@@ -345,7 +345,7 @@
         /// &lt;/summary&gt;
         public string Email { get; set; }
     }
-</code></pre><p>建立Service要回傳的Dto。</p>
+</code></pre><p>建立 Service 要回傳的 Dto。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class ResultDto
     {
         /// &lt;summary&gt;
@@ -358,14 +358,14 @@
         /// &lt;/summary&gt;
         public string Message { get; set; }
     }
-</code></pre><p>建立新增帳號的Service介面。</p>
+</code></pre><p>建立新增帳號的 Service 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
         /// &lt;param name=&quot;info&quot;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public ResultDto AddAccount(AccountInfoModel info);
-</code></pre><p>3、建立 空的實作Service介面。</p>
+</code></pre><p>3、建立 空的實作 Service 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
@@ -375,7 +375,7 @@
         {
             throw new NotImplementedException();
         }
-</code></pre><p>4、建立 Repository要接收的Condition。</p>
+</code></pre><p>4、建立 Repository 要接收的 Condition。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">    public class AccountCondition
     {
         /// &lt;summary&gt;
@@ -413,14 +413,14 @@
         /// &lt;/summary&gt;
         public string ModifyUser { get; set; }
     }
-</code></pre><p>建立 Repository介面。</p>
+</code></pre><p>建立 Repository 介面。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
         /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool AddAccount(AccountCondition condition);
-</code></pre><p>5、實作Repository。</p>
+</code></pre><p>5、實作 Repository。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
@@ -462,8 +462,8 @@
                 return result &gt; 0;
             }
         }
-</code></pre><p>6、回頭補上Service。</p>
-<p>首先看一下我們Service需要做的事情有：</p>
+</code></pre><p>6、回頭補上 Service。</p>
+<p>首先看一下我們 Service 需要做的事情有：</p>
 <ul>
 <li>a、所有欄位皆須輸入。</li>
 <li>b、使用者帳號不可重複。</li>
@@ -571,7 +571,7 @@
                 return false;
             }
         }
-</code></pre><p>7、回到Controller接上方法。</p>
+</code></pre><p>7、回到 Controller 接上方法。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
@@ -587,7 +587,7 @@
 
             return result;
         }
-</code></pre><p>8、別忘了補上Service、Controller的Mapping。</p>
+</code></pre><p>8、別忘了補上 Service、Controller 的 Mapping。</p>
 <p>ServiceProfile。</p>
 <pre><code class="language-csharp=" data-lang="csharp=">this.CreateMap&lt;AccountInfoModel, AccountCondition&gt;();
 </code></pre><p>ControllerProfile。</p>
@@ -595,7 +595,7 @@
 this.CreateMap&lt;ResultDto, ResultViewModel&gt;();
 </code></pre><p>9、測試。<br>
 <img src="https://i.imgur.com/IfhipdO.jpg" alt=""></p>
-<p>確認DB。<br>
+<p>確認 DB。<br>
 <img src="https://i.imgur.com/jPiKPiD.jpg" alt=""></p>
 <h2 id="目前進度">目前進度</h2>
 <ul>

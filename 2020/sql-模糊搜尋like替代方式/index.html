@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           SQL 模糊搜尋Like替代方式 | Sian	
+           SQL 模糊搜尋 Like 替代方式 | Sian	
        	
   </title>	
-  <meta name="title" content="SQL 模糊搜尋Like替代方式 | Sian">	
+  <meta name="title" content="SQL 模糊搜尋 Like 替代方式 | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "SQL 模糊搜尋Like替代方式",
-    "headline" : "SQL 模糊搜尋Like替代方式",
-    "description" : "SQL 模糊搜尋Like替代方式",
+    "name" : "SQL 模糊搜尋 Like 替代方式",
+    "headline" : "SQL 模糊搜尋 Like 替代方式",
+    "description" : "SQL 模糊搜尋 Like 替代方式",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -71,7 +71,7 @@
     "datePublished": "2020-11-27 22:19:33  CST",
     "dateModified" : "2020-11-27 22:19:33  CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F\/",
-    "wordCount" : "57",
+    "wordCount" : "90",
     "keywords" : ["SQL", "Sian"]
 }
 </script>
@@ -134,7 +134,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">SQL 模糊搜尋Like替代方式</h1>
+        <h1 class="post-title" itemprop="name headline">SQL 模糊搜尋 Like 替代方式</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
@@ -171,12 +171,12 @@
           
 
           <h2 id="本文">本文</h2>
-<p>今天在查找SQL效能Like會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。</p>
-<p>在處理模糊搜尋的條件常常會使用LIKE'%關鍵字%&lsquo;這種做法，但SQL的索引在LIKE&rsquo;%關鍵字&rsquo;的情況會失效，更不用說使用LIKE'%關鍵字%&lsquo;當資料一大效能真的是非常差。</p>
+<p>今天在查找 SQL 效能 Like 會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。</p>
+<p>在處理模糊搜尋的條件常常會使用 LIKE'%關鍵字%' 這種做法，但 SQL 的索引在 LIKE'%關鍵字' 的情況會失效，更不用說使用 LIKE'%關鍵字%' 當資料一大效能真的是非常差。</p>
 <p>這裡介紹一個替代使用語法 <code>CHARINDEX</code>。<br>
 首先我們先看一下<a href="https://docs.microsoft.com/zh-tw/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver15">MSDN介紹</a>用法。</p>
 <p><img src="https://i.imgur.com/0hSmLxA.jpg" alt=""></p>
-<p>這裡可以知道charindex其實是可以用來計算兩個字元間有多少相同的地方。<br>
+<p>這裡可以知道 charindex 其實是可以用來計算兩個字元間有多少相同的地方。<br>
 現在來測試一下</p>
 <pre><code class="language-sql=" data-lang="sql=">SELECT CHARINDEX('a',' apple is apple')
 </code></pre><p>結果：</p>
@@ -190,8 +190,8 @@
 <pre><code class="language-sql=" data-lang="sql=">SELECT CHARINDEX('a','appleisapple',0)
 </code></pre><p>結果：
 <img src="https://i.imgur.com/s3f58Ld.jpg" alt=""></p>
-<h3 id="替代like的方式">替代LIKE的方式</h3>
-<p>好了說了這麼多到底要怎麼替代LIKE呢？<br>
+<h3 id="替代-like-的方式">替代 LIKE 的方式</h3>
+<p>好了說了這麼多到底要怎麼替代 LIKE 呢？<br>
 可以使用這種方式替代</p>
 <pre><code class="language-sql=" data-lang="sql=">CHARINDEX('模糊搜尋關鍵字', 要搜尋的資料行) &gt; 0
 </code></pre><p>實際測試，使用NorthWind Product Table</p>
@@ -204,12 +204,12 @@
 <pre><code class="language-sql=" data-lang="sql=">SELECT *
   FROM [Northwind].[dbo].[Products]
   where ProductName LIKE '%a%'
-</code></pre><p>使用LIKE結果：
+</code></pre><p>使用 LIKE 結果：
 <img src="https://i.imgur.com/ifZez8O.jpg" alt="">
 <img src="https://i.imgur.com/99RE8FO.jpg" alt=""></p>
 <h3 id="哪種方式比較好">哪種方式比較好？</h3>
-<p>因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下CHARINDEX會比LIKE還要快，但如果有吃到索引LIKE的速度還是優於CHARINDEX的。</p>
-<p>所以如果在非得需要進行LIKE&rsquo;%關鍵字%&lsquo;搜尋資料時，沒辦法吃到索引，就可以使用CHARINDEX來替代LIKE，大家可以自行測試看看。</p>
+<p>因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下 CHARINDEX 會比 LIKE 還要快，但如果有吃到索引 LIKE 的速度還是優於 CHARINDEX 的。</p>
+<p>所以如果在非得需要進行 LIKE'%關鍵字%' 搜尋資料時，沒辦法吃到索引，就可以使用 CHARINDEX 來替代 LIKE，大家可以自行測試看看。</p>
 <h2 id="參考資料">參考資料</h2>
 <ul>
 <li>1、<a href="https://docs.microsoft.com/zh-tw/sql/t-sql/functions/charindex-transact-sql?view=sql-server-ver15">CHARINDEX</a>。</li>
