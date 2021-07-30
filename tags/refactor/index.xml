@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Refactor on Sian</title>
+    <link>https://sunnyday0932.github.io/tags/refactor/</link>
+    <description>Recent content in Refactor on Sian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 30 Jul 2021 02:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/refactor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>重構-Extract Class</title>
+      <link>https://sunnyday0932.github.io/2021/%E9%87%8D%E6%A7%8B-extract-class/</link>
+      <pubDate>Fri, 30 Jul 2021 02:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E9%87%8D%E6%A7%8B-extract-class/</guid>
+      <description>前言 近期上了大神的課，學了滿多重構技巧，還在目瞪口呆慢慢消化吸收中，而手邊又剛好有跟朋友借來的書，決定紀錄一下。
+本文 以前常遇到寫了一個 Class 裡面有很多方法，一眼看下去很難理解內容在做甚麼；而在考慮要拆分的時候就可以使用 Extract Class 這個技巧，在一整個 Class 內可以試著尋找可以歸類成一塊的部分，慢慢地進行拆分。
+首先按照書上介紹我們先建立 Person 這個類別。
+public class Person { private string _name; private string _officeAreaCode; private string _officeNumber; public string GetName() { return this._name; } public void SetName(string input) { this._name = input; } public string GetOfficeAreaCode() { return this._officeAreaCode; } public void SetOfficeAreaCode(string input) { this._officeAreaCode = input; } public string GetOfficeNumber() { return this._officeNumber; } public void SetOfficeNumber(string input) { this.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -22,9 +22,9 @@
   <meta name="description" content="想成為PM的PG">	
   <meta name="keywords" content="Sian">	
   	
-  <link rel="prev" href="https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/" />	
-  <link rel="next" href="https://sunnyday0932.github.io/2021/%E9%87%8D%E6%A7%8B-extract-class/" />	
-  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/" />	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E9%87%8D%E6%A7%8B-extract-class/" />	
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
   <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
   <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
@@ -35,10 +35,10 @@
   <title>	
        	
        	
-           使用 IHostedService 建立背景排程 | Sian	
+           重構-Extract Class | Sian	
        	
   </title>	
-  <meta name="title" content="使用 IHostedService 建立背景排程 | Sian">	
+  <meta name="title" content="重構-Extract Class | Sian">	
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@
          "@id": "https:\/\/sunnyday0932.github.io"
     },
     "articleSection" : "posts",
-    "name" : "使用 IHostedService 建立背景排程",
-    "headline" : "使用 IHostedService 建立背景排程",
-    "description" : "使用 IHostedService 建立背景排程",
+    "name" : "重構-Extract Class",
+    "headline" : "重構-Extract Class",
+    "description" : "重構Extract Class",
     "inLanguage" : "zh-tw",
     "author" : "Sian",
     "creator" : "Sian",
@@ -68,11 +68,11 @@
     "accountablePerson" : "Sian",
     "copyrightHolder" : "Sian",
     "copyrightYear" : "2021",
-    "datePublished": "2021-06-28 05:40:45  UTC",
-    "dateModified" : "2021-06-28 05:40:45  UTC",
-    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B\/",
-    "wordCount" : "250",
-    "keywords" : ["csharp","Core","dotnet", "Sian"]
+    "datePublished": "2021-07-30 02:40:45  UTC",
+    "dateModified" : "2021-07-30 02:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E9%87%8D%E6%A7%8B-extract-class\/",
+    "wordCount" : "349",
+    "keywords" : ["Refactor", "Sian"]
 }
 </script>
 	
@@ -134,11 +134,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">使用 IHostedService 建立背景排程</h1>
+        <h1 class="post-title" itemprop="name headline">重構-Extract Class</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
                 <span class="post-time">
-                on <time datetime=2021-06-28 itemprop="datePublished">June 28, 2021</time>
+                on <time datetime=2021-07-30 itemprop="datePublished">July 30, 2021</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -171,97 +171,202 @@
           
 
           <h2 id="前言">前言</h2>
-<p>在前幾篇研究快取的時候發現公司大神有在快取示範中使用了 IHostedService 這個東西，之前是選擇性跳過，這次發現接下來要做的東西會用上，還不馬上補齊。</p>
+<p>近期上了大神的課，學了滿多重構技巧，還在目瞪口呆慢慢消化吸收中，而手邊又剛好有跟朋友借來的書，決定紀錄一下。</p>
 <h2 id="本文">本文</h2>
-<p><img src="https://i.imgur.com/QTvCFVJ.png" alt=""></p>
-<p><a href="https://docs.microsoft.com/zh-tw/dotnet/architecture/microservices/multi-container-microservice-net-applications/background-tasks-with-ihostedservice">IHostedService</a>是甚麼呢?</p>
-<p>簡單來說就是 Core 內建的一個背景處理的介面，可以簡單的透過 BackgroundService 這個基底類別來使用它。</p>
-<p>官方文件也提到幾點可以透過 IHostedService 簡單處理的東西：<br>
-<img src="https://i.imgur.com/13KkLMz.png" alt=""></p>
-<p>接下來我們就來練習實作使用這個東西。</p>
-<p>首先建立一個 Core API 的範例程式<br>
-<img src="https://i.imgur.com/dSrFJRf.png" alt=""></p>
-<p>接著就可以建立一個 HostService 並且繼承 BackgroundService ，繼承完後應該會馬上就看到提示需要實作 ExecuteAsync ，這個 ExecuteAsync 就是我們可以拿來實作排程。</p>
-<pre><code class="language-csharp=" data-lang="csharp="> public class HostService : BackgroundService
+<p>以前常遇到寫了一個 Class 裡面有很多方法，一眼看下去很難理解內容在做甚麼；而在考慮要拆分的時候就可以使用 Extract Class 這個技巧，在一整個 Class 內可以試著尋找可以歸類成一塊的部分，慢慢地進行拆分。</p>
+<!-- raw HTML omitted -->
+<p>首先按照書上介紹我們先建立 Person 這個類別。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class Person
     {
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        private string _name;
+        private string _officeAreaCode;
+        private string _officeNumber;
+
+        public string GetName()
         {
-            throw new NotImplementedException();
+            return this._name;
         }
+
+        public void SetName(string input)
+        {
+            this._name = input;
+        }
+
+        public string GetOfficeAreaCode()
+        {
+            return this._officeAreaCode;
+        }
+
+        public void SetOfficeAreaCode(string input)
+        {
+            this._officeAreaCode = input;
+        }
+
+        public string GetOfficeNumber()
+        {
+            return this._officeNumber;
+        }
+
+        public void SetOfficeNumber(string input)
+        {
+            this._officeNumber = input;
+        }
+
+        public string GetTelePhoneNumber()
+        {
+            return $&quot;{this._officeAreaCode}{this._officeNumber}&quot;;
+        }
+
     }
-</code></pre><p>簡單測試我們寫一個每10秒會去 D:/ 寫入 log 檔的背景程序。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class HostService : BackgroundService
+</code></pre><p>確保都是正確寫個測試。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    [TestClass]
+    public class UnitTest1
     {
-        private readonly string _filePath;
-
-        public HostService(string filePath)
+        [TestMethod]
+        public void TestMethod1()
         {
-            this._filePath = filePath;
-        }
+            var person = new Person();
+            person.SetOfficeAreaCode(&quot;02&quot;);
+            person.SetOfficeNumber(&quot;2222-2222&quot;);
 
-        /// &lt;summary&gt;
-        /// This method is called when the &lt;see cref=&quot;T:Microsoft.Extensions.Hosting.IHostedService&quot; /&gt; starts. The implementation should return a task that represents
-        /// the lifetime of the long running operation(s) being performed.
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;stoppingToken&quot;&gt;Triggered when &lt;see cref=&quot;M:Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)&quot; /&gt; is called.&lt;/param&gt;
-        /// &lt;returns&gt;
-        /// A &lt;see cref=&quot;T:System.Threading.Tasks.Task&quot; /&gt; that represents the long running operations.
-        /// &lt;/returns&gt;
-        /// &lt;exception cref=&quot;NotImplementedException&quot;&gt;&lt;/exception&gt;
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            while (true)
-            {
-                //寫入log
-                await Log(content: &quot;TestHostService&quot;);
+            var telePhoneNumber = person.GetTelePhoneNumber();
 
-                //每十秒執行一次
-                await Task.Delay(TimeSpan.FromSeconds(value: 10));
-            }
-        }
-
-        /// &lt;summary&gt;
-        /// Logs the specified content.
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;content&quot;&gt;The content.&lt;/param&gt;
-        private async Task Log(string content)
-        {
-            using StreamWriter sw = new StreamWriter(this._filePath, append: true);
-            await sw.WriteLineAsync(value: $&quot;紀錄Log:{content}_{DateTime.Now}&quot;);
+            telePhoneNumber.Should().Be(&quot;022222-2222&quot;);
         }
     }
-</code></pre><p>接著我們先到 appsettings 補上我們的 log 檔案位置。</p>
-<pre><code class="language-json=" data-lang="json=">{
-  &quot;Logging&quot;: {
-    &quot;LogLevel&quot;: {
-      &quot;Default&quot;: &quot;Information&quot;,
-      &quot;Microsoft&quot;: &quot;Warning&quot;,
-      &quot;Microsoft.Hosting.Lifetime&quot;: &quot;Information&quot;
-    }
-  },
-  &quot;AllowedHosts&quot;: &quot;*&quot;,
-  &quot;LogPath&quot;: &quot;D:/Log.txt&quot;
-}
-</code></pre><p>最後到 StartUp 的 ConfigureServices 註冊我們的背景服務。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public void ConfigureServices(IServiceCollection services)
+</code></pre><p><img src="https://i.imgur.com/MsYF3LJ.jpg" alt=""></p>
+<p>這邊是在重構前基本的保護措施，為了確保我們的程式碼在更動後仍然會正確的執行。</p>
+<p>接著我們可以發現電話相關的部分可以拆分，把跟電話有關的部分搬到一個新建的 TelePhone Class。<br>
+這邊 VisualStudio 就沒有甚麼快速的方式可以搬取了，如果是要擷取基底內別可以直接使用 Cirl + . 但這邊不是，而使用 Rider 的朋友就可以快速達成， <del>可恨R</del> 。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class TelePhone
+    {
+        private string _officeAreaCode;
+        private string _officeNumber;
+
+        public string GetOfficeAreaCode()
         {
-            var logPath = this.Configuration.GetValue&lt;string&gt;(&quot;LogPath&quot;);
-            services.AddControllers();
-            services.AddHostedService&lt;HostService&gt;(sp =&gt;
-            {
-                return new HostService(logPath);
-            });
+            return this._officeAreaCode;
         }
-</code></pre><p>執行程式進行測試<br>
-<img src="https://i.imgur.com/Ns0GI9F.jpg" alt=""></p>
-<p>接下來到 D:/log.txt 看看我們的 log 紀錄。</p>
-<p><img src="https://i.imgur.com/ptYZk5f.jpg" alt=""></p>
-<p>大致上的使用示範就是這樣，而這邊實務面上使用就如同文件所述，公司內部大神示範的是使用這個 BackgroundService 來定期檢查快取資料庫是否正常運行，若異常就可以做特殊處理，更多使用方法就留待日後慢慢探索啦。</p>
+
+        public string GetOfficeNumber()
+        { 
+            return this._officeNumber;
+        }
+
+        public string GetTelePhoneNumber()
+        {
+            return $&quot;{this._officeAreaCode}{this._officeNumber}&quot;;
+        }
+
+        public void SetOfficeAreaCode(string input)
+        {
+            this._officeAreaCode = input;
+        }
+
+        public void SetOfficeNumber(string input)
+        {
+            this._officeNumber = input;
+        }
+    }
+</code></pre><p>原先 Person Class 使用到的地方我們改成。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class Person
+    {
+        private string _name;
+        private TelePhone _telePhone;
+
+        public Person()
+        {
+            this._telePhone = new TelePhone();
+        }
+
+        public string GetName()
+        {
+            return this._name;
+        }
+
+        public void SetName(string input)
+        {
+            this._name = input;
+        }
+
+        public string GetOfficeAreaCode()
+        {
+            return this._telePhone.GetAreaCode();
+        }
+
+        public string GetOfficeNumber()
+        {
+            return this._telePhone.GetAreaCode();
+        }
+
+        public string GetTelePhoneNumber()
+        {
+            return this._telePhone.GetTelePhoneNumber();
+        }
+
+        public void SetOfficeAreaCode(string input)
+        {
+            this._telePhone.SetAreaCode(input);
+        }
+
+        public void SetOfficeNumber(string input)
+        {
+            this._telePhone.SetNumber(input);
+        }
+    }
+</code></pre><p>執行一下測試確保這樣搬沒有出錯</p>
+<p><img src="https://i.imgur.com/MsYF3LJ.jpg" alt=""></p>
+<p>接下來我就可以來修改一下命名，首先 TelePhone Class 中 Office 對它本身來說不太有甚麼意義，我們把它拿掉。</p>
+<p>這邊可以使用選取後在 VisualStudio 內快捷鍵 Cirl R + R 。</p>
+<p><img src="https://i.imgur.com/R6ZVI6Q.jpg" alt=""></p>
+<p>現在 TelePhone Class 變成</p>
+<pre><code class="language-csharp=" data-lang="csharp=">    public class TelePhone
+    {
+        private string _areaCode;
+        private string _number;
+
+        public string GetAreaCode()
+        {
+            return this._areaCode;
+        }
+
+        public string GetNumber()
+        { 
+            return this._number;
+        }
+
+        public string GetTelePhoneNumber()
+        {
+            return $&quot;{this._areaCode}{this._number}&quot;;
+        }
+
+        public void SetAreaCode(string input)
+        {
+            this._areaCode = input;
+        }
+
+        public void SetNumber(string input)
+        {
+            this._number = input;
+        }
+    }
+</code></pre><p>再執行一下測試確保更名過程沒有任何出錯。</p>
+<p><img src="https://i.imgur.com/MsYF3LJ.jpg" alt=""></p>
+<p>接著回到 Person Class 我們會發現 GetTelePhoneNumber 這個方法有點奇怪。</p>
+<p><img src="https://i.imgur.com/SyndOHV.png" alt=""></p>
+<p>我們已經知道要拿取的是 TelePhoneNumber 了，在 TelePhone 內的 GetTelePhoneNumber 就顯得有點雞肋。</p>
+<p>把它改成</p>
+<pre><code class="language-csharp=" data-lang="csharp=">        public string GetTelePhoneNumber()
+        {
+            return this._telePhone.Get();
+        }
+</code></pre><p>改完後一樣執行測試確保一切正常。</p>
+<p><img src="https://i.imgur.com/MsYF3LJ.jpg" alt=""></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
-<li>1、<a href="https://docs.microsoft.com/zh-tw/dotnet/architecture/microservices/multi-container-microservice-net-applications/background-tasks-with-ihostedservice">在微服務中使用 IHostedService 和 BackgroundService 類別實作背景工作</a>。</li>
-<li>2、<a href="https://blog.maartenballiauw.be/post/2017/08/01/building-a-scheduled-cache-updater-in-aspnet-core-2.html">Building a scheduled task in ASP.NET Core/Standard 2.0</a>。</li>
-<li>3、<a href="https://www.cnblogs.com/uoyo/p/12377645.html">后台任务的积木。.NetCore中的IHostedService</a>。</li>
+<li>1、<a href="https://www.tenlong.com.tw/products/9789865021832?list_name=c-refactoring">重構｜改善既有程式的設計</a>。</li>
+<li>2、<a href="https://refactoring.guru/extract-class">Extract Class</a>。</li>
+<li>3、<a href="https://www.jyt0532.com/2020/04/10/large-class/">重構 - 改善既有程式的設計 - Large Class</a>。</li>
 </ul>
 
     </div>
@@ -277,7 +382,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E9%87%8D%E6%A7%8B-extract-class/>https://sunnyday0932.github.io/2021/%E9%87%8D%E6%A7%8B-extract-class/</span>
             </p>
             
              
@@ -293,14 +398,8 @@
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
-                    #csharp</a></span>
-            
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
-                    #Core</a></span>
-            
-            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
-                    #dotnet</a></span>
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/refactor/">
+                    #Refactor</a></span>
             
             </section>
         
@@ -312,10 +411,8 @@
 
     <div class="post-nav">
         
-        <a href="https://sunnyday0932.github.io/2021/sql-convert-datetime%E6%8E%A1%E5%9D%91%E7%AD%86%E8%A8%98/" class="prev" rel="prev" title="SQL CONVERT DATETIME(採坑筆記)"><i class="iconfont icon-left"></i>&nbsp;SQL CONVERT DATETIME(採坑筆記)</a>
+        <a href="https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/" class="prev" rel="prev" title="使用 IHostedService 建立背景排程"><i class="iconfont icon-left"></i>&nbsp;使用 IHostedService 建立背景排程</a>
          
-        
-        <a href="https://sunnyday0932.github.io/2021/%E9%87%8D%E6%A7%8B-extract-class/" class="next" rel="next" title="重構-Extract Class">重構-Extract Class&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
