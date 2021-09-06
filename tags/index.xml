@@ -80,24 +80,6 @@
     </item>
     
     <item>
-      <title>Cache</title>
-      <link>https://sunnyday0932.github.io/tags/cache/</link>
-      <pubDate>Tue, 04 May 2021 01:40:45 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/cache/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Redis</title>
-      <link>https://sunnyday0932.github.io/tags/redis/</link>
-      <pubDate>Tue, 04 May 2021 01:40:45 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/redis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Design Pattern</title>
       <link>https://sunnyday0932.github.io/tags/design-pattern/</link>
       <pubDate>Mon, 26 Apr 2021 18:40:45 +0000</pubDate>
@@ -125,20 +107,11 @@
     </item>
     
     <item>
-      <title>HangFire</title>
-      <link>https://sunnyday0932.github.io/tags/hangfire/</link>
-      <pubDate>Mon, 12 Apr 2021 18:40:45 +0000</pubDate>
+      <title>Redis</title>
+      <link>https://sunnyday0932.github.io/tags/redis/</link>
+      <pubDate>Sat, 24 Apr 2021 18:40:45 +0000</pubDate>
       
-      <guid>https://sunnyday0932.github.io/tags/hangfire/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Unit-test</title>
-      <link>https://sunnyday0932.github.io/tags/unit-test/</link>
-      <pubDate>Sat, 20 Mar 2021 19:40:45 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/tags/unit-test/</guid>
+      <guid>https://sunnyday0932.github.io/tags/redis/</guid>
       <description></description>
     </item>
     
@@ -148,6 +121,15 @@
       <pubDate>Tue, 09 Mar 2021 16:40:45 +0000</pubDate>
       
       <guid>https://sunnyday0932.github.io/tags/async/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unit-Test</title>
+      <link>https://sunnyday0932.github.io/tags/unit-test/</link>
+      <pubDate>Sun, 07 Mar 2021 16:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/tags/unit-test/</guid>
       <description></description>
     </item>
     

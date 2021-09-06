@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Unit-test on Sian</title>
+    <title>Unit-Test on Sian</title>
     <link>https://sunnyday0932.github.io/tags/unit-test/</link>
-    <description>Recent content in Unit-test on Sian</description>
+    <description>Recent content in Unit-Test on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 20 Mar 2021 19:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>dotnet Core WebApi - 3(Unit-test)</title>
-      <link>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</link>
-      <pubDate>Sat, 20 Mar 2021 19:40:45 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</guid>
-      <description>前言 接續上一篇，這篇主要是講解非同步的單元測試，同樣也只會列出不同的地方。
-本文 1、Service Test。 傳入 Model 為空。
-[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_傳入Model為空_應回傳ArgumentNullException() { //assert var sut = this.GetSystemUnderTest(); //act var exception = await Assert.ThrowsExceptionAsync&amp;lt;ArgumentNullException&amp;gt;( async () =&amp;gt; await sut.AddAccount(null)); //arrange exception.Message.Contains(&amp;quot;不可為空&amp;quot;); } 結果：
-某一個欄位為空。
-[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;AddAccount&amp;quot;)] public async Task AddAccount_Account為空_應回傳ArgumentException() { //assert var sut = this.GetSystemUnderTest(); var fixture = new Fixture(); var info = fixture.Build&amp;lt;AccountInfoModel&amp;gt;() .Without(x =&amp;gt; x.Account) .Create(); //act var exception = await Assert.</description>
-    </item>
-    
+    <lastBuildDate>Sun, 07 Mar 2021 16:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>單元測試 - 10工具介紹(查看涵蓋率、複雜度)</title>
       <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</link>
@@ -43,24 +30,6 @@ Find Code Coverage
 找到 Find Code Coverage，把 Run 的選項 Enable 改成 False 即可。
 2、CodeMaintainibility。 CodeMaintainibility
 一樣要到 Extension 的地方搜尋安裝。</description>
-    </item>
-    
-    <item>
-      <title>單元測試 - 9(Repository 測試)</title>
-      <link>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</link>
-      <pubDate>Mon, 01 Mar 2021 20:40:45 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</guid>
-      <description>前言 前面介紹完 Service 層的測試方法，接續介紹 Repository 的測試。
-本文 這邊先講解一下要如何進行 Repository 的測試，這層主要負責的部分都是與DB溝通進行資料面的處理，那當然我們單元測試不可能直接對正式DB直接做連結，要測試的話可以透過 Container 例如: docker、或是使用 localDB 進行整合測試，這邊主要是以 localDB 進行示範。
-一樣先建立一個 Repository 的測試專案。
-記得測試專案要加入原本 Repository 的參考。
-使用 SSMS 取得建立 Table 的 SQL 語法。 將SQL檔案存放到測試專案內。
-記得也要調整檔案屬性，為永遠複製。
-使用 SSMS 取得 INSERT DATA 的 SQL 語法。 接下來就是一直下一步完成。
-產出的檔案：
-安裝Dapper到Repository測試專案。 因為測試 SQL Command 時會利用 Dapper 去執行 SQL，所以需要安裝。
-準備 Repository 測試使用到之方法。 1、DatabaseName。 public class DatabaseName { public const string Default = &amp;quot;master&amp;quot;; public const string SampleDB = &amp;quot;Northwind&amp;quot;; } 2、DatabaseCommands。 public class DatabaseCommands { /// &amp;lt;summary&amp;gt; /// 建立DB /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;connectionString&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;param name=&amp;quot;database&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; public static void CreateDatabase( string connectionString, string database) { var IsExists = DatabaseExists(connectionString, database); if (IsExists) { return; } using var conn = new SqlConnection(connectionString); conn.</description>
     </item>
     
     <item>

@@ -222,56 +222,6 @@
     </url>
   
     <url>
-      <loc>https://sunnyday0932.github.io/tags/cache/</loc>
-      
-      <lastmod>2021-05-04T01:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/tags/redis/</loc>
-      
-      <lastmod>2021-05-04T01:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-3%E4%BD%BF%E7%94%A8redis%E9%80%B2%E8%A1%8C%E5%BF%AB%E5%8F%96/</loc>
-      
-      <lastmod>2021-05-04T01:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-2%E4%BD%BF%E7%94%A8%E8%A3%9D%E9%A3%BE%E8%80%85%E6%A8%A1%E5%BC%8F/</loc>
-      
-      <lastmod>2021-05-01T01:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/webapi-%E5%8A%A0%E5%85%A5%E5%BF%AB%E5%8F%96-1/</loc>
-      
-      <lastmod>2021-04-30T01:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</loc>
       
       <lastmod>2021-04-29T19:40:45+00:00</lastmod>
@@ -322,6 +272,16 @@
     </url>
   
     <url>
+      <loc>https://sunnyday0932.github.io/tags/redis/</loc>
+      
+      <lastmod>2021-04-24T18:40:45+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</loc>
       
       <lastmod>2021-04-24T18:40:45+00:00</lastmod>
@@ -352,119 +312,9 @@
     </url>
   
     <url>
-      <loc>https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
-      
-      <lastmod>2021-04-17T18:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://sunnyday0932.github.io/2021/%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85%E8%AB%96%E5%A3%87%E5%95%86%E6%A5%AD%E8%88%87%E6%8A%80%E8%A1%93%E7%9A%84%E5%B9%B3%E8%A1%A1-%E5%BF%83%E5%BE%97/</loc>
       
       <lastmod>2021-04-17T06:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-youbike%E7%B7%B4%E7%BF%92%E9%A1%8C/</loc>
-      
-      <lastmod>2021-04-12T18:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/tags/hangfire/</loc>
-      
-      <lastmod>2021-04-12T18:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8B%E7%AF%87/</loc>
-      
-      <lastmod>2021-04-05T18:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-3%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E8%88%87%E8%A8%AD%E5%AE%9A%E4%B8%8A%E7%AF%87/</loc>
-      
-      <lastmod>2021-04-03T18:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-2/</loc>
-      
-      <lastmod>2021-04-01T18:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-hangfire-1%E6%8E%92%E7%A8%8B%E5%B7%A5%E5%85%B7/</loc>
-      
-      <lastmod>2021-03-28T18:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-webapi-3unit-test/</loc>
-      
-      <lastmod>2021-03-20T19:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/tags/unit-test/</loc>
-      
-      <lastmod>2021-03-20T19:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-webapi-2%E7%AC%AC%E4%BA%8C%E5%B1%A4%E9%A9%97%E8%AD%89paging/</loc>
-      
-      <lastmod>2021-03-16T19:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2021/dotnet-core-webapi-1%E9%9D%9E%E5%90%8C%E6%AD%A5fluentvalidation%E9%A9%97%E8%AD%89/</loc>
-      
-      <lastmod>2021-03-15T19:40:45+00:00</lastmod>
       
       
       
@@ -492,7 +342,7 @@
     </url>
   
     <url>
-      <loc>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</loc>
+      <loc>https://sunnyday0932.github.io/tags/unit-test/</loc>
       
       <lastmod>2021-03-07T16:40:45+00:00</lastmod>
       
@@ -502,9 +352,9 @@
     </url>
   
     <url>
-      <loc>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-9repository%E6%B8%AC%E8%A9%A6/</loc>
+      <loc>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</loc>
       
-      <lastmod>2021-03-01T20:40:45+00:00</lastmod>
+      <lastmod>2021-03-07T16:40:45+00:00</lastmod>
       
       
       
@@ -622,46 +472,6 @@
     </url>
   
     <url>
-      <loc>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-4/</loc>
-      
-      <lastmod>2020-12-26T19:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-3/</loc>
-      
-      <lastmod>2020-12-22T19:40:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-2/</loc>
-      
-      <lastmod>2020-12-21T21:50:45+00:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-1/</loc>
-      
-      <lastmod>2020-12-15T22:19:33+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://sunnyday0932.github.io/tags/github/</loc>
       
       <lastmod>2020-12-06T12:01:15+08:00</lastmod>
@@ -685,16 +495,6 @@
       <loc>https://sunnyday0932.github.io/2020/hugo%E4%B8%BB%E9%A1%8Cleaveit%E9%8C%AF%E8%AA%A4%E4%BF%AE%E6%94%B9/</loc>
       
       <lastmod>2020-12-06T12:01:15+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sunnyday0932.github.io/2020/dotnet-core-webapiphase2-0/</loc>
-      
-      <lastmod>2020-12-03T22:19:33+08:00</lastmod>
       
       
       

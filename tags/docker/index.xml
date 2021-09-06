@@ -61,33 +61,5 @@ string 類型控制在10KB以內，hash、list、set、zset 元素個數不要�
 一次只能使用一個 Cpu 的核心也就意味著一次只能接收一個 Request，所以當有某一個 Request 佔用了太長的時間就會導致 Redis 無法應付其他的 Request，這也跟上面第二點資料的存放大小有關。</description>
     </item>
     
-    <item>
-      <title>docker 基本操作</title>
-      <link>https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Sat, 17 Apr 2021 18:40:45 +0000</pubDate>
-      
-      <guid>https://sunnyday0932.github.io/2021/docker-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
-      <description>前言 本篇會先示範 docker 基本操作，因為接下來會開始進行一些練習，會需要使用到 docker，就一併記錄下來。
-本文 開始前須要先確認 windows 版本為專業版。
-接下來需要到控制台 &amp;gt; 程式和功能的地方打開 Hyper-V。
-重新啟動後就可以開始安裝 docker 了。
-docker下載連結
-接下來需要有輸入指令的軟體，可以使用 Powershell。
-個人是使用大神所推薦的 Cmder。
-工具齊全後我們來練習抓取 MSSQL Image 並且執行。
-docker pull microsoft/mssql-server-linux
-建立前要看一下說明，需要調整一下 docker 設定。 這邊設定是可以直接透過 GUI 介面的，但不知道為啥我的 doker desktop 打開發現找不到 advanced，Goole 發現也有人有同樣問題，於是我就直接使用指令啦。
-問題連結一併附上。
-執行指令：
-docker run -e &amp;ldquo;ACCEPT_EULA=Y&amp;rdquo; -e &amp;ldquo;SA_PASSWORD=1qaz@2wsx&amp;rdquo; &amp;ndash;memory 4096m &amp;ndash;cpus 2 -p 1433:1433 -d microsoft/mssql-server-linux
-觀看 Contanier 運行結果。
-使用 SSMS 連線進行測試。
-帳號:sa 密碼是剛剛設定的:1qaz@2wsx
-確認資料庫版本。
-關閉執行中的 Container。
-docker stop (這邊輸入Container的名字)
-不知道的話可以透過 docker ps -a 查詢目前有哪些 container</description>
-    </item>
-    
   </channel>
 </rss>
