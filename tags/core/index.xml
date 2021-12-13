@@ -6,7 +6,23 @@
     <description>Recent content in Core on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 28 Jun 2021 05:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Dec 2021 01:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/core/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Serilog 簡單紀錄 Log</title>
+      <link>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8-serilog-%E7%B0%A1%E5%96%AE%E7%B4%80%E9%8C%84-log/</link>
+      <pubDate>Mon, 13 Dec 2021 01:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8-serilog-%E7%B0%A1%E5%96%AE%E7%B4%80%E9%8C%84-log/</guid>
+      <description>前言 本篇主要紀錄簡單應用，多會使用 Linqpad 加以介紹。
+本文 首先依據官方文件我們需要先安裝 Serilog 的 Nuget 套件。
+要安裝的有以下三個：
+安裝完成後就可以使用官方提供的範例來練習寫一個 Log
+void Main() { Log.Logger = new LoggerConfiguration() .MinimumLevel.Debug() .WriteTo.Console() .WriteTo.File(&amp;quot;D:/logs/myapp.txt&amp;quot;, rollingInterval: RollingInterval.Day) .CreateLogger(); Log.Information(&amp;quot;Log Test&amp;quot;); int a = 10, b = 0; try { Log.Debug(&amp;quot;Dividing {A} by {B}&amp;quot;, a, b); Console.WriteLine(a / b); } catch (Exception ex) { Log.Error(ex, &amp;quot;Something went wrong&amp;quot;); } finally { Log.CloseAndFlush(); } } 在上面這個範例中，我們指定了 Log 存放於 D:/logs/myapp.txt 這個檔案中，而後面這個變數則可以指定存放的檔案名稱是以甚麼來做為區分，目前是使用當天日期。
+也是有其他的選項可以做選擇
+範例
+Log 內的檔案資訊如圖</description>
+    </item>
+    
     <item>
       <title>使用 IHostedService 建立背景排程</title>
       <link>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8ihostedservice%E5%BB%BA%E7%AB%8B%E8%83%8C%E6%99%AF%E6%8E%92%E7%A8%8B/</link>

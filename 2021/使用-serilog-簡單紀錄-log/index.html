@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>	
+  	
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167497206-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167497206-1');
+</script>
+	
+  	
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>	
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">	
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  <meta name="robots" content="noodp"/>	
+  <meta name="author" content="Sian">	
+  <meta name="description" content="想成為PM的PG">	
+  <meta name="keywords" content="Sian">	
+  	
+  <link rel="prev" href="https://sunnyday0932.github.io/2021/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E5%85%A9%E5%B9%B4%E5%BF%83%E5%BE%97%E9%9B%9C%E8%A8%98/" />	
+  	
+  <link rel="canonical" href="https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8-serilog-%E7%B0%A1%E5%96%AE%E7%B4%80%E9%8C%84-log/" />	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">	
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me/favicon.ico">	
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me/favicon.ico">	
+  <link rel="manifest" href="/images/manifest.json" crossorigin="use-credentials">	
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">	
+  <meta name="msapplication-TileColor" content="#da532c">	
+  <meta name="theme-color" content="#ffffff">	
+  <title>	
+       	
+       	
+           使用 Serilog 簡單紀錄 Log | Sian	
+       	
+  </title>	
+  <meta name="title" content="使用 Serilog 簡單紀錄 Log | Sian">	
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+	
+  	
+  
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sunnyday0932.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "使用 Serilog 簡單紀錄 Log",
+    "headline" : "使用 Serilog 簡單紀錄 Log",
+    "description" : "用 Serilog 簡單紀錄 Log",
+    "inLanguage" : "zh-tw",
+    "author" : "Sian",
+    "creator" : "Sian",
+    "publisher": "Sian",
+    "accountablePerson" : "Sian",
+    "copyrightHolder" : "Sian",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-12-13 01:40:45  UTC",
+    "dateModified" : "2021-12-13 01:40:45  UTC",
+    "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E4%BD%BF%E7%94%A8-serilog-%E7%B0%A1%E5%96%AE%E7%B4%80%E9%8C%84-log\/",
+    "wordCount" : "247",
+    "keywords" : ["csharp","Core","dotnet","Serilog", "Sian"]
+}
+</script>
+	
+</head>	
+	
+  	
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <link rel="icon" type="image/png" href="/imgPath">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch">🌙</a>&nbsp;<a href="https://sunnyday0932.github.io">Sian</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/recommend/" title="">Recommend</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">使用 Serilog 簡單紀錄 Log</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://sunnyday0932.github.io" rel="author">Sian</a>  
+                <span class="post-time">
+                on <time datetime=2021-12-13 itemprop="datePublished">December 13, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://sunnyday0932.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"> 學習筆記 </a>
+                        
+                </span>
+                <span id="busuanzi_container_page_pv">
+                    觀看次數:<span id="busuanzi_value_page_pv"></span>
+                </span>
+        </div>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="前言">前言</h2>
+<p>本篇主要紀錄簡單應用，多會使用 Linqpad 加以介紹。</p>
+<h2 id="本文">本文</h2>
+<p>首先依據官方文件我們需要先安裝 Serilog 的 Nuget 套件。<br>
+要安裝的有以下三個：<br>
+<img src="https://i.imgur.com/Cei3BLg.png" alt=""></p>
+<p>安裝完成後就可以使用官方提供的範例來練習寫一個 Log</p>
+<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+{
+	Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.WriteTo.Console()
+				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Day)
+				.CreateLogger();
+
+	Log.Information(&quot;Log Test&quot;);
+
+	int a = 10, b = 0;
+	try
+	{
+		Log.Debug(&quot;Dividing {A} by {B}&quot;, a, b);
+		Console.WriteLine(a / b);
+	}
+	catch (Exception ex)
+	{
+		Log.Error(ex, &quot;Something went wrong&quot;);
+	}
+	finally
+	{
+		Log.CloseAndFlush();
+	}
+}
+</code></pre><p>在上面這個範例中，我們指定了 Log 存放於 D:/logs/myapp.txt 這個檔案中，而後面這個變數則可以指定存放的檔案名稱是以甚麼來做為區分，目前是使用當天日期。</p>
+<p><img src="https://i.imgur.com/0LSXHMy.png" alt=""></p>
+<p>也是有其他的選項可以做選擇<br>
+<img src="https://i.imgur.com/O91lbmy.png" alt=""></p>
+<p>範例<br>
+<img src="https://i.imgur.com/TvxPYEl.png" alt=""></p>
+<p>Log 內的檔案資訊如圖<br>
+<img src="https://i.imgur.com/kgDpKDk.png" alt=""></p>
+<p>這邊可以看到 Serilog 會幫我們整理好一個固定的格式，以及 Log 的等級，便於觀看。</p>
+<p>Log 的等級則簡單的分為了以下六種：<br>
+<img src="https://i.imgur.com/kWF4L8W.png" alt=""></p>
+<h3 id="結構化的優勢">結構化的優勢</h3>
+<p>紀錄 Array</p>
+<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+{
+	Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.WriteTo.Console()
+				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.CreateLogger();
+
+	var fruit = new[] { &quot;Apple&quot;, &quot;Pear&quot;, &quot;Orange&quot; };
+    Log.Information(&quot;In my bowl I have {Fruit}&quot;, fruit);
+}
+</code></pre><p><img src="https://i.imgur.com/Xoe6lsm.png" alt=""></p>
+<p>紀錄 Dictionary</p>
+<pre><code class="language-csharp=" data-lang="csharp=">var fruit = new Dictionary&lt;string,int&gt; {{ &quot;Apple&quot;, 1}, { &quot;Pear&quot;, 5 }};
+Log.Information(&quot;In my bowl I have {Fruit}&quot;, fruit);
+</code></pre><p><img src="https://i.imgur.com/ulUCB1r.png" alt=""></p>
+<p>最大優勢就是直接幫忙轉換成了 Json 這個易讀的格式，讓看 Log 的可讀性一下子提升了不少。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+{
+	Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.WriteTo.Console()
+				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.CreateLogger();
+
+	var sensorInput = new { one = &quot;123&quot;, two = 134 ,three = true};
+	Log.Information(&quot;Processing {SensorInput}&quot;, sensorInput);
+}
+</code></pre><p>對 Object 的支援也可以用輕鬆處理。<br>
+<img src="https://i.imgur.com/hOibTmK.png" alt=""></p>
+<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+{
+	Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.WriteTo.Console()
+				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.CreateLogger();
+
+	var sensorInput = new[] {1,2,3};
+	Log.Information(&quot;Processing {$SensorInput}&quot;, sensorInput);
+}
+</code></pre><p>若要看紀錄的型別可以使用 $<br>
+<img src="https://i.imgur.com/F7FDnkJ.png" alt=""></p>
+<p>如果想要把整個 Log 記錄成 Json 格式，則可以使用 Serilog.Formatting.Compact 來做格式的轉換。</p>
+<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+{
+	Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.WriteTo.Console()
+				.WriteTo.File(new CompactJsonFormatter(), &quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.CreateLogger();
+
+	var sensorInput = new[] {1,2,3};
+	Log.Information(&quot;Processing {@SensorInput}&quot;, sensorInput);
+}
+</code></pre><p><img src="https://i.imgur.com/aV8EeMY.png" alt=""></p>
+<h2 id="後記">後記</h2>
+<p>簡單的使用紀錄就到這邊，下一篇準備來個簡單的狀況題順便練習一下如何使用 Serilog 將想記錄的 Log 寫入目標 DB。</p>
+<h2 id="參考連結">參考連結</h2>
+<ul>
+<li>1、<a href="https://serilog.net/">serilog官方文件</a>。</li>
+<li>2、<a href="https://marcus116.blogspot.com/2019/05/netcore-serilog-intro.html"> 結構化日誌 Serilog 初體驗</a>。</li>
+<li>3、<a href="https://ithelp.ithome.com.tw/articles/10247300">Serilog &amp; Seq 為你打造良好的Log管理環境- 我與 ASP.NET Core 3 的 30天</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Sian </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8-serilog-%E7%B0%A1%E5%96%AE%E7%B4%80%E9%8C%84-log/>https://sunnyday0932.github.io/2021/%E4%BD%BF%E7%94%A8-serilog-%E7%B0%A1%E5%96%AE%E7%B4%80%E9%8C%84-log/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文採用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知識共享署名-非商業性使用 4.0 國際許可協議</a>進行許可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/csharp/">
+                    #csharp</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/core/">
+                    #Core</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/dotnet/">
+                    #dotnet</a></span>
+            
+            <span class="tag"><a href="https://sunnyday0932.github.io/tags/serilog/">
+                    #Serilog</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sunnyday0932.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sunnyday0932.github.io/2021/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E5%85%A9%E5%B9%B4%E5%BF%83%E5%BE%97%E9%9B%9C%E8%A8%98/" class="prev" rel="prev" title="軟體工程師資歷兩年心得雜記"><i class="iconfont icon-left"></i>&nbsp;軟體工程師資歷兩年心得雜記</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Sian" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+
+    
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2021</span>
+        
+        <span class="with-love">
+    	 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sunnyday0932.github.io">Sian</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv">
+            總瀏覽<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
