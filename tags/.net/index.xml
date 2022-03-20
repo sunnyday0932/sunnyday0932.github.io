@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.NET on Sian</title>
+    <link>https://sunnyday0932.github.io/tags/.net/</link>
+    <description>Recent content in .NET on Sian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 20 Mar 2022 02:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/tags/.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contains 差別</title>
+      <link>https://sunnyday0932.github.io/2022/contains-%E5%B7%AE%E5%88%A5/</link>
+      <pubDate>Sun, 20 Mar 2022 02:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2022/contains-%E5%B7%AE%E5%88%A5/</guid>
+      <description>前言 前些天在處理某段處理字串程式的時候發現了一個奇怪的東西。
+DB 內有存了一組 AAA 的字串，現在我要比對 AAA+空格。
+var number = &amp;quot;AAA &amp;quot;; Summaries.Select(row =&amp;gt; row.Number).Contains(number).Dump(); 結果
+就是那個 True 讓我感到非常驚恐 &amp;hellip;
+本文 研究了一下發生的原因其實是 Queryable 跟 Enumerable 的實作其實是不一樣的。
+StackOverflow 也有相關問題：
+What is the difference between an IQueryable&amp;rsquo;s Contains() and an IEnumerable&amp;rsquo;s Contains()?
+建立一個 List 來做實驗，看看結果。
+兩種實作細節可以參考：
+Enumerable Contains
+Querable Contains
+實驗下來 Enumerable 的 Contains 不管空格在前後都能區分得出來不同。
+空格在前：
+空格在後：
+而 Queryable 的 Contains 空格在前區分的出來、空格在後則不行。
+空格在前：
+空格在後：
+Queryable 實作上是往 DB 實際執行的語法靠，所以這邊會牽扯到 DB 的定序問題。
+(關於定序問題有興趣的可以參考：定序)
+後續使用 Queryable 跟 Enumerable 提供的方法時真的需要小心注意兩邊的實作的細節。</description>
+    </item>
+    
+  </channel>
+</rss>
