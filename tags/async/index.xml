@@ -16,16 +16,16 @@
       <description>前言 先前我們介紹了 API 的基本用法，現在我們來介紹非同步的方法。
 本文 首先還是要先提醒一下，對於非同步程式設計有很多眉眉角角，這邊只能簡單說明，所以若想更深入了解還是推薦大家尋求專業知識來源。
 首推：
- MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。  一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
+MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。 一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
 其實你已經寫過了。
 拿之前寫過的 UpdataAccount Service 來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。
 (圖片取自.NET 本事－非同步程式設計) 而這種同步程式設計有很明顯的問題。
- a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。  當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。
+a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。 當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。
 而為了解決 CPU 無法分頭進行處理就有了新的執行序(Thread)概念。
 2、Thread(執行序)。 這時候就可以把當年準備考試的筆記拿出來用一下了。
 當年上課老師也比喻 Thread 就像是一台車裡面有幾個引擎的概念。
 Thread 與 Process 的差別。
-   Process Thread     OS 分配資源的對象單位 OS 分配 CPU 時間的對象單位   Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外) 同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源   Process 的 Ceation、Context Switching 較慢，管理成本高。 Thread 的較快、管理成本低。   Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked   Multiprocessor 架構之效益發揮較差。 較佳。   不需提供互斥存取機制(除了 Shared memory 溝通外) 必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。   適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。    所以透過多個執行序的概念我們希望程式能夠達到這樣。</description>
+Process Thread OS 分配資源的對象單位 OS 分配 CPU 時間的對象單位 Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外) 同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源 Process 的 Ceation、Context Switching 較慢，管理成本高。 Thread 的較快、管理成本低。 Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked Multiprocessor 架構之效益發揮較差。 較佳。 不需提供互斥存取機制(除了 Shared memory 溝通外) 必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。 適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。 所以透過多個執行序的概念我們希望程式能夠達到這樣。</description>
     </item>
     
   </channel>

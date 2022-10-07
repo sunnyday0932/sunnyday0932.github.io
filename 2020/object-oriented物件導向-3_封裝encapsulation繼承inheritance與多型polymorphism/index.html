@@ -71,7 +71,7 @@
     "datePublished": "2020-07-08 22:19:33   CST",
     "dateModified" : "2020-07-08 22:19:33   CST",
     "url" : "https:\/\/sunnyday0932.github.io\/2020\/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism\/",
-    "wordCount" : "236",
+    "wordCount" : "237",
     "keywords" : ["OOP","程式設計", "Sian"]
 }
 </script>
@@ -184,11 +184,11 @@
 <code>當我們按下鍵盤A的時候，螢幕上會顯示A，但我們不必知道電腦背後是怎麼運作，就可以使用它。</code></p>
 <p>程式的舉例：
 個人寫程式到目前以來最常使用的C#判斷式，用來檢查字串是否為空。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> test= <span style="color:#e6db74">&#34;This is string&#34;</span>; <span style="color:#75715e">//一個測試用字串
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">string</span>.IsNullOrEmpty(test); <span style="color:#75715e">//檢查字串是否為Null或是空
-</span><span style="color:#75715e">//我們不必知道IsNullOrEmpty這個方法是如何實作的，
-</span><span style="color:#75715e">//但我們知道它會幫我們判斷字串是否為Null或是空，並回傳true or false。
-</span></code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> test= <span style="color:#e6db74">&#34;This is string&#34;</span>; <span style="color:#75715e">//一個測試用字串</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">string</span>.IsNullOrEmpty(test); <span style="color:#75715e">//檢查字串是否為Null或是空</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//我們不必知道IsNullOrEmpty這個方法是如何實作的，</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//但我們知道它會幫我們判斷字串是否為Null或是空，並回傳true or false。</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <h3 id="2繼承inheritance">2、繼承(Inheritance)</h3>
 <p>以下取自大話設計模式：</p>
 <ul>
@@ -204,34 +204,34 @@
 <li>二、子類別具有自己的屬性和功能 =&gt; 子類別可以擴展父類別的所有特性。</li>
 <li>三、子類別還可以用自己的方式實現父類別 =&gt; 方法重寫。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//產生一個汽車的類別，有一個方向盤、四個輪子。
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
-{
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">輪子</span> = <span style="color:#ae81ff">4</span>;
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
-}
-
-<span style="color:#75715e">//產生一個特斯拉類別繼承汽車
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">汽車</span>
-{
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">特斯拉輪子</span>()
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉有&#34;</span> + <span style="color:#960050;background-color:#1e0010">輪子</span> + <span style="color:#e6db74">&#34;個輪子&#34;</span>;
-    }
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">特斯拉方向盤</span>()
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉有&#34;</span> + <span style="color:#960050;background-color:#1e0010">方向盤</span> + <span style="color:#e6db74">&#34;個方向盤&#34;</span>;
-    }
-}
-
-<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-{
-    <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-    Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">特斯拉輪子</span>());
-    Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">特斯拉方向盤</span>());
-}
-</code></pre></div><p><img src="https://i.imgur.com/2ynHflY.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">//產生一個汽車的類別，有一個方向盤、四個輪子。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">輪子</span> = <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//產生一個特斯拉類別繼承汽車</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">汽車</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">特斯拉輪子</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉有&#34;</span> + <span style="color:#960050;background-color:#1e0010">輪子</span> + <span style="color:#e6db74">&#34;個輪子&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">特斯拉方向盤</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉有&#34;</span> + <span style="color:#960050;background-color:#1e0010">方向盤</span> + <span style="color:#e6db74">&#34;個方向盤&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>    Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">特斯拉輪子</span>());
+</span></span><span style="display:flex;"><span>    Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">特斯拉方向盤</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="https://i.imgur.com/2ynHflY.jpg" alt=""></p>
 <p>繼承的優點：</p>
 <ul>
 <li>繼承可以將子類別共用的部分都放在父類別，這可以讓程式得到了共用，避免重複。</li>
@@ -260,46 +260,46 @@
 <li>為了使子類別的實體完全接替來自父類別的類別成員，父雷別必須將該成員宣告為虛擬(virtual)。</li>
 <li>子類別可以透過 override 將父類別的實現替換為他自己的實現，這就是方法重寫 Override。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//產生一個汽車的類別，有基本啟動方式、跟時速。
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
-{
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動方式</span>()
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油&#34;</span>;
-    }
-	
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">時速</span>()
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;100&#34;</span>;
-    }
-}
-
-<span style="color:#75715e">//產生一個特斯拉類別繼承汽車並且重寫啟動方式跟時速方法。
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">汽車</span>
-{
-	
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動方式</span>()
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;電能&#34;</span>;
-    }
-	
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">時速</span>()
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;300&#34;</span>;
-    }
-}
-
-<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-{
-    <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
-    Console.WriteLine(<span style="color:#e6db74">&#34;汽車啟動方式:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">啟動方式</span>());
-    Console.WriteLine(<span style="color:#e6db74">&#34;汽車時速:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">時速</span>());
-
-    <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-    Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉啟動方式:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">啟動方式</span>());
-    Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉時速:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">時速</span>());
-}
-</code></pre></div><p><img src="https://i.imgur.com/8FTmdj8.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">//產生一個汽車的類別，有基本啟動方式、跟時速。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動方式</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">時速</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;100&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//產生一個特斯拉類別繼承汽車並且重寫啟動方式跟時速方法。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">汽車</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動方式</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;電能&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">時速</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;300&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#e6db74">&#34;汽車啟動方式:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">啟動方式</span>());
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#e6db74">&#34;汽車時速:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">時速</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉啟動方式:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">啟動方式</span>());
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉時速:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">時速</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="https://i.imgur.com/8FTmdj8.jpg" alt=""></p>
 <p>多型注意事項：</p>
 <ul>
 <li>多型的原理是當方法被調用時，無論物件是否被轉換為其父類別，都只有位於物件繼承鍊的最末端的方法實現會被調用。</li>
@@ -384,7 +384,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

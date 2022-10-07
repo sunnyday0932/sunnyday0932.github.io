@@ -184,105 +184,105 @@
 </li>
 </ul>
 <p>舉例：傳統汽車在車子故障、或是想要更換零件時，需要選擇維修廠進行這個動作。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">更換電瓶</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
-            }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A汽車保養廠</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">電瓶價格</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">50000</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>();
-            <span style="color:#75715e">//需要更換電瓶了
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">汽車</span>.<span style="color:#960050;background-color:#1e0010">更換電瓶</span>() == <span style="color:#66d9ef">true</span>) 
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車保養廠</span> = <span style="color:#66d9ef">new</span> A汽車保養廠();
-                Console.WriteLine(<span style="color:#e6db74">$&#34;電瓶價格:{汽車保養廠.電瓶價格()}&#34;</span>);
-            }
-        }
-</code></pre></div><p><img src="https://i.imgur.com/9Dm9mDt.jpg" alt="">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">更換電瓶</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A汽車保養廠</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">電瓶價格</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">50000</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//需要更換電瓶了</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">汽車</span>.<span style="color:#960050;background-color:#1e0010">更換電瓶</span>() == <span style="color:#66d9ef">true</span>) 
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車保養廠</span> = <span style="color:#66d9ef">new</span> A汽車保養廠();
+</span></span><span style="display:flex;"><span>                Console.WriteLine(<span style="color:#e6db74">$&#34;電瓶價格:{汽車保養廠.電瓶價格()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/9Dm9mDt.jpg" alt="">
 <!-- raw HTML omitted -->
 車主一看價格驚覺事情不太對勁，決定要更換一間汽車保養廠，此時程式就必須要跟著改變內容。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">更換電瓶</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B汽車保養廠</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">電瓶價格</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">5000</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>();
-            <span style="color:#75715e">//需要更換電瓶了
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">汽車</span>.<span style="color:#960050;background-color:#1e0010">更換電瓶</span>() == <span style="color:#66d9ef">true</span>) 
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車保養廠</span> = <span style="color:#66d9ef">new</span> B汽車保養廠();
-                Console.WriteLine(<span style="color:#e6db74">$&#34;電瓶價格:{汽車保養廠.電瓶價格()}&#34;</span>);
-            }
-        }
-</code></pre></div><p><img src="https://i.imgur.com/Se9d5Pi.jpg" alt="">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">更換電瓶</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B汽車保養廠</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">電瓶價格</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">5000</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車狀況</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//需要更換電瓶了</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">汽車</span>.<span style="color:#960050;background-color:#1e0010">更換電瓶</span>() == <span style="color:#66d9ef">true</span>) 
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車保養廠</span> = <span style="color:#66d9ef">new</span> B汽車保養廠();
+</span></span><span style="display:flex;"><span>                Console.WriteLine(<span style="color:#e6db74">$&#34;電瓶價格:{汽車保養廠.電瓶價格()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/Se9d5Pi.jpg" alt="">
 <!-- raw HTML omitted --></p>
 <p>這時候雖然暫時解決的車主的問題，但其實還有很多衍生問題，例如:並不知道零件好壞、也不知道來源是從何而來、適不適合自己的汽車？<br>
 從程式的角度來看，汽車需要更換零件這件事高度依賴於汽車保養廠，所以我們也應該想想要如何解決這件事。</p>
 <p>所以我們的特斯拉又登場了，特斯拉的零件全部都由原廠提供，一來能夠保證品質、二來如果東西有問題也不怕找不到人負責。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉狀況</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">更換電瓶</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
-            }
-        }
-		
-	<span style="color:#75715e">//建立一個I原廠服務的介面
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> I原廠服務
-        { 
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">維修電瓶服務</span>(<span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">狀態</span>) ;
-        }
-
-	<span style="color:#75715e">//實作部分
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">原廠服務</span> : I原廠服務
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">維修電瓶服務</span>(<span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">狀態</span>)
-            {
-                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">狀態</span> == <span style="color:#66d9ef">true</span>)
-                {
-                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">5000</span>;
-                }
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-            }
-        }
-		
-	<span style="color:#75715e">//這樣一來就能解決特斯拉與原廠服務的直接相依關係
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            I原廠服務 <span style="color:#960050;background-color:#1e0010">原廠服務</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">原廠服務</span>();
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉狀況</span>();
-            <span style="color:#75715e">//需要更換電瓶了
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">特斯拉</span>.<span style="color:#960050;background-color:#1e0010">更換電瓶</span>() == <span style="color:#66d9ef">true</span>)
-            {
-                Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉電瓶價:{原廠服務.維修電瓶服務(特斯拉.更換電瓶())}&#34;</span>);
-            }
-        }
-</code></pre></div><p><img src="https://i.imgur.com/JfniVkn.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉狀況</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">更換電瓶</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//建立一個I原廠服務的介面</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">I原廠服務</span>
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">維修電瓶服務</span>(<span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">狀態</span>) ;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//實作部分</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">原廠服務</span> : I原廠服務
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">維修電瓶服務</span>(<span style="color:#66d9ef">bool</span> <span style="color:#960050;background-color:#1e0010">狀態</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">狀態</span> == <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">5000</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//這樣一來就能解決特斯拉與原廠服務的直接相依關係</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            I原廠服務 <span style="color:#960050;background-color:#1e0010">原廠服務</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">原廠服務</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉狀況</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//需要更換電瓶了</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">特斯拉</span>.<span style="color:#960050;background-color:#1e0010">更換電瓶</span>() == <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉電瓶價:{原廠服務.維修電瓶服務(特斯拉.更換電瓶())}&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/JfniVkn.jpg" alt=""></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/21/dependency-inversion-principle">91之ASP.NET由淺入深 不負責講座 Day22 - DIP 依賴反轉原則</a></li>
@@ -352,7 +352,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

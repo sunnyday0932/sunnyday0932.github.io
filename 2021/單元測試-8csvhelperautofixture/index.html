@@ -191,18 +191,18 @@
 <p><img src="https://i.imgur.com/tvMWXV0.jpg" alt=""></p>
 <h4 id="3修改測試方法">3、修改測試方法。</h4>
 <p>首先在測試 Class 加上一個 Attribute。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">[DeploymentItem(@&quot;TestData\AccountData.csv&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">[DeploymentItem(@&#34;TestData\AccountData.csv&#34;)]
 </code></pre><p><img src="https://i.imgur.com/x5H8TtG.jpg" alt=""></p>
 <p>接著我們就可以在要使用的地方這麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccount&#34;)]
         public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試()
         {
             //arrange
             var sourceData = new List&lt;AccountDataModel&gt;();
-            using (var sr = new StreamReader(@&quot;AccountData.csv&quot;))
+            using (var sr = new StreamReader(@&#34;AccountData.csv&#34;))
             using (var reader = new CsvReader(sr, CultureInfo.InvariantCulture))
             {
                  var records = reader.GetRecords&lt;AccountDataModel&gt;();
@@ -210,12 +210,12 @@
             }
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(sourceData.FirstOrDefault(x =&gt; x.Account == &quot;test2&quot;));
-            var expect = this._mapper.Map&lt;AccountDto&gt;(sourceData.FirstOrDefault(x =&gt; x.Account == &quot;test2&quot;));
-            expect.Phone = &quot;098812****&quot;;
+            this._accountRepository.GetAccount(&#34;test2&#34;).Returns(sourceData.FirstOrDefault(x =&gt; x.Account == &#34;test2&#34;));
+            var expect = this._mapper.Map&lt;AccountDto&gt;(sourceData.FirstOrDefault(x =&gt; x.Account == &#34;test2&#34;));
+            expect.Phone = &#34;098812****&#34;;
 
             //act
-            var actual = sut.GetAccount(&quot;test2&quot;);
+            var actual = sut.GetAccount(&#34;test2&#34;);
 
             //assert
             actual.Should().BeEquivalentTo(expect);
@@ -224,14 +224,14 @@
 <img src="https://i.imgur.com/z0PHvNw.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>我們也可以做成一個私有方法，讓該類別的測試共同使用減少重複的程式碼。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得AccountData
         /// &lt;/summary&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         private IEnumerable&lt;AccountDataModel&gt; GetAccountData()
         {
             var sourceData = new List&lt;AccountDataModel&gt;();
-            using (var sr = new StreamReader(@&quot;AccountData.csv&quot;))
+            using (var sr = new StreamReader(@&#34;AccountData.csv&#34;))
             using (var reader = new CsvReader(sr, CultureInfo.InvariantCulture))
             {
                 var records = reader.GetRecords&lt;AccountDataModel&gt;();
@@ -241,22 +241,22 @@
             return sourceData;
         }
 </code></pre><p>修改使用的地方。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccount&#34;)]
         public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試()
         {
             //arrange
             var sourceData = this.GetAccountData();
-            var returnData = sourceData.FirstOrDefault(x =&gt; x.Account == &quot;test2&quot;);
+            var returnData = sourceData.FirstOrDefault(x =&gt; x.Account == &#34;test2&#34;);
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            this._accountRepository.GetAccount(&#34;test2&#34;).Returns(returnData);
             var expect = this._mapper.Map&lt;AccountDto&gt;(returnData);
-            expect.Phone = &quot;098812****&quot;;
+            expect.Phone = &#34;098812****&#34;;
 
             //act
-            var actual = sut.GetAccount(&quot;test2&quot;);
+            var actual = sut.GetAccount(&#34;test2&#34;);
 
             //assert
             actual.Should().BeEquivalentTo(expect);
@@ -268,10 +268,10 @@
 <p>接下來到我們單元測試的地方修改一下測試方法。<br>
 我們拿 AddAccount_Account 為空_應回傳 Exception 作為示範。<br>
 原本的做法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_Account為空_應回傳Exception()
         {
             //assert
@@ -279,22 +279,22 @@
             var info = new AccountInfoModel
             {
                 Account = string.Empty,
-                Email = &quot;test@gmail.com&quot;,
-                Password = &quot;123456&quot;,
-                Phone = &quot;0917888444&quot;
+                Email = &#34;test@gmail.com&#34;,
+                Password = &#34;123456&#34;,
+                Phone = &#34;0917888444&#34;
             };
             //act
             Action actual = () =&gt; sut.AddAccount(info);
 
             //arrange
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 </code></pre><p>使用 AutoFixture 製造傳遞 Model 的作法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_Account為空使用AutoFixture_應回傳Exception()
         {
             //assert
@@ -309,29 +309,29 @@
 
             //arrange
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/yDpCtRI.jpg" alt=""></p>
 <p>原本手刻傳遞參數的麻煩過程現在一下子就完成了，<del>又被你學了一招偷懶方法</del>。</p>
 <h4 id="遇到需要驗證特殊參數時也可以這麼做">遇到需要驗證特殊參數時也可以這麼做。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_密碼長度低於6碼使用AutoFixture_應回傳錯誤訊息()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var fixture = new Fixture();
             var info = fixture.Build&lt;AccountInfoModel&gt;()
-                .With(x =&gt; x.Password,&quot;1234&quot;)
+                .With(x =&gt; x.Password,&#34;1234&#34;)
                 .Create();
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;使用者密碼長度不可低於6碼！&quot;
+                Message = &#34;使用者密碼長度不可低於6碼！&#34;
             };
 
             //act
@@ -343,10 +343,10 @@
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/bi2tG5S.jpg" alt=""></p>
 <h4 id="遇到-list-資料時可以這麼做">遇到 List 資料時可以這麼做。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccountList&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccountList&#34;)]
         public void GetAccountList_有資料使用AutoFixture_應回傳正確結果()
         {
             //arrange
@@ -354,14 +354,14 @@
             var data = fixture.Build&lt;AccountDataModel&gt;()
                 .With(x =&gt; x.ModifyDate , DateTime.Now)
                 .With(x =&gt; x.CreateDate , DateTime.Now)
-                .With(x =&gt; x.Phone , &quot;0918777777&quot;)
+                .With(x =&gt; x.Phone , &#34;0918777777&#34;)
                 .CreateMany();
 
             var sut = this.GetSystemUnderTest();
             this._accountRepository.GetAccountList().Returns(data);
 
             var expect = this._mapper.Map&lt;IEnumerable&lt;AccountDto&gt;&gt;(data);
-            expect.ToList().ForEach(x =&gt; x.Phone = &quot;091877****&quot;);
+            expect.ToList().ForEach(x =&gt; x.Phone = &#34;091877****&#34;);
 
             //act
             var actual = sut.GetAccountList();
@@ -452,7 +452,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

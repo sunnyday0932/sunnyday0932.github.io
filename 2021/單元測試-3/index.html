@@ -173,30 +173,30 @@
           <h2 id="本文">本文</h2>
 <h3 id="比對兩個物件方式">比對兩個物件方式</h3>
 <p>首先我們建立一個測試用 Model。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class TestModel
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class TestModel
     {
         public string UserName { get; set; }
 
         public string Account { get; set; }
     }
 </code></pre><p>建立一個測試方法驗證兩個物件是否相同。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;Class1&quot;)]
-        [TestProperty(&quot;Class1&quot;, &quot;Object&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;Class1&#34;)]
+        [TestProperty(&#34;Class1&#34;, &#34;Object&#34;)]
         public void ObjectTest_比較兩個相同物件_應回傳正確結果()
         {
             //arrange 
             var fistObject = new TestModel
             {
-                Account = &quot;abc&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;abc&#34;,
+                UserName = &#34;Sian&#34;
             };
 
             var secondObject = new TestModel
             {
-                Account = &quot;abc&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;abc&#34;,
+                UserName = &#34;Sian&#34;
             };
 
             secondObject.Should().Be(fistObject);
@@ -205,23 +205,23 @@
 <img src="https://i.imgur.com/ZwVlh9Q.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>有點奇怪，我們換回內建的方法測試看看。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;Class1&quot;)]
-        [TestProperty(&quot;Class1&quot;, &quot;Object&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;Class1&#34;)]
+        [TestProperty(&#34;Class1&#34;, &#34;Object&#34;)]
         public void ObjectTest_比較兩個相同物件_應回傳正確結果()
         {
             //arrange 
             var fistObject = new TestModel
             {
-                Account = &quot;abc&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;abc&#34;,
+                UserName = &#34;Sian&#34;
             };
 
             var secondObject = new TestModel
             {
-                Account = &quot;abc&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;abc&#34;,
+                UserName = &#34;Sian&#34;
             };
 
             //secondObject.Should().Be(fistObject);
@@ -250,23 +250,23 @@
 <p>所以如果要解決此種情況，就只能複寫原本的 AreEqual() 方法，所以基於<del>懶惰原則</del>，當然是另尋出路。</p>
 <p><img src="https://i.imgur.com/2SetbnU.jpg" alt=""></p>
 <p>Fluentassertion 有提供這個方法比較，我們來測試看看。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;Class1&quot;)]
-        [TestProperty(&quot;Class1&quot;, &quot;Object&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;Class1&#34;)]
+        [TestProperty(&#34;Class1&#34;, &#34;Object&#34;)]
         public void ObjectTest_比較兩個相同物件_應回傳正確結果()
         {
             //arrange 
             var fistObject = new TestModel
             {
-                Account = &quot;abc&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;abc&#34;,
+                UserName = &#34;Sian&#34;
             };
 
             var secondObject = new TestModel
             {
-                Account = &quot;abc&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;abc&#34;,
+                UserName = &#34;Sian&#34;
             };
 
             //secondObject.Should().Be(fistObject);
@@ -278,10 +278,10 @@
 <img src="https://i.imgur.com/587OQDp.jpg" alt=""></p>
 <h3 id="比對兩個集合方式">比對兩個集合方式</h3>
 <p>一樣也可以透過 BeEquivalentTo 這個方法驗證。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;Class1&quot;)]
-        [TestProperty(&quot;Class1&quot;, &quot;CollectionTest&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;Class1&#34;)]
+        [TestProperty(&#34;Class1&#34;, &#34;CollectionTest&#34;)]
         public void CollectionTest_比較兩個集合_應回傳正確結果()
         {
             //arrange 
@@ -289,8 +289,8 @@
             {
                 new TestModel
                 {
-                    Account = &quot;abc&quot;,
-                    UserName = &quot;Sian&quot;
+                    Account = &#34;abc&#34;,
+                    UserName = &#34;Sian&#34;
                 }
             };
 
@@ -298,8 +298,8 @@
             {
                 new TestModel
                 {
-                    Account = &quot;abc&quot;,
-                    UserName = &quot;Sian&quot;
+                    Account = &#34;abc&#34;,
+                    UserName = &#34;Sian&#34;
                 }
             };
 
@@ -309,26 +309,26 @@
 <img src="https://i.imgur.com/sWnKZRA.jpg" alt=""></p>
 <h3 id="時間測試方法">時間測試方法</h3>
 <p>首先我們建立一個會用到時間的方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public string GetNewYear()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        public string GetNewYear()
         {
             if (DateTime.Now.Month == 1 &amp;&amp;
                 DateTime.Now.Day == 1)
             {
-                return &quot;Happy NEW YEAR!&quot;;
+                return &#34;Happy NEW YEAR!&#34;;
             }
 
-            return &quot;Today is not Holiday&quot;;
+            return &#34;Today is not Holiday&#34;;
         }
 </code></pre><p>測試方法</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;Class1&quot;)]
-        [TestProperty(&quot;Class1&quot;, &quot;GetNewYear&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;Class1&#34;)]
+        [TestProperty(&#34;Class1&#34;, &#34;GetNewYear&#34;)]
         public void GetNewYear_若今天不是新年_應回傳提示訊息()
         {
             //arrange
             var target = new Class1();
-            var expected = &quot;Today is not Holiday&quot;;
+            var expected = &#34;Today is not Holiday&#34;;
 
             //act
             var actual = target.GetNewYear();
@@ -340,7 +340,7 @@
 <img src="https://i.imgur.com/Oyozpkk.jpg" alt=""></p>
 <p>現在我們遇到了一個問題，因為時間的關係，我們並不能測試如果是1/1的話是否會正確顯示提示訊息。</p>
 <p>這時候我們可以自己撰寫一個擴充方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public static class SystemTime
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public static class SystemTime
     {
         internal static Func&lt;DateTime&gt; SetCurrentTime = () =&gt; DateTime.Now;
 
@@ -351,15 +351,15 @@
         public static DateTime Today =&gt; SetToday();
     }
 </code></pre><p>接下來把 DateTime 改成使用 SystemTime。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public string GetNewYear()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        public string GetNewYear()
         {
             if (SystemTime.Today.Month == 1 &amp;&amp;
                 SystemTime.Today.Day == 1)
             {
-                return &quot;Happy NEW YEAR!&quot;;
+                return &#34;Happy NEW YEAR!&#34;;
             }
 
-            return &quot;Today is not Holiday&quot;;
+            return &#34;Today is not Holiday&#34;;
         }
 </code></pre><p>接下來為了讓測試專案可以改變 Internal 屬性，需要到 AssemblyInfo.cs 加入東西。<br>
 先切換成資料夾檢視。<br>
@@ -370,18 +370,18 @@
 <img src="https://i.imgur.com/RDtUJqH.jpg" alt=""></p>
 <p>有 Debug 版本以及 Release 版本，兩個都要記得修改。<br>
 加入以下程式碼。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">[assembly: InternalsVisibleTo(&quot;UnitTestProject&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">[assembly: InternalsVisibleTo(&#34;UnitTestProject&#34;)]
 </code></pre><p><img src="https://i.imgur.com/NTrjJ4A.jpg" alt=""></p>
 <p>接著修改儲存完回到我們的測試。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;Class1&quot;)]
-        [TestProperty(&quot;Class1&quot;, &quot;GetNewYear&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;Class1&#34;)]
+        [TestProperty(&#34;Class1&#34;, &#34;GetNewYear&#34;)]
         public void GetNewYear_若今天是新年_應回傳提示訊息()
         {
             //arrange
             var target = new Class1();
-            var expected = &quot;Happy NEW YEAR!&quot;;
+            var expected = &#34;Happy NEW YEAR!&#34;;
 
             SystemTime.SetToday = () =&gt; new DateTime(year:2021,month:1,day:1);
 
@@ -460,7 +460,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

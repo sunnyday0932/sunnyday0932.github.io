@@ -177,14 +177,14 @@
 <img src="https://i.imgur.com/njffq46.jpg" alt=""></p>
 <p>我們需要把相同 Level 的欄位匯總再一起，做成一個統計用報表。</p>
 <p>首先每個區域後面先加、</p>
-<pre><code>select District+'、' from DistrictData
+<pre tabindex="0"><code>select District+&#39;、&#39; from DistrictData
 </code></pre><p><img src="https://i.imgur.com/juFYK26.jpg" alt=""></p>
 <p>接下來使用</p>
-<pre><code>select level,
+<pre tabindex="0"><code>select level,
 (
-	select District+'、' from DistrictData as B
+	select District+&#39;、&#39; from DistrictData as B
 	where A.Level = B.Level
-	FOR XML PATH('')
+	FOR XML PATH(&#39;&#39;)
 )AS District
 FROM DistrictData AS A
 GROUP BY level
@@ -194,12 +194,12 @@ GROUP BY level
 <img src="https://i.imgur.com/kCjVEQY.jpg" alt=""></p>
 <p>接下來會發現顯示格式不太對，要加上、的部分最後一筆應該要排除。<br>
 這時候就可以使用 <strong>SUBSTRING</strong></p>
-<pre><code>select SUBSTRING('大安區、信義區、松山區、中山區、中正區、',0,LEN('大安區、信義區、松山區、中山區、中正區、')) 
+<pre tabindex="0"><code>select SUBSTRING(&#39;大安區、信義區、松山區、中山區、中正區、&#39;,0,LEN(&#39;大安區、信義區、松山區、中山區、中正區、&#39;)) 
 </code></pre><p>可以得到以下。<br>
 <img src="https://i.imgur.com/VGamTxp.jpg" alt=""></p>
 <p><strong>SUBSTRING</strong> 這個語法中 SUBSTRING(string, start, lenth) ，第1、2個參數代表的是 string 這個字串中要起始的位置為 start ， lenth 則為最後要計算數字。<br>
 簡單實驗一下</p>
-<pre><code>select SUBSTRING('123',0,3) 
+<pre tabindex="0"><code>select SUBSTRING(&#39;123&#39;,0,3) 
 </code></pre><p>這邊我們會得到<br>
 <img src="https://i.imgur.com/cGfpybS.jpg" alt=""></p>
 <h3 id="參考資料">參考資料</h3>
@@ -261,7 +261,7 @@ GROUP BY level
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

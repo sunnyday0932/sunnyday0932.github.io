@@ -182,7 +182,7 @@
 <p>首先建立一個 Core API 的範例程式<br>
 <img src="https://i.imgur.com/dSrFJRf.png" alt=""></p>
 <p>接著就可以建立一個 HostService 並且繼承 BackgroundService ，繼承完後應該會馬上就看到提示需要實作 ExecuteAsync ，這個 ExecuteAsync 就是我們可以拿來實作排程。</p>
-<pre><code class="language-csharp=" data-lang="csharp="> public class HostService : BackgroundService
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp="> public class HostService : BackgroundService
     {
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -190,7 +190,7 @@
         }
     }
 </code></pre><p>簡單測試我們寫一個每10秒會去 D:/ 寫入 log 檔的背景程序。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class HostService : BackgroundService
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class HostService : BackgroundService
     {
         private readonly string _filePath;
 
@@ -200,20 +200,20 @@
         }
 
         /// &lt;summary&gt;
-        /// This method is called when the &lt;see cref=&quot;T:Microsoft.Extensions.Hosting.IHostedService&quot; /&gt; starts. The implementation should return a task that represents
+        /// This method is called when the &lt;see cref=&#34;T:Microsoft.Extensions.Hosting.IHostedService&#34; /&gt; starts. The implementation should return a task that represents
         /// the lifetime of the long running operation(s) being performed.
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;stoppingToken&quot;&gt;Triggered when &lt;see cref=&quot;M:Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)&quot; /&gt; is called.&lt;/param&gt;
+        /// &lt;param name=&#34;stoppingToken&#34;&gt;Triggered when &lt;see cref=&#34;M:Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)&#34; /&gt; is called.&lt;/param&gt;
         /// &lt;returns&gt;
-        /// A &lt;see cref=&quot;T:System.Threading.Tasks.Task&quot; /&gt; that represents the long running operations.
+        /// A &lt;see cref=&#34;T:System.Threading.Tasks.Task&#34; /&gt; that represents the long running operations.
         /// &lt;/returns&gt;
-        /// &lt;exception cref=&quot;NotImplementedException&quot;&gt;&lt;/exception&gt;
+        /// &lt;exception cref=&#34;NotImplementedException&#34;&gt;&lt;/exception&gt;
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (true)
             {
                 //寫入log
-                await Log(content: &quot;TestHostService&quot;);
+                await Log(content: &#34;TestHostService&#34;);
 
                 //每十秒執行一次
                 await Task.Delay(TimeSpan.FromSeconds(value: 10));
@@ -223,29 +223,29 @@
         /// &lt;summary&gt;
         /// Logs the specified content.
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;content&quot;&gt;The content.&lt;/param&gt;
+        /// &lt;param name=&#34;content&#34;&gt;The content.&lt;/param&gt;
         private async Task Log(string content)
         {
             using StreamWriter sw = new StreamWriter(this._filePath, append: true);
-            await sw.WriteLineAsync(value: $&quot;紀錄Log:{content}_{DateTime.Now}&quot;);
+            await sw.WriteLineAsync(value: $&#34;紀錄Log:{content}_{DateTime.Now}&#34;);
         }
     }
 </code></pre><p>接著我們先到 appsettings 補上我們的 log 檔案位置。</p>
-<pre><code class="language-json=" data-lang="json=">{
-  &quot;Logging&quot;: {
-    &quot;LogLevel&quot;: {
-      &quot;Default&quot;: &quot;Information&quot;,
-      &quot;Microsoft&quot;: &quot;Warning&quot;,
-      &quot;Microsoft.Hosting.Lifetime&quot;: &quot;Information&quot;
+<pre tabindex="0"><code class="language-json=" data-lang="json=">{
+  &#34;Logging&#34;: {
+    &#34;LogLevel&#34;: {
+      &#34;Default&#34;: &#34;Information&#34;,
+      &#34;Microsoft&#34;: &#34;Warning&#34;,
+      &#34;Microsoft.Hosting.Lifetime&#34;: &#34;Information&#34;
     }
   },
-  &quot;AllowedHosts&quot;: &quot;*&quot;,
-  &quot;LogPath&quot;: &quot;D:/Log.txt&quot;
+  &#34;AllowedHosts&#34;: &#34;*&#34;,
+  &#34;LogPath&#34;: &#34;D:/Log.txt&#34;
 }
 </code></pre><p>最後到 StartUp 的 ConfigureServices 註冊我們的背景服務。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public void ConfigureServices(IServiceCollection services)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        public void ConfigureServices(IServiceCollection services)
         {
-            var logPath = this.Configuration.GetValue&lt;string&gt;(&quot;LogPath&quot;);
+            var logPath = this.Configuration.GetValue&lt;string&gt;(&#34;LogPath&#34;);
             services.AddControllers();
             services.AddHostedService&lt;HostService&gt;(sp =&gt;
             {
@@ -324,7 +324,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

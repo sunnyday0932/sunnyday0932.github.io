@@ -177,28 +177,28 @@ CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，
 <h3 id="新增">新增</h3>
 <p>1、首先我們先建立一個用來回傳的 Model。</p>
 <p>建立 ResultModel</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultModel</span>
-    {
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 結果
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Result { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 提示訊息
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Message { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-    }
-</code></pre></div><p>2、把新增商品的 Repository 完成。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultModel</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 結果</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Result { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 提示訊息</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Message { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>2、把新增商品的 Repository 完成。</p>
 <p>新增商品 Repository</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增一筆商品
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;productModel&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;productModel&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool CreateProduct(ProductModel productModel)
         {
-            var sql = @&quot;INSERT INTO products
+            var sql = @&#34;INSERT INTO products
                                 (productname,
                                  supplierid,
                                  categoryid,
@@ -216,18 +216,18 @@ CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，
                                  @UnitsInStock,
                                  @UnitsOnOrder,
                                  @ReorderLevel,
-                                 @Discontinued) &quot;;
+                                 @Discontinued) &#34;;
 
             var parameters = new DynamicParameters();
-            parameters.Add(&quot;@ProductName&quot;, productModel.ProductName);
-            parameters.Add(&quot;@SupplierID&quot;, productModel.SupplierID);
-            parameters.Add(&quot;@CategoryID&quot;, productModel.CategoryID);
-            parameters.Add(&quot;@QuantityPerUnit&quot;, productModel.QuantityPerUnit);
-            parameters.Add(&quot;@UnitPrice&quot;, productModel.UnitPrice);
-            parameters.Add(&quot;@UnitsInStock&quot;, productModel.UnitsInStock);
-            parameters.Add(&quot;@UnitsOnOrder&quot;, productModel.UnitsOnOrder);
-            parameters.Add(&quot;@ReorderLevel&quot;, productModel.ReorderLevel);
-            parameters.Add(&quot;@Discontinued&quot;, productModel.Discontinued);
+            parameters.Add(&#34;@ProductName&#34;, productModel.ProductName);
+            parameters.Add(&#34;@SupplierID&#34;, productModel.SupplierID);
+            parameters.Add(&#34;@CategoryID&#34;, productModel.CategoryID);
+            parameters.Add(&#34;@QuantityPerUnit&#34;, productModel.QuantityPerUnit);
+            parameters.Add(&#34;@UnitPrice&#34;, productModel.UnitPrice);
+            parameters.Add(&#34;@UnitsInStock&#34;, productModel.UnitsInStock);
+            parameters.Add(&#34;@UnitsOnOrder&#34;, productModel.UnitsOnOrder);
+            parameters.Add(&#34;@ReorderLevel&#34;, productModel.ReorderLevel);
+            parameters.Add(&#34;@Discontinued&#34;, productModel.Discontinued);
 
             var connection = new SqlConnection(ConnectionHelper.ConnectionStr);
 
@@ -236,27 +236,27 @@ CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，
             return result &gt; 0;
         }
 </code></pre><p>3、增加一個 Controller 接口來接收新增商品。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">        [HttpPost]</span>
-        <span style="color:#66d9ef">public</span> ResultModel CreateProduct([FromBody] ProductModel productModel)
-        {
-            <span style="color:#66d9ef">var</span> result = <span style="color:#66d9ef">new</span> ResultModel();
-            <span style="color:#66d9ef">var</span> repository = <span style="color:#66d9ef">new</span> ProductRepository();
-
-            <span style="color:#66d9ef">var</span> data = repository.UpdateProduct(productModel);
-
-            <span style="color:#66d9ef">if</span> (data == <span style="color:#66d9ef">true</span>)
-            {
-                result.Result = data;
-                result.Message = <span style="color:#e6db74">&#34;新增商品成功&#34;</span>;
-            }
-            <span style="color:#66d9ef">else</span>
-            {
-                result.Result = data;
-                result.Message = <span style="color:#e6db74">&#34;新增商品失敗，請重試&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">return</span> result;
-</code></pre></div><p>4、測試方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#a6e22e">        [HttpPost]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ResultModel CreateProduct([FromBody] ProductModel productModel)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> result = <span style="color:#66d9ef">new</span> ResultModel();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> repository = <span style="color:#66d9ef">new</span> ProductRepository();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> data = repository.UpdateProduct(productModel);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (data == <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                result.Result = data;
+</span></span><span style="display:flex;"><span>                result.Message = <span style="color:#e6db74">&#34;新增商品成功&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                result.Result = data;
+</span></span><span style="display:flex;"><span>                result.Message = <span style="color:#e6db74">&#34;新增商品失敗，請重試&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result;
+</span></span></code></pre></div><p>4、測試方法</p>
 <p>因為這個方法使用的是 Post，所以需要透過模擬瀏覽器送資料的方式。<br>
 這邊介紹兩種我常用的方法。</p>
 <p>方法一：<a href="https://www.postman.com/">PostMan</a>
@@ -268,16 +268,16 @@ CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，
 <img src="https://i.imgur.com/77bTgdA.jpg" alt=""></p>
 <p>選擇方法 Post，並選擇Body &gt; raw &gt; json的方式，把資料填滿。<br>
 <img src="https://i.imgur.com/bKG8w9D.jpg" alt=""></p>
-<pre><code class="language-json=" data-lang="json=">{
-    &quot;ProductName&quot;: &quot;testProduct&quot;,
-    &quot;SupplierID&quot;: 1,
-    &quot;CategoryID&quot;: 1,
-    &quot;QuantityPerUnit&quot;: &quot;1k pkg.&quot;,
-    &quot;UnitPrice&quot;: 10.5,
-    &quot;UnitsInStock&quot;: 2,
-    &quot;UnitsOnOrder&quot;: 50,
-    &quot;ReorderLevel&quot;: 10,
-    &quot;Discontinued&quot;: false
+<pre tabindex="0"><code class="language-json=" data-lang="json=">{
+    &#34;ProductName&#34;: &#34;testProduct&#34;,
+    &#34;SupplierID&#34;: 1,
+    &#34;CategoryID&#34;: 1,
+    &#34;QuantityPerUnit&#34;: &#34;1k pkg.&#34;,
+    &#34;UnitPrice&#34;: 10.5,
+    &#34;UnitsInStock&#34;: 2,
+    &#34;UnitsOnOrder&#34;: 50,
+    &#34;ReorderLevel&#34;: 10,
+    &#34;Discontinued&#34;: false
 }
 </code></pre><p>settings 將兩個選項改為ON。<br>
 <img src="https://i.imgur.com/LJDqdjY.jpg" alt=""></p>
@@ -291,11 +291,11 @@ CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，
 <img src="https://i.imgur.com/2Yo25uH.jpg" alt=""></p>
 <p>安裝完成後到 startup.cs。<br>
 在 ConfigureServices 註冊 swagger。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">services.AddSwaggerGen(options =&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">services.AddSwaggerGen(options =&gt;
             {
-                options.SwaggerDoc(&quot;v1&quot;, new OpenApiInfo { Title = &quot;WebApiPhase1&quot;, Version = &quot;v1&quot; });
+                options.SwaggerDoc(&#34;v1&#34;, new OpenApiInfo { Title = &#34;WebApiPhase1&#34;, Version = &#34;v1&#34; });
                 // 取得xml文件名稱
-                var xmlFile = $&quot;{Assembly.GetExecutingAssembly().GetName().Name}.xml&quot;;
+                var xmlFile = $&#34;{Assembly.GetExecutingAssembly().GetName().Name}.xml&#34;;
                 // 取得xml path
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 // 顯示controller註解
@@ -303,12 +303,12 @@ CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，
             });
 </code></pre><p><img src="https://i.imgur.com/yOQ4GWo.jpg" alt=""></p>
 <p>在 Configure 中啟用 swagger，並指定存放的 JSON 位置。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">            app.UseSwagger();
-            app.UseSwaggerUI(c =&gt;
-            {
-                c.SwaggerEndpoint(<span style="color:#e6db74">&#34;/swagger/v1/swagger.json&#34;</span>, <span style="color:#e6db74">&#34;WebApiPhase1&#34;</span>);
-            });
-</code></pre></div><p><img src="https://i.imgur.com/aUQDknB.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>            app.UseSwagger();
+</span></span><span style="display:flex;"><span>            app.UseSwaggerUI(c =&gt;
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                c.SwaggerEndpoint(<span style="color:#e6db74">&#34;/swagger/v1/swagger.json&#34;</span>, <span style="color:#e6db74">&#34;WebApiPhase1&#34;</span>);
+</span></span><span style="display:flex;"><span>            });
+</span></span></code></pre></div><p><img src="https://i.imgur.com/aUQDknB.jpg" alt=""></p>
 <p>接下來要到專案屬性設定產生 xml 檔案，首先點選 webapplication1 右鍵選擇屬性。<br>
 <img src="https://i.imgur.com/nlhu9Xp.jpg" alt=""></p>
 <p>選擇建置，在輸出的地方把XML文件檔案打勾，並儲存。<br>
@@ -393,7 +393,7 @@ CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

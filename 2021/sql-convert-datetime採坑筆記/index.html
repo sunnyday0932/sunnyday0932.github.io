@@ -173,7 +173,7 @@
           <h2 id="本文">本文</h2>
 <p>事情發生是這樣的，今天突然接到一個線上問題，數據報表顯示有問題有幾個不該出現的數據卻出現了。</p>
 <p>問題發生當下馬上查了一下撈取數據顯示的語法，想知道判斷日期的地方是否有遺漏，然後就看到了一段類似於下列的語法</p>
-<pre><code class="language-sql=" data-lang="sql=">WHERE CONVERT(VARCHAR, KeyInDate, 111) &gt;= CONVERT(VARCHAR, Getdate(), 111)
+<pre tabindex="0"><code class="language-sql=" data-lang="sql=">WHERE CONVERT(VARCHAR, KeyInDate, 111) &gt;= CONVERT(VARCHAR, Getdate(), 111)
 </code></pre><p>當下不疑有他第一個查的當然是 CONVERT() 的用法，查了一下發現是 VARCHAR 可以轉換成 DATETIME 的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。</p>
 <table>
 <thead>
@@ -201,7 +201,7 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="language-sql=" data-lang="sql=">SELECT CONVERT(VARCHAR, Getdate(), 23)
+<pre tabindex="0"><code class="language-sql=" data-lang="sql=">SELECT CONVERT(VARCHAR, Getdate(), 23)
 
 SELECT CONVERT(VARCHAR, Getdate(), 111)
 
@@ -216,18 +216,18 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 </blockquote>
 <p>感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用 <a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.datetime.tryparseexact?view=net-5.0&amp;fbclid=IwAR27JCDpmhFiz4pJFycB2VXI_IydAAnV0fdFEZUHJAc4ouqHouZrUiQxwYQ">DateTime.TryParseExact</a> 這個方法來轉換日期格式。</p>
 <p>首先來了解一下這個方法要怎麼用。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime)
 //第一個 String 是放我們要轉換的字串
 //第二個 String 是我們要轉換的字串日期格式是甚麼例如第一個 String 是2021/06/06那第二個 String 就是yyyy/MM/dd
 //IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW
 //DateTimeStyles 則是可以決定我們允許哪些符合的字串格式能夠轉換
 //DateTime 這就是我們要輸出的日期格式
 </code></pre><p>簡單範例</p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
 {
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
-	var dateStr = &quot;2021/06/06&quot;;
-	if (DateTime.TryParseExact(dateStr, &quot;yyyy/MM/dd&quot;,culture,DateTimeStyles.None, out var date))
+	var culture = new CultureInfo(&#34;zh-TW&#34;);
+	var dateStr = &#34;2021/06/06&#34;;
+	if (DateTime.TryParseExact(dateStr, &#34;yyyy/MM/dd&#34;,culture,DateTimeStyles.None, out var date))
 	{
 		Console.WriteLine(date);
 	}
@@ -237,15 +237,15 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 </code></pre><p>輸出<br>
 <img src="https://i.imgur.com/cD02AyC.jpg" alt=""></p>
 <p>而第二個允許的 string 可以是一個 array，所以我們就能夠這麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
 {
-	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
+	Console.WriteLine(&#34;請輸入一個日期字串&#34;);
 	var dateStr = Console.ReadLine();
-	var formate = new[] { &quot;yyyy/MM/dd&quot;, &quot;yyyy-MM-dd&quot; };
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
+	var formate = new[] { &#34;yyyy/MM/dd&#34;, &#34;yyyy-MM-dd&#34; };
+	var culture = new CultureInfo(&#34;zh-TW&#34;);
 	if (DateTime.TryParseExact(dateStr, formate,culture,DateTimeStyles.None, out var date))
 	{
-		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
+		Console.WriteLine($&#34;轉換後的日期格式：{date}&#34;);
 	}
 
 		Console.ReadLine();
@@ -254,15 +254,15 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 <img src="https://i.imgur.com/70Wcx2t.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/vMgSYaQ.png" alt=""></p>
 <p>DateTime Style 的部分就是可以允許一些特殊格式字串出現，例如我們的字串中出現了空格就可以使用 DateTimeStyles.AllowInnerWhite</p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
 {
-	Console.WriteLine(&quot;請輸入一個日期字串&quot;);
+	Console.WriteLine(&#34;請輸入一個日期字串&#34;);
 	var dateStr = Console.ReadLine();
-	var formate = new[] { &quot;yyyy/MM/dd&quot;, &quot;yyyy-MM-dd&quot; };
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
+	var formate = new[] { &#34;yyyy/MM/dd&#34;, &#34;yyyy-MM-dd&#34; };
+	var culture = new CultureInfo(&#34;zh-TW&#34;);
 	if (DateTime.TryParseExact(dateStr, formate, culture,DateTimeStyles.AllowInnerWhite, out var date))
 	{
-		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
+		Console.WriteLine($&#34;轉換後的日期格式：{date}&#34;);
 	}
 
 		Console.ReadLine();
@@ -270,13 +270,13 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
 </code></pre><p><img src="https://i.imgur.com/AbiMyKP.jpg" alt=""></p>
 <p>至於如果是 UTC 這種日期格式的轉換可以使用 &ldquo;O&rdquo; 這個 formate 直接轉換為當地時間。</p>
 <p><img src="https://i.imgur.com/r1G2nwi.jpg" alt=""></p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
 {
-	var culture = new CultureInfo(&quot;zh-TW&quot;);
-	var dateStr = &quot;2021-06-06T16:11:20.0904778Z&quot;;
-	if (DateTime.TryParseExact(dateStr, &quot;o&quot;, culture,DateTimeStyles.None, out var date))
+	var culture = new CultureInfo(&#34;zh-TW&#34;);
+	var dateStr = &#34;2021-06-06T16:11:20.0904778Z&#34;;
+	if (DateTime.TryParseExact(dateStr, &#34;o&#34;, culture,DateTimeStyles.None, out var date))
 	{
-		Console.WriteLine($&quot;轉換後的日期格式：{date}&quot;);
+		Console.WriteLine($&#34;轉換後的日期格式：{date}&#34;);
 	}
 
 		Console.ReadLine();
@@ -347,7 +347,7 @@ SELECT CONVERT(VARCHAR, Getdate(), 112)
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

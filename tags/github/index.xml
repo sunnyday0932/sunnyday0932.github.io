@@ -19,7 +19,7 @@
 經過同事幫忙，發現在主題資料夾下有一個 seo_schema.html 檔案。
 詳細路徑在 themes\LeaveIt\layouts\partials\seo_schema.html
 裡面長這樣： 一開始裡面就少了一個括號，只要把這邊補上就正常啦。
-{ &amp;quot;@context&amp;quot; : &amp;quot;http://schema.org&amp;quot;, &amp;quot;@type&amp;quot; : &amp;quot;BlogPosting&amp;quot;, &amp;quot;mainEntityOfPage&amp;quot;: { &amp;quot;@type&amp;quot;: &amp;quot;WebPage&amp;quot;, &amp;quot;@id&amp;quot;: &amp;quot;{{ .Site.BaseURL }}&amp;quot; }, &amp;quot;articleSection&amp;quot; : &amp;quot;{{ .Section }}&amp;quot;, &amp;quot;name&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;headline&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;description&amp;quot; : &amp;quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;quot;, &amp;quot;inLanguage&amp;quot; : &amp;quot;{{ .Site.LanguageCode }}&amp;quot;, &amp;quot;author&amp;quot; : &amp;quot;{{ if isset .</description>
+{ &amp;#34;@context&amp;#34; : &amp;#34;http://schema.org&amp;#34;, &amp;#34;@type&amp;#34; : &amp;#34;BlogPosting&amp;#34;, &amp;#34;mainEntityOfPage&amp;#34;: { &amp;#34;@type&amp;#34;: &amp;#34;WebPage&amp;#34;, &amp;#34;@id&amp;#34;: &amp;#34;{{ .Site.BaseURL }}&amp;#34; }, &amp;#34;articleSection&amp;#34; : &amp;#34;{{ .Section }}&amp;#34;, &amp;#34;name&amp;#34; : &amp;#34;{{ .Title }}&amp;#34;, &amp;#34;headline&amp;#34; : &amp;#34;{{ .Title }}&amp;#34;, &amp;#34;description&amp;#34; : &amp;#34;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;#34;, &amp;#34;inLanguage&amp;#34; : &amp;#34;{{ .Site.LanguageCode }}&amp;#34;, &amp;#34;author&amp;#34; : &amp;#34;{{ if isset .</description>
     </item>
     
     <item>
@@ -40,8 +40,8 @@
 6、最後 config 設定，加入網站 URL 註冊步驟就完成了。
 接下來就可以開始設定留言功能到我們的 HUGO 網站。
 7、 開啟 Config.toml 加入下方參數。
-disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot; 8、接著在目錄/layouts/partials/內新增一個disqus.html檔案，官方提供的內容如下。 這邊需要注意的是，如果你是有使用主題，會需要移至主題底下目錄此路經新增。
-&amp;lt;div id=&amp;quot;disqus_thread&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; (function() { // Don&#39;t ever inject Disqus on localhost--it creates unwanted // discussions from &#39;localhost:1313&#39; on your Disqus account.</description>
+disqusShortname = &amp;#34;你在DISQUS註冊時輸入的Website name&amp;#34; 8、接著在目錄/layouts/partials/內新增一個disqus.html檔案，官方提供的內容如下。 這邊需要注意的是，如果你是有使用主題，會需要移至主題底下目錄此路經新增。
+&amp;lt;div id=&amp;#34;disqus_thread&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34;&amp;gt; (function() { // Don&amp;#39;t ever inject Disqus on localhost--it creates unwanted // discussions from &amp;#39;localhost:1313&amp;#39; on your Disqus account.</description>
     </item>
     
     <item>
@@ -62,14 +62,14 @@ disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot;
 6、系統變數 Path 點選編輯。
 7、新增系統變數，這邊因為我將 hugo.exe 放在 C 巢跟目錄底下因此設定為 C:\。
 8、接下來回到 C:\ 使用 CMD 測試 hugo，輸入hugo version，只要出現以下畫面就代表環境設定完成。
- 二、架設方式 1、使用 CMD 輸入 hugo new site &amp;ldquo;你要放資料夾的位子&amp;rdquo;。
+二、架設方式 1、使用 CMD 輸入 hugo new site &amp;ldquo;你要放資料夾的位子&amp;rdquo;。
 2、hugo 會自動建立預設資料夾。
 然後就可以套用自己想要的主題到 themes 這個資料架內，主題可以到以下連結選擇。
 3、套用主題，在 themes 資料夾使用 CMD 輸入 git clone &amp;ldquo;你想要的主題&amp;rdquo;。
 4、順利下載就會出現許多新資料夾。
 5、接下來就是修改內容改成自己想要的樣子就算完成了。
- 三、預覽方式 1、在資料夾使用 CMD 輸入 hugo server -v。
- 這裡要注意的是因為我們將 hugo 放在 C:\，因此要啟用 server 時要將路徑給上。   2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。</description>
+三、預覽方式 1、在資料夾使用 CMD 輸入 hugo server -v。
+這裡要注意的是因為我們將 hugo 放在 C:\，因此要啟用 server 時要將路徑給上。 2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。</description>
     </item>
     
   </channel>

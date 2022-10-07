@@ -176,7 +176,7 @@
 <p>我們會使用<a href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>這個Nuget套件進行示範。</p>
 <p><img src="https://i.imgur.com/JFZhEA9.jpg" alt=""></p>
 <p>接下來我們建立一個簡易的 Model。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class Employee
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class Employee
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -190,29 +190,29 @@
         }
     }
 </code></pre><p>給予一個初始值後我們將他轉成 JSON 的格式存入 Redis。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             //先取得連線
-            var connection = ConnectionMultiplexer.Connect(&quot;127.0.0.1:6379&quot;);
+            var connection = ConnectionMultiplexer.Connect(&#34;127.0.0.1:6379&#34;);
             var db = connection.GetDatabase();
 
-            var emp = new Employee(&quot;1&quot;,&quot;Sian&quot;,27);
-            Console.WriteLine(&quot;資料存入Redis成功 : &quot; +
-            db.StringSet(&quot;Emp1&quot;, JsonConvert.SerializeObject(emp)));
+            var emp = new Employee(&#34;1&#34;,&#34;Sian&#34;,27);
+            Console.WriteLine(&#34;資料存入Redis成功 : &#34; +
+            db.StringSet(&#34;Emp1&#34;, JsonConvert.SerializeObject(emp)));
         }
 </code></pre><p><img src="https://i.imgur.com/XQtGa7a.jpg" alt=""></p>
 <p>使用 Another Redis Desktop Manager 可以看到資料存入的詳細資訊，格式為 Json 大小為 33B。<br>
 <img src="https://i.imgur.com/19CFnR1.jpg" alt=""></p>
 <p>取出資料。</p>
-<pre><code class="language-csharp=" data-lang="csharp="> var data = JsonConvert.DeserializeObject(db.StringGet(&quot;Emp1&quot;));
- Console.WriteLine(&quot;取出資料為：&quot; + data);
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp="> var data = JsonConvert.DeserializeObject(db.StringGet(&#34;Emp1&#34;));
+ Console.WriteLine(&#34;取出資料為：&#34; + data);
 </code></pre><p><img src="https://i.imgur.com/Qf6FEsY.jpg" alt=""></p>
 <p>為了節省儲存資料的大小，通常都會將資料進行壓縮；而這邊比較常見的方式為壓縮成 byte array 的方式。</p>
 <p>我們可以透過 <a href="https://github.com/neuecc/MessagePack-CSharp">MessagePack-CSharp</a> 來簡易的達成這件事。</p>
 <p><img src="https://i.imgur.com/YLOtOFq.jpg" alt=""></p>
 <p>使用的方式很簡單。<br>
 首先在我們的 Model 地方加上幾個 Attribute。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    [MessagePackObject]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    [MessagePackObject]
     public class Employee
     {
         [Key(0)]
@@ -232,16 +232,16 @@
         }
     }
 </code></pre><p>接下來在程式內就可以直接使用序列化方式壓縮成 byte[]。</p>
-<pre><code class="language-css=" data-lang="css=">static void Main(string[] args)
+<pre tabindex="0"><code class="language-css=" data-lang="css=">static void Main(string[] args)
         {
-            var connection = ConnectionMultiplexer.Connect(&quot;127.0.0.1:6379&quot;);
+            var connection = ConnectionMultiplexer.Connect(&#34;127.0.0.1:6379&#34;);
             var db = connection.GetDatabase();
 
-            var emp = new Employee(&quot;1&quot;,&quot;Sian&quot;,27);
+            var emp = new Employee(&#34;1&#34;,&#34;Sian&#34;,27);
             var data = MessagePackSerializer.Serialize(emp);
             Console.WriteLine(data);
-            Console.WriteLine(&quot;資料存入Redis成功 : &quot; +
-            db.StringSet(&quot;Emp2&quot;, data));
+            Console.WriteLine(&#34;資料存入Redis成功 : &#34; +
+            db.StringSet(&#34;Emp2&#34;, data));
         }
 </code></pre><p><img src="https://i.imgur.com/J4izRr2.jpg" alt=""></p>
 <p>在管理介面就可以看到此筆資料格式已經不同了，且大小只剩下原本的三分之一。<br>
@@ -249,15 +249,15 @@
 <p>透過管理介面也可以看到詳細內容，資料呈現選擇 Msgpack 即可。<br>
 <img src="https://i.imgur.com/pUqG4nH.jpg" alt=""></p>
 <p>取回資料。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">static void Main(string[] args)
         {
-            var connection = ConnectionMultiplexer.Connect(&quot;127.0.0.1:6379&quot;);
+            var connection = ConnectionMultiplexer.Connect(&#34;127.0.0.1:6379&#34;);
             var db = connection.GetDatabase();
 
-            var emp = new Employee(&quot;1&quot;,&quot;Sian&quot;,27);
+            var emp = new Employee(&#34;1&#34;,&#34;Sian&#34;,27);
 
-            var data = MessagePackSerializer.ConvertToJson(db.StringGet(&quot;Emp2&quot;));
-            Console.WriteLine(&quot;取出資料為：&quot; + data);
+            var data = MessagePackSerializer.ConvertToJson(db.StringGet(&#34;Emp2&#34;));
+            Console.WriteLine(&#34;取出資料為：&#34; + data);
         }
 </code></pre><p><img src="https://i.imgur.com/ucMQ1A6.jpg" alt=""></p>
 <p>MessagePack 還支援了很多型別，可以自行嘗試看看。<br>
@@ -330,7 +330,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

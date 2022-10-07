@@ -194,98 +194,98 @@
 所以就頭都要洗了，就先挖個坑吧。<br>
 <!-- raw HTML omitted --></p>
 <p>我們來看一段例子，傳統汽車對於軟體硬體整合，還不夠靈活的時候，需要更改東西就需要把整台汽車拆開某些部分增加功能、每一次更改都是一項大工程。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">影音撥放器</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;安裝影音撥放器成功&#34;</span>;
-            }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;安裝自動導航裝置成功&#34;</span>;
-            }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝影音撥放器</span>()
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">影音波放器</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">影音撥放器</span>();
-                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">影音波放器</span>.<span style="color:#960050;background-color:#1e0010">安裝</span>();
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝自動導航裝置</span>()
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span>();
-                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span>.<span style="color:#960050;background-color:#1e0010">安裝</span>();
-            }
-        }
-        
-	 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車：{汽車.安裝影音撥放器()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車：{汽車.安裝自動導航裝置()}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/q7J327b.jpg" alt="">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">影音撥放器</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;安裝影音撥放器成功&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;安裝自動導航裝置成功&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝影音撥放器</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">影音波放器</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">影音撥放器</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">影音波放器</span>.<span style="color:#960050;background-color:#1e0010">安裝</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝自動導航裝置</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">自動導航裝置</span>.<span style="color:#960050;background-color:#1e0010">安裝</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>	 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車：{汽車.安裝影音撥放器()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車：{汽車.安裝自動導航裝置()}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/q7J327b.jpg" alt="">
 <!-- raw HTML omitted --></p>
 <p>這時候發現如果我們要在加個停車導引功能的時候，又需要再把車子拆開來安裝停車導引系統；這時候我們可以看看特斯拉的作法，一開始先把車子硬體都準備好，當你有需要增加功能時對特斯拉來說就只是更新軟體而已。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//更新軟體介面
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> I更新軟體
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝項目</span>) 
-            { 
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>; 
-            }
-        }
-
-	<span style="color:#75715e">//實作功能
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span> : I更新軟體
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝項目</span>)
-            {
-                <span style="color:#66d9ef">return</span>(<span style="color:#e6db74">$&#34;安裝{安裝項目}成功&#34;</span>);
-            }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
-        {
-            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span> _更新軟體;
-
-            <span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(<span style="color:#960050;background-color:#1e0010">更新軟體</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>)
-            {
-                <span style="color:#66d9ef">this</span>._更新軟體 = <span style="color:#960050;background-color:#1e0010">更新軟體</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝影音撥放器</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>._更新軟體.<span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#e6db74">&#34;影音撥放器&#34;</span>);
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝自動導航裝置</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>._更新軟體.<span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#e6db74">&#34;自動導航裝置&#34;</span>);
-            }
-			
-	     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝停車導引系統</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>._更新軟體.<span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#e6db74">&#34;停車導引系統&#34;</span>);
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#75715e">//今天Models想增加功能時，就可以透過更新軟體安裝想要的功能。
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> ModelS = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(<span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>());
-            Console.WriteLine(ModelS.<span style="color:#960050;background-color:#1e0010">安裝影音撥放器</span>());
-            Console.WriteLine(ModelS.<span style="color:#960050;background-color:#1e0010">安裝自動導航裝置</span>());
-	     Console.WriteLine(ModelS.<span style="color:#960050;background-color:#1e0010">安裝停車導引系統</span>());
-        }
-</code></pre></div><p><img src="https://i.imgur.com/geSsDTN.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//更新軟體介面</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">I更新軟體</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝項目</span>) 
+</span></span><span style="display:flex;"><span>            { 
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>; 
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//實作功能</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span> : I更新軟體
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝項目</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>(<span style="color:#e6db74">$&#34;安裝{安裝項目}成功&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span> _更新軟體;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(<span style="color:#960050;background-color:#1e0010">更新軟體</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">this</span>._更新軟體 = <span style="color:#960050;background-color:#1e0010">更新軟體</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝影音撥放器</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>._更新軟體.<span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#e6db74">&#34;影音撥放器&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝自動導航裝置</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>._更新軟體.<span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#e6db74">&#34;自動導航裝置&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>	     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">安裝停車導引系統</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>._更新軟體.<span style="color:#960050;background-color:#1e0010">安裝</span>(<span style="color:#e6db74">&#34;停車導引系統&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//今天Models想增加功能時，就可以透過更新軟體安裝想要的功能。</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> ModelS = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(<span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">更新軟體</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(ModelS.<span style="color:#960050;background-color:#1e0010">安裝影音撥放器</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(ModelS.<span style="color:#960050;background-color:#1e0010">安裝自動導航裝置</span>());
+</span></span><span style="display:flex;"><span>	     Console.WriteLine(ModelS.<span style="color:#960050;background-color:#1e0010">安裝停車導引系統</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/geSsDTN.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>這樣就可以透過更新軟體來增加自己想要的功能，未來想要增加新功能時，也不需要更改其他地方只要針對特斯拉這個類別做更新就可以，以此達到OCP精神。<br>
 這邊的更新軟體作法是使用了 DI，後續文章會在說明DI用法，想先了解的可以先點此<a href="https://ithelp.ithome.com.tw/articles/10204404">Dependency Injection概念介紹</a></p>
@@ -360,7 +360,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

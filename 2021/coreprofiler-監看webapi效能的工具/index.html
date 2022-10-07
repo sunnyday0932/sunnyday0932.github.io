@@ -184,7 +184,7 @@
 <p><img src="https://i.imgur.com/3KRsqj9.jpg" alt=""></p>
 <h3 id="使用方式">使用方式</h3>
 <p>1、在我們需要監看的地方加上以下程式。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">var stepName = $&quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&quot;;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">var stepName = $&#34;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&#34;;
 using (ProfilingSession.Current.Step(stepName))
 { 
             
@@ -196,7 +196,7 @@ using (ProfilingSession.Current.Step(stepName))
 <p>Repository：<br>
 <img src="https://i.imgur.com/KQOIP5J.jpg" alt=""></p>
 <p>3、若要監看與 DB 存取資料的狀況，可以到 DatabaseHelper 這麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 建立連線
         /// &lt;/summary&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
@@ -213,20 +213,20 @@ using (ProfilingSession.Current.Step(stepName))
             return conn;
         }
 </code></pre><p>4、CoreProfiler 的設定，可以建立一個 coreprofiler.json 的檔案。</p>
-<pre><code class="language-json=" data-lang="json=">{
+<pre tabindex="0"><code class="language-json=" data-lang="json=">{
   //資料保存上限
-  &quot;circularBufferSize&quot;: 200,
+  &#34;circularBufferSize&#34;: 200,
   //要過濾掉的項目
-  &quot;filters&quot;: [
+  &#34;filters&#34;: [
     {
-      &quot;key&quot;: &quot;/coreprofiler&quot;,
-      &quot;value&quot;: &quot;/coreprofiler&quot;,
-      &quot;type&quot;: &quot;CoreProfiler.ProfilingFilters.NameContainsProfilingFilter, CoreProfiler&quot;
+      &#34;key&#34;: &#34;/coreprofiler&#34;,
+      &#34;value&#34;: &#34;/coreprofiler&#34;,
+      &#34;type&#34;: &#34;CoreProfiler.ProfilingFilters.NameContainsProfilingFilter, CoreProfiler&#34;
     },
     {
-      &quot;key&quot;: &quot;static files&quot;,
-      &quot;value&quot;: &quot;ico,jpg,js,css,svg,json,ttf,woff,woff2,eot&quot;,
-      &quot;type&quot;: &quot;CoreProfiler.ProfilingFilters.FileExtensionProfilingFilter, CoreProfiler&quot;
+      &#34;key&#34;: &#34;static files&#34;,
+      &#34;value&#34;: &#34;ico,jpg,js,css,svg,json,ttf,woff,woff2,eot&#34;,
+      &#34;type&#34;: &#34;CoreProfiler.ProfilingFilters.FileExtensionProfilingFilter, CoreProfiler&#34;
     }
   ]
 }
@@ -234,7 +234,7 @@ using (ProfilingSession.Current.Step(stepName))
 檔案屬性要記得調整。<br>
 <img src="https://i.imgur.com/6FuRKRq.jpg" alt=""></p>
 <p>5、到 StartUp Cofigure 的地方引用 CoreProfiler。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">app.UseCoreProfiler(true);
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">app.UseCoreProfiler(true);
 </code></pre><p><img src="https://i.imgur.com/pCC8Eoj.jpg" alt=""></p>
 <p>6、接下來就可以進行測試了。</p>
 <p>可以先連到 /nanoprofiler/view 觀看有沒有成功啟用<br>
@@ -312,7 +312,7 @@ using (ProfilingSession.Current.Step(stepName))
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

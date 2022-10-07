@@ -16,7 +16,7 @@
       <description>本文 我們在先前 SOLID - OCP(開放封閉原則) 有提到過，軟體設計原則，應該對擴展開放，對修改封閉。
 而這次我們要介紹的裝飾者模式能夠更優雅地做到這件事。
 首先我們先回憶一下，特斯拉(不要懷疑我又回來啦)在不違反 OCP 原則下安裝軟體的時候我們可以怎麼做。
-internal class Program { static void Main(string[] args) { var tesla = new Tesla(&amp;quot;Model3&amp;quot;); tesla.Print(); var autoPilot= new AutoPilot(); var settingRing = new SettingRing(); autoPilot.AddSoftWare(); settingRing.AddSoftWare(); } } public class Tesla { private string _model; public Tesla(string model) { this._model = model; } public void Print() { Console.WriteLine(this._model); } } public abstract class SoftWare { public abstract void AddSoftWare(); } public class AutoPilot : SoftWare { public override void AddSoftWare() { Console.</description>
+internal class Program { static void Main(string[] args) { var tesla = new Tesla(&amp;#34;Model3&amp;#34;); tesla.Print(); var autoPilot= new AutoPilot(); var settingRing = new SettingRing(); autoPilot.AddSoftWare(); settingRing.AddSoftWare(); } } public class Tesla { private string _model; public Tesla(string model) { this._model = model; } public void Print() { Console.WriteLine(this._model); } } public abstract class SoftWare { public abstract void AddSoftWare(); } public class AutoPilot : SoftWare { public override void AddSoftWare() { Console.</description>
     </item>
     
   </channel>

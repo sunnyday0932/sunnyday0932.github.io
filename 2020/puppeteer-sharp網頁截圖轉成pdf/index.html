@@ -186,104 +186,104 @@
 <p>2、將下載版本複製貼上並取代此資料夾內檔案。
 <img src="https://i.imgur.com/GpdllEB.jpg" alt=""></p>
 <p>3、進行測試。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">
-	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-		Test().Wait();
-	}
-
-        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Test()
-        {
-            <span style="color:#66d9ef">try</span>
-            {
-                <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
-                <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> browser = <span style="color:#66d9ef">await</span> Puppeteer.LaunchAsync(<span style="color:#66d9ef">new</span> LaunchOptions()
-                {
-                    Headless = <span style="color:#66d9ef">true</span> <span style="color:#75715e">//偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)
-</span><span style="color:#75715e"></span>                }))
-                {
-                    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> page = <span style="color:#66d9ef">await</span> browser.NewPageAsync())
-                    {
-                        <span style="color:#66d9ef">await</span> page.GoToAsync(<span style="color:#e6db74">&#34;https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/&#34;</span>);
-                        Thread.Sleep(<span style="color:#ae81ff">1000</span>);  
-                        <span style="color:#66d9ef">await</span> page.ScreenshotAsync(<span style="color:#e6db74">$&#34;D:\\test\\Snapshot.png&#34;</span>);
-                    }
-                }
-            }
-            <span style="color:#66d9ef">catch</span> (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                <span style="color:#66d9ef">throw</span>;
-            }
-        }
-</code></pre></div><p><img src="https://i.imgur.com/Is0ylfV.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>		Test().Wait();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Test()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> browser = <span style="color:#66d9ef">await</span> Puppeteer.LaunchAsync(<span style="color:#66d9ef">new</span> LaunchOptions()
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    Headless = <span style="color:#66d9ef">true</span> <span style="color:#75715e">//偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)</span>
+</span></span><span style="display:flex;"><span>                }))
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> page = <span style="color:#66d9ef">await</span> browser.NewPageAsync())
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">await</span> page.GoToAsync(<span style="color:#e6db74">&#34;https://sunnyday0932.github.io/2020/%E7%B6%B2%E9%A0%81%E6%88%AA%E5%9C%96%E8%BD%89%E6%88%90pdf%E6%AA%94%E7%B4%94%E5%B1%AC%E5%A5%BD%E7%8E%A9/&#34;</span>);
+</span></span><span style="display:flex;"><span>                        Thread.Sleep(<span style="color:#ae81ff">1000</span>);  
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">await</span> page.ScreenshotAsync(<span style="color:#e6db74">$&#34;D:\\test\\Snapshot.png&#34;</span>);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> (Exception ex)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Console.WriteLine(ex.ToString());
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/Is0ylfV.jpg" alt=""></p>
 <h3 id="實際結果">實際結果</h3>
 <p><img src="https://i.imgur.com/NyXx0rU.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>測試成功後我們回到需求本身，是需要將兩個不同的網頁合成為一個 pdf 檔案，研究了一下套件用法，我選擇結合 itextSharp 達成目的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-			Test().Wait();
-        }
-
-        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Test()
-        {
-            <span style="color:#66d9ef">try</span>
-            {
-				
-		<span style="color:#66d9ef">var</span> firstUrl = <span style="color:#e6db74">$&#34;https://github.com/explore&#34;</span>;
-		<span style="color:#66d9ef">var</span> secondUrl = <span style="color:#e6db74">$&#34;https://leetcode.com/&#34;</span>;
-
-		<span style="color:#66d9ef">byte</span>[] mergePage = <span style="color:#66d9ef">null</span>;
-		<span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
-		<span style="color:#66d9ef">var</span> pdfUrl = <span style="color:#66d9ef">new</span>[] { firstUrl, secondUrl };
-
-		<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> browser = <span style="color:#66d9ef">await</span> Puppeteer.LaunchAsync(<span style="color:#66d9ef">new</span> LaunchOptions()
-		{
-			Headless = <span style="color:#66d9ef">true</span> <span style="color:#75715e">//偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)
-</span><span style="color:#75715e"></span>		}))
-		{
-			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> stream = File.Create(<span style="color:#e6db74">@&#34;D:\test\test.pdf&#34;</span>))
-			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> doc = <span style="color:#66d9ef">new</span> Document(PageSize.A4))
-			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> pdfWriter = PdfWriter.GetInstance(doc, stream))
-			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> page = <span style="color:#66d9ef">await</span> browser.NewPageAsync())
-			{
-				doc.Open();
-				<span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> pdfUrl)
-				{
-					<span style="color:#66d9ef">await</span> page.GoToAsync(item, <span style="color:#66d9ef">new</span> NavigationOptions
-					{
-						<span style="color:#75715e">//此方法可以偵測JS連線都完成了
-</span><span style="color:#75715e"></span>						WaitUntil = <span style="color:#66d9ef">new</span> WaitUntilNavigation[<span style="color:#ae81ff">2</span>]
-					});
-					<span style="color:#75715e">//但用上述waitUntil方式我的目標網站渲染方式不同，所以最後還是加上了等待。
-</span><span style="color:#75715e"></span>					Thread.Sleep(<span style="color:#ae81ff">1000</span>);		
-					mergePage = <span style="color:#66d9ef">await</span> page.ScreenshotDataAsync(<span style="color:#66d9ef">new</span> ScreenshotOptions
-					{
-						OmitBackground = <span style="color:#66d9ef">true</span>,		<span style="color:#75715e">//是否顯示背景圖式
-</span><span style="color:#75715e"></span>						FullPage = <span style="color:#66d9ef">true</span>,		<span style="color:#75715e">//是否整頁
-</span><span style="color:#75715e"></span>						Type = ScreenshotType.Jpeg,     <span style="color:#75715e">//可以設定檔案格式
-</span><span style="color:#75715e"></span>						Quality = <span style="color:#ae81ff">100</span>			<span style="color:#75715e">//可以設定照片品質
-</span><span style="color:#75715e"></span>					});
-
-					<span style="color:#75715e">//檔案都取回後再透過itextSharp進行處理
-</span><span style="color:#75715e"></span>					<span style="color:#66d9ef">var</span> image = iTextSharp.text.Image.GetInstance(mergePage);
-					<span style="color:#75715e">//這邊可以調整圖片大小
-</span><span style="color:#75715e"></span>					image.ScalePercent(<span style="color:#ae81ff">60</span>);
-					doc.Add(image);
-					}
-				doc.Close();
-				doc.Dispose();
-				}
-			}
-		} 
-            <span style="color:#66d9ef">catch</span> (Exception ex)
-            {
-			Console.WriteLine(ex.ToString());
-			<span style="color:#66d9ef">throw</span>;
-	    }
-        }
-</code></pre></div><p><img src="https://i.imgur.com/rEKu3Ci.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>			Test().Wait();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Test()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> firstUrl = <span style="color:#e6db74">$&#34;https://github.com/explore&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> secondUrl = <span style="color:#e6db74">$&#34;https://leetcode.com/&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">byte</span>[] mergePage = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> pdfUrl = <span style="color:#66d9ef">new</span>[] { firstUrl, secondUrl };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> browser = <span style="color:#66d9ef">await</span> Puppeteer.LaunchAsync(<span style="color:#66d9ef">new</span> LaunchOptions()
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			Headless = <span style="color:#66d9ef">true</span> <span style="color:#75715e">//偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)</span>
+</span></span><span style="display:flex;"><span>		}))
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> stream = File.Create(<span style="color:#e6db74">@&#34;D:\test\test.pdf&#34;</span>))
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> doc = <span style="color:#66d9ef">new</span> Document(PageSize.A4))
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> pdfWriter = PdfWriter.GetInstance(doc, stream))
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> page = <span style="color:#66d9ef">await</span> browser.NewPageAsync())
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				doc.Open();
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> pdfUrl)
+</span></span><span style="display:flex;"><span>				{
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">await</span> page.GoToAsync(item, <span style="color:#66d9ef">new</span> NavigationOptions
+</span></span><span style="display:flex;"><span>					{
+</span></span><span style="display:flex;"><span>						<span style="color:#75715e">//此方法可以偵測JS連線都完成了</span>
+</span></span><span style="display:flex;"><span>						WaitUntil = <span style="color:#66d9ef">new</span> WaitUntilNavigation[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>					});
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">//但用上述waitUntil方式我的目標網站渲染方式不同，所以最後還是加上了等待。</span>
+</span></span><span style="display:flex;"><span>					Thread.Sleep(<span style="color:#ae81ff">1000</span>);		
+</span></span><span style="display:flex;"><span>					mergePage = <span style="color:#66d9ef">await</span> page.ScreenshotDataAsync(<span style="color:#66d9ef">new</span> ScreenshotOptions
+</span></span><span style="display:flex;"><span>					{
+</span></span><span style="display:flex;"><span>						OmitBackground = <span style="color:#66d9ef">true</span>,		<span style="color:#75715e">//是否顯示背景圖式</span>
+</span></span><span style="display:flex;"><span>						FullPage = <span style="color:#66d9ef">true</span>,		<span style="color:#75715e">//是否整頁</span>
+</span></span><span style="display:flex;"><span>						Type = ScreenshotType.Jpeg,     <span style="color:#75715e">//可以設定檔案格式</span>
+</span></span><span style="display:flex;"><span>						Quality = <span style="color:#ae81ff">100</span>			<span style="color:#75715e">//可以設定照片品質</span>
+</span></span><span style="display:flex;"><span>					});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">//檔案都取回後再透過itextSharp進行處理</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">var</span> image = iTextSharp.text.Image.GetInstance(mergePage);
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">//這邊可以調整圖片大小</span>
+</span></span><span style="display:flex;"><span>					image.ScalePercent(<span style="color:#ae81ff">60</span>);
+</span></span><span style="display:flex;"><span>					doc.Add(image);
+</span></span><span style="display:flex;"><span>					}
+</span></span><span style="display:flex;"><span>				doc.Close();
+</span></span><span style="display:flex;"><span>				doc.Dispose();
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		} 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> (Exception ex)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>			Console.WriteLine(ex.ToString());
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span>;
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/rEKu3Ci.jpg" alt=""></p>
 <h3 id="實際結果-1">實際結果</h3>
 <ul>
 <li>第一頁</li>
@@ -357,7 +357,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

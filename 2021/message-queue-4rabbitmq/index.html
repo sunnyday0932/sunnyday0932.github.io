@@ -176,78 +176,78 @@
 <p>我們來練習使用 Exchange 透過 Fanout 的方式發送訊息給所有 Queue。</p>
 <p>現在我們目標是要發送 log 給所有 Queue。<br>
 一樣先建立Publisher。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
                 //創建一個Exchange設定為logs
-                channel.ExchangeDeclare(exchange: &quot;logs&quot;, ExchangeType.Fanout);
+                channel.ExchangeDeclare(exchange: &#34;logs&#34;, ExchangeType.Fanout);
 
                 var message = GetMessage(args);
                 var body = Encoding.UTF8.GetBytes(message);
 
-                channel.BasicPublish(exchange: &quot;logs&quot;, //設定我們的Exchange為logs
-                                     routingKey: &quot;&quot;,   //不指定Queue
+                channel.BasicPublish(exchange: &#34;logs&#34;, //設定我們的Exchange為logs
+                                     routingKey: &#34;&#34;,   //不指定Queue
                                      basicProperties: null,
                                      body: body);
 
-                Console.WriteLine(&quot; 送出訊息： {0}&quot;, message);
+                Console.WriteLine(&#34; 送出訊息： {0}&#34;, message);
             }
 
-            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.WriteLine(&#34;請按任意鍵離開!&#34;);
             Console.ReadLine();
         }
 
         private static string GetMessage(string[] args)
         {
             return ((args.Length &gt; 0)
-                   ? string.Join(&quot; &quot;, args)
-                   : &quot;info: Hello World!&quot;);
+                   ? string.Join(&#34; &#34;, args)
+                   : &#34;info: Hello World!&#34;);
         }
 </code></pre><p>一樣會創建兩個 Reciver</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
         
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.ExchangeDeclare(exchange: &quot;LogsExchange&quot;, ExchangeType.Fanout);
+                channel.ExchangeDeclare(exchange: &#34;LogsExchange&#34;, ExchangeType.Fanout);
 
                 //這方法會隨機建立一個非持久化、自動刪除的、獨立的Queue
                 var queueName = channel.QueueDeclare().QueueName;
                 channel.QueueBind(queue: queueName,
-                                  exchange: &quot;LogsExchange&quot;, //指定透過我們的logsExchange
-                                  routingKey: &quot;&quot;);
+                                  exchange: &#34;LogsExchange&#34;, //指定透過我們的logsExchange
+                                  routingKey: &#34;&#34;);
 
-                Console.WriteLine(&quot; 等待拿取log &quot;);
+                Console.WriteLine(&#34; 等待拿取log &#34;);
 
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =&gt;
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, message);
+                    Console.WriteLine(&#34; 收到訊息： {0}&#34;, message);
                 };
                 channel.BasicConsume(queue: queueName,
                                      autoAck: true,
                                      consumer: consumer);
 
-                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.WriteLine(&#34;請按任意鍵離開!&#34;);
                 Console.ReadLine();
             }
 </code></pre><p>首先我們先使用 Publisher 發送 log 觀察 RabbitMQ。</p>
@@ -271,13 +271,13 @@
 <p>接著是透過 Exchange 使用 direct 的方式，直接將 Message 丟給指定的 Queue。</p>
 <p>延續上一個範例，雖然都是 log，但我們會想針對某一種型態的 log 傳給其中一個 Reciever 接收就好，這次目標就是把 Warning 的 log 傳給 Reciever2 接收即可。</p>
 <p>Publisher：</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
@@ -285,37 +285,37 @@
             {
                 //創建一個Exchange設定為direct_logs 透過direct方式發送
                 channel.ExchangeDeclare(
-                    exchange: &quot;direct_logs&quot;, 
+                    exchange: &#34;direct_logs&#34;, 
                     ExchangeType.Direct);
 
                 //我們已接收到的第一個參數來當key決定要丟給哪一個Queue
-                var key = (args.Length &gt; 0) ? args[0] : &quot;info&quot;;
+                var key = (args.Length &gt; 0) ? args[0] : &#34;info&#34;;
 
                 var message = (args.Length &gt; 1)
-                              ? string.Join(&quot; &quot;, args.Skip(1).ToArray())
-                              : &quot;Hello World!&quot;;
+                              ? string.Join(&#34; &#34;, args.Skip(1).ToArray())
+                              : &#34;Hello World!&#34;;
 
                 var body = Encoding.UTF8.GetBytes(message);
 
-                channel.BasicPublish(exchange: &quot;direct_logs&quot;, //設定我們的Exchange為logs
+                channel.BasicPublish(exchange: &#34;direct_logs&#34;, //設定我們的Exchange為logs
                                      routingKey: key,   
                                      basicProperties: null,
                                      body: body);
 
-                Console.WriteLine($&quot; 送出訊息： '{key}' : '{message}'&quot;);
+                Console.WriteLine($&#34; 送出訊息： &#39;{key}&#39; : &#39;{message}&#39;&#34;);
             }
 
-            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.WriteLine(&#34;請按任意鍵離開!&#34;);
             Console.ReadLine();
         }
 </code></pre><p>Reciever1 負責拿取 Safe 的 log。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             ConnectionFactory factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
@@ -323,41 +323,41 @@
             {
                 //一樣是direct_logs Exchange
                 channel.ExchangeDeclare(
-                    exchange: &quot;direct_logs&quot;,
+                    exchange: &#34;direct_logs&#34;,
                     ExchangeType.Direct);
 
                 //這方法會隨機建立一個非持久化、自動刪除的、獨立的Queue
                 var queueName = channel.QueueDeclare().QueueName;
 
                 channel.QueueBind(queue: queueName,
-                                  exchange: &quot;direct_logs&quot;, //指定透過我們的logsExchange
-                                  routingKey: &quot;safe&quot;);     //只拿取Safe的logs
+                                  exchange: &#34;direct_logs&#34;, //指定透過我們的logsExchange
+                                  routingKey: &#34;safe&#34;);     //只拿取Safe的logs
 
-                Console.WriteLine(&quot; 等待拿取log &quot;);
+                Console.WriteLine(&#34; 等待拿取log &#34;);
 
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =&gt;
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, message);
+                    Console.WriteLine(&#34; 收到訊息： {0}&#34;, message);
                 };
                 channel.BasicConsume(queue: queueName,
                                      autoAck: true,
                                      consumer: consumer);
 
-                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.WriteLine(&#34;請按任意鍵離開!&#34;);
                 Console.ReadLine();
             }
         }
 </code></pre><p>Reciver2 負責拿取 Warning 的 log。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             ConnectionFactory factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
@@ -365,40 +365,40 @@
             {
                 //一樣是direct_logs Exchange
                 channel.ExchangeDeclare(
-                    exchange: &quot;direct_logs&quot;,
+                    exchange: &#34;direct_logs&#34;,
                     ExchangeType.Direct);
 
                 //這方法會隨機建立一個非持久化、自動刪除的、獨立的Queue
                 var queueName = channel.QueueDeclare().QueueName;
 
                 channel.QueueBind(queue: queueName,
-                                  exchange: &quot;direct_logs&quot;, //指定透過我們的logsExchange
-                                  routingKey: &quot;warning&quot;);  //只拿取Warning的logs
+                                  exchange: &#34;direct_logs&#34;, //指定透過我們的logsExchange
+                                  routingKey: &#34;warning&#34;);  //只拿取Warning的logs
 
-                Console.WriteLine(&quot; 等待拿取log &quot;);
+                Console.WriteLine(&#34; 等待拿取log &#34;);
 
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =&gt;
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, message);
+                    Console.WriteLine(&#34; 收到訊息： {0}&#34;, message);
                 };
                 channel.BasicConsume(queue: queueName,
                                      autoAck: true,
                                      consumer: consumer);
 
-                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.WriteLine(&#34;請按任意鍵離開!&#34;);
                 Console.ReadLine();
             }
         }
 </code></pre><p>接下來我們來進行測試，送出一個 Warning 的訊息。</p>
-<pre><code class="language-shell=" data-lang="shell=">dotnet run warning &quot;你家系統大爆炸!&quot;
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">dotnet run warning &#34;你家系統大爆炸!&#34;
 </code></pre><p><img src="https://i.imgur.com/bQL5hlo.jpg" alt=""></p>
 <p>可以觀察到就只有 Reciver2 有收到訊息。<br>
 <img src="https://i.imgur.com/dAKL1Jd.jpg" alt=""></p>
 <p>反之如果我們送出一個 safe 的訊息。</p>
-<pre><code class="language-shell=" data-lang="shell=">dotnet run safe &quot;沒事沒事系統還活著繼續睡!&quot;
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">dotnet run safe &#34;沒事沒事系統還活著繼續睡!&#34;
 </code></pre><p><img src="https://i.imgur.com/VRl7Tz7.jpg" alt=""></p>
 <p>只有 Reciver1 會收到訊息。<br>
 <img src="https://i.imgur.com/MThAZE8.jpg" alt=""></p>
@@ -470,7 +470,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

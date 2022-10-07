@@ -188,44 +188,44 @@
 <li>2、子類別可以擁有自己不同的屬性與方法。</li>
 </ul>
 <p>來段範例：今天我們有個傳統車廠發現電動車似乎才是未來，也想透過自己以前的經驗來設計電動車，老闆說不就都是車嘛？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"> 	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">車輪</span> = <span style="color:#ae81ff">4</span>;
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油引擎&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡&#34;</span>;
-            }
-        }
-		
-	<span style="color:#75715e">//直接繼承車子
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">電動車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        { 
-            
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">車子</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.車輪}個車輪&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.方向盤}個方向盤&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有:{汽車.後照鏡()}&#34;</span>);
-
-            Console.WriteLine(<span style="color:#e6db74">&#34;============================&#34;</span>);
-
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">電動車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">電動車</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.車輪}個車輪&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.方向盤}個方向盤&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有:{電動車.後照鏡()}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/sSvdUgB.jpg" alt="">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span> 	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">車輪</span> = <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油引擎&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//直接繼承車子</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">電動車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">車子</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.車輪}個車輪&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.方向盤}個方向盤&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有:{汽車.後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;============================&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">電動車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">電動車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.車輪}個車輪&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.方向盤}個方向盤&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有:{電動車.後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/sSvdUgB.jpg" alt="">
 <!-- raw HTML omitted --></p>
 <p>這時候認真一看馬上就發現 <code>代誌不是憨人想的這麼簡單</code> ，首先思考一下電動車應該與汽車不同本質的東西有哪些？能夠延用的舊有經驗有哪些？</p>
 <ul>
@@ -233,60 +233,60 @@
 <li>2、延用：方向盤、車輪。</li>
 </ul>
 <p>改寫程式如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//將車子做成一個設計初稿
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">車輪</span> = <span style="color:#ae81ff">4</span>;
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
-            <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>();
-            <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>(); 
-        }
-		
-	<span style="color:#75715e">//汽車繼承車子實作時再決定自己需要哪些東西
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油引擎&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡&#34;</span>;
-            }
-        }
-		
-	<span style="color:#75715e">//同理電動車也是
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">電動車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;電動引擎&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+360度電腦感應&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.車輪}個車輪&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.方向盤}個方向盤&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有:{汽車.後照鏡()}&#34;</span>);
-
-            Console.WriteLine(<span style="color:#e6db74">&#34;============================&#34;</span>);
-
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">電動車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">電動車</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.車輪}個車輪&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.方向盤}個方向盤&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有:{電動車.後照鏡()}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/xJdTSB1.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//將車子做成一個設計初稿</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">車輪</span> = <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">方向盤</span> = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>(); 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//汽車繼承車子實作時再決定自己需要哪些東西</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽油引擎&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//同理電動車也是</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">電動車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;電動引擎&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+360度電腦感應&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">汽車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.車輪}個車輪&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.方向盤}個方向盤&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有：{汽車.引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;汽車有:{汽車.後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;============================&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">電動車</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">電動車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.車輪}個車輪&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.方向盤}個方向盤&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有：{電動車.引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;電動車有:{電動車.後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/xJdTSB1.jpg" alt=""></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/18/liskov-substitution-principle">91之ASP.NET由淺入深 不負責講座 Day21 - LSP 里氏替換原則</a></li>
@@ -357,7 +357,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

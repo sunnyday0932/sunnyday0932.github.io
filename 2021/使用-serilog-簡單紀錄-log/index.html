@@ -71,7 +71,7 @@
     "datePublished": "2021-12-13 01:40:45   UTC",
     "dateModified" : "2021-12-13 01:40:45   UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E4%BD%BF%E7%94%A8-serilog-%E7%B0%A1%E5%96%AE%E7%B4%80%E9%8C%84-log\/",
-    "wordCount" : "247",
+    "wordCount" : "248",
     "keywords" : ["csharp","Core","dotnet","Serilog", "Sian"]
 }
 </script>
@@ -177,25 +177,25 @@
 要安裝的有以下三個：<br>
 <img src="https://i.imgur.com/Cei3BLg.png" alt=""></p>
 <p>安裝完成後就可以使用官方提供的範例來練習寫一個 Log</p>
-<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">void Main()
 {
 	Log.Logger = new LoggerConfiguration()
 				.MinimumLevel.Debug()
 				.WriteTo.Console()
-				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Day)
+				.WriteTo.File(&#34;D:/logs/myapp.txt&#34;, rollingInterval: RollingInterval.Day)
 				.CreateLogger();
 
-	Log.Information(&quot;Log Test&quot;);
+	Log.Information(&#34;Log Test&#34;);
 
 	int a = 10, b = 0;
 	try
 	{
-		Log.Debug(&quot;Dividing {A} by {B}&quot;, a, b);
+		Log.Debug(&#34;Dividing {A} by {B}&#34;, a, b);
 		Console.WriteLine(a / b);
 	}
 	catch (Exception ex)
 	{
-		Log.Error(ex, &quot;Something went wrong&quot;);
+		Log.Error(ex, &#34;Something went wrong&#34;);
 	}
 	finally
 	{
@@ -215,60 +215,60 @@
 <img src="https://i.imgur.com/kWF4L8W.png" alt=""></p>
 <h3 id="結構化的優勢">結構化的優勢</h3>
 <p>紀錄 Array</p>
-<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">void Main()
 {
 	Log.Logger = new LoggerConfiguration()
 				.MinimumLevel.Debug()
 				.WriteTo.Console()
-				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.WriteTo.File(&#34;D:/logs/myapp.txt&#34;, rollingInterval: RollingInterval.Month)
 				.CreateLogger();
 
-	var fruit = new[] { &quot;Apple&quot;, &quot;Pear&quot;, &quot;Orange&quot; };
-    Log.Information(&quot;In my bowl I have {Fruit}&quot;, fruit);
+	var fruit = new[] { &#34;Apple&#34;, &#34;Pear&#34;, &#34;Orange&#34; };
+    Log.Information(&#34;In my bowl I have {Fruit}&#34;, fruit);
 }
 </code></pre><p><img src="https://i.imgur.com/Xoe6lsm.png" alt=""></p>
 <p>紀錄 Dictionary</p>
-<pre><code class="language-csharp=" data-lang="csharp=">var fruit = new Dictionary&lt;string,int&gt; {{ &quot;Apple&quot;, 1}, { &quot;Pear&quot;, 5 }};
-Log.Information(&quot;In my bowl I have {Fruit}&quot;, fruit);
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">var fruit = new Dictionary&lt;string,int&gt; {{ &#34;Apple&#34;, 1}, { &#34;Pear&#34;, 5 }};
+Log.Information(&#34;In my bowl I have {Fruit}&#34;, fruit);
 </code></pre><p><img src="https://i.imgur.com/ulUCB1r.png" alt=""></p>
 <p>最大優勢就是直接幫忙轉換成了 Json 這個易讀的格式，讓看 Log 的可讀性一下子提升了不少。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">void Main()
 {
 	Log.Logger = new LoggerConfiguration()
 				.MinimumLevel.Debug()
 				.WriteTo.Console()
-				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.WriteTo.File(&#34;D:/logs/myapp.txt&#34;, rollingInterval: RollingInterval.Month)
 				.CreateLogger();
 
-	var sensorInput = new { one = &quot;123&quot;, two = 134 ,three = true};
-	Log.Information(&quot;Processing {SensorInput}&quot;, sensorInput);
+	var sensorInput = new { one = &#34;123&#34;, two = 134 ,three = true};
+	Log.Information(&#34;Processing {SensorInput}&#34;, sensorInput);
 }
 </code></pre><p>對 Object 的支援也可以用輕鬆處理。<br>
 <img src="https://i.imgur.com/hOibTmK.png" alt=""></p>
-<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">void Main()
 {
 	Log.Logger = new LoggerConfiguration()
 				.MinimumLevel.Debug()
 				.WriteTo.Console()
-				.WriteTo.File(&quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.WriteTo.File(&#34;D:/logs/myapp.txt&#34;, rollingInterval: RollingInterval.Month)
 				.CreateLogger();
 
 	var sensorInput = new[] {1,2,3};
-	Log.Information(&quot;Processing {$SensorInput}&quot;, sensorInput);
+	Log.Information(&#34;Processing {$SensorInput}&#34;, sensorInput);
 }
 </code></pre><p>若要看紀錄的型別可以使用 $<br>
 <img src="https://i.imgur.com/F7FDnkJ.png" alt=""></p>
 <p>如果想要把整個 Log 記錄成 Json 格式，則可以使用 Serilog.Formatting.Compact 來做格式的轉換。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">void Main()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">void Main()
 {
 	Log.Logger = new LoggerConfiguration()
 				.MinimumLevel.Debug()
 				.WriteTo.Console()
-				.WriteTo.File(new CompactJsonFormatter(), &quot;D:/logs/myapp.txt&quot;, rollingInterval: RollingInterval.Month)
+				.WriteTo.File(new CompactJsonFormatter(), &#34;D:/logs/myapp.txt&#34;, rollingInterval: RollingInterval.Month)
 				.CreateLogger();
 
 	var sensorInput = new[] {1,2,3};
-	Log.Information(&quot;Processing {@SensorInput}&quot;, sensorInput);
+	Log.Information(&#34;Processing {@SensorInput}&#34;, sensorInput);
 }
 </code></pre><p><img src="https://i.imgur.com/aV8EeMY.png" alt=""></p>
 <h2 id="後記">後記</h2>
@@ -343,7 +343,7 @@ Log.Information(&quot;In my bowl I have {Fruit}&quot;, fruit);
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

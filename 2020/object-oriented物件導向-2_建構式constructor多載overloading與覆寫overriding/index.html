@@ -175,15 +175,15 @@
 <li>建構式與類別同名，無 return 值。</li>
 <li>大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要 void，在 New 時調用。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>()
-{
-	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
-	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
-	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
-}
-
-<span style="color:#960050;background-color:#1e0010">特斯拉</span> <span style="color:#960050;background-color:#1e0010">車子</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(); <span style="color:#75715e">//這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池
-</span></code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">特斯拉</span> <span style="color:#960050;background-color:#1e0010">車子</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(); <span style="color:#75715e">//這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <p>2、多載(Overloading)</p>
 <ul>
 <li>相同 function 名稱，可以有不同參數或不同的型別。</li>
@@ -191,62 +191,62 @@
 <!-- raw HTML omitted -->
 2020/06/30 修改範例</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//首先建立一個特斯拉的類別。
-</span><span style="color:#75715e"></span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
-{
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">配件</span>() <span style="color:#75715e">//預設基本配件有輪子、方向盤、電池。
-</span><span style="color:#75715e"></span>	{
-		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
-		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
-		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
-	}  
-
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">配件</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">加購價</span> ) <span style="color:#75715e">//加購價的配件會有更高級的配備。
-</span><span style="color:#75715e"></span>	{
-		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">跑車輪子</span>(){}
-		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">跑車方向盤</span>(){}
-		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">高電量電池</span>(){}
-	}
-}
-
-<span style="color:#960050;background-color:#1e0010">特斯拉</span> ModelX = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-ModelX.<span style="color:#960050;background-color:#1e0010">配件</span>(); <span style="color:#75715e">//基本配件的ModelX
-</span><span style="color:#75715e"></span>ModelX.<span style="color:#960050;background-color:#1e0010">配件</span>(<span style="color:#ae81ff">10000</span>); <span style="color:#75715e">//透過加價一萬塊獲得更高級配件的ModelX
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">//同一個ModelX都是使用配件這個方法，但我們透過傳入&#34;空&#34;或是&#34;10000&#34;來得到不同的配件。
-</span></code></pre></div><p>這裡特別感謝同事幫忙指證，有興趣也歡迎去他的 Blog 晃晃<a href="https://igouist.github.io/">伊果的沒人看筆記本</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">//首先建立一個特斯拉的類別。</span>
+</span></span><span style="display:flex;"><span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">配件</span>() <span style="color:#75715e">//預設基本配件有輪子、方向盤、電池。</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
+</span></span><span style="display:flex;"><span>	}  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">配件</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">加購價</span> ) <span style="color:#75715e">//加購價的配件會有更高級的配備。</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">跑車輪子</span>(){}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">跑車方向盤</span>(){}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#960050;background-color:#1e0010">高電量電池</span>(){}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">特斯拉</span> ModelX = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>ModelX.<span style="color:#960050;background-color:#1e0010">配件</span>(); <span style="color:#75715e">//基本配件的ModelX</span>
+</span></span><span style="display:flex;"><span>ModelX.<span style="color:#960050;background-color:#1e0010">配件</span>(<span style="color:#ae81ff">10000</span>); <span style="color:#75715e">//透過加價一萬塊獲得更高級配件的ModelX</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//同一個ModelX都是使用配件這個方法，但我們透過傳入&#34;空&#34;或是&#34;10000&#34;來得到不同的配件。</span>
+</span></span></code></pre></div><p>這裡特別感謝同事幫忙指證，有興趣也歡迎去他的 Blog 晃晃<a href="https://igouist.github.io/">伊果的沒人看筆記本</a></p>
 <!-- raw HTML omitted -->
 <p>3、覆寫(Overriding)</p>
 <ul>
 <li>與父類別相同 function 名稱，參數個數與 return 型別相同。覆寫其繼承自父類別的功能內容，使其滿足子類別的需求。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">//首先建立一個特斯拉的類別，可以接收不同型號。
-</span><span style="color:#75715e"></span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">型號</span>)
-{
-	<span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
-	<span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
-	<span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">車門</span>() <span style="color:#75715e">//要加上virtual才可以覆寫!
-</span><span style="color:#75715e"></span>	{
-		<span style="color:#960050;background-color:#1e0010">傳統車門</span>;
-	}
-}
-
-<span style="color:#75715e">//假設現在我們知道特斯拉的高級車款特殊地方在於車門是電動門，那我們就可以覆寫特斯拉這個類別。
-</span><span style="color:#75715e"></span>
-Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">高級特斯拉</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">型號</span>) : <span style="color:#960050;background-color:#1e0010">特斯拉</span> <span style="color:#75715e">//繼承特斯拉這個類別
-</span><span style="color:#75715e"></span>{
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
-	{
-		<span style="color:#960050;background-color:#1e0010">電動車門</span>;
-	} 
-
-}
-
-<span style="color:#960050;background-color:#1e0010">特斯拉</span> Model3 = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(Model3);
-<span style="color:#960050;background-color:#1e0010">特斯拉</span> ModelS = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(ModelS);
-<span style="color:#960050;background-color:#1e0010">高級特斯拉</span> ModelX = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">高級特斯拉</span>(ModelX);
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">//首先建立一個特斯拉的類別，可以接收不同型號。</span>
+</span></span><span style="display:flex;"><span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">型號</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">輪子</span>(){}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">方向盤</span>(){}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#960050;background-color:#1e0010">電池</span>(){}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">車門</span>() <span style="color:#75715e">//要加上virtual才可以覆寫!</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#960050;background-color:#1e0010">傳統車門</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//假設現在我們知道特斯拉的高級車款特殊地方在於車門是電動門，那我們就可以覆寫特斯拉這個類別。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Public <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">高級特斯拉</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">型號</span>) : <span style="color:#960050;background-color:#1e0010">特斯拉</span> <span style="color:#75715e">//繼承特斯拉這個類別</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#960050;background-color:#1e0010">電動車門</span>;
+</span></span><span style="display:flex;"><span>	} 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">特斯拉</span> Model3 = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(Model3);
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">特斯拉</span> ModelS = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>(ModelS);
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">高級特斯拉</span> ModelX = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">高級特斯拉</span>(ModelX);
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <h3 id="參考連結">參考連結</h3>
 <ul>
 <li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/15/object-oriented">91之ASP.NET由淺入深 不負責講座 Day14 – Object Oriented (1)</a></li>
@@ -313,7 +313,7 @@ Public <span style="color:#66d9ef">class</span> <span style="color:#960050;backg
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -190,30 +190,30 @@
 <p><img src="https://i.imgur.com/BJ6RIRy.jpg" alt=""></p>
 <p>接下來就可以開始設定留言功能到我們的 HUGO 網站。</p>
 <p>7、 開啟 Config.toml 加入下方參數。</p>
-<pre><code>disqusShortname = &quot;你在DISQUS註冊時輸入的Website name&quot;
+<pre tabindex="0"><code>disqusShortname = &#34;你在DISQUS註冊時輸入的Website name&#34;
 </code></pre><p>8、接著在目錄/layouts/partials/內新增一個disqus.html檔案，官方提供的內容如下。
 <strong>這邊需要注意的是，如果你是有使用主題，會需要移至主題底下目錄此路經新增。</strong></p>
-<pre><code>&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
+<pre tabindex="0"><code>&lt;div id=&#34;disqus_thread&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
 
 (function() {
-    // Don't ever inject Disqus on localhost--it creates unwanted
-    // discussions from 'localhost:1313' on your Disqus account...
-    if (window.location.hostname == &quot;localhost&quot;)
+    // Don&#39;t ever inject Disqus on localhost--it creates unwanted
+    // discussions from &#39;localhost:1313&#39; on your Disqus account...
+    if (window.location.hostname == &#34;localhost&#34;)
         return;
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = '{{ .Site.DisqusShortname }}';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    var dsq = document.createElement(&#39;script&#39;); dsq.type = &#39;text/javascript&#39;; dsq.async = true;
+    var disqus_shortname = &#39;{{ .Site.DisqusShortname }}&#39;;
+    dsq.src = &#39;//&#39; + disqus_shortname + &#39;.disqus.com/embed.js&#39;;
+    (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(dsq);
 })();
 &lt;/script&gt;
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
-&lt;a href=&quot;http://disqus.com/&quot; class=&quot;dsq-brlink&quot;&gt;comments powered by &lt;span class=&quot;logo-disqus&quot;&gt;Disqus&lt;/span&gt;&lt;/a&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&#34;http://disqus.com/?ref_noscript&#34;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href=&#34;http://disqus.com/&#34; class=&#34;dsq-brlink&#34;&gt;comments powered by &lt;span class=&#34;logo-disqus&#34;&gt;Disqus&lt;/span&gt;&lt;/a&gt;
 </code></pre><p>9、接著到 /layouts/_default/single.html 內新增內容如下。<br>
 <strong>這邊一樣是到主題目錄底下路徑。</strong></p>
-<pre><code>&lt;div class=&quot;disqus markdown&quot;&gt;
-  {{ partial &quot;disqus.html&quot; . }}
+<pre tabindex="0"><code>&lt;div class=&#34;disqus markdown&#34;&gt;
+  {{ partial &#34;disqus.html&#34; . }}
 &lt;/div&gt;
 </code></pre><p>10、上傳 HUGO 就可以觀看到留言功能了。</p>
 <p><strong>小提醒:在本機使用localhost的時候會無法觀看到留言功能，因為在disqus.html內有設定當server為localhost直接return，若需要在本機測試可以註解此部分。</strong></p>
@@ -222,21 +222,21 @@
 <p>除了可以利用 <a href="https://analytics.google.com/analytics/web/">Google Analytics</a> 來觀看瀏覽次數分析等功能外，若想加入本站觀看人數的話可以使用<a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a>簡易的顯示站內瀏覽人數。</p>
 <p>1、跟著不蒜子文件第一步，先到 layouts/partials/head.html 內引入不蒜子的 JS。
 <strong>小提醒:不蒜子的網域有更新過，需要用以下新的網域，建議還是看官方文件是否有更新。</strong></p>
-<pre><code>&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+<pre tabindex="0"><code>&lt;script async src=&#34;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&#34;&gt;&lt;/script&gt;
 </code></pre><p>2、引入後就可以在要顯示統計數字的地方加入，首先到 footer 加入總瀏覽次數。</p>
 <p>這邊不蒜子提供了兩種方式，第一種是按照點擊次數統計，稱為PV。</p>
-<pre><code>&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;
-    總瀏覽&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次
+<pre tabindex="0"><code>&lt;span id=&#34;busuanzi_container_site_pv&#34;&gt;
+    總瀏覽&lt;span id=&#34;busuanzi_value_site_pv&#34;&gt;&lt;/span&gt;次
 &lt;/span&gt;
 </code></pre><p>第二種會依照不同使用者來統計，及同一個使用者就算重複點擊也只算一次，稱為 UV。</p>
-<pre><code>&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;
-  總瀏覽&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;次
+<pre tabindex="0"><code>&lt;span id=&#34;busuanzi_container_site_uv&#34;&gt;
+  總瀏覽&lt;span id=&#34;busuanzi_value_site_uv&#34;&gt;&lt;/span&gt;次
 &lt;/span&gt;  
 </code></pre><p>加入完就可以測試預覽人數。</p>
 <p><img src="https://i.imgur.com/1FCIwTg.jpg" alt=""></p>
 <p>3、單篇文章加入瀏覽次數，這邊我就使用了 PV 方式，依照點擊次數統計。</p>
-<pre><code>&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;
-  觀看次數:&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;
+<pre tabindex="0"><code>&lt;span id=&#34;busuanzi_container_page_pv&#34;&gt;
+  觀看次數:&lt;span id=&#34;busuanzi_value_page_pv&#34;&gt;&lt;/span&gt;
 &lt;/span&gt;
 </code></pre><p><img src="https://i.imgur.com/B6KFCp7.jpg" alt=""></p>
 <h4 id="三主題修改">三、主題修改</h4>
@@ -246,10 +246,10 @@
 <p><img src="https://i.imgur.com/rkqldse.jpg" alt=""></p>
 <p><del>不知道是在miss什麼</del>，就想把他換掉。<br>
 找了找檔案，發現是寫在主題\assets\js 內 main.js，原本想直接拿掉但朋友說滿逗得，決定保留顏文字部分。</p>
-<pre><code>_Blog.changeTitle = function() {
+<pre tabindex="0"><code>_Blog.changeTitle = function() {
         var currentTitle = document.title;
         window.onblur = function() {
-            document.title = '（＞﹏＜）';
+            document.title = &#39;（＞﹏＜）&#39;;
         }
         window.onfocus = function() {
             document.title = currentTitle;
@@ -339,7 +339,7 @@ favicon就是瀏覽器打開網頁時會顯示的小圖案如圖。</p>
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

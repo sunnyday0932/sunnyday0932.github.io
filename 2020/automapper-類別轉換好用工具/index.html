@@ -178,7 +178,7 @@
 <p>首先到 Nuget 安裝 Automapper。
 <img src="https://i.imgur.com/ORrVgoE.jpg" alt=""></p>
 <p>安裝好後我們建立兩個測試用的 Model</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        private class Model1
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        private class Model1
         {
             public string Name { get; set; }
             public int Id { get; set; }
@@ -190,9 +190,9 @@
             public int Id { get; set; }
         }
 </code></pre><p>使用 Automapper 對應 Model1 到 Model2。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">           var testModel = new Model1
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">           var testModel = new Model1
             {
-                Name = &quot;ALLEN&quot;,
+                Name = &#34;ALLEN&#34;,
                 Id = 1
             };
 
@@ -201,19 +201,19 @@
             var mapper = config.CreateMapper();
             var model2 = mapper.Map&lt;Model2&gt;(testModel);
 
-            Console.WriteLine($&quot;Model2 Id:{model2.Id}&quot;);
-            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
+            Console.WriteLine($&#34;Model2 Id:{model2.Id}&#34;);
+            Console.WriteLine($&#34;Model2 Name:{model2.Name}&#34;);
 </code></pre><p>結果：</p>
 <p><img src="https://i.imgur.com/BTyS80I.jpg" alt=""></p>
 <p>如此一來就可以很輕鬆的對應 Model 了。<br>
 <!-- raw HTML omitted --></p>
 <p>偷懶小技巧：如果一時分不清是哪個 Model 要對應到哪個 Model，那可以加上 ReverseMap 反轉雙向對應。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">var config = new MapperConfiguration(cfg =&gt; 
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">var config = new MapperConfiguration(cfg =&gt; 
 cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
 </code></pre><h3 id="客製化對應">客製化對應</h3>
 <p>我們上一篇講到的三層式架構，有提到每一層分工的時候會建立自己的 Model 有的時候可能各層間 Model 命名方式不同、或是需要對 Model 進行特殊處理，那就可以用以下方法來處理對應。</p>
 <p>一樣先建立兩個測試用 Model</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        private class Model1
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        private class Model1
         {
             public string Name { get; set; }
             public int Id { get; set; }
@@ -225,9 +225,9 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
             public int UserId { get; set; }
         }
 </code></pre><p>建立對應：</p>
-<pre><code class="language-csharp=" data-lang="csharp=">          var testModel = new Model1
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">          var testModel = new Model1
             {
-                Name = &quot;ALLEN&quot;,
+                Name = &#34;ALLEN&#34;,
                 Id = 1
             };
 
@@ -238,59 +238,59 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
             var mapper = config.CreateMapper();
             var model2 = mapper.Map&lt;Model2&gt;(testModel);
 
-            Console.WriteLine($&quot;Model2 Id:{model2.UserId}&quot;);
-            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
+            Console.WriteLine($&#34;Model2 Id:{model2.UserId}&#34;);
+            Console.WriteLine($&#34;Model2 Name:{model2.Name}&#34;);
 </code></pre><p>結果：
 <img src="https://i.imgur.com/eBWj4Kx.jpg" alt=""></p>
 <h3 id="進行特殊處理方式">進行特殊處理方式</h3>
 <p>首先在 Model2 多加一個 string</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        private class Model2
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        private class Model2
         {
             public string Name { get; set; }
             public int UserId { get; set; }
             public string User { get; set; }
         }
-</code></pre><pre><code class="language-csharp=" data-lang="csharp=">           var testModel = new Model1
+</code></pre><pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">           var testModel = new Model1
             {
-                Name = &quot;ALLEN&quot;,
+                Name = &#34;ALLEN&#34;,
                 Id = 1
             };
 
             var config = new MapperConfiguration(cfg =&gt;
             cfg.CreateMap&lt;Model1, Model2&gt;()
             .ForMember(x =&gt; x.UserId, y =&gt; y.MapFrom(z =&gt; z.Id))
-            .ForMember(x =&gt; x.User, y =&gt; y.MapFrom(z =&gt; $&quot;{z.Id}、{z.Name}&quot;)));
+            .ForMember(x =&gt; x.User, y =&gt; y.MapFrom(z =&gt; $&#34;{z.Id}、{z.Name}&#34;)));
             
             var mapper = config.CreateMapper();
             var model2 = mapper.Map&lt;Model2&gt;(testModel);
 
-            Console.WriteLine($&quot;Model2 UserId:{model2.UserId}&quot;);
-            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
-            Console.WriteLine($&quot;Model2 User:{model2.User}&quot;);
+            Console.WriteLine($&#34;Model2 UserId:{model2.UserId}&#34;);
+            Console.WriteLine($&#34;Model2 Name:{model2.Name}&#34;);
+            Console.WriteLine($&#34;Model2 User:{model2.User}&#34;);
 </code></pre><p>結果：
 <img src="https://i.imgur.com/4I5tkzL.jpg" alt=""></p>
 <p>這邊做點小提醒，因為可以透過此種方式很方便的對 Model 對應出來的資料動手腳，那麼下一個人接手的時候就有機會找不到資料是在哪邊被動過了，所以使用 ForMember 做特殊對應的話建議還是要特別註明。</p>
 <h3 id="忽略對應">忽略對應</h3>
 <p>除了可以做到小處理 Automapper 也支援忽略對應，可以用此種方式達到。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">       private static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">       private static void Main(string[] args)
         {
             var testModel = new Model1
             {
-                Name = &quot;ALLEN&quot;,
+                Name = &#34;ALLEN&#34;,
                 Id = 1
             };
 
             var config = new MapperConfiguration(cfg =&gt;
             cfg.CreateMap&lt;Model1, Model2&gt;()
             .ForMember(x =&gt; x.UserId, y =&gt; y.Ignore())   //忽略此項
-            .ForMember(x =&gt; x.User, y =&gt; y.MapFrom(z =&gt; $&quot;{z.Id}、{z.Name}&quot;)));
+            .ForMember(x =&gt; x.User, y =&gt; y.MapFrom(z =&gt; $&#34;{z.Id}、{z.Name}&#34;)));
             
             var mapper = config.CreateMapper();
             var model2 = mapper.Map&lt;Model2&gt;(testModel);
 
-            Console.WriteLine($&quot;Model2 UserId:{model2.UserId}&quot;);
-            Console.WriteLine($&quot;Model2 Name:{model2.Name}&quot;);
-            Console.WriteLine($&quot;Model2 User:{model2.User}&quot;);
+            Console.WriteLine($&#34;Model2 UserId:{model2.UserId}&#34;);
+            Console.WriteLine($&#34;Model2 Name:{model2.Name}&#34;);
+            Console.WriteLine($&#34;Model2 User:{model2.User}&#34;);
         }
 </code></pre><p>結果：
 <img src="https://i.imgur.com/88Ul2GT.jpg" alt=""></p>
@@ -299,7 +299,7 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
 <p>首先 dotnet core 要先安裝 AutoMapper.Extensions.Microsoft.DependencyInjection。
 <img src="https://i.imgur.com/lwK5NZ0.jpg" alt=""></p>
 <p>接下來建立一個 profile 檔案繼承 Profile。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class ControllerProfile : Profile
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class ControllerProfile : Profile
     {
         public ControllerProfile()
         {
@@ -308,10 +308,10 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
         }
     }
 </code></pre><p>再到 startup 內 ConfigureServices 註冊 Automapper。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">services.AddAutoMapper(typeof(ControllerProfile));
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">services.AddAutoMapper(typeof(ControllerProfile));
             //將剛剛建好的ControllerProfile加入註冊
 </code></pre><p>接下來我們可以透過注入的方式使用 mapping。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        private IMapper _mapper;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        private IMapper _mapper;
 
         public WeatherForecastController(
             IMapper mapper)
@@ -319,11 +319,11 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
             this._mapper = mapper;
         }
 </code></pre><p>測試一下</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public Model2 Get()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        public Model2 Get()
         {
             var testModel = new Model1
             {
-                Name = &quot;ALLEN&quot;,
+                Name = &#34;ALLEN&#34;,
                 Id = 1
             };
 
@@ -400,7 +400,7 @@ cfg.CreateMap&lt;Model1, Model2&gt;().ReverseMap());
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

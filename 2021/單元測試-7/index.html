@@ -175,70 +175,70 @@
 <h2 id="本文">本文</h2>
 <h3 id="getaccount取得單筆帳號資訊">GetAccount(取得單筆帳號資訊)</h3>
 <h4 id="1輸入的-account-不可為空">1、輸入的 Account 不可為空。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccount&#34;)]
         public void GetAccount_Account為空_應回傳Exception()
         {
             //arrange
             var sut = this.GetSystemUnderTest();
 
             //act
-            Action actual = () =&gt; sut.GetAccount(&quot;&quot;);
+            Action actual = () =&gt; sut.GetAccount(&#34;&#34;);
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;Account 不可為空 !&quot;);
+                .Which.Message.Contains(&#34;Account 不可為空 !&#34;);
         }
 </code></pre><h4 id="2若查詢的-account-有資料應回傳正確資訊">2、若查詢的 Account 有資料應回傳正確資訊。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccount&#34;)]
         public void GetAccount_Account有資料_應回傳正確資訊()
         {
             //arrange
             var data = new AccountDataModel()
             { 
-                Account = &quot;test123&quot;,
+                Account = &#34;test123&#34;,
                 CreateDate = DateTime.Now,
                 ModifyDate = DateTime.Now,
-                Email = &quot;test123@gmail.com&quot;,
-                ModifyUser = &quot;sys&quot;,
-                Phone = &quot;0918777888&quot;
+                Email = &#34;test123@gmail.com&#34;,
+                ModifyUser = &#34;sys&#34;,
+                Phone = &#34;0918777888&#34;
             };
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test123&quot;).Returns(data);
+            this._accountRepository.GetAccount(&#34;test123&#34;).Returns(data);
 
             var expect = new AccountDto()
             {
-                Account = &quot;test123&quot;,
-                CreateDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
-                ModifyDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
-                Email = &quot;test123@gmail.com&quot;,
-                ModifyUser = &quot;sys&quot;,
-                Phone = &quot;091877****&quot;
+                Account = &#34;test123&#34;,
+                CreateDate = DateTime.Now.ToString(&#34;yyyy/MM/dd&#34;),
+                ModifyDate = DateTime.Now.ToString(&#34;yyyy/MM/dd&#34;),
+                Email = &#34;test123@gmail.com&#34;,
+                ModifyUser = &#34;sys&#34;,
+                Phone = &#34;091877****&#34;
             };
             //act
-            var actual = sut.GetAccount(&quot;test123&quot;);
+            var actual = sut.GetAccount(&#34;test123&#34;);
 
             //assert
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h4 id="3若查詢的-account-無資料應回傳空值">3、若查詢的 Account 無資料應回傳空值。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccount&#34;)]
         public void GetAccount_Account無資料_應回傳空值()
         {
             //arrange
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test123&quot;).ReturnsForAnyArgs(x =&gt; null);
+            this._accountRepository.GetAccount(&#34;test123&#34;).ReturnsForAnyArgs(x =&gt; null);
 
             //act
-            var actual = sut.GetAccount(&quot;test123&quot;);
+            var actual = sut.GetAccount(&#34;test123&#34;);
 
             //assert
             actual.Should().BeNull();
@@ -249,7 +249,7 @@
 <p>在 AccountDataModel 的地方，我們使用了 DateTime 型別。<br>
 <img src="https://i.imgur.com/LXm5Beo.jpg" alt=""></p>
 <p>因為有可能會是 Null 的情況所以我們改變一下做法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class AccountDataModel
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class AccountDataModel
     {
         /// &lt;summary&gt;
         /// 帳號
@@ -283,25 +283,25 @@
     }
 </code></pre><p>接著看錯誤清單，我們會需要修改使用到的地方。<br>
 第一個是 Service Mapping 的地方，改成這樣。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public ServiceProfile()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public ServiceProfile()
         {
             this.CreateMap&lt;AccountDataModel, AccountDto&gt;()
-                .ForMember(x =&gt; x.CreateDate, y =&gt; y.MapFrom(z =&gt; z.CreateDate.HasValue ? z.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null))
-                .ForMember(x =&gt; x.ModifyDate, y =&gt; y.MapFrom(z =&gt; z.ModifyDate.HasValue ? z.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null));
+                .ForMember(x =&gt; x.CreateDate, y =&gt; y.MapFrom(z =&gt; z.CreateDate.HasValue ? z.CreateDate.Value.ToString(&#34;yyyy/MM/dd&#34;) : null))
+                .ForMember(x =&gt; x.ModifyDate, y =&gt; y.MapFrom(z =&gt; z.ModifyDate.HasValue ? z.ModifyDate.Value.ToString(&#34;yyyy/MM/dd&#34;) : null));
 
             this.CreateMap&lt;AccountInfoModel, AccountCondition&gt;();
         }
 </code></pre><p>第二個是 GetAccountList 這個方法使用的地方，改成這樣。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public IEnumerable&lt;AccountDto&gt; GetAccountList()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public IEnumerable&lt;AccountDto&gt; GetAccountList()
         {
             var data = this._accountRepository.GetAccountList();
             var result = data.Select(x =&gt; new AccountDto
             {
                 Phone = ConvertPhoneNumber(x.Phone),
                 Account = x.Account,
-                CreateDate = x.CreateDate.HasValue ? x.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                CreateDate = x.CreateDate.HasValue ? x.CreateDate.Value.ToString(&#34;yyyy/MM/dd&#34;) : null,
                 Email = x.Email,
-                ModifyDate = x.ModifyDate.HasValue ? x.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                ModifyDate = x.ModifyDate.HasValue ? x.ModifyDate.Value.ToString(&#34;yyyy/MM/dd&#34;) : null,
                 ModifyUser = x.ModifyUser
             });
 
@@ -310,16 +310,16 @@
 </code></pre><p>接著回頭執行我們剛剛的測試。</p>
 <p><img src="https://i.imgur.com/vE5nXXI.jpg" alt=""></p>
 <p>回頭檢查 Service 方法，少了一個驗證，改成。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 取得單筆帳號資訊
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;account&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public AccountDto GetAccount(string account)
         {
             if (string.IsNullOrWhiteSpace(account))
             {
-                throw new Exception(&quot;Account 不可為空 !&quot;);
+                throw new Exception(&#34;Account 不可為空 !&#34;);
             }
 
             var data = this._accountRepository.GetAccount(account);
@@ -334,15 +334,15 @@
 <img src="https://i.imgur.com/NYkpXtn.jpg" alt=""></p>
 <p>成功，有沒有開始體會單元測試的好處了啊？</p>
 <h3 id="convertphonenumber轉換電話號碼">ConvertPhoneNumber(轉換電話號碼)</h3>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConvertPhoneNumber&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ConvertPhoneNumber&#34;)]
         public void ConvertPhoneNumber_輸入空字串_應直接回傳空字串()
         {
             //assert
             var sut = this.GetSystemUnderTest();
-            var method = sut.GetType().GetMethod(&quot;ConvertPhoneNumber&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+            var method = sut.GetType().GetMethod(&#34;ConvertPhoneNumber&#34;, BindingFlags.Instance | BindingFlags.NonPublic);
 
             //act
             var actual = method.Invoke(sut, new[] { string.Empty });
@@ -352,27 +352,27 @@
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConvertPhoneNumber&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ConvertPhoneNumber&#34;)]
         public void ConvertPhoneNumber_輸入電話號碼_應回傳轉換後結果()
         {
             //assert
             var sut = this.GetSystemUnderTest();
-            var method = sut.GetType().GetMethod(&quot;ConvertPhoneNumber&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
-            var expect = &quot;091877****&quot;;
+            var method = sut.GetType().GetMethod(&#34;ConvertPhoneNumber&#34;, BindingFlags.Instance | BindingFlags.NonPublic);
+            var expect = &#34;091877****&#34;;
 
             //act
-            var actual = method.Invoke(sut, new[] { &quot;0918777888&quot; });
+            var actual = method.Invoke(sut, new[] { &#34;0918777888&#34; });
 
             //arrange
             actual.Should().Be(expect);
         }
 </code></pre><h3 id="getaccountlist取得帳號列表">GetAccountList(取得帳號列表)</h3>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccountList&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccountList&#34;)]
         public void GetAccountList_無資料_應回傳空值()
         {
             //arrange
@@ -387,7 +387,7 @@
         }
 </code></pre><p><img src="https://i.imgur.com/YApPeK8.jpg" alt=""></p>
 <p>修改 Service 方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">         /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">         /// &lt;summary&gt;
         /// 取得帳號列表
         /// &lt;/summary&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
@@ -402,9 +402,9 @@
                 {
                     Phone = ConvertPhoneNumber(x?.Phone),
                     Account = x?.Account,
-                    CreateDate = x.CreateDate.HasValue ? x.CreateDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                    CreateDate = x.CreateDate.HasValue ? x.CreateDate.Value.ToString(&#34;yyyy/MM/dd&#34;) : null,
                     Email = x?.Email,
-                    ModifyDate = x.ModifyDate.HasValue ? x.ModifyDate.Value.ToString(&quot;yyyy/MM/dd&quot;) : null,
+                    ModifyDate = x.ModifyDate.HasValue ? x.ModifyDate.Value.ToString(&#34;yyyy/MM/dd&#34;) : null,
                     ModifyUser = x?.ModifyUser
                 });
             }
@@ -417,10 +417,10 @@
         }
 </code></pre><p>回頭執行測試。<br>
 <img src="https://i.imgur.com/D1QgOTt.jpg" alt=""></p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;GetAccountList&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;GetAccountList&#34;)]
         public void GetAccountList_有資料_應回傳正確結果()
         {
             //arrange
@@ -428,12 +428,12 @@
             { 
                 new AccountDataModel
                 {
-                    Account = &quot;test123&quot;,
+                    Account = &#34;test123&#34;,
                     CreateDate = DateTime.Now,
                     ModifyDate = DateTime.Now,
-                    Email = &quot;test123@gmail.com&quot;,
-                    ModifyUser = &quot;sys&quot;,
-                    Phone = &quot;0918777888&quot;
+                    Email = &#34;test123@gmail.com&#34;,
+                    ModifyUser = &#34;sys&#34;,
+                    Phone = &#34;0918777888&#34;
                 }
             };
 
@@ -444,12 +444,12 @@
             { 
                 new AccountDto
                 {
-                    Account = &quot;test123&quot;,
-                    CreateDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
-                    ModifyDate = DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;),
-                    Email = &quot;test123@gmail.com&quot;,
-                    ModifyUser = &quot;sys&quot;,
-                    Phone = &quot;091877****&quot;
+                    Account = &#34;test123&#34;,
+                    CreateDate = DateTime.Now.ToString(&#34;yyyy/MM/dd&#34;),
+                    ModifyDate = DateTime.Now.ToString(&#34;yyyy/MM/dd&#34;),
+                    Email = &#34;test123@gmail.com&#34;,
+                    ModifyUser = &#34;sys&#34;,
+                    Phone = &#34;091877****&#34;
                 }
             };
             //act
@@ -460,19 +460,19 @@
         }
 </code></pre><h3 id="removeaccount刪除帳號">RemoveAccount(刪除帳號)</h3>
 <h4 id="1有三個必填欄位需要確認">1、有三個必填欄位需要確認。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_傳入的Account為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             { 
-                Account = &quot;&quot;,
-                Email = &quot;test22@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;&#34;,
+                Email = &#34;test22@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -482,22 +482,22 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_傳入的Email為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -507,22 +507,22 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_傳入的Phone為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test22@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test22@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -532,32 +532,32 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 </code></pre><h4 id="2查無帳號應回傳錯誤訊息">2、查無帳號應回傳錯誤訊息。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_查無帳號_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test111122&quot;,
-                Email = &quot;test22@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test111122&#34;,
+                Email = &#34;test22@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;請確認要刪除的帳號！&quot;
+                Message = &#34;請確認要刪除的帳號！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test111122&quot;).ReturnsForAnyArgs(x =&gt; null);
+            this._accountRepository.GetAccount(&#34;test111122&#34;).ReturnsForAnyArgs(x =&gt; null);
 
             //act
             var actual = sut.RemoveAccount(data);
@@ -566,39 +566,39 @@
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h4 id="3確認資料是否一致">3、確認資料是否一致。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_輸入Email與資料不一致_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test111122&quot;,
-                Email = &quot;test22@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test111122&#34;,
+                Email = &#34;test22@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var checkInfo = new AccountDataModel
             {
-                Account = &quot;test111122&quot;,
+                Account = &#34;test111122&#34;,
                 CreateDate = DateTime.Now,
                 ModifyDate = DateTime.Now,
-                Email = &quot;test123@gmail.com&quot;,
-                ModifyUser = &quot;sys&quot;,
-                Phone = &quot;0988123456&quot;
+                Email = &#34;test123@gmail.com&#34;,
+                ModifyUser = &#34;sys&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;請確認輸入的EMail是否與註冊時一致！&quot;
+                Message = &#34;請確認輸入的EMail是否與註冊時一致！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
+            this._accountRepository.GetAccount(&#34;test111122&#34;).Returns(checkInfo);
 
             //act
             var actual = sut.RemoveAccount(data);
@@ -608,38 +608,38 @@
         }
         
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_輸入電話與資料不一致_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test111122&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123412&quot;
+                Account = &#34;test111122&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123412&#34;
             };
 
             var checkInfo = new AccountDataModel
             {
-                Account = &quot;test111122&quot;,
+                Account = &#34;test111122&#34;,
                 CreateDate = DateTime.Now,
                 ModifyDate = DateTime.Now,
-                Email = &quot;test123@gmail.com&quot;,
-                ModifyUser = &quot;sys&quot;,
-                Phone = &quot;0988123456&quot;
+                Email = &#34;test123@gmail.com&#34;,
+                ModifyUser = &#34;sys&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;請確認輸入的電話是否與註冊時一致！&quot;
+                Message = &#34;請確認輸入的電話是否與註冊時一致！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
+            this._accountRepository.GetAccount(&#34;test111122&#34;).Returns(checkInfo);
 
             //act
             var actual = sut.RemoveAccount(data);
@@ -648,40 +648,40 @@
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h4 id="4刪除結果">4、刪除結果。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_刪除失敗_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test111122&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test111122&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var checkInfo = new AccountDataModel
             {
-                Account = &quot;test111122&quot;,
+                Account = &#34;test111122&#34;,
                 CreateDate = DateTime.Now,
                 ModifyDate = DateTime.Now,
-                Email = &quot;test123@gmail.com&quot;,
-                ModifyUser = &quot;sys&quot;,
-                Phone = &quot;0988123456&quot;
+                Email = &#34;test123@gmail.com&#34;,
+                ModifyUser = &#34;sys&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;刪除失敗&quot;
+                Message = &#34;刪除失敗&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
-            this._accountRepository.RemoveAccount(&quot;test111122&quot;).Returns(false);
+            this._accountRepository.GetAccount(&#34;test111122&#34;).Returns(checkInfo);
+            this._accountRepository.RemoveAccount(&#34;test111122&#34;).Returns(false);
 
             //act
             var actual = sut.RemoveAccount(data);
@@ -691,39 +691,39 @@
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;RemoveAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;RemoveAccount&#34;)]
         public void RemoveAccount_刪除成功_應回傳正確訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test111122&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test111122&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var checkInfo = new AccountDataModel
             {
-                Account = &quot;test111122&quot;,
+                Account = &#34;test111122&#34;,
                 CreateDate = DateTime.Now,
                 ModifyDate = DateTime.Now,
-                Email = &quot;test123@gmail.com&quot;,
-                ModifyUser = &quot;sys&quot;,
-                Phone = &quot;0988123456&quot;
+                Email = &#34;test123@gmail.com&#34;,
+                ModifyUser = &#34;sys&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = true,
-                Message = &quot;刪除成功&quot;
+                Message = &#34;刪除成功&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test111122&quot;).Returns(checkInfo);
-            this._accountRepository.RemoveAccount(&quot;test111122&quot;).Returns(true);
+            this._accountRepository.GetAccount(&#34;test111122&#34;).Returns(checkInfo);
+            this._accountRepository.RemoveAccount(&#34;test111122&#34;).Returns(true);
 
             //act
             var actual = sut.RemoveAccount(data);
@@ -733,19 +733,19 @@
         }
 </code></pre><h3 id="updateaccount更新帳號資訊">UpdateAccount(更新帳號資訊)</h3>
 <h4 id="1有兩個必填欄位需要確認">1、有兩個必填欄位需要確認。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;UpdateAccount&#34;)]
         public void UpdateAccount_輸入帳號為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -755,22 +755,22 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;UpdateAccount&#34;)]
         public void UpdateAccount_輸入密碼為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -780,32 +780,32 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 </code></pre><h4 id="2找無輸入帳號之密碼資訊">2、找無輸入帳號之密碼資訊。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;UpdateAccount&#34;)]
         public void UpdateAccount_找無輸入帳號之密碼資訊_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = false,
-                Message = &quot;請確認要更新的帳號！&quot;
+                Message = &#34;請確認要更新的帳號！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;&quot;);
+            this._accountRepository.GetAccountPassword(&#34;test2&#34;).Returns(&#34;&#34;);
 
             //act
             var actual = sut.UpdateAccount(data);
@@ -814,29 +814,29 @@
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h4 id="3輸入帳號之密碼與註冊時不一致">3、輸入帳號之密碼與註冊時不一致。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;UpdateAccount&#34;)]
         public void UpdateAccount_輸入之密碼與註冊時不一致_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = false,
-                Message = &quot;請確認輸入的密碼是否與註冊時一致！&quot;
+                Message = &#34;請確認輸入的密碼是否與註冊時一致！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWP&quot;);
+            this._accountRepository.GetAccountPassword(&#34;test2&#34;).Returns(&#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWP&#34;);
 
             //act
             var actual = sut.UpdateAccount(data);
@@ -845,29 +845,29 @@
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h4 id="4更新結果">4、更新結果。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;UpdateAccount&#34;)]
         public void UpdateAccount_更新失敗_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = false,
-                Message = &quot;更新失敗&quot;
+                Message = &#34;更新失敗&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;);
+            this._accountRepository.GetAccountPassword(&#34;test2&#34;).Returns(&#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;);
             this._accountRepository.UpdateAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(false);
 
             //act
@@ -878,28 +878,28 @@
         }
         
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;UpdateAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;UpdateAccount&#34;)]
         public void UpdateAccount_更新成功_應回傳正確訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = true,
-                Message = &quot;更新成功&quot;
+                Message = &#34;更新成功&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccountPassword(&quot;test2&quot;).Returns(&quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;);
+            this._accountRepository.GetAccountPassword(&#34;test2&#34;).Returns(&#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;);
             this._accountRepository.UpdateAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(true);
 
             //act
@@ -910,19 +910,19 @@
         }
 </code></pre><h3 id="forgetpassword忘記密碼">ForgetPassword(忘記密碼)</h3>
 <h4 id="1有四個必填欄位需要確認">1、有四個必填欄位需要確認。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_輸入之帳號為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -932,22 +932,22 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_輸入之Email為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -957,22 +957,22 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_輸入之密碼為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test2@gmail.com&quot;,
-                Password = &quot;&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test2@gmail.com&#34;,
+                Password = &#34;&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -982,22 +982,22 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_輸入之電話為空_應回傳Exception()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test2@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test2@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;&#34;
             };
 
             var sut = this.GetSystemUnderTest();
@@ -1007,32 +1007,32 @@
 
             //assert
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 </code></pre><h4 id="2找無輸入之帳號資訊">2、找無輸入之帳號資訊。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_找無輸入之帳號資訊_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = false,
-                Message = &quot;請確認輸入之帳號！&quot;
+                Message = &#34;請確認輸入之帳號！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test2&quot;).ReturnsForAnyArgs(x =&gt; null);
+            this._accountRepository.GetAccount(&#34;test2&#34;).ReturnsForAnyArgs(x =&gt; null);
 
             //act
             var actual = sut.ForgetPassword(data);
@@ -1041,36 +1041,36 @@
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h4 id="3確認資料是否一致-1">3、確認資料是否一致。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_輸入之Email與註冊不一致_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var returnData = new AccountDataModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test12345@gmail.com&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test12345@gmail.com&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = false,
-                Message = &quot;請確認輸入的Email，是否與註冊時一致！&quot;
+                Message = &#34;請確認輸入的Email，是否與註冊時一致！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            this._accountRepository.GetAccount(&#34;test2&#34;).Returns(returnData);
 
             //act
             var actual = sut.ForgetPassword(data);
@@ -1080,35 +1080,35 @@
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_輸入之電話與註冊不一致_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var returnData = new AccountDataModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Phone = &quot;0988123777&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Phone = &#34;0988123777&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = false,
-                Message = &quot;請確認輸入的電話，是否與註冊時一致！&quot;
+                Message = &#34;請確認輸入的電話，是否與註冊時一致！&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            this._accountRepository.GetAccount(&#34;test2&#34;).Returns(returnData);
 
             //act
             var actual = sut.ForgetPassword(data);
@@ -1117,36 +1117,36 @@
             actual.Should().BeEquivalentTo(expect);
         }
 </code></pre><h4 id="4更新結果-1">4、更新結果。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_更新失敗_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var returnData = new AccountDataModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = false,
-                Message = &quot;更新密碼失敗&quot;
+                Message = &#34;更新密碼失敗&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            this._accountRepository.GetAccount(&#34;test2&#34;).Returns(returnData);
             this._accountRepository.ForgetPassword(Arg.Any&lt;AccountCondition&gt;()).Returns(false);
 
             //act
@@ -1157,35 +1157,35 @@
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ForgetPassword&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ForgetPassword&#34;)]
         public void ForgetPassword_更新成功_應回傳錯誤訊息()
         {
             //arrange
             var data = new AccountInfoModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Password = &quot;12371324&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Password = &#34;12371324&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var returnData = new AccountDataModel()
             {
-                Account = &quot;test2&quot;,
-                Email = &quot;test123@gmail.com&quot;,
-                Phone = &quot;0988123456&quot;
+                Account = &#34;test2&#34;,
+                Email = &#34;test123@gmail.com&#34;,
+                Phone = &#34;0988123456&#34;
             };
 
             var expect = new ResultDto()
             {
                 Success = true,
-                Message = &quot;更新密碼成功&quot;
+                Message = &#34;更新密碼成功&#34;
             };
 
             var sut = this.GetSystemUnderTest();
-            this._accountRepository.GetAccount(&quot;test2&quot;).Returns(returnData);
+            this._accountRepository.GetAccount(&#34;test2&#34;).Returns(returnData);
             this._accountRepository.ForgetPassword(Arg.Any&lt;AccountCondition&gt;()).Returns(true);
 
             //act
@@ -1260,7 +1260,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

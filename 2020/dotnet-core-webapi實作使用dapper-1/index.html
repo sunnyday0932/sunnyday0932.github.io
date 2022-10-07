@@ -201,59 +201,59 @@
 <p>建立一個 ProductModel 類別，對應北風資料庫的 Products。
 <img src="https://i.imgur.com/H5t24pr.jpg" alt=""></p>
 <p>建立 ProductModel</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProductModel</span>
-    {
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 商品流水號
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> ProductID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 商品名稱
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> ProductName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 供應商ID
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> SupplierID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 種類ID
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> CategoryID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位數量
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> QuantityPerUnit { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位價格
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">decimal</span> UnitPrice { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位稅額
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> Int16 UnitsInStock { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 每單位訂購價
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> Int16 UnitsOnOrder { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 重新訂購等級
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> Int16 ReorderLevel { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 是否已停產
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Discontinued { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-    }
-</code></pre></div><p>這邊各欄位的型態可以先看 DB 內資料類型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProductModel</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 商品流水號</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> ProductID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 商品名稱</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> ProductName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 供應商ID</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> SupplierID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 種類ID</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> CategoryID { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 每單位數量</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> QuantityPerUnit { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 每單位價格</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">decimal</span> UnitPrice { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 每單位稅額</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Int16 UnitsInStock { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 每單位訂購價</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Int16 UnitsOnOrder { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 重新訂購等級</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Int16 ReorderLevel { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 是否已停產</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Discontinued { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>這邊各欄位的型態可以先看 DB 內資料類型</p>
 <p><img src="https://i.imgur.com/eyJ6tMT.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/0vpK64B.jpg" alt=""></p>
 <p>再到<a href="https://docs.microsoft.com/zh-tw/dotnet/framework/data/adonet/sql-server-data-type-mappings">以下網址對照型態</a></p>
@@ -266,54 +266,54 @@
 <p>這邊 Repositories 資料夾統整跟資料庫相關檔案。<br>
 <img src="https://i.imgur.com/n3KHsPP.jpg" alt=""></p>
 <p>建立 ConnectionHelper</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConnectionHelper</span>
-    {
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 連線字串
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> _connectionStr = <span style="color:#e6db74">@&#34;Server=localhost;Database=Northwind;Trusted_Connection=True;&#34;</span>;
-
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 資料庫連線
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> ConnectionStr { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _connectionStr; } }
-    }
-</code></pre></div><p>備註：這邊一般資料庫連線字串正常都會有使用者帳號、密碼，為了方便示範，就用此方法連線。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConnectionHelper</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 連線字串</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> _connectionStr = <span style="color:#e6db74">@&#34;Server=localhost;Database=Northwind;Trusted_Connection=True;&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 資料庫連線</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> ConnectionStr { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _connectionStr; } }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>備註：這邊一般資料庫連線字串正常都會有使用者帳號、密碼，為了方便示範，就用此方法連線。</p>
 <p>建立 ProductRepository</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 取得產品列表
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> IEnumerable&lt;ProductModel&gt; GetProductList()
-        {
-		<span style="color:#75715e">//sql select products這張資料表
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> sql = <span style="color:#e6db74">@&#34;SELECT productid,
-</span><span style="color:#e6db74">                               productname,
-</span><span style="color:#e6db74">                               supplierid,
-</span><span style="color:#e6db74">                               categoryid,
-</span><span style="color:#e6db74">                               quantityperunit,
-</span><span style="color:#e6db74">                               unitprice,
-</span><span style="color:#e6db74">                               unitsinstock,
-</span><span style="color:#e6db74">                               unitsonorder,
-</span><span style="color:#e6db74">                               reorderlevel,
-</span><span style="color:#e6db74">                               discontinued
-</span><span style="color:#e6db74">                        FROM   products &#34;</span>;
-
-		<span style="color:#75715e">//先與資料庫進行連線
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> connection = <span style="color:#66d9ef">new</span> SqlConnection(ConnectionHelper.ConnectionStr);
-
-               <span style="color:#75715e">//透過Dapper與資料庫連線後取回資料
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> result = connection.Query&lt;ProductModel&gt;(sql);
-
-            <span style="color:#66d9ef">return</span> result;
-        }
-</code></pre></div><p>備註：這邊 SqlConnection 一開始應該會出現提示紅字，要記得透過 Nuget 安裝 SqlClient。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 取得產品列表</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> IEnumerable&lt;ProductModel&gt; GetProductList()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//sql select products這張資料表</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> sql = <span style="color:#e6db74">@&#34;SELECT productid,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               productname,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               supplierid,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               categoryid,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               quantityperunit,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               unitprice,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               unitsinstock,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               unitsonorder,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               reorderlevel,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               discontinued
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                        FROM   products &#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//先與資料庫進行連線</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> connection = <span style="color:#66d9ef">new</span> SqlConnection(ConnectionHelper.ConnectionStr);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>               <span style="color:#75715e">//透過Dapper與資料庫連線後取回資料</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> result = connection.Query&lt;ProductModel&gt;(sql);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>備註：這邊 SqlConnection 一開始應該會出現提示紅字，要記得透過 Nuget 安裝 SqlClient。
 <img src="https://i.imgur.com/tLsR6DL.jpg" alt=""></p>
 <p>4、建立 PoructController</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    [Route(&quot;api/&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    [Route(&#34;api/&#34;)]
     public class ProductContorller : ControllerBase
     {
-        [Route(&quot;Product&quot;)]
+        [Route(&#34;Product&#34;)]
         [HttpGet]
         public IEnumerable&lt;ProductModel&gt; GetProductList()
         {
@@ -397,7 +397,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

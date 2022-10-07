@@ -215,15 +215,15 @@
 <p><img src="https://i.imgur.com/gc7fqIH.jpg" alt=""></p>
 <p> </p>
 <h4 id="四部屬方式">四、部屬方式</h4>
-<p>1、首先到 Github 建立兩個 Repository，一個隨便、另一個要為&rsquo;你的帳號'.github.io。</p>
+<p>1、首先到 Github 建立兩個 Repository，一個隨便、另一個要為&rsquo;你的帳號&rsquo;.github.io。</p>
 <p><img src="https://i.imgur.com/bFLR3FY.jpg" alt=""></p>
 <p>2、在 hugo 存放自己 blog 的資料夾下建立 public，並連結 GitHub 上自己的 Repository。</p>
-<pre><code>git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public
+<pre tabindex="0"><code>git submodule add -f https://github.com/sunnyday0932/sunnyday0932.github.io.git public
 </code></pre><p>3、在資料夾使用 CMD 輸入 C:\hugo 執行建立內容到 public，成功的話在 public 內會出現以下資料夾。</p>
 <p><img src="https://i.imgur.com/DGg7r9T.jpg" alt=""></p>
-<p>4、將 public 內檔案 commit and push 到&rsquo;你的帳號'.github.io。</p>
+<p>4、將 public 內檔案 commit and push 到&rsquo;你的帳號&rsquo;.github.io。</p>
 <p>5、回到存放 blog 的資料夾內，連結 git 上存放 blog 的 Repository。</p>
-<pre><code>git remote add origin https://github.com/sunnyday0932/hugo_blog.git
+<pre tabindex="0"><code>git remote add origin https://github.com/sunnyday0932/hugo_blog.git
 </code></pre><p>6、commit and push 到 github 上。</p>
 <p>7、接下來只要輸入https://&lsquo;你的帳號&rsquo;.github.io/即可預覽網站。</p>
 <p><img src="https://i.imgur.com/hu7CskC.jpg" alt=""></p>
@@ -293,7 +293,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

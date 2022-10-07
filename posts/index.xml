@@ -6,7 +6,30 @@
     <description>Recent content in Posts on Sian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 20 Mar 2022 02:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Oct 2022 02:40:45 +0000</lastBuildDate><atom:link href="https://sunnyday0932.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>軟體工程師資歷三年心得雜記</title>
+      <link>https://sunnyday0932.github.io/2022/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%89%E5%B9%B4%E5%BF%83%E5%BE%97%E9%9B%9C%E8%A8%98/</link>
+      <pubDate>Fri, 07 Oct 2022 02:40:45 +0000</pubDate>
+      
+      <guid>https://sunnyday0932.github.io/2022/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%89%E5%B9%B4%E5%BF%83%E5%BE%97%E9%9B%9C%E8%A8%98/</guid>
+      <description>本文 1、主管的惡趣味。 在今年六月大家都深受疫情影響正處於 WFH 時期的某個上班日，主管在一早突然發了個訊息問方不方便通話，居家辦公後已經很熟悉這種溝通模式了；只記得在電話接起後主管一如往常的第一句總是會帶著輕鬆的語氣寒暄「嗨，今天過得好嗎？」沒等我回答他接著說道「隔壁單位沒人了，跟上面主管討論後會送你過去，過去後會擔任主管角色，需要從 0 開始組建團隊，之前給你的都是一些練習，這次是個不錯的機會。」
+這一年自我察覺成長最多的地方是面對這種突如其來的狀況，大部分情況都能冷靜應對，主管大概是看我沒太多情緒反應這事就這麼定下來了，一兩周的適應期過後就正式被轉調到新單位去。
+2、面對一片未知。 新單位負責的產品面向不同，因為中間有斷層導致許多 Domain 沒有被留存下來，在這種情況下缺乏文件保存知識、甚至因為斷層導致跟外單位合作作業流程上的不一致，這都是一過去新單位馬上隨之而來要面臨的問題，基本上跟換一個新工作是一樣的。
+在這之前過去主管有教導過，面對未知如何理清思緒，先把問題分類，「已知的未知是不可怕的，我們可以提前部屬相對應的措施」
+所以到新單位後陸續新建了一些流程、文件、甚至是想辦法理清跟外單位的合作模式，看到這你就可以理解為甚麼上面第一個標題會寫主管的惡趣味，真的是玩笑開大了。
+3、帶人。 在上一個單位主管有給予一些練習空間，帶領新人熟悉環境、分配工作任務之類的責任賦予給我，在那時其實沒什麼多大的感覺，只覺得可以嘗試看看；而到新單位隨之面臨的是需要擴編，馬上就會需要帶領新人，在這之前因為有做過一些練習大致上知道怎麼讓他們了解產品現況、會面對的問題，以及最重要的是要把團隊流程讓每一位新成員都了解。
+甚至面臨到馬上就有成員要離開，學著要如何面對這種情況，真的是讓我體會到很多過去職涯沒接觸過的事情，再次回應第一個標題，主管的玩笑真的開大了。
+4、流程。 過去單位在我加入的時候已經有一套既定的流程，但是在加入後隨著團隊成員大家的狀況不同、甚至是外單位的一些變動，我們隨之調整了團隊的流程；流程這東西平常真的沒有甚麼太大感覺，甚至會覺得好麻煩喔，為甚麼要這樣做？ 但一旦出現狀況的時候如果有先預訂好流程，真的能起到很大的作用。
+抱持著這樣的想法我也就想要在新單位把流程建立起來，馬上就遇到的問題是原單位主管在一次工作坊的活動上，請我們把目前已知的團隊流程寫下來，每個人都寫一份自己認知中的流程。
+結果出來是大部分的流程是一致的，但一些細部的步驟每個人寫的都不一樣，這時候才真的意識到用講的大家聽到的結果都是不一樣的，於是也透過了理清工作流程，最後記錄下來確保團隊認知一致。
+5、管理還是技術? 這是我一換新單位面臨的最大問題，一直到現在我都還沒有一個確切的答案，心裡深知能用的時間有限，但又不確定往哪邊走才是對的，這個問題就繼續留待明年寫心得文的時候看看會不會有甚麼新想法吧。
+後記 雖然內文提到主管的惡趣味，但其實也是今年年初制定個人年度目標的時候跟主管深聊過職涯規劃的事，才有了這一些嘗試機會；之前看過軟體工程師三年會遇到第一個崁，我沒想過自己的崁會是個甚麼樣的狀況，但現在碰到了還真的是有種被開了一個不小玩笑的感覺。
+朋友有問過目前狀況是你想要的嗎?
+這問題真的很難回答，想不想要或喜不喜歡我覺得可能都需要一段時間後才能回答，而現在的想法就是可以嘗試看看，所幸目前的選擇帶來的結果都還是快樂、有趣的。
+最後不免俗的雞湯時間，跟去年那篇文章一樣，若看到這得你職涯上還沒遇到甚麼崁，祝你一路順遂；若是正值你的職涯惡趣味時期，希望你不要覺得孤單，祝你早日走出苦難。</description>
+    </item>
+    
     <item>
       <title>Contains 差別</title>
       <link>https://sunnyday0932.github.io/2022/contains-%E5%B7%AE%E5%88%A5/</link>
@@ -15,7 +38,7 @@
       <guid>https://sunnyday0932.github.io/2022/contains-%E5%B7%AE%E5%88%A5/</guid>
       <description>前言 前些天在處理某段處理字串程式的時候發現了一個奇怪的東西。
 DB 內有存了一組 AAA 的字串，現在我要比對 AAA+空格。
-var number = &amp;quot;AAA &amp;quot;; Summaries.Select(row =&amp;gt; row.Number).Contains(number).Dump(); 結果
+var number = &amp;#34;AAA &amp;#34;; Summaries.Select(row =&amp;gt; row.Number).Contains(number).Dump(); 結果
 就是那個 True 讓我感到非常驚恐 &amp;hellip;
 本文 研究了一下發生的原因其實是 Queryable 跟 Enumerable 的實作其實是不一樣的。
 StackOverflow 也有相關問題：
@@ -45,7 +68,7 @@ Queryable 實作上是往 DB 實際執行的語法靠，所以這邊會牽扯到
 本文 首先依據官方文件我們需要先安裝 Serilog 的 Nuget 套件。
 要安裝的有以下三個：
 安裝完成後就可以使用官方提供的範例來練習寫一個 Log
-void Main() { Log.Logger = new LoggerConfiguration() .MinimumLevel.Debug() .WriteTo.Console() .WriteTo.File(&amp;quot;D:/logs/myapp.txt&amp;quot;, rollingInterval: RollingInterval.Day) .CreateLogger(); Log.Information(&amp;quot;Log Test&amp;quot;); int a = 10, b = 0; try { Log.Debug(&amp;quot;Dividing {A} by {B}&amp;quot;, a, b); Console.WriteLine(a / b); } catch (Exception ex) { Log.Error(ex, &amp;quot;Something went wrong&amp;quot;); } finally { Log.CloseAndFlush(); } } 在上面這個範例中，我們指定了 Log 存放於 D:/logs/myapp.txt 這個檔案中，而後面這個變數則可以指定存放的檔案名稱是以甚麼來做為區分，目前是使用當天日期。
+void Main() { Log.Logger = new LoggerConfiguration() .MinimumLevel.Debug() .WriteTo.Console() .WriteTo.File(&amp;#34;D:/logs/myapp.txt&amp;#34;, rollingInterval: RollingInterval.Day) .CreateLogger(); Log.Information(&amp;#34;Log Test&amp;#34;); int a = 10, b = 0; try { Log.Debug(&amp;#34;Dividing {A} by {B}&amp;#34;, a, b); Console.WriteLine(a / b); } catch (Exception ex) { Log.Error(ex, &amp;#34;Something went wrong&amp;#34;); } finally { Log.CloseAndFlush(); } } 在上面這個範例中，我們指定了 Log 存放於 D:/logs/myapp.txt 這個檔案中，而後面這個變數則可以指定存放的檔案名稱是以甚麼來做為區分，目前是使用當天日期。
 也是有其他的選項可以做選擇
 範例
 Log 內的檔案資訊如圖</description>
@@ -58,7 +81,7 @@ Log 內的檔案資訊如圖</description>
       
       <guid>https://sunnyday0932.github.io/2021/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E5%85%A9%E5%B9%B4%E5%BF%83%E5%BE%97%E9%9B%9C%E8%A8%98/</guid>
       <description>前言 最近看到 Huli 大大兩篇文章：
- 那些人生中的轉折 那些印象深刻的經歷  想到去年這個時候也寫了一篇 軟體工程師資歷一年心得分享，如果真的如當初跟朋友相約要持續寫下去，感覺來開個系列文也是不錯的選擇，也很好奇日後回過頭來看這些文章會是甚麼樣的心情；雖然目前已荒廢兩個月，趕緊找個主題寫一下。
+那些人生中的轉折 那些印象深刻的經歷 想到去年這個時候也寫了一篇 軟體工程師資歷一年心得分享，如果真的如當初跟朋友相約要持續寫下去，感覺來開個系列文也是不錯的選擇，也很好奇日後回過頭來看這些文章會是甚麼樣的心情；雖然目前已荒廢兩個月，趕緊找個主題寫一下。
 本文 1、換工作了。 在資歷即將滿兩年的時候選擇了前往下一站，身邊朋友大概知道我再一開始規劃上就是這樣打算的，雖然實際執行的時候自己這麼果斷現在想起來也是很驚訝；原因的話就是自己想出去看看，很感謝在上一間公司提供了良好的環境、主管很肯給我機會、前輩不吝賜教還有同期的朋友互相學習，過去一年真的是我成長最快速的時期，之前看過 商業思維學院院長文章 - Gipi 游舒帆：頭兩份工作型塑你對職場的認知，第一份工作能讓我對職場有很多正向認知真的由衷感謝。
 2、刪了很多文章。 如果有注意看文章的朋友應該發現很多文章不見了，其實就是自己做錯事了趕快想辦法補救，之前有些技術文章都是參考公司大神寫的內部文件所寫、程式碼也是，當然寫的部分都沒有參雜公司商業邏輯但自己沒設想好這樣不妥於是就放在了自己的部落格以及 Github ，畢竟是屬於公司內部資產，請大家不要模仿這樣的行為。
 3、新工作環境。 朋友說過：「爛的程式碼要看過，才知道好的是怎麼樣。」大概就類似美食是比較出來的，你要先吃過難吃的食物才會懂得品嘗美味的食物．．．
@@ -97,7 +120,7 @@ public class Person { private string _name; private string _officeAreaCode; priv
 首先建立一個 Core API 的範例程式
 接著就可以建立一個 HostService 並且繼承 BackgroundService ，繼承完後應該會馬上就看到提示需要實作 ExecuteAsync ，這個 ExecuteAsync 就是我們可以拿來實作排程。
 public class HostService : BackgroundService { protected override Task ExecuteAsync(CancellationToken stoppingToken) { throw new NotImplementedException(); } } 簡單測試我們寫一個每10秒會去 D:/ 寫入 log 檔的背景程序。
-public class HostService : BackgroundService { private readonly string _filePath; public HostService(string filePath) { this._filePath = filePath; } /// &amp;lt;summary&amp;gt; /// This method is called when the &amp;lt;see cref=&amp;quot;T:Microsoft.</description>
+public class HostService : BackgroundService { private readonly string _filePath; public HostService(string filePath) { this._filePath = filePath; } /// &amp;lt;summary&amp;gt; /// This method is called when the &amp;lt;see cref=&amp;#34;T:Microsoft.</description>
     </item>
     
     <item>
@@ -109,8 +132,13 @@ public class HostService : BackgroundService { private readonly string _filePath
       <description>本文 事情發生是這樣的，今天突然接到一個線上問題，數據報表顯示有問題有幾個不該出現的數據卻出現了。
 問題發生當下馬上查了一下撈取數據顯示的語法，想知道判斷日期的地方是否有遺漏，然後就看到了一段類似於下列的語法
 WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111) 當下不疑有他第一個查的當然是 CONVERT() 的用法，查了一下發現是 VARCHAR 可以轉換成 DATETIME 的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。
-   數字 日期格式 範例     23 yyyy-mm-dd 2021-05-31   111 yyyy/mm/dd 2021/05/31   112 yyyymmdd 20210531    SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放 KeyInDate 這個 VARCHAR 欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本 WHERE 判斷會誤判。
-第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種 Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。</description>
+數字 日期格式 範例 23 yyyy-mm-dd 2021-05-31 111 yyyy/mm/dd 2021/05/31 112 yyyymmdd 20210531 SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放 KeyInDate 這個 VARCHAR 欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本 WHERE 判斷會誤判。
+第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種 Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。
+大概有人開始越想越不對勁了，對&amp;hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。
+2021/06/06 回來補做法
+感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用 DateTime.TryParseExact 這個方法來轉換日期格式。
+首先來了解一下這個方法要怎麼用。
+TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime) //第一個 String 是放我們要轉換的字串 //第二個 String 是我們要轉換的字串日期格式是甚麼例如第一個 String 是2021/06/06那第二個 String 就是yyyy/MM/dd //IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW //DateTimeStyles 則是可以決定我們允許哪些符合的字串格式能夠轉換 //DateTime 這就是我們要輸出的日期格式 簡單範例</description>
     </item>
     
     <item>
@@ -121,11 +149,11 @@ WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111
       <guid>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</guid>
       <description>本文 Topics 這個模式下 Exchange 會透過 Topic 的方式，將訊息丟給符合的 Queue 傳給相對應的 Reciver。
 Topic 會透過我們給予的 Key 來決定要給哪些人，而 Key 可以使用兩種特殊符號：
- 1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
+1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。 舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
 那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &amp;hellip; 都允許通過。
 接著我們來實作測試看看吧。
 Publisher
-var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.</description>
+var factory = new ConnectionFactory() { HostName = &amp;#34;localhost&amp;#34;, UserName = &amp;#34;admin&amp;#34;, Password = &amp;#34;a1234&amp;#34; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;#34;topic_logs&amp;#34;, ExchangeType.</description>
     </item>
     
     <item>
@@ -138,13 +166,13 @@ var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;
 1、架構思維 傳統我們對架構師的期待可能就是技術要很強、懂得如何建構系統就好(還是其他人的印象不一樣，只是我以為？)
 講師 Jed 分享下對這印象改觀了不少。
 架構師的腳色定位為何?
- 技術的廣度與深度 處理人與人之間的關係(軟實力) 理解與實踐組織期望  傳統的場景比較像是由架構師一人規劃系統、負責核心底層，後續才交由其他PG設計。
+技術的廣度與深度 處理人與人之間的關係(軟實力) 理解與實踐組織期望 傳統的場景比較像是由架構師一人規劃系統、負責核心底層，後續才交由其他PG設計。
 但 Jed 這邊分享認為更好的方式是兩邊一起緊密合作溝通而非單向傳授，畢竟架構設計並沒有完美這件事&amp;hellip;
 這邊也提到架構師很難專精某一項技術，因為有許多考量、商業考量、安全性考量、預算考量，要學習的範圍擴大，不只有技術這一項需要學習而已。 最印象深刻的是 Jed 分享提到以技術深度來說，團隊內的工程師經理、資深工程師都有比自己更強的部分，但架構師要懂得更廣。
 中間也帶了一個小範例講解兩種快取可能需要考慮到的地方。
 最後帶到了
- 架構師的第一法則
- 軟體架構的一切皆是取捨，技術了解的深度與廣度，要考慮業務面的需求。
+架構師的第一法則
+軟體架構的一切皆是取捨，技術了解的深度與廣度，要考慮業務面的需求。
 小節：
 過去:
 架構師設計核心底層、元件開發。
@@ -155,7 +183,7 @@ var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;
 所以新的方式:
 應該是讓架構師規劃後，讓團隊成員去開發。
 架構師應該只需要負責一部分的業務需求開發，這樣除了維持架構師的技術，也能提升團隊成員對整體架構了解程度。
-2、需求結構化與架構特性 來源書:一線架構師實際指南  功能性需求(Functional Requirements) 約束性需求(Constraint) Ex:資源約束、商業約束、法律約束、資安約束等。 品質屬性(非功能性需求 Non-Functional Requirements)  品質屬性，最常被忽略，需求單位不會知道這是甚麼，大多是需要技術人員才能提出
+2、需求結構化與架構特性 來源書:一線架構師實際指南 功能性需求(Functional Requirements) 約束性需求(Constraint) Ex:資源約束、商業約束、法律約束、資安約束等。 品質屬性(非功能性需求 Non-Functional Requirements) 品質屬性，最常被忽略，需求單位不會知道這是甚麼，大多是需要技術人員才能提出
 ex:效能相關問題，頁面的回應時間要低於幾秒，同上人數要多少?
 這邊也帶了一個小範例電商需要考慮的需求矩陣有哪些
 重點：不同的需求其實會有交互影響的。
@@ -168,7 +196,9 @@ ex:效能相關問題，頁面的回應時間要低於幾秒，同上人數要�
 從第一場 Gipi 院長到第二場講師 Jed 分享都有一再提到過這件事，技術開發者很容易陷入由技術為主要考量的出發點，但現時面還是要回歸到商業，畢竟一間公司的營運都是需要考量到錢。
 在此就有提到幫助釐清問題的邊界方法，有帶到了 DDD。
 主要有三個邊界需要考量：
- 商業問題邊界 人員溝通問題邊界 技術邊界   Jed 提到當你理解商業時，可以幫你驅動技術變化，而當你的技術進步，有時也會促進商業進化。</description>
+商業問題邊界 人員溝通問題邊界 技術邊界 Jed 提到當你理解商業時，可以幫你驅動技術變化，而當你的技術進步，有時也會促進商業進化。
+商業的策略驅動軟體服務的進化實例：
+很多公司把軟體變成 SaaS 服務。</description>
     </item>
     
     <item>
@@ -180,7 +210,7 @@ ex:效能相關問題，頁面的回應時間要低於幾秒，同上人數要�
       <description>本文 Publish/Subscribe 我們來練習使用 Exchange 透過 Fanout 的方式發送訊息給所有 Queue。
 現在我們目標是要發送 log 給所有 Queue。
 一樣先建立Publisher。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;#34;localhost&amp;#34;, UserName = &amp;#34;admin&amp;#34;, Password = &amp;#34;a1234&amp;#34; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;#34;logs&amp;#34;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;#34;logs&amp;#34;, //設定我們的Exchange為logs routingKey: &amp;#34;&amp;#34;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;#34; 送出訊息： {0}&amp;#34;, message); } Console.</description>
     </item>
     
     <item>
@@ -194,7 +224,7 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
 RabbitMQ 中文文檔
 Work Queues 有多個 Consumer 可以來幫忙消化 Queue 內的任務模式。
 首先我們一樣先建立一個 Pubisher，這次改成由外部接收要傳送的訊息再丟給 Queue。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.</description>
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;#34;localhost&amp;#34;, UserName = &amp;#34;admin&amp;#34;, Password = &amp;#34;a1234&amp;#34; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;#34;WorkeTestQueue&amp;#34;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;#34;&amp;#34;, routingKey: &amp;#34;WorkeTestQueue&amp;#34;, body: body); Console.</description>
     </item>
     
     <item>
@@ -242,7 +272,7 @@ Ex:設想一個工廠的運作也是如此，工廠內不會只有一個產線�
 3、Direct Connection Integration(直接連結的整合方式)。 Source Appication(來源程式)透過提前協議好的連結方式(TCP/IP、Named pipe connection)，直接傳遞要處理的任務，傳遞的資料格式可能為(Binary、XML、JSON等)，Proccess Appication(處理程式)處理完任務後再將結果傳回。
 4、Asynchronous Message Broker(透過Message Broker的非同步傳遞方式)。 來源程式(這邊會稱為:Producer Appication)將任務傳給 Message Broker，Message Boker 在透過佇列(Queue)的方式將任務排列先後順序，最後將任務傳遞給處理程式進行處理(這邊稱之為Consumer Application)。
 這種類型的傳遞方式特點為：
- 不限制傳遞的資料格式。 需要有一個 Message Broker Middleware 進行協助處理任務的排列。 非同步的溝通方式，Producer 傳送訊息至 Message Queue 後不需要立即得到回應，可以先行處理其他事情。 Comsumer 可以等到有空的時候再來處理任務。  所以這邊最大的特點是，將收發訊息的雙方進行了解耦合的動作，兩邊在開發上可以專注在開發自己的程式上、收送雙方也不需要彼此的實體位置(IP地址、接收訊息的程式在哪)僅需要把訊息往 Message Broker 送即可。</description>
+不限制傳遞的資料格式。 需要有一個 Message Broker Middleware 進行協助處理任務的排列。 非同步的溝通方式，Producer 傳送訊息至 Message Queue 後不需要立即得到回應，可以先行處理其他事情。 Comsumer 可以等到有空的時候再來處理任務。 所以這邊最大的特點是，將收發訊息的雙方進行了解耦合的動作，兩邊在開發上可以專注在開發自己的程式上、收送雙方也不需要彼此的實體位置(IP地址、接收訊息的程式在哪)僅需要把訊息往 Message Broker 送即可。</description>
     </item>
     
     <item>
@@ -253,12 +283,12 @@ Ex:設想一個工廠的運作也是如此，工廠內不會只有一個產線�
       <guid>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</guid>
       <description>前言 接下來會用到 CoreProfiler 這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。
 本文 CorePofiler 這個工具是提供給 Core 版本的效能工具，也有給 dotnet framework 的版本 NanoProfiler。
-用到的Nuget  CoreProfiler.Web 安裝在 Application。 CoreProfiler 安裝在 Application 跟要監看的類別庫。  使用方式 1、在我們需要監看的地方加上以下程式。
-var stepName = $&amp;quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;quot;; using (ProfilingSession.Current.Step(stepName)) { } 2、在 Service 與 Repository 的地方都加上。
+用到的Nuget CoreProfiler.Web 安裝在 Application。 CoreProfiler 安裝在 Application 跟要監看的類別庫。 使用方式 1、在我們需要監看的地方加上以下程式。
+var stepName = $&amp;#34;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;#34;; using (ProfilingSession.Current.Step(stepName)) { } 2、在 Service 與 Repository 的地方都加上。
 Service：
 Repository：
 3、若要監看與 DB 存取資料的狀況，可以到 DatabaseHelper 這麼做。
-/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ?</description>
+/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ? null : new DbProfiler(ProfilingSession.</description>
     </item>
     
     <item>
@@ -270,7 +300,7 @@ Repository：
       <description>本文 我們在先前 SOLID - OCP(開放封閉原則) 有提到過，軟體設計原則，應該對擴展開放，對修改封閉。
 而這次我們要介紹的裝飾者模式能夠更優雅地做到這件事。
 首先我們先回憶一下，特斯拉(不要懷疑我又回來啦)在不違反 OCP 原則下安裝軟體的時候我們可以怎麼做。
-internal class Program { static void Main(string[] args) { var tesla = new Tesla(&amp;quot;Model3&amp;quot;); tesla.Print(); var autoPilot= new AutoPilot(); var settingRing = new SettingRing(); autoPilot.AddSoftWare(); settingRing.AddSoftWare(); } } public class Tesla { private string _model; public Tesla(string model) { this._model = model; } public void Print() { Console.WriteLine(this._model); } } public abstract class SoftWare { public abstract void AddSoftWare(); } public class AutoPilot : SoftWare { public override void AddSoftWare() { Console.</description>
+internal class Program { static void Main(string[] args) { var tesla = new Tesla(&amp;#34;Model3&amp;#34;); tesla.Print(); var autoPilot= new AutoPilot(); var settingRing = new SettingRing(); autoPilot.AddSoftWare(); settingRing.AddSoftWare(); } } public class Tesla { private string _model; public Tesla(string model) { this._model = model; } public void Print() { Console.WriteLine(this._model); } } public abstract class SoftWare { public abstract void AddSoftWare(); } public class AutoPilot : SoftWare { public override void AddSoftWare() { Console.</description>
     </item>
     
     <item>
@@ -280,17 +310,19 @@ internal class Program { static void Main(string[] args) { var tesla = new Tesla
       
       <guid>https://sunnyday0932.github.io/2021/redis-3-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83/</guid>
       <description>本文 1、String Redis 內最基本的資料型態，以 Binary safe 的方式進行儲存。
- Binary safe
+Binary safe
 C語言中對字串的儲存形式會用 &amp;lsquo;\0&amp;rsquo; 來做為字串結束的判斷。
 而Redis雖然是使用C語言寫的，但優化了這個部分，所以 Redis 只需專注於讀寫整個 Binary string ，而不用為了某種特殊格式而需要進行特殊化的解析。
- 優點：
- 可以儲存任何格式的資料，包括了圖片、檔案、及任何序列化後的物件。  使用提醒：
- Redis 中一個 String 的最大上限為512MB。  適用場景：
- 普通的快取資料。 用來實作統計等相關功能 Ex: 網站的瀏覽人數。 分散式架構下的 Web 共用 Session。  2、List 由 Redis 內多個 String 所組成，類似於 Linked-List 的資料結構。
 優點：
- 插入和刪除資料的操作很快，時間複雜度為 O(1)。  使用提醒：
- Redis 中一個 List 的最大長度上限為 2^32 - 1。  適用場景：
- 可用來實作佇列的 Queue(First in first out)。 可用來實作 Stack(Last in first out)。 社群功能的留言板、排行榜、關注等功能。  示範：</description>
+可以儲存任何格式的資料，包括了圖片、檔案、及任何序列化後的物件。 使用提醒：
+Redis 中一個 String 的最大上限為512MB。 適用場景：
+普通的快取資料。 用來實作統計等相關功能 Ex: 網站的瀏覽人數。 分散式架構下的 Web 共用 Session。 2、List 由 Redis 內多個 String 所組成，類似於 Linked-List 的資料結構。
+優點：
+插入和刪除資料的操作很快，時間複雜度為 O(1)。 使用提醒：
+Redis 中一個 List 的最大長度上限為 2^32 - 1。 適用場景：
+可用來實作佇列的 Queue(First in first out)。 可用來實作 Stack(Last in first out)。 社群功能的留言板、排行榜、關注等功能。 示範：
+有一個留言板，現在有了三則留言。
+LPUSH board firstMessage LPUSH board secondMessage LPUSH board thirdMessage 我們要拿取最新的那一筆留言。</description>
     </item>
     
     <item>
@@ -303,7 +335,7 @@ C語言中對字串的儲存形式會用 &amp;lsquo;\0&amp;rsquo; 來做為字�
 本文 我們會使用StackExchange.Redis這個Nuget套件進行示範。
 接下來我們建立一個簡易的 Model。
 public class Employee { public string Id { get; set; } public string Name { get; set; } public int Age { get; set; } public Employee(string employeeId, string name, int age) { Id = employeeId; Name = name; Age = age; } } 給予一個初始值後我們將他轉成 JSON 的格式存入 Redis。
-static void Main(string[] args) { //先取得連線 var connection = ConnectionMultiplexer.Connect(&amp;quot;127.0.0.1:6379&amp;quot;); var db = connection.</description>
+static void Main(string[] args) { //先取得連線 var connection = ConnectionMultiplexer.Connect(&amp;#34;127.0.0.1:6379&amp;#34;); var db = connection.</description>
     </item>
     
     <item>
@@ -314,7 +346,7 @@ static void Main(string[] args) { //先取得連線 var connection = ConnectionM
       <guid>https://sunnyday0932.github.io/2021/redis-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/</guid>
       <description>前言 接下來會開始研究一些 Nosql DB，第一個就從比較貼近現況使用的Redis開始，這邊大部分都是個人筆記要點，稍有遺漏或是不夠專業的地方還請多多包涵。
 本文 Redis基本介紹 特點：
- 儲存資料是由 Key-Value 所組成。 資料儲存在記憶體內。 Single Thread I/O Multiplex。  1、儲存資料是由Key-Value所組成。 一般我們使用的 SQL 資料庫如：MSSQL、MySQL 等，是屬於表格的方式儲存，傳統稱之為結構化數據。
+儲存資料是由 Key-Value 所組成。 資料儲存在記憶體內。 Single Thread I/O Multiplex。 1、儲存資料是由Key-Value所組成。 一般我們使用的 SQL 資料庫如：MSSQL、MySQL 等，是屬於表格的方式儲存，傳統稱之為結構化數據。
 而Redis這類的 NoSQL 儲存資料為非表格化的儲存，稱之半結構化或非結構化的數據。
 簡單來說，在 Redis 內一組 Key 對應一組 Value。
 2、資料儲存在記憶體內。 資料都是儲存在記憶體內，所以比起傳統 DB 可以達到更快速存取的機制。
@@ -324,7 +356,8 @@ static void Main(string[] args) { //先取得連線 var connection = ConnectionM
 string 類型控制在10KB以內，hash、list、set、zset 元素個數不要超過 5000。
 3、Single Thread I/O Multiplex。 Single Thread 意味著不管裝載 Redis 的 Server 上有幾顆Cpu核心，一個 Redis DB 就只會使用到一個核心。
 (新版的 Redis 似乎有支援多核心，但並沒有多加研究，歡迎自己探查。)
-一次只能使用一個 Cpu 的核心也就意味著一次只能接收一個 Request，所以當有某一個 Request 佔用了太長的時間就會導致 Redis 無法應付其他的 Request，這也跟上面第二點資料的存放大小有關。</description>
+一次只能使用一個 Cpu 的核心也就意味著一次只能接收一個 Request，所以當有某一個 Request 佔用了太長的時間就會導致 Redis 無法應付其他的 Request，這也跟上面第二點資料的存放大小有關。
+使用情景：</description>
     </item>
     
     <item>
@@ -336,7 +369,7 @@ string 類型控制在10KB以內，hash、list、set、zset 元素個數不要�
       <description>前言 作為未來有興趣往 PM 發展的工程師，閱讀到這段馬上就選擇報名了。
 本文 上半場 開場由 91APP 的 Ruddy 老師導引了一些敏捷團隊該努力的方向。
 自己聽到的重點有：
- 敏捷團隊不該出現很忙的情況，代表有問題沒有釐清，反思敏捷精神。  小增量 多迭代 求回饋   尋求議題清晰，目標清楚。 使用 OKR。  詳細內容可參考 Ruddy 老師寫的這篇文章：
+敏捷團隊不該出現很忙的情況，代表有問題沒有釐清，反思敏捷精神。 小增量 多迭代 求回饋 尋求議題清晰，目標清楚。 使用 OKR。 詳細內容可參考 Ruddy 老師寫的這篇文章：
 主管；你很忙嗎?
 這邊個人理解成，真正有照著敏捷跑的團隊因為目標夠明確，能夠切分，所以應該都要能夠在一個時程內完成。
 上半場的感想，確實比較面相對已經是管理階級的工程師開的論壇，但整個大主題圍繞在 傳承 這些經驗、或是帶著大家找尋最佳解，就代表也需要有新血流入，況且主題是管理結合技術本來就是我比較感興趣得題目，可以再多關注社群公布的消息。
@@ -360,7 +393,9 @@ VUKA 是「波動、不確定、複雜和模糊的縮寫」（volatile, uncertai
 網路更快、消費意識抬頭、全球化競爭 =&amp;gt; 應變速度要更快。
 Ex:過去鄉下地方買電器可能找鄰近的電器行，而電器行會透過合作廠商推廣電器，消費者選擇少；現今使用網路選擇多樣化的情況下，廠商競爭者變多了。
 3、商業合作面。
-過去產業鏈單純、現在跨界企業出現。</description>
+過去產業鏈單純、現在跨界企業出現。
+講者是以 Tesla 顛覆汽車業做舉例。
+這邊我也是想到 Amazion，顛覆原產業、連結整個 Amazon 生態系。</description>
     </item>
     
     <item>
@@ -372,16 +407,16 @@ Ex:過去鄉下地方買電器可能找鄰近的電器行，而電器行會透�
       <description>前言 先前我們介紹了 API 的基本用法，現在我們來介紹非同步的方法。
 本文 首先還是要先提醒一下，對於非同步程式設計有很多眉眉角角，這邊只能簡單說明，所以若想更深入了解還是推薦大家尋求專業知識來源。
 首推：
- MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。  一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
+MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。 一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
 其實你已經寫過了。
 拿之前寫過的 UpdataAccount Service 來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。
 (圖片取自.NET 本事－非同步程式設計) 而這種同步程式設計有很明顯的問題。
- a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。  當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。
+a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。 當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。
 而為了解決 CPU 無法分頭進行處理就有了新的執行序(Thread)概念。
 2、Thread(執行序)。 這時候就可以把當年準備考試的筆記拿出來用一下了。
 當年上課老師也比喻 Thread 就像是一台車裡面有幾個引擎的概念。
 Thread 與 Process 的差別。
-   Process Thread     OS 分配資源的對象單位 OS 分配 CPU 時間的對象單位   Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外) 同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源   Process 的 Ceation、Context Switching 較慢，管理成本高。 Thread 的較快、管理成本低。   Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked   Multiprocessor 架構之效益發揮較差。 較佳。   不需提供互斥存取機制(除了 Shared memory 溝通外) 必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。   適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。    所以透過多個執行序的概念我們希望程式能夠達到這樣。</description>
+Process Thread OS 分配資源的對象單位 OS 分配 CPU 時間的對象單位 Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外) 同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源 Process 的 Ceation、Context Switching 較慢，管理成本高。 Thread 的較快、管理成本低。 Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked Multiprocessor 架構之效益發揮較差。 較佳。 不需提供互斥存取機制(除了 Shared memory 溝通外) 必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。 適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。 所以透過多個執行序的概念我們希望程式能夠達到這樣。</description>
     </item>
     
     <item>
@@ -392,8 +427,7 @@ Thread 與 Process 的差別。
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</guid>
       <description>前言 前幾篇已經介紹完單元測試基本方法了，那這篇主要是介紹一些好用的工具，能夠透過工具檢視程式碼目前單元測試的涵蓋率、以及查看複雜度；透過這些數據來檢視自己的程式碼是否還能夠在更優化。
 本文 1、Find Code Coverage。 原本是要介紹另一個測試方法，是使用 Axocover ；但在完成這幾篇的當下，馬上看到公司大神推薦了這個，現成的就拿來用啦 XD，若有興趣的會把 Axocover 連結附在此。
-Axocover For Visual Studio 2019。 
-進入正題。
+Axocover For Visual Studio 2019。 進入正題。
 Find Code Coverage
 首先我們先打開Visual Stdio Extension進行安裝。
 下載完後安裝視窗跳出時記得先把VS關掉，不然會無法完成安裝。
@@ -401,12 +435,13 @@ Find Code Coverage
 首次打開視窗會是空的，要先執行一次測試才會有東西。
 再次打開就可以看到結果。
 通常我們都會要求涵蓋率在 95% 以上，但當然各家公司實踐上有自己的標準，就可以依此來查看數據當作依據。
- 小提醒 因為 Find Code Coverage 會在每一次測試時幫你去計算覆蓋率，等於一個測試會跑兩次，若不想每次重跑一遍可以到設定的地方關掉，再要看覆蓋率時再打開即可。
- 設定方式：
+小提醒 因為 Find Code Coverage 會在每一次測試時幫你去計算覆蓋率，等於一個測試會跑兩次，若不想每次重跑一遍可以到設定的地方關掉，再要看覆蓋率時再打開即可。
+設定方式：
 打開 工具 &amp;gt; 選項。
 找到 Find Code Coverage，把 Run 的選項 Enable 改成 False 即可。
 2、CodeMaintainibility。 CodeMaintainibility
-一樣要到 Extension 的地方搜尋安裝。</description>
+一樣要到 Extension 的地方搜尋安裝。
+安裝完重新打開 VS 後會發現每一個方法都會出現一個旗子。</description>
     </item>
     
     <item>
@@ -416,7 +451,7 @@ Find Code Coverage
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</guid>
       <description>前言 接續完成我們 API 的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。
-本文 GetAccount(取得單筆帳號資訊) 1、輸入的 Account 不可為空。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;quot;&amp;quot;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;quot;Account 不可為空 !&amp;quot;); } 2、若查詢的 Account 有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;quot;test123&amp;quot;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;quot;test123@gmail.com&amp;quot;, ModifyUser = &amp;quot;sys&amp;quot;, Phone = &amp;quot;0918777888&amp;quot; }; var sut = this.</description>
+本文 GetAccount(取得單筆帳號資訊) 1、輸入的 Account 不可為空。 [TestMethod] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;AccountServiceTest&amp;#34;)] [TestProperty(&amp;#34;AccountServiceTest&amp;#34;, &amp;#34;GetAccount&amp;#34;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;#34;&amp;#34;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;#34;Account 不可為空 !&amp;#34;); } 2、若查詢的 Account 有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;AccountServiceTest&amp;#34;)] [TestProperty(&amp;#34;AccountServiceTest&amp;#34;, &amp;#34;GetAccount&amp;#34;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;#34;test123&amp;#34;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;#34;test123@gmail.com&amp;#34;, ModifyUser = &amp;#34;sys&amp;#34;, Phone = &amp;#34;0918777888&amp;#34; }; var sut = this.</description>
     </item>
     
     <item>
@@ -434,8 +469,8 @@ Find Code Coverage
 將檔案儲存到我們測試專案地方，建立一個 TestData 資料夾存放。
 記得要到專案內，將要測試的 CSV 檔案屬性改成永遠複製。
 2、安裝 Nuget 套件。 3、修改測試方法。 首先在測試 Class 加上一個 Attribute。
-[DeploymentItem(@&amp;quot;TestData\AccountData.csv&amp;quot;)] 接著我們就可以在要使用的地方這麼做。
-[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;quot;AccountData.csv&amp;quot;)) using (var reader = new CsvReader(sr, CultureInfo.</description>
+[DeploymentItem(@&amp;#34;TestData\AccountData.csv&amp;#34;)] 接著我們就可以在要使用的地方這麼做。
+[TestMethod] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;AccountServiceTest&amp;#34;)] [TestProperty(&amp;#34;AccountServiceTest&amp;#34;, &amp;#34;GetAccount&amp;#34;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;#34;AccountData.csv&amp;#34;)) using (var reader = new CsvReader(sr, CultureInfo.</description>
     </item>
     
     <item>
@@ -447,8 +482,8 @@ Find Code Coverage
       <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的 API 當作練習，補上該有的測試。
 本文 首先我們建立一個放置測試專案的資料夾。
 接著建立完測試專案。
- 2021/02/21更新 原本是只想開一個測試專案把 Repository 跟 Service 的測試都放在一起後來想想不太對。 更新後的專案結構如下。
- 因為是要對 Service 層進行測試，記得要加入專案參考。
+2021/02/21更新 原本是只想開一個測試專案把 Repository 跟 Service 的測試都放在一起後來想想不太對。 更新後的專案結構如下。
+因為是要對 Service 層進行測試，記得要加入專案參考。
 接下來先把基礎測試專案需要用到的東西準備好。
 [TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在 AutoMapper 的地方，我們並不需要製作一個假的 AutoMapper，所以可以直接使用原本方法。</description>
     </item>
@@ -465,7 +500,7 @@ Find Code Coverage
 我們現在有一個 Check 的方法，若出現錯誤則會紀錄一筆log。
 首先先把 log 方法準備好。
 public interface ILog { void SaveLog(string message); } public class Log : ILog { public void SaveLog(string message) { Console.WriteLine(message); } } Check 方法。
-bool Check(string text); public bool Check(string text) { if (string.IsNullOrWhiteSpace(text)) { this._log.SaveLog(&amp;quot;text 不可為空!&amp;quot;); return false; } return true; } 接下來我們先調整一下我們的測試方法。
+bool Check(string text); public bool Check(string text) { if (string.IsNullOrWhiteSpace(text)) { this._log.SaveLog(&amp;#34;text 不可為空!&amp;#34;); return false; } return true; } 接下來我們先調整一下我們的測試方法。
 private ILog _log; private IRepository _repository; [TestInitialize] public void TestInitialize() { this._log = Substitute.</description>
     </item>
     
@@ -476,9 +511,10 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</guid>
       <description>本文 初始化與清除使用的 Attribute 上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個 Attribute 可以派上用場。
-   Attribute 用法 頻率     TestInitialize() 在執行每一項測試之前，會先執行 TestInitialize 的程式碼。 每執行一個 TestMethod 會觸發一次。   TestCleanup() 在執行每一項測試之後，會執行 TestCleanup 的程式碼。 每執行一個 TestMethod 會觸發一次。   ClassInitialize() 在執行該類別的測試之前，會先執行 ClassInitialize 的程式碼。 以測試類別為單位執行一次。   ClassCleanup() 在執行該類別的測試之後，會執行 ClassCleanup 的程式碼。 以測試類別為單位執行一次。   AssemblyInitialize() 在執行所有類別的測試之前，會先執行 AssemblyInitialize 的程式碼。 以測試專案為單位執行一次。   AssemblyCleanup() 在執行該類別的測試之後，會執行 AssemblyCleanup 的程式碼。 以測試專案為單位執行一次。    練習:
+Attribute 用法 頻率 TestInitialize() 在執行每一項測試之前，會先執行 TestInitialize 的程式碼。 每執行一個 TestMethod 會觸發一次。 TestCleanup() 在執行每一項測試之後，會執行 TestCleanup 的程式碼。 每執行一個 TestMethod 會觸發一次。 ClassInitialize() 在執行該類別的測試之前，會先執行 ClassInitialize 的程式碼。 以測試類別為單位執行一次。 ClassCleanup() 在執行該類別的測試之後，會執行 ClassCleanup 的程式碼。 以測試類別為單位執行一次。 AssemblyInitialize() 在執行所有類別的測試之前，會先執行 AssemblyInitialize 的程式碼。 以測試專案為單位執行一次。 AssemblyCleanup() 在執行該類別的測試之後，會執行 AssemblyCleanup 的程式碼。 以測試專案為單位執行一次。 練習:
 如題為了避免我們改變時間進而影響到其他單元測試，我們在執行每一個測試前後都會初始化一次時間。
-[TestInitialize] public void TestInitial() { SystemTime.</description>
+[TestInitialize] public void TestInitial() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } [TestCleanup] public void TestClean() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } 隔離物件 測試的時候我們會需要隔離要測試的物件，如果直接相依物件會產生一些不必要的問題導致測試結果可能有誤。
+相依物件 可能發生情況 資料庫 直接相依資料庫的情況下，如果有異動到資料，每一次都要還原資料。 外部服務 會因為網路連線狀態而直接影響測試執行的速度。 特殊商業邏輯 無法進行測試，例如:亂數資料、加密資料等。 所以為了解決這個問題，就可以很簡單的利用先前教學所使用的依賴注入方式，透過介面注入抽換實體，那麼我在在測試的地方，就能直接做一個測試用的實體出來進行模擬測試。</description>
     </item>
     
     <item>
@@ -489,8 +525,8 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/</guid>
       <description>本文 比對兩個物件方式 首先我們建立一個測試用 Model。
 public class TestModel { public string UserName { get; set; } public string Account { get; set; } } 建立一個測試方法驗證兩個物件是否相同。
-[TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; secondObject.Should().Be(fistObject); } 結果 有點奇怪，我們換回內建的方法測試看看。
-[TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; //secondObject.</description>
+[TestMethod()] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;Class1&amp;#34;)] [TestProperty(&amp;#34;Class1&amp;#34;, &amp;#34;Object&amp;#34;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; var secondObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; secondObject.Should().Be(fistObject); } 結果 有點奇怪，我們換回內建的方法測試看看。
+[TestMethod()] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;Class1&amp;#34;)] [TestProperty(&amp;#34;Class1&amp;#34;, &amp;#34;Object&amp;#34;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; var secondObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; //secondObject.</description>
     </item>
     
     <item>
@@ -501,11 +537,12 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/</guid>
       <description>本文 單元測試方法命名 單元測試的藝術內簡單得規範出一種一目了然的命名方式。
 分為三個部分：
-   名稱 解釋     1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。   2、Scenario(情境) 要測試的情境，例如:傳入 NULL、傳入字串。   3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期    單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
+名稱 解釋 1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。 2、Scenario(情境) 要測試的情境，例如:傳入 NULL、傳入字串。 3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期 單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
 接著我們就可以修改一下前次練習的測試方法名稱。
 常用到的 Attribute 接下來介紹幾個比較常用到的 Attribute：
-   Attribute 用途     [TestMethod] 表示這是一個測試方法。   [OwnerName] 此測試方法的建立者。   [TestCategory] 測試的方法在哪個類別。   [TestProperty] 表示該方法是在哪個類別內的測試方法。   [Ignore] 驗證測試時會忽略該方法。   [ExpectedException] 驗證例外處理的 Attribute。    用法示範：
-[TestMethod()] //這是一個測試方法 [Owner(&amp;quot;Sian&amp;quot;)] //此方法由Sian建立 [TestCategory(&amp;quot;Class1&amp;quot;)] //此測試方法在Class1這個類別 [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;GetUserName&amp;quot;)] //此測試方法是Class1類別內的GetUserName public void GetUserName_輸入的UserName為空值_應回傳提示訊息() { //arrange var target = new Class1(); var name = string.</description>
+Attribute 用途 [TestMethod] 表示這是一個測試方法。 [OwnerName] 此測試方法的建立者。 [TestCategory] 測試的方法在哪個類別。 [TestProperty] 表示該方法是在哪個類別內的測試方法。 [Ignore] 驗證測試時會忽略該方法。 [ExpectedException] 驗證例外處理的 Attribute。 用法示範：
+[TestMethod()] //這是一個測試方法 [Owner(&amp;#34;Sian&amp;#34;)] //此方法由Sian建立 [TestCategory(&amp;#34;Class1&amp;#34;)] //此測試方法在Class1這個類別 [TestProperty(&amp;#34;Class1&amp;#34;, &amp;#34;GetUserName&amp;#34;)] //此測試方法是Class1類別內的GetUserName public void GetUserName_輸入的UserName為空值_應回傳提示訊息() { //arrange var target = new Class1(); var name = string.Empty; //act var actual = target.GetUserName(name); //assert Assert.AreEqual(&amp;#34;請輸入使用者姓名!&amp;#34;,actual); } 建立一個會有例外狀況的 Class。
+public string ExceptionTest(string name) { if (string.</description>
     </item>
     
     <item>
@@ -517,7 +554,21 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <description>前言 API 講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以單元測試的藝術以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。
 內文 單元測試 單元測試的藝術對一個優秀單元測試的定義為：
 一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元， 之後對這個單元的單一最終結果的某些假設或期望進行驗證。 單元測試幾乎都是使用單元測試框架進行撰寫的。 撰寫單元測試很容易，執行起來快速。 單元測試可靠、易讀、並且很容易維護。 只要產品程式碼不發生變化，單元測試的執行結果是穩定一致的。 該具備的特性有：
-   特性 定義     1、Fast(快速) 每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。   2、Independent(獨立性) 不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。   3、Repeatable(可重複) 單元測試要是可以重複執行的，其結果不會因為執行次數而改變。   4、Self-Validating(可反應驗證結果) 單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。   5、Timely(及時) 單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。    單元測試的3A原則:    原則     1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。   2、Act : 呼叫目標物件的方法。   3、Assert : 驗證是否符合預期。    整合測試 接下來介紹一下可能會混淆的整合測試。</description>
+特性 定義 1、Fast(快速) 每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。 2、Independent(獨立性) 不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。 3、Repeatable(可重複) 單元測試要是可以重複執行的，其結果不會因為執行次數而改變。 4、Self-Validating(可反應驗證結果) 單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。 5、Timely(及時) 單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。 單元測試的3A原則: 原則 1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。 2、Act : 呼叫目標物件的方法。 3、Assert : 驗證是否符合預期。 整合測試 接下來介紹一下可能會混淆的整合測試。
+單元測試的藝術對整合測試的定義為：
+整合測試是對一個工作單元進行測試，而這個測試對被測試的單元並沒有完全的控制， 而是使用該單元一個或多個真實依賴的相依物件，例如時間、網路、資料庫等。 所以如果一個測試情境直接進入DB撈取資料，那他其實是整合測試，並不屬於單元測試。
+測試驅動開發(Teat-Driven Development,TDD) TDD是一種開發的模式，詳細的步驟可以參考下圖1-4(取自單元測試的藝術)。
+可以看到 TDD 的步驟如下：
+撰寫一個測試 Function。 執行測試，因為還沒實作要測試的目標，所以得到失敗結果。 撰寫剛好能通過測試的產品程式碼。 執行測試，成功撰寫下一個測試；失敗修正程式。 以此步驟作為循環不斷的重複。
+優點是可以快速透過下面這些情境驗證程式：
+如果一個測試失敗了，沒有經過修改她就再次運行成功了，你其實是在測試這個單元測試本身。 如果你預期一個測試應該失敗，但她卻成功了，那這個測試本身可能有缺陷，或是測試的物件不對。 如果一個測試之前失敗了，擬調整之後預期他會執行成功，但她依然是失敗的，那這個測試可能有缺陷，或是測試的期望結果不正確。 碎碎念分隔線：
+當然這是理想情況下能夠進行 TDD，而真實自身經驗情況都是圖1-3，除了重要商業邏輯程式外，真的是有空再回來補測試，而且有的時候商業邏輯被翻盤了，舊的測試邏輯也不符合情境，一切都是浮雲。
+練習 接下來我們就來練習寫一個簡單的單元測試。
+首先建立一個單元測試的專案：
+建完後我們會看到一個空的單元測試方法。
+接下來我們需要建立一個簡單的程式範例讓我們做單元測試的練習。
+我們建立一個類別庫專案。
+現在我們的專案結構如下：</description>
     </item>
     
     <item>
@@ -528,10 +579,13 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/</guid>
       <description>前言 前面我們已經練習過使用 Dapper，剛好前輩提起 EF 也是需要練習熟悉的，就做了一個 EF Core 的版本，基本上內容與先前 API 第二版本大致相同，這邊就只會列出差異部分與碰到的問題。
 本文 一、首先我們會需要先安裝三個 EF 需要使用到的 Nuget 套件。 分別是：
-   Nuget名稱 安裝地點     EntityFrameworkCore Repository   EntityFrameworkCore.SqlServer Repository   EntityFrameworkCore.Tools Controller    二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。 完整指令如下：
-Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force 這邊提一下指令由前到後介紹：
-Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。
--OutputDir Conditions 這邊是生成檔案放置地點。</description>
+Nuget名稱 安裝地點 EntityFrameworkCore Repository EntityFrameworkCore.SqlServer Repository EntityFrameworkCore.Tools Controller 二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。 完整指令如下：
+Scaffold-DbContext &amp;#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&amp;#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force 這邊提一下指令由前到後介紹：
+Scaffold-DbContext &amp;#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&amp;#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。
+-OutputDir Conditions 這邊是生成檔案放置地點。
+-Tables Users 指定的 Table 名稱。
+-context AccountContext 這是會生成的 DBContext 檔案名稱，這邊我取名為 AccountContext。
+-Project WebApiEFCoreRepository -force 指定生成在 Repository 專案，最後的 force 其實第一次生成 DBContext 時不用加，但後續要再加 Table 的時候可能會用上；至於我為甚麼留著呢？那當然是因為 懶惰</description>
     </item>
     
     <item>
@@ -542,8 +596,8 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
       <guid>https://sunnyday0932.github.io/2021/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_%E7%84%A1%E7%91%95%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC-%E5%B0%88%E6%A5%AD%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/</guid>
       <description>前言 這本書是同事不久前主動拿給我的，起因是2020年底專案產生的一連串災難，於是他在某天就主動拿了這本書借我；一開始是跳著看，書內有些情境真的跟我們當時身陷處境很像，純粹也就是為了尋求認同，當時對解決方式不以為意，最近幾天有時間重頭開始看起又多體悟了不少。
 本文 這本書是聲量滿高無瑕的程式碼番外篇，大多從業人員都有聽過正本，但這邊我自己是還沒看過正本，經過這次閱讀完，確實是提高我不少興趣去看無瑕的程式碼。
-跟先前分享過的Soft Skills 軟實力大致的方向一樣，都是幫助職涯發展的，但相較於軟實力本書較著重在於探究 Programmer 在一整個專案中會遇到的情境，頁數不多總共也才216頁(包含序、目錄)，內容也滿貼近實際會遇到的狀況，要推薦的話我會覺得大概工作一段時間來看這本書會感同身受。
-目錄  Chapter 1 專業主義（Professionalism） Chapter 2 說「不」（Saying No） Chapter 3 說「是」（Saying Yes） Chapter 4 寫程式（Coding） Chapter 5 測試驅動開發（Test Driven Development） Chapter 6 練習（Practicing） Chapter 7 驗收測試（Acceptance Testing） Chapter 8 測試策略（Testing Strategies） Chapter 9 時間管理（Time Management） Chapter 10 預估（Estimation） Chapter 11 壓力（Pressure） Chapter 12 協作（Collaboration） Chapter 13 團隊與專案（Teams and Projects） Chapter 14 輔導、學徒期與工藝典範（Mentoring, Apprenticeship, and Craftsmanship）  從目錄來看應該很明顯，全部著重在一個專案每個階段會需要面對的事情。
+跟先前分享過的 Soft Skills 軟實力大致的方向一樣，都是幫助職涯發展的，但相較於軟實力本書較著重在於探究 Programmer 在一整個專案中會遇到的情境，頁數不多總共也才216頁(包含序、目錄)，內容也滿貼近實際會遇到的狀況，要推薦的話我會覺得大概工作一段時間來看這本書會感同身受。
+目錄 Chapter 1 專業主義（Professionalism） Chapter 2 說「不」（Saying No） Chapter 3 說「是」（Saying Yes） Chapter 4 寫程式（Coding） Chapter 5 測試驅動開發（Test Driven Development） Chapter 6 練習（Practicing） Chapter 7 驗收測試（Acceptance Testing） Chapter 8 測試策略（Testing Strategies） Chapter 9 時間管理（Time Management） Chapter 10 預估（Estimation） Chapter 11 壓力（Pressure） Chapter 12 協作（Collaboration） Chapter 13 團隊與專案（Teams and Projects） Chapter 14 輔導、學徒期與工藝典範（Mentoring, Apprenticeship, and Craftsmanship） 從目錄來看應該很明顯，全部著重在一個專案每個階段會需要面對的事情。
 雖然章節切了14章，但其實內文都有相關聯。
 例如：第一章的專業主義有提到 Programmer 要對自己的專案有責任感，這包含了時程、品質等，這邊就會連結到第二章、第三章在時程壓力下要如何協調專案確切內容有哪些是應該據理力爭拒絕的、而有哪些是該為自己負起責任的，連結到第九章、第十章時間管理、預估。</description>
     </item>
@@ -560,7 +614,7 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
 經過同事幫忙，發現在主題資料夾下有一個 seo_schema.html 檔案。
 詳細路徑在 themes\LeaveIt\layouts\partials\seo_schema.html
 裡面長這樣： 一開始裡面就少了一個括號，只要把這邊補上就正常啦。
-{ &amp;quot;@context&amp;quot; : &amp;quot;http://schema.org&amp;quot;, &amp;quot;@type&amp;quot; : &amp;quot;BlogPosting&amp;quot;, &amp;quot;mainEntityOfPage&amp;quot;: { &amp;quot;@type&amp;quot;: &amp;quot;WebPage&amp;quot;, &amp;quot;@id&amp;quot;: &amp;quot;{{ .Site.BaseURL }}&amp;quot; }, &amp;quot;articleSection&amp;quot; : &amp;quot;{{ .Section }}&amp;quot;, &amp;quot;name&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;headline&amp;quot; : &amp;quot;{{ .Title }}&amp;quot;, &amp;quot;description&amp;quot; : &amp;quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;quot;, &amp;quot;inLanguage&amp;quot; : &amp;quot;{{ .Site.LanguageCode }}&amp;quot;, &amp;quot;author&amp;quot; : &amp;quot;{{ if isset .</description>
+{ &amp;#34;@context&amp;#34; : &amp;#34;http://schema.org&amp;#34;, &amp;#34;@type&amp;#34; : &amp;#34;BlogPosting&amp;#34;, &amp;#34;mainEntityOfPage&amp;#34;: { &amp;#34;@type&amp;#34;: &amp;#34;WebPage&amp;#34;, &amp;#34;@id&amp;#34;: &amp;#34;{{ .Site.BaseURL }}&amp;#34; }, &amp;#34;articleSection&amp;#34; : &amp;#34;{{ .Section }}&amp;#34;, &amp;#34;name&amp;#34; : &amp;#34;{{ .Title }}&amp;#34;, &amp;#34;headline&amp;#34; : &amp;#34;{{ .Title }}&amp;#34;, &amp;#34;description&amp;#34; : &amp;#34;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&amp;#34;, &amp;#34;inLanguage&amp;#34; : &amp;#34;{{ .Site.LanguageCode }}&amp;#34;, &amp;#34;author&amp;#34; : &amp;#34;{{ if isset .</description>
     </item>
     
     <item>
@@ -571,7 +625,7 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
       <guid>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</guid>
       <description>前言 終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。
 本文 講解 DI 前會有兩個先行觀念需要了解，分別是：
- 1、DIP(Dependency Inversion Principle) 依賴反轉。 2、IOC(Inversion of Control) 控制反轉。  1、DIP 依賴反轉。 複習一下前面講解到的依賴反轉概念：
+1、DIP(Dependency Inversion Principle) 依賴反轉。 2、IOC(Inversion of Control) 控制反轉。 1、DIP 依賴反轉。 複習一下前面講解到的依賴反轉概念：
 我們了解到 DIP 最重要的目標是要解除物件與物間之間直接依賴的關係。
 不熟的同學起點這複習。
 2、IOC 控制反轉。 那甚麼又是控制反轉呢？
@@ -585,7 +639,8 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
 所以理想中 IOC 概念我們的關係圖應該長這樣： 我們的 Controller 應該把對於 Repository 的控制權移交給 IOC。
 3、DI 依賴注入。 講了這麼多那所以甚麼是 DI 呢？
 聰明的同學應該發現了上述的 DIP、IOC 都只是一種精神、概念；而 DI 就是實現上述兩種精神的方法。
-講解 DI 的精神最經典的就是：  好萊塢原則 (Hollywood Principle)</description>
+講解 DI 的精神最經典的就是： 好萊塢原則 (Hollywood Principle)
+don‘t call us, we‘ll call you</description>
     </item>
     
     <item>
@@ -595,19 +650,19 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
       
       <guid>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</guid>
       <description>本文 今天在查找 SQL 效能 Like 會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。
-在處理模糊搜尋的條件常常會使用 LIKE&#39;%關鍵字%&#39; 這種做法，但 SQL 的索引在 LIKE&#39;%關鍵字&#39; 的情況會失效，更不用說使用 LIKE&#39;%關鍵字%&#39; 當資料一大效能真的是非常差。
+在處理模糊搜尋的條件常常會使用 LIKE&amp;rsquo;%關鍵字%&amp;rsquo; 這種做法，但 SQL 的索引在 LIKE&amp;rsquo;%關鍵字&amp;rsquo; 的情況會失效，更不用說使用 LIKE&amp;rsquo;%關鍵字%&amp;rsquo; 當資料一大效能真的是非常差。
 這裡介紹一個替代使用語法 CHARINDEX。
 首先我們先看一下MSDN介紹用法。
 這裡可以知道 charindex 其實是可以用來計算兩個字元間有多少相同的地方。
 現在來測試一下
-SELECT CHARINDEX(&#39;a&#39;,&#39; apple is apple&#39;) 結果：
+SELECT CHARINDEX(&amp;#39;a&amp;#39;,&amp;#39; apple is apple&amp;#39;) 結果：
 或是可以用來判斷相同的字元出現的位子。
-SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,5) 結果： 這邊第三個參數5是從第五個字元開始往後搜尋。
+SELECT CHARINDEX(&amp;#39;a&amp;#39;,&amp;#39;appleisapple&amp;#39;,5) 結果： 這邊第三個參數5是從第五個字元開始往後搜尋。
 所以如果改成0結果就會是
-SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,0) 結果： 替代 LIKE 的方式 好了說了這麼多到底要怎麼替代 LIKE 呢？
+SELECT CHARINDEX(&amp;#39;a&amp;#39;,&amp;#39;appleisapple&amp;#39;,0) 結果： 替代 LIKE 的方式 好了說了這麼多到底要怎麼替代 LIKE 呢？
 可以使用這種方式替代
-CHARINDEX(&#39;模糊搜尋關鍵字&#39;, 要搜尋的資料行) &amp;gt; 0 實際測試，使用NorthWind Product Table
-SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductName) &amp;gt; 0 使用CHARINDEX結果： SELECT * FROM [Northwind].[dbo].[Products] where ProductName LIKE &#39;%a%&#39; 使用 LIKE 結果： 哪種方式比較好？ 因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下 CHARINDEX 會比 LIKE 還要快，但如果有吃到索引 LIKE 的速度還是優於 CHARINDEX 的。</description>
+CHARINDEX(&amp;#39;模糊搜尋關鍵字&amp;#39;, 要搜尋的資料行) &amp;gt; 0 實際測試，使用NorthWind Product Table
+SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&amp;#39;a&amp;#39;,ProductName) &amp;gt; 0 使用CHARINDEX結果： SELECT * FROM [Northwind].[dbo].[Products] where ProductName LIKE &amp;#39;%a%&amp;#39; 使用 LIKE 結果： 哪種方式比較好？ 因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下 CHARINDEX 會比 LIKE 還要快，但如果有吃到索引 LIKE 的速度還是優於 CHARINDEX 的。</description>
     </item>
     
     <item>
@@ -620,7 +675,7 @@ SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductNa
 難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具 Automapper了。
 本文 基本用法 首先到 Nuget 安裝 Automapper。 安裝好後我們建立兩個測試用的 Model
 private class Model1 { public string Name { get; set; } public int Id { get; set; } } private class Model2 { public string Name { get; set; } public int Id { get; set; } } 使用 Automapper 對應 Model1 到 Model2。
-var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.</description>
+var testModel = new Model1 { Name = &amp;#34;ALLEN&amp;#34;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.</description>
     </item>
     
     <item>
@@ -634,9 +689,18 @@ var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var con
 這種情況下只有自己寫可能還好，那如果需要跟人合作呢？
 大家可能容易出現重複的 Code，也難以說明誰該負責寫哪部分。
 這時候有一個好的架構，就很重要了。
-優缺點    優點     1、較好形成一個規範，可做為標準化流程。   2、提高重用性，透過分層將相同類型的程式碼放在一塊。   3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。   4、具有好的開放性、可擴充性優點。   5、降低程式碼之間的依賴，每層溝通是透過介面。   6、提高系統安全性，因為使用者需要透過 Service 層才有機會與下一層 Repository 撈取資料。       缺點     1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。   2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。   3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。    簡介 三層式架構顧名思義，主要分為了三層：
- 1、Controller：控制層，作為接口。 2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。 3、Repository：倉儲層，作為資料存儲的一層。 4、Common：共用層，作為存放各層會用到的相同東西。  他們之間的關係如下圖:
-Service 從最重要的 Service 層開始講解起。</description>
+優缺點 優點 1、較好形成一個規範，可做為標準化流程。 2、提高重用性，透過分層將相同類型的程式碼放在一塊。 3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。 4、具有好的開放性、可擴充性優點。 5、降低程式碼之間的依賴，每層溝通是透過介面。 6、提高系統安全性，因為使用者需要透過 Service 層才有機會與下一層 Repository 撈取資料。 缺點 1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。 2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。 3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。 簡介 三層式架構顧名思義，主要分為了三層：
+1、Controller：控制層，作為接口。 2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。 3、Repository：倉儲層，作為資料存儲的一層。 4、Common：共用層，作為存放各層會用到的相同東西。 他們之間的關係如下圖:
+Service 從最重要的 Service 層開始講解起。
+在我們程式中『最重要』的就屬於商業邏輯了，這一層是會特別關注的一層；這邊大家可能會問，那商業邏輯是指哪些呢？
+我自己認為最簡單分辨的方式，舉凡任何需要對資料特別處理的地方都會是放在這一層，如常見的：登入驗證、加減法運算、確認是否驗證成功等。
+Controller 在我們 WebAPI 中，Controller 就屬於接口，負責處理 Router，如常見的：Get、Post、Patch 等，都會是在這層負責接應相對應的路由。
+Repository 資料倉儲層，這層主要處理『有關資料串接』的部分，如：資料庫連接、下 SQL 取 Table 資料等，都會是在 Repository 處理。
+這邊有個特別的地方，如果我們程式需要透過別人的API取的資料回來做處理呢？
+那與對方 API 串接的地方就會是 Repository，所以 Repository 是處理『有關資料串接』的地方，而這資料當然並不只限於從 DB 撈取的資料。
+Common 共用層相對單純，存放各層間會用到的共同東西，最常見的例如：Enum，就會放在這一層。
+各層相互傳遞的參數 各層間會有自己的 Model，就是透過這些 Model 來溝通，如下圖：
+Controller：接收的是 Parameter，輸出的是 ViewModel。 Service：接收的是 InfoModel，輸出的是 Dto。 Repository：接收的是 Condition，輸出的是 DataModel。 使用三層式架構常見的問題 1、三層式架構與傳統 MVC 有甚麼不同呢？ 傳統 MVC 分成，View(展示層)-Model(資料層)-Controller(控制層)，這邊與三層式架構最大的區別在於傳統MVC並沒有特別把『商業邏輯』抽出來；常會看到傳統 MVC 可能會把商業邏輯附加在 Controller，所以 MVC 與三層式架構是不同的。</description>
     </item>
     
     <item>
@@ -651,9 +715,9 @@ Service 從最重要的 Service 層開始講解起。</description>
 2、容易有重工。 現行做法如果多人合作的時候，可以用 Repository 名稱來定義是從哪個 DB 撈取資料； Controller 也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的 Model 不同因此再合作的時候建了一堆不同的 Model 出來，卻其實是撈同一個 Table 的資料，應該想辦法避免做重複的事情。
 3、耦合過高。 現行做法很容易再單一的 class 做了太多事，還記得前幾篇提到的 SOLID 原則嗎？若所有事情都包在同一個 class中完成，藕合度就會過高這種情況應該要想辦法解決。
 那有甚麼好方法呢？ 像傳統的 MVC 就是把程式分成 Model-View-Controller。
- 1、Model：處理商業邏輯、資料傳輸的 Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。  透過將程式分開讓藕合性降低、也讓後續維護者好維護。
+1、Model：處理商業邏輯、資料傳輸的 Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。 透過將程式分開讓藕合性降低、也讓後續維護者好維護。
 其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將 API 實作。
-參考連結  1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼?</description>
+參考連結 1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼? 我只知道三層肉 </description>
     </item>
     
     <item>
@@ -664,8 +728,10 @@ Service 從最重要的 Service 層開始講解起。</description>
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</guid>
       <description>本文 REST 是 Representational State Transfer 的縮寫，是一種設計模式，RESTful API 就是遵循這種設計模式所創造的 API。
 那 RESTful 是怎樣的一個設計模式呢? 首先組成 RESTful API 三大要素有:
-   組成要素 說明     1、Nouns (名詞) 一組獨一無二的 URL 用來定義網址。   2、Verbs (動詞) 用來描述對 URL 所執行的動作，也就是 HTTP Method。   3、Content Types(資源呈現方式) API 資源呈現的方式 EX:JSON、XML。    以前幾篇的 API 為範例:
-   Method router 說明     GET api/Product 取得商品列表   POST api/Product 新增商品   PATCH api/Product 修改商品資訊   DELETE api/Product/85 商除指定商品    固定的 Router，但使用 Method 來區分要進行的動作，好處是不會有五花八門的 router 出現，一旦用了此種模式，大家就能輕易區分 API 會做些甚麼，我該取用哪隻 API。</description>
+組成要素 說明 1、Nouns (名詞) 一組獨一無二的 URL 用來定義網址。 2、Verbs (動詞) 用來描述對 URL 所執行的動作，也就是 HTTP Method。 3、Content Types(資源呈現方式) API 資源呈現的方式 EX:JSON、XML。 以前幾篇的 API 為範例:
+Method router 說明 GET api/Product 取得商品列表 POST api/Product 新增商品 PATCH api/Product 修改商品資訊 DELETE api/Product/85 商除指定商品 固定的 Router，但使用 Method 來區分要進行的動作，好處是不會有五花八門的 router 出現，一旦用了此種模式，大家就能輕易區分 API 會做些甚麼，我該取用哪隻 API。
+常見的 Method 有以下幾種:
+Method 說明 GET 讀取資料 POST 新增資料，亦可作為其他動詞使用。 PUT 更新 PATCH 部分更新資料 DELETE 刪除資料 備註: POST 被視作萬用動詞，可以作為其他動作。</description>
     </item>
     
     <item>
@@ -675,7 +741,7 @@ Service 從最重要的 Service 層開始講解起。</description>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</guid>
       <description>本文 修改 1、修改指定商品 Repository
-/// &amp;lt;summary&amp;gt;  /// 修改商品內容  /// &amp;lt;/summary&amp;gt;  /// &amp;lt;param name=&amp;#34;productModel&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;  /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;  public bool UpdateProduct(ProductModel productModel) { var sql = @&amp;#34;UPDATE products SET productname = @ProductName, supplierid = @SupplierID, categoryid = @CategoryID, quantityperunit = @QuantityPerUnit, unitprice = @UnitPrice, unitsinstock = @UnitsInStock, unitsonorder = @UnitsOnOrder, reorderlevel = @ReorderLevel, discontinued = @Discontinued WHERE productid = @ProductID &amp;#34;; var parameters = new DynamicParameters(); parameters.Add(&amp;#34;@ProductName&amp;#34;, productModel.ProductName); parameters.</description>
+/// &amp;lt;summary&amp;gt; /// 修改商品內容 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;#34;productModel&amp;#34;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool UpdateProduct(ProductModel productModel) { var sql = @&amp;#34;UPDATE products SET productname = @ProductName, supplierid = @SupplierID, categoryid = @CategoryID, quantityperunit = @QuantityPerUnit, unitprice = @UnitPrice, unitsinstock = @UnitsInStock, unitsonorder = @UnitsOnOrder, reorderlevel = @ReorderLevel, discontinued = @Discontinued WHERE productid = @ProductID &amp;#34;; var parameters = new DynamicParameters(); parameters.Add(&amp;#34;@ProductName&amp;#34;, productModel.ProductName); parameters.Add(&amp;#34;@SupplierID&amp;#34;, productModel.SupplierID); parameters.Add(&amp;#34;@CategoryID&amp;#34;, productModel.CategoryID); parameters.Add(&amp;#34;@QuantityPerUnit&amp;#34;, productModel.</description>
     </item>
     
     <item>
@@ -688,9 +754,9 @@ Service 從最重要的 Service 層開始講解起。</description>
 CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。
 本文 新增 1、首先我們先建立一個用來回傳的 Model。
 建立 ResultModel
-public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;/summary&amp;gt;  public bool Result { get; set; } /// &amp;lt;summary&amp;gt;  /// 提示訊息  /// &amp;lt;/summary&amp;gt;  public string Message { get; set; } } 2、把新增商品的 Repository 完成。
+public class ResultModel { /// &amp;lt;summary&amp;gt; /// 結果 /// &amp;lt;/summary&amp;gt; public bool Result { get; set; } /// &amp;lt;summary&amp;gt; /// 提示訊息 /// &amp;lt;/summary&amp;gt; public string Message { get; set; } } 2、把新增商品的 Repository 完成。
 新增商品 Repository
-/// &amp;lt;summary&amp;gt; /// 新增一筆商品 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;productModel&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool CreateProduct(ProductModel productModel) { var sql = @&amp;quot;INSERT INTO products (productname, supplierid, categoryid, quantityperunit, unitprice, unitsinstock, unitsonorder, reorderlevel, discontinued) VALUES (@ProductName, @SupplierID, @CategoryID, @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued) &amp;quot;; var parameters = new DynamicParameters(); parameters.</description>
+/// &amp;lt;summary&amp;gt; /// 新增一筆商品 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;#34;productModel&amp;#34;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool CreateProduct(ProductModel productModel) { var sql = @&amp;#34;INSERT INTO products (productname, supplierid, categoryid, quantityperunit, unitprice, unitsinstock, unitsonorder, reorderlevel, discontinued) VALUES (@ProductName, @SupplierID, @CategoryID, @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued) &amp;#34;; var parameters = new DynamicParameters(); parameters.</description>
     </item>
     
     <item>
@@ -703,7 +769,7 @@ public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;
 這邊會從原始 MVC 作為開頭介紹，內容會帶入 Dapper、Restful 介紹，以及一些好用小工具分享。
 本文 一、事前準備 1、首先我們先建立一個 core 專案。 選擇 API 建立 2、資料庫準備。 先到此連結下載北風資料庫
 點選 instnwnd.sql，選擇 Download。 會看到瀏覽器顯示一長串 SQ L語法，把這邊全部複製起來。 到 SSMS 點選新增查詢，把語法貼上後執行。 看到資料庫出現 Northwind 代表成功。 二、API 開發 1、首先我們建立一個 Models 資料夾。 建立一個 ProductModel 類別，對應北風資料庫的 Products。 建立 ProductModel
-public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  /// &amp;lt;/summary&amp;gt;  public int ProductID { get; set; } /// &amp;lt;summary&amp;gt;  /// 商品名稱  /// &amp;lt;/summary&amp;gt;  public string ProductName { get; set; } /// &amp;lt;summary&amp;gt;  /// 供應商ID  /// &amp;lt;/summary&amp;gt;  public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt;  /// 種類ID  /// &amp;lt;/summary&amp;gt;  public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位數量  /// &amp;lt;/summary&amp;gt;  public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位價格  /// &amp;lt;/summary&amp;gt;  public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位稅額  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位訂購價  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt;  /// 重新訂購等級  /// &amp;lt;/summary&amp;gt;  public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt;  /// 是否已停產  /// &amp;lt;/summary&amp;gt;  public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看 DB 內資料類型</description>
+public class ProductModel { /// &amp;lt;summary&amp;gt; /// 商品流水號 /// &amp;lt;/summary&amp;gt; public int ProductID { get; set; } /// &amp;lt;summary&amp;gt; /// 商品名稱 /// &amp;lt;/summary&amp;gt; public string ProductName { get; set; } /// &amp;lt;summary&amp;gt; /// 供應商ID /// &amp;lt;/summary&amp;gt; public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt; /// 種類ID /// &amp;lt;/summary&amp;gt; public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位數量 /// &amp;lt;/summary&amp;gt; public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位價格 /// &amp;lt;/summary&amp;gt; public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位稅額 /// &amp;lt;/summary&amp;gt; public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位訂購價 /// &amp;lt;/summary&amp;gt; public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt; /// 重新訂購等級 /// &amp;lt;/summary&amp;gt; public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt; /// 是否已停產 /// &amp;lt;/summary&amp;gt; public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看 DB 內資料類型</description>
     </item>
     
     <item>
@@ -714,7 +780,7 @@ public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  //
       <guid>https://sunnyday0932.github.io/2020/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E8%B3%87%E6%AD%B7%E4%B8%80%E5%B9%B4%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</guid>
       <description>前言 有鑑於真的被問了不少次，所以就以分享的角度來回覆一些相關問題，盡量不會帶太多個人情緒在內，以供參考；個人資歷勉強算是一年而已，所以漏看了甚麼、或是回覆有些誤解還請各位多擔待。
 開始前還是先推薦一篇文章。
- 轉職軟體工程師可能沒有你想像中的那麼美好  本文 １、想學程式有沒有甚麼建議？ 大多數回覆我都會說如果「不排斥」的話，可以先找網路上的一些資源每天花一點時間看看，持續一段時間自己的感覺如何再來做決定。
+轉職軟體工程師可能沒有你想像中的那麼美好 本文 １、想學程式有沒有甚麼建議？ 大多數回覆我都會說如果「不排斥」的話，可以先找網路上的一些資源每天花一點時間看看，持續一段時間自己的感覺如何再來做決定。
 回答「不排斥」這不是因為我不想多分享，就自身經驗來看我認為目前在這產業我僅能算是「不排斥」這份工作而從事而已；原因當然是因為進入業界後你會看到很多神人、甚至同事就有對程式癡迷的，大家都對程式有某些堅持，在這種環境我根本是小巫見大巫，說我喜歡程式&amp;hellip;嗯？
 2、想從事你覺得適合嗎？ 這問題出現幾次我大概就會打太極幾次，也不是刻意，但畢竟是自己的人生嘛&amp;hellip;
 好啦認真回覆。
@@ -740,11 +806,11 @@ public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  //
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 依賴反轉原則 Dependency Inversion Principle(DIP) 定義：
-  1、高階模組不應該依賴於低階模組，兩者都該依賴抽象。
-  2、抽象不應該依賴於具體實作方式，具體實作方式應該依賴抽象。 目標：解除物件與物間之間直接依賴的關係。
-  舉例：傳統汽車在車子故障、或是想要更換零件時，需要選擇維修廠進行這個動作。
-public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class A汽車保養廠 { public int 電瓶價格() { return 50000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了  if (汽車.更換電瓶() == true) { var 汽車保養廠 = new A汽車保養廠(); Console.WriteLine($&amp;#34;電瓶價格:{汽車保養廠.電瓶價格()}&amp;#34;); } } 車主一看價格驚覺事情不太對勁，決定要更換一間汽車保養廠，此時程式就必須要跟著改變內容。
-public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class B汽車保養廠 { public int 電瓶價格() { return 5000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了  if (汽車.</description>
+1、高階模組不應該依賴於低階模組，兩者都該依賴抽象。
+2、抽象不應該依賴於具體實作方式，具體實作方式應該依賴抽象。 目標：解除物件與物間之間直接依賴的關係。
+舉例：傳統汽車在車子故障、或是想要更換零件時，需要選擇維修廠進行這個動作。
+public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class A汽車保養廠 { public int 電瓶價格() { return 50000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了 if (汽車.更換電瓶() == true) { var 汽車保養廠 = new A汽車保養廠(); Console.WriteLine($&amp;#34;電瓶價格:{汽車保養廠.電瓶價格()}&amp;#34;); } } 車主一看價格驚覺事情不太對勁，決定要更換一間汽車保養廠，此時程式就必須要跟著改變內容。
+public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class B汽車保養廠 { public int 電瓶價格() { return 5000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了 if (汽車.</description>
     </item>
     
     <item>
@@ -754,11 +820,11 @@ public class 汽車狀況 { public bool 更換電瓶() { return true; } } public
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</guid>
       <description>前言 此篇觀念也會延續之前幾篇，可以一同搭配觀看。
- 1、Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism) 2、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)  本文 里氏替換原則 Liskov Substitution Principle(LSP) 精神：
- 使用父類的地方，必須可以使用子類別代替，而不需要任何改變。
- 基本原則：
- 1、子類別必須完全實現父類別的方法，如果子類不擁有父類的全部屬性或者行為，不能強行繼承，要斷掉繼承。 2、子類別可以擁有自己不同的屬性與方法。  來段範例：今天我們有個傳統車廠發現電動車似乎才是未來，也想透過自己以前的經驗來設計電動車，老闆說不就都是車嘛？
-public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public string 引擎() { return &amp;#34;汽油引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡&amp;#34;; } } //直接繼承車子  public class 電動車 : 車子 { } private static void Main(string[] args) { var 汽車 = new 車子(); Console.</description>
+1、Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism) 2、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 本文 里氏替換原則 Liskov Substitution Principle(LSP) 精神：
+使用父類的地方，必須可以使用子類別代替，而不需要任何改變。
+基本原則：
+1、子類別必須完全實現父類別的方法，如果子類不擁有父類的全部屬性或者行為，不能強行繼承，要斷掉繼承。 2、子類別可以擁有自己不同的屬性與方法。 來段範例：今天我們有個傳統車廠發現電動車似乎才是未來，也想透過自己以前的經驗來設計電動車，老闆說不就都是車嘛？
+public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public string 引擎() { return &amp;#34;汽油引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡&amp;#34;; } } //直接繼承車子 public class 電動車 : 車子 { } private static void Main(string[] args) { var 汽車 = new 車子(); Console.WriteLine($&amp;#34;汽車有：{汽車.車輪}個車輪&amp;#34;); Console.WriteLine($&amp;#34;汽車有：{汽車.方向盤}個方向盤&amp;#34;); Console.WriteLine($&amp;#34;汽車有：{汽車.引擎()}&amp;#34;); Console.WriteLine($&amp;#34;汽車有:{汽車.後照鏡()}&amp;#34;); Console.WriteLine(&amp;#34;============================&amp;#34;); var 電動車 = new 電動車(); Console.</description>
     </item>
     
     <item>
@@ -768,11 +834,11 @@ public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public st
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</guid>
       <description>前言 這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。
- 1、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 2、Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)  本文 介面隔離原則 Interface Segregation Principle(ISP) 最重要的精神：
- 不應該強迫用戶去依賴他們未使用的方法。
+1、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 2、Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling) 本文 介面隔離原則 Interface Segregation Principle(ISP) 最重要的精神：
+不應該強迫用戶去依賴他們未使用的方法。
 意及應該要最小化類別與類別之間的介面。
- 基本原則：
- 1、interface 功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。
+基本原則：
+1、interface 功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。 舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。
 public interface 車子 { public string 引擎(); public string 後照鏡(); public string 車門(); } public class 特斯拉 : 車子 { public string 引擎() { return &amp;#34;3秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&amp;#34;; } public string 車門() { return &amp;#34;側開敞篷車門&amp;#34;; } } public class Gogoro : 車子 { public string 引擎() { return &amp;#34;5秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡&amp;#34;; } public string 車門() { return &amp;#34;痾沒有車門&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
     </item>
     
@@ -784,9 +850,9 @@ public interface 車子 { public string 引擎(); public string 後照鏡(); pub
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</guid>
       <description>本文 狄米特法則 Law of Demeter(LoD) 又稱為 最少知識原則 Least Knowledge Principle(LKP)
 定義
- 一個 object 應該對其他 object 有最少的瞭解。
- 優點
- 1、可以降低類別與類別之間的耦合度。 2、當耦合度降低的時候，類別的重用性就會提高。   2020/08/25 更新範例
+一個 object 應該對其他 object 有最少的瞭解。
+優點
+1、可以降低類別與類別之間的耦合度。 2、當耦合度降低的時候，類別的重用性就會提高。 2020/08/25 更新範例
 舉例：前面例子我們知道特斯拉都是透過軟體的更新來讓車子增加新功能的，今天我們需要特斯拉有招喚模式，讓特斯拉能夠自己開到我們所在的位子；所以我們建造一個特斯拉類別裡面有更新系統的動作。
 public class 特斯拉 { public string 啟動更新系統() { return &amp;#34;系統更新啟動&amp;#34;; } public string 加入特斯拉招喚模式() { return &amp;#34;新增招喚模式中&amp;#34;; } public string 系統更新結果() { return &amp;#34;系統更新成功&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.WriteLine(特斯拉.啟動更新系統()); Console.WriteLine(特斯拉.加入特斯拉招喚模式()); Console.WriteLine(特斯拉.系統更新結果()); } 對使用者來說他並不需要知道特斯拉是如何更新系統的，他應該只需要知道進行更新系統的動作，特斯拉會新增招喚模式；所以程式就能改寫如下。
 public class 特斯拉 { public string 更新(string 更新項目) { return $&amp;#34;更新開始 : 新增{更新項目}完畢&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
@@ -802,9 +868,9 @@ public class 特斯拉 { public string 更新(string 更新項目) { return $&am
 沒聽過？那你可以看看轉載好文:隕石開發法
 甚麼？你問隕石開發法跟這篇文有甚麼關係？
 因為神有了需求 本文 上次有提到 Puppeteer Sharp 這個套件、以及黑大這篇文 C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp ，但因為我的 chromium 版本一直無法運行就此作罷；直到主管突然提起同單位有人成功使用這個套件實作出功能。
- 這時候別人用了同工具可以，沒道理我不行的心就蠢蠢欲動了。  把問題倒回碰到的起始點，是 chromium 無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下 chromuim 的版本，官方文件在此，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此網址下載了官方提供版本更換套件內抓取的chromium測試。
+這時候別人用了同工具可以，沒道理我不行的心就蠢蠢欲動了。 把問題倒回碰到的起始點，是 chromium 無法運行，想想應該是套件抓下來的版本有問題，於是我研究了一下 chromuim 的版本，官方文件在此，發現版本其實分很多種，有開發版、測試版、穩定版，於是研究了一下就到此網址下載了官方提供版本更換套件內抓取的chromium測試。
 1、 先到專案資料夾底下 bin &amp;gt; Debugger &amp;gt; .local-chromium 內。 2、將下載版本複製貼上並取代此資料夾內檔案。 3、進行測試。
-static void Main(string[] args) { Test().Wait(); } static async Task Test() { try { await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision); using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions() { Headless = true //偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF)  })) { using (var page = await browser.</description>
+static void Main(string[] args) { Test().Wait(); } static async Task Test() { try { await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision); using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions() { Headless = true //偵測時可設定false觀察網頁顯示結果(註：非Headless時不能匯出PDF) })) { using (var page = await browser.</description>
     </item>
     
     <item>
@@ -814,15 +880,15 @@ static void Main(string[] args) { Test().Wait(); } static async Task Test() { tr
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
- 軟體設計原則，應該對擴展開放，對修改封閉。
- 甚麼意思呢？
- 1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。  那為甚麼要使用 OCP？
- 1、程式碼可維護性提高。 2、程式碼可擴展性提高。 3、程式碼可複用、靈活性高。 4、程式碼可測試性提高。  2020/09/08更新
+軟體設計原則，應該對擴展開放，對修改封閉。
+甚麼意思呢？
+1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。 那為甚麼要使用 OCP？
+1、程式碼可維護性提高。 2、程式碼可擴展性提高。 3、程式碼可複用、靈活性高。 4、程式碼可測試性提高。 2020/09/08更新
 寫完這篇跟同事討論過後決定要更改，一直發懶就放到現在，被迫要在進入下階段前先把前面要改的改完。
 現在回頭看覺得當初為啥寫這例子怪怪的，回想起來才發現，原來我是為了避免使用到 DI 的觀念啊，但後來看了其他人寫的文章，用 DI 好像比較容易敘述這個概念&amp;hellip;
 所以就頭都要洗了，就先挖個坑吧。
 我們來看一段例子，傳統汽車對於軟體硬體整合，還不夠靈活的時候，需要更改東西就需要把整台汽車拆開某些部分增加功能、每一次更改都是一項大工程。
-public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.</description>
+public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.安裝(); } public string 安裝自動導航裝置() { var 自動導航裝置 = new 自動導航裝置(); return 自動導航裝置.</description>
     </item>
     
     <item>
@@ -835,7 +901,7 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
 今天研究了一下覺得好玩紀錄一下。
 本文 接到需求後一開始是用 .NET Webpage to pdf 當關鍵字搜尋，無奈找了幾個套件不是要收費就是已經年代久遠，最後用中文搜尋到了黑大去年寫的一篇文章。
 C# 整合 Headless Chrome 的好工具 - Puppeteer Sharp
-此篇是用Puppeteer Sharp 這個套件將網頁截圖後儲存，套件資訊可以自行參閱。
+此篇是用 Puppeteer Sharp 這個套件將網頁截圖後儲存，套件資訊可以自行參閱。
 Puppeteer Sharp 是使用 Chromium 幫你截圖網站頁面，所以其實後背後運作 .NET 還是有幫你開啟網頁的。
 無奈今天嘗試後遇到 Failed to launch chrome 錯誤。
 Google後發現很多人都有遇到類似問題，有很多人發issue給作者。
@@ -845,7 +911,7 @@ C# 網頁轉圖檔 WebAPI - 青春版
 測試的此方式可行後我就開始尋找第二步動作，該怎麼把圖檔轉換成 pdf，於是找到了另一個套件iTextSharp。
 可以套過套件將圖檔直接轉換成pdf的強大方法。
 將黑大的方法結合 iTextSharp 就能得到想到的結果如下&amp;hellip;
-private static void Main(string[] args) { string url = null; var png = WebSnapTool.Snapshot(url ?? &amp;#34;https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/&amp;#34;, delaySecs: 0); using (var stream = File.</description>
+private static void Main(string[] args) { string url = null; var png = WebSnapTool.Snapshot(url ?? &amp;#34;https://sunnyday0932.</description>
     </item>
     
     <item>
@@ -856,10 +922,10 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
       <description>本文 OOP 原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
 這時候了解設計原則 SOLID 就很重要了&amp;hellip;
-1、Single Responsibility Principle(SRP) 單一職責  大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。  什麼意思呢？概念上就是，一個類別就只專注於完成一件事。
+1、Single Responsibility Principle(SRP) 單一職責 大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。 什麼意思呢？概念上就是，一個類別就只專注於完成一件事。
 為甚麼要只專注於做一件事呢?
 我們來看看範例，當今天特斯拉的駕駛走投無路需要賺外快的時候，他需要上路招攬客人&amp;hellip;
-//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。  public class 駕駛 { public string 開車() { return &amp;#34;開車上路&amp;#34;; } public string 招攬客人() { return &amp;#34;有沒有人需要搭車&amp;#34;; } public int 計算車資(int 搭車人數) { var 今天電價 = 30; var 每位乘客搭乘價格 = this.關注電價(今天電價); return 搭車人數 * 每位乘客搭乘價格; } public int 關注電價(int 每度時價) { if (每度時價 &amp;gt; 50) { return 20; } return 10; } } private static void Main(string[] args) { 駕駛 特斯拉駕駛 = new 駕駛(); Console.</description>
+//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。 public class 駕駛 { public string 開車() { return &amp;#34;開車上路&amp;#34;; } public string 招攬客人() { return &amp;#34;有沒有人需要搭車&amp;#34;; } public int 計算車資(int 搭車人數) { var 今天電價 = 30; var 每位乘客搭乘價格 = this.關注電價(今天電價); return 搭車人數 * 每位乘客搭乘價格; } public int 關注電價(int 每度時價) { if (每度時價 &amp;gt; 50) { return 20; } return 10; } } private static void Main(string[] args) { 駕駛 特斯拉駕駛 = new 駕駛(); Console.</description>
     </item>
     
     <item>
@@ -868,13 +934,14 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
       <pubDate>Thu, 16 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-5_%E5%85%A7%E8%81%9Acohesion%E8%80%A6%E5%90%88coupling/</guid>
-      <description>本文 1、內聚(Cohesion)  把功能所需要的資料與程式都塞在某一個模組(fuction、class、package)中，使得該模組成為一個單獨的可執行個體。  大意上就是把程式跟所需要的資料全部都包在一起。
+      <description>本文 1、內聚(Cohesion) 把功能所需要的資料與程式都塞在某一個模組(fuction、class、package)中，使得該模組成為一個單獨的可執行個體。 大意上就是把程式跟所需要的資料全部都包在一起。
 舉例：(不要懷疑我們最熟悉的特斯拉又來了)
 今天我想要讓特斯拉具備螢幕、音響這些娛樂設施可以看電影，有了電影當然需要食物啊，那就需要有在特斯拉上吃爆米花的功能。
-//產生一個特斯拉類別有螢幕、音響、吃爆米花  public class 特斯拉 { public string 螢幕() { return &amp;#34;播放電影&amp;#34;; } public string 音響() { return &amp;#34;杜比環繞音效&amp;#34;; } public string 吃爆米花() { return &amp;#34;爆米花好吃&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.WriteLine(&amp;#34;特斯拉 :&amp;#34; + Tesla.螢幕()); Console.WriteLine(&amp;#34;特斯拉開啟 :&amp;#34; + Tesla.音響()); Console.WriteLine(Tesla.吃爆米花()); } 這時候要提到程式設計常聽到的。
-高內聚  高內聚力的好處就是提高了模組的『獨立性』，也就是說這個模組可以被單獨使用，也可以被單獨修改。  那應該怎麼做呢？
- 思考模組的關聯性。  以我們剛剛舉的例子特斯拉具備螢幕、音響這些娛樂設備是合理的，但吃爆米花的動作是不是在這個 Class 中顯得有點怪異了呢？
- 特斯拉本身並不需要知道怎麼吃爆米花，需要知道怎麼吃爆米花的是人。  我們修改一下範例</description>
+//產生一個特斯拉類別有螢幕、音響、吃爆米花 public class 特斯拉 { public string 螢幕() { return &amp;#34;播放電影&amp;#34;; } public string 音響() { return &amp;#34;杜比環繞音效&amp;#34;; } public string 吃爆米花() { return &amp;#34;爆米花好吃&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.WriteLine(&amp;#34;特斯拉 :&amp;#34; + Tesla.螢幕()); Console.WriteLine(&amp;#34;特斯拉開啟 :&amp;#34; + Tesla.音響()); Console.WriteLine(Tesla.吃爆米花()); } 這時候要提到程式設計常聽到的。
+高內聚 高內聚力的好處就是提高了模組的『獨立性』，也就是說這個模組可以被單獨使用，也可以被單獨修改。 那應該怎麼做呢？
+思考模組的關聯性。 以我們剛剛舉的例子特斯拉具備螢幕、音響這些娛樂設備是合理的，但吃爆米花的動作是不是在這個 Class 中顯得有點怪異了呢？
+特斯拉本身並不需要知道怎麼吃爆米花，需要知道怎麼吃爆米花的是人。 我們修改一下範例
+//產生一個特斯拉類別有螢幕、音響 public class 特斯拉 { public string 螢幕() { return &amp;#34;播放電影&amp;#34;; } public string 音響() { return &amp;#34;杜比環繞音效&amp;#34;; } } //產生一個人類別有吃爆米花的動作 public class 人 { public string 吃爆米花() { return &amp;#34;爆米花好吃&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
     </item>
     
     <item>
@@ -883,10 +950,10 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
       <pubDate>Tue, 14 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-4_%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5abstract%E8%88%87%E4%BB%8B%E9%9D%A2interface/</guid>
-      <description>本文 1、抽象類別(Abstract)  1、抽象類別不能實體化。 2、抽象方法是用來給子類別重寫的方法，如果不重寫的話，抽象方法就沒有存在的意義。 3、如果類別中包含抽象方法，那麼整個類別就必須定義為抽象類別，不論是否還包含其他一般方法。  那麼甚麼時候該用到抽象類別呢？
+      <description>本文 1、抽象類別(Abstract) 1、抽象類別不能實體化。 2、抽象方法是用來給子類別重寫的方法，如果不重寫的話，抽象方法就沒有存在的意義。 3、如果類別中包含抽象方法，那麼整個類別就必須定義為抽象類別，不論是否還包含其他一般方法。 那麼甚麼時候該用到抽象類別呢？
 大話設計模式：「當實體化沒有任何意義的父類別，就可以考慮改成抽象類別。」
 敘述的還是有點難理解，那我們用個例子來說明。 在前幾篇的內容我們都用到了特斯拉這個例子，我們今天就延用。
-//產生一個車子的類別，定義了啟動以及消耗能源  public abstract class 車子 { public abstract string 消耗能源(); public abstract string 啟動(); } //產生一個特斯拉類別繼承車子  public class 特斯拉 : 車子 { public override string 啟動() { return &amp;#34;特斯拉啟動&amp;#34;; } public override string 消耗能源() { return &amp;#34;消耗電能&amp;#34;; } } //產生一個汽車類別繼承車子  public class 汽車 : 車子 { public override string 啟動() { return &amp;#34;汽車啟動&amp;#34;; } public override string 消耗能源() { return &amp;#34;消耗汽油&amp;#34;; } } private static void Main(string[] args) { 汽車 car = new 汽車(); Console.</description>
+//產生一個車子的類別，定義了啟動以及消耗能源 public abstract class 車子 { public abstract string 消耗能源(); public abstract string 啟動(); } //產生一個特斯拉類別繼承車子 public class 特斯拉 : 車子 { public override string 啟動() { return &amp;#34;特斯拉啟動&amp;#34;; } public override string 消耗能源() { return &amp;#34;消耗電能&amp;#34;; } } //產生一個汽車類別繼承車子 public class 汽車 : 車子 { public override string 啟動() { return &amp;#34;汽車啟動&amp;#34;; } public override string 消耗能源() { return &amp;#34;消耗汽油&amp;#34;; } } private static void Main(string[] args) { 汽車 car = new 汽車(); Console.</description>
     </item>
     
     <item>
@@ -895,12 +962,12 @@ private static void Main(string[] args) { string url = null; var png = WebSnapTo
       <pubDate>Wed, 08 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-3_%E5%B0%81%E8%A3%9Dencapsulation%E7%B9%BC%E6%89%BFinheritance%E8%88%87%E5%A4%9A%E5%9E%8Bpolymorphism/</guid>
-      <description>本文 1、封裝(Encapsulation)  大話設計模式：每個物件都包含它進行操作所需要的所有資訊，這個特性稱為封裝，因此物件不必依賴其他物件來完成自己的操作。 封裝的優點 一、良好的封裝能夠減少耦合。 二、類別內部的實現可以自由地修改，並不會影響使用者。 三、類別具有清晰的對外界面。  這麼說封裝好像有點抽象，拿現實生活中的舉例就是：
+      <description>本文 1、封裝(Encapsulation) 大話設計模式：每個物件都包含它進行操作所需要的所有資訊，這個特性稱為封裝，因此物件不必依賴其他物件來完成自己的操作。 封裝的優點 一、良好的封裝能夠減少耦合。 二、類別內部的實現可以自由地修改，並不會影響使用者。 三、類別具有清晰的對外界面。 這麼說封裝好像有點抽象，拿現實生活中的舉例就是：
 當我們按下鍵盤A的時候，螢幕上會顯示A，但我們不必知道電腦背後是怎麼運作，就可以使用它。
 程式的舉例： 個人寫程式到目前以來最常使用的C#判斷式，用來檢查字串是否為空。
 var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNullOrEmpty(test); //檢查字串是否為Null或是空 //我們不必知道IsNullOrEmpty這個方法是如何實作的， //但我們知道它會幫我們判斷字串是否為Null或是空，並回傳true or false。 2、繼承(Inheritance) 以下取自大話設計模式：
- 物件的繼承代表了一種 &amp;ldquo;is-a&amp;rdquo; 的關係，如果兩個物件 A 和 B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。 繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。 繼承定義了類別如何相互關聯共用特性。 子類別不但繼承父類別所有特性，還可以定義新的特性。   如果子類別繼承於父類別：
- 一、子類別擁有父類別非 private 的屬性和功能。 二、子類別具有自己的屬性和功能 =&amp;gt; 子類別可以擴展父類別的所有特性。 三、子類別還可以用自己的方式實現父類別 =&amp;gt; 方法重寫。  //產生一個汽車的類別，有一個方向盤、四個輪子。 public class 汽車 { protected int 輪子 = 4; protected int 方向盤 = 1; } //產生一個特斯拉類別繼承汽車 public class 特斯拉 : 汽車 { public string 特斯拉輪子() { return &amp;#34;特斯拉有&amp;#34; + 輪子 + &amp;#34;個輪子&amp;#34;; } public string 特斯拉方向盤() { return &amp;#34;特斯拉有&amp;#34; + 方向盤 + &amp;#34;個方向盤&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
+物件的繼承代表了一種 &amp;ldquo;is-a&amp;rdquo; 的關係，如果兩個物件 A 和 B，可以描述為『B是A』，則表明了B可以繼承A。Ex:特斯拉是車子、貓是哺乳類動物。 繼承者可以理解為對被繼承者的特殊化，因為他除了具備繼承者的特性外，還具備自己獨有的個性。Ex：特斯拉消耗能源是靠電能相較於傳統汽車使用汽油、貓擁有爬高爬樹等能力將較於傳統哺乳類動物沒有的技能。 繼承定義了類別如何相互關聯共用特性。 子類別不但繼承父類別所有特性，還可以定義新的特性。 如果子類別繼承於父類別：
+一、子類別擁有父類別非 private 的屬性和功能。 二、子類別具有自己的屬性和功能 =&amp;gt; 子類別可以擴展父類別的所有特性。 三、子類別還可以用自己的方式實現父類別 =&amp;gt; 方法重寫。 //產生一個汽車的類別，有一個方向盤、四個輪子。 public class 汽車 { protected int 輪子 = 4; protected int 方向盤 = 1; } //產生一個特斯拉類別繼承汽車 public class 特斯拉 : 汽車 { public string 特斯拉輪子() { return &amp;#34;特斯拉有&amp;#34; + 輪子 + &amp;#34;個輪子&amp;#34;; } public string 特斯拉方向盤() { return &amp;#34;特斯拉有&amp;#34; + 方向盤 + &amp;#34;個方向盤&amp;#34;; } } private static void Main(string[] args) { 特斯拉 Tesla = new 特斯拉(); Console.</description>
     </item>
     
     <item>
@@ -909,19 +976,20 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
       <pubDate>Wed, 01 Jul 2020 22:19:33 +0800</pubDate>
       
       <guid>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_grit%E6%81%86%E6%AF%85%E5%8A%9B/</guid>
-      <description>前言 恆毅力這本書是大約一年前，在無意間晃到作者 TED 演講影片發現的(有興趣可以到此連結觀看)。 影片內容提到恆毅力，作者的敘述是．．．
- 恆毅力是面對長遠目標時的熱情和毅力。 恆毅力是有耐力的表現。 恆毅力是日復一日依然對未來堅決不已，不只是這週、不只這個月，而是年復一年。 用心、努力工作來實現所堅信的那個未來。 恆毅力是將生活看作是一場馬拉松，不是短跑。   當時正值研究所考試失利，反覆思考很多問題，又想著要如何解決當前困境；看到這段敘述馬上就買了，但諷刺的是到現在才看完。
+      <description>
+前言 恆毅力這本書是大約一年前，在無意間晃到作者 TED 演講影片發現的(有興趣可以到此連結觀看)。 影片內容提到恆毅力，作者的敘述是．．．
+恆毅力是面對長遠目標時的熱情和毅力。 恆毅力是有耐力的表現。 恆毅力是日復一日依然對未來堅決不已，不只是這週、不只這個月，而是年復一年。 用心、努力工作來實現所堅信的那個未來。 恆毅力是將生活看作是一場馬拉松，不是短跑。 當時正值研究所考試失利，反覆思考很多問題，又想著要如何解決當前困境；看到這段敘述馬上就買了，但諷刺的是到現在才看完。
 本文 這本書內容大致上都圍繞在成長型思維這個概念中，認為學習能力不是一成不變的，它會由於你的努力而產生變化。
 提到努力大概會覺得很抽象，對於成功這兩個詞亦是。 所以作者作為一名心理學家，把她對於恆毅力研究對象分享出來，以下列舉幾個比較有印象的。
- 西點軍校新生。 頂尖運動選手 Ex:世界盃足球賽隊伍。 拼字比賽選手。   研究目的是要知道這些所謂人家口中的成功者，他們是如何成功的？ 西點軍校，不比其他頂尖大學還難進入，相關報導可參閱，作者想知道在西點軍校這麼高壓的環境下，最後能撐到畢業的是哪些人？
+西點軍校新生。 頂尖運動選手 Ex:世界盃足球賽隊伍。 拼字比賽選手。 研究目的是要知道這些所謂人家口中的成功者，他們是如何成功的？ 西點軍校，不比其他頂尖大學還難進入，相關報導可參閱，作者想知道在西點軍校這麼高壓的環境下，最後能撐到畢業的是哪些人？
 世界盃足球賽，每年都有頂尖隊伍參與競爭，各隊都有頂尖的運動選手，最後會勝出的隊伍到底具備哪些能力？
 拼字比賽選手，參與拚字比賽的選手，每天都要透過閱讀字典去認識一堆生詞，更多的是很長的字，最後獲得勝利的選手，他們到底跟其他人有甚麼不一樣？
-那麼要如何培養恆毅力呢？  由內而外:自己培養興趣；養成習慣，每天作挑戰自己能力的練習；設定超越自我的目標；受到挫折不放棄希望。 由外而內:週遭的人也是影響培養恆毅力的關鍵，家長、教練、老師、老闆、導師、朋友都可以成為助力。 培養跌倒七次，要爬起來八次的力量。  關於失敗這件事，請用失敗重新定義成功。 幾年前也看過類似文章，可口可樂、網飛、亞馬遜如何以失敗為師，現在看起來很成功的公司，他們企業文化是如何讓員工願意去嘗試。
+那麼要如何培養恆毅力呢？ 由內而外:自己培養興趣；養成習慣，每天作挑戰自己能力的練習；設定超越自我的目標；受到挫折不放棄希望。 由外而內:週遭的人也是影響培養恆毅力的關鍵，家長、教練、老師、老闆、導師、朋友都可以成為助力。 培養跌倒七次，要爬起來八次的力量。 關於失敗這件事，請用失敗重新定義成功。 幾年前也看過類似文章，可口可樂、網飛、亞馬遜如何以失敗為師，現在看起來很成功的公司，他們企業文化是如何讓員工願意去嘗試。
 最後恆毅力並不是唯一 恆毅力只是作者研究出來結果的一種統稱，我的解讀是恆毅力是一種精神，它並不是一個人唯一的一種面向；Amazon 創辦人貝佐斯也提過類似概念，他說過小時候因為外婆吸菸過量，計算外婆如果依照這個速度只能活到幾歲而把外婆惹哭的故事，他說:「聰明是一種天賦，而善良一種選擇；天賦得來很容易，而選擇則頗為不易。」
 後記 一年前買這本書大概看了一半就放到現在，最近重新拿起讀完又有不同心境；當時研究所重考兩次失利打擊真的滿大，一直在想到底哪裡做得不好，也是偶然間看到無限賽局這個思考方式。
- 無限賽局中，真正的競爭對手其實不是別人，而是我們自己；真正的目標是讓自己（無論組織或個人）今年變得比去年更好。  相較於舊的賽局理論，無限賽局認為單次的輸贏並不重要，而是透過長遠的規劃，未來會在某一時刻逆轉賽局。
+無限賽局中，真正的競爭對手其實不是別人，而是我們自己；真正的目標是讓自己（無論組織或個人）今年變得比去年更好。 相較於舊的賽局理論，無限賽局認為單次的輸贏並不重要，而是透過長遠的規劃，未來會在某一時刻逆轉賽局。
 現在有了更完善的人生規劃，希望能藉由吸收這些不同的知識，讓自己能持續成長，在未來某個時刻去到自己想去的地方。
-參考連結  恆毅力：人生成功的究極能力。  </description>
+參考連結 恆毅力：人生成功的究極能力。 </description>
     </item>
     
     <item>
@@ -937,7 +1005,7 @@ var test= &amp;#34;This is string&amp;#34;; //一個測試用字串 string.IsNul
 class Program { static void Main(string[] args) { var objTest = new Test { A = &amp;#34;ss\r\nss&amp;#34;, B = &amp;#34;ss\nss&amp;#34; }; var jsonObj = JsonConvert.SerializeObject(objTest); Console.WriteLine(jsonObj); var obj2 = JsonConvert.DeserializeObject&amp;lt;Test&amp;gt;(&amp;#34;{\&amp;#34;A\&amp;#34;:\&amp;#34;ss\r\nss\&amp;#34;,\&amp;#34;B\&amp;#34;:\&amp;#34;ss\nss\&amp;#34;}&amp;#34;); Console.WriteLine(obj2.A); Console.WriteLine(obj2.B); } public class Test { public string A { get; set; } public string B { get; set; } } } 輸出結果
 Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會將字串轉換成我們看到的正常樣貌。
 所以結論就是，通通丟給對方處理就對了🤟
-參考連結  1、Json 官方文件 2、瞭解 Json 格式  </description>
+參考連結 1、Json 官方文件 2、瞭解 Json 格式 </description>
     </item>
     
     <item>
@@ -947,9 +1015,9 @@ Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-2_%E5%BB%BA%E6%A7%8B%E5%BC%8Fconstructor%E5%A4%9A%E8%BC%89overloading%E8%88%87%E8%A6%86%E5%AF%ABoverriding/</guid>
       <description>本文 1、建構式(Constructor)
- 實體化類別的動作，也就是 New 這個步驟。 建構式與類別同名，無 return 值。 大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要 void，在 New 時調用。  Public class 特斯拉() { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 車子 = new 特斯拉(); //這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池 2、多載(Overloading)
- 相同 function 名稱，可以有不同參數或不同的型別。 大話設計模式：多載提供了建立同名的多個方法的能力，但這些方法須使用不同的參數類型。
-2020/06/30 修改範例  //首先建立一個特斯拉的類別。 Public class 特斯拉 { public void 配件() //預設基本配件有輪子、方向盤、電池。 	{ private 輪子(){} private 方向盤(){} private 電池(){} } public void 配件(int 加購價 ) //加購價的配件會有更高級的配備。 	{ private 跑車輪子(){} private 跑車方向盤(){} private 高電量電池(){} } } 特斯拉 ModelX = new 特斯拉(); ModelX.</description>
+實體化類別的動作，也就是 New 這個步驟。 建構式與類別同名，無 return 值。 大話設計模式：其實就是對類別進行初始化。建構式與類別同名，無返回值，也不需要 void，在 New 時調用。 Public class 特斯拉() { private 輪子(){} private 方向盤(){} private 電池(){} } 特斯拉 車子 = new 特斯拉(); //這樣我們就可以得到一輛車子並且知道車子具有輪子、方向盤、電池 2、多載(Overloading)
+相同 function 名稱，可以有不同參數或不同的型別。 大話設計模式：多載提供了建立同名的多個方法的能力，但這些方法須使用不同的參數類型。
+2020/06/30 修改範例 //首先建立一個特斯拉的類別。 Public class 特斯拉 { public void 配件() //預設基本配件有輪子、方向盤、電池。 { private 輪子(){} private 方向盤(){} private 電池(){} } public void 配件(int 加購價 ) //加購價的配件會有更高級的配備。 { private 跑車輪子(){} private 跑車方向盤(){} private 高電量電池(){} } } 特斯拉 ModelX = new 特斯拉(); ModelX.</description>
     </item>
     
     <item>
@@ -960,14 +1028,23 @@ Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-1_%E9%A1%9E%E5%88%A5class%E8%88%87%E5%AF%A6%E9%AB%94object/</guid>
       <description>前言 這系列文會整理進目前公司以來所學，目標是釐清自己觀念、脫離只知其一不知其二的狀態，故文章將會不停更新。
 本文 1、類別(class)
- 在程式設計中類別就像設計圖、它描繪出設計出來的樣貌。 大話設計模式：類別就是具有相同之屬性和功能的物件抽象集合。 Ex:汽車設計圖、建築物設計圖。
-  2、物件(Object)
- 實際設計出來的物品。 大話設計模式：物件是一個獨立自主的實體，用一組可識別的特性和行為來標示。 Ex:特斯拉汽車、101大樓。
-  3、實體化
- 描繪類別變成實體物件的狀態。 Ex:C#程式中會使用 New 來實體化出一個物件。  class 車子 { private 輪子(){} private 電池(){} private 方向盤(){} } 車子 特斯拉 = new 車子() 問題討論 這邊的問題取自保哥物件導向基礎，建議往下看前先自行思考作答。
- 1、請問「類別」可不可以包含「物件」？ 2、請問「物件」可不可以包含「類別」？ 3、請問「類別」可不可以包含「類別」？ 4、請問「物件」可不可以包含「物件」？ 5、請問「物件」可不可以當成資料傳遞？ 6、請問「類別」可不可以當成資料傳遞？ 7、 在 .NET 的世界，請問「物件」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 8、在 .NET 的世界，請問「類別」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 9、在 .NET 的世界，程式在執行的時候，「類別」可不可以被動態修改？ 10、如果有兩台主機要互相傳遞資料，他們傳遞的是「類別」還是「物件」？ 11、請問「物件」是否包含「方法(Method)」？ 12、如果「物件」從 A 電腦傳遞到 B 電腦時，若該物件要執行「方法」還需不需要有「類別」存在？
-   作答
-1、不可以。本題提供同事講解易懂方式 Ex:特斯拉設計圖內不會包含真的特斯拉。</description>
+在程式設計中類別就像設計圖、它描繪出設計出來的樣貌。 大話設計模式：類別就是具有相同之屬性和功能的物件抽象集合。 Ex:汽車設計圖、建築物設計圖。
+2、物件(Object)
+實際設計出來的物品。 大話設計模式：物件是一個獨立自主的實體，用一組可識別的特性和行為來標示。 Ex:特斯拉汽車、101大樓。
+3、實體化
+描繪類別變成實體物件的狀態。 Ex:C#程式中會使用 New 來實體化出一個物件。 class 車子 { private 輪子(){} private 電池(){} private 方向盤(){} } 車子 特斯拉 = new 車子() 問題討論 這邊的問題取自保哥物件導向基礎，建議往下看前先自行思考作答。
+1、請問「類別」可不可以包含「物件」？ 2、請問「物件」可不可以包含「類別」？ 3、請問「類別」可不可以包含「類別」？ 4、請問「物件」可不可以包含「物件」？ 5、請問「物件」可不可以當成資料傳遞？ 6、請問「類別」可不可以當成資料傳遞？ 7、 在 .NET 的世界，請問「物件」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 8、在 .NET 的世界，請問「類別」可以用什麼型態存在或用什麼格式傳遞？（可任意回答一種以上） 9、在 .NET 的世界，程式在執行的時候，「類別」可不可以被動態修改？ 10、如果有兩台主機要互相傳遞資料，他們傳遞的是「類別」還是「物件」？ 11、請問「物件」是否包含「方法(Method)」？ 12、如果「物件」從 A 電腦傳遞到 B 電腦時，若該物件要執行「方法」還需不需要有「類別」存在？
+作答
+1、不可以。本題提供同事講解易懂方式 Ex:特斯拉設計圖內不會包含真的特斯拉。
+2、不可以。物件是實體的東西、而類別再被new出來前都是虛擬的，故實體物件不應該包含虛擬類別。
+3、可以。可以有巢狀類別，Ex:特斯拉汽車的設計圖可以包含「設計電池、方向盤、中心電腦等設計圖。」
+4、可以。同理Ex:特斯拉汽車可以包含實體的輪子、方向盤等。
+5、可以。將物件透過編碼方式即可傳遞。
+6、不可以。物件導向世界中類別為虛擬的東西，沒辦法傳遞。
+7、a:可存在於記憶體中 b:json、xml等方式傳遞。
+8、a:可存在於exe檔中 b:無法傳遞。
+9、不行。被定義過的類別是無法修改的。Ex:不能擅自修改特斯拉的電池設計。
+10、物件。</description>
     </item>
     
     <item>
@@ -977,8 +1054,8 @@ Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會
       
       <guid>https://sunnyday0932.github.io/2020/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97_soft-skills-%E8%BB%9F%E5%AF%A6%E5%8A%9B%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E4%BA%BA%E5%93%A1%E7%9A%84%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8A/</guid>
       <description>前言 這是踏入職場後第一本挑選的書，起因是公司教育訓練文件最後前輩列了一系列書單，其中名字最特別、歸類又不是技術類，看了試閱的第一頁就決定買了。
-本文  目錄
- 序:這是一本你從未見過的軟體開發書 Section 1 職涯 Section 2 自我行銷 Section 3 學習 Section 4 生產力 Section 5 理財 Section 6 健身 Section 7 心靈
+本文 目錄
+序:這是一本你從未見過的軟體開發書 Section 1 職涯 Section 2 自我行銷 Section 3 學習 Section 4 生產力 Section 5 理財 Section 6 健身 Section 7 心靈
 目錄應該很明顯，這真的是從未見過專門寫給軟體開發人員的密技；玩遊戲都會都看密技了，職涯看一下應該也很合理。
 這本書就是把踏入這行會發生的全部過程拆解，細分後再加以分析利弊整理出一些可供參考的方式。
 拿第一章職涯作為舉例，當談到如何設立職涯目標的時候作者會先敘述自己的經驗並給出一些建議，再來教你如何設定出真正可以執行的目標(不會好高騖遠)，最後會給出練習的方式。
@@ -987,7 +1064,7 @@ Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會
 這部分作者就跳脫出職業生活的部分，提醒的是儘管開發人員有多熱愛自己的工作，下了班你還是會回歸日常。
 而這部分就是針對日常生活給出的建議。
 其中健身這章可以拉出來特別提一下，因為本身也開始健身兩年了，這本書對於健身觀念真的非常正確，不管是計算卡路里方式、制定健身課表、飲食全方位講解都很透徹。
-作者也提到，因為職涯長時間坐著對開發人員真的是一大傷害；運動不僅能帶給職涯很多正面的幫助，要想達成目標，擁有健康的身體亦是必要條件，這也是我開始健身的初衷之一。   後記  這本書大概是一月入手，當時因為教育訓練落後狀態低迷，沒有想太多就是想趕快進步，看完也五個月過去了，這中間斷斷續續的閱讀、但堅持每個小節的即知即行都要自己做一遍，真的對我幫助不小；包含了現在決定開始經營部落格，有一部分原因也是因為看了這本書。
+作者也提到，因為職涯長時間坐著對開發人員真的是一大傷害；運動不僅能帶給職涯很多正面的幫助，要想達成目標，擁有健康的身體亦是必要條件，這也是我開始健身的初衷之一。 後記 這本書大概是一月入手，當時因為教育訓練落後狀態低迷，沒有想太多就是想趕快進步，看完也五個月過去了，這中間斷斷續續的閱讀、但堅持每個小節的即知即行都要自己做一遍，真的對我幫助不小；包含了現在決定開始經營部落格，有一部分原因也是因為看了這本書。
 強烈建議軟體開發人員有機會都可以看看這本書，真的會對你職涯規劃有所幫助，但當然作者與我們生活環境落差，有些經驗並不適用於每個人，不能照單全收，這也是需要自行判斷，最後就像書中所述step by step有一天一定能達到自己目標的。</description>
     </item>
     
@@ -1001,15 +1078,15 @@ Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會
 本文 示範資料表如下
 我們需要把相同 Level 的欄位匯總再一起，做成一個統計用報表。
 首先每個區域後面先加、
-select District+&#39;、&#39; from DistrictData 接下來使用
-select level, ( select District+&#39;、&#39; from DistrictData as B where A.Level = B.Level FOR XML PATH(&#39;&#39;) )AS District FROM DistrictData AS A GROUP BY level 即可得到想要的成果。
+select District+&amp;#39;、&amp;#39; from DistrictData 接下來使用
+select level, ( select District+&amp;#39;、&amp;#39; from DistrictData as B where A.Level = B.Level FOR XML PATH(&amp;#39;&amp;#39;) )AS District FROM DistrictData AS A GROUP BY level 即可得到想要的成果。
 其中 FOR XML PATH(&#39;&#39;) 功能是因為如果沒有加的話會出現以下錯誤訊息。
 接下來會發現顯示格式不太對，要加上、的部分最後一筆應該要排除。
 這時候就可以使用 SUBSTRING
-select SUBSTRING(&#39;大安區、信義區、松山區、中山區、中正區、&#39;,0,LEN(&#39;大安區、信義區、松山區、中山區、中正區、&#39;)) 可以得到以下。
+select SUBSTRING(&amp;#39;大安區、信義區、松山區、中山區、中正區、&amp;#39;,0,LEN(&amp;#39;大安區、信義區、松山區、中山區、中正區、&amp;#39;)) 可以得到以下。
 SUBSTRING 這個語法中 SUBSTRING(string, start, lenth) ，第1、2個參數代表的是 string 這個字串中要起始的位置為 start ， lenth 則為最後要計算數字。
 簡單實驗一下
-select SUBSTRING(&#39;123&#39;,0,3) 這邊我們會得到
+select SUBSTRING(&amp;#39;123&amp;#39;,0,3) 這邊我們會得到
 參考資料 https://www.1keydata.com/tw/sql/sql-substring.html
 https://dotblogs.com.tw/flairming/2014/02/14/143993
 https://dotblogs.com.tw/supershowwei/2016/01/26/145353</description>
@@ -1033,8 +1110,8 @@ https://dotblogs.com.tw/supershowwei/2016/01/26/145353</description>
 6、最後 config 設定，加入網站 URL 註冊步驟就完成了。
 接下來就可以開始設定留言功能到我們的 HUGO 網站。
 7、 開啟 Config.toml 加入下方參數。
-disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot; 8、接著在目錄/layouts/partials/內新增一個disqus.html檔案，官方提供的內容如下。 這邊需要注意的是，如果你是有使用主題，會需要移至主題底下目錄此路經新增。
-&amp;lt;div id=&amp;quot;disqus_thread&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; (function() { // Don&#39;t ever inject Disqus on localhost--it creates unwanted // discussions from &#39;localhost:1313&#39; on your Disqus account.</description>
+disqusShortname = &amp;#34;你在DISQUS註冊時輸入的Website name&amp;#34; 8、接著在目錄/layouts/partials/內新增一個disqus.html檔案，官方提供的內容如下。 這邊需要注意的是，如果你是有使用主題，會需要移至主題底下目錄此路經新增。
+&amp;lt;div id=&amp;#34;disqus_thread&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34;&amp;gt; (function() { // Don&amp;#39;t ever inject Disqus on localhost--it creates unwanted // discussions from &amp;#39;localhost:1313&amp;#39; on your Disqus account.</description>
     </item>
     
     <item>
@@ -1055,14 +1132,14 @@ disqusShortname = &amp;quot;你在DISQUS註冊時輸入的Website name&amp;quot;
 6、系統變數 Path 點選編輯。
 7、新增系統變數，這邊因為我將 hugo.exe 放在 C 巢跟目錄底下因此設定為 C:\。
 8、接下來回到 C:\ 使用 CMD 測試 hugo，輸入hugo version，只要出現以下畫面就代表環境設定完成。
- 二、架設方式 1、使用 CMD 輸入 hugo new site &amp;ldquo;你要放資料夾的位子&amp;rdquo;。
+二、架設方式 1、使用 CMD 輸入 hugo new site &amp;ldquo;你要放資料夾的位子&amp;rdquo;。
 2、hugo 會自動建立預設資料夾。
 然後就可以套用自己想要的主題到 themes 這個資料架內，主題可以到以下連結選擇。
 3、套用主題，在 themes 資料夾使用 CMD 輸入 git clone &amp;ldquo;你想要的主題&amp;rdquo;。
 4、順利下載就會出現許多新資料夾。
 5、接下來就是修改內容改成自己想要的樣子就算完成了。
- 三、預覽方式 1、在資料夾使用 CMD 輸入 hugo server -v。
- 這裡要注意的是因為我們將 hugo 放在 C:\，因此要啟用 server 時要將路徑給上。   2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。</description>
+三、預覽方式 1、在資料夾使用 CMD 輸入 hugo server -v。
+這裡要注意的是因為我們將 hugo 放在 C:\，因此要啟用 server 時要將路徑給上。 2、接下來只要用瀏覽器輸入http://localhost:1313/就可以看到自己的網站了。</description>
     </item>
     
   </channel>

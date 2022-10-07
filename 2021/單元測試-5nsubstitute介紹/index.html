@@ -71,7 +71,7 @@
     "datePublished": "2021-02-05 20:40:45   UTC",
     "dateModified" : "2021-02-05 20:40:45   UTC",
     "url" : "https:\/\/sunnyday0932.github.io\/2021\/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-5nsubstitute%E4%BB%8B%E7%B4%B9\/",
-    "wordCount" : "434",
+    "wordCount" : "435",
     "keywords" : ["csharp","Unit-Test","dotnet", "Sian"]
 }
 </script>
@@ -178,7 +178,7 @@
 <p>情境:<br>
 我們現在有一個 Check 的方法，若出現錯誤則會紀錄一筆log。</p>
 <p>首先先把 log 方法準備好。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public interface ILog
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public interface ILog
     {
         void SaveLog(string message);
     }
@@ -191,19 +191,19 @@
         }
     }
 </code></pre><p>Check 方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        bool Check(string text);
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        bool Check(string text);
         
         public bool Check(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
             {
-                this._log.SaveLog(&quot;text 不可為空!&quot;);
+                this._log.SaveLog(&#34;text 不可為空!&#34;);
                 return false;
             }
             return true;
         }
 </code></pre><p>接下來我們先調整一下我們的測試方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        private ILog _log;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        private ILog _log;
         private IRepository _repository;
 
         [TestInitialize]
@@ -219,10 +219,10 @@
             return sut;
         }
 </code></pre><p>那我們測試方法就可以這麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;ServiceTest&quot;)]
-        [TestProperty(&quot;ServiceTests&quot;, &quot;Check&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;ServiceTest&#34;)]
+        [TestProperty(&#34;ServiceTests&#34;, &#34;Check&#34;)]
         public void log_是否有被呼叫()
         {
             //arrange
@@ -237,10 +237,10 @@
         }
 </code></pre><p><img src="https://i.imgur.com/Tv0Eq5I.jpg" alt=""></p>
 <p>也可以驗證 log 記下的內容。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;ServiceTest&quot;)]
-        [TestProperty(&quot;ServiceTests&quot;, &quot;Check&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;ServiceTest&#34;)]
+        [TestProperty(&#34;ServiceTests&#34;, &#34;Check&#34;)]
         public void log_有被呼叫_應記下正確內容()
         {
             //arrange
@@ -250,20 +250,20 @@
 
             //assert
             actual.Should().BeFalse();
-            this._log.Received(1).SaveLog(Arg.Is&lt;string&gt;(x =&gt; x.Contains(&quot;text&quot;)));
+            this._log.Received(1).SaveLog(Arg.Is&lt;string&gt;(x =&gt; x.Contains(&#34;text&#34;)));
         }
 </code></pre><p><img src="https://i.imgur.com/Wk5OYUP.jpg" alt=""></p>
 <p>若不應該收到訊息可以這麼測試。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;ServiceTest&quot;)]
-        [TestProperty(&quot;ServiceTests&quot;, &quot;Check&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;ServiceTest&#34;)]
+        [TestProperty(&#34;ServiceTests&#34;, &#34;Check&#34;)]
         public void log_沒有被呼叫()
         {
             //arrange
             var sut = GetSystemUnderTest();
             //act
-            var actual = sut.Check(&quot;123&quot;);
+            var actual = sut.Check(&#34;123&#34;);
 
             //assert
             actual.Should().BeTrue();
@@ -274,10 +274,10 @@
 <p>情境:<br>
 Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
 <p>Repository 準備</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;model&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;model&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         bool InsertAccount(AccountModel model);
         
@@ -287,10 +287,10 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
             return true;
         }
 </code></pre><p>Service 的部分。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;model&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;model&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         bool InserAccount(AccountModel model);
         
@@ -301,17 +301,17 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
             return result;
         }
 </code></pre><p>那我們的測試就可以這麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;ServiceTest&quot;)]
-        [TestProperty(&quot;ServiceTests&quot;, &quot;InsertAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;ServiceTest&#34;)]
+        [TestProperty(&#34;ServiceTests&#34;, &#34;InsertAccount&#34;)]
         public void InsertAccount_成功_應回傳true()
         {
             //arrange
             var data = new AccountModel
             {
-                Account = &quot;123&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;123&#34;,
+                UserName = &#34;Sian&#34;
             };
             var sut = GetSystemUnderTest();
             this._repository.InsertAccount(Arg.Any&lt;AccountModel&gt;()).Returns(true);
@@ -327,17 +327,17 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
 <p>可以看到傳遞給 Repository 的參數我們直接使用了 Args.Any<!-- raw HTML omitted --> 這個方式，並直接指定了回傳的內容，<del>又被你學到一個偷懶的方式</del> 。</p>
 <!-- raw HTML omitted -->
 <p>同樣的驗證False也可以這麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;ServiceTest&quot;)]
-        [TestProperty(&quot;ServiceTests&quot;, &quot;InsertAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;ServiceTest&#34;)]
+        [TestProperty(&#34;ServiceTests&#34;, &#34;InsertAccount&#34;)]
         public void InsertAccount_失敗_應回傳False()
         {
             //arrange
             var data = new AccountModel
             {
-                Account = &quot;123&quot;,
-                UserName = &quot;Sian&quot;
+                Account = &#34;123&#34;,
+                UserName = &#34;Sian&#34;
             };
             var sut = GetSystemUnderTest();
             this._repository.InsertAccount(Arg.Any&lt;AccountModel&gt;()).Returns(false);
@@ -353,7 +353,7 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
 <h3 id="驗證執行的次數">驗證執行的次數</h3>
 <p>情境:<br>
 有一個內有迴圈的方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public interface ICommand
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public interface ICommand
     {
         void Execute();
     }
@@ -379,7 +379,7 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
         }
     }
 </code></pre><p>那我們測試就可以這麼做</p>
-<pre><code class="language-csharp=" data-lang="csharp=">         private ICommand _command;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">         private ICommand _command;
         private int _numberOfTimesToCall;
 
         [TestInitialize]
@@ -395,9 +395,9 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
         }
 
         [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;CommandTests&quot;)]
-        [TestProperty(&quot;CommandTests&quot;, &quot;Execute&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;CommandTests&#34;)]
+        [TestProperty(&#34;CommandTests&#34;, &#34;Execute&#34;)]
         public void Execute_被執行了3次_正確計算應為3()
         {
             //arrange
@@ -410,14 +410,13 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
             //Assert
             this._command.Received(3).Execute();
         }
-
 </code></pre><p><img src="https://i.imgur.com/IHIn24f.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <p>不為3則會報錯。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;CommandTests&quot;)]
-        [TestProperty(&quot;CommandTests&quot;, &quot;Execute&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;CommandTests&#34;)]
+        [TestProperty(&#34;CommandTests&#34;, &#34;Execute&#34;)]
         public void Execute_被執行了3次_正確計算應為3()
         {
             //arrange
@@ -502,7 +501,7 @@ Insert 一筆資料到 DB 若成功回傳 True，失敗則 False。</p>
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

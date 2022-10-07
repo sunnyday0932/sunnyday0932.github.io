@@ -199,11 +199,11 @@ string 類型控制在10KB以內，hash、list、set、zset 元素個數不要�
 <h3 id="安裝說明">安裝說明</h3>
 <p>這邊我們會使用 docker 來進行安裝 Redis。</p>
 <p>首先要下載 Redis，這邊不指定版本預設就是下載最新版。</p>
-<pre><code class="language-shell=" data-lang="shell=">docker pull redis
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">docker pull redis
 </code></pre><p><img src="https://i.imgur.com/m2HEXQ6.jpg" alt=""></p>
 <p>下載完後就可以執行 Image。<br>
 設定執行 container 的名字為 redis-test，port 為 6379，並設定背景執行。</p>
-<pre><code class="language-shell=" data-lang="shell=">docker run --name redis-test -p 6379:6379 -d redis
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">docker run --name redis-test -p 6379:6379 -d redis
 </code></pre><p><img src="https://i.imgur.com/tQpJyVO.jpg" alt=""></p>
 <p>可以使用 docker ps 觀看目前運行的 container。<br>
 <img src="https://i.imgur.com/c7pNfXq.jpg" alt=""></p>
@@ -211,22 +211,22 @@ string 類型控制在10KB以內，hash、list、set、zset 元素個數不要�
 <p>首先要先進到 Redis-cli。</p>
 <p>第一步我們要指定使用 Redis 的 container。
 55d5 是縮上面 containerId 的縮寫。</p>
-<pre><code class="language-shell=" data-lang="shell=">docker exec -it 55d5 bash
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">docker exec -it 55d5 bash
 </code></pre><p><img src="https://i.imgur.com/7SGgj0t.jpg" alt=""></p>
 <p>接下來輸入以下指令，就可以看到我們已經連入 Redis 可以開始下指令了。</p>
-<pre><code class="language-shell=" data-lang="shell=">redis-cli
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">redis-cli
 </code></pre><p><img src="https://i.imgur.com/DBeaFtt.jpg" alt=""></p>
 <p>Redis 提供一些簡單的指令供我們測試。<br>
 輸入：</p>
-<pre><code class="language-shell=" data-lang="shell=">Ping
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">Ping
 </code></pre><p>Redis 回應 Pong。<br>
 <img src="https://i.imgur.com/r14TE1v.jpg" alt=""></p>
 <p>測試簡單資料儲存。<br>
 輸入：</p>
-<pre><code class="language-shell=" data-lang="shell=">set test &quot;This is my first Redis Data&quot;
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">set test &#34;This is my first Redis Data&#34;
 </code></pre><p><img src="https://i.imgur.com/XBahGj4.jpg" alt=""></p>
 <p>取得資料</p>
-<pre><code class="language-shell=" data-lang="shell=">get test
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">get test
 </code></pre><p><img src="https://i.imgur.com/9N79VfS.jpg" alt=""></p>
 <h3 id="管理工具">管理工具</h3>
 <p>喜歡 GUI 的朋友有福了，這邊也有提供了 GUI 介面的管理方式。<br>
@@ -312,7 +312,7 @@ string 類型控制在10KB以內，hash、list、set、zset 元素個數不要�
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

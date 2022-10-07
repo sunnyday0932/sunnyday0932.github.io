@@ -176,7 +176,7 @@
 <p>以前常遇到寫了一個 Class 裡面有很多方法，一眼看下去很難理解內容在做甚麼；而在考慮要拆分的時候就可以使用 Extract Class 這個技巧，在一整個 Class 內可以試著尋找可以歸類成一塊的部分，慢慢地進行拆分。</p>
 <!-- raw HTML omitted -->
 <p>首先按照書上介紹我們先建立 Person 這個類別。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class Person
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class Person
     {
         private string _name;
         private string _officeAreaCode;
@@ -214,31 +214,31 @@
 
         public string GetTelePhoneNumber()
         {
-            return $&quot;{this._officeAreaCode}{this._officeNumber}&quot;;
+            return $&#34;{this._officeAreaCode}{this._officeNumber}&#34;;
         }
 
     }
 </code></pre><p>確保都是正確寫個測試。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    [TestClass]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    [TestClass]
     public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()
         {
             var person = new Person();
-            person.SetOfficeAreaCode(&quot;02&quot;);
-            person.SetOfficeNumber(&quot;2222-2222&quot;);
+            person.SetOfficeAreaCode(&#34;02&#34;);
+            person.SetOfficeNumber(&#34;2222-2222&#34;);
 
             var telePhoneNumber = person.GetTelePhoneNumber();
 
-            telePhoneNumber.Should().Be(&quot;022222-2222&quot;);
+            telePhoneNumber.Should().Be(&#34;022222-2222&#34;);
         }
     }
 </code></pre><p><img src="https://i.imgur.com/MsYF3LJ.jpg" alt=""></p>
 <p>這邊是在重構前基本的保護措施，為了確保我們的程式碼在更動後仍然會正確的執行。</p>
 <p>接著我們可以發現電話相關的部分可以拆分，把跟電話有關的部分搬到一個新建的 TelePhone Class。<br>
 這邊 VisualStudio 就沒有甚麼快速的方式可以搬取了，如果是要擷取基底內別可以直接使用 Cirl + . 但這邊不是，而使用 Rider 的朋友就可以快速達成， <del>可恨R</del> 。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class TelePhone
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class TelePhone
     {
         private string _officeAreaCode;
         private string _officeNumber;
@@ -255,7 +255,7 @@
 
         public string GetTelePhoneNumber()
         {
-            return $&quot;{this._officeAreaCode}{this._officeNumber}&quot;;
+            return $&#34;{this._officeAreaCode}{this._officeNumber}&#34;;
         }
 
         public void SetOfficeAreaCode(string input)
@@ -269,7 +269,7 @@
         }
     }
 </code></pre><p>原先 Person Class 使用到的地方我們改成。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class Person
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class Person
     {
         private string _name;
         private TelePhone _telePhone;
@@ -320,7 +320,7 @@
 <p>這邊可以使用選取後在 VisualStudio 內快捷鍵 Cirl R + R 。</p>
 <p><img src="https://i.imgur.com/R6ZVI6Q.jpg" alt=""></p>
 <p>現在 TelePhone Class 變成</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class TelePhone
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class TelePhone
     {
         private string _areaCode;
         private string _number;
@@ -337,7 +337,7 @@
 
         public string GetTelePhoneNumber()
         {
-            return $&quot;{this._areaCode}{this._number}&quot;;
+            return $&#34;{this._areaCode}{this._number}&#34;;
         }
 
         public void SetAreaCode(string input)
@@ -356,7 +356,7 @@
 <p><img src="https://i.imgur.com/SyndOHV.png" alt=""></p>
 <p>我們已經知道要拿取的是 TelePhoneNumber 了，在 TelePhone 內的 GetTelePhoneNumber 就顯得有點雞肋。</p>
 <p>把它改成</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public string GetTelePhoneNumber()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        public string GetTelePhoneNumber()
         {
             return this._telePhone.Get();
         }
@@ -423,7 +423,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -216,7 +216,7 @@
 </table>
 <p>練習:<br>
 如題為了避免我們改變時間進而影響到其他單元測試，我們在執行每一個測試前後都會初始化一次時間。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestInitialize]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestInitialize]
         public void TestInitial()
         {
             SystemTime.SetToday = () =&gt; DateTime.Today;
@@ -257,7 +257,7 @@
 <p>所以為了解決這個問題，就可以很簡單的利用先前教學所使用的依賴注入方式，透過介面注入抽換實體，那麼我在在測試的地方，就能直接做一個測試用的實體出來進行模擬測試。</p>
 <p>我們先建立一個示範用的 Common 專案裡面只放了一個共用的Model。</p>
 <p><img src="https://i.imgur.com/tEE7pxQ.jpg" alt=""></p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class AccountModel
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class AccountModel
     {
         public string UserName { get; set; }
 
@@ -265,12 +265,12 @@
     }
 </code></pre><p>接下來建立一個示範用的 Repository 專案，並建立一個假的取資料方法。</p>
 <p><img src="https://i.imgur.com/oVFQXSa.jpg" alt=""></p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public interface IRepository
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public interface IRepository
     {
         /// &lt;summary&gt;
         /// 取得帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;account&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         AccountModel GetAccount(string account);
     }
@@ -284,13 +284,13 @@
             {
                 new AccountModel
                 {
-                    Account = &quot;123&quot;,
-                    UserName = &quot;Sian&quot;
+                    Account = &#34;123&#34;,
+                    UserName = &#34;Sian&#34;
                 },
                 new AccountModel
                 {
-                    Account = &quot;456&quot;,
-                    UserName = &quot;Tom&quot;
+                    Account = &#34;456&#34;,
+                    UserName = &#34;Tom&#34;
                 }
             };
 
@@ -299,12 +299,12 @@
     }
 </code></pre><p>接著建立 Service 的介面並實作，透過注入的方式跟 Repository 拿取資料。
 <img src="https://i.imgur.com/sD1z5b3.jpg" alt=""></p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public interface IService
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public interface IService
     {
         /// &lt;summary&gt;
         /// 取得帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;account&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         AccountModel GetAccount(string account);
     }
@@ -332,21 +332,21 @@
         }
     }
 </code></pre><p>接下來我們在測試的地方，就能使用繼承介面的方式抽換實體物件，製造一個假的物件供我們測試使用。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    [TestClass()]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    [TestClass()]
     public class ServiceTests
     {
         [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;ServiceTest&quot;)]
-        [TestProperty(&quot;ServiceTests&quot;, &quot;GetAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;ServiceTest&#34;)]
+        [TestProperty(&#34;ServiceTests&#34;, &#34;GetAccount&#34;)]
         public void GetAccount_傳入存在的帳號_應回傳正確帳號資訊()
         {
             //arrange
-            var account = &quot;123&quot;;
+            var account = &#34;123&#34;;
             var expect = new AccountModel
             {
-                Account = &quot;123&quot;,
-                UserName = &quot;test&quot;
+                Account = &#34;123&#34;,
+                UserName = &#34;test&#34;
             };
             var service = new AccountService();
 
@@ -364,8 +364,8 @@
         {
             return new AccountModel
             {
-                Account = &quot;123&quot;,
-                UserName = &quot;test&quot;
+                Account = &#34;123&#34;,
+                UserName = &#34;test&#34;
             };
         }
     }
@@ -377,18 +377,18 @@
 <p>首先我們先到 Nuget 安裝套件。<br>
 <img src="https://i.imgur.com/g2DTGYH.jpg" alt=""></p>
 <p>接著修改我們的單元測試使用 NSubstitute 建立假實體。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;ServiceTest&quot;)]
-        [TestProperty(&quot;ServiceTests&quot;, &quot;GetAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;ServiceTest&#34;)]
+        [TestProperty(&#34;ServiceTests&#34;, &#34;GetAccount&#34;)]
         public void GetAccount_傳入存在的帳號_應回傳正確帳號資訊()
         {
             //arrange
-            var account = &quot;123&quot;;
+            var account = &#34;123&#34;;
             var expect = new AccountModel
             {
-                Account = &quot;123&quot;,
-                UserName = &quot;test&quot;
+                Account = &#34;123&#34;,
+                UserName = &#34;test&#34;
             };
             var service = Substitute.For&lt;IService&gt;();
             service.GetAccount(account).Returns(expect);
@@ -477,7 +477,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

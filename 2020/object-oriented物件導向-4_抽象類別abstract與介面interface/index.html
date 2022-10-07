@@ -182,54 +182,53 @@
 <!-- raw HTML omitted -->
 敘述的還是有點難理解，那我們用個例子來說明。
 在前幾篇的內容我們都用到了特斯拉這個例子，我們今天就延用。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"> 	<span style="color:#75715e">//產生一個車子的類別，定義了啟動以及消耗能源
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>();
-        }
-
-        <span style="color:#75715e">//產生一個特斯拉類別繼承車子
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗電能&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//產生一個汽車類別繼承車子
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽車啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
-            Console.WriteLine(car.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;汽車:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-        }
-
-</code></pre></div><p><img src="https://i.imgur.com/5u1OHGk.jpg" alt=""><br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span> 	<span style="color:#75715e">//產生一個車子的類別，定義了啟動以及消耗能源</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個特斯拉類別繼承車子</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗電能&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個汽車類別繼承車子</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽車啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(car.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;汽車:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/5u1OHGk.jpg" alt=""><br>
 <!-- raw HTML omitted -->
 首先車子這個類別指定義了車子啟動方式、消耗能源；這是不管哪種車子都會具備的功能，因此我們把定義成一個抽象類別，來讓特斯拉以及汽車繼承後實作，今天如果是機車那我們也可以繼承車子這個抽象類別實作自己的啟動、以及消耗能源方式。</p>
 <ul>
@@ -249,157 +248,157 @@
 <li>3、宣告介面在語法上與抽象類別完全相同，但不允許提供介面中任何成員的執行方法。</li>
 </ul>
 <p>接續上面的例子，我們今天多加了機車進來，所以現在程式變成</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個車子的類別，定義了啟動以及消耗能源。。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>();
-        }
-
-        <span style="color:#75715e">//產生一個特斯拉類別繼承車子
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗電能&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//產生一個汽車類別繼承車子
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽車啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//機車類別繼承車子
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">機車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;機車啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
-            Console.WriteLine(car.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;汽車:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-
-            <span style="color:#960050;background-color:#1e0010">機車</span> bike = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">機車</span>();
-            Console.WriteLine(bike.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;機車:&#34;</span> + bike.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-        }
-</code></pre></div><p><img src="https://i.imgur.com/5jAnmbW.jpg" alt="">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個車子的類別，定義了啟動以及消耗能源。。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個特斯拉類別繼承車子</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗電能&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個汽車類別繼承車子</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽車啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//機車類別繼承車子</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">機車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;機車啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(car.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;汽車:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">機車</span> bike = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">機車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(bike.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;機車:&#34;</span> + bike.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/5jAnmbW.jpg" alt="">
 <!-- raw HTML omitted -->
 今天我們想替車子加一個開車門的方法，但機車並不需要，這時候介面就可以派上用場了。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//宣告一個車門的介面
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">//這邊請注意因為示範所以使用&#34;車門&#34;，一般介面規範使用I開頭，所以車門介面通常會宣告成Idoor
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">車門</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">打開方式</span>();
-        }
-</code></pre></div><p>接下來讓汽車跟特斯拉實作車門這個介面，程式就變成</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個車子的類別，定義了啟動以及消耗能源。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>();
-        }
-
-        <span style="color:#75715e">//產生一個特斯拉類別繼承車子、車門介面
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>, <span style="color:#960050;background-color:#1e0010">車門</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗電能&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">打開方式</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//產生一個汽車類別繼承車子、車門介面
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>, <span style="color:#960050;background-color:#1e0010">車門</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽車啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">打開方式</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;正開&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//機車類別繼承車子
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">機車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;機車啟動&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
-            Console.WriteLine(car.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;汽車:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;汽車車門打開方式:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">打開方式</span>());
-
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉車門打開方式:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">打開方式</span>());
-
-            <span style="color:#960050;background-color:#1e0010">機車</span> bike = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">機車</span>();
-            Console.WriteLine(bike.<span style="color:#960050;background-color:#1e0010">啟動</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;機車:&#34;</span> + bike.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
-        }
-</code></pre></div><p><img src="https://i.imgur.com/DhlZZpt.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//宣告一個車門的介面</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//這邊請注意因為示範所以使用&#34;車門&#34;，一般介面規範使用I開頭，所以車門介面通常會宣告成Idoor</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">車門</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">打開方式</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>接下來讓汽車跟特斯拉實作車門這個介面，程式就變成</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個車子的類別，定義了啟動以及消耗能源。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個特斯拉類別繼承車子、車門介面</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>, <span style="color:#960050;background-color:#1e0010">車門</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;特斯拉啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗電能&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">打開方式</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個汽車類別繼承車子、車門介面</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">汽車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>, <span style="color:#960050;background-color:#1e0010">車門</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;汽車啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">打開方式</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;正開&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//機車類別繼承車子</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">機車</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">啟動</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;機車啟動&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">消耗能源</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;消耗汽油&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">汽車</span> car = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">汽車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(car.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;汽車:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;汽車車門打開方式:&#34;</span> + car.<span style="color:#960050;background-color:#1e0010">打開方式</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉車門打開方式:&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">打開方式</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">機車</span> bike = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">機車</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(bike.<span style="color:#960050;background-color:#1e0010">啟動</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;機車:&#34;</span> + bike.<span style="color:#960050;background-color:#1e0010">消耗能源</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/DhlZZpt.jpg" alt=""></p>
 <p>這樣一來機車並沒有車門並不需要有打開車門的方法，而汽車與特斯拉有車門，就可以透過介面實作打開車門的方法。</p>
 <h3 id="抽象類別與介面區分方法">抽象類別與介面區分方法</h3>
 <p>型態上區別：</p>
@@ -495,7 +494,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

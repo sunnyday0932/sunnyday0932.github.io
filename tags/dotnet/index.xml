@@ -17,7 +17,7 @@
 本文 首先依據官方文件我們需要先安裝 Serilog 的 Nuget 套件。
 要安裝的有以下三個：
 安裝完成後就可以使用官方提供的範例來練習寫一個 Log
-void Main() { Log.Logger = new LoggerConfiguration() .MinimumLevel.Debug() .WriteTo.Console() .WriteTo.File(&amp;quot;D:/logs/myapp.txt&amp;quot;, rollingInterval: RollingInterval.Day) .CreateLogger(); Log.Information(&amp;quot;Log Test&amp;quot;); int a = 10, b = 0; try { Log.Debug(&amp;quot;Dividing {A} by {B}&amp;quot;, a, b); Console.WriteLine(a / b); } catch (Exception ex) { Log.Error(ex, &amp;quot;Something went wrong&amp;quot;); } finally { Log.CloseAndFlush(); } } 在上面這個範例中，我們指定了 Log 存放於 D:/logs/myapp.txt 這個檔案中，而後面這個變數則可以指定存放的檔案名稱是以甚麼來做為區分，目前是使用當天日期。
+void Main() { Log.Logger = new LoggerConfiguration() .MinimumLevel.Debug() .WriteTo.Console() .WriteTo.File(&amp;#34;D:/logs/myapp.txt&amp;#34;, rollingInterval: RollingInterval.Day) .CreateLogger(); Log.Information(&amp;#34;Log Test&amp;#34;); int a = 10, b = 0; try { Log.Debug(&amp;#34;Dividing {A} by {B}&amp;#34;, a, b); Console.WriteLine(a / b); } catch (Exception ex) { Log.Error(ex, &amp;#34;Something went wrong&amp;#34;); } finally { Log.CloseAndFlush(); } } 在上面這個範例中，我們指定了 Log 存放於 D:/logs/myapp.txt 這個檔案中，而後面這個變數則可以指定存放的檔案名稱是以甚麼來做為區分，目前是使用當天日期。
 也是有其他的選項可以做選擇
 範例
 Log 內的檔案資訊如圖</description>
@@ -37,7 +37,7 @@ Log 內的檔案資訊如圖</description>
 首先建立一個 Core API 的範例程式
 接著就可以建立一個 HostService 並且繼承 BackgroundService ，繼承完後應該會馬上就看到提示需要實作 ExecuteAsync ，這個 ExecuteAsync 就是我們可以拿來實作排程。
 public class HostService : BackgroundService { protected override Task ExecuteAsync(CancellationToken stoppingToken) { throw new NotImplementedException(); } } 簡單測試我們寫一個每10秒會去 D:/ 寫入 log 檔的背景程序。
-public class HostService : BackgroundService { private readonly string _filePath; public HostService(string filePath) { this._filePath = filePath; } /// &amp;lt;summary&amp;gt; /// This method is called when the &amp;lt;see cref=&amp;quot;T:Microsoft.</description>
+public class HostService : BackgroundService { private readonly string _filePath; public HostService(string filePath) { this._filePath = filePath; } /// &amp;lt;summary&amp;gt; /// This method is called when the &amp;lt;see cref=&amp;#34;T:Microsoft.</description>
     </item>
     
     <item>
@@ -48,12 +48,12 @@ public class HostService : BackgroundService { private readonly string _filePath
       <guid>https://sunnyday0932.github.io/2021/coreprofiler-%E7%9B%A3%E7%9C%8Bwebapi%E6%95%88%E8%83%BD%E7%9A%84%E5%B7%A5%E5%85%B7/</guid>
       <description>前言 接下來會用到 CoreProfiler 這個工具來觀看我們API的效能，就花一點時間紀錄一下用法。
 本文 CorePofiler 這個工具是提供給 Core 版本的效能工具，也有給 dotnet framework 的版本 NanoProfiler。
-用到的Nuget  CoreProfiler.Web 安裝在 Application。 CoreProfiler 安裝在 Application 跟要監看的類別庫。  使用方式 1、在我們需要監看的地方加上以下程式。
-var stepName = $&amp;quot;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;quot;; using (ProfilingSession.Current.Step(stepName)) { } 2、在 Service 與 Repository 的地方都加上。
+用到的Nuget CoreProfiler.Web 安裝在 Application。 CoreProfiler 安裝在 Application 跟要監看的類別庫。 使用方式 1、在我們需要監看的地方加上以下程式。
+var stepName = $&amp;#34;{nameof(這邊是監看的類別)}.{nameof(這邊是監看的方法)}&amp;#34;; using (ProfilingSession.Current.Step(stepName)) { } 2、在 Service 與 Repository 的地方都加上。
 Service：
 Repository：
 3、若要監看與 DB 存取資料的狀況，可以到 DatabaseHelper 這麼做。
-/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ?</description>
+/// &amp;lt;summary&amp;gt; /// 建立連線 /// &amp;lt;/summary&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public IDbConnection GetConnection(string connectionString) { var conn = new ProfiledDbConnection ( new SqlConnection(connectionString), () =&amp;gt; ProfilingSession.Current is null ? null : new DbProfiler(ProfilingSession.</description>
     </item>
     
     <item>
@@ -65,16 +65,16 @@ Repository：
       <description>前言 先前我們介紹了 API 的基本用法，現在我們來介紹非同步的方法。
 本文 首先還是要先提醒一下，對於非同步程式設計有很多眉眉角角，這邊只能簡單說明，所以若想更深入了解還是推薦大家尋求專業知識來源。
 首推：
- MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。  一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
+MSDN使用 async 和 await 進行非同步程式設計。 .NET 本事－非同步程式設計。 一、同步與非同步。 1、同步。 我們先來認識一下甚麼叫做同步的程式設計。
 其實你已經寫過了。
 拿之前寫過的 UpdataAccount Service 來做說明，我們很明確會知道這段程式會由上到下一步一步接續執行，圖示意就是以下。
 (圖片取自.NET 本事－非同步程式設計) 而這種同步程式設計有很明顯的問題。
- a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。  當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。
+a、當有某項處理程序需要長時間的處理時，使用者與程式的互動體驗差，Ex:按下按鈕之後需要等到程式回應才會有其他動作。 b、當某個應用程式進入無窮迴圈導致其他應用程式暫停時，整個OS會像當機一樣，此時只能叫出工作管理員強制關閉程式、或是重開機。 當上述這些情況發生時當電腦只有一顆 CPU 可以執行 Process，那就會很明顯的被 Lock 住。
 而為了解決 CPU 無法分頭進行處理就有了新的執行序(Thread)概念。
 2、Thread(執行序)。 這時候就可以把當年準備考試的筆記拿出來用一下了。
 當年上課老師也比喻 Thread 就像是一台車裡面有幾個引擎的概念。
 Thread 與 Process 的差別。
-   Process Thread     OS 分配資源的對象單位 OS 分配 CPU 時間的對象單位   Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外) 同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源   Process 的 Ceation、Context Switching 較慢，管理成本高。 Thread 的較快、管理成本低。   Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked   Multiprocessor 架構之效益發揮較差。 較佳。   不需提供互斥存取機制(除了 Shared memory 溝通外) 必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。   適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。    所以透過多個執行序的概念我們希望程式能夠達到這樣。</description>
+Process Thread OS 分配資源的對象單位 OS 分配 CPU 時間的對象單位 Process 之間無共享的資源及記憶體(除了 Shared memory 溝通外) 同一個 Process 內的 threads 彼此共享此 Process 的記憶體與 OS 資源 Process 的 Ceation、Context Switching 較慢，管理成本高。 Thread 的較快、管理成本低。 Process 內的 Single-thread 若 Blocked ，則整個 Process 也一起 Blocked Process 內只要有 Thread 還可以執行，則 Process 不會被 Blocked Multiprocessor 架構之效益發揮較差。 較佳。 不需提供互斥存取機制(除了 Shared memory 溝通外) 必須對 Threads 共享的資源及 Data，提供互斥存取，控制防止資料不正確等問題。 適用時機：一個時間只有一個 Task 執行時 EX:Command interpreter、Linux Shell。 適用時機：一個時間有多個 Task 同時執行 EX:Clent-Server 架構的 Server。 所以透過多個執行序的概念我們希望程式能夠達到這樣。</description>
     </item>
     
     <item>
@@ -85,8 +85,7 @@ Thread 與 Process 的差別。
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-10%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9%E6%9F%A5%E7%9C%8B%E6%B6%B5%E8%93%8B%E7%8E%87%E8%A4%87%E9%9B%9C%E5%BA%A6/</guid>
       <description>前言 前幾篇已經介紹完單元測試基本方法了，那這篇主要是介紹一些好用的工具，能夠透過工具檢視程式碼目前單元測試的涵蓋率、以及查看複雜度；透過這些數據來檢視自己的程式碼是否還能夠在更優化。
 本文 1、Find Code Coverage。 原本是要介紹另一個測試方法，是使用 Axocover ；但在完成這幾篇的當下，馬上看到公司大神推薦了這個，現成的就拿來用啦 XD，若有興趣的會把 Axocover 連結附在此。
-Axocover For Visual Studio 2019。 
-進入正題。
+Axocover For Visual Studio 2019。 進入正題。
 Find Code Coverage
 首先我們先打開Visual Stdio Extension進行安裝。
 下載完後安裝視窗跳出時記得先把VS關掉，不然會無法完成安裝。
@@ -94,12 +93,13 @@ Find Code Coverage
 首次打開視窗會是空的，要先執行一次測試才會有東西。
 再次打開就可以看到結果。
 通常我們都會要求涵蓋率在 95% 以上，但當然各家公司實踐上有自己的標準，就可以依此來查看數據當作依據。
- 小提醒 因為 Find Code Coverage 會在每一次測試時幫你去計算覆蓋率，等於一個測試會跑兩次，若不想每次重跑一遍可以到設定的地方關掉，再要看覆蓋率時再打開即可。
- 設定方式：
+小提醒 因為 Find Code Coverage 會在每一次測試時幫你去計算覆蓋率，等於一個測試會跑兩次，若不想每次重跑一遍可以到設定的地方關掉，再要看覆蓋率時再打開即可。
+設定方式：
 打開 工具 &amp;gt; 選項。
 找到 Find Code Coverage，把 Run 的選項 Enable 改成 False 即可。
 2、CodeMaintainibility。 CodeMaintainibility
-一樣要到 Extension 的地方搜尋安裝。</description>
+一樣要到 Extension 的地方搜尋安裝。
+安裝完重新打開 VS 後會發現每一個方法都會出現一個旗子。</description>
     </item>
     
     <item>
@@ -109,7 +109,7 @@ Find Code Coverage
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-7/</guid>
       <description>前言 接續完成我們 API 的單元測試，前面示範過的部分就不會再重複敘述，有比較特別的地方會特別提醒，那就開始吧。
-本文 GetAccount(取得單筆帳號資訊) 1、輸入的 Account 不可為空。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;quot;&amp;quot;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;quot;Account 不可為空 !&amp;quot;); } 2、若查詢的 Account 有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;quot;test123&amp;quot;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;quot;test123@gmail.com&amp;quot;, ModifyUser = &amp;quot;sys&amp;quot;, Phone = &amp;quot;0918777888&amp;quot; }; var sut = this.</description>
+本文 GetAccount(取得單筆帳號資訊) 1、輸入的 Account 不可為空。 [TestMethod] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;AccountServiceTest&amp;#34;)] [TestProperty(&amp;#34;AccountServiceTest&amp;#34;, &amp;#34;GetAccount&amp;#34;)] public void GetAccount_Account為空_應回傳Exception() { //arrange var sut = this.GetSystemUnderTest(); //act Action actual = () =&amp;gt; sut.GetAccount(&amp;#34;&amp;#34;); //assert actual.Should().Throw&amp;lt;Exception&amp;gt;() .Which.Message.Contains(&amp;#34;Account 不可為空 !&amp;#34;); } 2、若查詢的 Account 有資料應回傳正確資訊。 [TestMethod] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;AccountServiceTest&amp;#34;)] [TestProperty(&amp;#34;AccountServiceTest&amp;#34;, &amp;#34;GetAccount&amp;#34;)] public void GetAccount_Account有資料_應回傳正確資訊() { //arrange var data = new AccountDataModel() { Account = &amp;#34;test123&amp;#34;, CreateDate = DateTime.Now, ModifyDate = DateTime.Now, Email = &amp;#34;test123@gmail.com&amp;#34;, ModifyUser = &amp;#34;sys&amp;#34;, Phone = &amp;#34;0918777888&amp;#34; }; var sut = this.</description>
     </item>
     
     <item>
@@ -127,8 +127,8 @@ Find Code Coverage
 將檔案儲存到我們測試專案地方，建立一個 TestData 資料夾存放。
 記得要到專案內，將要測試的 CSV 檔案屬性改成永遠複製。
 2、安裝 Nuget 套件。 3、修改測試方法。 首先在測試 Class 加上一個 Attribute。
-[DeploymentItem(@&amp;quot;TestData\AccountData.csv&amp;quot;)] 接著我們就可以在要使用的地方這麼做。
-[TestMethod] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;AccountServiceTest&amp;quot;)] [TestProperty(&amp;quot;AccountServiceTest&amp;quot;, &amp;quot;GetAccount&amp;quot;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;quot;AccountData.csv&amp;quot;)) using (var reader = new CsvReader(sr, CultureInfo.</description>
+[DeploymentItem(@&amp;#34;TestData\AccountData.csv&amp;#34;)] 接著我們就可以在要使用的地方這麼做。
+[TestMethod] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;AccountServiceTest&amp;#34;)] [TestProperty(&amp;#34;AccountServiceTest&amp;#34;, &amp;#34;GetAccount&amp;#34;)] public void GetAccount_Account有資料_應回傳正確資訊使用CSV測試() { //arrange var sourceData = new List&amp;lt;AccountDataModel&amp;gt;(); using (var sr = new StreamReader(@&amp;#34;AccountData.csv&amp;#34;)) using (var reader = new CsvReader(sr, CultureInfo.</description>
     </item>
     
     <item>
@@ -140,8 +140,8 @@ Find Code Coverage
       <description>前言 我們已經介紹了基本寫單元測試的方法，接下來我們就可以回頭拿先前製作的 API 當作練習，補上該有的測試。
 本文 首先我們建立一個放置測試專案的資料夾。
 接著建立完測試專案。
- 2021/02/21更新 原本是只想開一個測試專案把 Repository 跟 Service 的測試都放在一起後來想想不太對。 更新後的專案結構如下。
- 因為是要對 Service 層進行測試，記得要加入專案參考。
+2021/02/21更新 原本是只想開一個測試專案把 Repository 跟 Service 的測試都放在一起後來想想不太對。 更新後的專案結構如下。
+因為是要對 Service 層進行測試，記得要加入專案參考。
 接下來先把基礎測試專案需要用到的東西準備好。
 [TestClass] public class AccountServiceTest { private IAccountRepository _accountRepository; private IMapper _mapper { get { var config = new MapperConfiguration(options =&amp;gt; { options.AddProfile&amp;lt;ServiceProfile&amp;gt;(); }); return config.CreateMapper(); } } [TestInitialize] public void TestInitialize() { this._accountRepository = Substitute.For&amp;lt;IAccountRepository&amp;gt;(); } private AccountService GetSystemUnderTest() { var sut = new AccountService(this._accountRepository,this._mapper); return sut; } [TestMethod] public void TestMethod1() { } } 這邊需要特別注意的地方在 AutoMapper 的地方，我們並不需要製作一個假的 AutoMapper，所以可以直接使用原本方法。</description>
     </item>
@@ -158,7 +158,7 @@ Find Code Coverage
 我們現在有一個 Check 的方法，若出現錯誤則會紀錄一筆log。
 首先先把 log 方法準備好。
 public interface ILog { void SaveLog(string message); } public class Log : ILog { public void SaveLog(string message) { Console.WriteLine(message); } } Check 方法。
-bool Check(string text); public bool Check(string text) { if (string.IsNullOrWhiteSpace(text)) { this._log.SaveLog(&amp;quot;text 不可為空!&amp;quot;); return false; } return true; } 接下來我們先調整一下我們的測試方法。
+bool Check(string text); public bool Check(string text) { if (string.IsNullOrWhiteSpace(text)) { this._log.SaveLog(&amp;#34;text 不可為空!&amp;#34;); return false; } return true; } 接下來我們先調整一下我們的測試方法。
 private ILog _log; private IRepository _repository; [TestInitialize] public void TestInitialize() { this._log = Substitute.</description>
     </item>
     
@@ -169,9 +169,10 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-4/</guid>
       <description>本文 初始化與清除使用的 Attribute 上一篇我們介紹到使用改變時間的用法，但因為其中一個測試改變了時間可能會影響到其他單元測試，這時候就有幾個 Attribute 可以派上用場。
-   Attribute 用法 頻率     TestInitialize() 在執行每一項測試之前，會先執行 TestInitialize 的程式碼。 每執行一個 TestMethod 會觸發一次。   TestCleanup() 在執行每一項測試之後，會執行 TestCleanup 的程式碼。 每執行一個 TestMethod 會觸發一次。   ClassInitialize() 在執行該類別的測試之前，會先執行 ClassInitialize 的程式碼。 以測試類別為單位執行一次。   ClassCleanup() 在執行該類別的測試之後，會執行 ClassCleanup 的程式碼。 以測試類別為單位執行一次。   AssemblyInitialize() 在執行所有類別的測試之前，會先執行 AssemblyInitialize 的程式碼。 以測試專案為單位執行一次。   AssemblyCleanup() 在執行該類別的測試之後，會執行 AssemblyCleanup 的程式碼。 以測試專案為單位執行一次。    練習:
+Attribute 用法 頻率 TestInitialize() 在執行每一項測試之前，會先執行 TestInitialize 的程式碼。 每執行一個 TestMethod 會觸發一次。 TestCleanup() 在執行每一項測試之後，會執行 TestCleanup 的程式碼。 每執行一個 TestMethod 會觸發一次。 ClassInitialize() 在執行該類別的測試之前，會先執行 ClassInitialize 的程式碼。 以測試類別為單位執行一次。 ClassCleanup() 在執行該類別的測試之後，會執行 ClassCleanup 的程式碼。 以測試類別為單位執行一次。 AssemblyInitialize() 在執行所有類別的測試之前，會先執行 AssemblyInitialize 的程式碼。 以測試專案為單位執行一次。 AssemblyCleanup() 在執行該類別的測試之後，會執行 AssemblyCleanup 的程式碼。 以測試專案為單位執行一次。 練習:
 如題為了避免我們改變時間進而影響到其他單元測試，我們在執行每一個測試前後都會初始化一次時間。
-[TestInitialize] public void TestInitial() { SystemTime.</description>
+[TestInitialize] public void TestInitial() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } [TestCleanup] public void TestClean() { SystemTime.SetToday = () =&amp;gt; DateTime.Today; } 隔離物件 測試的時候我們會需要隔離要測試的物件，如果直接相依物件會產生一些不必要的問題導致測試結果可能有誤。
+相依物件 可能發生情況 資料庫 直接相依資料庫的情況下，如果有異動到資料，每一次都要還原資料。 外部服務 會因為網路連線狀態而直接影響測試執行的速度。 特殊商業邏輯 無法進行測試，例如:亂數資料、加密資料等。 所以為了解決這個問題，就可以很簡單的利用先前教學所使用的依賴注入方式，透過介面注入抽換實體，那麼我在在測試的地方，就能直接做一個測試用的實體出來進行模擬測試。</description>
     </item>
     
     <item>
@@ -182,8 +183,8 @@ private ILog _log; private IRepository _repository; [TestInitialize] public void
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-3/</guid>
       <description>本文 比對兩個物件方式 首先我們建立一個測試用 Model。
 public class TestModel { public string UserName { get; set; } public string Account { get; set; } } 建立一個測試方法驗證兩個物件是否相同。
-[TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; secondObject.Should().Be(fistObject); } 結果 有點奇怪，我們換回內建的方法測試看看。
-[TestMethod()] [Owner(&amp;quot;Sian&amp;quot;)] [TestCategory(&amp;quot;Class1&amp;quot;)] [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;Object&amp;quot;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; var secondObject = new TestModel { Account = &amp;quot;abc&amp;quot;, UserName = &amp;quot;Sian&amp;quot; }; //secondObject.</description>
+[TestMethod()] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;Class1&amp;#34;)] [TestProperty(&amp;#34;Class1&amp;#34;, &amp;#34;Object&amp;#34;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; var secondObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; secondObject.Should().Be(fistObject); } 結果 有點奇怪，我們換回內建的方法測試看看。
+[TestMethod()] [Owner(&amp;#34;Sian&amp;#34;)] [TestCategory(&amp;#34;Class1&amp;#34;)] [TestProperty(&amp;#34;Class1&amp;#34;, &amp;#34;Object&amp;#34;)] public void ObjectTest_比較兩個相同物件_應回傳正確結果() { //arrange var fistObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; var secondObject = new TestModel { Account = &amp;#34;abc&amp;#34;, UserName = &amp;#34;Sian&amp;#34; }; //secondObject.</description>
     </item>
     
     <item>
@@ -194,11 +195,12 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <guid>https://sunnyday0932.github.io/2021/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6-2/</guid>
       <description>本文 單元測試方法命名 單元測試的藝術內簡單得規範出一種一目了然的命名方式。
 分為三個部分：
-   名稱 解釋     1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。   2、Scenario(情境) 要測試的情境，例如:傳入 NULL、傳入字串。   3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期    單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
+名稱 解釋 1、UunitOfWorkName(單元測試名稱) 被測試的方法、一組方法或一組類別。 2、Scenario(情境) 要測試的情境，例如:傳入 NULL、傳入字串。 3、ExpectedBehavior(預期的行為) 在測試情境指定的條件下，我們對測試結果的預期 單元測試名稱_情境_預期的行為，三個組成就是一個完整的句子。
 接著我們就可以修改一下前次練習的測試方法名稱。
 常用到的 Attribute 接下來介紹幾個比較常用到的 Attribute：
-   Attribute 用途     [TestMethod] 表示這是一個測試方法。   [OwnerName] 此測試方法的建立者。   [TestCategory] 測試的方法在哪個類別。   [TestProperty] 表示該方法是在哪個類別內的測試方法。   [Ignore] 驗證測試時會忽略該方法。   [ExpectedException] 驗證例外處理的 Attribute。    用法示範：
-[TestMethod()] //這是一個測試方法 [Owner(&amp;quot;Sian&amp;quot;)] //此方法由Sian建立 [TestCategory(&amp;quot;Class1&amp;quot;)] //此測試方法在Class1這個類別 [TestProperty(&amp;quot;Class1&amp;quot;, &amp;quot;GetUserName&amp;quot;)] //此測試方法是Class1類別內的GetUserName public void GetUserName_輸入的UserName為空值_應回傳提示訊息() { //arrange var target = new Class1(); var name = string.</description>
+Attribute 用途 [TestMethod] 表示這是一個測試方法。 [OwnerName] 此測試方法的建立者。 [TestCategory] 測試的方法在哪個類別。 [TestProperty] 表示該方法是在哪個類別內的測試方法。 [Ignore] 驗證測試時會忽略該方法。 [ExpectedException] 驗證例外處理的 Attribute。 用法示範：
+[TestMethod()] //這是一個測試方法 [Owner(&amp;#34;Sian&amp;#34;)] //此方法由Sian建立 [TestCategory(&amp;#34;Class1&amp;#34;)] //此測試方法在Class1這個類別 [TestProperty(&amp;#34;Class1&amp;#34;, &amp;#34;GetUserName&amp;#34;)] //此測試方法是Class1類別內的GetUserName public void GetUserName_輸入的UserName為空值_應回傳提示訊息() { //arrange var target = new Class1(); var name = string.Empty; //act var actual = target.GetUserName(name); //assert Assert.AreEqual(&amp;#34;請輸入使用者姓名!&amp;#34;,actual); } 建立一個會有例外狀況的 Class。
+public string ExceptionTest(string name) { if (string.</description>
     </item>
     
     <item>
@@ -210,7 +212,21 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <description>前言 API 講解完後接下來我們來介紹能夠快速驗證自己程式邏輯的好用工具-單元測試(Unit-Test)，實務上也有使用單元測試的開發方法，如:TDD(Teat-Driven Development)測試驅動開發；接下來介紹內容會以單元測試的藝術以及公司大神提供文件所學介紹，最後會以完成先前開發API單元測試為目標。
 內文 單元測試 單元測試的藝術對一個優秀單元測試的定義為：
 一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元， 之後對這個單元的單一最終結果的某些假設或期望進行驗證。 單元測試幾乎都是使用單元測試框架進行撰寫的。 撰寫單元測試很容易，執行起來快速。 單元測試可靠、易讀、並且很容易維護。 只要產品程式碼不發生變化，單元測試的執行結果是穩定一致的。 該具備的特性有：
-   特性 定義     1、Fast(快速) 每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。   2、Independent(獨立性) 不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。   3、Repeatable(可重複) 單元測試要是可以重複執行的，其結果不會因為執行次數而改變。   4、Self-Validating(可反應驗證結果) 單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。   5、Timely(及時) 單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。    單元測試的3A原則:    原則     1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。   2、Act : 呼叫目標物件的方法。   3、Assert : 驗證是否符合預期。    整合測試 接下來介紹一下可能會混淆的整合測試。</description>
+特性 定義 1、Fast(快速) 每一個單元測試執行的速度夠快。 通常單一個單元測試要在毫秒之內完成。 2、Independent(獨立性) 不能與外部資源相依。外部物件有：資料庫、服務、其他單元測試等。 3、Repeatable(可重複) 單元測試要是可以重複執行的，其結果不會因為執行次數而改變。 4、Self-Validating(可反應驗證結果) 單元測試執行的結果，不論成功或失敗都要能從測試報告內清楚明瞭原因。 5、Timely(及時) 單元測試應該要在產品測試碼完成的當下就能驗證執行結果是否符合預期。 單元測試的3A原則: 原則 1、Arrange : 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式。 2、Act : 呼叫目標物件的方法。 3、Assert : 驗證是否符合預期。 整合測試 接下來介紹一下可能會混淆的整合測試。
+單元測試的藝術對整合測試的定義為：
+整合測試是對一個工作單元進行測試，而這個測試對被測試的單元並沒有完全的控制， 而是使用該單元一個或多個真實依賴的相依物件，例如時間、網路、資料庫等。 所以如果一個測試情境直接進入DB撈取資料，那他其實是整合測試，並不屬於單元測試。
+測試驅動開發(Teat-Driven Development,TDD) TDD是一種開發的模式，詳細的步驟可以參考下圖1-4(取自單元測試的藝術)。
+可以看到 TDD 的步驟如下：
+撰寫一個測試 Function。 執行測試，因為還沒實作要測試的目標，所以得到失敗結果。 撰寫剛好能通過測試的產品程式碼。 執行測試，成功撰寫下一個測試；失敗修正程式。 以此步驟作為循環不斷的重複。
+優點是可以快速透過下面這些情境驗證程式：
+如果一個測試失敗了，沒有經過修改她就再次運行成功了，你其實是在測試這個單元測試本身。 如果你預期一個測試應該失敗，但她卻成功了，那這個測試本身可能有缺陷，或是測試的物件不對。 如果一個測試之前失敗了，擬調整之後預期他會執行成功，但她依然是失敗的，那這個測試可能有缺陷，或是測試的期望結果不正確。 碎碎念分隔線：
+當然這是理想情況下能夠進行 TDD，而真實自身經驗情況都是圖1-3，除了重要商業邏輯程式外，真的是有空再回來補測試，而且有的時候商業邏輯被翻盤了，舊的測試邏輯也不符合情境，一切都是浮雲。
+練習 接下來我們就來練習寫一個簡單的單元測試。
+首先建立一個單元測試的專案：
+建完後我們會看到一個空的單元測試方法。
+接下來我們需要建立一個簡單的程式範例讓我們做單元測試的練習。
+我們建立一個類別庫專案。
+現在我們的專案結構如下：</description>
     </item>
     
     <item>
@@ -221,10 +237,13 @@ public class TestModel { public string UserName { get; set; } public string Acco
       <guid>https://sunnyday0932.github.io/2021/dotnet-core-webapi-efcore/</guid>
       <description>前言 前面我們已經練習過使用 Dapper，剛好前輩提起 EF 也是需要練習熟悉的，就做了一個 EF Core 的版本，基本上內容與先前 API 第二版本大致相同，這邊就只會列出差異部分與碰到的問題。
 本文 一、首先我們會需要先安裝三個 EF 需要使用到的 Nuget 套件。 分別是：
-   Nuget名稱 安裝地點     EntityFrameworkCore Repository   EntityFrameworkCore.SqlServer Repository   EntityFrameworkCore.Tools Controller    二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。 完整指令如下：
-Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force 這邊提一下指令由前到後介紹：
-Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。
--OutputDir Conditions 這邊是生成檔案放置地點。</description>
+Nuget名稱 安裝地點 EntityFrameworkCore Repository EntityFrameworkCore.SqlServer Repository EntityFrameworkCore.Tools Controller 二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。 完整指令如下：
+Scaffold-DbContext &amp;#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&amp;#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force 這邊提一下指令由前到後介紹：
+Scaffold-DbContext &amp;#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&amp;#39; Microsoft.EntityFrameworkCore.SqlServer 這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。
+-OutputDir Conditions 這邊是生成檔案放置地點。
+-Tables Users 指定的 Table 名稱。
+-context AccountContext 這是會生成的 DBContext 檔案名稱，這邊我取名為 AccountContext。
+-Project WebApiEFCoreRepository -force 指定生成在 Repository 專案，最後的 force 其實第一次生成 DBContext 時不用加，但後續要再加 Table 的時候可能會用上；至於我為甚麼留著呢？那當然是因為 懶惰</description>
     </item>
     
     <item>
@@ -235,7 +254,7 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
       <guid>https://sunnyday0932.github.io/2020/%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-didependency-injection/</guid>
       <description>前言 終於寫到DI了，這應該是一開始學習三層式架構後的第二座高山，直到今天我也還不敢稱自己完全懂，頂多只能說是會用，剛好藉著這次機會複習概念。
 本文 講解 DI 前會有兩個先行觀念需要了解，分別是：
- 1、DIP(Dependency Inversion Principle) 依賴反轉。 2、IOC(Inversion of Control) 控制反轉。  1、DIP 依賴反轉。 複習一下前面講解到的依賴反轉概念：
+1、DIP(Dependency Inversion Principle) 依賴反轉。 2、IOC(Inversion of Control) 控制反轉。 1、DIP 依賴反轉。 複習一下前面講解到的依賴反轉概念：
 我們了解到 DIP 最重要的目標是要解除物件與物間之間直接依賴的關係。
 不熟的同學起點這複習。
 2、IOC 控制反轉。 那甚麼又是控制反轉呢？
@@ -249,7 +268,8 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
 所以理想中 IOC 概念我們的關係圖應該長這樣： 我們的 Controller 應該把對於 Repository 的控制權移交給 IOC。
 3、DI 依賴注入。 講了這麼多那所以甚麼是 DI 呢？
 聰明的同學應該發現了上述的 DIP、IOC 都只是一種精神、概念；而 DI 就是實現上述兩種精神的方法。
-講解 DI 的精神最經典的就是：  好萊塢原則 (Hollywood Principle)</description>
+講解 DI 的精神最經典的就是： 好萊塢原則 (Hollywood Principle)
+don‘t call us, we‘ll call you</description>
     </item>
     
     <item>
@@ -262,7 +282,7 @@ Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connect
 難道是每一次轉換都需要跑一次迴圈，那也太麻煩了；這時就要介紹好用的工具 Automapper了。
 本文 基本用法 首先到 Nuget 安裝 Automapper。 安裝好後我們建立兩個測試用的 Model
 private class Model1 { public string Name { get; set; } public int Id { get; set; } } private class Model2 { public string Name { get; set; } public int Id { get; set; } } 使用 Automapper 對應 Model1 到 Model2。
-var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.</description>
+var testModel = new Model1 { Name = &amp;#34;ALLEN&amp;#34;, Id = 1 }; var config = new MapperConfiguration(cfg =&amp;gt; cfg.</description>
     </item>
     
     <item>
@@ -276,9 +296,18 @@ var testModel = new Model1 { Name = &amp;quot;ALLEN&amp;quot;, Id = 1 }; var con
 這種情況下只有自己寫可能還好，那如果需要跟人合作呢？
 大家可能容易出現重複的 Code，也難以說明誰該負責寫哪部分。
 這時候有一個好的架構，就很重要了。
-優缺點    優點     1、較好形成一個規範，可做為標準化流程。   2、提高重用性，透過分層將相同類型的程式碼放在一塊。   3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。   4、具有好的開放性、可擴充性優點。   5、降低程式碼之間的依賴，每層溝通是透過介面。   6、提高系統安全性，因為使用者需要透過 Service 層才有機會與下一層 Repository 撈取資料。       缺點     1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。   2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。   3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。    簡介 三層式架構顧名思義，主要分為了三層：
- 1、Controller：控制層，作為接口。 2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。 3、Repository：倉儲層，作為資料存儲的一層。 4、Common：共用層，作為存放各層會用到的相同東西。  他們之間的關係如下圖:
-Service 從最重要的 Service 層開始講解起。</description>
+優缺點 優點 1、較好形成一個規範，可做為標準化流程。 2、提高重用性，透過分層將相同類型的程式碼放在一塊。 3、團體合作的時候，能夠分層進行；開發人員只需專注於自己開發的那一層即可。 4、具有好的開放性、可擴充性優點。 5、降低程式碼之間的依賴，每層溝通是透過介面。 6、提高系統安全性，因為使用者需要透過 Service 層才有機會與下一層 Repository 撈取資料。 缺點 1、增加了開發成本，傳統一個人負責寫到底；分層下需要多人進行合作。 2、調整程式可能會出現連動性；有的時候修改一個地方，會導致其他層也需要跟著調整。 3、相較於一條龍開發系統性能下降，原本程式可以直接透過DB撈取資料，現在需要透過中間層的轉介才能夠拿到。 簡介 三層式架構顧名思義，主要分為了三層：
+1、Controller：控制層，作為接口。 2、Service：商業邏輯層，只要有關商業邏輯部分的處理全部放在這一層。 3、Repository：倉儲層，作為資料存儲的一層。 4、Common：共用層，作為存放各層會用到的相同東西。 他們之間的關係如下圖:
+Service 從最重要的 Service 層開始講解起。
+在我們程式中『最重要』的就屬於商業邏輯了，這一層是會特別關注的一層；這邊大家可能會問，那商業邏輯是指哪些呢？
+我自己認為最簡單分辨的方式，舉凡任何需要對資料特別處理的地方都會是放在這一層，如常見的：登入驗證、加減法運算、確認是否驗證成功等。
+Controller 在我們 WebAPI 中，Controller 就屬於接口，負責處理 Router，如常見的：Get、Post、Patch 等，都會是在這層負責接應相對應的路由。
+Repository 資料倉儲層，這層主要處理『有關資料串接』的部分，如：資料庫連接、下 SQL 取 Table 資料等，都會是在 Repository 處理。
+這邊有個特別的地方，如果我們程式需要透過別人的API取的資料回來做處理呢？
+那與對方 API 串接的地方就會是 Repository，所以 Repository 是處理『有關資料串接』的地方，而這資料當然並不只限於從 DB 撈取的資料。
+Common 共用層相對單純，存放各層間會用到的共同東西，最常見的例如：Enum，就會放在這一層。
+各層相互傳遞的參數 各層間會有自己的 Model，就是透過這些 Model 來溝通，如下圖：
+Controller：接收的是 Parameter，輸出的是 ViewModel。 Service：接收的是 InfoModel，輸出的是 Dto。 Repository：接收的是 Condition，輸出的是 DataModel。 使用三層式架構常見的問題 1、三層式架構與傳統 MVC 有甚麼不同呢？ 傳統 MVC 分成，View(展示層)-Model(資料層)-Controller(控制層)，這邊與三層式架構最大的區別在於傳統MVC並沒有特別把『商業邏輯』抽出來；常會看到傳統 MVC 可能會把商業邏輯附加在 Controller，所以 MVC 與三層式架構是不同的。</description>
     </item>
     
     <item>
@@ -293,9 +322,9 @@ Service 從最重要的 Service 層開始講解起。</description>
 2、容易有重工。 現行做法如果多人合作的時候，可以用 Repository 名稱來定義是從哪個 DB 撈取資料； Controller 也可以明確定義出接口，那承上所述的商業邏輯呢？又或是因為大家要處理的 Model 不同因此再合作的時候建了一堆不同的 Model 出來，卻其實是撈同一個 Table 的資料，應該想辦法避免做重複的事情。
 3、耦合過高。 現行做法很容易再單一的 class 做了太多事，還記得前幾篇提到的 SOLID 原則嗎？若所有事情都包在同一個 class中完成，藕合度就會過高這種情況應該要想辦法解決。
 那有甚麼好方法呢？ 像傳統的 MVC 就是把程式分成 Model-View-Controller。
- 1、Model：處理商業邏輯、資料傳輸的 Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。  透過將程式分開讓藕合性降低、也讓後續維護者好維護。
+1、Model：處理商業邏輯、資料傳輸的 Model、與資料庫進行溝通。 2、Controller：負責當接口、控制程式的流程。 3、View：負責呈現，ex:畫面啦、程式應該回傳的結果。 透過將程式分開讓藕合性降低、也讓後續維護者好維護。
 其他如:DDD、三層式架構等，都有自己得優缺點，下篇我們會介紹三層式架構，再將 API 實作。
-參考連結  1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼?</description>
+參考連結 1、維基百科MVC。 2、MVC 架構與說明 ( 以Asp .Net MVC C# 為例 ) 3、MVC 三層架構 是什麼? 我只知道三層肉 </description>
     </item>
     
     <item>
@@ -306,8 +335,10 @@ Service 從最重要的 Service 層開始講解起。</description>
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C-4-restful-api%E4%BB%8B%E7%B4%B9/</guid>
       <description>本文 REST 是 Representational State Transfer 的縮寫，是一種設計模式，RESTful API 就是遵循這種設計模式所創造的 API。
 那 RESTful 是怎樣的一個設計模式呢? 首先組成 RESTful API 三大要素有:
-   組成要素 說明     1、Nouns (名詞) 一組獨一無二的 URL 用來定義網址。   2、Verbs (動詞) 用來描述對 URL 所執行的動作，也就是 HTTP Method。   3、Content Types(資源呈現方式) API 資源呈現的方式 EX:JSON、XML。    以前幾篇的 API 為範例:
-   Method router 說明     GET api/Product 取得商品列表   POST api/Product 新增商品   PATCH api/Product 修改商品資訊   DELETE api/Product/85 商除指定商品    固定的 Router，但使用 Method 來區分要進行的動作，好處是不會有五花八門的 router 出現，一旦用了此種模式，大家就能輕易區分 API 會做些甚麼，我該取用哪隻 API。</description>
+組成要素 說明 1、Nouns (名詞) 一組獨一無二的 URL 用來定義網址。 2、Verbs (動詞) 用來描述對 URL 所執行的動作，也就是 HTTP Method。 3、Content Types(資源呈現方式) API 資源呈現的方式 EX:JSON、XML。 以前幾篇的 API 為範例:
+Method router 說明 GET api/Product 取得商品列表 POST api/Product 新增商品 PATCH api/Product 修改商品資訊 DELETE api/Product/85 商除指定商品 固定的 Router，但使用 Method 來區分要進行的動作，好處是不會有五花八門的 router 出現，一旦用了此種模式，大家就能輕易區分 API 會做些甚麼，我該取用哪隻 API。
+常見的 Method 有以下幾種:
+Method 說明 GET 讀取資料 POST 新增資料，亦可作為其他動詞使用。 PUT 更新 PATCH 部分更新資料 DELETE 刪除資料 備註: POST 被視作萬用動詞，可以作為其他動作。</description>
     </item>
     
     <item>
@@ -317,7 +348,7 @@ Service 從最重要的 Service 層開始講解起。</description>
       
       <guid>https://sunnyday0932.github.io/2020/dotnet-core-webapi%E5%AF%A6%E4%BD%9C%E4%BD%BF%E7%94%A8dapperswaggerpostman-3/</guid>
       <description>本文 修改 1、修改指定商品 Repository
-/// &amp;lt;summary&amp;gt;  /// 修改商品內容  /// &amp;lt;/summary&amp;gt;  /// &amp;lt;param name=&amp;#34;productModel&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;  /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;  public bool UpdateProduct(ProductModel productModel) { var sql = @&amp;#34;UPDATE products SET productname = @ProductName, supplierid = @SupplierID, categoryid = @CategoryID, quantityperunit = @QuantityPerUnit, unitprice = @UnitPrice, unitsinstock = @UnitsInStock, unitsonorder = @UnitsOnOrder, reorderlevel = @ReorderLevel, discontinued = @Discontinued WHERE productid = @ProductID &amp;#34;; var parameters = new DynamicParameters(); parameters.Add(&amp;#34;@ProductName&amp;#34;, productModel.ProductName); parameters.</description>
+/// &amp;lt;summary&amp;gt; /// 修改商品內容 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;#34;productModel&amp;#34;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool UpdateProduct(ProductModel productModel) { var sql = @&amp;#34;UPDATE products SET productname = @ProductName, supplierid = @SupplierID, categoryid = @CategoryID, quantityperunit = @QuantityPerUnit, unitprice = @UnitPrice, unitsinstock = @UnitsInStock, unitsonorder = @UnitsOnOrder, reorderlevel = @ReorderLevel, discontinued = @Discontinued WHERE productid = @ProductID &amp;#34;; var parameters = new DynamicParameters(); parameters.Add(&amp;#34;@ProductName&amp;#34;, productModel.ProductName); parameters.Add(&amp;#34;@SupplierID&amp;#34;, productModel.SupplierID); parameters.Add(&amp;#34;@CategoryID&amp;#34;, productModel.CategoryID); parameters.Add(&amp;#34;@QuantityPerUnit&amp;#34;, productModel.</description>
     </item>
     
     <item>
@@ -330,9 +361,9 @@ Service 從最重要的 Service 層開始講解起。</description>
 CRUD 指的是Create(新增)、Read(查詢)、Delete(刪除)、Update(更新)，也是最常運用到的功能。
 本文 新增 1、首先我們先建立一個用來回傳的 Model。
 建立 ResultModel
-public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;/summary&amp;gt;  public bool Result { get; set; } /// &amp;lt;summary&amp;gt;  /// 提示訊息  /// &amp;lt;/summary&amp;gt;  public string Message { get; set; } } 2、把新增商品的 Repository 完成。
+public class ResultModel { /// &amp;lt;summary&amp;gt; /// 結果 /// &amp;lt;/summary&amp;gt; public bool Result { get; set; } /// &amp;lt;summary&amp;gt; /// 提示訊息 /// &amp;lt;/summary&amp;gt; public string Message { get; set; } } 2、把新增商品的 Repository 完成。
 新增商品 Repository
-/// &amp;lt;summary&amp;gt; /// 新增一筆商品 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;quot;productModel&amp;quot;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool CreateProduct(ProductModel productModel) { var sql = @&amp;quot;INSERT INTO products (productname, supplierid, categoryid, quantityperunit, unitprice, unitsinstock, unitsonorder, reorderlevel, discontinued) VALUES (@ProductName, @SupplierID, @CategoryID, @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued) &amp;quot;; var parameters = new DynamicParameters(); parameters.</description>
+/// &amp;lt;summary&amp;gt; /// 新增一筆商品 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;#34;productModel&amp;#34;&amp;gt;&amp;lt;/param&amp;gt; /// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt; public bool CreateProduct(ProductModel productModel) { var sql = @&amp;#34;INSERT INTO products (productname, supplierid, categoryid, quantityperunit, unitprice, unitsinstock, unitsonorder, reorderlevel, discontinued) VALUES (@ProductName, @SupplierID, @CategoryID, @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued) &amp;#34;; var parameters = new DynamicParameters(); parameters.</description>
     </item>
     
     <item>
@@ -345,7 +376,7 @@ public class ResultModel { /// &amp;lt;summary&amp;gt;  /// 結果  /// &amp;lt;
 這邊會從原始 MVC 作為開頭介紹，內容會帶入 Dapper、Restful 介紹，以及一些好用小工具分享。
 本文 一、事前準備 1、首先我們先建立一個 core 專案。 選擇 API 建立 2、資料庫準備。 先到此連結下載北風資料庫
 點選 instnwnd.sql，選擇 Download。 會看到瀏覽器顯示一長串 SQ L語法，把這邊全部複製起來。 到 SSMS 點選新增查詢，把語法貼上後執行。 看到資料庫出現 Northwind 代表成功。 二、API 開發 1、首先我們建立一個 Models 資料夾。 建立一個 ProductModel 類別，對應北風資料庫的 Products。 建立 ProductModel
-public class ProductModel { /// &amp;lt;summary&amp;gt;  /// 商品流水號  /// &amp;lt;/summary&amp;gt;  public int ProductID { get; set; } /// &amp;lt;summary&amp;gt;  /// 商品名稱  /// &amp;lt;/summary&amp;gt;  public string ProductName { get; set; } /// &amp;lt;summary&amp;gt;  /// 供應商ID  /// &amp;lt;/summary&amp;gt;  public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt;  /// 種類ID  /// &amp;lt;/summary&amp;gt;  public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位數量  /// &amp;lt;/summary&amp;gt;  public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位價格  /// &amp;lt;/summary&amp;gt;  public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位稅額  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt;  /// 每單位訂購價  /// &amp;lt;/summary&amp;gt;  public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt;  /// 重新訂購等級  /// &amp;lt;/summary&amp;gt;  public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt;  /// 是否已停產  /// &amp;lt;/summary&amp;gt;  public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看 DB 內資料類型</description>
+public class ProductModel { /// &amp;lt;summary&amp;gt; /// 商品流水號 /// &amp;lt;/summary&amp;gt; public int ProductID { get; set; } /// &amp;lt;summary&amp;gt; /// 商品名稱 /// &amp;lt;/summary&amp;gt; public string ProductName { get; set; } /// &amp;lt;summary&amp;gt; /// 供應商ID /// &amp;lt;/summary&amp;gt; public int SupplierID { get; set; } /// &amp;lt;summary&amp;gt; /// 種類ID /// &amp;lt;/summary&amp;gt; public int CategoryID { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位數量 /// &amp;lt;/summary&amp;gt; public string QuantityPerUnit { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位價格 /// &amp;lt;/summary&amp;gt; public decimal UnitPrice { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位稅額 /// &amp;lt;/summary&amp;gt; public Int16 UnitsInStock { get; set; } /// &amp;lt;summary&amp;gt; /// 每單位訂購價 /// &amp;lt;/summary&amp;gt; public Int16 UnitsOnOrder { get; set; } /// &amp;lt;summary&amp;gt; /// 重新訂購等級 /// &amp;lt;/summary&amp;gt; public Int16 ReorderLevel { get; set; } /// &amp;lt;summary&amp;gt; /// 是否已停產 /// &amp;lt;/summary&amp;gt; public bool Discontinued { get; set; } } 這邊各欄位的型態可以先看 DB 內資料類型</description>
     </item>
     
   </channel>

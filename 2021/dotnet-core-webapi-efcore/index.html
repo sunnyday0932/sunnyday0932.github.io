@@ -202,28 +202,28 @@
 <img src="https://i.imgur.com/XC7QsCe.jpg" alt=""></p>
 <h3 id="二接下來需要輸入指令建立-efcore-所使用的-dbcontext">二、接下來需要輸入指令建立 EFCore 所使用的 DBContext。</h3>
 <p>完整指令如下：</p>
-<pre><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext 'Data Source=localhost;Database=Northwind;Trusted_Connection=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer -OutputDir Conditions -Tables Users -context AccountContext -Project WebApiEFCoreRepository -force
 </code></pre><p>這邊提一下指令由前到後介紹：</p>
-<pre><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext 'Data Source=localhost;Database=Northwind;Trusted_Connection=True;' Microsoft.EntityFrameworkCore.SqlServer
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">Scaffold-DbContext &#39;Data Source=localhost;Database=Northwind;Trusted_Connection=True;&#39; Microsoft.EntityFrameworkCore.SqlServer
 </code></pre><p>這段是我們與 DB 連線字串，然後指定所使用的 DB 是 SQL server。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">-OutputDir Conditions
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">-OutputDir Conditions
 </code></pre><p>這邊是生成檔案放置地點。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">-Tables Users
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">-Tables Users
 </code></pre><p>指定的 Table 名稱。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">-context AccountContext
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">-context AccountContext
 </code></pre><p>這是會生成的 DBContext 檔案名稱，這邊我取名為 AccountContext。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">-Project WebApiEFCoreRepository -force
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">-Project WebApiEFCoreRepository -force
 </code></pre><p>指定生成在 Repository 專案，最後的 force 其實第一次生成 DBContext 時不用加，但後續要再加 Table 的時候可能會用上；至於我為甚麼留著呢？那當然是因為 <del>懶惰</del></p>
 <h3 id="三建完之後步驟">三、建完之後步驟。</h3>
 <p>指令建出來的 context 檔案其中有一段 DB 連線的地方這邊可以先拿掉，之後我們會使用注入的方式拿取連線字串。</p>
 <p><img src="https://i.imgur.com/c3wy5hF.jpg" alt=""></p>
 <p>接下來建立 IAccountRepository</p>
-<pre><code class="language-csharp=" data-lang="csharp=">public interface IAccountRepository
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">public interface IAccountRepository
     {
         /// &lt;summary&gt;
         /// 取得單筆帳號資訊
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;account&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public AccountCondition GetAccount(string account);
 
@@ -236,40 +236,40 @@
         /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool AddAccount(AccountCondition condition);
 
         /// &lt;summary&gt;
         /// 刪除帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;account&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool RemoveAccount(string account);
 
         /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool UpdateAccount(AccountCondition condition);
 
         /// &lt;summary&gt;
         /// 忘記密碼
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool ForgetPassword(AccountCondition condition);
     }
 </code></pre><p>實作 AccountRepository</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    public class AccountRepository : IAccountRepository
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    public class AccountRepository : IAccountRepository
     {
         private readonly AccountContext _accountContext;
 
         /// &lt;summary&gt;
         /// 
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;accountContext&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;accountContext&#34;&gt;&lt;/param&gt;
         public AccountRepository(AccountContext accountContext)
         {
             this._accountContext = accountContext;
@@ -278,7 +278,7 @@
         /// &lt;summary&gt;
         /// 新增帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool AddAccount(AccountCondition condition)
         {
@@ -291,7 +291,7 @@
         /// &lt;summary&gt;
         /// 忘記密碼
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool ForgetPassword(AccountCondition condition)
         {
@@ -305,7 +305,7 @@
         /// &lt;summary&gt;
         /// 取得單筆帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;account&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public AccountCondition GetAccount(string account)
         {
@@ -328,7 +328,7 @@
         /// &lt;summary&gt;
         /// 刪除帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;account&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;account&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool RemoveAccount(string account)
         {
@@ -342,7 +342,7 @@
         /// &lt;summary&gt;
         /// 更新帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool UpdateAccount(AccountCondition condition)
         {
@@ -357,17 +357,17 @@
         }
     }
 </code></pre><p>接下來 Service 部分列出稍微不同的地方</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號資訊
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;info&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;info&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public ResultDto UpdateAccount(AccountInfoModel info)
         {
             if (string.IsNullOrWhiteSpace(info.Account) ||
                 string.IsNullOrWhiteSpace(info.Password))
             {
-                throw new Exception(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                throw new Exception(&#34;請檢查輸入欄位，缺一不可！&#34;);
             }
 
             var accountInfo = this._accountRepository.GetAccount(info.Account);
@@ -377,7 +377,7 @@
                 return new ResultDto
                 {
                     Success = false,
-                    Message = &quot;請確認要更新的帳號！&quot;
+                    Message = &#34;請確認要更新的帳號！&#34;
                 };
             }
 
@@ -388,7 +388,7 @@
                 return new ResultDto
                 {
                     Success = false,
-                    Message = &quot;請確認輸入的密碼是否與註冊時一致！&quot;
+                    Message = &#34;請確認輸入的密碼是否與註冊時一致！&#34;
                 };
             }
 
@@ -401,17 +401,17 @@
             return new ResultDto
             {
                 Success = result,
-                Message = result ? &quot;更新成功&quot; : &quot;更新失敗&quot;
+                Message = result ? &#34;更新成功&#34; : &#34;更新失敗&#34;
             };
         }
 </code></pre><p>StartUp 部分</p>
-<pre><code class="language-csharp=" data-lang="csharp=">public void ConfigureServices(IServiceCollection services)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">public void ConfigureServices(IServiceCollection services)
         {
             //注入註冊
             services.AddScoped&lt;IAccountService, AccountService&gt;();
             services.AddScoped&lt;IAccountRepository, AccountRepository&gt;();
             services.AddDbContext&lt;AccountContext&gt;(
-                options =&gt; options.UseSqlServer(@&quot;Server=localhost;Database=Northwind;Trusted_Connection=True;&quot;));
+                options =&gt; options.UseSqlServer(@&#34;Server=localhost;Database=Northwind;Trusted_Connection=True;&#34;));
 
             //AutoMapper
             services.AddAutoMapper(
@@ -430,10 +430,10 @@
 <p>2021/04/19更新<br>
 感謝同事指正，提供了新的部分更新做法。<br>
 原本寫法</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool UpdateAccount(AccountCondition condition)
         {
@@ -447,10 +447,10 @@
             return result &gt; 0;
         }
 </code></pre><p>更新後寫法</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 更新帳號
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;condition&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;condition&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
         public bool UpdateAccount(AccountCondition condition)
         {
@@ -541,7 +541,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

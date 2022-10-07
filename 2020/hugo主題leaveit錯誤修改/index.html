@@ -180,29 +180,29 @@
 裡面長這樣：
 <img src="https://i.imgur.com/xUstLXz.jpg" alt=""></p>
 <p>一開始裡面就少了一個括號，只要把這邊補上就正常啦。</p>
-<pre><code class="language-json=" data-lang="json=">{
-    &quot;@context&quot; : &quot;http://schema.org&quot;,
-    &quot;@type&quot; : &quot;BlogPosting&quot;,
-    &quot;mainEntityOfPage&quot;: {
-         &quot;@type&quot;: &quot;WebPage&quot;,
-         &quot;@id&quot;: &quot;{{ .Site.BaseURL }}&quot;
+<pre tabindex="0"><code class="language-json=" data-lang="json=">{
+    &#34;@context&#34; : &#34;http://schema.org&#34;,
+    &#34;@type&#34; : &#34;BlogPosting&#34;,
+    &#34;mainEntityOfPage&#34;: {
+         &#34;@type&#34;: &#34;WebPage&#34;,
+         &#34;@id&#34;: &#34;{{ .Site.BaseURL }}&#34;
     },
-    &quot;articleSection&quot; : &quot;{{ .Section }}&quot;,
-    &quot;name&quot; : &quot;{{ .Title }}&quot;,
-    &quot;headline&quot; : &quot;{{ .Title }}&quot;,
-    &quot;description&quot; : &quot;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&quot;,
-    &quot;inLanguage&quot; : &quot;{{ .Site.LanguageCode }}&quot;,
-    &quot;author&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
-    &quot;creator&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
-    &quot;publisher&quot;: &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
-    &quot;accountablePerson&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
-    &quot;copyrightHolder&quot; : &quot;{{ if isset .Params &quot;author&quot; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&quot;,
-    &quot;copyrightYear&quot; : &quot;{{ .Date.Format &quot;2006&quot; }}&quot;,
-    &quot;datePublished&quot;: &quot;{{ .Date }}&quot;,
-    &quot;dateModified&quot; : &quot;{{ .Date }}&quot;,
-    &quot;url&quot; : &quot;{{ .Permalink }}&quot;,
-    &quot;wordCount&quot; : &quot;{{ .WordCount }}&quot;,
-    &quot;keywords&quot; : [{{ if isset .Params &quot;tags&quot; }}{{ range .Params.tags }}&quot;{{ . }}&quot;,{{ end }}{{ end }} {{with .Site.Title}}&quot;{{ .}}&quot;{{ end }}]
+    &#34;articleSection&#34; : &#34;{{ .Section }}&#34;,
+    &#34;name&#34; : &#34;{{ .Title }}&#34;,
+    &#34;headline&#34; : &#34;{{ .Title }}&#34;,
+    &#34;description&#34; : &#34;{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}&#34;,
+    &#34;inLanguage&#34; : &#34;{{ .Site.LanguageCode }}&#34;,
+    &#34;author&#34; : &#34;{{ if isset .Params &#34;author&#34; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&#34;,
+    &#34;creator&#34; : &#34;{{ if isset .Params &#34;author&#34; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&#34;,
+    &#34;publisher&#34;: &#34;{{ if isset .Params &#34;author&#34; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&#34;,
+    &#34;accountablePerson&#34; : &#34;{{ if isset .Params &#34;author&#34; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&#34;,
+    &#34;copyrightHolder&#34; : &#34;{{ if isset .Params &#34;author&#34; }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}&#34;,
+    &#34;copyrightYear&#34; : &#34;{{ .Date.Format &#34;2006&#34; }}&#34;,
+    &#34;datePublished&#34;: &#34;{{ .Date }}&#34;,
+    &#34;dateModified&#34; : &#34;{{ .Date }}&#34;,
+    &#34;url&#34; : &#34;{{ .Permalink }}&#34;,
+    &#34;wordCount&#34; : &#34;{{ .WordCount }}&#34;,
+    &#34;keywords&#34; : [{{ if isset .Params &#34;tags&#34; }}{{ range .Params.tags }}&#34;{{ . }}&#34;,{{ end }}{{ end }} {{with .Site.Title}}&#34;{{ .}}&#34;{{ end }}]
 }
 </code></pre><p>目前還有另一個已知問題，字串中的逸出序列無效。<br>
 <img src="https://i.imgur.com/4xDYJQO.jpg" alt=""></p>
@@ -274,7 +274,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

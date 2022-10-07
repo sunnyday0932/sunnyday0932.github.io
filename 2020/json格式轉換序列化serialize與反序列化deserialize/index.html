@@ -176,37 +176,37 @@
 <h3 id="本文">本文</h3>
 <p>一開始很好奇我擷取的字串出來序列化的 Json 格式，會多出空行的符號\r\n。<br>
 <!-- raw HTML omitted --></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;{\&#34;A\&#34;:\&#34;ss\r\nss\&#34;,\&#34;B\&#34;:\&#34;ss\nss\&#34;}&#34;</span>
-</code></pre></div><p>於是就跟同事討論起這件事，我一開始想法是這是不是會影響別人收到後處理結果呢?<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;{\&#34;A\&#34;:\&#34;ss\r\nss\&#34;,\&#34;B\&#34;:\&#34;ss\nss\&#34;}&#34;</span>
+</span></span></code></pre></div><p>於是就跟同事討論起這件事，我一開始想法是這是不是會影響別人收到後處理結果呢?<br>
 同事做了簡單範例解釋。<br>
 <!-- raw HTML omitted --></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
-    {
-        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-			<span style="color:#66d9ef">var</span> objTest = <span style="color:#66d9ef">new</span> Test
-			{
-				A = <span style="color:#e6db74">&#34;ss\r\nss&#34;</span>,
-				B = <span style="color:#e6db74">&#34;ss\nss&#34;</span>
-			};
-
-			<span style="color:#66d9ef">var</span> jsonObj = JsonConvert.SerializeObject(objTest);
-
-			Console.WriteLine(jsonObj);
-
-			<span style="color:#66d9ef">var</span> obj2 = JsonConvert.DeserializeObject&lt;Test&gt;(<span style="color:#e6db74">&#34;{\&#34;A\&#34;:\&#34;ss\r\nss\&#34;,\&#34;B\&#34;:\&#34;ss\nss\&#34;}&#34;</span>);
-
-			Console.WriteLine(obj2.A);
-			Console.WriteLine(obj2.B);
-		}
-
-		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>
-		{
-			<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> A { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-			<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> B { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-		}
-	}
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">var</span> objTest = <span style="color:#66d9ef">new</span> Test
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				A = <span style="color:#e6db74">&#34;ss\r\nss&#34;</span>,
+</span></span><span style="display:flex;"><span>				B = <span style="color:#e6db74">&#34;ss\nss&#34;</span>
+</span></span><span style="display:flex;"><span>			};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">var</span> jsonObj = JsonConvert.SerializeObject(objTest);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			Console.WriteLine(jsonObj);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">var</span> obj2 = JsonConvert.DeserializeObject&lt;Test&gt;(<span style="color:#e6db74">&#34;{\&#34;A\&#34;:\&#34;ss\r\nss\&#34;,\&#34;B\&#34;:\&#34;ss\nss\&#34;}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			Console.WriteLine(obj2.A);
+</span></span><span style="display:flex;"><span>			Console.WriteLine(obj2.B);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> A { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> B { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <p>輸出結果</p>
 <p><img src="https://i.imgur.com/l0QRZYc.jpg" alt="輸出結果"><br>
 <!-- raw HTML omitted -->
@@ -275,7 +275,7 @@ Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

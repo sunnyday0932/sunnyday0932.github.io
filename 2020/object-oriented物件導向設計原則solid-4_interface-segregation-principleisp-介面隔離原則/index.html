@@ -190,130 +190,130 @@
 <li>2、不應該強迫實作沒用到的方法。</li>
 </ul>
 <p>舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>();
-        }
-		
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;3秒內時速100公里的引擎&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開敞篷車門&#34;</span>;
-            }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gogoro</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;5秒內時速100公里的引擎&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;痾沒有車門&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.後照鏡()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.車門()}&#34;</span>);
-
-            Console.WriteLine(<span style="color:#e6db74">&#34;=====================&#34;</span>);
-
-            <span style="color:#66d9ef">var</span> gogoro = <span style="color:#66d9ef">new</span> Gogoro();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.後照鏡()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.車門()}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/HgfrcKl.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;3秒內時速100公里的引擎&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開敞篷車門&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gogoro</span> : <span style="color:#960050;background-color:#1e0010">車子</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">引擎</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;5秒內時速100公里的引擎&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">後照鏡</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">車門</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;痾沒有車門&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.車門()}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;=====================&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> gogoro = <span style="color:#66d9ef">new</span> Gogoro();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.車門()}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/HgfrcKl.jpg" alt=""></p>
 <p>這時候會發現我們設計稿並不適用於 Gogoro，思考一下特斯拉與 Gogoro 的種類，一種為電動車、一種為電動機車，兩者的配件也不同不可互用；所以我們應該拆分兩種不同的設計稿，程式修改如下。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">電動車</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車引擎</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車後照鏡</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車門</span>();
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">電動機車</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車引擎</span>();
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車後照鏡</span>();
-        }
-		
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">電動車</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車引擎</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;3秒內時速100公里的引擎&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車後照鏡</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車門</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開敞篷車門&#34;</span>;
-            }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gogoro</span> : <span style="color:#960050;background-color:#1e0010">電動機車</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車引擎</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;5秒內時速100公里的引擎&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車後照鏡</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡&#34;</span>;
-            }
-        }
-		
-		<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車後照鏡()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車門()}&#34;</span>);
-
-            Console.WriteLine(<span style="color:#e6db74">&#34;=====================&#34;</span>);
-
-            <span style="color:#66d9ef">var</span> gogoro = <span style="color:#66d9ef">new</span> Gogoro();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.電動機車引擎()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.電動機車後照鏡()}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/ZxkyZpB.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">電動車</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車引擎</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車後照鏡</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車門</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">電動機車</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車引擎</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車後照鏡</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : <span style="color:#960050;background-color:#1e0010">電動車</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車引擎</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;3秒內時速100公里的引擎&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車後照鏡</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動車門</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;側開敞篷車門&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gogoro</span> : <span style="color:#960050;background-color:#1e0010">電動機車</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車引擎</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;5秒內時速100公里的引擎&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">電動機車後照鏡</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;左右後視鏡&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉有 : {特斯拉.電動車門()}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;=====================&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> gogoro = <span style="color:#66d9ef">new</span> Gogoro();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.電動機車引擎()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;Gogoro有 : {gogoro.電動機車後照鏡()}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/ZxkyZpB.jpg" alt=""></p>
 <h2 id="參考連結">參考連結</h2>
 <ul>
 <li>1、<a href="https://dotblogs.com.tw/hatelove/2010/10/17/interface-segregation-principle">91之ASP.NET由淺入深 不負責講座 Day20 – ISP 介面隔離原則</a></li>
@@ -382,7 +382,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

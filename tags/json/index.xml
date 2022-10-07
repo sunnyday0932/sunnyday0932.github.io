@@ -20,7 +20,7 @@
 class Program { static void Main(string[] args) { var objTest = new Test { A = &amp;#34;ss\r\nss&amp;#34;, B = &amp;#34;ss\nss&amp;#34; }; var jsonObj = JsonConvert.SerializeObject(objTest); Console.WriteLine(jsonObj); var obj2 = JsonConvert.DeserializeObject&amp;lt;Test&amp;gt;(&amp;#34;{\&amp;#34;A\&amp;#34;:\&amp;#34;ss\r\nss\&amp;#34;,\&amp;#34;B\&amp;#34;:\&amp;#34;ss\nss\&amp;#34;}&amp;#34;); Console.WriteLine(obj2.A); Console.WriteLine(obj2.B); } public class Test { public string A { get; set; } public string B { get; set; } } } 輸出結果
 Json 格式會有自己特殊的跳脫字元，而在反序列化中程式就會將字串轉換成我們看到的正常樣貌。
 所以結論就是，通通丟給對方處理就對了🤟
-參考連結  1、Json 官方文件 2、瞭解 Json 格式  </description>
+參考連結 1、Json 官方文件 2、瞭解 Json 格式 </description>
     </item>
     
   </channel>

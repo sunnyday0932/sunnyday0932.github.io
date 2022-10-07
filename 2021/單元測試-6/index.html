@@ -185,7 +185,7 @@
 <p>因為是要對 Service 層進行測試，記得要加入專案參考。<br>
 <img src="https://i.imgur.com/IRx0F2t.jpg" alt=""></p>
 <p>接下來先把基礎測試專案需要用到的東西準備好。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestClass]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestClass]
     public class AccountServiceTest
     {
         private IAccountRepository _accountRepository;
@@ -219,10 +219,10 @@
 <p>接下來就可以開始寫單元測試了。</p>
 <h3 id="addaccount新增帳號">AddAccount(新增帳號)</h3>
 <h4 id="1有四個必填欄位需要確認">1、有四個必填欄位需要確認。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_Account為空_應回傳Exception()
         {
             //assert
@@ -230,77 +230,77 @@
             var info = new AccountInfoModel
             {
                 Account = string.Empty,
-                Email = &quot;test@gmail.com&quot;,
-                Password = &quot;123456&quot;,
-                Phone = &quot;0917888444&quot;
+                Email = &#34;test@gmail.com&#34;,
+                Password = &#34;123456&#34;,
+                Phone = &#34;0917888444&#34;
             };
             //act
             Action actual = () =&gt; sut.AddAccount(info);
 
             //arrange
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_Email為空_應回傳Exception()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
+                Account = &#34;test&#34;,
                 Email = string.Empty,
-                Password = &quot;123456&quot;,
-                Phone = &quot;0917888444&quot;
+                Password = &#34;123456&#34;,
+                Phone = &#34;0917888444&#34;
             };
             //act
             Action actual = () =&gt; sut.AddAccount(info);
 
             //arrange
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_Password為空_應回傳Exception()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test@gmail.com&quot;,
+                Account = &#34;test&#34;,
+                Email = &#34;test@gmail.com&#34;,
                 Password = string.Empty,
-                Phone = &quot;0917888444&quot;
+                Phone = &#34;0917888444&#34;
             };
             //act
             Action actual = () =&gt; sut.AddAccount(info);
 
             //arrange
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_Phone為空_應回傳Exception()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test@gmail.com&quot;,
-                Password = &quot;123456&quot;,
+                Account = &#34;test&#34;,
+                Email = &#34;test@gmail.com&#34;,
+                Password = &#34;123456&#34;,
                 Phone = string.Empty
             };
             //act
@@ -308,38 +308,38 @@
 
             //arrange
             actual.Should().Throw&lt;Exception&gt;()
-                .Which.Message.Contains(&quot;請檢查輸入欄位，缺一不可！&quot;);
+                .Which.Message.Contains(&#34;請檢查輸入欄位，缺一不可！&#34;);
         }
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/1dQ5v5b.jpg" alt=""></p>
 <h4 id="2使用者的帳號不可以重複">2、使用者的帳號不可以重複。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_使用者帳號重複_應回傳錯誤訊息()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test@gmail.com&quot;,
-                Password = &quot;123456&quot;,
-                Phone = &quot;0917888111&quot;
+                Account = &#34;test&#34;,
+                Email = &#34;test@gmail.com&#34;,
+                Password = &#34;123456&#34;,
+                Phone = &#34;0917888111&#34;
             };
 
             var data = new AccountDataModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test@gmail.com&quot;,
-                Phone = &quot;0917888111&quot;
+                Account = &#34;test&#34;,
+                Email = &#34;test@gmail.com&#34;,
+                Phone = &#34;0917888111&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;該使用者帳號已存在，請確認！&quot;
+                Message = &#34;該使用者帳號已存在，請確認！&#34;
             };
 
             this._accountRepository.GetAccount(Arg.Any&lt;string&gt;()).Returns(data);
@@ -353,26 +353,26 @@
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/1YwFcd6.jpg" alt=""></p>
 <h4 id="3密碼長度不可低於6碼">3、密碼長度不可低於6碼。</h4>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_密碼長度低於6碼_應回傳錯誤訊息()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test@gmail.com&quot;,
-                Password = &quot;1234&quot;,
-                Phone = &quot;0917888111&quot;
+                Account = &#34;test&#34;,
+                Email = &#34;test@gmail.com&#34;,
+                Password = &#34;1234&#34;,
+                Phone = &#34;0917888111&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;使用者密碼長度不可低於6碼！&quot;
+                Message = &#34;使用者密碼長度不可低於6碼！&#34;
             };
 
             //act
@@ -386,19 +386,19 @@
 <h3 id="4密碼需透過加密處理存入資料庫">4、密碼需透過加密處理存入資料庫。</h3>
 <p>這邊比較特別的是 ConverPassword 這個 Function 是 Private，一般來說我們並不會特別針對 Private Function 做測試，理由是一個 Private Function 一定會在某個 Public Function 被執行。</p>
 <p>當然要對 Private Function 進行測試也不是不行的，可以使用以下方式。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConverPassword&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ConverPassword&#34;)]
         public void ConverPassword_輸入密碼_應回傳加密結果()
         {
             //assert
             var sut = this.GetSystemUnderTest();
-            var method = sut.GetType().GetMethod(&quot;ConverPassword&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
-            var expect = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;;
+            var method = sut.GetType().GetMethod(&#34;ConverPassword&#34;, BindingFlags.Instance | BindingFlags.NonPublic);
+            var expect = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;;
 
             //act
-            var actual = method.Invoke(sut, new[] { &quot;test2&quot;, &quot;12371324&quot; });
+            var actual = method.Invoke(sut, new[] { &#34;test2&#34;, &#34;12371324&#34; });
 
             //arrange
             actual.Should().Be(expect);
@@ -421,26 +421,26 @@
 <p>安裝完後要到 Service 的 csproj 檔新增以下設定。</p>
 <p><img src="https://i.imgur.com/Fm7sPHV.jpg" alt=""></p>
 <p>對專案左鍵點擊兩下即可進入 csproj。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">&lt;ItemGroup&gt;
-  &lt;InternalsVisibleTo Include=&quot;$(AssemblyName)Tests&quot;/&gt; 
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">&lt;ItemGroup&gt;
+  &lt;InternalsVisibleTo Include=&#34;$(AssemblyName)Tests&#34;/&gt; 
   //專案名稱有Tests結尾的都可以看到Internal
 &lt;/ItemGroup&gt;
 </code></pre><p><img src="https://i.imgur.com/Fq3lUga.jpg" alt=""></p>
 <p>接下來到我們的測試專案原本測試 Private function 的地方。<br>
 <img src="https://i.imgur.com/p1c1PfZ.jpg" alt=""></p>
 <p>修改一下寫法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;ConverPassword&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;ConverPassword&#34;)]
         public void ConverPassword_輸入密碼_應回傳加密結果()
         {
             //assert
             var sut = this.GetSystemUnderTest();
-            var expect = &quot;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&quot;;
+            var expect = &#34;9GYVaHLoOg+y+V/HHwKtkzBH3y8XWn14h8ifWPYViLc=&#34;;
 
             //act
-            var actual = sut.ConverPassword(&quot;test2&quot;, &quot;12371324&quot; );
+            var actual = sut.ConverPassword(&#34;test2&#34;, &#34;12371324&#34; );
 
             //arrange
             actual.Should().Be(expect);
@@ -449,35 +449,35 @@
 <img src="https://i.imgur.com/LUBH685.jpg" alt=""></p>
 <h3 id="檢查信箱是否合法">檢查信箱是否合法。</h3>
 <p>同上一樣可以透過以下方式確認這個 Function 是否正確。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;CheckMailFormate&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;CheckMailFormate&#34;)]
         public void CheckMailFormate_輸入錯誤格式Mail_應回傳False()
         {
             //assert
             var sut = this.GetSystemUnderTest();
-            var method = sut.GetType().GetMethod(&quot;CheckMailFormate&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+            var method = sut.GetType().GetMethod(&#34;CheckMailFormate&#34;, BindingFlags.Instance | BindingFlags.NonPublic);
 
             //act
-            var actual = method.Invoke(sut, new[] { &quot;fff#gmail.com&quot;});
+            var actual = method.Invoke(sut, new[] { &#34;fff#gmail.com&#34;});
 
             //arrange
             actual.Should().Be(false);
         }
         
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;CheckMailFormate&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;CheckMailFormate&#34;)]
         public void CheckMailFormate_輸入正確格式Mail_應回傳True()
         {
             //assert
             var sut = this.GetSystemUnderTest();
-            var method = sut.GetType().GetMethod(&quot;CheckMailFormate&quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+            var method = sut.GetType().GetMethod(&#34;CheckMailFormate&#34;, BindingFlags.Instance | BindingFlags.NonPublic);
 
             //act
-            var actual = method.Invoke(sut, new[] { &quot;fff@gmail.com&quot; });
+            var actual = method.Invoke(sut, new[] { &#34;fff@gmail.com&#34; });
 
             //arrange
             actual.Should().Be(true);
@@ -486,26 +486,26 @@
 <img src="https://i.imgur.com/Ih4PdPM.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/2gCgrDq.jpg" alt=""></p>
 <p>接下來別忘了要回去測試我們檢查信箱後回傳的訊息。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_輸入信箱格式部正確_應回傳錯誤訊息()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test#gmail.com&quot;,
-                Password = &quot;1234567&quot;,
-                Phone = &quot;0917888111&quot;
+                Account = &#34;test&#34;,
+                Email = &#34;test#gmail.com&#34;,
+                Password = &#34;1234567&#34;,
+                Phone = &#34;0917888111&#34;
             };
 
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;請確認信箱格式！&quot;
+                Message = &#34;請確認信箱格式！&#34;
             };
 
             //act
@@ -517,20 +517,20 @@
 </code></pre><p>結果:<br>
 <img src="https://i.imgur.com/KGtgYcT.jpg" alt=""></p>
 <h3 id="新增結果">新增結果。</h3>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_新增成功_應回傳正確訊息()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test@gmail.com&quot;,
-                Password = &quot;1234567&quot;,
-                Phone = &quot;0917888111&quot;
+                Account = &#34;test&#34;,
+                Email = &#34;test@gmail.com&#34;,
+                Password = &#34;1234567&#34;,
+                Phone = &#34;0917888111&#34;
             };
 
             this._accountRepository.AddAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(true);
@@ -538,7 +538,7 @@
             var expect = new ResultDto
             {
                 Success = true,
-                Message = &quot;新增成功&quot;
+                Message = &#34;新增成功&#34;
             };
 
             //act
@@ -549,19 +549,19 @@
         }
         
         [TestMethod]
-        [Owner(&quot;Sian&quot;)]
-        [TestCategory(&quot;AccountServiceTest&quot;)]
-        [TestProperty(&quot;AccountServiceTest&quot;, &quot;AddAccount&quot;)]
+        [Owner(&#34;Sian&#34;)]
+        [TestCategory(&#34;AccountServiceTest&#34;)]
+        [TestProperty(&#34;AccountServiceTest&#34;, &#34;AddAccount&#34;)]
         public void AddAccount_新增失敗_應回傳錯誤訊息()
         {
             //assert
             var sut = this.GetSystemUnderTest();
             var info = new AccountInfoModel
             {
-                Account = &quot;test&quot;,
-                Email = &quot;test@gmail.com&quot;,
-                Password = &quot;1234567&quot;,
-                Phone = &quot;0917888111&quot;
+                Account = &#34;test&#34;,
+                Email = &#34;test@gmail.com&#34;,
+                Password = &#34;1234567&#34;,
+                Phone = &#34;0917888111&#34;
             };
 
             this._accountRepository.AddAccount(Arg.Any&lt;AccountCondition&gt;()).Returns(false);
@@ -569,7 +569,7 @@
             var expect = new ResultDto
             {
                 Success = false,
-                Message = &quot;新增失敗&quot;
+                Message = &#34;新增失敗&#34;
             };
 
             //act
@@ -652,7 +652,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

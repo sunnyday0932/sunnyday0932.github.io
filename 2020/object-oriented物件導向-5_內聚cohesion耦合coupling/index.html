@@ -178,33 +178,33 @@
 <p>大意上就是把程式跟所需要的資料全部都包在一起。<br>
 舉例：(不要懷疑我們最熟悉的特斯拉又來了)<br>
 今天我想要讓特斯拉具備螢幕、音響這些娛樂設施可以看電影，有了電影當然需要食物啊，那就需要有在特斯拉上吃爆米花的功能。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個特斯拉類別有螢幕、音響、吃爆米花
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">螢幕</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;播放電影&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">音響</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;杜比環繞音效&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">吃爆米花</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;爆米花好吃&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">螢幕</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉開啟 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">音響</span>());
-            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">吃爆米花</span>());
-        }
-</code></pre></div><p><img src="https://i.imgur.com/qsffE9s.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個特斯拉類別有螢幕、音響、吃爆米花</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">螢幕</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;播放電影&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">音響</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;杜比環繞音效&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">吃爆米花</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;爆米花好吃&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">螢幕</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉開啟 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">音響</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(Tesla.<span style="color:#960050;background-color:#1e0010">吃爆米花</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/qsffE9s.jpg" alt=""></p>
 <p>這時候要提到程式設計常聽到的。</p>
 <h4 id="高內聚">高內聚</h4>
 <ul>
@@ -219,39 +219,39 @@
 <li>特斯拉本身並不需要知道怎麼吃爆米花，需要知道怎麼吃爆米花的是人。</li>
 </ul>
 <p>我們修改一下範例</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個特斯拉類別有螢幕、音響
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">螢幕</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;播放電影&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">音響</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;杜比環繞音效&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//產生一個人類別有吃爆米花的動作
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">人</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">吃爆米花</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;爆米花好吃&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">螢幕</span>());
-            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉開啟 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">音響</span>());
-
-            <span style="color:#960050;background-color:#1e0010">人</span> Human = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">人</span>();
-            Console.WriteLine(<span style="color:#e6db74">&#34;人在特斯拉上吃爆米花覺得：&#34;</span> + Human.<span style="color:#960050;background-color:#1e0010">吃爆米花</span>());
-        }
-</code></pre></div><p><img src="https://i.imgur.com/IWOETBr.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個特斯拉類別有螢幕、音響</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">螢幕</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;播放電影&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">音響</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;杜比環繞音效&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個人類別有吃爆米花的動作</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">人</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">吃爆米花</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;爆米花好吃&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">螢幕</span>());
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;特斯拉開啟 :&#34;</span> + Tesla.<span style="color:#960050;background-color:#1e0010">音響</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">人</span> Human = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">人</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;人在特斯拉上吃爆米花覺得：&#34;</span> + Human.<span style="color:#960050;background-color:#1e0010">吃爆米花</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/IWOETBr.jpg" alt=""></p>
 <p>獨立出了特斯拉與人兩個 Class，特斯拉以後可以再加裝 KTV 設備，而人也可以增加唱歌這個動作，兩個模組具備自己的主題且獨立運作，亦可以獨立被使用。<br>
 <!-- raw HTML omitted --></p>
 <h3 id="2耦合coupling">2、耦合(Coupling)</h3>
@@ -261,91 +261,91 @@
 <p>簡單來說就是程式之間的關聯性。<br>
 2020/07/20 修改範例，跟同事聊完後，發現舉例不夠藕(?</p>
 <p>舉例：今天特斯拉必須要有駕駛才能上路。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#75715e">//產生一個特斯拉類別有上路的功能
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>(<span style="color:#960050;background-color:#1e0010">駕駛</span> driver)
-            {
-                <span style="color:#66d9ef">return</span> driver.<span style="color:#960050;background-color:#1e0010">司機</span>();
-            }
-        }
-
-        <span style="color:#75715e">//產生一個駕駛類別有一位司機
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">司機</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;一位司機&#34;</span>;
-            }
-        }
-		
-	 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">駕駛</span> driver = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路(driver)}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/WlJwANa.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	 <span style="color:#75715e">//產生一個特斯拉類別有上路的功能</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>(<span style="color:#960050;background-color:#1e0010">駕駛</span> driver)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> driver.<span style="color:#960050;background-color:#1e0010">司機</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個駕駛類別有一位司機</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">司機</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;一位司機&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">駕駛</span> driver = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路(driver)}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/WlJwANa.jpg" alt=""></p>
 <p>上述例子特斯拉就跟駕駛這個類別產生高度藕和的關係，當我想要將駕駛這個類別加入新東西時，特斯拉就會受到影響。<br>
 這時候又可以提到另一個觀念。</p>
 <h4 id="低耦合">低耦合</h4>
 <p>要怎麼降低這個範例程式的耦合度呢？<br>
 我們可以將駕駛這個類別改成介面。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛介面
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> Idriver
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
-        }
-
-        <span style="color:#75715e">//產生一個特斯拉類別有上路的功能並繼承駕駛介面
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : Idriver
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">駕駛</span>();
-            }
-
-            <span style="color:#75715e">//實作駕駛這個類別
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;人類司機&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路()}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/v4uJSiy.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個駕駛介面</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Idriver</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生一個特斯拉類別有上路的功能並繼承駕駛介面</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : Idriver
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//實作駕駛這個類別</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;人類司機&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路()}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/v4uJSiy.jpg" alt=""></p>
 <p>如此一來特斯拉不直接依賴於駕駛，改成依賴於介面就降低了耦合度，今天特斯拉技術成長快速，真的能實際自動駕駛上路時我們也可以將駕駛抽換成自動駕駛如下&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛介面
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> Idriver
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
-        }
-		
-	<span style="color:#75715e">//產生一個特斯拉類別有上路的功能並繼承駕駛介面
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : Idriver
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">駕駛</span>();
-            }
-
-            <span style="color:#75715e">//實作駕駛這個類別
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;自動駕駛&#34;</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路()}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/MuDGfiY.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個駕駛介面</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Idriver</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個特斯拉類別有上路的功能並繼承駕駛介面</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span> : Idriver
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">上路</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//實作駕駛這個類別</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;自動駕駛&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">特斯拉</span> Tesla = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">特斯拉</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉上路有{Tesla.上路()}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/MuDGfiY.jpg" alt=""></p>
 <h4 id="高內聚低耦合最終目的">高內聚、低耦合最終目的</h4>
 <ul>
 <li>需求異動容易抽換、修改與增加功能，而不會對太多既存功能造成影響。</li>
@@ -417,7 +417,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -260,18 +260,18 @@
 <p>傳統 MVC 分成，View(展示層)-Model(資料層)-Controller(控制層)，這邊與三層式架構最大的區別在於傳統MVC並沒有特別把『商業邏輯』抽出來；常會看到傳統 MVC 可能會把商業邏輯附加在 Controller，所以 MVC 與三層式架構是不同的。</p>
 <h4 id="2各層間溝通一定要透過-model-嗎">2、各層間溝通一定要透過 Model 嗎？</h4>
 <p>這個答案就我個人使用的理解是，『不一定要透過 Model』，如果只是要回傳簡單的 bool 、或是一兩個參數，直接傳就可以了；那做成 Model 的用意呢？當然也是為了提高重用性，例如我們前幾篇所用的 ResultModel。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultModel</span>
-    {
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 結果
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Result { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 提示訊息
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Message { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-    }
-</code></pre></div><p>雖然只有兩個變數，但還是把它包成了 Model ，因為有很多個地方會需要用到，當然就可以包起來給大家共同使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultModel</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 結果</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Result { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 提示訊息</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Message { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>雖然只有兩個變數，但還是把它包成了 Model ，因為有很多個地方會需要用到，當然就可以包起來給大家共同使用。</p>
 <h4 id="3service-層可以呼叫其他service層的程式嗎">3、Service 層可以呼叫其他Service層的程式嗎？</h4>
 <p>可以，三層式架構的優點就是要提供重用性，當然如果相同的事情在其他地方已經有做過了，直接拿來使用，就不用做重複的事情。</p>
 <h4 id="4model-的名稱分了這麼多不能直接一個通到底嗎">4、Model 的名稱分了這麼多？不能直接一個通到底嗎？</h4>
@@ -348,7 +348,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -175,7 +175,7 @@
 <h2 id="內文">內文</h2>
 <h3 id="單元測試">單元測試</h3>
 <p>單元測試的藝術對一個優秀單元測試的定義為：</p>
-<pre><code class="language-css=" data-lang="css=">一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元，
+<pre tabindex="0"><code class="language-css=" data-lang="css=">一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元，
 之後對這個單元的單一最終結果的某些假設或期望進行驗證。
 單元測試幾乎都是使用單元測試框架進行撰寫的。
 撰寫單元測試很容易，執行起來快速。
@@ -235,7 +235,7 @@
 <h3 id="整合測試">整合測試</h3>
 <p>接下來介紹一下可能會混淆的整合測試。</p>
 <p>單元測試的藝術對整合測試的定義為：</p>
-<pre><code class="language-css=" data-lang="css=">整合測試是對一個工作單元進行測試，而這個測試對被測試的單元並沒有完全的控制，
+<pre tabindex="0"><code class="language-css=" data-lang="css=">整合測試是對一個工作單元進行測試，而這個測試對被測試的單元並沒有完全的控制，
 而是使用該單元一個或多個真實依賴的相依物件，例如時間、網路、資料庫等。
 </code></pre><p>所以如果一個測試情境直接進入DB撈取資料，那他其實是整合測試，並不屬於單元測試。</p>
 <h3 id="測試驅動開發teat-driven-developmenttdd">測試驅動開發(Teat-Driven Development,TDD)</h3>
@@ -271,20 +271,20 @@
 <p>現在我們的專案結構如下：<br>
 <img src="https://i.imgur.com/DQdAmhI.jpg" alt=""></p>
 <p>接著在 Class1.cs 內建立一個簡單的 Function</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        public string GetUserName(string name)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        public string GetUserName(string name)
         { 
             if(string.IsNullOrWhiteSpace(name))
             {
-                return &quot;請輸入使用者姓名!&quot;;
+                return &#34;請輸入使用者姓名!&#34;;
             }
 
-            return $&quot;Hi!{name}，歡迎使用&quot;;
+            return $&#34;Hi!{name}，歡迎使用&#34;;
         }
 </code></pre><p>接著對 Class 點選右鍵建立單元測試。<br>
 <img src="https://i.imgur.com/Bh9mQxX.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/oyYmvUC.jpg" alt=""></p>
 <p>開始寫我們的第一個單元測試</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
         //可以直接使用中文清楚表示要測試的規則
         public void 當UserName為空值_應回傳提示訊息() 
         {
@@ -296,7 +296,7 @@
             var actual = target.GetUserName(name);
 
             //assert
-            Assert.AreEqual(&quot;請輸入使用者姓名!&quot;,actual);
+            Assert.AreEqual(&#34;請輸入使用者姓名!&#34;,actual);
         }
 </code></pre><p>提醒：要記得打開測試總管!!<br>
 <img src="https://i.imgur.com/aaMoV6W.jpg" alt=""></p>
@@ -305,7 +305,7 @@
 <p>確認結果。<br>
 <img src="https://i.imgur.com/f0oTfl1.jpg" alt=""></p>
 <p>接下來補完我們的測試程式。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        [TestMethod()]
         public void 當UserName為Null_應回傳提示訊息()
         {
             //arrange
@@ -316,7 +316,7 @@
             var actual = target.GetUserName(name);
 
             //assert
-            Assert.AreEqual(&quot;請輸入使用者姓名!&quot;, actual);
+            Assert.AreEqual(&#34;請輸入使用者姓名!&#34;, actual);
         }
 
         [TestMethod()]
@@ -324,13 +324,13 @@
         {
             //arrange
             var target = new Class1();
-            string name = &quot;Sian&quot;;
+            string name = &#34;Sian&#34;;
 
             //act
             var actual = target.GetUserName(name);
 
             //assert
-            Assert.AreEqual($&quot;Hi!{ name}，歡迎使用&quot;, actual);
+            Assert.AreEqual($&#34;Hi!{ name}，歡迎使用&#34;, actual);
         }
 </code></pre><p>確認結果。<br>
 <img src="https://i.imgur.com/HugoH2e.jpg" alt=""></p>
@@ -401,7 +401,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

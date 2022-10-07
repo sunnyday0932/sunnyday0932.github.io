@@ -16,8 +16,13 @@
       <description>本文 事情發生是這樣的，今天突然接到一個線上問題，數據報表顯示有問題有幾個不該出現的數據卻出現了。
 問題發生當下馬上查了一下撈取數據顯示的語法，想知道判斷日期的地方是否有遺漏，然後就看到了一段類似於下列的語法
 WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111) 當下不疑有他第一個查的當然是 CONVERT() 的用法，查了一下發現是 VARCHAR 可以轉換成 DATETIME 的語法，而日期格式也有幾種特殊用法就是由後面的數字來區別。
-   數字 日期格式 範例     23 yyyy-mm-dd 2021-05-31   111 yyyy/mm/dd 2021/05/31   112 yyyymmdd 20210531    SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放 KeyInDate 這個 VARCHAR 欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本 WHERE 判斷會誤判。
-第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種 Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。</description>
+數字 日期格式 範例 23 yyyy-mm-dd 2021-05-31 111 yyyy/mm/dd 2021/05/31 112 yyyymmdd 20210531 SELECT CONVERT(VARCHAR, Getdate(), 23) SELECT CONVERT(VARCHAR, Getdate(), 111) SELECT CONVERT(VARCHAR, Getdate(), 112) 而這次的問題就是原本存放 KeyInDate 這個 VARCHAR 欄位的格式從原本的 2021/05/31 不知道何時起被改成了 2021-05-31，導致原本 WHERE 判斷會誤判。
+第一個想法就是全部都改成 111 的方式，後來找主管討論了一下得知原來還有 112 這種 Format，為了預防未來還有可能的奇怪格式出現就使用了 112 這種格式，打完收工又拯救了一次奇怪問題。
+大概有人開始越想越不對勁了，對&amp;hellip;沒錯我一開始也有同樣的疑問，為甚麼你一個日期存放欄位要開VARCHAR是想害死誰R。
+2021/06/06 回來補做法
+感謝前輩看到提供了另一個做法當然就是搬回程式內做判斷，可以使用 DateTime.TryParseExact 這個方法來轉換日期格式。
+首先來了解一下這個方法要怎麼用。
+TryParseExact(String, String, IFormatProvider, DateTimeStyles, DateTime) //第一個 String 是放我們要轉換的字串 //第二個 String 是我們要轉換的字串日期格式是甚麼例如第一個 String 是2021/06/06那第二個 String 就是yyyy/MM/dd //IFormatProvider 可以決定當地文化格式例如台灣的話就是使用zh-TW //DateTimeStyles 則是可以決定我們允許哪些符合的字串格式能夠轉換 //DateTime 這就是我們要輸出的日期格式 簡單範例</description>
     </item>
     
     <item>
@@ -27,19 +32,19 @@ WHERE CONVERT(VARCHAR, KeyInDate, 111) &amp;gt;= CONVERT(VARCHAR, Getdate(), 111
       
       <guid>https://sunnyday0932.github.io/2020/sql-%E6%A8%A1%E7%B3%8A%E6%90%9C%E5%B0%8Blike%E6%9B%BF%E4%BB%A3%E6%96%B9%E5%BC%8F/</guid>
       <description>本文 今天在查找 SQL 效能 Like 會引起吃不到索引的情況忽然學會一招，一定要趕快紀錄一下。
-在處理模糊搜尋的條件常常會使用 LIKE&#39;%關鍵字%&#39; 這種做法，但 SQL 的索引在 LIKE&#39;%關鍵字&#39; 的情況會失效，更不用說使用 LIKE&#39;%關鍵字%&#39; 當資料一大效能真的是非常差。
+在處理模糊搜尋的條件常常會使用 LIKE&amp;rsquo;%關鍵字%&amp;rsquo; 這種做法，但 SQL 的索引在 LIKE&amp;rsquo;%關鍵字&amp;rsquo; 的情況會失效，更不用說使用 LIKE&amp;rsquo;%關鍵字%&amp;rsquo; 當資料一大效能真的是非常差。
 這裡介紹一個替代使用語法 CHARINDEX。
 首先我們先看一下MSDN介紹用法。
 這裡可以知道 charindex 其實是可以用來計算兩個字元間有多少相同的地方。
 現在來測試一下
-SELECT CHARINDEX(&#39;a&#39;,&#39; apple is apple&#39;) 結果：
+SELECT CHARINDEX(&amp;#39;a&amp;#39;,&amp;#39; apple is apple&amp;#39;) 結果：
 或是可以用來判斷相同的字元出現的位子。
-SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,5) 結果： 這邊第三個參數5是從第五個字元開始往後搜尋。
+SELECT CHARINDEX(&amp;#39;a&amp;#39;,&amp;#39;appleisapple&amp;#39;,5) 結果： 這邊第三個參數5是從第五個字元開始往後搜尋。
 所以如果改成0結果就會是
-SELECT CHARINDEX(&#39;a&#39;,&#39;appleisapple&#39;,0) 結果： 替代 LIKE 的方式 好了說了這麼多到底要怎麼替代 LIKE 呢？
+SELECT CHARINDEX(&amp;#39;a&amp;#39;,&amp;#39;appleisapple&amp;#39;,0) 結果： 替代 LIKE 的方式 好了說了這麼多到底要怎麼替代 LIKE 呢？
 可以使用這種方式替代
-CHARINDEX(&#39;模糊搜尋關鍵字&#39;, 要搜尋的資料行) &amp;gt; 0 實際測試，使用NorthWind Product Table
-SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductName) &amp;gt; 0 使用CHARINDEX結果： SELECT * FROM [Northwind].[dbo].[Products] where ProductName LIKE &#39;%a%&#39; 使用 LIKE 結果： 哪種方式比較好？ 因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下 CHARINDEX 會比 LIKE 還要快，但如果有吃到索引 LIKE 的速度還是優於 CHARINDEX 的。</description>
+CHARINDEX(&amp;#39;模糊搜尋關鍵字&amp;#39;, 要搜尋的資料行) &amp;gt; 0 實際測試，使用NorthWind Product Table
+SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&amp;#39;a&amp;#39;,ProductName) &amp;gt; 0 使用CHARINDEX結果： SELECT * FROM [Northwind].[dbo].[Products] where ProductName LIKE &amp;#39;%a%&amp;#39; 使用 LIKE 結果： 哪種方式比較好？ 因為在家裡沒有這麼大量的資料做測試，在公司的時候實際測試，如果再沒有吃到索引的情況下 CHARINDEX 會比 LIKE 還要快，但如果有吃到索引 LIKE 的速度還是優於 CHARINDEX 的。</description>
     </item>
     
     <item>
@@ -52,15 +57,15 @@ SELECT * FROM [Northwind].[dbo].[Products] where CHARINDEX(&#39;a&#39;,ProductNa
 本文 示範資料表如下
 我們需要把相同 Level 的欄位匯總再一起，做成一個統計用報表。
 首先每個區域後面先加、
-select District+&#39;、&#39; from DistrictData 接下來使用
-select level, ( select District+&#39;、&#39; from DistrictData as B where A.Level = B.Level FOR XML PATH(&#39;&#39;) )AS District FROM DistrictData AS A GROUP BY level 即可得到想要的成果。
+select District+&amp;#39;、&amp;#39; from DistrictData 接下來使用
+select level, ( select District+&amp;#39;、&amp;#39; from DistrictData as B where A.Level = B.Level FOR XML PATH(&amp;#39;&amp;#39;) )AS District FROM DistrictData AS A GROUP BY level 即可得到想要的成果。
 其中 FOR XML PATH(&#39;&#39;) 功能是因為如果沒有加的話會出現以下錯誤訊息。
 接下來會發現顯示格式不太對，要加上、的部分最後一筆應該要排除。
 這時候就可以使用 SUBSTRING
-select SUBSTRING(&#39;大安區、信義區、松山區、中山區、中正區、&#39;,0,LEN(&#39;大安區、信義區、松山區、中山區、中正區、&#39;)) 可以得到以下。
+select SUBSTRING(&amp;#39;大安區、信義區、松山區、中山區、中正區、&amp;#39;,0,LEN(&amp;#39;大安區、信義區、松山區、中山區、中正區、&amp;#39;)) 可以得到以下。
 SUBSTRING 這個語法中 SUBSTRING(string, start, lenth) ，第1、2個參數代表的是 string 這個字串中要起始的位置為 start ， lenth 則為最後要計算數字。
 簡單實驗一下
-select SUBSTRING(&#39;123&#39;,0,3) 這邊我們會得到
+select SUBSTRING(&amp;#39;123&amp;#39;,0,3) 這邊我們會得到
 參考資料 https://www.1keydata.com/tw/sql/sql-substring.html
 https://dotblogs.com.tw/flairming/2014/02/14/143993
 https://dotblogs.com.tw/supershowwei/2016/01/26/145353</description>

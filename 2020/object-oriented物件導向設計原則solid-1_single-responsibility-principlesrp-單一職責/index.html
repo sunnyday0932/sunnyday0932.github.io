@@ -180,46 +180,46 @@
 <p>什麼意思呢？概念上就是，一個類別就只專注於完成一件事。<br>
 為甚麼要只專注於做一件事呢?<br>
 我們來看看範例，當今天特斯拉的駕駛走投無路需要賺外快的時候，他需要上路招攬客人&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;有沒有人需要搭車&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">30</span>;
-
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客搭乘價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">關注電價</span>(<span style="color:#960050;background-color:#1e0010">今天電價</span>);
-
-                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span> * <span style="color:#960050;background-color:#1e0010">每位乘客搭乘價格</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">關注電價</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">每度時價</span>)
-            {
-                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">每度時價</span> &gt; <span style="color:#ae81ff">50</span>)
-                {
-                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">20</span>;
-                }
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">特斯拉駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛{特斯拉駕駛.開車()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛大喊{特斯拉駕駛.招攬客人()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，特斯拉駕駛計算車資一共：{特斯拉駕駛.計算車資(4)}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/iGwcFAh.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;有沒有人需要搭車&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">30</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客搭乘價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">關注電價</span>(<span style="color:#960050;background-color:#1e0010">今天電價</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span> * <span style="color:#960050;background-color:#1e0010">每位乘客搭乘價格</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">關注電價</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">每度時價</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">每度時價</span> &gt; <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">特斯拉駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛{特斯拉駕駛.開車()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛大喊{特斯拉駕駛.招攬客人()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，特斯拉駕駛計算車資一共：{特斯拉駕駛.計算車資(4)}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/iGwcFAh.jpg" alt=""></p>
 <p>現在駕駛這個類別一共要完成四件事:開車、招攬客人、計算車資、關注電價。<br>
 當今天駕駛真的還不出錢了他決定賣掉特斯拉改開油車，那我們就需要去更改計算車資跟關注電價這兩個地方。</p>
 <ul>
@@ -231,92 +231,92 @@
 <li>關鍵：如果你能夠想到多於一個的動機去改變一個類別，那麼這個類別就具有多於一個的職責。</li>
 </ul>
 <p>上一篇『高內聚』有提到『思考模組的關聯性。』駕駛其實只需要專注於開車這一件事就可以了，其他事我們可以交由 UBER 這個類別來幫忙完成。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	 <span style="color:#75715e">//產生一個駕駛類別要有開車的功能。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//產生Uber類別有招攬客人、計算車資、關注耗能時價的功能。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Uber</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;尋找要搭車的人&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#e6db74">&#34;電&#34;</span>);
-                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> * <span style="color:#960050;background-color:#1e0010">搭車人數</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">耗能</span>)
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">50</span>;
-
-                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">20</span> : <span style="color:#ae81ff">10</span>;
-            }
-			
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">特斯拉駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛{特斯拉駕駛.開車()}&#34;</span>);
-
-            Uber uber = <span style="color:#66d9ef">new</span> Uber();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Uber{uber.招攬客人()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，特斯拉駕駛計算車資一共{uber.計算車資(4)}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/C3q9DJR.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	 <span style="color:#75715e">//產生一個駕駛類別要有開車的功能。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生Uber類別有招攬客人、計算車資、關注耗能時價的功能。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Uber</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;尋找要搭車的人&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#e6db74">&#34;電&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> * <span style="color:#960050;background-color:#1e0010">搭車人數</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">耗能</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">50</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">20</span> : <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">特斯拉駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;特斯拉駕駛{特斯拉駕駛.開車()}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Uber uber = <span style="color:#66d9ef">new</span> Uber();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;Uber{uber.招攬客人()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，特斯拉駕駛計算車資一共{uber.計算車資(4)}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/C3q9DJR.jpg" alt=""></p>
 <p>而當今天駕駛駕駛真的還不出錢了他決定賣掉特斯拉改開油車，那我們只需要修改Uber這個類別，計算耗能這個方法並把計算車資的地方改成用油如下&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">	<span style="color:#75715e">//產生一個駕駛類別要有開車的功能。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
-            }
-        }
-
-        <span style="color:#75715e">//產生Uber類別有招攬客人、計算車資、關注耗能時價的功能。
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Uber</span>
-        {
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;尋找要搭車的人&#34;</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#e6db74">&#34;油&#34;</span>);
-                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> * <span style="color:#960050;background-color:#1e0010">搭車人數</span>;
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">耗能</span>)
-            {
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天油價</span> = <span style="color:#ae81ff">30</span>;
-                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">50</span>;
-                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">耗能</span> == <span style="color:#e6db74">&#34;電&#34;</span>)
-                {
-                    <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">20</span> : <span style="color:#ae81ff">10</span>;
-                }
-                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天油價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">15</span> : <span style="color:#ae81ff">10</span>;
-            }
-        }
-		
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">福特駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;福特駕駛{福特駕駛.開車()}&#34;</span>);
-
-            Uber uber = <span style="color:#66d9ef">new</span> Uber();
-            Console.WriteLine(<span style="color:#e6db74">$&#34;Uber{uber.招攬客人()}&#34;</span>);
-            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，福特駕駛計算車資一共{uber.計算車資(4)}&#34;</span>);
-        }
-</code></pre></div><p><img src="https://i.imgur.com/YmGR1g7.jpg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>	<span style="color:#75715e">//產生一個駕駛類別要有開車的功能。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">開車</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;開車上路&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//產生Uber類別有招攬客人、計算車資、關注耗能時價的功能。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Uber</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">招攬客人</span>()
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;尋找要搭車的人&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">計算車資</span>(<span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">搭車人數</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> = <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#e6db74">&#34;油&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">每位乘客價格</span> * <span style="color:#960050;background-color:#1e0010">搭車人數</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#960050;background-color:#1e0010">耗能時價</span>(<span style="color:#66d9ef">string</span> <span style="color:#960050;background-color:#1e0010">耗能</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天油價</span> = <span style="color:#ae81ff">30</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> = <span style="color:#ae81ff">50</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">耗能</span> == <span style="color:#e6db74">&#34;電&#34;</span>)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天電價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">20</span> : <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">今天油價</span> &gt; <span style="color:#ae81ff">50</span> ? <span style="color:#ae81ff">15</span> : <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">駕駛</span> <span style="color:#960050;background-color:#1e0010">福特駕駛</span> = <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">駕駛</span>();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;福特駕駛{福特駕駛.開車()}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Uber uber = <span style="color:#66d9ef">new</span> Uber();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;Uber{uber.招攬客人()}&#34;</span>);
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;有四位乘客，福特駕駛計算車資一共{uber.計算車資(4)}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p><img src="https://i.imgur.com/YmGR1g7.jpg" alt=""></p>
 <p>單一職責的優點：</p>
 <ul>
 <li>類別複雜性能夠降低，因為實現職責都有很清楚的定義。</li>
@@ -395,7 +395,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

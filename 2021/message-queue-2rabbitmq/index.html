@@ -175,17 +175,17 @@
 <p>首先我們使用 docker 來架設練習用的 RabbitMQ。</p>
 <p>我們要使用 rabbitmq:management的image ，除了會幫我們架設起一個 RabbitMQ 外，也包含了可以管理的 Web 介面。</p>
 <p>使用以下語法，並給予預設帳號的帳號密碼。</p>
-<pre><code class="language-shell=" data-lang="shell=">docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=a1234 rabbitmq:management
 </code></pre><p>可以看到輸入後就算目前沒有該 Image 也會自動幫你下載(懶人的福音R)<br>
 <img src="https://i.imgur.com/Qdy2a1e.jpg" alt=""></p>
 <p>接下來可以到 docker 確認是否已經啟用。<br>
 <img src="https://i.imgur.com/fTWOuEW.jpg" alt=""></p>
 <p>那麼就可以輸入以下網址登入測試了。</p>
-<pre><code class="language-shell=" data-lang="shell=">http://localhost:15672/
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">http://localhost:15672/
 </code></pre><p>連上後就會看到登入畫面。<br>
 <img src="https://i.imgur.com/9S6yG0j.jpg" alt=""></p>
 <p>輸入我們剛剛設定的預設值即可。</p>
-<pre><code class="language-shell=" data-lang="shell=">Account: admin
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">Account: admin
 Password: a1234
 </code></pre><p>成功進入後就會看到初始畫面儀錶板，一樣可以在 Overview 看到 RabbitMQ 目前有哪些東西在作用。<br>
 <img src="https://i.imgur.com/M1Z5UkL.jpg" alt=""></p>
@@ -216,14 +216,14 @@ Password: a1234
 <p>接下來先安裝 RabbitMQ.Client。<br>
 <img src="https://i.imgur.com/WEjUQAr.jpg" alt=""></p>
 <p>我們就可以來開始先做我們的 Publisher發布訊息內容。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             //設定主機位置以及帳號密碼
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             //連線設定
@@ -233,39 +233,39 @@ Password: a1234
                 //Queue的設定
                 channel.QueueDeclare
                     (
-                        queue: &quot;hello&quot;,    //Queue的名稱
+                        queue: &#34;hello&#34;,    //Queue的名稱
                         durable: false,    //Queue是否持久化保存，是的話會寫入硬碟即便RabbitMQ重啟也不會遺失。
                         exclusive: false,  //Queue是否為私有訪問機制，是的話當有一個Reciever在訪問該Queue就會對其Lock。
                         autoDelete: false  //Queue是否自動刪除，是的話當最後一個Reciever段開連結後會自動刪除Queue。
                     );
 
                 //設定我們要傳送的訊息
-                string message = &quot;Hello World!&quot;;
+                string message = &#34;Hello World!&#34;;
                 var body = Encoding.UTF8.GetBytes(message);
 
                 //設定Publisher
                 channel.BasicPublish
                     (
-                        exchange: &quot;&quot;,
-                        routingKey: &quot;hello&quot;,
+                        exchange: &#34;&#34;,
+                        routingKey: &#34;hello&#34;,
                         basicProperties: null,
                         body: body
                     );
-                Console.WriteLine(&quot; 送出訊息： {0}&quot;, message);
+                Console.WriteLine(&#34; 送出訊息： {0}&#34;, message);
             }
 
-            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.WriteLine(&#34;請按任意鍵離開!&#34;);
             Console.ReadLine();
         }
 </code></pre><p>接著製作 Reciever。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             //設定主機位置以及帳號密碼
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
@@ -275,7 +275,7 @@ Password: a1234
                 //Queue的設定
                 channel.QueueDeclare
                     (
-                        queue: &quot;hello&quot;,    //Queue的名稱。
+                        queue: &#34;hello&#34;,    //Queue的名稱。
                         durable: false,    //Queue是否持久化保存，是的話會寫入硬碟即便RabbitMQ重啟也不會遺失。
                         exclusive: false,  //Queue是否為私有訪問機制，是的話當有一個Reciever在訪問該Queue就會對其Lock。
                         autoDelete: false  //Queue是否自動刪除，是的話當最後一個Reciever段開連結後會自動刪除Queue。
@@ -286,18 +286,18 @@ Password: a1234
                 consumer.Received += (model, ea) =&gt;
                 {
                     var message = ea.Body.ToArray();
-                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, Encoding.UTF8.GetString(message));
+                    Console.WriteLine(&#34; 收到訊息： {0}&#34;, Encoding.UTF8.GetString(message));
                 };
 
                 //建立Consumer接收
                 channel.BasicConsume
                     (
-                        queue: &quot;hello&quot;,    //指定Queue的名稱。
+                        queue: &#34;hello&#34;,    //指定Queue的名稱。
                         autoAck: true,     //True的話會自動發送有無接收到訊息給RabbitMQ做確認。
                         consumer: consumer //Consumer內容
                     );
 
-                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.WriteLine(&#34;請按任意鍵離開!&#34;);
                 Console.ReadLine();
             }
         }
@@ -313,14 +313,14 @@ Password: a1234
 <img src="https://i.imgur.com/byao8D4.jpg" alt=""></p>
 <p>基本的範例做完後，我們來試試看調用 Exchange 來幫我們決定要發送到哪個 Queue。</p>
 <p>Publisher</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             //設定主機位置以及帳號密碼
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
@@ -329,13 +329,13 @@ Password: a1234
                 //Exchange設定
                 channel.ExchangeDeclare
                     (
-                        &quot;testExchange&quot;,
+                        &#34;testExchange&#34;,
                         ExchangeType.Direct  //使用Direct方式
                     );
 
                 channel.QueueDeclare
                     (
-                        queue: &quot;HelloExchange&quot;,
+                        queue: &#34;HelloExchange&#34;,
                         durable: false,
                         exclusive: false,
                         autoDelete: false
@@ -344,40 +344,40 @@ Password: a1234
                 //Queue 與 Exchange繫結處理
                 channel.QueueBind
                     (
-                        queue: &quot;HelloExchange&quot;,
-                        exchange: &quot;testExchange&quot;,
-                        routingKey: &quot;hello&quot;,
+                        queue: &#34;HelloExchange&#34;,
+                        exchange: &#34;testExchange&#34;,
+                        routingKey: &#34;hello&#34;,
                         null
                     );
 
-                string message = &quot;Hello World!&quot;;
+                string message = &#34;Hello World!&#34;;
                 var body = Encoding.UTF8.GetBytes(message);
 
                 channel.BasicPublish
                     (
-                        exchange: &quot;testExchange&quot;,
-                        routingKey: &quot;hello&quot;,
+                        exchange: &#34;testExchange&#34;,
+                        routingKey: &#34;hello&#34;,
                         basicProperties: null,
                         body: body
                     );
 
-                Console.WriteLine(&quot; 送出訊息： {0}&quot;, message);
+                Console.WriteLine(&#34; 送出訊息： {0}&#34;, message);
             }
 
-            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.WriteLine(&#34;請按任意鍵離開!&#34;);
             Console.ReadLine();
         }
 </code></pre><p>Publisher</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    class Program
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    class Program
     {
         static void Main(string[] args)
         {
             //設定主機位置以及帳號密碼
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
@@ -385,7 +385,7 @@ Password: a1234
             {
                 channel.QueueDeclare
                     (
-                        queue: &quot;HelloExchange&quot;,
+                        queue: &#34;HelloExchange&#34;,
                         durable: false,
                         exclusive: false,
                         autoDelete: false
@@ -395,20 +395,20 @@ Password: a1234
                 consumer.Received += (model, ea) =&gt;
                 {
                     var message = ea.Body.ToArray();
-                    Console.WriteLine(&quot; 收到訊息： {0}&quot;, Encoding.UTF8.GetString(message));
+                    Console.WriteLine(&#34; 收到訊息： {0}&#34;, Encoding.UTF8.GetString(message));
                 };
-                channel.BasicConsume(queue: &quot;HelloExchange&quot;,
+                channel.BasicConsume(queue: &#34;HelloExchange&#34;,
                                          autoAck: true,
                                          consumer: consumer);
                 //建立Consumer接收
                 channel.BasicConsume
                     (
-                        queue: &quot;HelloExchange&quot;,    //指定Queue的名稱。
+                        queue: &#34;HelloExchange&#34;,    //指定Queue的名稱。
                         autoAck: true,     //True的話會自動發送有無接收到訊息給RabbitMQ做確認。
                         consumer: consumer //Consumer內容
                     );
 
-                Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+                Console.WriteLine(&#34;請按任意鍵離開!&#34;);
                 Console.ReadLine();
             }
         }
@@ -489,7 +489,7 @@ Password: a1234
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

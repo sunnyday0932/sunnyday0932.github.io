@@ -173,52 +173,52 @@
           <h2 id="本文">本文</h2>
 <h3 id="修改">修改</h3>
 <p>1、修改指定商品 Repository</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 修改商品內容
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;productModel&#34;&gt;&lt;/param&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> UpdateProduct(ProductModel productModel)
-        {
-            <span style="color:#66d9ef">var</span> sql = <span style="color:#e6db74">@&#34;UPDATE products
-</span><span style="color:#e6db74">                        SET    productname = @ProductName,
-</span><span style="color:#e6db74">                               supplierid = @SupplierID,
-</span><span style="color:#e6db74">                               categoryid = @CategoryID,
-</span><span style="color:#e6db74">                               quantityperunit = @QuantityPerUnit,
-</span><span style="color:#e6db74">                               unitprice = @UnitPrice,
-</span><span style="color:#e6db74">                               unitsinstock = @UnitsInStock,
-</span><span style="color:#e6db74">                               unitsonorder = @UnitsOnOrder,
-</span><span style="color:#e6db74">                               reorderlevel = @ReorderLevel,
-</span><span style="color:#e6db74">                               discontinued = @Discontinued
-</span><span style="color:#e6db74">                        WHERE productid = @ProductID &#34;</span>;
-
-            <span style="color:#66d9ef">var</span> parameters = <span style="color:#66d9ef">new</span> DynamicParameters();
-            parameters.Add(<span style="color:#e6db74">&#34;@ProductName&#34;</span>, productModel.ProductName);
-            parameters.Add(<span style="color:#e6db74">&#34;@SupplierID&#34;</span>, productModel.SupplierID);
-            parameters.Add(<span style="color:#e6db74">&#34;@CategoryID&#34;</span>, productModel.CategoryID);
-            parameters.Add(<span style="color:#e6db74">&#34;@QuantityPerUnit&#34;</span>, productModel.QuantityPerUnit);
-            parameters.Add(<span style="color:#e6db74">&#34;@UnitPrice&#34;</span>, productModel.UnitPrice);
-            parameters.Add(<span style="color:#e6db74">&#34;@UnitsInStock&#34;</span>, productModel.UnitsInStock);
-            parameters.Add(<span style="color:#e6db74">&#34;@UnitsOnOrder&#34;</span>, productModel.UnitsOnOrder);
-            parameters.Add(<span style="color:#e6db74">&#34;@ReorderLevel&#34;</span>, productModel.ReorderLevel);
-            parameters.Add(<span style="color:#e6db74">&#34;@Discontinued&#34;</span>, productModel.Discontinued);
-            parameters.Add(<span style="color:#e6db74">&#34;@ProductID&#34;</span>, productModel.ProductID);
-
-            <span style="color:#66d9ef">var</span> connection = <span style="color:#66d9ef">new</span> SqlConnection(ConnectionHelper.ConnectionStr);
-
-            <span style="color:#66d9ef">var</span> result = connection.Execute(
-                sql,
-                parameters);
-
-            <span style="color:#66d9ef">return</span> result &gt; <span style="color:#ae81ff">0</span>;
-        }
-</code></pre></div><p>2、在 Controller 建立一個 Update 方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 修改商品內容</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;param name=&#34;productModel&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> UpdateProduct(ProductModel productModel)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> sql = <span style="color:#e6db74">@&#34;UPDATE products
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                        SET    productname = @ProductName,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               supplierid = @SupplierID,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               categoryid = @CategoryID,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               quantityperunit = @QuantityPerUnit,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               unitprice = @UnitPrice,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               unitsinstock = @UnitsInStock,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               unitsonorder = @UnitsOnOrder,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               reorderlevel = @ReorderLevel,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                               discontinued = @Discontinued
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                        WHERE productid = @ProductID &#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> parameters = <span style="color:#66d9ef">new</span> DynamicParameters();
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@ProductName&#34;</span>, productModel.ProductName);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@SupplierID&#34;</span>, productModel.SupplierID);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@CategoryID&#34;</span>, productModel.CategoryID);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@QuantityPerUnit&#34;</span>, productModel.QuantityPerUnit);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@UnitPrice&#34;</span>, productModel.UnitPrice);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@UnitsInStock&#34;</span>, productModel.UnitsInStock);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@UnitsOnOrder&#34;</span>, productModel.UnitsOnOrder);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@ReorderLevel&#34;</span>, productModel.ReorderLevel);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@Discontinued&#34;</span>, productModel.Discontinued);
+</span></span><span style="display:flex;"><span>            parameters.Add(<span style="color:#e6db74">&#34;@ProductID&#34;</span>, productModel.ProductID);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> connection = <span style="color:#66d9ef">new</span> SqlConnection(ConnectionHelper.ConnectionStr);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> result = connection.Execute(
+</span></span><span style="display:flex;"><span>                sql,
+</span></span><span style="display:flex;"><span>                parameters);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result &gt; <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>2、在 Controller 建立一個 Update 方法。</p>
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 修改商品
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;productModel&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;productModel&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
-        [Route(&quot;Product&quot;)]
+        [Route(&#34;Product&#34;)]
         [HttpPatch]
         public ResultModel UpdateProduct([FromBody] ProductModel productModel)
         {
@@ -230,12 +230,12 @@
             if (data == true)
             {
                 result.Result = data;
-                result.Message = &quot;修改商品成功&quot;;
+                result.Message = &#34;修改商品成功&#34;;
             }
             else
             {
                 result.Result = data;
-                result.Message = &quot;修改商品失敗，請重試&quot;;
+                result.Message = &#34;修改商品失敗，請重試&#34;;
             }
 
             return result;
@@ -244,51 +244,51 @@
 <p>選擇更新 productid=85 這筆
 <img src="https://i.imgur.com/opbssKv.jpg" alt=""></p>
 <p>更新內容</p>
-<pre><code class="language-json=" data-lang="json=">{
-    &quot;ProductId&quot;: 85 ,
-    &quot;ProductName&quot;: &quot;testProduct1&quot;,
-    &quot;SupplierID&quot;: 1,
-    &quot;CategoryID&quot;: 1,
-    &quot;QuantityPerUnit&quot;: &quot;1k pkg.&quot;,
-    &quot;UnitPrice&quot;: 10.5,
-    &quot;UnitsInStock&quot;: 2,
-    &quot;UnitsOnOrder&quot;: 50,
-    &quot;ReorderLevel&quot;: 10,
-    &quot;Discontinued&quot;: false
+<pre tabindex="0"><code class="language-json=" data-lang="json=">{
+    &#34;ProductId&#34;: 85 ,
+    &#34;ProductName&#34;: &#34;testProduct1&#34;,
+    &#34;SupplierID&#34;: 1,
+    &#34;CategoryID&#34;: 1,
+    &#34;QuantityPerUnit&#34;: &#34;1k pkg.&#34;,
+    &#34;UnitPrice&#34;: 10.5,
+    &#34;UnitsInStock&#34;: 2,
+    &#34;UnitsOnOrder&#34;: 50,
+    &#34;ReorderLevel&#34;: 10,
+    &#34;Discontinued&#34;: false
 }
 </code></pre><p><img src="https://i.imgur.com/6xITrNj.jpg" alt=""></p>
 <p><img src="https://i.imgur.com/hmmL0eu.jpg" alt=""></p>
 <!-- raw HTML omitted -->
 <h3 id="刪除">刪除</h3>
 <p>1、刪除指定的商品 Repository</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 刪除指定的商品
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;productId&#34;&gt;&lt;/param&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> RemoveProduct(<span style="color:#66d9ef">int</span> productId)
-        {
-            <span style="color:#66d9ef">var</span> sql = <span style="color:#e6db74">@&#34;DELETE products
-</span><span style="color:#e6db74">                        WHERE  productid = @ProductID &#34;</span>;
-
-            <span style="color:#66d9ef">var</span> parameter = <span style="color:#66d9ef">new</span> DynamicParameters();
-            parameter.Add(<span style="color:#e6db74">&#34;@ProductID&#34;</span>, productId);
-
-            <span style="color:#66d9ef">var</span> connection = <span style="color:#66d9ef">new</span> SqlConnection(ConnectionHelper.ConnectionStr);
-
-            <span style="color:#66d9ef">var</span> result = connection.Execute(
-                sql,
-                parameter);
-
-            <span style="color:#66d9ef">return</span> result &gt; <span style="color:#ae81ff">0</span>;
-        }
-</code></pre></div><p>2、在 Controller 建立一個 Remove 方法。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// 刪除指定的商品</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;param name=&#34;productId&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> RemoveProduct(<span style="color:#66d9ef">int</span> productId)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> sql = <span style="color:#e6db74">@&#34;DELETE products
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                        WHERE  productid = @ProductID &#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> parameter = <span style="color:#66d9ef">new</span> DynamicParameters();
+</span></span><span style="display:flex;"><span>            parameter.Add(<span style="color:#e6db74">&#34;@ProductID&#34;</span>, productId);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> connection = <span style="color:#66d9ef">new</span> SqlConnection(ConnectionHelper.ConnectionStr);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> result = connection.Execute(
+</span></span><span style="display:flex;"><span>                sql,
+</span></span><span style="display:flex;"><span>                parameter);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result &gt; <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>2、在 Controller 建立一個 Remove 方法。</p>
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        /// &lt;summary&gt;
         /// 刪除指定商品
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;productId&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&#34;productId&#34;&gt;&lt;/param&gt;
         /// &lt;returns&gt;&lt;/returns&gt;
-        [Route(&quot;Product/{productId}&quot;)]
+        [Route(&#34;Product/{productId}&#34;)]
         [HttpDelete]
         public ResultModel RemoveProduct(int productId)
         {
@@ -300,12 +300,12 @@
             if (data == true)
             {
                 result.Result = data;
-                result.Message = &quot;刪除商品成功&quot;;
+                result.Message = &#34;刪除商品成功&#34;;
             }
             else
             {
                 result.Result = data;
-                result.Message = &quot;刪除商品失敗，請重試&quot;;
+                result.Message = &#34;刪除商品失敗，請重試&#34;;
             }
 
             return result;
@@ -380,7 +380,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

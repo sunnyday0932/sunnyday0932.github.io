@@ -179,19 +179,19 @@
 <p><img src="https://i.imgur.com/OAi4HYS.jpg" alt=""></p>
 <p>有多個 Consumer 可以來幫忙消化 Queue 內的任務模式。</p>
 <p>首先我們一樣先建立一個 Pubisher，這次改成由外部接收要傳送的訊息再丟給 Queue。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        static void Main(string[] args)
         {
             var factory = new ConnectionFactory()
             {
-                HostName = &quot;localhost&quot;,
-                UserName = &quot;admin&quot;,
-                Password = &quot;a1234&quot;
+                HostName = &#34;localhost&#34;,
+                UserName = &#34;admin&#34;,
+                Password = &#34;a1234&#34;
             };
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: &quot;WorkeTestQueue&quot;,
+                channel.QueueDeclare(queue: &#34;WorkeTestQueue&#34;,
                                      durable: false,
                                      exclusive: false,
                                      autoDelete: false,
@@ -199,26 +199,26 @@
 
                 var message = GetMessage(args);
                 var body = Encoding.UTF8.GetBytes(message);
-                channel.BasicPublish(exchange: &quot;&quot;,
-                                     routingKey: &quot;WorkeTestQueue&quot;,
+                channel.BasicPublish(exchange: &#34;&#34;,
+                                     routingKey: &#34;WorkeTestQueue&#34;,
                                      body: body);
-                Console.WriteLine(&quot; 送出訊息： {0}&quot;, message);
+                Console.WriteLine(&#34; 送出訊息： {0}&#34;, message);
             }
 
-            Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+            Console.WriteLine(&#34;請按任意鍵離開!&#34;);
             Console.ReadLine();
         }
 
         private static string GetMessage(string[] args)
         {
-            return ((args.Length &gt; 0) ? string.Join(&quot; &quot;, args) : &quot;Hello World!&quot;);
+            return ((args.Length &gt; 0) ? string.Join(&#34; &#34;, args) : &#34;Hello World!&#34;);
         }
 </code></pre><p>接著我們需要創建兩個 Reciver，這邊特殊的地方在我們藉由訊息傳送的 點號來模擬處理繁忙的情況，每一個點號我們就睡一秒。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">        var factory = new ConnectionFactory()
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">        var factory = new ConnectionFactory()
 			{
-				HostName = &quot;localhost&quot;,
-				UserName = &quot;admin&quot;,
-				Password = &quot;a1234&quot;
+				HostName = &#34;localhost&#34;,
+				UserName = &#34;admin&#34;,
+				Password = &#34;a1234&#34;
 			};
 
 			using (var connection = factory.CreateConnection())
@@ -227,7 +227,7 @@
 
 				channel.QueueDeclare
 					(
-						queue: &quot;WorkeTestQueue&quot;,
+						queue: &#34;WorkeTestQueue&#34;,
 						durable: false,
 						exclusive: false,
 						autoDelete: false,
@@ -239,21 +239,21 @@
 				{
 					var body = ea.Body.ToArray();
 					var message = Encoding.UTF8.GetString(body);
-					Console.WriteLine(&quot; 收到訊息： {0}&quot;, message);
+					Console.WriteLine(&#34; 收到訊息： {0}&#34;, message);
 
-					var dots = message.Split('.').Length - 1;
+					var dots = message.Split(&#39;.&#39;).Length - 1;
 					Thread.Sleep(dots * 1000);
 
-					Console.WriteLine(&quot;任務完成&quot;);
+					Console.WriteLine(&#34;任務完成&#34;);
 				};
 				channel.BasicConsume
 					(
-						queue: &quot;WorkeTestQueue&quot;,
+						queue: &#34;WorkeTestQueue&#34;,
 						autoAck: true,
 						consumer: consumer
 					);
 
-				Console.WriteLine(&quot;請按任意鍵離開!&quot;);
+				Console.WriteLine(&#34;請按任意鍵離開!&#34;);
 				Console.ReadLine();
 			}
 </code></pre><p><img src="https://i.imgur.com/zjFJ5Sk.jpg" alt=""></p>
@@ -271,14 +271,14 @@
 <a href="https://igouist.github.io/post/2020/08/powershell-beauty/">Powershell 美化作戰 —— 字型、執行原則和 oh-my-posh</a></p>
 <p><img src="https://i.imgur.com/N1fCtUk.jpg" alt=""></p>
 <p>先移動到我們的 Publisher 所在的位子，請視自行狀況修改路徑。</p>
-<pre><code class="language-shell=" data-lang="shell=">cd D:\Program\RabbitMQSample\WorkQueuesSample\Sample\Publisher
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">cd D:\Program\RabbitMQSample\WorkQueuesSample\Sample\Publisher
 </code></pre><p><img src="https://i.imgur.com/1ya6vja.jpg" alt=""></p>
 <p>接著就可以開始執行以下測試，我們會依序執行以下指令</p>
-<pre><code class="language-shell=" data-lang="shell=">dotnet run &quot;First message.&quot;
-dotnet run &quot;Second message..&quot;
-dotnet run &quot;Third message...&quot;
-dotnet run &quot;Fourth message....&quot;
-dotnet run &quot;Fifth message.....&quot;
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">dotnet run &#34;First message.&#34;
+dotnet run &#34;Second message..&#34;
+dotnet run &#34;Third message...&#34;
+dotnet run &#34;Fourth message....&#34;
+dotnet run &#34;Fifth message.....&#34;
 </code></pre><p><img src="https://i.imgur.com/LeiPcyj.jpg" alt=""></p>
 <p>回頭看一下我們的兩個Reciever。<br>
 <img src="https://i.imgur.com/kJZ0GXj.jpg" alt=""></p>
@@ -297,7 +297,7 @@ dotnet run &quot;Fifth message.....&quot;
 <img src="https://i.imgur.com/XKIfBWb.jpg" alt=""></p>
 <p>雖然訊息已經發送出去了，但其實只執行到一半沒有完成，為了預防這種情況發生，我們可以使用自行回傳 Act 的方式。<br>
 修改一下我們的 Reciever 程式。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
 </code></pre><p><img src="https://i.imgur.com/83yKbrA.jpg" alt=""></p>
 <p>一樣記得兩個 Reciver 都要修改喔！！</p>
 <p>接著我們來測試看看他的效果吧，發送一個需要長時間執行的任務。</p>
@@ -315,8 +315,8 @@ dotnet run &quot;Fifth message.....&quot;
 <img src="https://i.imgur.com/RVGEN0p.jpg" alt=""></p>
 <h3 id="訊息持久化方式">訊息持久化方式</h3>
 <p>這裡第一步是要先改變我們的 Queue 設定。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">channel.QueueDeclare(
-queue: &quot;WorkeTestQueue&quot;,
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">channel.QueueDeclare(
+queue: &#34;WorkeTestQueue&#34;,
 durable: true, //持久化設定
 exclusive: false,
 autoDelete: false,
@@ -328,7 +328,7 @@ arguments: null);
 <p>這次我們發現 Queue 是保存住了，但是我們還沒被接收的訊息卻消失了，為了解決這點，我們需要多加設定。<br>
 <img src="https://i.imgur.com/8Na32fa.jpg" alt=""></p>
 <p>修改一下 Publisher</p>
-<pre><code class="language-csharp=" data-lang="csharp=">var properties = channel.CreateBasicProperties();
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">var properties = channel.CreateBasicProperties();
 properties.Persistent = true;
 </code></pre><p><img src="https://i.imgur.com/JHPOeb2.jpg" alt=""></p>
 <p>接著我們再來重試看看。<br>
@@ -339,7 +339,7 @@ properties.Persistent = true;
 <img src="https://i.imgur.com/tNb6R7B.jpg" alt=""></p>
 <h3 id="平均分配訊息的方式">平均分配訊息的方式</h3>
 <p>為了避免我們有許多個 Reicever，但卻把工作都只丟給某一個做，可以加上以下設定讓 RabbitMQ不 要一次給同一個 Reicever 多於一個的任務，在他還沒處理完該任務且回傳 Ack 確認前都不該再派送訊息給他。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 </code></pre><p><img src="https://i.imgur.com/vxXysvS.jpg" alt=""></p>
 <p>也是一樣要記得加在兩個 Reiciver 內。</p>
 <p>接下來我們來完整測試目前的程式吧。<br>
@@ -412,7 +412,7 @@ properties.Persistent = true;
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -174,11 +174,11 @@
 <p>我們在先前 <a href="https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/">SOLID - OCP(開放封閉原則)</a> 有提到過，軟體設計原則，應該對擴展開放，對修改封閉。</p>
 <p>而這次我們要介紹的裝飾者模式能夠更優雅地做到這件事。</p>
 <p>首先我們先回憶一下，特斯拉(不要懷疑我又回來啦)在不違反 OCP 原則下安裝軟體的時候我們可以怎麼做。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    internal class Program
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    internal class Program
     {
         static void Main(string[] args)
         {
-            var tesla = new Tesla(&quot;Model3&quot;);
+            var tesla = new Tesla(&#34;Model3&#34;);
 
             tesla.Print();
             var autoPilot= new AutoPilot();
@@ -212,7 +212,7 @@
     {
         public override void AddSoftWare()
         {
-            Console.WriteLine(&quot;現在有自動導航的功能了!&quot;);
+            Console.WriteLine(&#34;現在有自動導航的功能了!&#34;);
         }
     }
 
@@ -220,7 +220,7 @@
     {
         public override void AddSoftWare()
         {
-            Console.WriteLine(&quot;現在有自訂喇叭鈴聲的功能了!&quot;);
+            Console.WriteLine(&#34;現在有自訂喇叭鈴聲的功能了!&#34;);
         }
 
     }
@@ -233,7 +233,7 @@
 <img src="https://i.imgur.com/DmZ0nMK.jpg" alt=""></p>
 <p>理想的情況下安裝軟體這件事應該在內部軟體自行升級後再顯示出結果即可，而要如何將我們所需的功能按照正確的順序串聯起來，這時候就可以使用裝飾者模式。</p>
 <p>我們現在的順序是，先安裝自動導航功能再安裝自訂鈴聲功能。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    internal class Program
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    internal class Program
     {
         static void Main(string[] args)
         {
@@ -264,7 +264,7 @@
 		/// &lt;/summary&gt;
 		public override void Print()
 		{
-			Console.WriteLine(&quot;Model3&quot;);
+			Console.WriteLine(&#34;Model3&#34;);
 		}
 	}
 
@@ -312,7 +312,7 @@
 		/// &lt;/summary&gt;
 		public void AddAutoPilot()
 		{
-			Console.WriteLine(&quot;現在有自動駕駛功能了!&quot;);
+			Console.WriteLine(&#34;現在有自動駕駛功能了!&#34;);
 		}
 	}
 
@@ -339,7 +339,7 @@
 		/// &lt;/summary&gt;
 		public void AddRing()
 		{
-			Console.WriteLine(&quot;現在有自訂喇叭鈴聲的功能了!&quot;);
+			Console.WriteLine(&#34;現在有自訂喇叭鈴聲的功能了!&#34;);
 		}
 	}
 </code></pre><p>結果：<br>
@@ -355,11 +355,11 @@
 上述也提到了 Decorator 是有裝飾的順序的，所以我們的順序是 Tesla 透過 AutoPilot 裝飾後，再將 teslaWithAutopilot 放入 SettingRing 進行裝飾。</p>
 <p>這樣最大的優點在於，每個裝飾物件只需專注於關心自己添加的功能，不需要關心自己是如何被添加到整個物件關聯內的，當裝飾物件不需要時也能輕易的移除該功能。</p>
 <p>接下來可以觀察到我們的 Model3 這個類別其實是可以直接整合進 Tesla 這個基底內的。</p>
-<pre><code class="language-csharp=" data-lang="csharp=">    internal class Program
+<pre tabindex="0"><code class="language-csharp=" data-lang="csharp=">    internal class Program
     {
         static void Main(string[] args)
         {
-		var tesla = new Tesla(&quot;Model3&quot;);
+		var tesla = new Tesla(&#34;Model3&#34;);
 		var autoPilot = new AutoPilot();
 		var settingRing = new SettingRing();
                //先安裝自動導航功能
@@ -422,7 +422,7 @@
 		public override void Print()
 		{
 			base.Print();
-			Console.WriteLine(&quot;現在有自動駕駛功能了!&quot;);
+			Console.WriteLine(&#34;現在有自動駕駛功能了!&#34;);
 		}
 	}
 
@@ -434,7 +434,7 @@
 		public override void Print()
 		{
 			base.Print();
-			Console.WriteLine(&quot;現在有自訂喇叭鈴聲的功能了!&quot;);
+			Console.WriteLine(&#34;現在有自訂喇叭鈴聲的功能了!&#34;);
 		}
 	}
 </code></pre><p>結果：<br>
@@ -524,7 +524,7 @@
                  
                      <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

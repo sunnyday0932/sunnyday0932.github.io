@@ -15,11 +15,11 @@
       <guid>https://sunnyday0932.github.io/2021/message-queue-5rabbitmq/</guid>
       <description>本文 Topics 這個模式下 Exchange 會透過 Topic 的方式，將訊息丟給符合的 Queue 傳給相對應的 Reciver。
 Topic 會透過我們給予的 Key 來決定要給哪些人，而 Key 可以使用兩種特殊符號：
- 1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。  舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
+1、 * (星號)：它能夠代表一個萬用詞。 2、 # (井號)：則是能夠代表零個或多個萬用詞。 舉例來說上圖我們有一個 ＊.orange.＊ 的 Key ，那他就允許兩個*字號替代的單詞，所以它會允許 sweet.orange.juice 通過，如果多加了一個字 sweet.good.orange.juice 則不允許通過。
 那麼 lazy.# 則允許零個或多個單詞，Ex:lazy.、lazy.man、lazy.man.with、lazy.man.with.friends &amp;hellip; 都允許通過。
 接著我們來實作測試看看吧。
 Publisher
-var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;quot;topic_logs&amp;quot;, ExchangeType.</description>
+var factory = new ConnectionFactory() { HostName = &amp;#34;localhost&amp;#34;, UserName = &amp;#34;admin&amp;#34;, Password = &amp;#34;a1234&amp;#34; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為topic_logs 透過Topic方式發送 channel.ExchangeDeclare( exchange: &amp;#34;topic_logs&amp;#34;, ExchangeType.</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@ var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;
       <description>本文 Publish/Subscribe 我們來練習使用 Exchange 透過 Fanout 的方式發送訊息給所有 Queue。
 現在我們目標是要發送 log 給所有 Queue。
 一樣先建立Publisher。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;quot;logs&amp;quot;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;logs&amp;quot;, //設定我們的Exchange為logs routingKey: &amp;quot;&amp;quot;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;quot; 送出訊息： {0}&amp;quot;, message); } Console.</description>
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;#34;localhost&amp;#34;, UserName = &amp;#34;admin&amp;#34;, Password = &amp;#34;a1234&amp;#34; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { //創建一個Exchange設定為logs channel.ExchangeDeclare(exchange: &amp;#34;logs&amp;#34;, ExchangeType.Fanout); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;#34;logs&amp;#34;, //設定我們的Exchange為logs routingKey: &amp;#34;&amp;#34;, //不指定Queue basicProperties: null, body: body); Console.WriteLine(&amp;#34; 送出訊息： {0}&amp;#34;, message); } Console.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@ static void Main(string[] args) { var factory = new ConnectionFactory() { HostNa
 RabbitMQ 中文文檔
 Work Queues 有多個 Consumer 可以來幫忙消化 Queue 內的任務模式。
 首先我們一樣先建立一個 Pubisher，這次改成由外部接收要傳送的訊息再丟給 Queue。
-static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;quot;localhost&amp;quot;, UserName = &amp;quot;admin&amp;quot;, Password = &amp;quot;a1234&amp;quot; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;quot;WorkeTestQueue&amp;quot;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;quot;&amp;quot;, routingKey: &amp;quot;WorkeTestQueue&amp;quot;, body: body); Console.</description>
+static void Main(string[] args) { var factory = new ConnectionFactory() { HostName = &amp;#34;localhost&amp;#34;, UserName = &amp;#34;admin&amp;#34;, Password = &amp;#34;a1234&amp;#34; }; using (var connection = factory.CreateConnection()) using (var channel = connection.CreateModel()) { channel.QueueDeclare(queue: &amp;#34;WorkeTestQueue&amp;#34;, durable: false, exclusive: false, autoDelete: false, arguments: null); var message = GetMessage(args); var body = Encoding.UTF8.GetBytes(message); channel.BasicPublish(exchange: &amp;#34;&amp;#34;, routingKey: &amp;#34;WorkeTestQueue&amp;#34;, body: body); Console.</description>
     </item>
     
     <item>

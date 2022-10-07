@@ -14,11 +14,11 @@
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-6_dependency-inversion-principledip-%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 依賴反轉原則 Dependency Inversion Principle(DIP) 定義：
-  1、高階模組不應該依賴於低階模組，兩者都該依賴抽象。
-  2、抽象不應該依賴於具體實作方式，具體實作方式應該依賴抽象。 目標：解除物件與物間之間直接依賴的關係。
-  舉例：傳統汽車在車子故障、或是想要更換零件時，需要選擇維修廠進行這個動作。
-public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class A汽車保養廠 { public int 電瓶價格() { return 50000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了  if (汽車.更換電瓶() == true) { var 汽車保養廠 = new A汽車保養廠(); Console.WriteLine($&amp;#34;電瓶價格:{汽車保養廠.電瓶價格()}&amp;#34;); } } 車主一看價格驚覺事情不太對勁，決定要更換一間汽車保養廠，此時程式就必須要跟著改變內容。
-public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class B汽車保養廠 { public int 電瓶價格() { return 5000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了  if (汽車.</description>
+1、高階模組不應該依賴於低階模組，兩者都該依賴抽象。
+2、抽象不應該依賴於具體實作方式，具體實作方式應該依賴抽象。 目標：解除物件與物間之間直接依賴的關係。
+舉例：傳統汽車在車子故障、或是想要更換零件時，需要選擇維修廠進行這個動作。
+public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class A汽車保養廠 { public int 電瓶價格() { return 50000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了 if (汽車.更換電瓶() == true) { var 汽車保養廠 = new A汽車保養廠(); Console.WriteLine($&amp;#34;電瓶價格:{汽車保養廠.電瓶價格()}&amp;#34;); } } 車主一看價格驚覺事情不太對勁，決定要更換一間汽車保養廠，此時程式就必須要跟著改變內容。
+public class 汽車狀況 { public bool 更換電瓶() { return true; } } public class B汽車保養廠 { public int 電瓶價格() { return 5000; } } private static void Main(string[] args) { var 汽車 = new 汽車狀況(); //需要更換電瓶了 if (汽車.</description>
     </item>
     
     <item>
@@ -28,11 +28,11 @@ public class 汽車狀況 { public bool 更換電瓶() { return true; } } public
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-5_liskov-substitution-principlelsp-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87/</guid>
       <description>前言 此篇觀念也會延續之前幾篇，可以一同搭配觀看。
- 1、Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism) 2、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface)  本文 里氏替換原則 Liskov Substitution Principle(LSP) 精神：
- 使用父類的地方，必須可以使用子類別代替，而不需要任何改變。
- 基本原則：
- 1、子類別必須完全實現父類別的方法，如果子類不擁有父類的全部屬性或者行為，不能強行繼承，要斷掉繼承。 2、子類別可以擁有自己不同的屬性與方法。  來段範例：今天我們有個傳統車廠發現電動車似乎才是未來，也想透過自己以前的經驗來設計電動車，老闆說不就都是車嘛？
-public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public string 引擎() { return &amp;#34;汽油引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡&amp;#34;; } } //直接繼承車子  public class 電動車 : 車子 { } private static void Main(string[] args) { var 汽車 = new 車子(); Console.</description>
+1、Object Oriented物件導向-3:封裝(Encapsulation)、繼承(Inheritance)與多型(polymorphism) 2、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 本文 里氏替換原則 Liskov Substitution Principle(LSP) 精神：
+使用父類的地方，必須可以使用子類別代替，而不需要任何改變。
+基本原則：
+1、子類別必須完全實現父類別的方法，如果子類不擁有父類的全部屬性或者行為，不能強行繼承，要斷掉繼承。 2、子類別可以擁有自己不同的屬性與方法。 來段範例：今天我們有個傳統車廠發現電動車似乎才是未來，也想透過自己以前的經驗來設計電動車，老闆說不就都是車嘛？
+public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public string 引擎() { return &amp;#34;汽油引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡&amp;#34;; } } //直接繼承車子 public class 電動車 : 車子 { } private static void Main(string[] args) { var 汽車 = new 車子(); Console.WriteLine($&amp;#34;汽車有：{汽車.車輪}個車輪&amp;#34;); Console.WriteLine($&amp;#34;汽車有：{汽車.方向盤}個方向盤&amp;#34;); Console.WriteLine($&amp;#34;汽車有：{汽車.引擎()}&amp;#34;); Console.WriteLine($&amp;#34;汽車有:{汽車.後照鏡()}&amp;#34;); Console.WriteLine(&amp;#34;============================&amp;#34;); var 電動車 = new 電動車(); Console.</description>
     </item>
     
     <item>
@@ -42,11 +42,11 @@ public class 車子 { public int 車輪 = 4; public int 方向盤 = 1; public st
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-4_interface-segregation-principleisp-%E4%BB%8B%E9%9D%A2%E9%9A%94%E9%9B%A2%E5%8E%9F%E5%89%87/</guid>
       <description>前言 這篇開始前可以先搭配前面的介面、內聚、耦合一同觀看。
- 1、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 2、Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling)  本文 介面隔離原則 Interface Segregation Principle(ISP) 最重要的精神：
- 不應該強迫用戶去依賴他們未使用的方法。
+1、Object Oriented物件導向-4:抽象類別(Abstract)與介面(Interface) 2、Object Oriented物件導向-5:內聚(Cohesion)、耦合(Coupling) 本文 介面隔離原則 Interface Segregation Principle(ISP) 最重要的精神：
+不應該強迫用戶去依賴他們未使用的方法。
 意及應該要最小化類別與類別之間的介面。
- 基本原則：
- 1、interface 功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。  舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。
+基本原則：
+1、interface 功能盡量少：達到一個介面只服務一個子模組/商業邏輯。 但有可能會與單一職責原則有衝突，比如已經拆成最仔細但功能還是很多，此時要以單一職責原則為優先。 2、不應該強迫實作沒用到的方法。 舉例：今天我們有個車子的設計圖，我們可以用來設計車子，於是我們創造了特斯拉以及 Gogoro。
 public interface 車子 { public string 引擎(); public string 後照鏡(); public string 車門(); } public class 特斯拉 : 車子 { public string 引擎() { return &amp;#34;3秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡+駕駛座後視鏡+電腦雷達感應周邊&amp;#34;; } public string 車門() { return &amp;#34;側開敞篷車門&amp;#34;; } } public class Gogoro : 車子 { public string 引擎() { return &amp;#34;5秒內時速100公里的引擎&amp;#34;; } public string 後照鏡() { return &amp;#34;左右後視鏡&amp;#34;; } public string 車門() { return &amp;#34;痾沒有車門&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
     </item>
     
@@ -58,9 +58,9 @@ public interface 車子 { public string 引擎(); public string 後照鏡(); pub
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-3_law-of-demeterlod-%E7%8B%84%E7%B1%B3%E7%89%B9%E6%B3%95%E5%89%87/</guid>
       <description>本文 狄米特法則 Law of Demeter(LoD) 又稱為 最少知識原則 Least Knowledge Principle(LKP)
 定義
- 一個 object 應該對其他 object 有最少的瞭解。
- 優點
- 1、可以降低類別與類別之間的耦合度。 2、當耦合度降低的時候，類別的重用性就會提高。   2020/08/25 更新範例
+一個 object 應該對其他 object 有最少的瞭解。
+優點
+1、可以降低類別與類別之間的耦合度。 2、當耦合度降低的時候，類別的重用性就會提高。 2020/08/25 更新範例
 舉例：前面例子我們知道特斯拉都是透過軟體的更新來讓車子增加新功能的，今天我們需要特斯拉有招喚模式，讓特斯拉能夠自己開到我們所在的位子；所以我們建造一個特斯拉類別裡面有更新系統的動作。
 public class 特斯拉 { public string 啟動更新系統() { return &amp;#34;系統更新啟動&amp;#34;; } public string 加入特斯拉招喚模式() { return &amp;#34;新增招喚模式中&amp;#34;; } public string 系統更新結果() { return &amp;#34;系統更新成功&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.WriteLine(特斯拉.啟動更新系統()); Console.WriteLine(特斯拉.加入特斯拉招喚模式()); Console.WriteLine(特斯拉.系統更新結果()); } 對使用者來說他並不需要知道特斯拉是如何更新系統的，他應該只需要知道進行更新系統的動作，特斯拉會新增招喚模式；所以程式就能改寫如下。
 public class 特斯拉 { public string 更新(string 更新項目) { return $&amp;#34;更新開始 : 新增{更新項目}完畢&amp;#34;; } } private static void Main(string[] args) { var 特斯拉 = new 特斯拉(); Console.</description>
@@ -73,15 +73,15 @@ public class 特斯拉 { public string 更新(string 更新項目) { return $&am
       
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-2_open-close-principleocp-%E9%96%8B%E6%94%BE%E5%B0%81%E9%96%89%E5%8E%9F%E5%89%87/</guid>
       <description>本文 開放封閉原則 Open-Close Principle(OCP) 定義
- 軟體設計原則，應該對擴展開放，對修改封閉。
- 甚麼意思呢？
- 1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。  那為甚麼要使用 OCP？
- 1、程式碼可維護性提高。 2、程式碼可擴展性提高。 3、程式碼可複用、靈活性高。 4、程式碼可測試性提高。  2020/09/08更新
+軟體設計原則，應該對擴展開放，對修改封閉。
+甚麼意思呢？
+1、對擴展開放 - 程式碼對於新增功能是透過新增程式碼進行。 2、對修改封閉 - 新增功能時不應該是更改現有程式碼。 那為甚麼要使用 OCP？
+1、程式碼可維護性提高。 2、程式碼可擴展性提高。 3、程式碼可複用、靈活性高。 4、程式碼可測試性提高。 2020/09/08更新
 寫完這篇跟同事討論過後決定要更改，一直發懶就放到現在，被迫要在進入下階段前先把前面要改的改完。
 現在回頭看覺得當初為啥寫這例子怪怪的，回想起來才發現，原來我是為了避免使用到 DI 的觀念啊，但後來看了其他人寫的文章，用 DI 好像比較容易敘述這個概念&amp;hellip;
 所以就頭都要洗了，就先挖個坑吧。
 我們來看一段例子，傳統汽車對於軟體硬體整合，還不夠靈活的時候，需要更改東西就需要把整台汽車拆開某些部分增加功能、每一次更改都是一項大工程。
-public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.</description>
+public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝影音撥放器成功&amp;#34;; } } public class 自動導航裝置 { public string 安裝() { return &amp;#34;安裝自動導航裝置成功&amp;#34;; } } public class 汽車 { public string 安裝影音撥放器() { var 影音波放器 = new 影音撥放器(); return 影音波放器.安裝(); } public string 安裝自動導航裝置() { var 自動導航裝置 = new 自動導航裝置(); return 自動導航裝置.</description>
     </item>
     
     <item>
@@ -92,10 +92,10 @@ public class 影音撥放器 { public string 安裝() { return &amp;#34;安裝�
       <guid>https://sunnyday0932.github.io/2020/object-oriented%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87solid-1_single-responsibility-principlesrp-%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC/</guid>
       <description>本文 OOP 原則了解完後，我們知道程式設計應該朝向『高內聚、低耦合』的概念設計，那怎麼設計呢？
 這時候了解設計原則 SOLID 就很重要了&amp;hellip;
-1、Single Responsibility Principle(SRP) 單一職責  大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。  什麼意思呢？概念上就是，一個類別就只專注於完成一件事。
+1、Single Responsibility Principle(SRP) 單一職責 大話設計模式：就一個類別而言，應該只有一個引起它變化的原因。 什麼意思呢？概念上就是，一個類別就只專注於完成一件事。
 為甚麼要只專注於做一件事呢?
 我們來看看範例，當今天特斯拉的駕駛走投無路需要賺外快的時候，他需要上路招攬客人&amp;hellip;
-//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。  public class 駕駛 { public string 開車() { return &amp;#34;開車上路&amp;#34;; } public string 招攬客人() { return &amp;#34;有沒有人需要搭車&amp;#34;; } public int 計算車資(int 搭車人數) { var 今天電價 = 30; var 每位乘客搭乘價格 = this.關注電價(今天電價); return 搭車人數 * 每位乘客搭乘價格; } public int 關注電價(int 每度時價) { if (每度時價 &amp;gt; 50) { return 20; } return 10; } } private static void Main(string[] args) { 駕駛 特斯拉駕駛 = new 駕駛(); Console.</description>
+//產生一個駕駛類別要有開車、招攬客人、計算車資的功能。 public class 駕駛 { public string 開車() { return &amp;#34;開車上路&amp;#34;; } public string 招攬客人() { return &amp;#34;有沒有人需要搭車&amp;#34;; } public int 計算車資(int 搭車人數) { var 今天電價 = 30; var 每位乘客搭乘價格 = this.關注電價(今天電價); return 搭車人數 * 每位乘客搭乘價格; } public int 關注電價(int 每度時價) { if (每度時價 &amp;gt; 50) { return 20; } return 10; } } private static void Main(string[] args) { 駕駛 特斯拉駕駛 = new 駕駛(); Console.</description>
     </item>
     
   </channel>
